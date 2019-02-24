@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
+        AudioManager.backgroundAudioPlayer.stop()
+        AudioManager.extraAudioPlayer.stop()
         PersistentService.saveContext()
     }
 }

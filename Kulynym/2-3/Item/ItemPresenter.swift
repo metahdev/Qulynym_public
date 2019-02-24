@@ -15,7 +15,7 @@ protocol ItemPresenterProtocol: class {
     var router: ItemRouterProtocol! { set get }
     
     func updateView()
-    func imageViewPressed()
+    func contentBtnPressed()
     func closeBtnPressed()
 }
 
@@ -33,10 +33,9 @@ extension ItemPresenter {
     func updateView() {
         view.contentKey = interactor.fillContent(with: view.slideCount, with: view.category)
         view.slideCount += 1
-        view.setupContent()
     }
     
-    func imageViewPressed() {
+    func contentBtnPressed() {
         AudioManager.extraAudioPlayer.play()
     }
     

@@ -12,15 +12,15 @@ import UIKit
 class ItemAutoLayoutManager {
     // MARK: Properties
     weak var view: UIView!
-    weak var imageView: UIImageView!
+    weak var contentBtn: UIButton!
     weak var closeBtn: UIButton!
     weak var forwardBtn: UIButton!
     weak var background: UIImageView!
     var innerViews = [UIView]()
     
-    required init(_ view: UIView, imageView: UIImageView, closeBtn: UIButton, forwardBtn: UIButton, background: UIImageView) {
+    required init(_ view: UIView, contentBtn: UIButton, closeBtn: UIButton, forwardBtn: UIButton, background: UIImageView) {
         self.view = view
-        self.imageView = imageView
+        self.contentBtn = contentBtn
         self.closeBtn = closeBtn
         self.forwardBtn = forwardBtn
         self.background = background
@@ -30,7 +30,7 @@ class ItemAutoLayoutManager {
     }
 
     func addViewsToInnerViewsArray() {
-        innerViews.append(imageView)
+        innerViews.append(contentBtn)
         innerViews.append(closeBtn)
         innerViews.append(forwardBtn)
         innerViews.append(background)
@@ -48,10 +48,10 @@ class ItemAutoLayoutManager {
         let forwardBtnConstant = view.frame.height * 0.25
         
         let constraints = [
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: imageViewConstant),
-            imageView.heightAnchor.constraint(equalToConstant: imageViewConstant),
+            contentBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            contentBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            contentBtn.widthAnchor.constraint(equalToConstant: imageViewConstant),
+            contentBtn.heightAnchor.constraint(equalToConstant: imageViewConstant),
             
             forwardBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
             forwardBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),

@@ -13,7 +13,6 @@ protocol ItemVCProtocol: class {
     var category: String { get set }
     var slideCount: Int { get set }
     var contentKey: String { get set }
-    func setupContent()
 }
 
 class ItemViewController: UIViewController, ItemVCProtocol {
@@ -21,17 +20,22 @@ class ItemViewController: UIViewController, ItemVCProtocol {
     #warning ("need to delete default value")
     var category = "Alphabet"
     var slideCount = 0
-    var contentKey = ""
+    var contentKey = "" {
+        didSet {
+            contentButton.setImage(UIImage(named: contentKey), for: .normal)
+            AudioManager.initExtraAudioPath(with: contentKey)
+        }
+    }
     
-    lazy var mainImageView: UIImageView = {
-        var iv = UIImageView()
-        iv.isUserInteractionEnabled = true
+    lazy var contentButton: UIButton = {
+        var iv = UIButton()
+        iv.addTarget(self, action: #selector(contentBtnPressed), for: .touchUpInside)
         return iv
     }()
     lazy var closeBtn: UIButton = {
         var btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
-        btn.addTarget(self, action: #selector(), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(closeBtnTapped), for: .touchUpInside)
         return btn
     }()
     lazy var forwardBtn: UIButton = {
@@ -61,19 +65,14 @@ class ItemViewController: UIViewController, ItemVCProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
-        setupGesture()
         setupLayout()
     }
 
     
     // MARK: Actions
-    func setupGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        mainImageView.addGestureRecognizer(tap)
-    }
     
-    @objc func imageTapped() {
-        presenter.imageViewPressed()
+    @objc func contentBtnPressed() {
+        presenter.contentBtnPressed()
     }
     
     @objc func forwardBtnPressed() {
@@ -91,7 +90,7 @@ class ItemViewController: UIViewController, ItemVCProtocol {
     }
     
     func configureLayout() {
-        self.autoLayoutManager = ItemAutoLayoutManager(self.view, imageView: mainImageView, closeBtn: closeBtn, forwardBtn: forwardBtn, background: backgroundImage)
+        self.autoLayoutManager = ItemAutoLayoutManager(self.view, contentBtn: contentButton, closeBtn: closeBtn, forwardBtn: forwardBtn, background: backgroundImage)
     }
     
     func activateConstraints() {
@@ -102,8 +101,4 @@ class ItemViewController: UIViewController, ItemVCProtocol {
 
 extension ItemViewController {
     // MARK: Protocol Methods
-    func setupContent() {
-        self.mainImageView.image = UIImage(named: contentKey)
-        AudioManager.initExtraAudioPath(with: contentKey)
-    }
 }
