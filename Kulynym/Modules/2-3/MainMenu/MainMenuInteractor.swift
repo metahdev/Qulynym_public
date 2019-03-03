@@ -8,6 +8,7 @@
 */
 
 import Foundation
+import CoreData
 
 protocol MainMenuInteractorProtocol: class {
     func updateProgressState()
