@@ -8,6 +8,4 @@
 * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
-import Foundation
 import UIKit
-

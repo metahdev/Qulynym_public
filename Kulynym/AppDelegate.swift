@@ -23,15 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupWindow() {
         let rootVC = MainMenuViewController()
-        let navigationController = UINavigationController(rootViewController: rootVC)
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationController
+        window?.rootViewController = rootVC
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        AudioPlayer.backgroundAudioPlayer.stop()
-        AudioPlayer.scenesAudioPlayer.stop()
-        AudioPlayer.contentAudioPlayer.stop()
         PersistentService.saveContext()
     }
 }

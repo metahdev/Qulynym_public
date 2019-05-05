@@ -9,87 +9,67 @@
 
 import UIKit
 
-protocol MainMenuViewControllerProtocol: class {
-    
-}
+protocol MainMenuViewControllerProtocol: class {}
 
 class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
-    // MARK: Properties
-    lazy var scrollView: UIScrollView = {
-        let sv = UIScrollView()
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.bounces = false
-        return sv
-    }()
-    
-    lazy var backgroundImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "2-4bg")
-        iv.contentMode = .scaleAspectFill
-        return iv
-    }()
-    
-    lazy var alphabetBtn: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: "alphabetIcon"), for: .normal)
-        btn.addTarget(self, action: #selector(buttonsTouched(sender:)), for: .touchUpInside)
-        return btn
-    }()
-    
-    lazy var numbersBtn: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: "numbersIcon"), for: .normal)
-        btn.addTarget(self, action: #selector(buttonsTouched(sender:)), for: .touchUpInside)
-        return btn
-    }()
-    
-    lazy var animalsBtn: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: "animalsIcon"), for: .normal)
-        btn.addTarget(self, action: #selector(buttonsTouched(sender:)), for: .touchUpInside)
-        return btn
-    }()
+    // MARK:- Properties
+    weak var alphabetBtn: UIButton!
+    weak var numbersBtn: UIButton!
+    weak var animalsBtn: UIButton!
     
     var presenter: MainMenuPresenterProtocol!
-    var autoLayoutManager: MainMenuVCAutoLayout!
-    var configurator: MainMenuConfiguratorProtocol = MainMenuConfigurator()
+    private var autoLayout: MainMenuAutoLayout!
+    private var configurator: MainMenuConfiguratorProtocol = MainMenuConfigurator()
     
-    // MARK: View Lifestyle
-    override func viewWillAppear(_ animated: Bool) {
-        presenter.updateProgressState()
-    }
     
+    // MARK:- View Lifestyle
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
         configureLayout()
-        removeNavigationBar()
+        assignViews()
+        assignActions()
     }
     
-    // MARK: View
-    func configureLayout() {
-        autoLayoutManager = MainMenuVCAutoLayout(view: self.view, scrollView: self.scrollView, background: self.backgroundImageView, alphabetBtn: self.alphabetBtn, numberBtn: self.numbersBtn, animalsBtn: self.animalsBtn)
+    override func viewWillAppear(_ animated: Bool) {
+        presenter.updateProgressState()
     }
     
-    func removeNavigationBar() {
-        self.navigationController?.isNavigationBarHidden = true
+    
+    // MARK:- Layout
+    private func configureLayout() {
+        autoLayout = MainMenuAutoLayout(view: self.view)
     }
     
-    // MARK: Actions
+    private func assignViews() {
+        self.alphabetBtn = autoLayout.alphabetBtn
+        self.numbersBtn = autoLayout.numbersBtn
+        self.animalsBtn = autoLayout.animalsBtn
+    }
+    
+    
+    // MARK:- Actions
+    private func assignActions() {
+        alphabetBtn.addTarget(self, action: #selector(buttonsTouched(sender:)), for: .touchUpInside)
+        numbersBtn.addTarget(self, action: #selector(buttonsTouched(sender:)), for: .touchUpInside)
+        animalsBtn.addTarget(self, action: #selector(buttonsTouched(sender:)), for: .touchUpInside)
+    }
+    
     @objc func buttonsTouched(sender: UIButton) {
-        let imageName = sender.imageView?.image
-        var direction = ""
-        
-        switch imageName {
-        case UIImage(named: "alphabetIcon"):
-            direction = "Alphabet"
-        case UIImage(named: "numbersIcon"):
-            direction = "Numbers"
-        case UIImage(named: "animalsIcon"):
-            direction = "Animals"
-        default:
-            direction = ""
-        }
+        let direction = getDirection(image: sender.imageView!.image!)
         presenter.iconPressed(with: direction)
+    }
+    
+    private func getDirection(image: UIImage) -> String {
+        switch image {
+        case UIImage(named: "alphabetIcon"):
+            return "Alphabet"
+        case UIImage(named: "numbersIcon"):
+            return "Numbers"
+        case UIImage(named: "animalsIcon"):
+            return "Animals"
+        default:
+            return ""
+        }
     }
 }

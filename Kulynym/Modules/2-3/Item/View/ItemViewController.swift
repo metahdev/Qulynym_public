@@ -14,7 +14,7 @@ protocol ItemVCProtocol: class {
 }
 
 class ItemViewController: UIViewController, ItemVCProtocol {
-    // MARK: Properties    
+    // MARK:- Properties
     lazy var contentButton: UIButton = {
         var iv = UIButton()
         iv.addTarget(self, action: #selector(contentBtnPressed), for: .touchUpInside)
@@ -44,7 +44,7 @@ class ItemViewController: UIViewController, ItemVCProtocol {
     let configurator: ItemConfiguratorProtocol = ItemConfigurator()
 
     
-    // MARK: View Lifecycle
+    // MARK:- View Lifecycle
     convenience init(category: String) {
         self.init()
         configurator.configure(with: self)
@@ -63,13 +63,13 @@ class ItemViewController: UIViewController, ItemVCProtocol {
     }
     
     
-    // MARK: View    
+    // MARK:- View
     func configureLayout() {
         self.autoLayoutManager = ItemVCAutoLayout(self.view, contentBtn: contentButton, closeBtn: closeBtn, forwardBtn: forwardBtn, background: backgroundImage)
     }
     
     
-    // MARK: Actions
+    // MARK:- Actions
     @objc func contentBtnPressed() {
         presenter.contentBtnPressed()
     }
@@ -85,7 +85,7 @@ class ItemViewController: UIViewController, ItemVCProtocol {
 
 
 extension ItemViewController {
-    // MARK: Protocol Methods
+    // MARK:- Protocol Methods
     func updateContent(contentKey: String) {
         contentButton.setImage(UIImage(named: contentKey), for: .normal)
     }

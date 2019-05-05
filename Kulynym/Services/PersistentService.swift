@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 class PersistentService {
-    // MARK: - Core Data Stack
+    // MARK:- Core Data Stack
     static var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Kulynym")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -22,7 +22,7 @@ class PersistentService {
         return container
     }()
     
-    // MARK: - Core Data Saving Support
+    // MARK:- Core Data Saving Support
     static func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {

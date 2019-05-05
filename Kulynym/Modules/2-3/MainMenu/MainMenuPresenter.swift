@@ -29,7 +29,7 @@ class MainMenuPresenter: MainMenuPresenterProtocol {
 }
 
 extension MainMenuPresenter {
-    // MARK: Protocol Methods
+    // MARK:- Protocol Methods
     func updateProgressState() {
         interactor.updateProgressState()
     }

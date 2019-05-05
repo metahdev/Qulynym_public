@@ -28,7 +28,7 @@
 		D1998B7F222C2A0F008B6B82 /* Alphabet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1998B7E222C2A0E008B6B82 /* Alphabet.mp3 */; };
 		D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D36E4222BAEEC005188D0 /* Extensions.swift */; };
 		D1D469172229C7FC0096B968 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469162229C7FC0096B968 /* MainMenuViewController.swift */; };
-		D1D4691A2229C8140096B968 /* MainMenuVCAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469192229C8140096B968 /* MainMenuVCAutoLayout.swift */; };
+		D1D4691A2229C8140096B968 /* MainMenuAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469192229C8140096B968 /* MainMenuAutoLayout.swift */; };
 		D1D4691C2229C8220096B968 /* MainMenuConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4691B2229C8220096B968 /* MainMenuConfigurator.swift */; };
 		D1D4691E2229C8300096B968 /* MainMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4691D2229C8300096B968 /* MainMenuPresenter.swift */; };
 		D1D469202229C83A0096B968 /* MainMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4691F2229C83A0096B968 /* MainMenuInteractor.swift */; };
@@ -86,7 +86,7 @@
 		D1998B7E222C2A0E008B6B82 /* Alphabet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Alphabet.mp3; sourceTree = "<group>"; };
 		D19D36E4222BAEEC005188D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D1D469162229C7FC0096B968 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
-		D1D469192229C8140096B968 /* MainMenuVCAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuVCAutoLayout.swift; sourceTree = "<group>"; };
+		D1D469192229C8140096B968 /* MainMenuAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuAutoLayout.swift; sourceTree = "<group>"; };
 		D1D4691B2229C8220096B968 /* MainMenuConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuConfigurator.swift; sourceTree = "<group>"; };
 		D1D4691D2229C8300096B968 /* MainMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuPresenter.swift; sourceTree = "<group>"; };
 		D1D4691F2229C83A0096B968 /* MainMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuInteractor.swift; sourceTree = "<group>"; };
@@ -147,11 +147,12 @@
 		D13D864B2217FEDF0048A6E4 /* Kulynym */ = {
 			isa = PBXGroup;
 			children = (
-				D14D537B2221B1AD007ACD55 /* CommonFiles */,
+				D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */,
+				D19D36E4222BAEEC005188D0 /* Extensions.swift */,
+				D13D865B2217FEDF0048A6E4 /* Info.plist */,
 				D1D46951222ADED20096B968 /* Modules */,
 				D14D536B2221377C007ACD55 /* Services */,
 				D14D536C22213787007ACD55 /* Resources */,
-				D13D865B2217FEDF0048A6E4 /* Info.plist */,
 			);
 			path = Kulynym;
 			sourceTree = "<group>";
@@ -189,6 +190,7 @@
 		D14D536B2221377C007ACD55 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D14D53782221B185007ACD55 /* AudioPlayer.swift */,
 				D13D867D22180E430048A6E4 /* PersistentService.swift */,
 				D14D53742221A294007ACD55 /* ContentService.swift */,
 			);
@@ -242,16 +244,6 @@
 			path = "2-3";
 			sourceTree = "<group>";
 		};
-		D14D537B2221B1AD007ACD55 /* CommonFiles */ = {
-			isa = PBXGroup;
-			children = (
-				D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */,
-				D14D53782221B185007ACD55 /* AudioPlayer.swift */,
-				D19D36E4222BAEEC005188D0 /* Extensions.swift */,
-			);
-			path = CommonFiles;
-			sourceTree = "<group>";
-		};
 		D14D537C2221B1CF007ACD55 /* 4-5 */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,7 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D469162229C7FC0096B968 /* MainMenuViewController.swift */,
-				D1D469192229C8140096B968 /* MainMenuVCAutoLayout.swift */,
+				D1D469192229C8140096B968 /* MainMenuAutoLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -478,7 +470,7 @@
 				D1D469202229C83A0096B968 /* MainMenuInteractor.swift in Sources */,
 				D14D536822213769007ACD55 /* ItemPresenter.swift in Sources */,
 				D1D469222229C8440096B968 /* MainMenuRouter.swift in Sources */,
-				D1D4691A2229C8140096B968 /* MainMenuVCAutoLayout.swift in Sources */,
+				D1D4691A2229C8140096B968 /* MainMenuAutoLayout.swift in Sources */,
 				D13D86552217FEDF0048A6E4 /* Kulynym.xcdatamodeld in Sources */,
 				D1D46930222A8C8E0096B968 /* ScenesInteractor.swift in Sources */,
 				D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */,

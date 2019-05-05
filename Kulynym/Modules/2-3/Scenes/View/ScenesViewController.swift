@@ -14,7 +14,7 @@ protocol ScenesViewControllerProtocol: class {
 }
 
 class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
-    // MARK: Properties
+    // MARK:- Properties
     var presenter: ScenesPresenterProtocol!
     var autoLayoutManager: ScenesAutoLayoutManager!
     var configurator: ScenesConfiguratorProtocol = ScenesConfigurator()
@@ -31,7 +31,7 @@ class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
         return btn
     }()
     
-    // MARK: View Lifestyle
+    // MARK:- View Lifestyle
     convenience init(category: String) {
         self.init()
         configurator.configure(with: self)
@@ -49,12 +49,12 @@ class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
         presenter.startTimer()
     }
     
-    // MARK: View
+    // MARK:- View
     func configureView() {
         autoLayoutManager = ScenesAutoLayoutManager(view: self.view, imageView: imageView, forwardBtn: skipBtn)
     }
     
-    // MARK: Actions
+    // MARK:- Actions
     @objc func skipBtnPressed() {
         presenter.skipBtnPressed()
     }
