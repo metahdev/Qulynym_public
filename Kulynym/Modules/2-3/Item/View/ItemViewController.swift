@@ -9,46 +9,36 @@
 
 import UIKit
 
-protocol ItemVCProtocol: class {    
+protocol ItemVCProtocol: class {
+    var category: String! { get set }
+    
     func updateContent(contentKey: String)
 }
 
 class ItemViewController: UIViewController, ItemVCProtocol {
     // MARK:- Properties
-    lazy var contentButton: UIButton = {
-        var iv = UIButton()
-        iv.addTarget(self, action: #selector(contentBtnPressed), for: .touchUpInside)
-        return iv
-    }()
-    lazy var closeBtn: UIButton = {
-        var btn = UIButton()
-        btn.setImage(UIImage(named: "close"), for: .normal)
-        btn.addTarget(self, action: #selector(closeBtnTapped), for: .touchUpInside)
-        return btn
-    }()
-    lazy var forwardBtn: UIButton = {
-        var btn = UIButton()
-        btn.setImage(UIImage(named: "forward"), for: .normal)
-        btn.addTarget(self, action: #selector(forwardBtnPressed), for: .touchUpInside)
-        return btn
-    }()
-    lazy var backgroundImage: UIImageView = {
-        var image = UIImageView()
-        image.layer.zPosition = -1
-        image.image = UIImage(named: "itemBackground")
-        return image
-    }()
-   
-    var autoLayoutManager: ItemVCAutoLayout!
+    var category: String!
+    
+    weak var contentBtn: UIButton!
+    weak var closeBtn: UIButton!
+    weak var forwardBtn: UIButton!
+    
+    var autoLayout: ItemAutoLayoutProtocol!
     var presenter: ItemPresenterProtocol!
     let configurator: ItemConfiguratorProtocol = ItemConfigurator()
 
     
     // MARK:- View Lifecycle
-    convenience init(category: String) {
-        self.init()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         configurator.configure(with: self)
-        presenter.category = category
+        
+        initLayout()
+        autoLayout.setupLayout()
+        assignViews()
+        assignActions()
+        
+        AudioPlayer.backgroundAudioPlayer.play()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,20 +46,25 @@ class ItemViewController: UIViewController, ItemVCProtocol {
         presenter.updateView()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureLayout()
-        AudioPlayer.backgroundAudioPlayer.play()
-    }
-    
     
     // MARK:- View
-    func configureLayout() {
-        self.autoLayoutManager = ItemVCAutoLayout(self.view, contentBtn: contentButton, closeBtn: closeBtn, forwardBtn: forwardBtn, background: backgroundImage)
+    private func initLayout() {
+        self.autoLayout = ItemAutoLayout(self.view)
     }
     
+    private func assignViews() {
+        self.contentBtn = autoLayout.contentBtn
+        self.closeBtn = autoLayout.closeBtn
+        self.forwardBtn = autoLayout.forwardBtn
+    }
     
     // MARK:- Actions
+    private func assignActions() {
+        contentBtn.addTarget(self, action: #selector(contentBtnPressed), for: .touchUpInside)
+        forwardBtn.addTarget(self, action: #selector(forwardBtnPressed), for: .touchUpInside)
+        closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
+    }
+    
     @objc func contentBtnPressed() {
         presenter.contentBtnPressed()
     }
@@ -78,7 +73,7 @@ class ItemViewController: UIViewController, ItemVCProtocol {
         presenter.updateView()
     }
     
-    @objc func closeBtnTapped() {
+    @objc func closeBtnPressed() {
         presenter.closeBtnPressed()
     }
 }
@@ -87,6 +82,6 @@ class ItemViewController: UIViewController, ItemVCProtocol {
 extension ItemViewController {
     // MARK:- Protocol Methods
     func updateContent(contentKey: String) {
-        contentButton.setImage(UIImage(named: contentKey), for: .normal)
+        contentBtn.setImage(UIImage(named: contentKey), for: .normal)
     }
 }

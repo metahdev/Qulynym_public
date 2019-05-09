@@ -13,22 +13,22 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-
+    
+    #warning("I/O cycle and other output errors")
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         setupWindow()
         window?.makeKeyAndVisible()
         AudioPlayer.turnOnBackgroundMusic()
+        
         return true
     }
     
     func setupWindow() {
         let rootVC = MainMenuViewController()
+        let navigationController = UINavigationController(rootViewController: rootVC)
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = rootVC
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        PersistentService.saveContext()
+        window?.rootViewController = navigationController
     }
 }
-

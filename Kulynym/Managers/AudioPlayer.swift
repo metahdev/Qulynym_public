@@ -16,11 +16,23 @@ enum PlayerType {
 }
 
 struct AudioPlayer {
+    // MARK:- Properties
     static var backgroundAudioPlayer = AVAudioPlayer()
     static var contentAudioPlayer = AVAudioPlayer()
     static var scenesAudioPlayer = AVAudioPlayer()
+    static let queue = DispatchQueue.global(qos: .utility)
     
+    
+    // MARK: Background Audio
     static func turnOnBackgroundMusic() {
+        #warning("Long loading")
+        queue.async {
+            initBackdroundAudio()
+            backgroundAudioPlayer.play()
+        }
+    }
+    
+    private static func initBackdroundAudio() {
         let filePath = Bundle.main.path(forResource: "backgroundAudio", ofType: "mp3")
         let url = URL.init(fileURLWithPath: filePath!)
         
@@ -32,15 +44,18 @@ struct AudioPlayer {
         
         backgroundAudioPlayer.numberOfLoops = -1
         backgroundAudioPlayer.volume = 0.5
-        
-        backgroundAudioPlayer.play()
     }
     
-    static func initExtraAudioPath(with name: String, audioPlayer: PlayerType) {
+    
+    // MARK:- Extra Audios
+    static func turnOnExtraAudio(with name: String, audioPlayer: PlayerType) {
+        #warning("Queue")
         let url = setupPaths(name: name)
         switch audioPlayer {
         case .scenes:
             initPlayers(player: &scenesAudioPlayer, url: url)
+            backgroundAudioPlayer.stop()
+            scenesAudioPlayer.play()
         case .content:
             initPlayers(player: &contentAudioPlayer, url: url)
         }
@@ -58,10 +73,5 @@ struct AudioPlayer {
         } catch {
             print("unresolver error: \(error)")
         }
-    }
-    
-    static func playScenesAudio() {
-        backgroundAudioPlayer.stop()
-        scenesAudioPlayer.play()
     }
 }

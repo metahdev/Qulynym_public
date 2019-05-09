@@ -18,15 +18,19 @@ class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
     weak var animalsBtn: UIButton!
     
     var presenter: MainMenuPresenterProtocol!
-    private var autoLayout: MainMenuAutoLayout!
+    var scenesViewDelegate: ScenesViewControllerProtocol!
+    private var autoLayout: MainMenuAutoLayoutProtocol!
     private var configurator: MainMenuConfiguratorProtocol = MainMenuConfigurator()
     
     
-    // MARK:- View Lifestyle
+    // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
-        configureLayout()
+        
+        initLayout()
+        autoLayout.setupLayout()
+        hideNavigationBar()
         assignViews()
         assignActions()
     }
@@ -37,14 +41,18 @@ class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
     
     
     // MARK:- Layout
-    private func configureLayout() {
-        autoLayout = MainMenuAutoLayout(view: self.view)
+    private func initLayout() {
+        autoLayout = MainMenuAutoLayout(self.view)
     }
     
     private func assignViews() {
         self.alphabetBtn = autoLayout.alphabetBtn
         self.numbersBtn = autoLayout.numbersBtn
         self.animalsBtn = autoLayout.animalsBtn
+    }
+    
+    private func hideNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     

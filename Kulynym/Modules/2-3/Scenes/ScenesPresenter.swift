@@ -9,8 +9,7 @@
 
 import Foundation
 
-protocol ScenesPresenterProtocol: class {
-    var category: String { get set }
+protocol ScenesPresenterProtocol: class {    
     func getScenes()
     func playAudio()
     func startTimer()
@@ -18,15 +17,14 @@ protocol ScenesPresenterProtocol: class {
 }
 
 class ScenesPresenter: ScenesPresenterProtocol {
+    // MARK:- Properties
     weak var view: ScenesViewControllerProtocol!
     var interactor: ScenesInteractorProtocol!
     var router: ScenesRouterProtocol!
     
-    var category = ""
-    var currentSlide = 0
     var scenesNames = [String]()
-    var seconds = 0.0
-    var timer = Timer()
+    var timerManager: TimerManager!
+    var timepoints = [Int]()
     
     required init(view: ScenesViewControllerProtocol) {
         self.view = view
@@ -34,43 +32,37 @@ class ScenesPresenter: ScenesPresenterProtocol {
 }
 
 extension ScenesPresenter {
+    // MARK:- Protocol Methods
     func getScenes() {
-        scenesNames = interactor.getScenes(of: category)
-        view.fillContent(image: scenesNames[currentSlide])
-        currentSlide += 1
+        interactor.category = view.category
+        scenesNames = interactor.getScenes()
+        timepoints = interactor.getTimepoints()
+        view.fillContent(image: scenesNames[0])
     }
     
     func playAudio() {
-        AudioPlayer.backgroundAudioPlayer.stop()
-        AudioPlayer.initExtraAudioPath(with: category, audioPlayer: .scenes)
-        AudioPlayer.playScenesAudio()
+        AudioPlayer.turnOnExtraAudio(with: view.category, audioPlayer: .scenes)
     }
     
     func startTimer() {
-        seconds = AudioPlayer.scenesAudioPlayer.duration
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkState), userInfo: nil, repeats: true)
-    }
-    
-    @objc func checkState() {
-        seconds -= 1
-        
-        switch Int(seconds) {
-        case 10, 20:
-            view.fillContent(image: scenesNames[currentSlide])
-            currentSlide += 1
-        default:
-            break
-        }
-        
-        if Int(seconds) == 0 {
-            timer.invalidate()
-            router.showNextVC(category: category)
-        }
+        timerManager = TimerManager()
+        timerManager.delegate = self
+        timerManager.startTimer()
     }
     
     func skipBtnPressed() {
-        timer.invalidate()
+        timerManager.timer.invalidate()
         AudioPlayer.scenesAudioPlayer.stop()
-        router.showNextVC(category: category)
+        router.showNextVC(category: view.category)
+    }
+}
+
+extension ScenesPresenter: TimerManagerDelegate {
+    func notifyOfTimepoints() {
+        view.fillContent(image: scenesNames[timerManager.currentSlide])
+    }
+    
+    func notifyTimerEnded() {
+        router.showNextVC(category: view.category)
     }
 }

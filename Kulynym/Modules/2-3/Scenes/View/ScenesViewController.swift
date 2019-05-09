@@ -10,51 +10,59 @@
 import UIKit
 
 protocol ScenesViewControllerProtocol: class {
+    var category: String! { get set }
+    
     func fillContent(image named: String)
 }
 
 class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
     // MARK:- Properties
+    var category: String!
+    
+    weak var sceneImageView: UIImageView!
+    weak var skipBtn: UIButton!
+    
     var presenter: ScenesPresenterProtocol!
-    var autoLayoutManager: ScenesAutoLayoutManager!
-    var configurator: ScenesConfiguratorProtocol = ScenesConfigurator()
+    var itemViewDelegate: ItemVCProtocol!
+    private var autoLayout: ScenesAutoLayoutProtocol!
+    private var configurator: ScenesConfiguratorProtocol = ScenesConfigurator()
     
-    lazy var imageView: UIImageView = {
-        let iv = UIImageView()
-        return iv
-    }()
     
-    lazy var skipBtn: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: "forward"), for: .normal)
-        btn.addTarget(self, action: #selector(skipBtnPressed), for: .touchUpInside)
-        return btn
-    }()
-    
-    // MARK:- View Lifestyle
-    convenience init(category: String) {
-        self.init()
+    // MARK:- View Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
         configurator.configure(with: self)
-        presenter.category = category
+        
+        initLayout()
+        autoLayout.setupLayout()
+        assignViews()
+        assignActions()
+        
+        presenter.playAudio()
+        presenter.startTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         presenter.getScenes()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureView()
-        presenter.playAudio()
-        presenter.startTimer()
+    
+    // MARK:- Layout
+    private func initLayout() {
+        autoLayout = ScenesAutoLayout(self.view)
     }
     
-    // MARK:- View
-    func configureView() {
-        autoLayoutManager = ScenesAutoLayoutManager(view: self.view, imageView: imageView, forwardBtn: skipBtn)
+    private func assignViews() {
+        self.sceneImageView = autoLayout.sceneImageView
+        self.skipBtn = autoLayout.skipBtn
     }
+    
     
     // MARK:- Actions
+    private func assignActions() {
+        skipBtn.addTarget(self, action: #selector(skipBtnPressed), for: .touchUpInside)
+    }
+    
     @objc func skipBtnPressed() {
         presenter.skipBtnPressed()
     }
@@ -62,6 +70,6 @@ class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
 
 extension ScenesViewController {
     func fillContent(image named: String) {
-        imageView.image = UIImage(named: named)
+        sceneImageView.image = UIImage(named: named)
     }
 }

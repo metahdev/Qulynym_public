@@ -11,59 +11,59 @@ import Foundation
 import UIKit
 
 protocol MainMenuAutoLayoutProtocol {
-    func configureLayout()
+    var alphabetBtn: UIButton  { get set }
+    var numbersBtn: UIButton { get set }
+    var animalsBtn: UIButton { get set }
+    
+    func setupLayout()
 }
 
 class MainMenuAutoLayout: MainMenuAutoLayoutProtocol {
     // MARK:- Properties
-    weak var view: UIView!
-    lazy var scrollView: UIScrollView = {
-        let sv = UIScrollView()
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.bounces = false
-        return sv
-    }()
-    
-    lazy var backgroundImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "2-4bg")
-        iv.contentMode = .scaleAspectFill
-        return iv
-    }()
-    
     lazy var alphabetBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "alphabetIcon"), for: .normal)
         return btn
     }()
-    
     lazy var numbersBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "numbersIcon"), for: .normal)
         return btn
     }()
-    
     lazy var animalsBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "animalsIcon"), for: .normal)
         return btn
     }()
-    
+    private lazy var scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.bounces = false
+        return sv
+    }()
+    private lazy var backgroundImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "2-4bg")
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    private weak var view: UIView!
+
     
     // MARK:- Initialization
-    required init(view: UIView) {
+    required init(_ view: UIView) {
         self.view = view
     }
     
     
     // MARK:- Layout
-    func configureLayout() {
+    func setupLayout() {
         addSubviews()
         makeSubviewsMaskFalse()
         activateConstraints()
     }
     
-    func addSubviews() {
+    private func addSubviews() {
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundImageView)
         scrollView.addSubview(alphabetBtn)
@@ -71,13 +71,13 @@ class MainMenuAutoLayout: MainMenuAutoLayoutProtocol {
         scrollView.addSubview(animalsBtn)
     }
     
-    func makeSubviewsMaskFalse() {
+    private func makeSubviewsMaskFalse() {
         for subview in scrollView.subviews {
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
-    func activateConstraints() {
+    private func activateConstraints() {
         let constant = view.frame.height * 0.5
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

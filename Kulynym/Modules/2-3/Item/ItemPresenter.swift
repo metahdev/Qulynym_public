@@ -12,10 +12,6 @@ import Foundation
 protocol ItemPresenterProtocol: class {
     var slideCount: Int { get set }
     var contentKey: String { get set }
-    var category: String { get set }
-    var view: ItemVCProtocol! { set get }
-    var interactor: ItemInteractorProtocol! { set get }
-    var router: ItemRouterProtocol! { set get }
     
     func updateView()
     func contentBtnPressed()
@@ -25,7 +21,6 @@ protocol ItemPresenterProtocol: class {
 class ItemPresenter: ItemPresenterProtocol {
     var slideCount = 0
     var contentKey = ""
-    var category = ""
     
     weak var view: ItemVCProtocol!
     var router: ItemRouterProtocol!
@@ -39,12 +34,12 @@ class ItemPresenter: ItemPresenterProtocol {
 extension ItemPresenter {
     func updateView() {
         updateProperties()
-        AudioPlayer.initExtraAudioPath(with: contentKey, audioPlayer: .content)
+        AudioPlayer.turnOnExtraAudio(with: contentKey, audioPlayer: .content)
         view.updateContent(contentKey: contentKey)
     }
     
     func updateProperties() {
-        self.contentKey = interactor.fillContent(with: self.slideCount, with: self.category)
+        self.contentKey = interactor.fillContent(with: self.slideCount, with: view.category)
         self.slideCount += 1
     }
     

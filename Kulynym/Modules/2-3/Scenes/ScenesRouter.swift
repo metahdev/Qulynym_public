@@ -21,7 +21,9 @@ class ScenesRouter: ScenesRouterProtocol {
     }
     
     func showNextVC(category: String) {
-        let vc = ItemViewController(category: category)
-        view.show(vc, sender: nil)
+        let itemView = ItemViewController()
+        view.itemViewDelegate = itemView
+        view.itemViewDelegate.category = category
+        view.show(itemView, sender: nil)
     }
 }

@@ -19,9 +19,14 @@ class MainMenuRouter: MainMenuRouterProtocol {
     required init(view: MainMenuViewController) {
         self.view = view
     }
-    
+}
+
+extension MainMenuRouter {
     func iconPressed(with category: String) {
-        let scenesViewController = ScenesViewController(category: category)
-        view.show(scenesViewController, sender: nil)
+        let scenesView = ScenesViewController()
+        view.scenesViewDelegate = scenesView
+        view.scenesViewDelegate.category = category
+        
+        view.show(scenesView, sender: nil)
     }
 }

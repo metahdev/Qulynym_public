@@ -15,13 +15,17 @@ protocol MainMenuInteractorProtocol: class {
 }
 
 class MainMenuInteractor: MainMenuInteractorProtocol {
+    // MARK:- Properties
     weak var presenter: MainMenuPresenterProtocol!
     
     required init(presenter: MainMenuPresenterProtocol) {
         self.presenter = presenter
     }
-    
+}
+
+extension MainMenuInteractor {
+    // MARK:- Protocol Methods
     func updateProgressState() {
-        #warning ("Core Data Integration")
+        
     }
 }

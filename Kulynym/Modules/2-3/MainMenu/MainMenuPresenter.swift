@@ -19,6 +19,7 @@ protocol MainMenuPresenterProtocol: class {
 }
 
 class MainMenuPresenter: MainMenuPresenterProtocol {
+    // MARK:- Properties
     weak var view: MainMenuViewControllerProtocol!
     var interactor: MainMenuInteractorProtocol!
     var router: MainMenuRouterProtocol!

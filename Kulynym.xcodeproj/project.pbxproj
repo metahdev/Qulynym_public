@@ -18,13 +18,14 @@
 		D14D536822213769007ACD55 /* ItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D536722213769007ACD55 /* ItemPresenter.swift */; };
 		D14D536A22213775007ACD55 /* ItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D536922213775007ACD55 /* ItemConfigurator.swift */; };
 		D14D536E222137B2007ACD55 /* ItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D536D222137B2007ACD55 /* ItemInteractor.swift */; };
-		D14D53702221380F007ACD55 /* ItemVCAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D536F2221380F007ACD55 /* ItemVCAutoLayout.swift */; };
+		D14D53702221380F007ACD55 /* ItemAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D536F2221380F007ACD55 /* ItemAutoLayout.swift */; };
 		D14D537222214853007ACD55 /* ItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D537122214853007ACD55 /* ItemRouter.swift */; };
 		D14D53752221A294007ACD55 /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D53742221A294007ACD55 /* ContentService.swift */; };
 		D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D53782221B185007ACD55 /* AudioPlayer.swift */; };
 		D1864C892222EA4500F25A6B /* A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1864C882222EA4500F25A6B /* A.mp3 */; };
 		D1864C8B2222EA6200F25A6B /* backgroundAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1864C8A2222EA6200F25A6B /* backgroundAudio.mp3 */; };
 		D1864C8D2222EAF700F25A6B /* B.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1864C8C2222EAF700F25A6B /* B.mp3 */; };
+		D19245172284DC2800ABD1BD /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19245162284DC2800ABD1BD /* Timer.swift */; };
 		D1998B7F222C2A0F008B6B82 /* Alphabet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1998B7E222C2A0E008B6B82 /* Alphabet.mp3 */; };
 		D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D36E4222BAEEC005188D0 /* Extensions.swift */; };
 		D1D469172229C7FC0096B968 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469162229C7FC0096B968 /* MainMenuViewController.swift */; };
@@ -76,13 +77,14 @@
 		D14D536722213769007ACD55 /* ItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPresenter.swift; sourceTree = "<group>"; };
 		D14D536922213775007ACD55 /* ItemConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemConfigurator.swift; sourceTree = "<group>"; };
 		D14D536D222137B2007ACD55 /* ItemInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInteractor.swift; sourceTree = "<group>"; };
-		D14D536F2221380F007ACD55 /* ItemVCAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVCAutoLayout.swift; sourceTree = "<group>"; };
+		D14D536F2221380F007ACD55 /* ItemAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAutoLayout.swift; sourceTree = "<group>"; };
 		D14D537122214853007ACD55 /* ItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRouter.swift; sourceTree = "<group>"; };
 		D14D53742221A294007ACD55 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
 		D14D53782221B185007ACD55 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		D1864C882222EA4500F25A6B /* A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = A.mp3; sourceTree = "<group>"; };
 		D1864C8A2222EA6200F25A6B /* backgroundAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundAudio.mp3; sourceTree = "<group>"; };
 		D1864C8C2222EAF700F25A6B /* B.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = B.mp3; sourceTree = "<group>"; };
+		D19245162284DC2800ABD1BD /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		D1998B7E222C2A0E008B6B82 /* Alphabet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Alphabet.mp3; sourceTree = "<group>"; };
 		D19D36E4222BAEEC005188D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D1D469162229C7FC0096B968 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				D19D36E4222BAEEC005188D0 /* Extensions.swift */,
 				D13D865B2217FEDF0048A6E4 /* Info.plist */,
 				D1D46951222ADED20096B968 /* Modules */,
+				D1A29F372280C2E8000CC676 /* Managers */,
 				D14D536B2221377C007ACD55 /* Services */,
 				D14D536C22213787007ACD55 /* Resources */,
 			);
@@ -190,7 +193,6 @@
 		D14D536B2221377C007ACD55 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D14D53782221B185007ACD55 /* AudioPlayer.swift */,
 				D13D867D22180E430048A6E4 /* PersistentService.swift */,
 				D14D53742221A294007ACD55 /* ContentService.swift */,
 			);
@@ -212,7 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				D13D864E2217FEDF0048A6E4 /* ItemViewController.swift */,
-				D14D536F2221380F007ACD55 /* ItemVCAutoLayout.swift */,
+				D14D536F2221380F007ACD55 /* ItemAutoLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +269,15 @@
 				D1998B7E222C2A0E008B6B82 /* Alphabet.mp3 */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D1A29F372280C2E8000CC676 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D19245162284DC2800ABD1BD /* Timer.swift */,
+				D14D53782221B185007ACD55 /* AudioPlayer.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		D1D469152229C7D90096B968 /* MainMenu */ = {
@@ -388,13 +399,16 @@
 				TargetAttributes = {
 					D13D86482217FEDF0048A6E4 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					D13D865F2217FEE00048A6E4 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = D13D86482217FEDF0048A6E4;
 					};
 					D13D866A2217FEE00048A6E4 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = D13D86482217FEDF0048A6E4;
 					};
 				};
@@ -477,7 +491,8 @@
 				D1D4691E2229C8300096B968 /* MainMenuPresenter.swift in Sources */,
 				D14D536E222137B2007ACD55 /* ItemInteractor.swift in Sources */,
 				D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */,
-				D14D53702221380F007ACD55 /* ItemVCAutoLayout.swift in Sources */,
+				D19245172284DC2800ABD1BD /* Timer.swift in Sources */,
+				D14D53702221380F007ACD55 /* ItemAutoLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,7 +668,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AXware.Kulynym;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -671,7 +686,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AXware.Kulynym;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -691,7 +706,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AXware.KulynymTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kulynym.app/Kulynym";
 			};
@@ -712,7 +727,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AXware.KulynymTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kulynym.app/Kulynym";
 			};
@@ -732,7 +747,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AXware.KulynymUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Kulynym;
 			};
@@ -752,7 +767,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AXware.KulynymUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Kulynym;
 			};

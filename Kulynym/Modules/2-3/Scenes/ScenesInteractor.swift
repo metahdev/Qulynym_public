@@ -10,17 +10,28 @@
 import Foundation
 
 protocol ScenesInteractorProtocol: class {
-    func getScenes(of category: String) -> [String]
+    var category: String! { get set }
+    
+    func getScenes() -> [String]
+    func getTimepoints() -> [Int]
 }
 
 class ScenesInteractor: ScenesInteractorProtocol {
     weak var presenter: ScenesPresenterProtocol!
+    var category: String!
     
     required init(presenter: ScenesPresenterProtocol) {
         self.presenter = presenter
     }
-    
-    func getScenes(of category: String) -> [String] {
+}
+
+extension ScenesInteractor {
+    // MARK:- Protocol Methods
+    func getScenes() -> [String] {
         return ContentService.scenesNames[category]!
+    }
+    
+    func getTimepoints() -> [Int] {
+        return ContentService.timepoints[category]!
     }
 }
