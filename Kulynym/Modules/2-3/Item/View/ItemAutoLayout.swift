@@ -18,6 +18,7 @@ protocol ItemAutoLayoutProtocol: class {
 }
 
 class ItemAutoLayout: ItemAutoLayoutProtocol {
+    // MARK:- Properties
     lazy var contentBtn: UIButton = {
         let btn = UIButton()
         return btn

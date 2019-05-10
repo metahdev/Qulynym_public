@@ -17,7 +17,7 @@ protocol TimerManagerDelegate: class {
     func notifyTimerEnded()
 }
 
-class TimerManager {
+class TimerController {
     // MARK:- Properties
     var currentSlide = 1
     var timer = Timer()

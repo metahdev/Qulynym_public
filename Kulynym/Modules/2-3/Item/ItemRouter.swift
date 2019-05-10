@@ -23,8 +23,8 @@ class ItemRouter {
 }
 
 extension ItemRouter: ItemRouterProtocol {
+    // MARK:- Protocol Methods
     func closeView() {
-        let navController = view.navigationController
-        navController?.popToRootViewController(animated: true)
+        view.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
 }

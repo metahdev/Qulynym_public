@@ -1,6 +1,6 @@
 /*
 * Kulynym
-* ScenesAutoLayoutManager.swift
+* ScenesAutoLayout.swift
 *
 * Created by: Metah on 3/2/19
 *

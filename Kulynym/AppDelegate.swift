@@ -10,11 +10,18 @@
 import UIKit
 import CoreData
 
+/*
+ Bugs, which are already found:
+  1) Memory Leak with Audio(Scene View isn't opening)
+  2) Scroll View Content is ambigious
+  3) Audio queue isn't optimizing the main thread
+ Solutions, which will be integrated further:
+  1) TimerController on another queue
+ */
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    
-    #warning("I/O cycle and other output errors")
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         setupWindow()
@@ -32,3 +39,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navigationController
     }
 }
+

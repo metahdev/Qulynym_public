@@ -32,9 +32,10 @@ class ItemPresenter: ItemPresenterProtocol {
 }
 
 extension ItemPresenter {
+    // MARK:- Protocol Methods
     func updateView() {
         updateProperties()
-        AudioPlayer.turnOnExtraAudio(with: contentKey, audioPlayer: .content)
+        AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
         view.updateContent(contentKey: contentKey)
     }
     
@@ -44,7 +45,9 @@ extension ItemPresenter {
     }
     
     func contentBtnPressed() {
-        AudioPlayer.contentAudioPlayer.play()
+        AudioPlayer.queue.async {
+            AudioPlayer.contentAudioPlayer.play()
+        }
     }
     
     func closeBtnPressed() {

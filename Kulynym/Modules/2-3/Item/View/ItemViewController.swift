@@ -32,7 +32,6 @@ class ItemViewController: UIViewController, ItemVCProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
-        
         initLayout()
         autoLayout.setupLayout()
         assignViews()
@@ -47,7 +46,7 @@ class ItemViewController: UIViewController, ItemVCProtocol {
     }
     
     
-    // MARK:- View
+    // MARK:- Layout
     private func initLayout() {
         self.autoLayout = ItemAutoLayout(self.view)
     }

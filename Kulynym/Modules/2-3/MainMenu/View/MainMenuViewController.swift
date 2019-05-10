@@ -81,3 +81,9 @@ class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
         }
     }
 }
+
+extension MainMenuViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return Animator()
+    }
+}

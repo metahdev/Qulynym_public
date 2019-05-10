@@ -7,7 +7,7 @@
 * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
-import Foundation
+import UIKit
 
 protocol MainMenuRouterProtocol: class {
     func iconPressed(with category: String)
@@ -22,11 +22,15 @@ class MainMenuRouter: MainMenuRouterProtocol {
 }
 
 extension MainMenuRouter {
+    // MARK:- Protocol Methods
     func iconPressed(with category: String) {
         let scenesView = ScenesViewController()
         view.scenesViewDelegate = scenesView
         view.scenesViewDelegate.category = category
+        scenesView.transitioningDelegate = view
         
-        view.show(scenesView, sender: nil)
+        view.present(scenesView, animated: true, completion: nil)
     }
 }
+
+

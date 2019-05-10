@@ -23,7 +23,7 @@ class ScenesPresenter: ScenesPresenterProtocol {
     var router: ScenesRouterProtocol!
     
     var scenesNames = [String]()
-    var timerManager: TimerManager!
+    var timerManager: TimerController!
     var timepoints = [Int]()
     
     required init(view: ScenesViewControllerProtocol) {
@@ -41,13 +41,14 @@ extension ScenesPresenter {
     }
     
     func playAudio() {
-        AudioPlayer.turnOnExtraAudio(with: view.category, audioPlayer: .scenes)
+        AudioPlayer.setupExtraAudio(with: view.category, audioPlayer: .scenes)
     }
     
     func startTimer() {
-        timerManager = TimerManager()
+        timerManager = TimerController()
         timerManager.delegate = self
-        timerManager.startTimer()
+        
+        self.timerManager.startTimer()
     }
     
     func skipBtnPressed() {
@@ -58,6 +59,7 @@ extension ScenesPresenter {
 }
 
 extension ScenesPresenter: TimerManagerDelegate {
+    // MARK:- Delegate Methods
     func notifyOfTimepoints() {
         view.fillContent(image: scenesNames[timerManager.currentSlide])
     }

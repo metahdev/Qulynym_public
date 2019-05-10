@@ -25,7 +25,6 @@ struct AudioPlayer {
     
     // MARK: Background Audio
     static func turnOnBackgroundMusic() {
-        #warning("Long loading")
         queue.async {
             initBackdroundAudio()
             backgroundAudioPlayer.play()
@@ -48,14 +47,12 @@ struct AudioPlayer {
     
     
     // MARK:- Extra Audios
-    static func turnOnExtraAudio(with name: String, audioPlayer: PlayerType) {
-        #warning("Queue")
+    static func setupExtraAudio(with name: String, audioPlayer: PlayerType) {
         let url = setupPaths(name: name)
         switch audioPlayer {
         case .scenes:
             initPlayers(player: &scenesAudioPlayer, url: url)
-            backgroundAudioPlayer.stop()
-            scenesAudioPlayer.play()
+            scenesAudioTask()
         case .content:
             initPlayers(player: &contentAudioPlayer, url: url)
         }
@@ -72,6 +69,13 @@ struct AudioPlayer {
             player = try AVAudioPlayer(contentsOf: url)
         } catch {
             print("unresolver error: \(error)")
+        }
+    }
+    
+    private static func scenesAudioTask() {
+        queue.async {
+            backgroundAudioPlayer.stop()
+            scenesAudioPlayer.play()
         }
     }
 }

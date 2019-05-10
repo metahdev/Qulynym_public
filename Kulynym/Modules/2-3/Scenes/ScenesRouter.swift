@@ -19,11 +19,16 @@ class ScenesRouter: ScenesRouterProtocol {
     required init(view: ScenesViewController) {
         self.view = view
     }
-    
+}
+
+extension ScenesRouter {
+    // MARK:- Protocol Methods
     func showNextVC(category: String) {
         let itemView = ItemViewController()
         view.itemViewDelegate = itemView
         view.itemViewDelegate.category = category
-        view.show(itemView, sender: nil)
+        itemView.transitioningDelegate = view
+        
+        view.present(itemView, animated: true, completion: nil)
     }
 }

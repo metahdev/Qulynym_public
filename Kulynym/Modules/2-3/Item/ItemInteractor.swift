@@ -19,7 +19,10 @@ class ItemInteractor: ItemInteractorProtocol {
     required init(presenter: ItemPresenterProtocol) {
         self.presenter = presenter
     }
-    
+}
+
+extension ItemInteractor {
+    // MARK:- Protocol Methods
     func fillContent(with slideCount: Int, with category: String) -> String {
         return ContentService.contentNames[category]![slideCount]
     }

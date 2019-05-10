@@ -73,3 +73,9 @@ extension ScenesViewController {
         sceneImageView.image = UIImage(named: named)
     }
 }
+
+extension ScenesViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return Animator()
+    }
+}
