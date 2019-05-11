@@ -9,3 +9,9 @@
 */
 
 import UIKit
+
+extension UIViewController {
+    func presentAlertView() {
+        
+    }
+}

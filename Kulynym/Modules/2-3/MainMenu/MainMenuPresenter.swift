@@ -36,6 +36,6 @@ extension MainMenuPresenter {
     }
     
     func iconPressed(with category: String) {
-        router.iconPressed(with: category)
+        router.goToScenes(with: category)
     }
 }

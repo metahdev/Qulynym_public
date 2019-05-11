@@ -16,6 +16,10 @@ class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
     weak var alphabetBtn: UIButton!
     weak var numbersBtn: UIButton!
     weak var animalsBtn: UIButton!
+    weak var plantsBtn: UIButton!
+    weak var karaokeBtn: UIButton!
+    weak var storyTalesBtn: UIButton!
+    weak var drawingBtn: UIButton!
     
     var presenter: MainMenuPresenterProtocol!
     var scenesViewDelegate: ScenesViewControllerProtocol!
@@ -49,6 +53,10 @@ class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
         self.alphabetBtn = autoLayout.alphabetBtn
         self.numbersBtn = autoLayout.numbersBtn
         self.animalsBtn = autoLayout.animalsBtn
+        self.plantsBtn = autoLayout.plantsBtn
+        self.karaokeBtn = autoLayout.karaokeBtn
+        self.storyTalesBtn = autoLayout.storyTalesBtn
+        self.drawingBtn = autoLayout.drawingBtn
     }
     
     private func hideNavigationBar() {
@@ -58,26 +66,28 @@ class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
     
     // MARK:- Actions
     private func assignActions() {
-        alphabetBtn.addTarget(self, action: #selector(buttonsTouched(sender:)), for: .touchUpInside)
-        numbersBtn.addTarget(self, action: #selector(buttonsTouched(sender:)), for: .touchUpInside)
-        animalsBtn.addTarget(self, action: #selector(buttonsTouched(sender:)), for: .touchUpInside)
+        addTargetToIconBtn(btn: alphabetBtn)
+        addTargetToIconBtn(btn: numbersBtn)
+        addTargetToIconBtn(btn: animalsBtn)
+        addTargetToIconBtn(btn: plantsBtn)
+        addTargetToIconBtn(btn: karaokeBtn)
+        addTargetToIconBtn(btn: storyTalesBtn)
+        addTargetToIconBtn(btn: drawingBtn)
     }
     
-    @objc func buttonsTouched(sender: UIButton) {
-        let direction = getDirection(image: sender.imageView!.image!)
+    private func addTargetToIconBtn(btn: UIButton) {
+        btn.addTarget(self, action: #selector(iconButtonsTouched(sender:)), for: .touchUpInside)
+    }
+    
+    @objc func iconButtonsTouched(sender: UIButton) {
+        let direction = compareSender(sender: sender)
         presenter.iconPressed(with: direction)
     }
     
-    private func getDirection(image: UIImage) -> String {
-        switch image {
-        case UIImage(named: "alphabetIcon"):
-            return "Alphabet"
-        case UIImage(named: "numbersIcon"):
-            return "Numbers"
-        case UIImage(named: "animalsIcon"):
-            return "Animals"
-        default:
-            return ""
+    private func compareSender(sender: UIButton) -> String {
+        switch sender {
+        case alphabetBtn: return "alphabetIcon"
+        default: return ""
         }
     }
 }

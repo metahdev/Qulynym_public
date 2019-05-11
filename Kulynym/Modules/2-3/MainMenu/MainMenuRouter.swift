@@ -10,7 +10,7 @@
 import UIKit
 
 protocol MainMenuRouterProtocol: class {
-    func iconPressed(with category: String)
+    func goToScenes(with category: String)
 }
 
 class MainMenuRouter: MainMenuRouterProtocol {
@@ -23,7 +23,7 @@ class MainMenuRouter: MainMenuRouterProtocol {
 
 extension MainMenuRouter {
     // MARK:- Protocol Methods
-    func iconPressed(with category: String) {
+    func goToScenes(with category: String) {
         let scenesView = ScenesViewController()
         view.scenesViewDelegate = scenesView
         view.scenesViewDelegate.category = category

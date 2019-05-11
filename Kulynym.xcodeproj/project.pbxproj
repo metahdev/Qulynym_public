@@ -27,7 +27,7 @@
 		D1864C8B2222EA6200F25A6B /* backgroundAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1864C8A2222EA6200F25A6B /* backgroundAudio.mp3 */; };
 		D1864C8D2222EAF700F25A6B /* B.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1864C8C2222EAF700F25A6B /* B.mp3 */; };
 		D19245172284DC2800ABD1BD /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19245162284DC2800ABD1BD /* Timer.swift */; };
-		D1998B7F222C2A0F008B6B82 /* Alphabet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1998B7E222C2A0E008B6B82 /* Alphabet.mp3 */; };
+		D1998B7F222C2A0F008B6B82 /* alphabetIcon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1998B7E222C2A0E008B6B82 /* alphabetIcon.mp3 */; };
 		D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D36E4222BAEEC005188D0 /* Extensions.swift */; };
 		D1D469172229C7FC0096B968 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469162229C7FC0096B968 /* MainMenuViewController.swift */; };
 		D1D4691A2229C8140096B968 /* MainMenuAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469192229C8140096B968 /* MainMenuAutoLayout.swift */; };
@@ -87,7 +87,7 @@
 		D1864C8A2222EA6200F25A6B /* backgroundAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundAudio.mp3; sourceTree = "<group>"; };
 		D1864C8C2222EAF700F25A6B /* B.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = B.mp3; sourceTree = "<group>"; };
 		D19245162284DC2800ABD1BD /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
-		D1998B7E222C2A0E008B6B82 /* Alphabet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Alphabet.mp3; sourceTree = "<group>"; };
+		D1998B7E222C2A0E008B6B82 /* alphabetIcon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alphabetIcon.mp3; sourceTree = "<group>"; };
 		D19D36E4222BAEEC005188D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D1D469162229C7FC0096B968 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		D1D469192229C8140096B968 /* MainMenuAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuAutoLayout.swift; sourceTree = "<group>"; };
@@ -215,8 +215,8 @@
 		D14D53732221485B007ACD55 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D13D864E2217FEDF0048A6E4 /* ItemViewController.swift */,
 				D14D536F2221380F007ACD55 /* ItemAutoLayout.swift */,
+				D13D864E2217FEDF0048A6E4 /* ItemViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 		D19D36E7222C01C0005188D0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D1998B7E222C2A0E008B6B82 /* Alphabet.mp3 */,
+				D1998B7E222C2A0E008B6B82 /* alphabetIcon.mp3 */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -298,8 +298,8 @@
 		D1D469182229C8010096B968 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D1D469162229C7FC0096B968 /* MainMenuViewController.swift */,
 				D1D469192229C8140096B968 /* MainMenuAutoLayout.swift */,
+				D1D469162229C7FC0096B968 /* MainMenuViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -319,8 +319,8 @@
 		D1D4692A222A8C380096B968 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D1D46926222A8C1E0096B968 /* ScenesViewController.swift */,
 				D1D46928222A8C320096B968 /* ScenesAutoLayout.swift */,
+				D1D46926222A8C1E0096B968 /* ScenesViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -445,7 +445,7 @@
 				D13D865A2217FEDF0048A6E4 /* LaunchScreen.storyboard in Resources */,
 				D1864C892222EA4500F25A6B /* A.mp3 in Resources */,
 				D1864C8D2222EAF700F25A6B /* B.mp3 in Resources */,
-				D1998B7F222C2A0F008B6B82 /* Alphabet.mp3 in Resources */,
+				D1998B7F222C2A0F008B6B82 /* alphabetIcon.mp3 in Resources */,
 				D13D86572217FEDF0048A6E4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,11 @@
 
 import Foundation
 
+enum Playlist {
+    case stories
+    case karaoke
+}
+
 protocol ScenesPresenterProtocol: class {    
     func getScenes()
     func playAudio()
@@ -54,7 +59,16 @@ extension ScenesPresenter {
     func skipBtnPressed() {
         timerManager.timer.invalidate()
         AudioPlayer.scenesAudioPlayer.stop()
-        router.showNextVC(category: view.category)
+        configureDirection()
+    }
+    
+    private func configureDirection() {
+        switch view.category {
+        case "karaokeIcon": router.presentPlaylistVC(case: .karaoke)
+        case "storyTalesIcon": router.presentPlaylistVC(case: .stories)
+        case "drawingIcon": router.presentDrawing()
+        default: router.presentItemVC(category: view.category)
+        }
     }
 }
 
@@ -65,6 +79,6 @@ extension ScenesPresenter: TimerManagerDelegate {
     }
     
     func notifyTimerEnded() {
-        router.showNextVC(category: view.category)
+        configureDirection()
     }
 }
