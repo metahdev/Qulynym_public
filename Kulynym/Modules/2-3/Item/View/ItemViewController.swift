@@ -10,28 +10,29 @@
 import UIKit
 
 protocol ItemVCProtocol: class {
-    var category: String! { get set }
+    var contentNames: [String]! { get set }
     
     func updateContent(contentKey: String)
 }
 
 class ItemViewController: UIViewController, ItemVCProtocol {
     // MARK:- Properties
-    var category: String!
-    
-    weak var contentBtn: UIButton!
-    weak var closeBtn: UIButton!
-    weak var forwardBtn: UIButton!
-    
-    var autoLayout: ItemAutoLayoutProtocol!
+    var contentNames: [String]!
     var presenter: ItemPresenterProtocol!
-    let configurator: ItemConfiguratorProtocol = ItemConfigurator()
+    
+    private weak var contentBtn: UIButton!
+    private weak var closeBtn: UIButton!
+    private weak var forwardBtn: UIButton!
+    
+    private var autoLayout: ItemAutoLayoutProtocol!
+    private let configurator: ItemConfiguratorProtocol = ItemConfigurator()
 
     
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
+        
         initLayout()
         autoLayout.setupLayout()
         assignViews()

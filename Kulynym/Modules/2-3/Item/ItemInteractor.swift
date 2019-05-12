@@ -10,10 +10,11 @@
 import Foundation
 
 protocol ItemInteractorProtocol: class {
-    func fillContent(with slideCount: Int, with category: String) -> String
+    func fillContent(with slideCount: Int, with contentNames: [String]) -> String
 }
 
 class ItemInteractor: ItemInteractorProtocol {
+    // MARK:- Properties
     weak var presenter: ItemPresenterProtocol!
     
     required init(presenter: ItemPresenterProtocol) {
@@ -23,7 +24,7 @@ class ItemInteractor: ItemInteractorProtocol {
 
 extension ItemInteractor {
     // MARK:- Protocol Methods
-    func fillContent(with slideCount: Int, with category: String) -> String {
-        return ContentService.contentNames[category]![slideCount]
+    func fillContent(with slideCount: Int, with contentNames: [String]) -> String {
+        return contentNames[slideCount]
     }
 }

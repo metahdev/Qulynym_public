@@ -12,6 +12,7 @@ import CoreData
 
 protocol MainMenuInteractorProtocol: class {
     func updateProgressState()
+    func getDirectionFromIndex(_ index: Int) -> Section
 }
 
 class MainMenuInteractor: MainMenuInteractorProtocol {
@@ -27,5 +28,9 @@ extension MainMenuInteractor {
     // MARK:- Protocol Methods
     func updateProgressState() {
         
+    }
+    
+    func getDirectionFromIndex(_ index: Int) -> Section {
+        return ContentService.sections[index]
     }
 }

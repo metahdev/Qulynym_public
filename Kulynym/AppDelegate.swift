@@ -17,7 +17,7 @@ import CoreData
   3) Audio queue isn't optimizing the main thread
  Solutions, which will be integrated further:
   1) TimerController on another queue
-  2) Optimize the compareSender method in the MainMenuViewController
+  2) Audio turning on when playlist is opened
  */
 
 @UIApplicationMain

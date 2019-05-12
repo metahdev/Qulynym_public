@@ -10,12 +10,13 @@
 import Foundation
 
 protocol ScenesRouterProtocol: class {
-    func presentItemVC(category: String)
-    func presentPlaylistVC(case: Playlist)
+    func presentItemVC(contentNames: [String])
+    func presentPlaylistVC(isKaraoke: Bool)
     func presentDrawing() 
 }
 
 class ScenesRouter: ScenesRouterProtocol {
+    // MARK:- Properties
     weak var view: ScenesViewController!
     
     required init(view: ScenesViewController) {
@@ -25,20 +26,24 @@ class ScenesRouter: ScenesRouterProtocol {
 
 extension ScenesRouter {
     // MARK:- Protocol Methods
-    func presentItemVC(category: String) {
+    func presentItemVC(contentNames: [String]) {
         let itemView = ItemViewController()
         view.itemViewDelegate = itemView
-        view.itemViewDelegate.category = category
+        view.itemViewDelegate.contentNames = contentNames
         itemView.transitioningDelegate = view
         
         view.present(itemView, animated: true, completion: nil)
     }
     
-    func presentPlaylistVC(case: Playlist) {
+    func presentPlaylistVC(isKaraoke: Bool) {
+        let playlistView = PlaylistViewController()
+        view.playlistViewDelegate = playlistView
+        view.playlistViewDelegate.isKaraoke = isKaraoke
+        playlistView.transitioningDelegate = view
         
+        view.present(playlistView, animated: true, completion: nil)
     }
     
     func presentDrawing() {
-        
     }
 }

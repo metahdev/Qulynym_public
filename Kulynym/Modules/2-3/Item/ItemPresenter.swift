@@ -19,6 +19,7 @@ protocol ItemPresenterProtocol: class {
 }
 
 class ItemPresenter: ItemPresenterProtocol {
+    // MARK:- Properties
     var slideCount = 0
     var contentKey = ""
     
@@ -40,7 +41,7 @@ extension ItemPresenter {
     }
     
     func updateProperties() {
-        self.contentKey = interactor.fillContent(with: self.slideCount, with: view.category)
+        self.contentKey = interactor.fillContent(with: self.slideCount, with: view.contentNames)
         self.slideCount += 1
     }
     

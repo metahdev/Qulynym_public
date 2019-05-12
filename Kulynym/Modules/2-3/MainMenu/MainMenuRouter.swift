@@ -10,10 +10,11 @@
 import UIKit
 
 protocol MainMenuRouterProtocol: class {
-    func goToScenes(with category: String)
+    func goToScenes(to section: Section)
 }
 
 class MainMenuRouter: MainMenuRouterProtocol {
+    // MARK:- Properties
     weak var view: MainMenuViewController!
     
     required init(view: MainMenuViewController) {
@@ -23,10 +24,10 @@ class MainMenuRouter: MainMenuRouterProtocol {
 
 extension MainMenuRouter {
     // MARK:- Protocol Methods
-    func goToScenes(with category: String) {
+    func goToScenes(to section: Section) {
         let scenesView = ScenesViewController()
         view.scenesViewDelegate = scenesView
-        view.scenesViewDelegate.category = category
+        view.scenesViewDelegate.section = section
         scenesView.transitioningDelegate = view
         
         view.present(scenesView, animated: true, completion: nil)

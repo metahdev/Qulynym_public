@@ -10,20 +10,22 @@
 import UIKit
 
 protocol ScenesViewControllerProtocol: class {
-    var category: String! { get set }
+    var section: Section! { get set }
     
     func fillContent(image named: String)
 }
 
 class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
     // MARK:- Properties
-    var category: String!
-    
-    weak var sceneImageView: UIImageView!
-    weak var skipBtn: UIButton!
+    var section: Section!
     
     var presenter: ScenesPresenterProtocol!
     var itemViewDelegate: ItemVCProtocol!
+    var playlistViewDelegate: PlaylistViewProtocol!
+    
+    private weak var sceneImageView: UIImageView!
+    private weak var skipBtn: UIButton!
+    
     private var autoLayout: ScenesAutoLayoutProtocol!
     private var configurator: ScenesConfiguratorProtocol = ScenesConfigurator()
     

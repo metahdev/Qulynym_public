@@ -9,11 +9,6 @@
 
 import Foundation
 
-enum Playlist {
-    case stories
-    case karaoke
-}
-
 protocol ScenesPresenterProtocol: class {    
     func getScenes()
     func playAudio()
@@ -39,14 +34,14 @@ class ScenesPresenter: ScenesPresenterProtocol {
 extension ScenesPresenter {
     // MARK:- Protocol Methods
     func getScenes() {
-        interactor.category = view.category
+        interactor.section = view.section
         scenesNames = interactor.getScenes()
         timepoints = interactor.getTimepoints()
         view.fillContent(image: scenesNames[0])
     }
     
     func playAudio() {
-        AudioPlayer.setupExtraAudio(with: view.category, audioPlayer: .scenes)
+        AudioPlayer.setupExtraAudio(with: view.section.name, audioPlayer: .scenes)
     }
     
     func startTimer() {
@@ -63,11 +58,11 @@ extension ScenesPresenter {
     }
     
     private func configureDirection() {
-        switch view.category {
-        case "karaokeIcon": router.presentPlaylistVC(case: .karaoke)
-        case "storyTalesIcon": router.presentPlaylistVC(case: .stories)
-        case "drawingIcon": router.presentDrawing()
-        default: router.presentItemVC(category: view.category)
+        switch view.section.name {
+        case "karaoke": router.presentPlaylistVC(isKaraoke: true)
+        case "stories": router.presentPlaylistVC(isKaraoke: false)
+        case "drawing": router.presentDrawing()
+        default: router.presentItemVC(contentNames: view.section!.contentNames!)
         }
     }
 }

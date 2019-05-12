@@ -13,16 +13,20 @@ protocol MainMenuViewControllerProtocol: class {}
 
 class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
     // MARK:- Properties
-    weak var alphabetBtn: UIButton!
-    weak var numbersBtn: UIButton!
-    weak var animalsBtn: UIButton!
-    weak var plantsBtn: UIButton!
-    weak var karaokeBtn: UIButton!
-    weak var storyTalesBtn: UIButton!
-    weak var drawingBtn: UIButton!
-    
     var presenter: MainMenuPresenterProtocol!
     var scenesViewDelegate: ScenesViewControllerProtocol!
+    
+    private var iconButtons = [UIButton]()
+    private var btnsAndIndexes = [UIButton: Int]()
+    
+    private weak var alphabetBtn: UIButton!
+    private weak var numbersBtn: UIButton!
+    private weak var animalsBtn: UIButton!
+    private weak var plantsBtn: UIButton!
+    private weak var karaokeBtn: UIButton!
+    private weak var storyTalesBtn: UIButton!
+    private weak var drawingBtn: UIButton!
+    
     private var autoLayout: MainMenuAutoLayoutProtocol!
     private var configurator: MainMenuConfiguratorProtocol = MainMenuConfigurator()
     
@@ -36,7 +40,8 @@ class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
         autoLayout.setupLayout()
         hideNavigationBar()
         assignViews()
-        assignActions()
+        setupArray()
+        assignActionsAndIndexes()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +54,10 @@ class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
         autoLayout = MainMenuAutoLayout(self.view)
     }
     
+    private func hideNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     private func assignViews() {
         self.alphabetBtn = autoLayout.alphabetBtn
         self.numbersBtn = autoLayout.numbersBtn
@@ -59,36 +68,36 @@ class MainMenuViewController: UIViewController, MainMenuViewControllerProtocol {
         self.drawingBtn = autoLayout.drawingBtn
     }
     
-    private func hideNavigationBar() {
-        self.navigationController?.isNavigationBarHidden = true
+    
+    // MARK:- Array of Buttons
+    private func setupArray() {
+        iconButtons.append(alphabetBtn)
+        iconButtons.append(numbersBtn)
+        iconButtons.append(animalsBtn)
+        iconButtons.append(plantsBtn)
+        iconButtons.append(karaokeBtn)
+        iconButtons.append(storyTalesBtn)
+        iconButtons.append(drawingBtn)
     }
     
     
     // MARK:- Actions
-    private func assignActions() {
-        addTargetToIconBtn(btn: alphabetBtn)
-        addTargetToIconBtn(btn: numbersBtn)
-        addTargetToIconBtn(btn: animalsBtn)
-        addTargetToIconBtn(btn: plantsBtn)
-        addTargetToIconBtn(btn: karaokeBtn)
-        addTargetToIconBtn(btn: storyTalesBtn)
-        addTargetToIconBtn(btn: drawingBtn)
+    private func assignActionsAndIndexes() {
+        var index = 0
+        for button in iconButtons {
+            addTargetToIconBtn(button)
+            self.btnsAndIndexes[button] = index
+            index += 1
+        }
     }
     
-    private func addTargetToIconBtn(btn: UIButton) {
+    private func addTargetToIconBtn(_ btn: UIButton) {
         btn.addTarget(self, action: #selector(iconButtonsTouched(sender:)), for: .touchUpInside)
     }
     
     @objc func iconButtonsTouched(sender: UIButton) {
-        let direction = compareSender(sender: sender)
-        presenter.iconPressed(with: direction)
-    }
-    
-    private func compareSender(sender: UIButton) -> String {
-        switch sender {
-        case alphabetBtn: return "alphabetIcon"
-        default: return ""
-        }
+        let directionIndex = btnsAndIndexes[sender]
+        presenter.iconPressed(with: directionIndex!)
     }
 }
 

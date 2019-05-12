@@ -15,7 +15,7 @@ protocol MainMenuPresenterProtocol: class {
     var router: MainMenuRouterProtocol! { set get }
     
     func updateProgressState()
-    func iconPressed(with category: String)
+    func iconPressed(with index: Int)
 }
 
 class MainMenuPresenter: MainMenuPresenterProtocol {
@@ -35,7 +35,8 @@ extension MainMenuPresenter {
         interactor.updateProgressState()
     }
     
-    func iconPressed(with category: String) {
-        router.goToScenes(with: category)
+    func iconPressed(with index: Int) {
+        let section = interactor.getDirectionFromIndex(index)
+        router.goToScenes(to: section)
     }
 }

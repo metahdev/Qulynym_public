@@ -39,7 +39,7 @@ class ItemAutoLayout: ItemAutoLayoutProtocol {
         image.image = UIImage(named: "itemBackground")
         return image
     }()
-    weak var view: UIView!
+    private weak var view: UIView!
     private var innerViews = [UIView]()
 
     
@@ -85,7 +85,7 @@ class ItemAutoLayout: ItemAutoLayoutProtocol {
             forwardBtn.heightAnchor.constraint(equalToConstant: forwardBtnConstant),
             forwardBtn.widthAnchor.constraint(equalToConstant: forwardBtnConstant + 24),
             
-            closeBtn.topAnchor.constraint(equalTo: view.topAnchor),
+            closeBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             closeBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             closeBtn.widthAnchor.constraint(equalToConstant: forwardBtnConstant + 24),
             closeBtn.heightAnchor.constraint(equalToConstant: forwardBtnConstant),
