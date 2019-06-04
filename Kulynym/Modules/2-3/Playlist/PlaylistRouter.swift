@@ -12,8 +12,7 @@ import Foundation
 
 protocol PlaylistRouterProtocol: class {
     func close()
-    func presentKaraoke(_ song: Playlist)
-    func presentStory(_ story: Story)
+    func presentContent(_ content: Playlist)
 }
 
 class PlaylistRouter: PlaylistRouterProtocol {
@@ -31,11 +30,7 @@ extension PlaylistRouter {
         view.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
-    func presentKaraoke(_ song: Playlist) {
-        
-    }
-    
-    func presentStory(_ story: Story) {
+    func presentContent(_ content: Playlist) {
         
     }
 }

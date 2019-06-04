@@ -59,7 +59,7 @@ extension ScenesPresenter {
     
     private func configureDirection() {
         switch view.section.name {
-        case "karaoke": router.presentPlaylistVC(isKaraoke: true)
+        case "alphabet": router.presentPlaylistVC(isKaraoke: true)
         case "stories": router.presentPlaylistVC(isKaraoke: false)
         case "drawing": router.presentDrawing()
         default: router.presentItemVC(contentNames: view.section!.contentNames!)

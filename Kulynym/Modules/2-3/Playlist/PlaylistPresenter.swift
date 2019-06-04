@@ -38,6 +38,6 @@ extension PlaylistPresenter {
     }
     
     func openItem(at index: Int) {
-        view.isKaraoke ? router.presentKaraoke(view.content[index]) : router.presentStory(view.content[index] as! Story)
+        
     }
 }

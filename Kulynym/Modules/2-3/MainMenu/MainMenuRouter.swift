@@ -27,7 +27,7 @@ extension MainMenuRouter {
     func goToScenes(to section: Section) {
         let scenesView = ScenesViewController()
         view.scenesViewDelegate = scenesView
-        view.scenesViewDelegate.section = section
+        scenesView.section = section
         scenesView.transitioningDelegate = view
         
         view.present(scenesView, animated: true, completion: nil)

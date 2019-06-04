@@ -12,12 +12,13 @@ import CoreData
 
 /*
  Bugs, which are already found:
-  1) Memory Leak with Audio(Scene View isn't opening)
-  2) Scroll View Content is ambigious
-  3) Audio queue isn't optimizing the main thread
+  1) Memory Leak with Audio
+  2) Audio queue isn't optimizing the main thread
  Solutions, which will be integrated further:
   1) TimerController on another queue
-  2) Audio turning on when playlist is opened
+  2) Audio turning on when playlist is opened("choose song")
+  3) MainMenu is collection view -> Data Passing Optimizing -> Model Refactoring
+  4) Back segue animated
  */
 
 @UIApplicationMain

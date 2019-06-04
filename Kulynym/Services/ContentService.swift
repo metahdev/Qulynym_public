@@ -48,7 +48,7 @@ struct ContentService {
         drawingSection,
     ]
     
-    static let audios = [
+    static let songs = [
         kuyrmash,
     ]
     
@@ -60,7 +60,7 @@ struct ContentService {
     private static let numbersSection = Section(name: "numbers", scenesNames: [""], scenesTimepoints: [0], contentNames: [""])
     private static let animalsSection = Section(name: "animals", scenesNames: [""], scenesTimepoints: [0], contentNames: [""])
     private static let plantsSection = Section(name: "plants", scenesNames: [""], scenesTimepoints: [0], contentNames: [""])
-    private static let karaokeSection = Section(name: "karaoke", scenesNames: [""], scenesTimepoints: [0], contentNames: nil)
+    private static let karaokeSection = Section(name: "alphabet", scenesNames: ["AlphaS1", "AlphaS2", "AlphaS3"], scenesTimepoints: [10, 20], contentNames: nil)
     private static let storyTalesSection = Section(name: "stories", scenesNames: [""], scenesTimepoints: [0], contentNames: nil)
     private static let drawingSection = Section(name: "drawing", scenesNames: [""], scenesTimepoints: [0], contentNames: nil)
     

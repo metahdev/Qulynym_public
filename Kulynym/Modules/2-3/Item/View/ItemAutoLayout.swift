@@ -72,7 +72,7 @@ class ItemAutoLayout: ItemAutoLayoutProtocol {
     
     private func activateConstraints() {
         let imageViewConstant = view.frame.height * 0.5
-        let forwardBtnConstant = view.frame.height * 0.25
+        let forwardBtnConstant = imageViewConstant * 0.5
         
         NSLayoutConstraint.activate([
             contentBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),

@@ -29,7 +29,7 @@ extension ScenesRouter {
     func presentItemVC(contentNames: [String]) {
         let itemView = ItemViewController()
         view.itemViewDelegate = itemView
-        view.itemViewDelegate.contentNames = contentNames
+        itemView.contentNames = contentNames
         itemView.transitioningDelegate = view
         
         view.present(itemView, animated: true, completion: nil)
@@ -38,7 +38,7 @@ extension ScenesRouter {
     func presentPlaylistVC(isKaraoke: Bool) {
         let playlistView = PlaylistViewController()
         view.playlistViewDelegate = playlistView
-        view.playlistViewDelegate.isKaraoke = isKaraoke
+        playlistView.isKaraoke = isKaraoke
         playlistView.transitioningDelegate = view
         
         view.present(playlistView, animated: true, completion: nil)

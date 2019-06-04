@@ -27,15 +27,12 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         setupViews(context: transitionContext)
-        
         containerView.addSubview(toView)
-    
+        initBubbleView(view: containerView)
         setupBeginningValues()
         
-        initBubbleView(view: containerView)
-        
-        UIView.animate(withDuration: duration, animations: {
-            self.setupEndingValues()
+        UIView.animateKeyframes(withDuration: duration, delay: 0.0, animations: {
+            self.callKeyframes()
         }, completion: { _ in
             transitionContext.completeTransition(true)
             self.bubbleClipView.removeFromSuperview()
@@ -50,19 +47,6 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         containerView = context.containerView
     }
     
-    private func setupBeginningValues() {
-        toView.alpha = 0
-        
-        fromView.backgroundColor = .black
-        fromView.layer.opacity = 0.6
-    }
-    
-    private func setupEndingValues() {
-        toView.alpha = 1
-        fromView.layer.opacity = 1
-        bubbleClipView.alpha = 0
-    }
-    
     private func initBubbleView(view: UIView) {
         bubbleClipView = UIView(frame: view.frame.offsetBy(dx: 0, dy: 0))
         bubbleClipView.clipsToBounds = true
@@ -70,6 +54,29 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         
         bubbleClipView.addSubview(bubbleView)
         view.addSubview(bubbleClipView)
+    }
+    
+    private func setupBeginningValues() {
+        toView.alpha = 0
+        bubbleClipView.alpha = 0
+        fromView.backgroundColor = .black
+        fromView.layer.opacity = 0.6
+    }
+    
+    private func callKeyframes() {
+        let halfOfDuration = self.duration * 0.5
+        UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: halfOfDuration, animations: {
+            self.bubbleClipView.alpha = 1
+        })
+        UIView.addKeyframe(withRelativeStartTime: halfOfDuration, relativeDuration: halfOfDuration, animations: {
+            self.setupEndingValues()
+        })
+    }
+    
+    private func setupEndingValues() {
+        toView.alpha = 1
+        fromView.layer.opacity = 1
+        bubbleClipView.alpha = 0
     }
 }
 
@@ -100,30 +107,42 @@ class BubbleView: UIView {
     // MARK:- Emitter
     private func initEmitter() {
         emitter = (layer as! CAEmitterLayer)
-        emitter.emitterPosition = CGPoint(x: bounds.size.width / 2, y: 0)
+        emitter.emitterPosition = CGPoint(x: bounds.size.width / 2, y: bounds.size.height / 2)
         emitter.emitterSize = bounds.size
         emitter.emitterShape = CAEmitterLayerEmitterShape.rectangle
     }
     
-    private func initEmitterCell() {
+    func initEmitterCell() {
         emitterCell = CAEmitterCell()
         emitterCell.contents = UIImage(named: "bubble")!.cgImage
-        emitterCell.birthRate = 200
-        emitterCell.lifetime = 3.5
+        emitterCell.birthRate = 100
+        emitterCell.lifetime = 2
         emitterCell.color = UIColor.white.cgColor
-        emitterCell.redRange = 0.0
         emitterCell.blueRange = 0.1
-        emitterCell.greenRange = 0.0
         emitterCell.velocity = 10
         emitterCell.velocityRange = 350
         emitterCell.emissionRange = CGFloat.pi / 2
         emitterCell.emissionLongitude = -CGFloat.pi
-        emitterCell.yAcceleration = 70
-        emitterCell.xAcceleration = 0
+        emitterCell.yAcceleration = -70
         emitterCell.scale = 0.33
         emitterCell.scaleRange = 1.25
         emitterCell.scaleSpeed = -0.25
         emitterCell.alphaRange = 0.5
         emitterCell.alphaSpeed = -0.15
+    }
+}
+
+class NoteView: BubbleView {
+    override func initEmitterCell() {
+        super.initEmitterCell()
+        emitterCell.contents = UIImage(named: "note")!.cgImage
+        emitterCell.birthRate = 3
+        emitterCell.lifetime = 1.5
+        emitterCell.yAcceleration = -70
+        emitterCell.velocity = 30
+        emitterCell.velocityRange = 350
+        emitterCell.scale = 1.0
+        emitterCell.scaleRange = 0.0
+        emitterCell.scaleSpeed = 0.0
     }
 }

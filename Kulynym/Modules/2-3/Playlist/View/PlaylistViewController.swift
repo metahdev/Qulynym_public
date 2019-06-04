@@ -91,7 +91,7 @@ extension PlaylistViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK:- UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.height * 0.25
+        return view.frame.height * 0.4
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
