@@ -9,62 +9,63 @@
 
 import Foundation
 
-struct Section {
-    var name: String
-    var scenesNames = [String]()
-    var scenesTimepoints = [Int]()
-    var contentNames: [String]?
-}
-
-class Playlist {
+class Section {
     var name: String
     
-    init(name: String) {
+    init(_ name: String) {
         self.name = name
     }
 }
 
-class Story: Playlist {
-    var backgroundName: String
-    var character: String
+class EduSection: Section {
+    var scenesNames: [String]
     var timepoints: [Int]
+    var contentNames: [String]
     
-    init(name: String, bg: String, character: String, timepoints: [Int]) {
-        self.backgroundName = bg
-        self.character = character
+    init(name: String, scenesNames: [String], timepoints: [Int], contentNames: [String]) {
+        self.scenesNames = scenesNames
         self.timepoints = timepoints
-        super.init(name: name)
+        self.contentNames = contentNames
+        super.init(name)
     }
 }
 
+class StorySection: Section {
+    
+}
+
 struct ContentService {
-    static let sections = [
-        alphabetSection,
-        numbersSection,
+    static var menuSections = [
+        Section("toddlerIcon"),
+        Section("karaokeIcon"),
+        Section("storyIcon"),
+        Section("drawingIcon"),
+        Section("preschoolerIcon"),
+        Section("gamesIcon")
+    ]
+    
+    static var toddlerSections = [
+        colorsSection,
+        shapesSection,
         animalsSection,
         plantsSection,
-        karaokeSection,
-        storyTalesSection,
-        drawingSection,
+        numbersSection,
+        alphabetSection
     ]
     
-    static let songs = [
-        kuyrmash,
+    static var songs = [
+        Section("Koshakanym"),
+        Section("ImagineDragons")
     ]
     
-    static let stories = [
-        kolobokStory,
+    static var stories = [
+        StorySection("kolobok"),
     ]
     
-    private static let alphabetSection = Section(name: "alphabet", scenesNames: ["AlphaS1", "AlphaS2", "AlphaS3"], scenesTimepoints: [10, 20], contentNames: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"])
-    private static let numbersSection = Section(name: "numbers", scenesNames: [""], scenesTimepoints: [0], contentNames: [""])
-    private static let animalsSection = Section(name: "animals", scenesNames: [""], scenesTimepoints: [0], contentNames: [""])
-    private static let plantsSection = Section(name: "plants", scenesNames: [""], scenesTimepoints: [0], contentNames: [""])
-    private static let karaokeSection = Section(name: "alphabet", scenesNames: ["AlphaS1", "AlphaS2", "AlphaS3"], scenesTimepoints: [10, 20], contentNames: nil)
-    private static let storyTalesSection = Section(name: "stories", scenesNames: [""], scenesTimepoints: [0], contentNames: nil)
-    private static let drawingSection = Section(name: "drawing", scenesNames: [""], scenesTimepoints: [0], contentNames: nil)
-    
-    private static let kolobokStory = Story(name: "kolobok", bg: "kolobokBg", character: "kolobok", timepoints: [0])
-    
-    private static let kuyrmash = Playlist(name: "kuyrmash")
+    private static var colorsSection = EduSection(name: "colorsIcon", scenesNames: [""], timepoints: [0], contentNames: ["red"])
+        private static var shapesSection = EduSection(name: "shapesIcon", scenesNames: [""], timepoints: [0], contentNames: ["circle"])
+    private static var animalsSection = EduSection(name: "animalsIcon", scenesNames: [""], timepoints: [0], contentNames: ["lion"])
+    private static var plantsSection = EduSection(name: "plantsIcon", scenesNames: [""], timepoints: [0], contentNames: ["rose"])
+    private static var numbersSection = EduSection(name: "numbersIcon", scenesNames: [""], timepoints: [0], contentNames: ["1"])
+    private static var alphabetSection = EduSection(name: "alphabet", scenesNames: ["AlphaS1", "AlphaS2", "AlphaS3"], timepoints: [10, 20], contentNames: ["А", "Б"])
 }

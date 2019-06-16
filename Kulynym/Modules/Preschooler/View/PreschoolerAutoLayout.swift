@@ -1,0 +1,126 @@
+/*
+* Kulynym
+* PreschoolerAutoLayout.swift
+*
+* Created by: Metah on 3/2/19
+*
+* Copyright © 2019 Automatization X Software. All rights reserved.
+*/
+
+import Foundation
+import UIKit
+
+enum IconPosition {
+    case up
+    case down
+    case begin
+}
+
+protocol PreschoolerAutoLayoutProtocol {
+    var logicBtn: UIButton { get set }
+    
+    func setupLayout()
+}
+
+class PreschoolerAutoLayout: PreschoolerAutoLayoutProtocol {
+    // MARK:- Properties
+    lazy var logicBtn: UIButton = {
+        let btn = setupIconButton(image: "logicIcon")
+        return btn
+    }()
+    private lazy var scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.bounces = false
+        return sv
+    }()
+    private lazy var backgroundImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "4-5bg")
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    private weak var view: UIView!
+    private var constant: CGFloat!
+    private var constraints = [NSLayoutConstraint]()
+    
+    
+    // MARK:- Initialization
+    required init(_ view: UIView) {
+        self.view = view
+    }
+    
+    
+    // MARK:- Layout
+    private func setupIconButton(image name: String) -> UIButton {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: name), for: .normal)
+        return btn
+    }
+    
+    func setupLayout() {
+        addSubviews()
+        makeSubviewsMaskFalse()
+        activateConstraints()
+    }
+    
+    private func addSubviews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(backgroundImageView)
+    }
+    
+    private func makeSubviewsMaskFalse() {
+        for subview in scrollView.subviews {
+            subview.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    private func activateConstraints() {
+        constant = view.frame.height * 0.5
+        
+        addScrollViewAndImageViewConstraints()
+        addIconButtonConstraints(iconButton: logicBtn, positionType: .begin, leftView: view)
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func addScrollViewAndImageViewConstraints() {
+        constraints += [
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -64),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 64),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            backgroundImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ]
+    }
+    
+    private func addIconButtonConstraints(iconButton: UIButton, positionType: IconPosition, leftView: UIView) {
+        
+        constraints += [
+            iconButton.heightAnchor.constraint(equalToConstant: constant),
+            iconButton.widthAnchor.constraint(equalToConstant: constant),
+        ]
+        
+        switch (positionType) {
+        case .up:
+            constraints += [
+                iconButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 24),
+                iconButton.leadingAnchor.constraint(equalTo: leftView.trailingAnchor, constant: 44)
+            ]
+        case .down:
+            constraints += [
+                iconButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24),
+                iconButton.leadingAnchor.constraint(equalTo: leftView.trailingAnchor, constant: 44)
+            ]
+        case .begin:
+            constraints += [
+                iconButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24),
+                iconButton.leadingAnchor.constraint(equalTo: leftView.leadingAnchor, constant: 44)
+            ]
+        }
+    }
+}

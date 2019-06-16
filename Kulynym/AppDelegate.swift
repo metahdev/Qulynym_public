@@ -14,11 +14,13 @@ import CoreData
  Bugs, which are already found:
   1) Memory Leak with Audio
   2) Audio queue isn't optimizing the main thread
+  3) Preschool module's scroll view - content is ambigious
  Solutions, which will be integrated further:
   1) TimerController on another queue
-  2) Audio turning on when playlist is opened("choose song")
-  3) MainMenu is collection view -> Data Passing Optimizing -> Model Refactoring
-  4) Back segue animated
+  2) Back segue animated, falling toys 
+  3) Video queue
+  4) Interactors are slowing down the application
+  5) RootViewController 
  */
 
 @UIApplicationMain
@@ -34,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupWindow() {
-        let rootVC = MainMenuViewController()
+        let rootVC = MenuViewController()
         let navigationController = UINavigationController(rootViewController: rootVC)
         
         window = UIWindow(frame: UIScreen.main.bounds)

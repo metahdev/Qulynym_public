@@ -10,7 +10,7 @@
 
 import Foundation
 
-protocol TimerManagerDelegate: class {
+protocol TimerControllerDelegate: class {
     var timepoints: [Int] { get set }
     
     func notifyOfTimepoints()
@@ -21,13 +21,14 @@ class TimerController {
     // MARK:- Properties
     var currentSlide = 1
     var timer = Timer()
-    var delegate: TimerManagerDelegate!
-    private var seconds = 0.0
+    var delegate: TimerControllerDelegate!
+    
+    var seconds = 0.0
     
     
     // MARK:- Timer
     func startTimer() {
-        seconds = AudioPlayer.scenesAudioPlayer.duration
+       seconds = AudioPlayer.scenesAudioPlayer.duration
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkState), userInfo: nil, repeats: true)
     }
     
@@ -35,12 +36,9 @@ class TimerController {
         seconds -= 1
         
         for timepoint in delegate.timepoints {
-            switch Int(seconds) {
-            case timepoint:
+            if Int(seconds) == timepoint {
                 delegate.notifyOfTimepoints()
                 currentSlide += 1
-            default:
-                break
             }
         }
         
