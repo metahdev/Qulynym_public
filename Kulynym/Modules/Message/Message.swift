@@ -32,8 +32,18 @@ class Message {
     func showAlert() {
         callingView.addChild(messageView)
         callingView.view.addSubview(messageView.view)
+        activateConstraints()
         setupEffect()
         configureProperties()
+    }
+    
+    private func activateConstraints() {
+        NSLayoutConstraint.activate([
+            messageView.view.centerXAnchor.constraint(equalTo: callingView.view.centerXAnchor),
+            messageView.view.centerYAnchor.constraint(equalTo: callingView.view.centerYAnchor),
+            messageView.view.widthAnchor.constraint(equalTo: callingView.view.widthAnchor, multiplier: 0.6),
+            messageView.view.heightAnchor.constraint(equalTo: callingView.view.heightAnchor, multiplier: 0.6)
+        ])
     }
     
     private func setupEffect() {
