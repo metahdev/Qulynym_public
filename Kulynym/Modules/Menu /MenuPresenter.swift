@@ -36,9 +36,9 @@ extension MenuPresenter {
     func didSelectMenuCell(at index: Int) {
         switch index {
         case 0: router.showToddlerEdu()
-        case 1, 2: router.showPlaylist(isKaraoke: (index == 1))
         case 3: router.showDrawingView()
-        default: router.showPreschoolerEdu()
+        case 4: router.showPreschoolerEdu()
+        default: router.showPlaylist(isKaraoke: (index == 1))
         }
     }
     

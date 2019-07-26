@@ -41,7 +41,7 @@ class DrawingViewController: UIViewController, DrawingViewProtocol {
     }
     
     private func assignViews() {
-        autoLayout.closeBtn = self.closeBtn
+        self.closeBtn = autoLayout.closeBtn
     }
     
     
@@ -54,3 +54,4 @@ class DrawingViewController: UIViewController, DrawingViewProtocol {
         presenter.closeView()
     }
 }
+

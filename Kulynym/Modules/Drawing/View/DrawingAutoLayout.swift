@@ -23,13 +23,35 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
         btn.setImage(UIImage(named: "close"), for: .normal)
         return btn
     }()
-    
+    lazy var drawingImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "flowerDrawing")
+        return iv
+    }()
+    lazy var toolsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        cv.isPagingEnabled = true
+        cv.backgroundColor = .white
+        
+        cv.setCollectionViewLayout(layout, animated: true)
+        cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
+        return cv
+    }()
+    lazy var resetBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "reset"), for: .normal)
+        return btn
+    }()
     private weak var view: UIView!
     
     
     // MARK:- Initialization 
     required init(_ view: UIView) {
         self.view = view
+        view.backgroundColor = .white
     }
     
     
@@ -37,6 +59,7 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
     func setupLayout() {
         addSubviews()
         setSubviewsMask()
+        closeBtn.configureCloseBtnFrame(view)
         activateConstraints()
     }
     
@@ -51,12 +74,11 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
     }
     
     private func activateConstraints() {
-        let constant = view.frame.height * 0.25
         NSLayoutConstraint.activate([
-            closeBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            closeBtn.topAnchor.constraint(equalTo: view.topAnchor),
-            closeBtn.widthAnchor.constraint(equalToConstant: constant + 24),
-            closeBtn.heightAnchor.constraint(equalToConstant: constant),
+            toolsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            toolsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            toolsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            toolsCollectionView.heightAnchor.constraint(equalTo: view.frame.height),
         ])
     }
 }

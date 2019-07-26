@@ -10,6 +10,7 @@
 import UIKit
 
 class MessageViewController: UIViewController {
+    #warning("refactor")
     // MARK:- Properties
     var imageName: String! {
         didSet {

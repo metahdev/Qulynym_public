@@ -16,12 +16,6 @@ class KulynymTests: XCTestCase {
 
     override func tearDown() {
     }
-
-    func testExample() {
-    }
-
-    func testPerformanceExample() {
-        self.measure {
-        }
-    }
+    
+    
 }

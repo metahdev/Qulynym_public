@@ -130,10 +130,11 @@ class KaraokeAutoLayout: KaraokeAutoLayoutProtocol {
     }
     
     private func initFrames() {
-        let frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: view.frame.height)
+        let frameHeight = view.frame.height
+        let frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y + frameHeight * 0.25, width: view.frame.width, height: frameHeight)
     
         noteClipView = UIView(frame: frame)
-        noteClipView.clipsToBounds = true
+        noteClipView.clipsToBounds = false
         noteView = NoteView(frame: frame)
     }
 }

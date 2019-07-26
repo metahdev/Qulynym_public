@@ -61,6 +61,7 @@ class PreschoolerViewController: UIViewController, PreschoolerViewProtocol {
     
     // MARK:- Actions
     private func assignActionsAndIndexes() {
+        #warning("this is dumb")
         var index = 0
         for button in iconButtons {
             addTargetToIconBtn(button)

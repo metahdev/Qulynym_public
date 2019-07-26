@@ -11,14 +11,11 @@ import XCTest
 
 class KulynymUITests: XCTestCase {
     override func setUp() {
-        continueAfterFailure = false
+        continueAfterFailure = true
 
         XCUIApplication().launch()
     }
 
     override func tearDown() {
-    }
-
-    func testExample() {
     }
 }
