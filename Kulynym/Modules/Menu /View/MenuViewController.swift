@@ -94,7 +94,6 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.isToddler ? presenter.didSelectToddlerCell(at: indexPath.row) : presenter.didSelectMenuCell(at: indexPath.row)
     }

@@ -12,6 +12,10 @@ import UIKit
 
 protocol DrawingAutoLayoutProtocol: class {
     var closeBtn: UIButton { get set }
+    var drawingImageView: UIImageView { get set }
+    var toolsCollectionView: UICollectionView { get set }
+    var resetBtn: UIButton { get set }
+    var slideOutBtn: UIButton { get set }
     
     func setupLayout()
 }
@@ -45,6 +49,11 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
         btn.setImage(UIImage(named: "reset"), for: .normal)
         return btn
     }()
+    lazy var slideOutBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "slideOut"), for: .normal)
+        return btn
+    }()
     private weak var view: UIView!
     
     
@@ -65,6 +74,10 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
     
     private func addSubviews() {
         view.addSubview(closeBtn)
+        view.addSubview(drawingImageView)
+        view.addSubview(toolsCollectionView)
+        view.addSubview(resetBtn)
+        view.addSubview(slideOutBtn)
     }
     
     private func setSubviewsMask() {
@@ -78,7 +91,22 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
             toolsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             toolsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             toolsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            toolsCollectionView.heightAnchor.constraint(equalTo: view.frame.height),
+            toolsCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
+            
+            drawingImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            drawingImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            drawingImageView.bottomAnchor.constraint(equalTo: toolsCollectionView.topAnchor, constant: -16),
+            drawingImageView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            
+            resetBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            resetBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            resetBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+            resetBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+            
+            slideOutBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            slideOutBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            slideOutBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+            slideOutBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
         ])
     }
 }
