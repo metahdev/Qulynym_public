@@ -95,7 +95,5 @@ class KaraokeViewController: UIViewController, KaraokeViewProtocol {
     }
     
     @objc private func videoEnded() {
-        let alert = Message(calling: self, showing: .success)
-        alert.showAlert()
     }
 }

@@ -10,7 +10,6 @@
 import Foundation
 
 protocol DrawingInteractorProtocol: class {
-    
 }
 
 class DrawingInteractor: DrawingInteractorProtocol {
@@ -21,3 +20,4 @@ class DrawingInteractor: DrawingInteractorProtocol {
         self.presenter = presenter
     }
 }
+

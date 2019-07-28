@@ -13,11 +13,13 @@ import UIKit
 protocol DrawingAutoLayoutProtocol: class {
     var closeBtn: UIButton { get set }
     var drawingImageView: UIImageView { get set }
+    var canvasView: CanvasView { get set }
     var toolsCollectionView: UICollectionView { get set }
     var resetBtn: UIButton { get set }
     var slideOutBtn: UIButton { get set }
     
     func setupLayout()
+    func toggleDrawingsCV()
 }
 
 class DrawingAutoLayout: DrawingAutoLayoutProtocol {
@@ -27,9 +29,15 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
         btn.setImage(UIImage(named: "close"), for: .normal)
         return btn
     }()
+    lazy var canvasView: CanvasView = {
+        let v = CanvasView()
+        v.isUserInteractionEnabled = true
+        v.isMultipleTouchEnabled = true
+        return v
+    }()
     lazy var drawingImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "flowerDrawing")
+        iv.layer.zPosition = -1
         return iv
     }()
     lazy var toolsCollectionView: UICollectionView = {
@@ -37,8 +45,7 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
         layout.scrollDirection = .horizontal
         
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.isPagingEnabled = true
-        cv.backgroundColor = .white
+        cv.backgroundView = UIImageView(image: UIImage(named: "woodBg"))
         
         cv.setCollectionViewLayout(layout, animated: true)
         cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
@@ -51,30 +58,47 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
     }()
     lazy var slideOutBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "slideOut"), for: .normal)
+        btn.setImage(UIImage(named: "slideOutOpen"), for: .normal)
         return btn
     }()
+    private var drawingsCollectionView: DrawingsCollectionView!
+    private weak var drawingViewController: DrawingViewController!
     private weak var view: UIView!
+    
+    private var drawingCVTrailingConstraint: NSLayoutConstraint!
+    private var isOpen = false
     
     
     // MARK:- Initialization 
-    required init(_ view: UIView) {
-        self.view = view
-        view.backgroundColor = .white
+    required init(_ vc: DrawingViewController) {
+        self.drawingViewController = vc
+        self.view = vc.view
+        self.view.backgroundColor = .white
     }
     
     
     // MARK:- Layout
     func setupLayout() {
+        configureChild()
         addSubviews()
+        drawingsCollectionView.didMove(toParent: drawingViewController)
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
         activateConstraints()
+        canvasView.setupAppearence()
+    }
+    
+    private func configureChild() {
+        drawingsCollectionView = DrawingsCollectionView()
+        drawingsCollectionView.drawingView = drawingViewController
+        drawingViewController.addChild(drawingsCollectionView)
     }
     
     private func addSubviews() {
+        view.addSubview(drawingsCollectionView.view)
         view.addSubview(closeBtn)
         view.addSubview(drawingImageView)
+        view.addSubview(canvasView)
         view.addSubview(toolsCollectionView)
         view.addSubview(resetBtn)
         view.addSubview(slideOutBtn)
@@ -86,8 +110,37 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
         }
     }
     
+    
+    // MARK:- Constraints
+    func toggleDrawingsCV() {
+        if isOpen {
+            initCloseConstraints()
+        } else {
+            initOpenConstraints()
+        }
+        isOpen = !isOpen
+    }
+    
+    private func initCloseConstraints() {
+        slideOutBtn.setImage(UIImage(named: "slideOutOpen"), for: .normal)
+        drawingCVTrailingConstraint.constant = 0
+        closeBtn.isEnabled = true
+    }
+    
+    private func initOpenConstraints() {
+        slideOutBtn.setImage(UIImage(named: "slideOutClose"), for: .normal)
+        drawingCVTrailingConstraint.constant = view.frame.height * 0.4
+        closeBtn.isEnabled = false
+    }
+    
     private func activateConstraints() {
+        drawingCVTrailingConstraint = drawingsCollectionView.view.trailingAnchor.constraint(equalTo: view.leadingAnchor)
         NSLayoutConstraint.activate([
+            drawingsCollectionView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height * 0.15)),
+            drawingsCollectionView.view.topAnchor.constraint(equalTo: view.topAnchor),
+            drawingsCollectionView.view.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
+            drawingCVTrailingConstraint,
+            
             toolsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             toolsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             toolsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -96,17 +149,22 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
             drawingImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             drawingImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
             drawingImageView.bottomAnchor.constraint(equalTo: toolsCollectionView.topAnchor, constant: -16),
-            drawingImageView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            drawingImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 12),
             
-            resetBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            canvasView.leadingAnchor.constraint(equalTo: drawingImageView.leadingAnchor),
+            canvasView.trailingAnchor.constraint(equalTo: drawingImageView.trailingAnchor),
+            canvasView.topAnchor.constraint(equalTo: drawingImageView.topAnchor),
+            canvasView.bottomAnchor.constraint(equalTo: drawingImageView.bottomAnchor),
+            
+            resetBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -32),
             resetBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            resetBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
-            resetBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+            resetBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
+            resetBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             
-            slideOutBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            slideOutBtn.leadingAnchor.constraint(equalTo: drawingsCollectionView.view.trailingAnchor, constant: -4),
             slideOutBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            slideOutBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
-            slideOutBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
+            slideOutBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
+            slideOutBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
         ])
     }
 }

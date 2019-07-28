@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10221DB22ECD2B40081C95E /* CanvasView.swift */; };
 		D10687CA22AE68BC00A3E6E0 /* MenuConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687C922AE68BC00A3E6E0 /* MenuConfigurator.swift */; };
 		D10687CD22AE68E300A3E6E0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687CC22AE68E300A3E6E0 /* MenuViewController.swift */; };
 		D10687CF22AE68EE00A3E6E0 /* MenuAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687CE22AE68EE00A3E6E0 /* MenuAutoLayout.swift */; };
@@ -96,6 +97,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D10221DB22ECD2B40081C95E /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		D10687C922AE68BC00A3E6E0 /* MenuConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuConfigurator.swift; sourceTree = "<group>"; };
 		D10687CC22AE68E300A3E6E0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		D10687CE22AE68EE00A3E6E0 /* MenuAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAutoLayout.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				D1F9ABD022A0454600989BD3 /* DrawingViewController.swift */,
+				D10221DB22ECD2B40081C95E /* CanvasView.swift */,
 				D1F9ABD222A0455A00989BD3 /* DrawingAutoLayout.swift */,
 			);
 			path = View;
@@ -704,6 +707,7 @@
 				D10729FF22877D5C003149E8 /* PlaylistInteractor.swift in Sources */,
 				D135E2A422A02F7B00DC84DE /* KaraokeViewController.swift in Sources */,
 				D1F9ABC622A044F600989BD3 /* StoryAutoLayout.swift in Sources */,
+				D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */,
 				D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */,
 				D10729F722876879003149E8 /* PlaylistAutoLayout.swift in Sources */,
 				D19245172284DC2800ABD1BD /* Timer.swift in Sources */,

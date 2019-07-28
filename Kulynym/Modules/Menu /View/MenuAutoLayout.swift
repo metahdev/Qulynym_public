@@ -23,7 +23,6 @@ class MenuAutoLayout: MenuAutoLayoutProtocol {
         layout.scrollDirection = .horizontal
         
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.isPagingEnabled = true
         cv.backgroundView = UIImageView(image: UIImage(named: "menu"))
         
         cv.setCollectionViewLayout(layout, animated: true)

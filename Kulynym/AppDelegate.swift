@@ -15,12 +15,14 @@ import CoreData
   1) Memory Leak with Audio
   2) Audio queue isn't optimizing the main thread
   3) Preschool module's scroll view - content is ambigious
+  4) Eraser draws white on picture
  Solutions, which will be integrated further:
   1) TimerController on another queue
   2) Back segue animated, falling toys 
   3) Video queue
   4) Interactors are slowing down the application
-  5) RootViewController 
+  5) RootViewController
+ Eraser icon made by Pixel Buddha at flaticon.com
  */
 
 @UIApplicationMain
