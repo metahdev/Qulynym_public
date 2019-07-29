@@ -1,2 +1,2 @@
-K'ulynym - is a mobile app for little kids to learn Kazakh language. The app contains educational games for different age categories: 2-3 years and 4-5 years
-The app doesn't collects any of user data and isn't monetized.
+K'ulynym - is an educational mobile app in Kazakh language for little kids. The app contains educational games for different age categories: 3-4 years and 5-6 years
+Automatization X Software 2019. All rights reserved. 
