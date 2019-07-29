@@ -30,7 +30,7 @@ class MenuPresenter: MenuPresenterProtocol {
 extension MenuPresenter {
     // MARK:- Protocol Methods
     func getSections() {
-        view.sections = interactor.getSections(view.isToddler)
+        view.sections = interactor.getSections(view!.menuType)
     }
     
     func didSelectMenuCell(at index: Int) {
@@ -38,6 +38,7 @@ extension MenuPresenter {
         case 0: router.showToddlerEdu()
         case 3: router.showDrawingView()
         case 4: router.showPreschoolerEdu()
+        case 5: router.showGamesMenu() 
         default: router.showPlaylist(isKaraoke: (index == 1))
         }
     }

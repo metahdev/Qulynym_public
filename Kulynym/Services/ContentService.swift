@@ -35,7 +35,7 @@ class StorySection: Section {
 }
 
 struct ContentService {
-    static var menuSections = [
+    static let menuSections = [
         Section("toddlerIcon"),
         Section("karaokeIcon"),
         Section("storyIcon"),
@@ -44,13 +44,15 @@ struct ContentService {
         Section("gamesIcon")
     ]
     
-    static var toddlerSections = [
+    static let toddlerSections = [
         colorsSection,
         shapesSection,
         animalsSection,
         plantsSection,
-        numbersSection,
-        alphabetSection
+    ]
+    
+    static let gamesSection = [
+        Section("flappyBird"),
     ]
     
     static var songs = [
@@ -65,6 +67,4 @@ struct ContentService {
         private static var shapesSection = EduSection(name: "shapesIcon", scenesNames: [""], timepoints: [0], contentNames: ["circle"])
     private static var animalsSection = EduSection(name: "animalsIcon", scenesNames: [""], timepoints: [0], contentNames: ["cat", "dog", "bear"])
     private static var plantsSection = EduSection(name: "plantsIcon", scenesNames: [""], timepoints: [0], contentNames: ["rose"])
-    private static var numbersSection = EduSection(name: "numbersIcon", scenesNames: [""], timepoints: [0], contentNames: ["1"])
-    private static var alphabetSection = EduSection(name: "alphabet", scenesNames: ["AlphaS1", "AlphaS2", "AlphaS3"], timepoints: [10, 20], contentNames: ["А", "Б"])
 }

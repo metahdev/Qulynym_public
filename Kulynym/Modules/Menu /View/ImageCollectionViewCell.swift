@@ -17,9 +17,10 @@ class ImageCollectionViewCell: UICollectionViewCell {
             imageView.image = UIImage(named: imageName)
         }
     }
-    private lazy var imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.clipsToBounds = true 
         return iv
     }()
     

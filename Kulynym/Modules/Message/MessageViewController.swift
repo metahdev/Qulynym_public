@@ -10,16 +10,10 @@
 import UIKit
 
 class MessageViewController: UIViewController {
-    #warning("refactor")
     // MARK:- Properties
     var imageName: String! {
         didSet {
             emotionImage.image = UIImage(named: imageName)
-        }
-    }
-    var titleText: String! {
-        didSet {
-            titleLabel.text = titleText
         }
     }
     
@@ -47,7 +41,6 @@ class MessageViewController: UIViewController {
     private func assignViews() {
         self.closeBtn = autoLayout.closeBtn
         self.emotionImage = autoLayout.emotionImage
-        self.titleLabel = autoLayout.titleLabel
     }
     
     
@@ -57,6 +50,8 @@ class MessageViewController: UIViewController {
     }
     
     @objc func closeBtnPressed() {
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
     }
 }

@@ -9,8 +9,14 @@
 
 import UIKit
 
+enum Menu {
+    case toddler
+    case main
+    case games
+}
+
 protocol MenuViewProtocol: class {
-    var isToddler: Bool { get set }
+    var menuType: Menu { get set }
     var sections: [Section] { get set }
 }
 
@@ -19,10 +25,10 @@ class MenuViewController: UIViewController, MenuViewProtocol {
     var presenter: MenuPresenterProtocol!
     
     weak var playlistViewDelegate: PlaylistViewProtocol!
-    weak var toddlerViewDelegate: MenuViewProtocol!
+    weak var secondMenuViewDelegate: MenuViewProtocol!
     weak var scenesViewDelegate: ScenesViewControllerProtocol!
     
-    var isToddler = false
+    var menuType: Menu = .main
     var sections = [Section]()
     
     private weak var collectionView: UICollectionView!
@@ -30,6 +36,7 @@ class MenuViewController: UIViewController, MenuViewProtocol {
     
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
     private var autoLayout: MenuAutoLayoutProtocol!
+    private var message: Message!
     
     
     // MARK:- View Lifecycle
@@ -46,6 +53,7 @@ class MenuViewController: UIViewController, MenuViewProtocol {
         super.viewWillAppear(animated)
         presenter.getSections()
         hideOrUnhideCloseBtn()
+//        initMessage()
     }
 
     
@@ -65,7 +73,12 @@ class MenuViewController: UIViewController, MenuViewProtocol {
     }
     
     private func hideOrUnhideCloseBtn() {
-        closeBtn.isHidden = !isToddler
+        closeBtn.isHidden = menuType == .main
+    }
+    
+    private func initMessage() {
+        message = Message(calling: self, showing: .happy)
+        message.showAlert()
     }
     
     
@@ -90,17 +103,32 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.imageName = sections[indexPath.row].name
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
-        cell.layer.cornerRadius = 15
+        
+        if menuType == .main {
+            cell.layer.cornerRadius = 15
+        } else {
+            cell.layer.cornerRadius = view.frame.height * 0.25
+        }
+        cell.imageView.layer.cornerRadius = 15
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.isToddler ? presenter.didSelectToddlerCell(at: indexPath.row) : presenter.didSelectMenuCell(at: indexPath.row)
+        if menuType == .toddler {
+            presenter.didSelectToddlerCell(at: indexPath.row)
+        } else if menuType == .main {
+            presenter.didSelectMenuCell(at: indexPath.row)
+        } else {
+            
+        }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width * 0.5, height: view.frame.height * 0.5)
+        if menuType == .main  {
+            return CGSize(width: view.frame.width * 0.5, height: view.frame.height * 0.5)
+        }
+        return CGSize(width: view.frame.height * 0.5, height: view.frame.height * 0.5)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

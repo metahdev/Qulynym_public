@@ -147,7 +147,7 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
             toolsCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
             
             drawingImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            drawingImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            drawingImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
             drawingImageView.bottomAnchor.constraint(equalTo: toolsCollectionView.topAnchor, constant: -16),
             drawingImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 12),
             

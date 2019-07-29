@@ -15,6 +15,7 @@ protocol MenuRouterProtocol: class {
     func showDrawingView()
     func showPreschoolerEdu()
     func showScenesView(content section: EduSection)
+    func showGamesMenu()
     func close()
 }
 
@@ -31,8 +32,8 @@ extension MenuRouter {
     // MARK:- Protocol Methods
     func showToddlerEdu() {
         let vc = MenuViewController()
-        view.toddlerViewDelegate = vc
-        view.toddlerViewDelegate.isToddler = true 
+        view.secondMenuViewDelegate = vc
+        view.secondMenuViewDelegate.menuType = .toddler
         presentAnotherView(view: vc)
     }
     
@@ -55,6 +56,13 @@ extension MenuRouter {
         let vc = ScenesViewController()
         view.scenesViewDelegate = vc
         view.scenesViewDelegate.section = section
+        presentAnotherView(view: vc)
+    }
+    
+    func showGamesMenu() {
+        let vc = MenuViewController()
+        view.secondMenuViewDelegate = vc
+        view.secondMenuViewDelegate.menuType = .games
         presentAnotherView(view: vc)
     }
     

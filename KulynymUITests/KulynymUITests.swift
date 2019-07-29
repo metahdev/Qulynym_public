@@ -17,5 +17,6 @@ class KulynymUITests: XCTestCase {
     }
 
     override func tearDown() {
+        
     }
 }

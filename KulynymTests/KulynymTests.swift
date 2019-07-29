@@ -12,10 +12,10 @@ import XCTest
 
 class KulynymTests: XCTestCase {
     override func setUp() {
+        
     }
 
     override func tearDown() {
+        
     }
-    
-    
 }

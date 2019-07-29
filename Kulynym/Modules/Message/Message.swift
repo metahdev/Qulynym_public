@@ -10,10 +10,8 @@
 import UIKit
 
 enum Emotion {
-    case success
-    case failure
-    case karaoke
-    case stories
+    case happy
+    case sad
 }
 
 class Message {
@@ -32,6 +30,8 @@ class Message {
     func showAlert() {
         callingView.addChild(messageView)
         callingView.view.addSubview(messageView.view)
+        messageView.view.translatesAutoresizingMaskIntoConstraints = false
+        messageView.didMove(toParent: callingView)
         activateConstraints()
         setupEffect()
         configureProperties()
@@ -47,28 +47,23 @@ class Message {
     }
     
     private func setupEffect() {
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-        visualEffectView.frame = callingView.view.bounds
-        callingView.view.addSubview(visualEffectView)
-        callingView.view.alpha = 0
+//        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+//        visualEffectView.frame = callingView.view.frame
+//        callingView.view.addSubview(visualEffectView)
+        messageView.view.layer.zPosition = 1
     }
     
     private func configureProperties() {
         switch emotion {
-        case .success:
-            changeValues(image: "happyChar", title: "Well Done!")
-        case .failure:
-            changeValues(image: "sadChar", title: "Try Again!")
-        case .karaoke:
-            changeValues(image: "karaokeChar", title: "Choose the Song!")
-        case .stories:
-            changeValues(image: "storiesChar", title: "Choose the Story!")
+        case .happy:
+            changeValues(image: "happyChar")
+        case .sad:
+            changeValues(image: "sadChar")
         }
     }
     
-    private func changeValues(image name: String, title text: String) {
+    private func changeValues(image name: String) {
         messageView.imageName = name
-        messageView.titleText = text
     }
 }
 
