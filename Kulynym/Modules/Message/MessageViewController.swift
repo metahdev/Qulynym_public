@@ -16,6 +16,8 @@ class MessageViewController: UIViewController {
             emotionImage.image = UIImage(named: imageName)
         }
     }
+    var audioName: String!
+    var message: MessageManager!
     
     private weak var closeBtn: UIButton!
     private weak var emotionImage: UIImageView!
@@ -30,6 +32,11 @@ class MessageViewController: UIViewController {
         autoLayout.setupLayout()
         assignViews()
         assignActions()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AudioPlayer.setupExtraAudio(with: audioName, audioPlayer: .scenes)
     }
     
     
@@ -50,6 +57,7 @@ class MessageViewController: UIViewController {
     }
     
     @objc func closeBtnPressed() {
+        message.visualEffectView.removeFromSuperview()
         willMove(toParent: nil)
         view.removeFromSuperview()
         removeFromParent()

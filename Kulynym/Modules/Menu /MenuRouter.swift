@@ -16,6 +16,7 @@ protocol MenuRouterProtocol: class {
     func showPreschoolerEdu()
     func showScenesView(content section: EduSection)
     func showGamesMenu()
+    func openFlappyBird()
     func close()
 }
 
@@ -64,6 +65,10 @@ extension MenuRouter {
         view.secondMenuViewDelegate = vc
         view.secondMenuViewDelegate.menuType = .games
         presentAnotherView(view: vc)
+    }
+    
+    func openFlappyBird() {
+        
     }
     
     func close() {

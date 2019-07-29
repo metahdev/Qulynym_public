@@ -16,12 +16,13 @@ import CoreData
   2) Audio queue isn't optimizing the main thread
   3) Preschool module's scroll view - content is ambigious
   4) Eraser draws white on picture
+  5) Item quits on a main menu, but should at the toddler menu
  Solutions, which will be integrated further:
   1) TimerController on another queue
   2) Back segue animated, falling toys 
   3) Video queue
   4) Interactors are slowing down the application
-  5) RootViewController
+  5) RootViewController 2823
  Eraser icon made by Pixel Buddha at flaticon.com
  */
 

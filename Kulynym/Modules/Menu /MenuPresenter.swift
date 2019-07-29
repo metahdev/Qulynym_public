@@ -13,6 +13,7 @@ protocol MenuPresenterProtocol: class {
     func getSections()
     func didSelectMenuCell(at index: Int)
     func didSelectToddlerCell(at index: Int)
+    func didSelectGamesCell(at index: Int)
     func closeView()
 }
 
@@ -46,6 +47,15 @@ extension MenuPresenter {
     func didSelectToddlerCell(at index: Int) {
         let section = view.sections[index]
         router.showScenesView(content: section as! EduSection)
+    }
+    
+    func didSelectGamesCell(at index: Int) {
+        switch index {
+        case 0:
+            router.openFlappyBird()
+        default:
+            return
+        }
     }
     
     func closeView() {

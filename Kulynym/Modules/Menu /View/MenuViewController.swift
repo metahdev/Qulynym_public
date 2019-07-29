@@ -36,7 +36,7 @@ class MenuViewController: UIViewController, MenuViewProtocol {
     
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
     private var autoLayout: MenuAutoLayoutProtocol!
-    private var message: Message!
+    private var message: MessageManager!
     
     
     // MARK:- View Lifecycle
@@ -46,6 +46,7 @@ class MenuViewController: UIViewController, MenuViewProtocol {
         initLayout()
         autoLayout.setupLayout()
         setupProperties()
+        initMessage()
         assignActions()
     }
     
@@ -53,7 +54,6 @@ class MenuViewController: UIViewController, MenuViewProtocol {
         super.viewWillAppear(animated)
         presenter.getSections()
         hideOrUnhideCloseBtn()
-//        initMessage()
     }
 
     
@@ -72,13 +72,14 @@ class MenuViewController: UIViewController, MenuViewProtocol {
         self.navigationController?.isNavigationBarHidden = true
     }
     
-    private func hideOrUnhideCloseBtn() {
-        closeBtn.isHidden = menuType == .main
+    private func initMessage() {
+        message = MessageManager(calling: self, showing: .happy)
+        message.showAlert()
     }
     
-    private func initMessage() {
-        message = Message(calling: self, showing: .happy)
-        message.showAlert()
+    
+    private func hideOrUnhideCloseBtn() {
+        closeBtn.isHidden = menuType == .main
     }
     
     
@@ -119,7 +120,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else if menuType == .main {
             presenter.didSelectMenuCell(at: indexPath.row)
         } else {
-            
+            presenter.didSelectGamesCell(at: indexPath.row)
         }
     }
     

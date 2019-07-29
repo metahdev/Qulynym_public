@@ -14,9 +14,10 @@ enum Emotion {
     case sad
 }
 
-class Message {
+class MessageManager {
     // MARK:- Properties
     var messageView = MessageViewController()
+    var visualEffectView: UIVisualEffectView!
     private weak var callingView: UIViewController! 
     private var emotion: Emotion
     
@@ -47,9 +48,9 @@ class Message {
     }
     
     private func setupEffect() {
-//        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-//        visualEffectView.frame = callingView.view.frame
-//        callingView.view.addSubview(visualEffectView)
+        visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        visualEffectView.frame = callingView.view.frame
+        callingView.view.addSubview(visualEffectView)
         messageView.view.layer.zPosition = 1
     }
     

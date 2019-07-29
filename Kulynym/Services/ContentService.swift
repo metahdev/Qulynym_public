@@ -52,7 +52,7 @@ struct ContentService {
     ]
     
     static let gamesSection = [
-        Section("flappyBird"),
+        Section("torgai"),
     ]
     
     static var songs = [
