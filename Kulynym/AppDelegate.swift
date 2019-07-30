@@ -16,13 +16,14 @@ import CoreData
   2) Audio queue isn't optimizing the main thread
   3) Preschool module's scroll view - content is ambigious
   4) Eraser draws white on picture
-  5) Item quits on a main menu, but should at the toddler menu
+  5) Item quit animation is different from pushing back to the rootVC, maybe leak, idk
+  6) Auto Layout on IPad: Karaoke Module(video view & Titles), closeBtn
  Solutions, which will be integrated further:
   1) TimerController on another queue
-  2) Back segue animated, falling toys 
+  2) Back segue falling leaves
   3) Video queue
-  4) Interactors are slowing down the application
-  5) RootViewController 2823
+  4) Design Pattern of the Project
+  5) Item should quit to their menu
  Eraser icon made by Pixel Buddha at flaticon.com
  */
 

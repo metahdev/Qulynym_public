@@ -28,6 +28,11 @@ class MessageAutoLayout: MessageAutoLayoutProtocol {
         let imageV = UIImageView()
         return imageV
     }()
+    private lazy var alertBackground: UIImageView = {
+        let imageV = UIImageView()
+        imageV.image = UIImage(named: "alertBg")
+        return imageV
+    }()
     private weak var view: UIView!
     
     
@@ -49,6 +54,7 @@ class MessageAutoLayout: MessageAutoLayoutProtocol {
     private func addSubviews() {
         view.addSubview(closeBtn)
         view.addSubview(emotionImage)
+        view.addSubview(alertBackground)
     }
     
     private func setSubviewsMask() {
@@ -63,6 +69,11 @@ class MessageAutoLayout: MessageAutoLayoutProtocol {
             emotionImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             emotionImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
             emotionImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+            
+            alertBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            alertBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            alertBackground.topAnchor.constraint(equalTo: view.topAnchor),
+            alertBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }

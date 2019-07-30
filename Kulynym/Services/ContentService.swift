@@ -31,7 +31,6 @@ class EduSection: Section {
 }
 
 class StorySection: Section {
-    
 }
 
 struct ContentService {
@@ -60,7 +59,7 @@ struct ContentService {
     ]
     
     static var stories = [
-        StorySection("kolobok"),
+        StorySection("kolobokIcon"),
     ]
     
     private static var colorsSection = EduSection(name: "colorsIcon", scenesNames: [""], timepoints: [0], contentNames: ["red"])

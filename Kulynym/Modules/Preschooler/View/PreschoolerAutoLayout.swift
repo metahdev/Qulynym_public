@@ -17,17 +17,19 @@ enum IconPosition {
 }
 
 protocol PreschoolerAutoLayoutProtocol {
-    var logicBtn: UIButton { get set }
+    var closeBtn: UIButton { get set }
     
     func setupLayout()
 }
 
 class PreschoolerAutoLayout: PreschoolerAutoLayoutProtocol {
     // MARK:- Properties
-    lazy var logicBtn: UIButton = {
-        let btn = setupIconButton(image: "logicIcon")
+    lazy var closeBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "closeBtn"), for: .normal)
         return btn
     }()
+    
     private lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +38,7 @@ class PreschoolerAutoLayout: PreschoolerAutoLayoutProtocol {
     }()
     private lazy var backgroundImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "4-5bg")
+        iv.image = UIImage(named: "5-6bg")
         iv.contentMode = .scaleAspectFill
         return iv
     }()
@@ -61,6 +63,7 @@ class PreschoolerAutoLayout: PreschoolerAutoLayoutProtocol {
     func setupLayout() {
         addSubviews()
         makeSubviewsMaskFalse()
+        closeBtn.configureCloseBtnFrame(view)
         activateConstraints()
     }
     
@@ -79,7 +82,6 @@ class PreschoolerAutoLayout: PreschoolerAutoLayoutProtocol {
         constant = view.frame.height * 0.5
         
         addScrollViewAndImageViewConstraints()
-        addIconButtonConstraints(iconButton: logicBtn, positionType: .begin, leftView: view)
         
         NSLayoutConstraint.activate(constraints)
     }

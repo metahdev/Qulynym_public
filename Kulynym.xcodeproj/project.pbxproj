@@ -487,9 +487,9 @@
 				D10729F8228768D0003149E8 /* Karaoke */,
 				D10729F022876748003149E8 /* Story */,
 				D10729F9228768D9003149E8 /* Drawing */,
-				D1D469152229C7D90096B968 /* Preschooler */,
 				D1D5599322A85074001674A7 /* Message */,
 				D16CE02F22EF4E260057835D /* Torgai */,
+				D1D469152229C7D90096B968 /* Preschooler */,
 			);
 			path = Modules;
 			sourceTree = "<group>";

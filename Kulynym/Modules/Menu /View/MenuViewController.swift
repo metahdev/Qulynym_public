@@ -46,7 +46,7 @@ class MenuViewController: UIViewController, MenuViewProtocol {
         initLayout()
         autoLayout.setupLayout()
         setupProperties()
-        initMessage()
+//        initMessage()
         assignActions()
     }
     
@@ -141,5 +141,9 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MenuViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return Animator()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return Animator()  
     }
 }

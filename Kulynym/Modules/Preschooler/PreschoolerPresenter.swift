@@ -16,6 +16,7 @@ protocol PreschoolerPresenterProtocol: class {
     
     func updateProgressState()
     func iconPressed(with index: Int)
+    func closeView()
 }
 
 class PreschoolerPresenter: PreschoolerPresenterProtocol {
@@ -36,5 +37,9 @@ extension PreschoolerPresenter {
     }
     
     func iconPressed(with index: Int) {
+    }
+    
+    func closeView() {
+        router.close()
     }
 }

@@ -20,6 +20,7 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol {
     var content = [Section]()
     var presenter: PlaylistPresenterProtocol!
     weak var karaokeViewDelegate: KaraokeViewProtocol!
+    weak var storyViewDelegate: StoryViewProtocol!
     
     private weak var listCollectionView: UICollectionView!
     private weak var closeBtn: UIButton!
@@ -110,6 +111,10 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension PlaylistViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return Animator()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return Animator()
     }
 }

@@ -28,7 +28,7 @@ class TimerController {
     
     // MARK:- Timer
     func startTimer() {
-       seconds = AudioPlayer.scenesAudioPlayer.duration
+        seconds = AudioPlayer.scenesAudioPlayer.duration
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkState), userInfo: nil, repeats: true)
     }
     

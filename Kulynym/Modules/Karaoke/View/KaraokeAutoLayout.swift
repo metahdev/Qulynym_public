@@ -26,11 +26,14 @@ class KaraokeAutoLayout: KaraokeAutoLayoutProtocol {
     
     lazy var contentLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setupContentLabel(size: 32)
+        lbl.setupContentLabel(size: view.frame.height * 0.07)
         return lbl
     }()
     lazy var videoView: UIView = {
         let v = UIView()
+        v.layer.cornerRadius = 5
+        v.layer.borderColor = UIColor.black.cgColor
+        v.layer.borderWidth = 10
         return v
     }()
     lazy var closeBtn: UIButton = {
@@ -106,7 +109,7 @@ class KaraokeAutoLayout: KaraokeAutoLayoutProtocol {
             
             videoView.leadingAnchor.constraint(equalTo: microImage.trailingAnchor, constant: 20),
             videoView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            videoView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: 16),
+            videoView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: view.frame.height * 0.05),
             videoView.trailingAnchor.constraint(equalTo: gramophoneImage.leadingAnchor, constant: -20),
         ])
     }

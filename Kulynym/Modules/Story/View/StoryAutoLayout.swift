@@ -22,7 +22,6 @@ protocol StoryAutoLayoutProtocol: class {
 
 class StoryAutoLayout: StoryAutoLayoutProtocol {
     // MARK:- Properties
-    #warning("Images")
     lazy var backgroundImage: UIImageView = {
         let iv = UIImageView()
         iv.layer.zPosition = -1
@@ -31,27 +30,28 @@ class StoryAutoLayout: StoryAutoLayoutProtocol {
     }()
     lazy var characterImage: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "kolobokGrandma")
+        iv.image = UIImage(named: "kolobok")
         return iv
     }()
     lazy var secondCharacterImage: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "kolobokChar")
+        iv.image = UIImage(named: "kolobokGrandma")
         return iv
     }()
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.layer.zPosition = 1
         return btn
     }()
     private lazy var leftCurtainsImage: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "leftClosedCurtains")
+        iv.image = UIImage(named: "leftCurtains")
         return iv
     }()
     private lazy var rightCurtainsImage: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "rightClosedCurtains")
+        iv.image = UIImage(named: "rightCurtains")
         return iv
     }()
     private weak var view: UIView!
@@ -70,8 +70,9 @@ class StoryAutoLayout: StoryAutoLayoutProtocol {
     func setupLayout() {
         addSubviews()
         setSubviewsMask()
-        initClosedCurtainsConstraints()
+        initOpenCurtainsConstraints()
         initCharConstraints()
+        closeBtn.configureCloseBtnFrame(view)
         activateMainConstraints()
     }
     
@@ -99,40 +100,40 @@ class StoryAutoLayout: StoryAutoLayoutProtocol {
     
     private func initOpenCurtainsConstraints() {
         curtainsConstraints = [
-            leftCurtainsImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
-            rightCurtainsImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)
+            leftCurtainsImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1),
+            rightCurtainsImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1)
         ]
     }
     
     private func initCharConstraints()  {
         charConstraints = [
-            characterImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2, constant: 32),
-            secondCharacterImage.heightAnchor.constraint(equalTo: characterImage.heightAnchor),
-        ]
+            characterImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+            secondCharacterImage.heightAnchor.constraint(equalTo: characterImage.heightAnchor, constant: 104),
+        ]  
     }
     
     private func activateMainConstraints() {
         NSLayoutConstraint.activate([
-            closeBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            closeBtn.topAnchor.constraint(equalTo: view.topAnchor),
-            closeBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25, constant: 24),
-            closeBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25),
-            
-            leftCurtainsImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            leftCurtainsImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 32),
             leftCurtainsImage.topAnchor.constraint(equalTo: view.topAnchor),
             leftCurtainsImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
-            rightCurtainsImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            rightCurtainsImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 32),
             rightCurtainsImage.topAnchor.constraint(equalTo: view.topAnchor),
             rightCurtainsImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            characterImage.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
-            characterImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            characterImage.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+            characterImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -64),
             characterImage.leadingAnchor.constraint(equalTo: leftCurtainsImage.trailingAnchor, constant: 84),
         
-            secondCharacterImage.widthAnchor.constraint(equalTo: characterImage.widthAnchor),
-            secondCharacterImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            secondCharacterImage.trailingAnchor.constraint(equalTo: rightCurtainsImage.leadingAnchor, constant: 84),
+            secondCharacterImage.widthAnchor.constraint(equalTo: characterImage.widthAnchor, constant: 32),
+            secondCharacterImage.bottomAnchor.constraint(equalTo: characterImage.bottomAnchor),
+            secondCharacterImage.trailingAnchor.constraint(equalTo: rightCurtainsImage.leadingAnchor, constant: -84),
+            
+            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width * 0.05),
+            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width * 0.05)),
+            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ] + curtainsConstraints + charConstraints)
     }
     

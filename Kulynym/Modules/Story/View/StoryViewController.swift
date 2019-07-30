@@ -15,6 +15,8 @@ enum StoryCharacter {
 }
 
 protocol StoryViewProtocol: class {
+    var content: StorySection! { get set }
+    
     func fillContent(firstChar: String, secondChar: String, background: String)
     func curtainsAnimation()
     func charactersAnimation(char: StoryCharacter, duration: Int)
@@ -23,6 +25,7 @@ protocol StoryViewProtocol: class {
 class StoryViewController: UIViewController, StoryViewProtocol {
     // MARK:- Properties
     var presenter: StoryPresenterProtocol!
+    var content: StorySection!
     
     private weak var backgroundImage: UIImageView!
     private weak var characterImage: UIImageView!
@@ -45,8 +48,8 @@ class StoryViewController: UIViewController, StoryViewProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.startTimer()
-        autoLayout.startCurtainsAnimation()
+//        presenter.startTimer()
+//        autoLayout.startCurtainsAnimation()
     }
     
     
@@ -56,10 +59,10 @@ class StoryViewController: UIViewController, StoryViewProtocol {
     }
     
     private func assignViews() {
-        autoLayout.backgroundImage = self.backgroundImage
-        autoLayout.characterImage = self.characterImage
-        autoLayout.secondCharacterImage = self.secondCharacterImage
-        autoLayout.closeBtn = self.closeBtn
+        self.backgroundImage = autoLayout.backgroundImage
+        self.characterImage = autoLayout.characterImage
+        self.secondCharacterImage = autoLayout.secondCharacterImage
+        self.closeBtn = autoLayout.closeBtn
     }
     
     

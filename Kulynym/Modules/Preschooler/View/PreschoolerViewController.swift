@@ -15,12 +15,11 @@ class PreschoolerViewController: UIViewController, PreschoolerViewProtocol {
     // MARK:- Properties
     var presenter: PreschoolerPresenterProtocol!
     weak var scenesViewDelegate: ScenesViewControllerProtocol!
-    weak var playlistViewDelegate: PlaylistViewProtocol!
     
     private var iconButtons = [UIButton]()
     private var btnsAndIndexes = [UIButton: Int]()
     
-    private weak var logicBtn: UIButton!
+    private weak var closeBtn: UIButton!
     
     private var autoLayout: PreschoolerAutoLayoutProtocol!
     private var configurator: PreschoolerConfiguratorProtocol = PreschoolerConfigurator()
@@ -35,6 +34,7 @@ class PreschoolerViewController: UIViewController, PreschoolerViewProtocol {
         autoLayout.setupLayout()
         assignViews()
         setupArray()
+        assignActions()
         assignActionsAndIndexes()
     }
     
@@ -49,7 +49,7 @@ class PreschoolerViewController: UIViewController, PreschoolerViewProtocol {
     }
     
     private func assignViews() {
-        
+        self.closeBtn = autoLayout.closeBtn
     }
     
 
@@ -60,6 +60,10 @@ class PreschoolerViewController: UIViewController, PreschoolerViewProtocol {
     
     
     // MARK:- Actions
+    private func assignActions() {
+        closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
+    }
+    
     private func assignActionsAndIndexes() {
         #warning("this is dumb")
         var index = 0
@@ -74,7 +78,11 @@ class PreschoolerViewController: UIViewController, PreschoolerViewProtocol {
         btn.addTarget(self, action: #selector(iconButtonsTouched(sender:)), for: .touchUpInside)
     }
     
-    @objc func iconButtonsTouched(sender: UIButton) {
+    @objc private func closeBtnPressed() {
+        presenter.closeView()
+    }
+    
+    @objc private func iconButtonsTouched(sender: UIButton) {
         let directionIndex = btnsAndIndexes[sender]
         presenter.iconPressed(with: directionIndex!)
     }

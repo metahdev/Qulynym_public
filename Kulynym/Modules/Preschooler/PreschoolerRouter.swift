@@ -10,6 +10,7 @@
 import UIKit
 
 protocol PreschoolerRouterProtocol: class {
+    func close()
 }
 
 class PreschoolerRouter: PreschoolerRouterProtocol {
@@ -22,6 +23,9 @@ class PreschoolerRouter: PreschoolerRouterProtocol {
 }
 
 extension PreschoolerRouter {
+    func close() {
+        view.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
 }
 
 
