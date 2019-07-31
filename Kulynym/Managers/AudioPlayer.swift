@@ -13,6 +13,7 @@ import AVFoundation
 enum PlayerType {
     case scenes
     case content
+    case message
 }
 
 struct AudioPlayer {
@@ -20,13 +21,14 @@ struct AudioPlayer {
     static var backgroundAudioPlayer = AVAudioPlayer()
     static var contentAudioPlayer = AVAudioPlayer()
     static var scenesAudioPlayer = AVAudioPlayer()
+    static var messageAudioPlayer = AVAudioPlayer()
     static let queue = DispatchQueue.global(qos: .utility)
     
     
     // MARK: Background Audio
     static func turnOnBackgroundMusic() {
+        initBackdroundAudio()
         queue.async {
-            initBackdroundAudio()
             backgroundAudioPlayer.play()
         }
     }
@@ -52,9 +54,11 @@ struct AudioPlayer {
         switch audioPlayer {
         case .scenes:
             initPlayers(player: &scenesAudioPlayer, url: url)
-            scenesAudioTask()
         case .content:
             initPlayers(player: &contentAudioPlayer, url: url)
+        case .message:
+            initPlayers(player: &messageAudioPlayer, url: url)
+            messageAudioPlayer.play()
         }
     }
     

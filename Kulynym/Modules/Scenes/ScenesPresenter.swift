@@ -41,7 +41,6 @@ extension ScenesPresenter {
     }
     
     func playAudio() {
-        print(view.section.name)
         AudioPlayer.setupExtraAudio(with: view.section.name, audioPlayer: .scenes)
     }
     

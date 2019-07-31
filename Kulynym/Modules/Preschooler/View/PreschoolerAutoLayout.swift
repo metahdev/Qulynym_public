@@ -26,10 +26,10 @@ class PreschoolerAutoLayout: PreschoolerAutoLayoutProtocol {
     // MARK:- Properties
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "closeBtn"), for: .normal)
+        btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
-    
     private lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
@@ -69,6 +69,7 @@ class PreschoolerAutoLayout: PreschoolerAutoLayoutProtocol {
     
     private func addSubviews() {
         view.addSubview(scrollView)
+        view.addSubview(closeBtn)
         scrollView.addSubview(backgroundImageView)
     }
     
@@ -95,8 +96,8 @@ class PreschoolerAutoLayout: PreschoolerAutoLayoutProtocol {
             
             backgroundImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            backgroundImageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ]
     }
     

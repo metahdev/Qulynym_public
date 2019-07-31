@@ -14,7 +14,7 @@ protocol DrawingViewProtocol: class {
     var currentImageName: String? { get set }
 }
 
-class DrawingViewController: UIViewController, DrawingViewProtocol {
+class DrawingViewController: UIViewController, DrawingViewProtocol, MessageShowingVC {
     // MARK:- Properties
     var presenter: DrawingPresenterProtocol!
     
@@ -23,6 +23,9 @@ class DrawingViewController: UIViewController, DrawingViewProtocol {
             updateImage()
         }
     }
+    
+    var message: MessageManager!
+    
     lazy var tools: [UIColor] = [.red, .orange, .yellow, .green, whiteBlue, .blue, .purple, .brown, .black, .white]
     private let whiteBlue = UIColor(red: 102/255, green: 1, blue: 1, alpha: 1)
 
@@ -45,6 +48,8 @@ class DrawingViewController: UIViewController, DrawingViewProtocol {
         autoLayout.setupLayout()
         assignViews()
         setupCV()
+        initMessage()
+        message.showAlert()
         assignActions()
     }
     
@@ -76,6 +81,10 @@ class DrawingViewController: UIViewController, DrawingViewProtocol {
         pictureImageView.image = UIImage(named: name)
     }
     
+    
+    func initMessage() {
+        message = MessageManager(calling: self, showing: .drawing)
+    }
     
     // MARK:- Actions
     private func assignActions() {

@@ -37,7 +37,7 @@ class PlaylistAutoLayout: PlaylistAutoLayoutProtocol {
     }()
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setupContentLabel(size: 40)
+        lbl.setupContentLabel(size: view.frame.width * 0.5)
         return lbl
     }()
     private lazy var backgroundImage: UIImageView = {

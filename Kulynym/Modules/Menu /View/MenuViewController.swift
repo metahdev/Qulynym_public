@@ -20,7 +20,7 @@ protocol MenuViewProtocol: class {
     var sections: [Section] { get set }
 }
 
-class MenuViewController: UIViewController, MenuViewProtocol {
+class MenuViewController: UIViewController, MenuViewProtocol, MessageShowingVC {
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
@@ -31,12 +31,13 @@ class MenuViewController: UIViewController, MenuViewProtocol {
     var menuType: Menu = .main
     var sections = [Section]()
     
+    var message: MessageManager!
+    
     private weak var collectionView: UICollectionView!
     private weak var closeBtn: UIButton!
     
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
     private var autoLayout: MenuAutoLayoutProtocol!
-    private var message: MessageManager!
     
     
     // MARK:- View Lifecycle
@@ -46,7 +47,7 @@ class MenuViewController: UIViewController, MenuViewProtocol {
         initLayout()
         autoLayout.setupLayout()
         setupProperties()
-//        initMessage()
+        initMessage()
         assignActions()
     }
     
@@ -72,8 +73,16 @@ class MenuViewController: UIViewController, MenuViewProtocol {
         self.navigationController?.isNavigationBarHidden = true
     }
     
-    private func initMessage() {
-        message = MessageManager(calling: self, showing: .happy)
+    func initMessage() {
+        var emotion: Emotion?
+        if menuType == .main {
+            emotion = .hello
+        }
+        if menuType == .games {
+            emotion = .games
+        }
+        guard let nonOptEmotion = emotion else { return }
+        message = MessageManager(calling: self, showing: nonOptEmotion)
         message.showAlert()
     }
     

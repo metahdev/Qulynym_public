@@ -18,16 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro" translatesAutoresizingMaskIntoConstraints="NO" id="5W4-GD-1lw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro" translatesAutoresizingMaskIntoConstraints="NO" id="yen-d4-HaX">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549019602" green="0.85689736939296257" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="5W4-GD-1lw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="J6O-Xx-jRd"/>
-                            <constraint firstItem="5W4-GD-1lw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QKQ-d9-eSR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5W4-GD-1lw" secondAttribute="bottom" id="ZPd-5O-Gnn"/>
-                            <constraint firstAttribute="trailing" secondItem="5W4-GD-1lw" secondAttribute="trailing" id="zPO-WB-I8Y"/>
+                            <constraint firstItem="yen-d4-HaX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jyg-bw-jG1"/>
+                            <constraint firstItem="yen-d4-HaX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lwf-h6-wRa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yen-d4-HaX" secondAttribute="bottom" id="prx-hI-e8V"/>
+                            <constraint firstItem="yen-d4-HaX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uWI-jh-0MS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

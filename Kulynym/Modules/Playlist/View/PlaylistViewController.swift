@@ -14,7 +14,7 @@ protocol PlaylistViewProtocol: class {
     var content: [Section] { get set }
 }
 
-class PlaylistViewController: UIViewController, PlaylistViewProtocol {
+class PlaylistViewController: UIViewController, PlaylistViewProtocol, MessageShowingVC {
     // MARK:- Properties
     var isKaraoke: Bool!
     var content = [Section]()
@@ -22,6 +22,8 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol {
     weak var karaokeViewDelegate: KaraokeViewProtocol!
     weak var storyViewDelegate: StoryViewProtocol!
     
+    var message: MessageManager!
+
     private weak var listCollectionView: UICollectionView!
     private weak var closeBtn: UIButton!
     private weak var titleLabel: UILabel!
@@ -46,6 +48,8 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.getContent()
+        initMessage()
+        message.showAlert()
     }
     
     
@@ -69,6 +73,10 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol {
     
     private func setText() {
         titleLabel.text = isKaraoke ? "O'lender" : "Ertegiler"
+    }
+    
+    func initMessage() {
+        message = MessageManager(calling: self, showing: isKaraoke ? .karaoke : .stories)
     }
     
     

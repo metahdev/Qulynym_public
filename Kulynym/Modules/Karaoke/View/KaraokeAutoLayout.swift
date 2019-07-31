@@ -33,7 +33,7 @@ class KaraokeAutoLayout: KaraokeAutoLayoutProtocol {
         let v = UIView()
         v.layer.cornerRadius = 5
         v.layer.borderColor = UIColor.black.cgColor
-        v.layer.borderWidth = 10
+        v.layer.borderWidth = 5
         return v
     }()
     lazy var closeBtn: UIButton = {

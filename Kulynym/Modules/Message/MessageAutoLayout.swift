@@ -31,6 +31,7 @@ class MessageAutoLayout: MessageAutoLayoutProtocol {
     private lazy var alertBackground: UIImageView = {
         let imageV = UIImageView()
         imageV.image = UIImage(named: "alertBg")
+        imageV.layer.zPosition = -1
         return imageV
     }()
     private weak var view: UIView!

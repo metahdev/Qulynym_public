@@ -36,7 +36,7 @@ class MessageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        AudioPlayer.setupExtraAudio(with: audioName, audioPlayer: .scenes)
+        AudioPlayer.setupExtraAudio(with: audioName, audioPlayer: .message)
     }
     
     
@@ -61,5 +61,6 @@ class MessageViewController: UIViewController {
         willMove(toParent: nil)
         view.removeFromSuperview()
         removeFromParent()
+        AudioPlayer.messageAudioPlayer.stop()
     }
 }

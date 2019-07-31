@@ -95,5 +95,6 @@ class KaraokeViewController: UIViewController, KaraokeViewProtocol {
     }
     
     @objc private func videoEnded() {
+        router.close()
     }
 }

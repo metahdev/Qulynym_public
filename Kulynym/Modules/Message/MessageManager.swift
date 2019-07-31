@@ -9,16 +9,30 @@
 
 import UIKit
 
-enum Emotion {
-    case happy
-    case sad
+enum Emotion: String {
+    case hello = "helloMessage"
+    case karaoke = "karaokeMessage"
+    case stories = "storiesMessage"
+    case drawing = "drawingMessage"
+    case games = "gamesMessage"
+    case tryAgain = "tryAgainMessage"
+    case wellDone = "wellDoneMessage"
+}
+
+protocol MessageShowingVC {
+    var message: MessageManager! { get set }
+    func initMessage()
+}
+
+protocol MessageManagerProtocol: class {
+    var visualEffectView: UIVisualEffectView! { get set }
 }
 
 class MessageManager {
     // MARK:- Properties
-    var messageView = MessageViewController()
     var visualEffectView: UIVisualEffectView!
-    private weak var callingView: UIViewController! 
+    private var messageView = MessageViewController()
+    private weak var callingView: UIViewController!
     private var emotion: Emotion
     
     init(calling view: UIViewController, showing emotion: Emotion) {
@@ -29,15 +43,32 @@ class MessageManager {
     
     // MARK:- Alert
     func showAlert() {
-        callingView.addChild(messageView)
-        callingView.view.addSubview(messageView.view)
-        messageView.view.translatesAutoresizingMaskIntoConstraints = false
-        messageView.didMove(toParent: callingView)
-        activateConstraints()
         setupEffect()
+        setupMessageVC()
+        setupMessageView()
+        activateConstraints()
         configureProperties()
     }
     
+    private func setupEffect() {
+        visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        visualEffectView.frame = callingView.view.frame
+        callingView.view.addSubview(visualEffectView)
+    }
+    
+    private func setupMessageVC() {
+        callingView.addChild(messageView)
+        callingView.view.addSubview(messageView.view)
+        messageView.didMove(toParent: callingView)
+    }
+    
+    private func setupMessageView() {
+        messageView.view.translatesAutoresizingMaskIntoConstraints = false
+        messageView.message = self
+    }
+    
+    
+    // MARK:- Constraints
     private func activateConstraints() {
         NSLayoutConstraint.activate([
             messageView.view.centerXAnchor.constraint(equalTo: callingView.view.centerXAnchor),
@@ -47,24 +78,25 @@ class MessageManager {
         ])
     }
     
-    private func setupEffect() {
-        visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-        visualEffectView.frame = callingView.view.frame
-        callingView.view.addSubview(visualEffectView)
-        messageView.view.layer.zPosition = 1
-    }
     
+    // MARK:- Send Data
     private func configureProperties() {
+        let audio = emotion.rawValue
+        var image = "happyChar"
+        
         switch emotion {
-        case .happy:
-            changeValues(image: "happyChar")
-        case .sad:
-            changeValues(image: "sadChar")
+        case .tryAgain:
+            image = "sadChar"
+        default:
+            break
         }
+        
+        changeValues(image: image, audio: audio)
     }
     
-    private func changeValues(image name: String) {
+    private func changeValues(image name: String, audio aName: String) {
         messageView.imageName = name
+        messageView.audioName = aName
     }
 }
 
