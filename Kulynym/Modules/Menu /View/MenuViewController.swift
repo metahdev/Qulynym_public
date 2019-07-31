@@ -15,17 +15,17 @@ enum Menu {
     case games
 }
 
-protocol MenuViewProtocol: class {
+protocol MenuViewControllerProtocol: class {
     var menuType: Menu { get set }
     var sections: [Section] { get set }
 }
 
-class MenuViewController: UIViewController, MenuViewProtocol, MessageShowingVC {
+class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageShowingVC {
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
     weak var playlistViewDelegate: PlaylistViewProtocol!
-    weak var secondMenuViewDelegate: MenuViewProtocol!
+    weak var secondMenuViewDelegate: MenuViewControllerProtocol!
     weak var scenesViewDelegate: ScenesViewControllerProtocol!
     
     var menuType: Menu = .main
@@ -37,7 +37,7 @@ class MenuViewController: UIViewController, MenuViewProtocol, MessageShowingVC {
     private weak var closeBtn: UIButton!
     
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
-    private var autoLayout: MenuAutoLayoutProtocol!
+    private var menuView: MenuViewProtocol!
     
     
     // MARK:- View Lifecycle
@@ -45,7 +45,7 @@ class MenuViewController: UIViewController, MenuViewProtocol, MessageShowingVC {
         super.viewDidLoad()
         configurator.configure(with: self)
         initLayout()
-        autoLayout.setupLayout()
+        menuView.setupLayout()
         setupProperties()
         initMessage()
         assignActions()
@@ -60,12 +60,12 @@ class MenuViewController: UIViewController, MenuViewProtocol, MessageShowingVC {
     
     // MARK:- Layout
     private func initLayout() {
-        autoLayout = MenuAutoLayout(self.view)
+        menuView = MenuView(self.view)
     }
     
     private func setupProperties() {
-        self.collectionView = autoLayout.collectionView
-        self.closeBtn = autoLayout.closeBtn
+        self.collectionView = menuView.collectionView
+        self.closeBtn = menuView.closeBtn
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

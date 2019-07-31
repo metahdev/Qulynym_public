@@ -25,7 +25,7 @@ class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
     private weak var sceneImageView: UIImageView!
     private weak var skipBtn: UIButton!
     
-    private var autoLayout: ScenesAutoLayoutProtocol!
+    private var scenesView: ScenesViewProtocol!
     private var configurator: ScenesConfiguratorProtocol = ScenesConfigurator()
     
     
@@ -35,7 +35,7 @@ class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
         configurator.configure(with: self)
         
         initLayout()
-        autoLayout.setupLayout()
+        scenesView.setupLayout()
         assignViews()
         assignActions()
         
@@ -50,12 +50,12 @@ class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
     
     // MARK:- Layout
     private func initLayout() {
-        autoLayout = ScenesAutoLayout(self.view)
+        scenesView = ScenesView(self.view)
     }
     
     private func assignViews() {
-        self.sceneImageView = autoLayout.sceneImageView
-        self.skipBtn = autoLayout.skipBtn
+        self.sceneImageView = scenesView.sceneImageView
+        self.skipBtn = scenesView.skipBtn
     }
     
     

@@ -1,6 +1,6 @@
 /*
 * Kulynym
-* MenuAutoLayout.swift
+* MenuView.swift
 *
 * Created by: Metah on 6/10/19
 *
@@ -9,14 +9,14 @@
 
 import UIKit
 
-protocol MenuAutoLayoutProtocol: class {
+protocol MenuViewProtocol: class {
     var collectionView: UICollectionView { get set }
     var closeBtn: UIButton { get set }
     
     func setupLayout()
 }
 
-class MenuAutoLayout: MenuAutoLayoutProtocol {
+class MenuView: MenuViewProtocol {
     // MARK:- Properties
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

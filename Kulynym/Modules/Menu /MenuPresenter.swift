@@ -19,11 +19,11 @@ protocol MenuPresenterProtocol: class {
 
 class MenuPresenter: MenuPresenterProtocol {
     // MARK:- Properties
-    weak var view: MenuViewProtocol!
+    weak var view: MenuViewControllerProtocol!
     var interactor: MenuInteractor!
     var router: MenuRouterProtocol!
     
-    required init(_ view: MenuViewProtocol) {
+    required init(_ view: MenuViewControllerProtocol) {
         self.view = view
     }
 }

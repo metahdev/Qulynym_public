@@ -49,7 +49,7 @@ class StoryViewController: UIViewController, StoryViewProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        presenter.startTimer()
-//        autoLayout.startCurtainsAnimation()
+//        scenesView.startCurtainsAnimation()
     }
     
     

@@ -26,6 +26,7 @@ import CoreData
   4) Design Pattern of the Project(Karaoke Module especially)
   5) Item should quit to their menu
   6) Tools at Drawing Module
+  7) Scroll View at Alert for instructions of the UI
  Eraser icon made by Pixel Buddha at flaticon.com
  */
 

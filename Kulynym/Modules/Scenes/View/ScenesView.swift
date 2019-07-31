@@ -1,6 +1,6 @@
 /*
 * Kulynym
-* ScenesAutoLayout.swift
+* ScenesView.swift
 *
 * Created by: Metah on 3/2/19
 *
@@ -10,14 +10,14 @@
 import Foundation
 import UIKit
 
-protocol ScenesAutoLayoutProtocol: class {
+protocol ScenesViewProtocol: class {
     var sceneImageView: UIImageView { get set }
     var skipBtn: UIButton { get set }
     
     func setupLayout()
 }
 
-class ScenesAutoLayout: ScenesAutoLayoutProtocol {
+class ScenesView: ScenesViewProtocol {
     // MARK:- Properties
     lazy var sceneImageView: UIImageView = {
         let iv = UIImageView()

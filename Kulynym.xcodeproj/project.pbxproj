@@ -8,9 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10221DB22ECD2B40081C95E /* CanvasView.swift */; };
+		D102930822F1A13500C7B2F2 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930722F1A13500C7B2F2 /* QuizViewController.swift */; };
+		D102930A22F1A14000C7B2F2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930922F1A14000C7B2F2 /* QuizView.swift */; };
+		D102930D22F1AD6200C7B2F2 /* QuizPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930C22F1AD6200C7B2F2 /* QuizPresenter.swift */; };
+		D102930F22F1AE0200C7B2F2 /* QuizInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930E22F1AE0200C7B2F2 /* QuizInteractor.swift */; };
+		D102931122F1AE1100C7B2F2 /* QuizRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102931022F1AE1100C7B2F2 /* QuizRouter.swift */; };
+		D102931322F1AF1C00C7B2F2 /* QuizConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102931222F1AF1C00C7B2F2 /* QuizConfigurator.swift */; };
 		D10687CA22AE68BC00A3E6E0 /* MenuConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687C922AE68BC00A3E6E0 /* MenuConfigurator.swift */; };
 		D10687CD22AE68E300A3E6E0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687CC22AE68E300A3E6E0 /* MenuViewController.swift */; };
-		D10687CF22AE68EE00A3E6E0 /* MenuAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687CE22AE68EE00A3E6E0 /* MenuAutoLayout.swift */; };
+		D10687CF22AE68EE00A3E6E0 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687CE22AE68EE00A3E6E0 /* MenuView.swift */; };
 		D10687D122AE68FA00A3E6E0 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687D022AE68FA00A3E6E0 /* MenuPresenter.swift */; };
 		D10687D622AE691B00A3E6E0 /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687D522AE691B00A3E6E0 /* MenuRouter.swift */; };
 		D10729F5228767D9003149E8 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10729F4228767D9003149E8 /* PlaylistViewController.swift */; };
@@ -56,7 +62,7 @@
 		D1D469202229C83A0096B968 /* PreschoolerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4691F2229C83A0096B968 /* PreschoolerInteractor.swift */; };
 		D1D469222229C8440096B968 /* PreschoolerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469212229C8440096B968 /* PreschoolerRouter.swift */; };
 		D1D46927222A8C1E0096B968 /* ScenesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D46926222A8C1E0096B968 /* ScenesViewController.swift */; };
-		D1D46929222A8C320096B968 /* ScenesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D46928222A8C320096B968 /* ScenesAutoLayout.swift */; };
+		D1D46929222A8C320096B968 /* ScenesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D46928222A8C320096B968 /* ScenesView.swift */; };
 		D1D4692C222A8C5D0096B968 /* ScenesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4692B222A8C5D0096B968 /* ScenesConfigurator.swift */; };
 		D1D4692E222A8C6B0096B968 /* ScenesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4692D222A8C6B0096B968 /* ScenesPresenter.swift */; };
 		D1D46930222A8C8E0096B968 /* ScenesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4692F222A8C8E0096B968 /* ScenesInteractor.swift */; };
@@ -103,9 +109,15 @@
 
 /* Begin PBXFileReference section */
 		D10221DB22ECD2B40081C95E /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		D102930722F1A13500C7B2F2 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		D102930922F1A14000C7B2F2 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		D102930C22F1AD6200C7B2F2 /* QuizPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPresenter.swift; sourceTree = "<group>"; };
+		D102930E22F1AE0200C7B2F2 /* QuizInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizInteractor.swift; sourceTree = "<group>"; };
+		D102931022F1AE1100C7B2F2 /* QuizRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRouter.swift; sourceTree = "<group>"; };
+		D102931222F1AF1C00C7B2F2 /* QuizConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizConfigurator.swift; sourceTree = "<group>"; };
 		D10687C922AE68BC00A3E6E0 /* MenuConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuConfigurator.swift; sourceTree = "<group>"; };
 		D10687CC22AE68E300A3E6E0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		D10687CE22AE68EE00A3E6E0 /* MenuAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAutoLayout.swift; sourceTree = "<group>"; };
+		D10687CE22AE68EE00A3E6E0 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D10687D022AE68FA00A3E6E0 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		D10687D522AE691B00A3E6E0 /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
 		D10729F4228767D9003149E8 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +169,7 @@
 		D1D4691F2229C83A0096B968 /* PreschoolerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreschoolerInteractor.swift; sourceTree = "<group>"; };
 		D1D469212229C8440096B968 /* PreschoolerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreschoolerRouter.swift; sourceTree = "<group>"; };
 		D1D46926222A8C1E0096B968 /* ScenesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesViewController.swift; sourceTree = "<group>"; };
-		D1D46928222A8C320096B968 /* ScenesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesAutoLayout.swift; sourceTree = "<group>"; };
+		D1D46928222A8C320096B968 /* ScenesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesView.swift; sourceTree = "<group>"; };
 		D1D4692B222A8C5D0096B968 /* ScenesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesConfigurator.swift; sourceTree = "<group>"; };
 		D1D4692D222A8C6B0096B968 /* ScenesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesPresenter.swift; sourceTree = "<group>"; };
 		D1D4692F222A8C8E0096B968 /* ScenesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesInteractor.swift; sourceTree = "<group>"; };
@@ -210,6 +222,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D102930622F1A10600C7B2F2 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				D102931222F1AF1C00C7B2F2 /* QuizConfigurator.swift */,
+				D102930B22F1AD4F00C7B2F2 /* View */,
+				D102930C22F1AD6200C7B2F2 /* QuizPresenter.swift */,
+				D102930E22F1AE0200C7B2F2 /* QuizInteractor.swift */,
+				D102931022F1AE1100C7B2F2 /* QuizRouter.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		D102930B22F1AD4F00C7B2F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D102930722F1A13500C7B2F2 /* QuizViewController.swift */,
+				D102930922F1A14000C7B2F2 /* QuizView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D10687C822AE68A000A3E6E0 /* Menu  */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				D10687CC22AE68E300A3E6E0 /* MenuViewController.swift */,
-				D10687CE22AE68EE00A3E6E0 /* MenuAutoLayout.swift */,
+				D10687CE22AE68EE00A3E6E0 /* MenuView.swift */,
 				D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */,
 			);
 			path = View;
@@ -482,7 +515,7 @@
 		D1D4692A222A8C380096B968 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D1D46928222A8C320096B968 /* ScenesAutoLayout.swift */,
+				D1D46928222A8C320096B968 /* ScenesView.swift */,
 				D1D46926222A8C1E0096B968 /* ScenesViewController.swift */,
 			);
 			path = View;
@@ -494,6 +527,7 @@
 				D10687C822AE68A000A3E6E0 /* Menu  */,
 				D1D469232229C92F0096B968 /* Scenes */,
 				D14D5366222136B9007ACD55 /* Item */,
+				D102930622F1A10600C7B2F2 /* Quiz */,
 				D10729EE22876725003149E8 /* Playlist */,
 				D10729F8228768D0003149E8 /* Karaoke */,
 				D10729F022876748003149E8 /* Story */,
@@ -709,12 +743,13 @@
 				D10687D122AE68FA00A3E6E0 /* MenuPresenter.swift in Sources */,
 				D14D536A22213775007ACD55 /* ItemConfigurator.swift in Sources */,
 				D1F9ABCE22A0453400989BD3 /* StoryRouter.swift in Sources */,
-				D10687CF22AE68EE00A3E6E0 /* MenuAutoLayout.swift in Sources */,
+				D10687CF22AE68EE00A3E6E0 /* MenuView.swift in Sources */,
+				D102930822F1A13500C7B2F2 /* QuizViewController.swift in Sources */,
 				D13D864F2217FEDF0048A6E4 /* ItemViewController.swift in Sources */,
 				D14D537222214853007ACD55 /* ItemRouter.swift in Sources */,
 				D1D4691C2229C8220096B968 /* PreschoolerConfigurator.swift in Sources */,
 				D1F9ABD122A0454600989BD3 /* DrawingViewController.swift in Sources */,
-				D1D46929222A8C320096B968 /* ScenesAutoLayout.swift in Sources */,
+				D1D46929222A8C320096B968 /* ScenesView.swift in Sources */,
 				D1F9ABD722A0457900989BD3 /* DrawingPresenter.swift in Sources */,
 				D13D864D2217FEDF0048A6E4 /* AppDelegate.swift in Sources */,
 				D10687CD22AE68E300A3E6E0 /* MenuViewController.swift in Sources */,
@@ -723,6 +758,7 @@
 				D1D469202229C83A0096B968 /* PreschoolerInteractor.swift in Sources */,
 				D10687CA22AE68BC00A3E6E0 /* MenuConfigurator.swift in Sources */,
 				D10687D622AE691B00A3E6E0 /* MenuRouter.swift in Sources */,
+				D102930D22F1AD6200C7B2F2 /* QuizPresenter.swift in Sources */,
 				D10729F5228767D9003149E8 /* PlaylistViewController.swift in Sources */,
 				D1F9ABD922A0458400989BD3 /* DrawingInteractor.swift in Sources */,
 				D14D536822213769007ACD55 /* ItemPresenter.swift in Sources */,
@@ -731,18 +767,22 @@
 				D13D86552217FEDF0048A6E4 /* Kulynym.xcdatamodeld in Sources */,
 				D10729FB22877D3B003149E8 /* PlaylistConfigurator.swift in Sources */,
 				D10729FD22877D48003149E8 /* PlaylistPresenter.swift in Sources */,
+				D102930A22F1A14000C7B2F2 /* QuizView.swift in Sources */,
+				D102931322F1AF1C00C7B2F2 /* QuizConfigurator.swift in Sources */,
 				D1D46930222A8C8E0096B968 /* ScenesInteractor.swift in Sources */,
 				D1F9ABD322A0455A00989BD3 /* DrawingAutoLayout.swift in Sources */,
 				D107786B22858CEC00D869D3 /* Animator.swift in Sources */,
 				D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */,
 				D1D4691E2229C8300096B968 /* PreschoolerPresenter.swift in Sources */,
 				D1D5599222A82FED001674A7 /* Emitters.swift in Sources */,
+				D102930F22F1AE0200C7B2F2 /* QuizInteractor.swift in Sources */,
 				D1F9ABDB22A0458C00989BD3 /* DrawingRouter.swift in Sources */,
 				D14D536E222137B2007ACD55 /* ItemInteractor.swift in Sources */,
 				D1F9ABCC22A0452A00989BD3 /* StoryInteractor.swift in Sources */,
 				D10729FF22877D5C003149E8 /* PlaylistInteractor.swift in Sources */,
 				D135E2A422A02F7B00DC84DE /* KaraokeViewController.swift in Sources */,
 				D1F9ABC622A044F600989BD3 /* StoryAutoLayout.swift in Sources */,
+				D102931122F1AE1100C7B2F2 /* QuizRouter.swift in Sources */,
 				D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */,
 				D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */,
 				D10729F722876879003149E8 /* PlaylistAutoLayout.swift in Sources */,
