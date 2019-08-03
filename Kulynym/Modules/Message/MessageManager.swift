@@ -15,8 +15,6 @@ enum Emotion: String {
     case stories = "storiesMessage"
     case drawing = "drawingMessage"
     case games = "gamesMessage"
-    case tryAgain = "tryAgainMessage"
-    case wellDone = "wellDoneMessage"
 }
 
 protocol MessageShowingVC {
@@ -81,22 +79,8 @@ class MessageManager {
     
     // MARK:- Send Data
     private func configureProperties() {
-        let audio = emotion.rawValue
-        var image = "happyChar"
-        
-        switch emotion {
-        case .tryAgain:
-            image = "sadChar"
-        default:
-            break
-        }
-        
-        changeValues(image: image, audio: audio)
-    }
-    
-    private func changeValues(image name: String, audio aName: String) {
-        messageView.imageName = name
-        messageView.audioName = aName
+        messageView.imageName = "happyChar"
+        messageView.audioName = emotion.rawValue
     }
 }
 

@@ -10,16 +10,16 @@
 import Foundation
 
 protocol MenuConfiguratorProtocol: class {
-    func configure(with view: MenuViewController)
+    func configure(with controller: MenuViewController)
 }
 
 class MenuConfigurator: MenuConfiguratorProtocol {
-    func configure(with view: MenuViewController) {
-        let presenter = MenuPresenter(view)
+    func configure(with controller: MenuViewController) {
+        let presenter = MenuPresenter(controller)
         let interactor = MenuInteractor(presenter)
-        let router = MenuRouter(view)
+        let router = MenuRouter(controller)
         
-        view.presenter = presenter
+        controller.presenter = presenter
         presenter.interactor = interactor 
         presenter.router = router
     }

@@ -18,7 +18,7 @@ protocol ScenesViewControllerProtocol: class {
 class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
     // MARK:- Properties
     var presenter: ScenesPresenterProtocol!
-    weak var itemViewDelegate: ItemVCProtocol!
+    weak var itemViewControllerDelegate: ItemViewControllerProtocol!
     
     var section: EduSection!
     

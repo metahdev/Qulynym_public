@@ -10,15 +10,17 @@
 import UIKit
 import CoreData
 
+#warning("do some refactoring of the project and make a review")
 /*
  Bugs, which are already found:
   1) Memory Leak with Audio
   2) Audio queue isn't optimizing the main thread
-  3) Preschool module's scroll view - content is ambigious
-  4) Eraser draws white on picture
+  3) solved
+  4) Eraser draws white on picture !
   5) Item quit animation is different from pushing back to the rootVC, maybe leak, idk
   6) Auto Layout on IPad: Karaoke Module(video view & Titles), closeBtn
   7) There are some shady business happening between Audios and threads
+  8) Exiting for example, from item, turns on playlist's message audio
  Solutions, which will be integrated further:
   1) TimerController on another queue
   2) Back segue falling leaves
@@ -27,6 +29,9 @@ import CoreData
   5) Item should quit to their menu
   6) Tools at Drawing Module
   7) Scroll View at Alert for instructions of the UI
+  8) Names Refactoring: controller, view
+  9) Concurrency at Quiz: can't scroll while audio is playing
+  10) Shuffle animation of cards
  Eraser icon made by Pixel Buddha at flaticon.com
  */
 

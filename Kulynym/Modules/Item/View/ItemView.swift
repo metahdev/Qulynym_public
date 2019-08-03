@@ -1,6 +1,6 @@
 /*
  * Kulynym
- * ItemAutoLayout.swift
+ * ItemView.swift
  *
  * Created by: Metah on 2/24/19
  *
@@ -9,7 +9,7 @@
 
 import UIKit
 
-protocol ItemAutoLayoutProtocol: class {
+protocol ItemViewProtocol: class {
     var contentBtn: UIButton { get set }
     var closeBtn: UIButton { get set }
     var forwardBtn: UIButton { get set }
@@ -17,10 +17,16 @@ protocol ItemAutoLayoutProtocol: class {
     func setupLayout()
 }
 
-class ItemAutoLayout: ItemAutoLayoutProtocol {
+class ItemView: ItemViewProtocol {
     // MARK:- Properties
     lazy var contentBtn: UIButton = {
         let btn = UIButton()
+        btn.layer.cornerRadius = 5
+        btn.layer.borderWidth = 5
+        btn.imageView?.layer.cornerRadius = 5
+        btn.layer.borderColor = UIColor.white.cgColor
+        btn.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        btn.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         return btn
     }()
     lazy var closeBtn: UIButton = {
@@ -36,7 +42,7 @@ class ItemAutoLayout: ItemAutoLayoutProtocol {
     private lazy var backgroundImage: UIImageView = {
         let image = UIImageView()
         image.layer.zPosition = -1
-        image.image = UIImage(named: "itemBackground")
+        image.image = UIImage(named: "itemBg")
         return image
     }()
     private weak var view: UIView!

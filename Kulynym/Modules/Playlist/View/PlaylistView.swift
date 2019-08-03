@@ -1,6 +1,6 @@
 /*
 * Kulynym
-* PlaylistAutoLayout.swift
+* PlaylistView.swift
 *
 * Created by: Metah on 5/12/19
 *
@@ -9,7 +9,7 @@
 
 import UIKit
 
-protocol PlaylistAutoLayoutProtocol: class {
+protocol PlaylistViewProtocol: class {
     var listCollectionView: UICollectionView { get set }
     var closeBtn: UIButton { get set }
     var titleLabel: UILabel { get set }
@@ -17,18 +17,10 @@ protocol PlaylistAutoLayoutProtocol: class {
     func setupLayout()
 }
 
-class PlaylistAutoLayout: PlaylistAutoLayoutProtocol {
+class PlaylistView: PlaylistViewProtocol {
     // MARK:- Properties
     lazy var listCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundColor = .clear
-        
-        cv.setCollectionViewLayout(layout, animated: true)
-        cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
-        return cv
+        return configureImagesCollectionView(scroll: .vertical, image: nil, background: nil)
     }()
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
@@ -37,11 +29,11 @@ class PlaylistAutoLayout: PlaylistAutoLayoutProtocol {
     }()
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setupContentLabel(size: view.frame.width * 0.5)
+        lbl.setupContentLabel(size: view.frame.height * 0.1)
         return lbl
     }()
     private lazy var backgroundImage: UIImageView = {
-        let imageV = UIImageView(image: UIImage(named: "karaokeBg"))
+        let imageV = UIImageView(image: UIImage(named: "playlistBg"))
         imageV.layer.zPosition = -1
         return imageV
     }()

@@ -15,9 +15,9 @@ protocol ScenesConfiguratorProtocol: class {
 
 class ScenesConfigurator: ScenesConfiguratorProtocol {
     func configure(with viewController: ScenesViewController) {
-        let presenter = ScenesPresenter(view: viewController)
-        let interactor = ScenesInteractor(presenter: presenter)
-        let router = ScenesRouter(view: viewController)
+        let presenter = ScenesPresenter(viewController)
+        let interactor = ScenesInteractor(presenter)
+        let router = ScenesRouter(viewController)
         
         viewController.presenter = presenter
         presenter.interactor = interactor

@@ -22,10 +22,10 @@ protocol MenuRouterProtocol: class {
 
 class MenuRouter: MenuRouterProtocol {
     // MARK:- Properties
-    weak var view: MenuViewController!
+    weak var controller: MenuViewController!
     
-    required init(_ view: MenuViewController) {
-        self.view = view 
+    required init(_ controller: MenuViewController) {
+        self.controller = controller
     }
 }
 
@@ -33,15 +33,15 @@ extension MenuRouter {
     // MARK:- Protocol Methods
     func showToddlerEdu() {
         let vc = MenuViewController()
-        view.secondMenuViewDelegate = vc
-        view.secondMenuViewDelegate.menuType = .toddler
+        controller.secondMenuViewDelegate = vc
+        controller.secondMenuViewDelegate.menuType = .toddler
         presentAnotherView(view: vc)
     }
     
     func showPlaylist(isKaraoke: Bool) {
         let vc = PlaylistViewController()
-        view.playlistViewDelegate = vc
-        view.playlistViewDelegate.isKaraoke = isKaraoke
+        controller.playlistViewDelegate = vc
+        controller.playlistViewDelegate.isKaraoke = isKaraoke
         presentAnotherView(view: vc)
     }
     
@@ -55,15 +55,15 @@ extension MenuRouter {
     
     func showScenesView(content section: EduSection) {
         let vc = ScenesViewController()
-        view.scenesViewDelegate = vc
-        view.scenesViewDelegate.section = section
+        controller.scenesViewDelegate = vc
+        controller.scenesViewDelegate.section = section
         presentAnotherView(view: vc)
     }
     
     func showGamesMenu() {
         let vc = MenuViewController()
-        view.secondMenuViewDelegate = vc
-        view.secondMenuViewDelegate.menuType = .games
+        controller.secondMenuViewDelegate = vc
+        controller.secondMenuViewDelegate.menuType = .games
         presentAnotherView(view: vc)
     }
     
@@ -72,11 +72,11 @@ extension MenuRouter {
     }
     
     func close() {
-        view.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
     
     private func presentAnotherView(view toPresent: UIViewController) {
-        toPresent.transitioningDelegate = view
-        view.present(toPresent, animated: true, completion: nil)
+        toPresent.transitioningDelegate = controller
+        controller.present(toPresent, animated: true, completion: nil)
     }
 }

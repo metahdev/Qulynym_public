@@ -23,12 +23,12 @@ class ItemPresenter: ItemPresenterProtocol {
     var slideCount = 0
     var contentKey = ""
     
-    weak var view: ItemVCProtocol!
+    weak var controller: ItemViewControllerProtocol!
     var router: ItemRouterProtocol!
     var interactor: ItemInteractorProtocol!
     
-    required init(view: ItemVCProtocol) {
-        self.view = view
+    required init(_ controller: ItemViewControllerProtocol) {
+        self.controller = controller
     }
 }
 
@@ -37,12 +37,22 @@ extension ItemPresenter {
     func updateView() {
         updateProperties()
         AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
-        view.updateContent(contentKey: contentKey)
+        controller.updateContent(contentKey: contentKey)
     }
     
     func updateProperties() {
-        self.contentKey = interactor.fillContent(with: self.slideCount, with: view.contentNames)
+        if slideCount % 4 == 0 && controller.checkForQuiz {
+            passDataAndOpenQuiz()
+            return
+        }
+        self.contentKey = interactor.fillContent(with: self.slideCount, with: controller.contentNames)
         self.slideCount += 1
+        controller.checkForQuiz = true
+    }
+    
+    private func passDataAndOpenQuiz() {
+        let shuffledCards = interactor.getShuffledCards(from: controller.contentNames)
+        router.openQuiz(shuffledCards, with: controller.categoryName)
     }
     
     func contentBtnPressed() {

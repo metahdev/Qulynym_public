@@ -15,9 +15,9 @@ protocol ItemConfiguratorProtocol: class {
 
 class ItemConfigurator: ItemConfiguratorProtocol {
     func configure(with viewController: ItemViewController) {
-        let presenter = ItemPresenter(view: viewController)
-        let interactor = ItemInteractor(presenter: presenter)
-        let router = ItemRouter(view: viewController)
+        let presenter = ItemPresenter(viewController)
+        let interactor = ItemInteractor(presenter)
+        let router = ItemRouter(viewController)
         
         viewController.presenter = presenter
         presenter.interactor = interactor

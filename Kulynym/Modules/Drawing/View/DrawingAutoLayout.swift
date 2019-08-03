@@ -41,15 +41,7 @@ class DrawingAutoLayout: DrawingAutoLayoutProtocol {
         return iv
     }()
     lazy var toolsCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundView = UIImageView(image: UIImage(named: "woodBg"))
-        
-        cv.setCollectionViewLayout(layout, animated: true)
-        cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
-        return cv
+        return configureImagesCollectionView(scroll: .horizontal, image: "woodBg", background: nil)
     }()
     lazy var resetBtn: UIButton = {
         let btn = UIButton()

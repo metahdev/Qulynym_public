@@ -12,20 +12,30 @@ import UIKit
 
 protocol ItemRouterProtocol: class {
     func closeView()
+    func openQuiz(_ cards: [String], with categoryName: String)
 }
 
 class ItemRouter {
     // MARK:- Properties
-    weak var view: ItemViewController!
+    weak var controller: ItemViewController!
     
-    required init(view: ItemViewController) {
-        self.view = view
+    required init(_ controller: ItemViewController) {
+        self.controller = controller
     }
 }
 
 extension ItemRouter: ItemRouterProtocol {
     // MARK:- Protocol Methods
     func closeView() {
-        view.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        controller.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func openQuiz(_ cards: [String], with categoryName: String) {
+        let vc = QuizViewController()
+        controller.quizViewController = vc
+        controller.quizViewController.cards = cards
+        controller.quizViewController.categoryName = categoryName
+        vc.itemView = controller
+        controller.present(vc, animated: true, completion: nil)
     }
 }

@@ -144,17 +144,7 @@ class StoryAutoLayout: StoryAutoLayoutProtocol {
     
     // MARK:- Animation
     func startCharactersAnimation(char: StoryCharacter, duration: Int) {
-        var index = 0
         
-        if char == .second {
-            index = 1
-        }
-        
-        UIView.animate(withDuration: TimeInterval(duration), animations: {
-            self.charConstraints[index].constant
-//            let angle: CGFloat = menuIsOpen ? .pi / 4 : 0.0
-//            menuButton.transform = CGAffineTransform(rotationAngle: angle)
-        })
     }
     
     func startCurtainsAnimation() {

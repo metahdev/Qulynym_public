@@ -18,7 +18,7 @@ protocol ScenesPresenterProtocol: class {
 
 class ScenesPresenter: ScenesPresenterProtocol {
     // MARK:- Properties
-    weak var view: ScenesViewControllerProtocol!
+    weak var controller: ScenesViewControllerProtocol!
     var interactor: ScenesInteractorProtocol!
     var router: ScenesRouterProtocol!
     
@@ -26,22 +26,22 @@ class ScenesPresenter: ScenesPresenterProtocol {
     var timerManager: TimerController!
     var timepoints = [Int]()
     
-    required init(view: ScenesViewControllerProtocol) {
-        self.view = view
+    required init(_ view: ScenesViewControllerProtocol) {
+        self.controller = view
     }
 }
 
 extension ScenesPresenter {
     // MARK:- Protocol Methods
     func getScenes() {
-        interactor.section = view.section
+        interactor.section = controller.section
         scenesNames = interactor.getScenes()
         timepoints = interactor.getTimepoints()
-        view.fillContent(image: scenesNames[0])
+        controller.fillContent(image: scenesNames[0])
     }
     
     func playAudio() {
-        AudioPlayer.setupExtraAudio(with: view.section.name, audioPlayer: .scenes)
+        AudioPlayer.setupExtraAudio(with: controller.section.name, audioPlayer: .scenes)
     }
     
     func startTimer() {
@@ -58,14 +58,14 @@ extension ScenesPresenter {
     }
     
     private func configureDirection() {
-        router.presentItemVC(contentNames: view.section.contentNames)
+        router.presentItemVC(contentNames: controller.section.contentNames, categoryName: controller.section.name)
     }
 }
 
 extension ScenesPresenter: TimerControllerDelegate {
     // MARK:- Delegate Methods
     func notifyOfTimepoints() {
-        view.fillContent(image: scenesNames[timerManager.currentSlide])
+        controller.fillContent(image: scenesNames[timerManager.currentSlide])
     }
     
     func notifyTimerEnded() {

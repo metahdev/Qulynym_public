@@ -10,10 +10,6 @@
 import Foundation
 
 protocol StoryInteractorProtocol: class {
-    
-    func getNewFirstChar()
-    func getNewSecondChar()
-    func getNewBackground()
 }
 
 class StoryInteractor: StoryInteractorProtocol {
@@ -28,16 +24,4 @@ class StoryInteractor: StoryInteractorProtocol {
 
 extension StoryInteractor {
     // MARK:- Protocol Methods
-    #warning("Content")
-    func getNewFirstChar() {
-        
-    }
-    
-    func getNewSecondChar() {
-        
-    }
-    
-    func getNewBackground() {
-        
-    }
 }

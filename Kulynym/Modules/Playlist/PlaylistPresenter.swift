@@ -17,11 +17,11 @@ protocol PlaylistPresenterProtocol: class {
 
 class PlaylistPresenter: PlaylistPresenterProtocol {
     // MARK:- Properties
-    weak var view: PlaylistViewProtocol!
+    weak var view: PlaylistViewControllerProtocol!
     var interactor: PlaylistInteractorProtocol!
     var router: PlaylistRouterProtocol!
     
-    required init(view: PlaylistViewProtocol) {
+    required init(view: PlaylistViewControllerProtocol) {
         self.view = view
     }
 }

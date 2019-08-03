@@ -10,26 +10,27 @@
 import Foundation
 
 protocol ScenesRouterProtocol: class {
-    func presentItemVC(contentNames: [String])
+    func presentItemVC(contentNames: [String], categoryName: String)
 }
 
 class ScenesRouter: ScenesRouterProtocol {
     // MARK:- Properties
-    weak var view: ScenesViewController!
+    weak var controller: ScenesViewController!
     
-    required init(view: ScenesViewController) {
-        self.view = view
+    required init(_ view: ScenesViewController) {
+        self.controller = view
     }
 }
 
 extension ScenesRouter {
     // MARK:- Protocol Methods
-    func presentItemVC(contentNames: [String]) {
+    func presentItemVC(contentNames: [String], categoryName: String) {
         let itemView = ItemViewController()
-        view.itemViewDelegate = itemView
-        view.itemViewDelegate.contentNames = contentNames
-        itemView.transitioningDelegate = view
+        controller.itemViewControllerDelegate = itemView
+        controller.itemViewControllerDelegate.contentNames = contentNames
+        controller.itemViewControllerDelegate.categoryName = categoryName
+        itemView.transitioningDelegate = controller
         
-        view.present(itemView, animated: true, completion: nil)
+        controller.present(itemView, animated: true, completion: nil)
     }
 }

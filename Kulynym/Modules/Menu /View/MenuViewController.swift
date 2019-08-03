@@ -24,7 +24,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
-    weak var playlistViewDelegate: PlaylistViewProtocol!
+    weak var playlistViewDelegate: PlaylistViewControllerProtocol!
     weak var secondMenuViewDelegate: MenuViewControllerProtocol!
     weak var scenesViewDelegate: ScenesViewControllerProtocol!
     
@@ -47,8 +47,8 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
         initLayout()
         menuView.setupLayout()
         setupProperties()
-        initMessage()
         assignActions()
+        initMessage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +73,12 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    private func hideOrUnhideCloseBtn() {
+        closeBtn.isHidden = menuType == .main
+    }
+    
+    
+    // MARK:- Message
     func initMessage() {
         var emotion: Emotion?
         if menuType == .main {
@@ -84,11 +90,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
         guard let nonOptEmotion = emotion else { return }
         message = MessageManager(calling: self, showing: nonOptEmotion)
         message.showAlert()
-    }
-    
-    
-    private func hideOrUnhideCloseBtn() {
-        closeBtn.isHidden = menuType == .main
     }
     
     

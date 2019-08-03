@@ -10,11 +10,14 @@
 import Foundation
 
 protocol QuizPresenterProtocol: class {
-    func getCards()
+    func setCards()
     func getRandom()
-    func deleteItem(at index: Int)
+    func playAudio()
+    func playGoodJobAudio()
+    func playTryAgainAudio()
+    func deleteItem()
     func closeView()
-    func backToItem()
+    func backToItemWithRepeat()
 }
 
 class QuizPresenter: QuizPresenterProtocol {
@@ -33,21 +36,38 @@ class QuizPresenter: QuizPresenterProtocol {
 
 extension QuizPresenter {
     // MARK:- Protocol Methods
-    func getCards() {
-        view.cards = interactor.getCards(at: view.slideCount)
+    func setCards() {
         modifiedCards = view.cards
     }
     
     func getRandom() {
-        view.randomCard = modifiedCards[Int.random(in: 0...modifiedCards.count)]
+        view.randomCard = modifiedCards[Int.random(in: 0...modifiedCards.count - 1)]
     }
     
-    func deleteItem(at index: Int) {
-        if modifiedCards.count == 0 {
-            router.backToItem(slide: view.slideCount + 1)
+    func playAudio() {
+        AudioPlayer.questionAudioPlayer.play()
+        while AudioPlayer.questionAudioPlayer.isPlaying {}
+        AudioPlayer.contentAudioPlayer.play()
+    }
+    
+    func playGoodJobAudio() {
+        
+    }
+    
+    func playTryAgainAudio() {
+        
+    }
+    
+    func deleteItem() {
+        if modifiedCards.count == 1 {
+            router.backToItem(didPass: true)
             return
         }
-        modifiedCards.remove(at: index)
+        let index = modifiedCards.firstIndex(of: view.randomCard)
+        modifiedCards.remove(at: index!)
+        getRandom()
+        view.shuffleCards()
+        playAudio()
     }
     
     func closeView() {
@@ -55,6 +75,6 @@ extension QuizPresenter {
     }
     
     func backToItemWithRepeat() {
-        router.backToItem(slide: view.slideCount - 4)
+        router.backToItem(didPass: false)
     }
 }

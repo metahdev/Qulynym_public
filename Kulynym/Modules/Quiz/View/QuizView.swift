@@ -20,15 +20,7 @@ protocol QuizViewProtocol: class {
 class QuizView: QuizViewProtocol {
     // MARK:- Properties
     lazy var cardsCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundView = UIImageView(image: UIImage(named: "itemBg"))
-        
-        cv.setCollectionViewLayout(layout, animated: true)
-        cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
-        return cv
+        return configureImagesCollectionView(scroll: .vertical, image: "itemBg", background: nil)
     }()
     lazy var soundsButton: UIButton = {
         var btn = UIButton()
@@ -46,6 +38,7 @@ class QuizView: QuizViewProtocol {
     // MARK:- Inititalization
     required init(_ view: UIView) {
         self.view = view
+        view.backgroundColor = .white
     }
     
     // MARK:- Layout

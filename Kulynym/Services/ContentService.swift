@@ -64,6 +64,6 @@ struct ContentService {
     
     private static var colorsSection = EduSection(name: "colorsIcon", scenesNames: [""], timepoints: [0], contentNames: ["red"])
         private static var shapesSection = EduSection(name: "shapesIcon", scenesNames: [""], timepoints: [0], contentNames: ["circle"])
-    private static var animalsSection = EduSection(name: "animalsIcon", scenesNames: [""], timepoints: [0], contentNames: ["cat", "dog", "bear"])
+    private static var animalsSection = EduSection(name: "animalsIcon", scenesNames: [""], timepoints: [0], contentNames: ["cat", "dog", "bear", "eagle", "elephant"])
     private static var plantsSection = EduSection(name: "plantsIcon", scenesNames: [""], timepoints: [0], contentNames: ["rose"])
 }

@@ -21,7 +21,7 @@ class ScenesInteractor: ScenesInteractorProtocol {
     weak var presenter: ScenesPresenterProtocol!
     var section: EduSection!
     
-    required init(presenter: ScenesPresenterProtocol) {
+    required init(_ presenter: ScenesPresenterProtocol) {
         self.presenter = presenter
     }
 }

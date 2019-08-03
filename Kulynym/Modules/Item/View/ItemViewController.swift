@@ -9,22 +9,36 @@
 
 import UIKit
 
-protocol ItemVCProtocol: class {
+protocol ItemViewControllerProtocol: class {
+    var categoryName: String { get set }
     var contentNames: [String]! { get set }
+    var slideCount: Int { get set }
+    var checkForQuiz: Bool { get set }
     
     func updateContent(contentKey: String)
 }
 
-class ItemViewController: UIViewController, ItemVCProtocol {
+class ItemViewController: UIViewController, ItemViewControllerProtocol {
     // MARK:- Properties
+    var categoryName = ""
     var contentNames: [String]!
+    var slideCount: Int {
+        get {
+            return presenter.slideCount
+        }
+        set {
+            presenter.slideCount = newValue
+        }
+    }
+    var checkForQuiz = false
     var presenter: ItemPresenterProtocol!
+    var quizViewController: QuizViewControllerProtocol!
     
     private weak var contentBtn: UIButton!
     private weak var closeBtn: UIButton!
     private weak var forwardBtn: UIButton!
     
-    private var autoLayout: ItemAutoLayoutProtocol!
+    private var autoLayout: ItemViewProtocol!
     private let configurator: ItemConfiguratorProtocol = ItemConfigurator()
 
     
@@ -41,15 +55,16 @@ class ItemViewController: UIViewController, ItemVCProtocol {
         AudioPlayer.backgroundAudioPlayer.play()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkForQuiz = false
         presenter.updateView()
     }
     
     
     // MARK:- Layout
     private func initLayout() {
-        self.autoLayout = ItemAutoLayout(self.view)
+        self.autoLayout = ItemView(self.view)
     }
     
     private func assignViews() {
@@ -83,5 +98,6 @@ extension ItemViewController {
     // MARK:- Protocol Methods
     func updateContent(contentKey: String) {
         contentBtn.setImage(UIImage(named: contentKey), for: .normal)
+        contentBtn.imageView?.contentMode = .scaleAspectFill
     }
 }

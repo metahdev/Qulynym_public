@@ -155,15 +155,7 @@ class DrawingsCollectionView: UIViewController {
     var pictures = ["whiteCanvas", "flowerDrawing", "penguinDrawing", "catterpilarDrawing", "butterflyDrawing"]
     weak var drawingView: DrawingViewProtocol!
     private lazy var mainCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        
-        var cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundColor = .white
-        
-        cv.setCollectionViewLayout(layout, animated: true)
-        cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
-        return cv
+        return configureImagesCollectionView(scroll: .vertical, image: nil, background: .white)
     }()
     
     

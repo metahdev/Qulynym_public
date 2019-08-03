@@ -9,12 +9,12 @@
 
 import UIKit
 
-protocol PlaylistViewProtocol: class {
+protocol PlaylistViewControllerProtocol: class {
     var isKaraoke: Bool! { get set }
     var content: [Section] { get set }
 }
 
-class PlaylistViewController: UIViewController, PlaylistViewProtocol, MessageShowingVC {
+class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol, MessageShowingVC {
     // MARK:- Properties
     var isKaraoke: Bool!
     var content = [Section]()
@@ -28,7 +28,7 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol, MessageSho
     private weak var closeBtn: UIButton!
     private weak var titleLabel: UILabel!
     
-    private var autoLayout: PlaylistAutoLayoutProtocol!
+    private var playlistView: PlaylistViewProtocol!
     private let configurator: PlaylistConfiguratorProtocol = PlaylistConfigurator()
     
     
@@ -38,7 +38,7 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol, MessageSho
         configurator.configure(with: self)
         
         initLayout()
-        autoLayout.setupLayout()
+        playlistView.setupLayout()
         assignViews()
         setupCollectionView()
         setText()
@@ -55,13 +55,13 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol, MessageSho
     
     // MARK:- Layout
     private func initLayout() {
-        autoLayout = PlaylistAutoLayout(view: self.view)
+        playlistView = PlaylistView(view: self.view)
     }
     
     private func assignViews() {
-        self.listCollectionView = autoLayout.listCollectionView
-        self.closeBtn = autoLayout.closeBtn
-        self.titleLabel = autoLayout.titleLabel
+        self.listCollectionView = playlistView.listCollectionView
+        self.closeBtn = playlistView.closeBtn
+        self.titleLabel = playlistView.titleLabel
     }
     
     

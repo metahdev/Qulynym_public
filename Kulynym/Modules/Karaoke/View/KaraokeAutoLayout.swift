@@ -26,7 +26,7 @@ class KaraokeAutoLayout: KaraokeAutoLayoutProtocol {
     
     lazy var contentLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setupContentLabel(size: view.frame.height * 0.07)
+        lbl.setupContentLabel(size: view.frame.height * 0.1)
         return lbl
     }()
     lazy var videoView: UIView = {
@@ -51,7 +51,7 @@ class KaraokeAutoLayout: KaraokeAutoLayoutProtocol {
         return iv
     }()
     private lazy var background: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "karaokeBg"))
+        let iv = UIImageView(image: UIImage(named: "playlistBg"))
         iv.layer.zPosition = -1
         return iv
     }()

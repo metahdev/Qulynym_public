@@ -19,15 +19,7 @@ protocol MenuViewProtocol: class {
 class MenuView: MenuViewProtocol {
     // MARK:- Properties
     lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundView = UIImageView(image: UIImage(named: "menu"))
-        
-        cv.setCollectionViewLayout(layout, animated: true)
-        cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
-        return cv
+        return configureImagesCollectionView(scroll: .horizontal, image: "menu", background: nil)
     }()
     lazy var closeBtn: UIButton = {
         let btn = UIButton()

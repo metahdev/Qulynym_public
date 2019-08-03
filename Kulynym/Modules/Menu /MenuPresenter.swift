@@ -19,19 +19,19 @@ protocol MenuPresenterProtocol: class {
 
 class MenuPresenter: MenuPresenterProtocol {
     // MARK:- Properties
-    weak var view: MenuViewControllerProtocol!
+    weak var controller: MenuViewControllerProtocol!
     var interactor: MenuInteractor!
     var router: MenuRouterProtocol!
     
-    required init(_ view: MenuViewControllerProtocol) {
-        self.view = view
+    required init(_ controller: MenuViewControllerProtocol) {
+        self.controller = controller
     }
 }
 
 extension MenuPresenter {
     // MARK:- Protocol Methods
     func getSections() {
-        view.sections = interactor.getSections(view!.menuType)
+        controller.sections = interactor.getSections(controller!.menuType)
     }
     
     func didSelectMenuCell(at index: Int) {
@@ -45,7 +45,7 @@ extension MenuPresenter {
     }
     
     func didSelectToddlerCell(at index: Int) {
-        let section = view.sections[index]
+        let section = controller.sections[index]
         router.showScenesView(content: section as! EduSection)
     }
     

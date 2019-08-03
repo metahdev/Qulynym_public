@@ -10,7 +10,6 @@
 import Foundation
 
 protocol QuizInteractorProtocol: class {
-    func getCards(at index: Int)
 }
 
 class QuizInteractor: QuizInteractorProtocol {
@@ -22,7 +21,5 @@ class QuizInteractor: QuizInteractorProtocol {
 }
 
 extension QuizInteractor {
-    func getCards(at index: Int) {
-        
-    }
+    
 }

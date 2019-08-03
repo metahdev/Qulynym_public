@@ -47,3 +47,30 @@ extension UIImageView {
         ])
     }
 }
+
+enum BackgroundType {
+    case white
+    case clear
+}
+
+func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDirection, image name: String?, background type: BackgroundType?) -> UICollectionView {
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = direction
+    
+    let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+    
+    if let imageName = name {
+        cv.backgroundView = UIImageView(image: UIImage(named: imageName))
+    }
+    if type == .white {
+        cv.backgroundColor = .white
+    } else {
+        cv.backgroundColor = .clear
+    }
+    
+    cv.setCollectionViewLayout(layout, animated: true)
+    cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
+    
+    cv.allowsMultipleSelection = false
+    return cv
+}
