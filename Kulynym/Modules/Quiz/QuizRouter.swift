@@ -31,6 +31,8 @@ extension QuizRouter {
     }
     
     func close() {
-        view.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        if let firstViewController = controller.navigationController?.viewControllers[1] {
+            controller.navigationController?.popToViewController(firstViewController, animated: true)
+        }
     }
 }

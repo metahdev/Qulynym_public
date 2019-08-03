@@ -15,12 +15,12 @@ protocol DrawingPresenterProtocol: class {
 
 class DrawingPresenter: DrawingPresenterProtocol {
     // MARK:- Properties
-    weak var view: DrawingViewProtocol!
+    weak var controller: DrawingViewControllerProtocol!
     var interactor: DrawingInteractorProtocol!
     var router: DrawingRouterProtocol!
     
-    required init(view: DrawingViewProtocol!) {
-        self.view = view
+    required init(_ controller: DrawingViewControllerProtocol!) {
+        self.controller = controller
     }
 }
 

@@ -15,15 +15,15 @@ protocol DrawingRouterProtocol: class {
 
 class DrawingRouter: DrawingRouterProtocol {
     // MARK:- Properties
-    weak var view: DrawingViewController!
+    weak var controller: DrawingViewController!
     
-    required init(_ view: DrawingViewController) {
-        self.view = view
+    required init(_ controller: DrawingViewController) {
+        self.controller = controller
     }
 }
 
 extension DrawingRouter {
     func close() {
-        view.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        controller.navigationController?.popViewController(animated: true)
     }
 }

@@ -14,25 +14,18 @@ enum StoryCharacter {
     case second
 }
 
-protocol StoryViewProtocol: class {
-    var content: StorySection! { get set }
-    
-    func fillContent(firstChar: String, secondChar: String, background: String)
-    func curtainsAnimation()
-    func charactersAnimation(char: StoryCharacter, duration: Int)
+protocol StoryViewControllerProtocol: class {
+    var storyName: String! { get set }
 }
 
-class StoryViewController: UIViewController, StoryViewProtocol {
+class StoryViewController: UIViewController, StoryViewControllerProtocol {
     // MARK:- Properties
+    var storyName: String!
     var presenter: StoryPresenterProtocol!
-    var content: StorySection!
     
-    private weak var backgroundImage: UIImageView!
-    private weak var characterImage: UIImageView!
-    private weak var secondCharacterImage: UIImageView!
     private weak var closeBtn: UIButton!
     
-    private var autoLayout: StoryAutoLayoutProtocol!
+    private var storyView: StoryViewProtocol!
     private let configurator: StoryConfiguratorProtocol = StoryConfigurator()
     
     
@@ -41,28 +34,23 @@ class StoryViewController: UIViewController, StoryViewProtocol {
         super.viewDidLoad()
         configurator.configure(with: self)
         initLayout()
-        autoLayout.setupLayout()
+        storyView.setupLayout()
         assignViews()
         assignActions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        presenter.startTimer()
-//        scenesView.startCurtainsAnimation()
     }
     
     
     // MARK:- Layout
     private func initLayout() {
-        autoLayout = StoryAutoLayout(self.view)
+        storyView = StoryView(self.view)
     }
     
     private func assignViews() {
-        self.backgroundImage = autoLayout.backgroundImage
-        self.characterImage = autoLayout.characterImage
-        self.secondCharacterImage = autoLayout.secondCharacterImage
-        self.closeBtn = autoLayout.closeBtn
+        self.closeBtn = storyView.closeBtn
     }
     
     
@@ -73,22 +61,5 @@ class StoryViewController: UIViewController, StoryViewProtocol {
     
     @objc private func closeBtnPressed() {
         presenter.closeView()
-    }
-}
-
-
-extension StoryViewController {
-    // MARK:- Protocol Methods
-    func fillContent(firstChar: String, secondChar: String, background: String) {
-        characterImage.image = UIImage(named: firstChar)
-        secondCharacterImage.image = UIImage(named: secondChar)
-    }
-    
-    func curtainsAnimation() {
-        autoLayout.startCurtainsAnimation()
-    }
-
-    func charactersAnimation(char: StoryCharacter, duration: Int) {
-        autoLayout.startCharactersAnimation(char: .first, duration: duration)
     }
 }

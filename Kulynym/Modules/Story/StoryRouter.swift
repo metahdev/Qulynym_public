@@ -15,15 +15,15 @@ protocol StoryRouterProtocol: class {
 
 class StoryRouter: StoryRouterProtocol {
     // MARK:- Properites
-    weak var view: StoryViewController!
+    weak var controller: StoryViewController!
     
-    required init(_ view: StoryViewController) {
-        self.view = view
+    required init(_ controller: StoryViewController) {
+        self.controller = controller
     }
 }
 
 extension StoryRouter {
     func close() {
-        view.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        controller.navigationController?.popViewController(animated: true)
     }
 }

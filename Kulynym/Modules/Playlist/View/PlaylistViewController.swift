@@ -11,16 +11,16 @@ import UIKit
 
 protocol PlaylistViewControllerProtocol: class {
     var isKaraoke: Bool! { get set }
-    var content: [Section] { get set }
+    var content: [String] { get set }
 }
 
 class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol, MessageShowingVC {
     // MARK:- Properties
     var isKaraoke: Bool!
-    var content = [Section]()
+    var content = [String]()
     var presenter: PlaylistPresenterProtocol!
-    weak var karaokeViewDelegate: KaraokeViewProtocol!
-    weak var storyViewDelegate: StoryViewProtocol!
+    weak var karaokeViewDelegate: KaraokeViewControllerProtocol!
+    weak var storyViewDelegate: StoryViewControllerProtocol!
     
     var message: MessageManager!
 
@@ -97,7 +97,7 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        cell.imageName = content[indexPath.row].name
+        cell.imageName = content[indexPath.row]
         return cell
     }
     

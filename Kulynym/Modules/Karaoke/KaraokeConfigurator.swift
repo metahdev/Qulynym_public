@@ -10,14 +10,17 @@
 import Foundation
 
 protocol KaraokeConfiguratorProtocol: class {
-    func configure(with view: KaraokeViewController)
+    func configure(with controller: KaraokeViewController)
 }
 
 class KaraokeConfigurator: KaraokeConfiguratorProtocol {
-    func configure(with view: KaraokeViewController) {
-        let router = KaraokeRouter(view: view)
+    func configure(with controller: KaraokeViewController) {
+        let presenter = KaraokePresenter(controller)
+        let interactor = KaraokeInteractor(presenter)
+        let router = KaraokeRouter(view: controller)
         
-        view.router = router
-        router.view = view
+        controller.presenter = presenter
+        presenter.interactor = interactor
+        presenter.router = router
     }
 }

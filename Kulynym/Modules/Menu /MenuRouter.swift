@@ -35,36 +35,36 @@ extension MenuRouter {
         let vc = MenuViewController()
         controller.secondMenuViewDelegate = vc
         controller.secondMenuViewDelegate.menuType = .toddler
-        presentAnotherView(view: vc)
+        showAnotherView(view: vc)
     }
     
     func showPlaylist(isKaraoke: Bool) {
         let vc = PlaylistViewController()
         controller.playlistViewDelegate = vc
         controller.playlistViewDelegate.isKaraoke = isKaraoke
-        presentAnotherView(view: vc)
+        showAnotherView(view: vc)
     }
     
     func showDrawingView() {
-        presentAnotherView(view: DrawingViewController())
+        showAnotherView(view: DrawingViewController())
     }
     
     func showPreschoolerEdu() {
-        presentAnotherView(view: PreschoolerViewController())
+        showAnotherView(view: PreschoolerViewController())
     }
     
     func showScenesView(content section: EduSection) {
         let vc = ScenesViewController()
         controller.scenesViewDelegate = vc
         controller.scenesViewDelegate.section = section
-        presentAnotherView(view: vc)
+        showAnotherView(view: vc)
     }
     
     func showGamesMenu() {
         let vc = MenuViewController()
         controller.secondMenuViewDelegate = vc
         controller.secondMenuViewDelegate.menuType = .games
-        presentAnotherView(view: vc)
+        showAnotherView(view: vc)
     }
     
     func openFlappyBird() {
@@ -72,11 +72,10 @@ extension MenuRouter {
     }
     
     func close() {
-        controller.dismiss(animated: true, completion: nil)
+        controller.navigationController!.popViewController(animated: true)
     }
     
-    private func presentAnotherView(view toPresent: UIViewController) {
-        toPresent.transitioningDelegate = controller
-        controller.present(toPresent, animated: true, completion: nil)
+    private func showAnotherView(view toPresent: UIViewController) {
+        controller.show(toPresent, sender: nil)
     }
 }

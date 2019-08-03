@@ -10,14 +10,14 @@
 import UIKit
 import AVKit
 
-protocol KaraokeViewProtocol: class {
-    var content: Section! { get set }
+protocol KaraokeViewControllerProtocol: class {
+    var content: String! { get set }
 }
 
-class KaraokeViewController: UIViewController, KaraokeViewProtocol {
+class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
     // MARK:- Properties
-    var content: Section!
-    var router: KaraokeRouterProtocol!
+    var content: String!
+    var presenter: KaraokePresenterProtocol!
     
     private weak var contentLabel: UILabel!
     private weak var videoView: UIView!
@@ -26,7 +26,7 @@ class KaraokeViewController: UIViewController, KaraokeViewProtocol {
     private var player: AVPlayer?
     
     private let configurator: KaraokeConfiguratorProtocol = KaraokeConfigurator()
-    private var autoLayout: KaraokeAutoLayoutProtocol!
+    private var karaokeView: KaraokeViewProtocol!
     
     
     // MARK:- View Lifecycle
@@ -34,7 +34,7 @@ class KaraokeViewController: UIViewController, KaraokeViewProtocol {
         super.viewDidLoad()
         configurator.configure(with: self)
         initLayout()
-        autoLayout.setupLayout()
+        karaokeView.setupLayout()
         assignViews()
         assignActions()
     }
@@ -42,24 +42,24 @@ class KaraokeViewController: UIViewController, KaraokeViewProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AudioPlayer.backgroundAudioPlayer.stop()
-        autoLayout.initNoteView()
+        karaokeView.initNoteView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         playVideo()
-        autoLayout.initLayer(player)
+        karaokeView.initLayer(player)
     }
     
     
     // MARK:- Layout
     private func initLayout() {
-        autoLayout = KaraokeAutoLayout(self.view)
+        karaokeView = KaraokeView(self.view)
     }
     
     private func assignViews() {
-        self.contentLabel = autoLayout.contentLabel
-        self.videoView = autoLayout.videoView
-        self.closeBtn = autoLayout.closeBtn
+        self.contentLabel = karaokeView.contentLabel
+        self.videoView = karaokeView.videoView
+        self.closeBtn = karaokeView.closeBtn
     }
     
     
@@ -72,11 +72,11 @@ class KaraokeViewController: UIViewController, KaraokeViewProtocol {
     }
 
     private func setImage() {
-        contentLabel.text = content.name
+        contentLabel.text = content
     }
     
     private func initPath() {
-        let videoString = Bundle.main.path(forResource: content.name, ofType: "mp4")
+        let videoString = Bundle.main.path(forResource: content, ofType: "mp4")
         guard let unwrappedVideoPath = videoString else { return }
         
         let videoUrl = URL(fileURLWithPath: unwrappedVideoPath)
@@ -91,10 +91,10 @@ class KaraokeViewController: UIViewController, KaraokeViewProtocol {
     }
     
     @objc private func closeBtnPressed() {
-        router.close()
+        presenter.close()
     }
     
     @objc private func videoEnded() {
-        router.close()
+        presenter.close()
     }
 }

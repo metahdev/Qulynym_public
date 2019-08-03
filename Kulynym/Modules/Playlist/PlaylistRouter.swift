@@ -16,36 +16,35 @@ protocol PlaylistRouterProtocol: class {
 
 class PlaylistRouter: PlaylistRouterProtocol {
     // MARK:- Properties
-    weak var view: PlaylistViewController!
+    weak var controller: PlaylistViewController!
     
-    required init(view: PlaylistViewController) {
-        self.view = view
+    required init(_ controller: PlaylistViewController) {
+        self.controller = controller
     }
 }
 
 extension PlaylistRouter {
     // MARK:- Protocol Methods
     func close() {
-        view.dismiss(animated: true, completion: nil)
+        controller.navigationController!.popViewController(animated: true)
     }
     
     func presentContent(_ index: Int) {
-        if view.isKaraoke {
+        if controller.isKaraoke {
             let karaokeView = KaraokeViewController()
-            view.karaokeViewDelegate = karaokeView
+            controller.karaokeViewDelegate = karaokeView
             
-            view.karaokeViewDelegate.content = view.content[index]
-            karaokeView.transitioningDelegate = view
+            controller.karaokeViewDelegate.content = controller.content[index]
+            karaokeView.transitioningDelegate = controller
             
-            view.present(karaokeView, animated: true, completion: nil)
+            controller.show(karaokeView, sender: nil)
         } else {
             let storyView = StoryViewController()
-            view.storyViewDelegate = storyView 
+            controller.storyViewDelegate = storyView 
+            controller.storyViewDelegate.storyName = ContentService.stories[index]
+            storyView.transitioningDelegate = controller
             
-            view.storyViewDelegate.content = ContentService.stories[index]
-            storyView.transitioningDelegate = view
-            
-            view.present(storyView, animated: true, completion: nil)
+            controller.show(storyView, sender: nil)
         }
     }
 }

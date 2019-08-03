@@ -31,7 +31,7 @@
 		D132840D22F4581100C630A6 /* eagle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D132840C22F4581100C630A6 /* eagle.mp3 */; };
 		D132840F22F4582600C630A6 /* animalsIconQ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D132840E22F4582600C630A6 /* animalsIconQ.mp3 */; };
 		D135E2A422A02F7B00DC84DE /* KaraokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A322A02F7B00DC84DE /* KaraokeViewController.swift */; };
-		D135E2A722A02F9800DC84DE /* KaraokeAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A622A02F9800DC84DE /* KaraokeAutoLayout.swift */; };
+		D135E2A722A02F9800DC84DE /* KaraokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A622A02F9800DC84DE /* KaraokeView.swift */; };
 		D135E2AB22A02FBC00DC84DE /* KaraokeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AA22A02FBC00DC84DE /* KaraokeConfigurator.swift */; };
 		D135E2AF22A02FD900DC84DE /* KaraokeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AE22A02FD900DC84DE /* KaraokeRouter.swift */; };
 		D1383F8E22AFCD42007815DF /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */; };
@@ -58,8 +58,10 @@
 		D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D53782221B185007ACD55 /* AudioPlayer.swift */; };
 		D19245172284DC2800ABD1BD /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19245162284DC2800ABD1BD /* Timer.swift */; };
 		D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D36E4222BAEEC005188D0 /* Extensions.swift */; };
+		D1C69D1222F631DD003D0D05 /* KaraokePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1122F631DD003D0D05 /* KaraokePresenter.swift */; };
+		D1C69D1422F631E9003D0D05 /* KaraokeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1322F631E9003D0D05 /* KaraokeInteractor.swift */; };
 		D1D469172229C7FC0096B968 /* PreschoolerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469162229C7FC0096B968 /* PreschoolerViewController.swift */; };
-		D1D4691A2229C8140096B968 /* PreschoolerAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469192229C8140096B968 /* PreschoolerAutoLayout.swift */; };
+		D1D4691A2229C8140096B968 /* PreschoolerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469192229C8140096B968 /* PreschoolerView.swift */; };
 		D1D4691C2229C8220096B968 /* PreschoolerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4691B2229C8220096B968 /* PreschoolerConfigurator.swift */; };
 		D1D4691E2229C8300096B968 /* PreschoolerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4691D2229C8300096B968 /* PreschoolerPresenter.swift */; };
 		D1D469202229C83A0096B968 /* PreschoolerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4691F2229C83A0096B968 /* PreschoolerInteractor.swift */; };
@@ -72,7 +74,7 @@
 		D1D46932222A8C9A0096B968 /* ScenesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D46931222A8C9A0096B968 /* ScenesRouter.swift */; };
 		D1D5599222A82FED001674A7 /* Emitters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5599122A82FED001674A7 /* Emitters.swift */; };
 		D1D5599522A85E8B001674A7 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5599422A85E8B001674A7 /* MessageViewController.swift */; };
-		D1D5599722A85E95001674A7 /* MessageAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5599622A85E95001674A7 /* MessageAutoLayout.swift */; };
+		D1D5599722A85E95001674A7 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5599622A85E95001674A7 /* MessageView.swift */; };
 		D1E3719322A7A0AA009D97AB /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E3719222A7A0AA009D97AB /* MessageManager.swift */; };
 		D1F3BE8622F1551F00BD4F97 /* helloMessage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1F3BE8522F1551F00BD4F97 /* helloMessage.mp3 */; };
 		D1F3BE8922F1778900BD4F97 /* drawingMessage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1F3BE8822F1778900BD4F97 /* drawingMessage.mp3 */; };
@@ -80,13 +82,13 @@
 		D1F3BE8D22F1779F00BD4F97 /* karaokeMessage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1F3BE8C22F1779F00BD4F97 /* karaokeMessage.mp3 */; };
 		D1F3BE8F22F177C600BD4F97 /* gamesMessage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1F3BE8E22F177C600BD4F97 /* gamesMessage.mp3 */; };
 		D1F9ABC422A044EA00989BD3 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABC322A044EA00989BD3 /* StoryViewController.swift */; };
-		D1F9ABC622A044F600989BD3 /* StoryAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABC522A044F600989BD3 /* StoryAutoLayout.swift */; };
+		D1F9ABC622A044F600989BD3 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABC522A044F600989BD3 /* StoryView.swift */; };
 		D1F9ABC822A0450200989BD3 /* StoryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABC722A0450200989BD3 /* StoryConfigurator.swift */; };
 		D1F9ABCA22A0452000989BD3 /* StoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABC922A0452000989BD3 /* StoryPresenter.swift */; };
 		D1F9ABCC22A0452A00989BD3 /* StoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABCB22A0452A00989BD3 /* StoryInteractor.swift */; };
 		D1F9ABCE22A0453400989BD3 /* StoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABCD22A0453400989BD3 /* StoryRouter.swift */; };
 		D1F9ABD122A0454600989BD3 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD022A0454600989BD3 /* DrawingViewController.swift */; };
-		D1F9ABD322A0455A00989BD3 /* DrawingAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD222A0455A00989BD3 /* DrawingAutoLayout.swift */; };
+		D1F9ABD322A0455A00989BD3 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD222A0455A00989BD3 /* DrawingView.swift */; };
 		D1F9ABD522A0456B00989BD3 /* DrawingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD422A0456B00989BD3 /* DrawingConfigurator.swift */; };
 		D1F9ABD722A0457900989BD3 /* DrawingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD622A0457900989BD3 /* DrawingPresenter.swift */; };
 		D1F9ABD922A0458400989BD3 /* DrawingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD822A0458400989BD3 /* DrawingInteractor.swift */; };
@@ -134,7 +136,7 @@
 		D132840C22F4581100C630A6 /* eagle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eagle.mp3; sourceTree = "<group>"; };
 		D132840E22F4582600C630A6 /* animalsIconQ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = animalsIconQ.mp3; sourceTree = "<group>"; };
 		D135E2A322A02F7B00DC84DE /* KaraokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeViewController.swift; sourceTree = "<group>"; };
-		D135E2A622A02F9800DC84DE /* KaraokeAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeAutoLayout.swift; sourceTree = "<group>"; };
+		D135E2A622A02F9800DC84DE /* KaraokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeView.swift; sourceTree = "<group>"; };
 		D135E2AA22A02FBC00DC84DE /* KaraokeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeConfigurator.swift; sourceTree = "<group>"; };
 		D135E2AE22A02FD900DC84DE /* KaraokeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeRouter.swift; sourceTree = "<group>"; };
 		D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -168,8 +170,10 @@
 		D19245162284DC2800ABD1BD /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		D19D36E4222BAEEC005188D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D1C347E822B2BCDC008DAF11 /* Koshakanym.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Koshakanym.mp4; sourceTree = "<group>"; };
+		D1C69D1122F631DD003D0D05 /* KaraokePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokePresenter.swift; sourceTree = "<group>"; };
+		D1C69D1322F631E9003D0D05 /* KaraokeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeInteractor.swift; sourceTree = "<group>"; };
 		D1D469162229C7FC0096B968 /* PreschoolerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreschoolerViewController.swift; sourceTree = "<group>"; };
-		D1D469192229C8140096B968 /* PreschoolerAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreschoolerAutoLayout.swift; sourceTree = "<group>"; };
+		D1D469192229C8140096B968 /* PreschoolerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreschoolerView.swift; sourceTree = "<group>"; };
 		D1D4691B2229C8220096B968 /* PreschoolerConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreschoolerConfigurator.swift; sourceTree = "<group>"; };
 		D1D4691D2229C8300096B968 /* PreschoolerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreschoolerPresenter.swift; sourceTree = "<group>"; };
 		D1D4691F2229C83A0096B968 /* PreschoolerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreschoolerInteractor.swift; sourceTree = "<group>"; };
@@ -182,7 +186,7 @@
 		D1D46931222A8C9A0096B968 /* ScenesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesRouter.swift; sourceTree = "<group>"; };
 		D1D5599122A82FED001674A7 /* Emitters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitters.swift; sourceTree = "<group>"; };
 		D1D5599422A85E8B001674A7 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
-		D1D5599622A85E95001674A7 /* MessageAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAutoLayout.swift; sourceTree = "<group>"; };
+		D1D5599622A85E95001674A7 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		D1E3719222A7A0AA009D97AB /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		D1F3BE8522F1551F00BD4F97 /* helloMessage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = helloMessage.mp3; sourceTree = "<group>"; };
 		D1F3BE8822F1778900BD4F97 /* drawingMessage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drawingMessage.mp3; sourceTree = "<group>"; };
@@ -190,13 +194,13 @@
 		D1F3BE8C22F1779F00BD4F97 /* karaokeMessage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = karaokeMessage.mp3; sourceTree = "<group>"; };
 		D1F3BE8E22F177C600BD4F97 /* gamesMessage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gamesMessage.mp3; sourceTree = "<group>"; };
 		D1F9ABC322A044EA00989BD3 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
-		D1F9ABC522A044F600989BD3 /* StoryAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAutoLayout.swift; sourceTree = "<group>"; };
+		D1F9ABC522A044F600989BD3 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		D1F9ABC722A0450200989BD3 /* StoryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryConfigurator.swift; sourceTree = "<group>"; };
 		D1F9ABC922A0452000989BD3 /* StoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPresenter.swift; sourceTree = "<group>"; };
 		D1F9ABCB22A0452A00989BD3 /* StoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryInteractor.swift; sourceTree = "<group>"; };
 		D1F9ABCD22A0453400989BD3 /* StoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryRouter.swift; sourceTree = "<group>"; };
 		D1F9ABD022A0454600989BD3 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
-		D1F9ABD222A0455A00989BD3 /* DrawingAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingAutoLayout.swift; sourceTree = "<group>"; };
+		D1F9ABD222A0455A00989BD3 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		D1F9ABD422A0456B00989BD3 /* DrawingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingConfigurator.swift; sourceTree = "<group>"; };
 		D1F9ABD622A0457900989BD3 /* DrawingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPresenter.swift; sourceTree = "<group>"; };
 		D1F9ABD822A0458400989BD3 /* DrawingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingInteractor.swift; sourceTree = "<group>"; };
@@ -308,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				D1F9ABC322A044EA00989BD3 /* StoryViewController.swift */,
-				D1F9ABC522A044F600989BD3 /* StoryAutoLayout.swift */,
+				D1F9ABC522A044F600989BD3 /* StoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,6 +322,8 @@
 			children = (
 				D135E2AA22A02FBC00DC84DE /* KaraokeConfigurator.swift */,
 				D135E2A522A02F8400DC84DE /* View */,
+				D1C69D1122F631DD003D0D05 /* KaraokePresenter.swift */,
+				D1C69D1322F631E9003D0D05 /* KaraokeInteractor.swift */,
 				D135E2AE22A02FD900DC84DE /* KaraokeRouter.swift */,
 			);
 			path = Karaoke;
@@ -339,7 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				D135E2A322A02F7B00DC84DE /* KaraokeViewController.swift */,
-				D135E2A622A02F9800DC84DE /* KaraokeAutoLayout.swift */,
+				D135E2A622A02F9800DC84DE /* KaraokeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -503,7 +509,7 @@
 		D1D469182229C8010096B968 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D1D469192229C8140096B968 /* PreschoolerAutoLayout.swift */,
+				D1D469192229C8140096B968 /* PreschoolerView.swift */,
 				D1D469162229C7FC0096B968 /* PreschoolerViewController.swift */,
 			);
 			path = View;
@@ -553,7 +559,7 @@
 			children = (
 				D1E3719222A7A0AA009D97AB /* MessageManager.swift */,
 				D1D5599422A85E8B001674A7 /* MessageViewController.swift */,
-				D1D5599622A85E95001674A7 /* MessageAutoLayout.swift */,
+				D1D5599622A85E95001674A7 /* MessageView.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -583,7 +589,7 @@
 			children = (
 				D1F9ABD022A0454600989BD3 /* DrawingViewController.swift */,
 				D10221DB22ECD2B40081C95E /* CanvasView.swift */,
-				D1F9ABD222A0455A00989BD3 /* DrawingAutoLayout.swift */,
+				D1F9ABD222A0455A00989BD3 /* DrawingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -736,7 +742,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D46932222A8C9A0096B968 /* ScenesRouter.swift in Sources */,
-				D135E2A722A02F9800DC84DE /* KaraokeAutoLayout.swift in Sources */,
+				D135E2A722A02F9800DC84DE /* KaraokeView.swift in Sources */,
 				D135E2AF22A02FD900DC84DE /* KaraokeRouter.swift in Sources */,
 				D1F9ABD522A0456B00989BD3 /* DrawingConfigurator.swift in Sources */,
 				D1D469172229C7FC0096B968 /* PreschoolerViewController.swift in Sources */,
@@ -747,7 +753,7 @@
 				D1F9ABCA22A0452000989BD3 /* StoryPresenter.swift in Sources */,
 				D1D46927222A8C1E0096B968 /* ScenesViewController.swift in Sources */,
 				D1383FAE22B0F730007815DF /* MenuInteractor .swift in Sources */,
-				D1D5599722A85E95001674A7 /* MessageAutoLayout.swift in Sources */,
+				D1D5599722A85E95001674A7 /* MessageView.swift in Sources */,
 				D14D53752221A294007ACD55 /* ContentService.swift in Sources */,
 				D1E3719322A7A0AA009D97AB /* MessageManager.swift in Sources */,
 				D1D4692C222A8C5D0096B968 /* ScenesConfigurator.swift in Sources */,
@@ -775,28 +781,30 @@
 				D1F9ABD922A0458400989BD3 /* DrawingInteractor.swift in Sources */,
 				D14D536822213769007ACD55 /* ItemPresenter.swift in Sources */,
 				D1D469222229C8440096B968 /* PreschoolerRouter.swift in Sources */,
-				D1D4691A2229C8140096B968 /* PreschoolerAutoLayout.swift in Sources */,
+				D1D4691A2229C8140096B968 /* PreschoolerView.swift in Sources */,
 				D13D86552217FEDF0048A6E4 /* Kulynym.xcdatamodeld in Sources */,
 				D10729FB22877D3B003149E8 /* PlaylistConfigurator.swift in Sources */,
 				D10729FD22877D48003149E8 /* PlaylistPresenter.swift in Sources */,
 				D102930A22F1A14000C7B2F2 /* QuizView.swift in Sources */,
 				D102931322F1AF1C00C7B2F2 /* QuizConfigurator.swift in Sources */,
 				D1D46930222A8C8E0096B968 /* ScenesInteractor.swift in Sources */,
-				D1F9ABD322A0455A00989BD3 /* DrawingAutoLayout.swift in Sources */,
+				D1F9ABD322A0455A00989BD3 /* DrawingView.swift in Sources */,
 				D107786B22858CEC00D869D3 /* Animator.swift in Sources */,
 				D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */,
 				D1D4691E2229C8300096B968 /* PreschoolerPresenter.swift in Sources */,
 				D1D5599222A82FED001674A7 /* Emitters.swift in Sources */,
+				D1C69D1222F631DD003D0D05 /* KaraokePresenter.swift in Sources */,
 				D102930F22F1AE0200C7B2F2 /* QuizInteractor.swift in Sources */,
 				D1F9ABDB22A0458C00989BD3 /* DrawingRouter.swift in Sources */,
 				D14D536E222137B2007ACD55 /* ItemInteractor.swift in Sources */,
 				D1F9ABCC22A0452A00989BD3 /* StoryInteractor.swift in Sources */,
 				D10729FF22877D5C003149E8 /* PlaylistInteractor.swift in Sources */,
 				D135E2A422A02F7B00DC84DE /* KaraokeViewController.swift in Sources */,
-				D1F9ABC622A044F600989BD3 /* StoryAutoLayout.swift in Sources */,
+				D1F9ABC622A044F600989BD3 /* StoryView.swift in Sources */,
 				D102931122F1AE1100C7B2F2 /* QuizRouter.swift in Sources */,
 				D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */,
 				D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */,
+				D1C69D1422F631E9003D0D05 /* KaraokeInteractor.swift in Sources */,
 				D10729F722876879003149E8 /* PlaylistView.swift in Sources */,
 				D19245172284DC2800ABD1BD /* Timer.swift in Sources */,
 				D14D53702221380F007ACD55 /* ItemView.swift in Sources */,

@@ -10,21 +10,21 @@
 import Foundation
 
 protocol PlaylistInteractorProtocol: class {
-    func getContent(_ isKaraoke: Bool) -> [Section]
+    func getContent(_ isKaraoke: Bool) -> [String]
 }
 
 class PlaylistInteractor: PlaylistInteractorProtocol {
     // MARK:- Properties
     weak var presenter: PlaylistPresenterProtocol!
     
-    required init(presenter: PlaylistPresenterProtocol) {
+    required init(_ presenter: PlaylistPresenterProtocol) {
         self.presenter = presenter
     }
 }
 
 extension PlaylistInteractor {
     // MARK:- Protocol Methods
-    func getContent(_ isKaraoke: Bool) -> [Section] {
+    func getContent(_ isKaraoke: Bool) -> [String] {
         return isKaraoke ? ContentService.songs : ContentService.stories
     }
 }

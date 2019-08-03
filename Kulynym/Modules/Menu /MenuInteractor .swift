@@ -10,7 +10,8 @@
 import Foundation
 
 protocol MenuInteractorProtocol: class {
-    func getSections(_ type: Menu) -> [Section]
+    func getStringSections(_ type: Menu) -> [String]
+    func getEduSections() -> [EduSection]
 }
 
 class MenuInteractor: MenuInteractorProtocol {
@@ -24,12 +25,14 @@ class MenuInteractor: MenuInteractorProtocol {
 
 extension MenuInteractor {
     // MARK:- Protocol Methods
-    func getSections(_ type: Menu) -> [Section] {
-        if type == .toddler {
-            return ContentService.toddlerSections
-        } else if type == .main {
+    func getStringSections(_ type: Menu) -> [String] {
+        if type == .main {
             return ContentService.menuSections
         }
         return ContentService.gamesSection
+    }
+    
+    func getEduSections() -> [EduSection] {
+        return ContentService.toddlerSections
     }
 }

@@ -10,11 +10,11 @@
 
 import UIKit
 
-protocol DrawingViewProtocol: class {
+protocol DrawingViewControllerProtocol: class {
     var currentImageName: String? { get set }
 }
 
-class DrawingViewController: UIViewController, DrawingViewProtocol, MessageShowingVC {
+class DrawingViewController: UIViewController, DrawingViewControllerProtocol, MessageShowingVC {
     // MARK:- Properties
     var presenter: DrawingPresenterProtocol!
     
@@ -36,7 +36,7 @@ class DrawingViewController: UIViewController, DrawingViewProtocol, MessageShowi
     private weak var resetBtn: UIButton!
     private weak var slideOutBtn: UIButton!
     
-    private var autoLayout: DrawingAutoLayoutProtocol!
+    private var drawingView: DrawingViewProtocol!
     private let configurator: DrawingConfiguratorProtocol = DrawingConfigurator()
     
     
@@ -45,7 +45,7 @@ class DrawingViewController: UIViewController, DrawingViewProtocol, MessageShowi
         super.viewDidLoad()
         configurator.configure(with: self)
         initLayout()
-        autoLayout.setupLayout()
+        drawingView.setupLayout()
         assignViews()
         setupCV()
         initMessage()
@@ -56,16 +56,16 @@ class DrawingViewController: UIViewController, DrawingViewProtocol, MessageShowi
     
     // MARK:- Layout
     private func initLayout() {
-        autoLayout = DrawingAutoLayout(self)
+        drawingView = DrawingView(self)
     }
     
     private func assignViews() {
-        self.closeBtn = autoLayout.closeBtn
-        self.toolsCV = autoLayout.toolsCollectionView
-        self.pictureImageView = autoLayout.drawingImageView
-        self.canvasView = autoLayout.canvasView
-        self.resetBtn = autoLayout.resetBtn
-        self.slideOutBtn = autoLayout.slideOutBtn
+        self.closeBtn = drawingView.closeBtn
+        self.toolsCV = drawingView.toolsCollectionView
+        self.pictureImageView = drawingView.drawingImageView
+        self.canvasView = drawingView.canvasView
+        self.resetBtn = drawingView.resetBtn
+        self.slideOutBtn = drawingView.slideOutBtn
     }
     
     private func setupCV() {
@@ -98,7 +98,7 @@ class DrawingViewController: UIViewController, DrawingViewProtocol, MessageShowi
     }
     
     @objc private func slideOut() {
-        autoLayout.toggleDrawingsCV()
+        drawingView.toggleDrawingsCV()
     }
     
     @objc private func reset() {
@@ -153,7 +153,7 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
 class DrawingsCollectionView: UIViewController {
     // MARK:- Properties
     var pictures = ["whiteCanvas", "flowerDrawing", "penguinDrawing", "catterpilarDrawing", "butterflyDrawing"]
-    weak var drawingView: DrawingViewProtocol!
+    weak var drawingView: DrawingViewControllerProtocol!
     private lazy var mainCollectionView: UICollectionView = {
         return configureImagesCollectionView(scroll: .vertical, image: nil, background: .white)
     }()

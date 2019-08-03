@@ -22,14 +22,14 @@ class MessageViewController: UIViewController {
     private weak var closeBtn: UIButton!
     private weak var emotionImage: UIImageView!
     private weak var titleLabel: UILabel!
-    private var autoLayout: MessageAutoLayoutProtocol!
+    private var messageView: MessageViewProtocol!
     
     
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initLayout()
-        autoLayout.setupLayout()
+        messageView.setupLayout()
         assignViews()
         assignActions()
     }
@@ -42,12 +42,12 @@ class MessageViewController: UIViewController {
     
     // MARK:- Layout
     private func initLayout() {
-        autoLayout =  MessageAutoLayout(view)
+        messageView =  MessageView(view)
     }
     
     private func assignViews() {
-        self.closeBtn = autoLayout.closeBtn
-        self.emotionImage = autoLayout.emotionImage
+        self.closeBtn = messageView.closeBtn
+        self.emotionImage = messageView.emotionImage
     }
     
     

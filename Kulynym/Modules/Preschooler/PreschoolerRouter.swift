@@ -15,16 +15,16 @@ protocol PreschoolerRouterProtocol: class {
 
 class PreschoolerRouter: PreschoolerRouterProtocol {
     // MARK:- Properties
-    weak var view: PreschoolerViewController!
+    weak var controller: PreschoolerViewController!
     
-    required init(view: PreschoolerViewController) {
-        self.view = view
+    required init(_ controller: PreschoolerViewController) {
+        self.controller = controller
     }
 }
 
 extension PreschoolerRouter {
     func close() {
-        view.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        controller.navigationController?.popViewController(animated: true)
     }
 }
 

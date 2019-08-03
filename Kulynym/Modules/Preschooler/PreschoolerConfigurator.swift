@@ -15,9 +15,9 @@ protocol PreschoolerConfiguratorProtocol: class {
 
 class PreschoolerConfigurator: PreschoolerConfiguratorProtocol {
     func configure(with viewController: PreschoolerViewController) {
-        let presenter = PreschoolerPresenter(view: viewController)
-        let interactor = PreschoolerInteractor(presenter: presenter)
-        let router = PreschoolerRouter(view: viewController)
+        let presenter = PreschoolerPresenter(viewController)
+        let interactor = PreschoolerInteractor(presenter)
+        let router = PreschoolerRouter(viewController)
         
         viewController.presenter = presenter
         presenter.interactor = interactor

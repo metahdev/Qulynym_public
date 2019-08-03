@@ -9,9 +9,9 @@
 
 import UIKit
 
-protocol PreschoolerViewProtocol: class {}
+protocol PreschoolerViewControllerProtocol: class {}
 
-class PreschoolerViewController: UIViewController, PreschoolerViewProtocol {
+class PreschoolerViewController: UIViewController, PreschoolerViewControllerProtocol {
     // MARK:- Properties
     var presenter: PreschoolerPresenterProtocol!
     weak var scenesViewDelegate: ScenesViewControllerProtocol!
@@ -21,7 +21,7 @@ class PreschoolerViewController: UIViewController, PreschoolerViewProtocol {
     
     private weak var closeBtn: UIButton!
     
-    private var autoLayout: PreschoolerAutoLayoutProtocol!
+    private var preschoolerView: PreschoolerViewProtocol!
     private var configurator: PreschoolerConfiguratorProtocol = PreschoolerConfigurator()
     
     
@@ -31,7 +31,7 @@ class PreschoolerViewController: UIViewController, PreschoolerViewProtocol {
         configurator.configure(with: self)
         
         initLayout()
-        autoLayout.setupLayout()
+        preschoolerView.setupLayout()
         assignViews()
         setupArray()
         assignActions()
@@ -45,11 +45,11 @@ class PreschoolerViewController: UIViewController, PreschoolerViewProtocol {
     
     // MARK:- Layout
     private func initLayout() {
-        autoLayout = PreschoolerAutoLayout(self.view)
+        preschoolerView = PreschoolerView(self.view)
     }
     
     private func assignViews() {
-        self.closeBtn = autoLayout.closeBtn
+        self.closeBtn = preschoolerView.closeBtn
     }
     
 

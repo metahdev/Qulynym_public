@@ -17,7 +17,8 @@ enum Menu {
 
 protocol MenuViewControllerProtocol: class {
     var menuType: Menu { get set }
-    var sections: [Section] { get set }
+    var sections: [String] { get set }
+    var eduSections: [EduSection] { get set }
 }
 
 class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageShowingVC {
@@ -29,7 +30,8 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
     weak var scenesViewDelegate: ScenesViewControllerProtocol!
     
     var menuType: Menu = .main
-    var sections = [Section]()
+    var sections = [String]()
+    var eduSections = [EduSection]()
     
     var message: MessageManager!
     
@@ -70,7 +72,10 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        self.navigationController?.isNavigationBarHidden = true
+        if menuType == .main {
+            self.navigationController!.delegate = self
+        }
+        self.navigationController!.isNavigationBarHidden = true
     }
     
     private func hideOrUnhideCloseBtn() {
@@ -106,12 +111,12 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
 extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK:- UICollectionView Protocols
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections.count
+        return menuType == .toddler ? eduSections.count : sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        cell.imageName = sections[indexPath.row].name
+        cell.imageName = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
         
@@ -148,12 +153,8 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 
-extension MenuViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+extension MenuViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return Animator()
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return Animator()  
     }
 }

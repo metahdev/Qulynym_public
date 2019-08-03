@@ -31,6 +31,6 @@ extension ScenesRouter {
         controller.itemViewControllerDelegate.categoryName = categoryName
         itemView.transitioningDelegate = controller
         
-        controller.present(itemView, animated: true, completion: nil)
+        controller.show(itemView, sender: nil)
     }
 }

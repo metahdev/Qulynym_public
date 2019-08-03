@@ -18,7 +18,7 @@ class PreschoolerInteractor: PreschoolerInteractorProtocol {
     // MARK:- Properties
     weak var presenter: PreschoolerPresenterProtocol!
     
-    required init(presenter: PreschoolerPresenterProtocol) {
+    required init(_ presenter: PreschoolerPresenterProtocol) {
         self.presenter = presenter
     }
 }

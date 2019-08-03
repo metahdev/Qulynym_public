@@ -9,38 +9,28 @@
 
 import Foundation
 
-class Section {
+struct EduSection {
     var name: String
-    
-    init(_ name: String) {
-        self.name = name
-    }
-}
-
-class EduSection: Section {
     var scenesNames: [String]
     var timepoints: [Int]
     var contentNames: [String]
     
     init(name: String, scenesNames: [String], timepoints: [Int], contentNames: [String]) {
+        self.name = name
         self.scenesNames = scenesNames
         self.timepoints = timepoints
         self.contentNames = contentNames
-        super.init(name)
     }
-}
-
-class StorySection: Section {
 }
 
 struct ContentService {
     static let menuSections = [
-        Section("toddlerIcon"),
-        Section("karaokeIcon"),
-        Section("storyIcon"),
-        Section("drawingIcon"),
-        Section("preschoolerIcon"),
-        Section("gamesIcon")
+        "toddlerIcon",
+        "karaokeIcon",
+        "storyIcon",
+        "drawingIcon",
+        "preschoolerIcon",
+        "gamesIcon"
     ]
     
     static let toddlerSections = [
@@ -51,15 +41,15 @@ struct ContentService {
     ]
     
     static let gamesSection = [
-        Section("torgai"),
+        "torgai",
     ]
     
     static var songs = [
-        Section("Koshakanym"),
+        "Koshakanym",
     ]
     
     static var stories = [
-        StorySection("kolobokIcon"),
+        "kolobokIcon",
     ]
     
     private static var colorsSection = EduSection(name: "colorsIcon", scenesNames: [""], timepoints: [0], contentNames: ["red"])

@@ -15,14 +15,12 @@ protocol StoryPresenterProtocol: class {
 
 class StoryPresenter: StoryPresenterProtocol {
     // MARK:- Properties
-    weak var view: StoryViewProtocol!
+    weak var controller: StoryViewControllerProtocol!
     var router: StoryRouterProtocol!
     var interactor: StoryInteractorProtocol!
-    var timer: TimerController!
-    var timepoints = [10, ]
     
-    required init(_ view: StoryViewProtocol) {
-        self.view = view
+    required init(_ controller: StoryViewControllerProtocol) {
+        self.controller = controller
     }
 }
 

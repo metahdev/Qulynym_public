@@ -17,19 +17,19 @@ protocol PlaylistPresenterProtocol: class {
 
 class PlaylistPresenter: PlaylistPresenterProtocol {
     // MARK:- Properties
-    weak var view: PlaylistViewControllerProtocol!
+    weak var controller: PlaylistViewControllerProtocol!
     var interactor: PlaylistInteractorProtocol!
     var router: PlaylistRouterProtocol!
     
-    required init(view: PlaylistViewControllerProtocol) {
-        self.view = view
+    required init(_ controller: PlaylistViewControllerProtocol) {
+        self.controller = controller
     }
 }
 
 extension PlaylistPresenter {
     // MARK:- Protocol Methods
     func getContent() {
-        view.content = interactor.getContent(view.isKaraoke)
+        controller.content = interactor.getContent(controller.isKaraoke)
     }
     
     func closeView() {

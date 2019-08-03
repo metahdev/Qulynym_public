@@ -10,16 +10,16 @@
 import Foundation
 
 protocol PlaylistConfiguratorProtocol: class {
-    func configure(with view: PlaylistViewController)
+    func configure(with controller: PlaylistViewController)
 }
 
 class PlaylistConfigurator: PlaylistConfiguratorProtocol {
-    func configure(with view: PlaylistViewController) {
-        let presenter = PlaylistPresenter(view: view)
-        let interactor = PlaylistInteractor(presenter: presenter)
-        let router = PlaylistRouter(view: view)
+    func configure(with controller: PlaylistViewController) {
+        let presenter = PlaylistPresenter(controller)
+        let interactor = PlaylistInteractor(presenter)
+        let router = PlaylistRouter(controller)
         
-        view.presenter = presenter
+        controller.presenter = presenter
         presenter.interactor = interactor
         presenter.router = router
     }

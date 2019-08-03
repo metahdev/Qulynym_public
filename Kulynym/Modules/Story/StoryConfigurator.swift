@@ -10,16 +10,16 @@
 import Foundation
 
 protocol StoryConfiguratorProtocol: class {
-    func configure(with view: StoryViewController)
+    func configure(with controller: StoryViewController)
 }
 
 class StoryConfigurator: StoryConfiguratorProtocol {
-    func configure(with view: StoryViewController) {
-        let presenter = StoryPresenter(view)
+    func configure(with controller: StoryViewController) {
+        let presenter = StoryPresenter(controller)
         let interactor = StoryInteractor(presenter)
-        let router = StoryRouter(view)
+        let router = StoryRouter(controller)
         
-        view.presenter = presenter
+        controller.presenter = presenter
         presenter.interactor = interactor
         presenter.router = router
     }

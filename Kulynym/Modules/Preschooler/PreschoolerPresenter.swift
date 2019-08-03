@@ -9,11 +9,7 @@
 
 import Foundation
 
-protocol PreschoolerPresenterProtocol: class {
-    var view: PreschoolerViewProtocol! { set get }
-    var interactor: PreschoolerInteractorProtocol! { set get }
-    var router: PreschoolerRouterProtocol! { set get }
-    
+protocol PreschoolerPresenterProtocol: class {    
     func updateProgressState()
     func iconPressed(with index: Int)
     func closeView()
@@ -21,12 +17,12 @@ protocol PreschoolerPresenterProtocol: class {
 
 class PreschoolerPresenter: PreschoolerPresenterProtocol {
     // MARK:- Properties
-    weak var view: PreschoolerViewProtocol!
+    weak var controller: PreschoolerViewControllerProtocol!
     var interactor: PreschoolerInteractorProtocol!
     var router: PreschoolerRouterProtocol!
     
-    required init(view: PreschoolerViewProtocol) {
-        self.view = view
+    required init(_ controller: PreschoolerViewControllerProtocol) {
+        self.controller = controller
     }
 }
 

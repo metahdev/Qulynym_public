@@ -27,7 +27,9 @@ class ItemRouter {
 extension ItemRouter: ItemRouterProtocol {
     // MARK:- Protocol Methods
     func closeView() {
-        controller.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        if let firstViewController = controller.navigationController?.viewControllers[1] {
+            controller.navigationController?.popToViewController(firstViewController, animated: true)
+        }
     }
     
     func openQuiz(_ cards: [String], with categoryName: String) {

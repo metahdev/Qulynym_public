@@ -11,16 +11,16 @@
 import Foundation
 
 protocol DrawingConfiguratorProtocol: class {
-    func configure(with view: DrawingViewController)
+    func configure(with controller: DrawingViewController)
 }
 
 class DrawingConfigurator: DrawingConfiguratorProtocol {
-    func configure(with view: DrawingViewController) {
-        let presenter = DrawingPresenter(view: view)
+    func configure(with controller: DrawingViewController) {
+        let presenter = DrawingPresenter(controller)
         let interactor = DrawingInteractor(presenter)
-        let router = DrawingRouter(view)
+        let router = DrawingRouter(controller)
         
-        view.presenter = presenter
+        controller.presenter = presenter
         presenter.interactor = interactor
         presenter.router = router
     }

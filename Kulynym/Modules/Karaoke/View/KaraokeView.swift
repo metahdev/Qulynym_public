@@ -1,6 +1,6 @@
 /*
 * Kulynym
-* KaraokeAutoLayout.swift
+* KaraokeView.swift
 *
 * Created by: Metah on 5/30/19
 *
@@ -10,7 +10,7 @@
 import UIKit
 import AVKit
 
-protocol KaraokeAutoLayoutProtocol: class {
+protocol KaraokeViewProtocol: class {
     var contentLabel: UILabel { get set }
     var videoView: UIView { get set }
     var closeBtn: UIButton { get set }
@@ -20,7 +20,7 @@ protocol KaraokeAutoLayoutProtocol: class {
     func initNoteView()
 }
 
-class KaraokeAutoLayout: KaraokeAutoLayoutProtocol {
+class KaraokeView: KaraokeViewProtocol {
     // MARK:- Properties
     weak var view: UIView!
     

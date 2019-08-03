@@ -1,7 +1,7 @@
 
 /*
 * Kulynym
-* MessageAutoLayout.swift
+* MessageView.swift
 *
 * Created by: Metah on 6/6/19
 *

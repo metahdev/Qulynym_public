@@ -1,6 +1,6 @@
 /*
 * Kulynym
-* PreschoolerAutoLayout.swift
+* PreschoolerView.swift
 *
 * Created by: Metah on 3/2/19
 *
@@ -16,13 +16,13 @@ enum IconPosition {
     case begin
 }
 
-protocol PreschoolerAutoLayoutProtocol {
+protocol PreschoolerViewProtocol {
     var closeBtn: UIButton { get set }
     
     func setupLayout()
 }
 
-class PreschoolerAutoLayout: PreschoolerAutoLayoutProtocol {
+class PreschoolerView: PreschoolerViewProtocol {
     // MARK:- Properties
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
