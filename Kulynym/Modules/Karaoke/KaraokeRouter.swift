@@ -15,16 +15,17 @@ protocol KaraokeRouterProtocol: class {
 
 class KaraokeRouter: KaraokeRouterProtocol {
     // MARK:- Properties
-    weak var view: KaraokeViewController!
+    weak var controller: KaraokeViewController!
     
-    required init(view: KaraokeViewController) {
-        self.view = view
+    required init(_ controller: KaraokeViewController) {
+        self.controller = controller
     }
 }
 
 extension KaraokeRouter {
     func close() {
-        view.navigationController?.popViewController(animated: true)
+        controller.player = nil
+        controller.navigationController?.popViewController(animated: true)
         AudioPlayer.backgroundAudioPlayer.play()
     }
 }

@@ -12,12 +12,14 @@ import AVKit
 
 protocol KaraokeViewProtocol: class {
     var contentLabel: UILabel { get set }
+    var nextBtn: UIButton { get set }
+    var backBtn: UIButton { get set }
     var videoView: UIView { get set }
     var closeBtn: UIButton { get set }
     
     func setupLayout()
     func initLayer(_ player: AVPlayer?)
-    func initNoteView()
+    func removeLayer()
 }
 
 class KaraokeView: KaraokeViewProtocol {
@@ -35,6 +37,16 @@ class KaraokeView: KaraokeViewProtocol {
         v.layer.borderColor = UIColor.black.cgColor
         v.layer.borderWidth = 5
         return v
+    }()
+    lazy var nextBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "nextVideoBtn"), for: .normal)
+        return btn
+    }()
+    lazy var backBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "backVideoBtn"), for: .normal)
+        return btn
     }()
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
@@ -71,6 +83,7 @@ class KaraokeView: KaraokeViewProtocol {
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
         background.configureBackgroundImagePosition(view)
+//        initNoteView()
         activateConstraints()
     }
     
@@ -79,6 +92,8 @@ class KaraokeView: KaraokeViewProtocol {
         view.addSubview(contentLabel)
         view.addSubview(gramophoneImage)
         view.addSubview(closeBtn)
+        view.addSubview(nextBtn)
+        view.addSubview(backBtn)
         view.addSubview(videoView)
         view.addSubview(microImage)
         view.addSubview(background)
@@ -111,6 +126,16 @@ class KaraokeView: KaraokeViewProtocol {
             videoView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             videoView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: view.frame.height * 0.05),
             videoView.trailingAnchor.constraint(equalTo: gramophoneImage.leadingAnchor, constant: -20),
+            
+            backBtn.centerYAnchor.constraint(equalTo: videoView.centerYAnchor),
+            backBtn.trailingAnchor.constraint(equalTo: videoView.leadingAnchor),
+            backBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            backBtn.heightAnchor.constraint(equalTo: backBtn.widthAnchor),
+            
+            nextBtn.centerYAnchor.constraint(equalTo: videoView.centerYAnchor),
+            nextBtn.leadingAnchor.constraint(equalTo: videoView.trailingAnchor),
+            nextBtn.widthAnchor.constraint(equalTo: backBtn.widthAnchor),
+            nextBtn.heightAnchor.constraint(equalTo: backBtn.heightAnchor)
         ])
     }
     
@@ -124,9 +149,14 @@ class KaraokeView: KaraokeViewProtocol {
         videoView.layer.addSublayer(layer)
     }
     
+    func removeLayer() {
+        guard let sublayers = videoView.layer.sublayers else { return }
+        sublayers[0].removeFromSuperlayer()
+    }
+    
     
     // MARK:- Animation
-    func initNoteView() {
+    private func initNoteView() {
         initFrames()
         noteClipView.addSubview(noteView)
         view.addSubview(noteClipView)

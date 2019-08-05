@@ -13,6 +13,8 @@ import UIKit
 protocol MessageViewProtocol: class {
     var closeBtn: UIButton { get set }
     var emotionImage: UIImageView { get set }
+    var firstInstructionImage: UIImageView { get set }
+    var secondInstructionImage: UIImageView { get set }
     
     func setupLayout()
 }
@@ -25,6 +27,14 @@ class MessageView: MessageViewProtocol {
         return btn
     }()
     lazy var emotionImage: UIImageView = {
+        let imageV = UIImageView()
+        return imageV
+    }()
+    lazy var firstInstructionImage: UIImageView = {
+        let imageV = UIImageView()
+        return imageV
+    }()
+    lazy var secondInstructionImage: UIImageView = {
         let imageV = UIImageView()
         return imageV
     }()
@@ -50,11 +60,14 @@ class MessageView: MessageViewProtocol {
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
         activateConstraints()
+        alertBackground.configureBackgroundImagePosition(view)
     }
     
     private func addSubviews() {
         view.addSubview(closeBtn)
         view.addSubview(emotionImage)
+        view.addSubview(firstInstructionImage)
+        view.addSubview(secondInstructionImage)
         view.addSubview(alertBackground)
     }
     
@@ -68,13 +81,18 @@ class MessageView: MessageViewProtocol {
         NSLayoutConstraint.activate([
             emotionImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             emotionImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            emotionImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-            emotionImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+            emotionImage.topAnchor.constraint(equalTo: view.topAnchor, constant: closeBtn.frame.height),
+            emotionImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
             
-            alertBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            alertBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            alertBackground.topAnchor.constraint(equalTo: view.topAnchor),
-            alertBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            secondInstructionImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            secondInstructionImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            secondInstructionImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+            secondInstructionImage.widthAnchor.constraint(equalTo: secondInstructionImage.heightAnchor),
+            
+            firstInstructionImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            firstInstructionImage.bottomAnchor.constraint(equalTo: secondInstructionImage.topAnchor),
+            firstInstructionImage.heightAnchor.constraint(equalTo: secondInstructionImage.heightAnchor),
+            firstInstructionImage.widthAnchor.constraint(equalTo: firstInstructionImage.heightAnchor)
         ])
     }
 }

@@ -46,6 +46,8 @@ struct ContentService {
     
     static var songs = [
         "Koshakanym",
+        "morph",
+        "polarize"
     ]
     
     static var stories = [

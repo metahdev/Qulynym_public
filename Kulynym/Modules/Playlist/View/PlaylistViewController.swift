@@ -76,7 +76,7 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol, 
     }
     
     func initMessage() {
-        message = MessageManager(calling: self, showing: isKaraoke ? .karaoke : .stories)
+        message = MessageManager(calling: self, showing: isKaraoke ? .karaoke : .stories, and: "upDown")
     }
     
     

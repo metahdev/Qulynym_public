@@ -15,19 +15,19 @@ protocol QuizRouterProtocol: class {
 }
 
 class QuizRouter: QuizRouterProtocol {
-    weak var view: QuizViewController!
+    weak var controller: QuizViewController!
     
-    required init(_ view: QuizViewController) {
-        self.view = view
+    required init(_ controller: QuizViewController) {
+        self.controller = controller
     }
 }
 
 extension QuizRouter {
     func backToItem(didPass: Bool) {
         if !didPass {
-            view.itemView.slideCount -= 4
+            controller.itemView.slideCount -= 4
         }
-        view.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func close() {

@@ -17,7 +17,7 @@ class KaraokeConfigurator: KaraokeConfiguratorProtocol {
     func configure(with controller: KaraokeViewController) {
         let presenter = KaraokePresenter(controller)
         let interactor = KaraokeInteractor(presenter)
-        let router = KaraokeRouter(view: controller)
+        let router = KaraokeRouter(controller)
         
         controller.presenter = presenter
         presenter.interactor = interactor

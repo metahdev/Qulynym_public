@@ -61,6 +61,7 @@ class ItemView: ItemViewProtocol {
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
         forwardBtn.configureForwardBtnFrame(view)
+        backgroundImage.configureBackgroundImagePosition(view)
     }
     
     private func addSubviews() {
@@ -81,12 +82,7 @@ class ItemView: ItemViewProtocol {
             contentBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             contentBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             contentBtn.widthAnchor.constraint(equalTo: view.heightAnchor),
-            contentBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
-            
-            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            contentBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
         ])
     }
 }

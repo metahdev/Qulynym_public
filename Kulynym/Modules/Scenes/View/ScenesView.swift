@@ -41,8 +41,8 @@ class ScenesView: ScenesViewProtocol {
     func setupLayout() {
         addSubviews()
         setSubviewMask()
-        activateConstraints()
         skipBtn.configureForwardBtnFrame(view)
+        sceneImageView.configureBackgroundImagePosition(view)
     }
     
     private func addSubviews() {
@@ -54,14 +54,5 @@ class ScenesView: ScenesViewProtocol {
         for subview in view.subviews {
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
-    }
-    
-    private func activateConstraints() {
-        NSLayoutConstraint.activate([
-            sceneImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            sceneImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            sceneImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            sceneImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
 }

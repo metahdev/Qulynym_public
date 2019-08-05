@@ -34,7 +34,7 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     }
     var cards: [String]!    
     var presenter: QuizPresenterProtocol!
-    var itemView: ItemViewControllerProtocol!
+    weak var itemView: ItemViewControllerProtocol!
     
     private var cardsCollectionView: UICollectionView!
     private var closeBtn: UIButton!

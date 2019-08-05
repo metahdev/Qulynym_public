@@ -11,9 +11,15 @@ import UIKit
 
 class MessageViewController: UIViewController {
     // MARK:- Properties
-    var imageName: String! {
+    var charImageName: String! {
         didSet {
-            emotionImage.image = UIImage(named: imageName)
+            emotionImage.image = UIImage(named: charImageName)
+        }
+    }
+    var instruction: String! {
+        didSet {
+            firstImageView.image = UIImage(named: instruction + "First")
+            secondImageView.image = UIImage(named: instruction + "Second")
         }
     }
     var audioName: String!
@@ -21,6 +27,8 @@ class MessageViewController: UIViewController {
     
     private weak var closeBtn: UIButton!
     private weak var emotionImage: UIImageView!
+    private weak var firstImageView: UIImageView!
+    private weak var secondImageView: UIImageView!
     private weak var titleLabel: UILabel!
     private var messageView: MessageViewProtocol!
     
@@ -48,6 +56,8 @@ class MessageViewController: UIViewController {
     private func assignViews() {
         self.closeBtn = messageView.closeBtn
         self.emotionImage = messageView.emotionImage
+        self.firstImageView = messageView.firstInstructionImage
+        self.secondImageView = messageView.secondInstructionImage 
     }
     
     

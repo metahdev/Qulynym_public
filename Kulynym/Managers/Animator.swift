@@ -13,7 +13,7 @@ import QuartzCore
 
 class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     // MARK:- Properties
-    let duration = 1.0
+    let duration = 0.7
     weak var fromView: UIView!
     weak var toView: UIView!
     weak var containerView: UIView!

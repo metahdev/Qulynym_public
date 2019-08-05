@@ -32,20 +32,34 @@ class MessageManager {
     private var messageView = MessageViewController()
     private weak var callingView: UIViewController!
     private var emotion: Emotion
+    private var instruction: String
+    private var shown = false
     
-    init(calling view: UIViewController, showing emotion: Emotion) {
+    init(calling view: UIViewController, showing emotion: Emotion, and instruction: String) {
         self.callingView = view
         self.emotion = emotion
+        self.instruction = instruction
     }
     
     
     // MARK:- Alert
     func showAlert() {
+        checkIfAlreadyShown()
+        
+        if shown { return }
+        
         setupEffect()
         setupMessageVC()
         setupMessageView()
         activateConstraints()
         configureProperties()
+        saveAppearence()
+    }
+    
+    private func checkIfAlreadyShown() {
+        if UserDefaults.standard.object(forKey: emotion.rawValue + "hasShown") != nil {
+            shown = true
+        }
     }
     
     private func setupEffect() {
@@ -79,8 +93,13 @@ class MessageManager {
     
     // MARK:- Send Data
     private func configureProperties() {
-        messageView.imageName = "happyChar"
+        messageView.charImageName = "happyChar"
+        messageView.instruction = instruction
         messageView.audioName = emotion.rawValue
+    }
+    
+    private func saveAppearence() {
+        UserDefaults.standard.set(1, forKey: emotion.rawValue + "hasShown")
     }
 }
 

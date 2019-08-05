@@ -11,6 +11,9 @@
 import Foundation
 
 protocol KaraokePresenterProtocol: class {
+    func getMaxCount()
+    func backToPreviousVideo()
+    func nextVideo() 
     func close()
 }
 
@@ -26,6 +29,22 @@ class KaraokePresenter: KaraokePresenterProtocol {
 
 extension KaraokePresenter {
     // MARK:- Protocol Methods
+    func getMaxCount() {
+        controller.maxIndex = interactor.getMaxCount()
+    }
+    
+    func backToPreviousVideo() {
+        controller.content = interactor.getPreviousVideo(&controller.index)
+        controller.setViewsProperties()
+        controller.playVideo()
+    }
+    
+    func nextVideo() {
+        controller.content = interactor.getNextVideo(&controller.index)
+        controller.setViewsProperties()
+        controller.playVideo()
+    }
+    
     func close() {
         router.close()
     }

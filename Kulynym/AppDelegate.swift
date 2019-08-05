@@ -17,21 +17,23 @@ import CoreData
   2) Audio queue isn't optimizing the main thread
   3) solved
   4) Eraser draws white on picture !
-  5) Item quit animation is different from pushing back to the rootVC, maybe leak, idk !
+  5) solved
   6) Auto Layout on IPad: Karaoke Module(video view & Titles), closeBtn
-  7) There are some shady business happening between Audios and threads
+  7) audio leak of the message at the beginning(maybe is relatable to 1)
  Solutions, which will be integrated further:
-  1) TimerController on another queue
+  1) TimerController, AudioManager, Videos on another queue
   2) Back segue falling leaves
-  3) Video queue
-  4) Design Pattern of the Project(Karaoke Module especially) !
-  5) Item should quit to their menu !
+  3) implemented
+  4) implemented
+  5) implemented
   6) Tools at Drawing Module !
   7) Scroll View at Alert for instructions of the UI !
-  8) Names Refactoring: controller, view !
+  8) implemented
   9) Concurrency at Quiz: can't scroll while audio is playing
   10) Shuffle animation of cards
-  11) Messages UserDefaults !
+  11) implemented
+  12) implemented
+  13) SFXAudioPlayer !
  Eraser icon made by Pixel Buddha at flaticon.com
  */
 

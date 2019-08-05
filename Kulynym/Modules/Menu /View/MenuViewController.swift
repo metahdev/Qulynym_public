@@ -93,7 +93,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
             emotion = .games
         }
         guard let nonOptEmotion = emotion else { return }
-        message = MessageManager(calling: self, showing: nonOptEmotion)
+        message = MessageManager(calling: self, showing: nonOptEmotion, and: "rightLeft")
         message.showAlert()
     }
     

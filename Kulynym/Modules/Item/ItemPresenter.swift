@@ -56,9 +56,7 @@ extension ItemPresenter {
     }
     
     func contentBtnPressed() {
-        AudioPlayer.queue.async {
-            AudioPlayer.contentAudioPlayer.play()
-        }
+        AudioPlayer.contentAudioPlayer.play()
     }
     
     func closeBtnPressed() {

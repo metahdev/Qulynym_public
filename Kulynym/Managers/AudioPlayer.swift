@@ -20,30 +20,22 @@ enum PlayerType {
 struct AudioPlayer {
     // MARK:- Properties
     static var backgroundAudioPlayer = AVAudioPlayer()
+    static var sfxAudioPlayer = AVAudioPlayer()
     static var contentAudioPlayer = AVAudioPlayer()
     static var scenesAudioPlayer = AVAudioPlayer()
     static var messageAudioPlayer = AVAudioPlayer()
     static var questionAudioPlayer = AVAudioPlayer()
-    static let queue = DispatchQueue.global(qos: .utility)
     
     
     // MARK: Background Audio
     static func turnOnBackgroundMusic() {
         initBackdroundAudio()
-        queue.async {
-            backgroundAudioPlayer.play()
-        }
+        backgroundAudioPlayer.play()
     }
     
     private static func initBackdroundAudio() {
-        let filePath = Bundle.main.path(forResource: "backgroundAudio", ofType: "mp3")
-        let url = URL.init(fileURLWithPath: filePath!)
-        
-        do {
-            backgroundAudioPlayer = try AVAudioPlayer(contentsOf: url)
-        } catch {
-            print("unresolved error \(error)")
-        }
+        let url = setupPaths(name: "backgroundAudio")
+        initPlayers(player: &backgroundAudioPlayer, url: url)
         
         backgroundAudioPlayer.numberOfLoops = -1
         backgroundAudioPlayer.volume = 0.5
@@ -82,9 +74,7 @@ struct AudioPlayer {
     }
     
     private static func scenesAudioTask() {
-        queue.async {
-            backgroundAudioPlayer.stop()
-            scenesAudioPlayer.play()
-        }
+        backgroundAudioPlayer.stop()
+        scenesAudioPlayer.play()
     }
 }

@@ -58,6 +58,9 @@
 		D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D53782221B185007ACD55 /* AudioPlayer.swift */; };
 		D19245172284DC2800ABD1BD /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19245162284DC2800ABD1BD /* Timer.swift */; };
 		D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D36E4222BAEEC005188D0 /* Extensions.swift */; };
+		D1A7913522F82690005BF325 /* DrawingsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */; };
+		D1A7913822F838B2005BF325 /* polarize.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D1A7913722F83896005BF325 /* polarize.mp4 */; };
+		D1A7913922F838BB005BF325 /* morph.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D1A7913622F8388F005BF325 /* morph.mp4 */; };
 		D1C69D1222F631DD003D0D05 /* KaraokePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1122F631DD003D0D05 /* KaraokePresenter.swift */; };
 		D1C69D1422F631E9003D0D05 /* KaraokeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1322F631E9003D0D05 /* KaraokeInteractor.swift */; };
 		D1D469172229C7FC0096B968 /* PreschoolerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D469162229C7FC0096B968 /* PreschoolerViewController.swift */; };
@@ -169,6 +172,9 @@
 		D14D53782221B185007ACD55 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		D19245162284DC2800ABD1BD /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		D19D36E4222BAEEC005188D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingsCollectionView.swift; sourceTree = "<group>"; };
+		D1A7913622F8388F005BF325 /* morph.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = morph.mp4; path = Kulynym/Resources/morph.mp4; sourceTree = SOURCE_ROOT; };
+		D1A7913722F83896005BF325 /* polarize.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = polarize.mp4; path = Kulynym/Resources/polarize.mp4; sourceTree = SOURCE_ROOT; };
 		D1C347E822B2BCDC008DAF11 /* Koshakanym.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Koshakanym.mp4; sourceTree = "<group>"; };
 		D1C69D1122F631DD003D0D05 /* KaraokePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokePresenter.swift; sourceTree = "<group>"; };
 		D1C69D1322F631E9003D0D05 /* KaraokeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeInteractor.swift; sourceTree = "<group>"; };
@@ -567,6 +573,8 @@
 		D1E3719022A7A008009D97AB /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				D1A7913722F83896005BF325 /* polarize.mp4 */,
+				D1A7913622F8388F005BF325 /* morph.mp4 */,
 				D1C347E822B2BCDC008DAF11 /* Koshakanym.mp4 */,
 			);
 			path = Video;
@@ -588,8 +596,9 @@
 			isa = PBXGroup;
 			children = (
 				D1F9ABD022A0454600989BD3 /* DrawingViewController.swift */,
-				D10221DB22ECD2B40081C95E /* CanvasView.swift */,
 				D1F9ABD222A0455A00989BD3 /* DrawingView.swift */,
+				D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */,
+				D10221DB22ECD2B40081C95E /* CanvasView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -701,6 +710,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1A7913922F838BB005BF325 /* morph.mp4 in Resources */,
+				D1A7913822F838B2005BF325 /* polarize.mp4 in Resources */,
 				D13D865A2217FEDF0048A6E4 /* LaunchScreen.storyboard in Resources */,
 				D1F3BE8922F1778900BD4F97 /* drawingMessage.mp3 in Resources */,
 				D132840D22F4581100C630A6 /* eagle.mp3 in Resources */,
@@ -742,6 +753,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D46932222A8C9A0096B968 /* ScenesRouter.swift in Sources */,
+				D1A7913522F82690005BF325 /* DrawingsCollectionView.swift in Sources */,
 				D135E2A722A02F9800DC84DE /* KaraokeView.swift in Sources */,
 				D135E2AF22A02FD900DC84DE /* KaraokeRouter.swift in Sources */,
 				D1F9ABD522A0456B00989BD3 /* DrawingConfigurator.swift in Sources */,
