@@ -65,6 +65,9 @@
 		D14D537222214853007ACD55 /* ItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D537122214853007ACD55 /* ItemRouter.swift */; };
 		D14D53752221A294007ACD55 /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D53742221A294007ACD55 /* ContentService.swift */; };
 		D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D53782221B185007ACD55 /* AudioPlayer.swift */; };
+		D1811D8C22FABB0A00C147D6 /* quit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1811D8B22FABB0A00C147D6 /* quit.mp3 */; };
+		D1811D8E22FABB1200C147D6 /* swish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1811D8D22FABB1100C147D6 /* swish.mp3 */; };
+		D1811D9022FABB1C00C147D6 /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1811D8F22FABB1C00C147D6 /* bounce.mp3 */; };
 		D19245172284DC2800ABD1BD /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19245162284DC2800ABD1BD /* Timer.swift */; };
 		D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D36E4222BAEEC005188D0 /* Extensions.swift */; };
 		D1A7913522F82690005BF325 /* DrawingsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */; };
@@ -188,6 +191,9 @@
 		D14D537122214853007ACD55 /* ItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRouter.swift; sourceTree = "<group>"; };
 		D14D53742221A294007ACD55 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
 		D14D53782221B185007ACD55 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		D1811D8B22FABB0A00C147D6 /* quit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = quit.mp3; sourceTree = "<group>"; };
+		D1811D8D22FABB1100C147D6 /* swish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swish.mp3; sourceTree = "<group>"; };
+		D1811D8F22FABB1C00C147D6 /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
 		D19245162284DC2800ABD1BD /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		D19D36E4222BAEEC005188D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingsCollectionView.swift; sourceTree = "<group>"; };
@@ -516,6 +522,7 @@
 		D14D53762221B0CE007ACD55 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				D1FAE5EA22F9A5D000FD15F2 /* Effects */,
 				D1F3BE8722F1552C00BD4F97 /* Messages */,
 				D146AB3222E7858C004520DA /* Animals */,
 				D146AB2E22E77EB2004520DA /* backgroundAudio.mp3 */,
@@ -654,6 +661,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D1FAE5EA22F9A5D000FD15F2 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				D1811D8F22FABB1C00C147D6 /* bounce.mp3 */,
+				D1811D8D22FABB1100C147D6 /* swish.mp3 */,
+				D1811D8B22FABB0A00C147D6 /* quit.mp3 */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -762,7 +779,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1A7913922F838BB005BF325 /* morph.mp4 in Resources */,
+				D1811D8E22FABB1200C147D6 /* swish.mp3 in Resources */,
 				D1A7913822F838B2005BF325 /* polarize.mp4 in Resources */,
+				D1811D9022FABB1C00C147D6 /* bounce.mp3 in Resources */,
 				D13D865A2217FEDF0048A6E4 /* LaunchScreen.storyboard in Resources */,
 				D1F3BE8922F1778900BD4F97 /* drawingMessage.mp3 in Resources */,
 				D132840D22F4581100C630A6 /* eagle.mp3 in Resources */,
@@ -778,6 +797,7 @@
 				D1F3BE8F22F177C600BD4F97 /* gamesMessage.mp3 in Resources */,
 				D132840F22F4582600C630A6 /* animalsIconQ.mp3 in Resources */,
 				D146AB2F22E77EB2004520DA /* backgroundAudio.mp3 in Resources */,
+				D1811D8C22FABB0A00C147D6 /* quit.mp3 in Resources */,
 				D146AB3822E7862F004520DA /* dog.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,6 +25,7 @@ class QuizRouter: QuizRouterProtocol {
 extension QuizRouter {
     func backToItem(didPass: Bool) {
         if !didPass {
+            AudioPlayer.setupExtraAudio(with: "learnMore", audioPlayer: .effects)
             controller.itemView.slideCount -= 4
         }
         controller.dismiss(animated: true, completion: nil)

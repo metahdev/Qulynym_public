@@ -88,7 +88,8 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
         presenter.updateView()
     }
     
-    @objc func closeBtnPressed() {
+    @objc
+    private func closeBtnPressed() {
         presenter.closeBtnPressed()
     }
 }

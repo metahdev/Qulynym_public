@@ -63,6 +63,7 @@ extension MenuPresenter {
     }
     
     func closeView() {
+        callQuitAudioEffect()
         router.close()
     }
     

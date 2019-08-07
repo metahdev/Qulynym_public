@@ -9,7 +9,7 @@
 
 import UIKit
 
-#warning("cell border color, well done audio")
+#warning("cell border color")
 
 protocol QuizViewControllerProtocol: class {
     var categoryName: String { get set }
@@ -93,9 +93,7 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     
     @objc
     private func soundsBtnPressed() {
-        if !AudioPlayer.questionAudioPlayer.isPlaying {
-            presenter.playAudio()
-        }
+        presenter.playAudio()
     }
 }
 
@@ -120,9 +118,7 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
             presenter.deleteItem()
             cell!.layer.borderWidth = 5
             cell!.layer.borderColor = UIColor.green.cgColor
-            presenter.playGoodJobAudio()
         } else {
-            presenter.playTryAgainAudio()
             presenter.backToItemWithRepeat()
         }
     }

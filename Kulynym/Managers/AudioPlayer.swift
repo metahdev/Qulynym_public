@@ -11,6 +11,7 @@ import Foundation
 import AVFoundation
 
 enum PlayerType {
+    case effects
     case scenes
     case content
     case message
@@ -29,11 +30,11 @@ struct AudioPlayer {
     
     // MARK: Background Audio
     static func turnOnBackgroundMusic() {
-        initBackdroundAudio()
+        initBackgroundAudio()
         backgroundAudioPlayer.play()
     }
     
-    private static func initBackdroundAudio() {
+    private static func initBackgroundAudio() {
         let url = setupPaths(name: "backgroundAudio")
         initPlayers(player: &backgroundAudioPlayer, url: url)
         
@@ -44,13 +45,18 @@ struct AudioPlayer {
     
     // MARK:- Extra Audios
     static func setupExtraAudio(with name: String, audioPlayer: PlayerType) {
+        // *
         let url = setupPaths(name: name)
         switch audioPlayer {
+        case .effects:
+            initPlayers(player: &sfxAudioPlayer, url: url)
+            sfxAudioPlayer.play()
         case .scenes:
             initPlayers(player: &scenesAudioPlayer, url: url)
             scenesAudioTask()
         case .content:
             initPlayers(player: &contentAudioPlayer, url: url)
+            contentAudioPlayer.play()
         case .message:
             initPlayers(player: &messageAudioPlayer, url: url)
             messageAudioPlayer.play()
