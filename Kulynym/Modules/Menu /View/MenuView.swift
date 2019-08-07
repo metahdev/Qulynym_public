@@ -12,6 +12,7 @@ import UIKit
 protocol MenuViewProtocol: class {
     var collectionView: UICollectionView { get set }
     var closeBtn: UIButton { get set }
+    var settingsBtn: UIButton { get set }
     
     func setupLayout()
 }
@@ -24,6 +25,11 @@ class MenuView: MenuViewProtocol {
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
+        return btn
+    }()
+    lazy var settingsBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "settings"), for: .normal)
         return btn
     }()
     private weak var view: UIView!
@@ -39,6 +45,7 @@ class MenuView: MenuViewProtocol {
     func setupLayout() {
         view.addSubview(collectionView)
         view.addSubview(closeBtn)
+        view.addSubview(settingsBtn)
         setAutoresizingFalse()
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
@@ -51,11 +58,18 @@ class MenuView: MenuViewProtocol {
     }
     
     private func activateConstraints() {
+        let constant = view.frame.width * 0.01
+        
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            settingsBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant),
+            settingsBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: constant),
+            settingsBtn.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.06),
+            settingsBtn.widthAnchor.constraint(equalTo: settingsBtn.heightAnchor)
         ])
     }
 }

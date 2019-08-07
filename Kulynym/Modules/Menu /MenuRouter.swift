@@ -18,6 +18,7 @@ protocol MenuRouterProtocol: class {
     func showGamesMenu()
     func openFlappyBird()
     func close()
+    func showSettings()
 }
 
 class MenuRouter: MenuRouterProtocol {
@@ -73,6 +74,10 @@ extension MenuRouter {
     
     func close() {
         controller.navigationController!.popViewController(animated: true)
+    }
+    
+    func showSettings() {
+        showAnotherView(view: SettingsViewController())
     }
     
     private func showAnotherView(view toPresent: UIViewController) {

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8528917622F9A22600A7CEA7 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528917522F9A22600A7CEA7 /* TextViewController.swift */; };
+		856F348B22F87EDD00E97C0C /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F348A22F87EDD00E97C0C /* SettingsConfigurator.swift */; };
+		856F348D22F87EF100E97C0C /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F348C22F87EF100E97C0C /* SettingsPresenter.swift */; };
+		856F348F22F87F0400E97C0C /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F348E22F87F0400E97C0C /* SettingsInteractor.swift */; };
+		856F349122F87F1800E97C0C /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349022F87F1800E97C0C /* SettingsRouter.swift */; };
+		856F349422F87F5800E97C0C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349322F87F5800E97C0C /* SettingsViewController.swift */; };
+		856F349622F87F8900E97C0C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349522F87F8900E97C0C /* SettingsView.swift */; };
+		85D7B30022FAF960004EEA95 /* InfoForParentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7B2FF22FAF960004EEA95 /* InfoForParentsViewController.swift */; };
+		85D7B30222FAF9B0004EEA95 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7B30122FAF9B0004EEA95 /* CreditsViewController.swift */; };
 		D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10221DB22ECD2B40081C95E /* CanvasView.swift */; };
 		D102930822F1A13500C7B2F2 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930722F1A13500C7B2F2 /* QuizViewController.swift */; };
 		D102930A22F1A14000C7B2F2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930922F1A14000C7B2F2 /* QuizView.swift */; };
@@ -116,6 +125,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8528917522F9A22600A7CEA7 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		856F348A22F87EDD00E97C0C /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
+		856F348C22F87EF100E97C0C /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		856F348E22F87F0400E97C0C /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		856F349022F87F1800E97C0C /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		856F349322F87F5800E97C0C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		856F349522F87F8900E97C0C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		85D7B2FF22FAF960004EEA95 /* InfoForParentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoForParentsViewController.swift; sourceTree = "<group>"; };
+		85D7B30122FAF9B0004EEA95 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		D10221DB22ECD2B40081C95E /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		D102930722F1A13500C7B2F2 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		D102930922F1A14000C7B2F2 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
@@ -238,6 +256,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8528917322F9A1C300A7CEA7 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				8528917522F9A22600A7CEA7 /* TextViewController.swift */,
+			);
+			path = TextView;
+			sourceTree = "<group>";
+		};
+		856F348922F87E7B00E97C0C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				856F348A22F87EDD00E97C0C /* SettingsConfigurator.swift */,
+				856F349222F87F2000E97C0C /* View */,
+				856F348C22F87EF100E97C0C /* SettingsPresenter.swift */,
+				856F348E22F87F0400E97C0C /* SettingsInteractor.swift */,
+				856F349022F87F1800E97C0C /* SettingsRouter.swift */,
+				85D7B2FF22FAF960004EEA95 /* InfoForParentsViewController.swift */,
+				85D7B30122FAF9B0004EEA95 /* CreditsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		856F349222F87F2000E97C0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				856F349322F87F5800E97C0C /* SettingsViewController.swift */,
+				856F349522F87F8900E97C0C /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D102930622F1A10600C7B2F2 /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +432,7 @@
 				D19D36E4222BAEEC005188D0 /* Extensions.swift */,
 				D13D865B2217FEDF0048A6E4 /* Info.plist */,
 				D1D46951222ADED20096B968 /* Modules */,
+				8528917322F9A1C300A7CEA7 /* TextView */,
 				D1A29F372280C2E8000CC676 /* Managers */,
 				D14D536B2221377C007ACD55 /* Services */,
 				D14D536C22213787007ACD55 /* Resources */,
@@ -556,6 +606,7 @@
 				D1D5599322A85074001674A7 /* Message */,
 				D16CE02F22EF4E260057835D /* Torgai */,
 				D1D469152229C7D90096B968 /* Preschooler */,
+				856F348922F87E7B00E97C0C /* Settings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -760,12 +811,17 @@
 				D1D469172229C7FC0096B968 /* PreschoolerViewController.swift in Sources */,
 				D1F9ABC822A0450200989BD3 /* StoryConfigurator.swift in Sources */,
 				D1072A0122877DD2003149E8 /* PlaylistRouter.swift in Sources */,
+				856F349122F87F1800E97C0C /* SettingsRouter.swift in Sources */,
 				D1D4692E222A8C6B0096B968 /* ScenesPresenter.swift in Sources */,
 				D135E2AB22A02FBC00DC84DE /* KaraokeConfigurator.swift in Sources */,
 				D1F9ABCA22A0452000989BD3 /* StoryPresenter.swift in Sources */,
+				856F348B22F87EDD00E97C0C /* SettingsConfigurator.swift in Sources */,
+				85D7B30222FAF9B0004EEA95 /* CreditsViewController.swift in Sources */,
 				D1D46927222A8C1E0096B968 /* ScenesViewController.swift in Sources */,
 				D1383FAE22B0F730007815DF /* MenuInteractor .swift in Sources */,
+				856F349622F87F8900E97C0C /* SettingsView.swift in Sources */,
 				D1D5599722A85E95001674A7 /* MessageView.swift in Sources */,
+				856F348D22F87EF100E97C0C /* SettingsPresenter.swift in Sources */,
 				D14D53752221A294007ACD55 /* ContentService.swift in Sources */,
 				D1E3719322A7A0AA009D97AB /* MessageManager.swift in Sources */,
 				D1D4692C222A8C5D0096B968 /* ScenesConfigurator.swift in Sources */,
@@ -774,6 +830,7 @@
 				D14D536A22213775007ACD55 /* ItemConfigurator.swift in Sources */,
 				D1F9ABCE22A0453400989BD3 /* StoryRouter.swift in Sources */,
 				D10687CF22AE68EE00A3E6E0 /* MenuView.swift in Sources */,
+				856F349422F87F5800E97C0C /* SettingsViewController.swift in Sources */,
 				D102930822F1A13500C7B2F2 /* QuizViewController.swift in Sources */,
 				D13D864F2217FEDF0048A6E4 /* ItemViewController.swift in Sources */,
 				D14D537222214853007ACD55 /* ItemRouter.swift in Sources */,
@@ -806,6 +863,7 @@
 				D1D4691E2229C8300096B968 /* PreschoolerPresenter.swift in Sources */,
 				D1D5599222A82FED001674A7 /* Emitters.swift in Sources */,
 				D1C69D1222F631DD003D0D05 /* KaraokePresenter.swift in Sources */,
+				85D7B30022FAF960004EEA95 /* InfoForParentsViewController.swift in Sources */,
 				D102930F22F1AE0200C7B2F2 /* QuizInteractor.swift in Sources */,
 				D1F9ABDB22A0458C00989BD3 /* DrawingRouter.swift in Sources */,
 				D14D536E222137B2007ACD55 /* ItemInteractor.swift in Sources */,
@@ -815,12 +873,14 @@
 				D1F9ABC622A044F600989BD3 /* StoryView.swift in Sources */,
 				D102931122F1AE1100C7B2F2 /* QuizRouter.swift in Sources */,
 				D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */,
+				8528917622F9A22600A7CEA7 /* TextViewController.swift in Sources */,
 				D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */,
 				D1C69D1422F631E9003D0D05 /* KaraokeInteractor.swift in Sources */,
 				D10729F722876879003149E8 /* PlaylistView.swift in Sources */,
 				D19245172284DC2800ABD1BD /* Timer.swift in Sources */,
 				D14D53702221380F007ACD55 /* ItemView.swift in Sources */,
 				D1383F8E22AFCD42007815DF /* ImageCollectionViewCell.swift in Sources */,
+				856F348F22F87F0400E97C0C /* SettingsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

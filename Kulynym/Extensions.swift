@@ -74,3 +74,61 @@ func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDire
     cv.allowsMultipleSelection = false
     return cv
 }
+
+extension UIColor {
+    static let skyColor = UIColor(red: 141/255, green: 232/255, blue: 237/255, alpha: 1)
+    static let lightPink = UIColor(red: 255/255, green: 167/255, blue: 155/255, alpha: 1)
+    static let brightOrange = UIColor(red: 253/255, green: 96/255, blue: 65/255, alpha: 1)
+}
+
+enum ButtonType {
+    case music
+    case info
+    case credits
+}
+
+struct SettingsButton {
+    weak var view: UIView!
+    var buttonType: ButtonType
+    var setButton: UIButton
+    
+    init(buttonType: ButtonType, view: UIView) {
+        self.buttonType = buttonType
+        self.view = view
+        setButton = UIButton()
+        
+        setup()
+    }
+    
+    func setup() {
+        generalSetup()
+        switch buttonType {
+        case .music: musicBtnSetup()
+        case .info: infoBtnSetup()
+        case .credits: creditsBtnSetup()
+        }
+    }
+    
+    func generalSetup() {
+        self.setButton.backgroundColor = UIColor.skyColor
+        self.setButton.layer.borderColor = UIColor.white.cgColor
+        self.setButton.layer.borderWidth = 5
+        self.setButton.layer.cornerRadius = 20
+        self.setButton.setTitle("a", for: .normal)
+        self.setButton.titleLabel?.font = UIFont(name: "Gill Sans", size: view.frame.height * 0.08)
+        self.setButton.titleLabel?.textAlignment = .center
+        self.setButton.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    func musicBtnSetup() {
+        self.setButton.setTitle("Fondyq muzyka", for: .normal)
+    }
+    
+    func infoBtnSetup() {
+        self.setButton.setTitle("Ata-analarg'a", for: .normal)
+    }
+    
+    func creditsBtnSetup() {
+        self.setButton.setTitle("Siltemeler", for: .normal)
+    }
+}

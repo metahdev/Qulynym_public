@@ -37,6 +37,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
     
     private weak var collectionView: UICollectionView!
     private weak var closeBtn: UIButton!
+    private weak var settingsBtn: UIButton!
     
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
     private var menuView: MenuViewProtocol!
@@ -68,6 +69,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
     private func setupProperties() {
         self.collectionView = menuView.collectionView
         self.closeBtn = menuView.closeBtn
+        self.settingsBtn = menuView.settingsBtn
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -80,6 +82,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
     
     private func hideOrUnhideCloseBtn() {
         closeBtn.isHidden = menuType == .main
+        settingsBtn.isHidden = menuType != .main
     }
     
     
@@ -101,10 +104,14 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
     // MARK:- Actions
     private func assignActions() {
         closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
+        settingsBtn.addTarget(self, action: #selector(settingsBtnPressed), for: .touchUpInside)
     }
     
     @objc func closeBtnPressed() {
         presenter.closeView() 
+    }
+    @objc func settingsBtnPressed() {
+        presenter.goToSettings()
     }
 }
 

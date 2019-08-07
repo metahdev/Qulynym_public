@@ -15,6 +15,7 @@ protocol MenuPresenterProtocol: class {
     func didSelectToddlerCell(at index: Int)
     func didSelectGamesCell(at index: Int)
     func closeView()
+    func goToSettings()
 }
 
 class MenuPresenter: MenuPresenterProtocol {
@@ -63,5 +64,9 @@ extension MenuPresenter {
     
     func closeView() {
         router.close()
+    }
+    
+    func goToSettings() {
+        router.showSettings()
     }
 }
