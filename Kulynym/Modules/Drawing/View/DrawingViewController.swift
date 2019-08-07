@@ -93,15 +93,19 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol, Me
         slideOutBtn.addTarget(self, action: #selector(slideOut), for: .touchUpInside)
     }
     
-    @objc private func closeBtnPressed() {
+    @objc
+    private func closeBtnPressed() {
         presenter.closeView()
     }
     
-    @objc private func slideOut() {
+    @objc
+    private func slideOut() {
+        callSwishAudioEffect()
         drawingView.toggleDrawingsCV()
     }
     
-    @objc private func reset() {
+    @objc
+    private func reset() {
         canvasView.clear()
     }
     
@@ -139,6 +143,7 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        AudioPlayer.setupExtraAudio(with: "bulp", audioPlayer: .effects)
         canvasView.color = tools[indexPath.row]
         if indexPath.row == 9 {
             canvasView.brushWidth = 10

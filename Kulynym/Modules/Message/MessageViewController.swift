@@ -72,5 +72,6 @@ class MessageViewController: UIViewController {
         view.removeFromSuperview()
         removeFromParent()
         AudioPlayer.messageAudioPlayer.stop()
+        AudioPlayer.setupExtraAudio(with: "quit", audioPlayer: .effects)
     }
 }

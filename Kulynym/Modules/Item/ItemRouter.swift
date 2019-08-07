@@ -38,6 +38,6 @@ extension ItemRouter: ItemRouterProtocol {
         controller.quizViewController.cards = cards
         controller.quizViewController.categoryName = categoryName
         vc.itemView = controller
-        controller.present(vc, animated: true, completion: nil)
+        controller.show(vc, sender: nil)
     }
 }

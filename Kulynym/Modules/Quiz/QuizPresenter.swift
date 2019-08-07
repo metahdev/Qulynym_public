@@ -13,8 +13,6 @@ protocol QuizPresenterProtocol: class {
     func setCards()
     func getRandom()
     func playAudio()
-    func playGoodJobAudio()
-    func playTryAgainAudio()
     func deleteItem()
     func closeView()
     func backToItemWithRepeat()
@@ -45,36 +43,37 @@ extension QuizPresenter {
     }
     
     func playAudio() {
+        while AudioPlayer.sfxAudioPlayer.isPlaying{}
         AudioPlayer.questionAudioPlayer.play()
         while AudioPlayer.questionAudioPlayer.isPlaying {}
         AudioPlayer.contentAudioPlayer.play()
     }
     
-    func playGoodJobAudio() {
-        
-    }
-    
-    func playTryAgainAudio() {
-        
-    }
-    
     func deleteItem() {
+        AudioPlayer.setupExtraAudio(with: "wellDone", audioPlayer: .effects)
         if modifiedCards.count == 1 {
             router.backToItem(didPass: true)
             return
         }
-        let index = modifiedCards.firstIndex(of: view.randomCard)
-        modifiedCards.remove(at: index!)
+        
+        removePreviousCard()
         getRandom()
         view.shuffleCards()
         playAudio()
     }
     
+    private func removePreviousCard() {
+        let index = modifiedCards.firstIndex(of: view.randomCard)
+        modifiedCards.remove(at: index!)
+    }
+    
     func closeView() {
+        callQuitAudioEffect()
         router.close() 
     }
     
     func backToItemWithRepeat() {
+        AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
         router.backToItem(didPass: false)
     }
 }

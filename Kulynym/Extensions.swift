@@ -9,6 +9,7 @@
 
 import UIKit
 
+// UIButton Constraints
 extension UIButton {
     func configureCloseBtnFrame(_ view: UIView) {
         NSLayoutConstraint.activate([
@@ -29,6 +30,8 @@ extension UIButton {
     }
 }
 
+
+// MARK:- UILabel properties
 extension UILabel {
     func setupContentLabel(size: CGFloat) {
         self.font = UIFont(name: "Arial Rounded MT Bold", size: size)
@@ -37,6 +40,8 @@ extension UILabel {
     }
 }
 
+
+// MARK:- UIImageView constraints
 extension UIImageView {
     func configureBackgroundImagePosition(_ view: UIView) {
         NSLayoutConstraint.activate([
@@ -48,6 +53,8 @@ extension UIImageView {
     }
 }
 
+
+// MARK:- UICollectionView
 enum BackgroundType {
     case white
     case clear
@@ -73,4 +80,14 @@ func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDire
     
     cv.allowsMultipleSelection = false
     return cv
+}
+
+
+// MARK:- Audio
+func callSwishAudioEffect() {
+    AudioPlayer.setupExtraAudio(with: "swish", audioPlayer: .effects)
+}
+
+func callQuitAudioEffect() {
+    AudioPlayer.setupExtraAudio(with: "quit", audioPlayer: .effects)
 }

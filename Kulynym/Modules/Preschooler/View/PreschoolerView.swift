@@ -18,6 +18,7 @@ enum IconPosition {
 
 protocol PreschoolerViewProtocol {
     var closeBtn: UIButton { get set }
+    var scrollView: UIScrollView  { get set }
     
     func setupLayout()
 }
@@ -30,7 +31,7 @@ class PreschoolerView: PreschoolerViewProtocol {
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
-    private lazy var scrollView: UIScrollView = {
+    lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.bounces = false

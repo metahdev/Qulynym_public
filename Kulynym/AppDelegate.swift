@@ -10,11 +10,11 @@
 import UIKit
 import CoreData
 
-#warning("do some refactoring of the project and make a review")
+#warning("* means code can be refactored and improved")
 /*
  Bugs, which are already found:
   1) Memory Leak with Audio
-  2) Audio queue isn't optimizing the main thread
+  2) solved
   3) solved
   4) Eraser draws white on picture !
   5) solved

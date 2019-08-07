@@ -26,6 +26,7 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        AudioPlayer.setupExtraAudio(with: "bubbles", audioPlayer: .effects)
         setupViews(context: transitionContext)
         containerView.addSubview(toView)
         initBubbleView(view: containerView)

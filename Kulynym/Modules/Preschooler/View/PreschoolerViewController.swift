@@ -20,6 +20,7 @@ class PreschoolerViewController: UIViewController, PreschoolerViewControllerProt
     private var btnsAndIndexes = [UIButton: Int]()
     
     private weak var closeBtn: UIButton!
+    private weak var mainScrollView: UIScrollView!
     
     private var preschoolerView: PreschoolerViewProtocol!
     private var configurator: PreschoolerConfiguratorProtocol = PreschoolerConfigurator()
@@ -33,6 +34,7 @@ class PreschoolerViewController: UIViewController, PreschoolerViewControllerProt
         initLayout()
         preschoolerView.setupLayout()
         assignViews()
+        setupScrollView()
         setupArray()
         assignActions()
         assignActionsAndIndexes()
@@ -50,6 +52,11 @@ class PreschoolerViewController: UIViewController, PreschoolerViewControllerProt
     
     private func assignViews() {
         self.closeBtn = preschoolerView.closeBtn
+        self.mainScrollView = preschoolerView.scrollView
+    }
+    
+    private func setupScrollView() {
+        mainScrollView.delegate = self
     }
     
 
@@ -65,7 +72,7 @@ class PreschoolerViewController: UIViewController, PreschoolerViewControllerProt
     }
     
     private func assignActionsAndIndexes() {
-        #warning("this is dumb")
+        // **
         var index = 0
         for button in iconButtons {
             addTargetToIconBtn(button)
@@ -91,5 +98,11 @@ class PreschoolerViewController: UIViewController, PreschoolerViewControllerProt
 extension PreschoolerViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return Animator()
+    }
+}
+
+extension PreschoolerViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        AudioPlayer.setupExtraAudio(with: "bounce", audioPlayer: .effects)
     }
 }

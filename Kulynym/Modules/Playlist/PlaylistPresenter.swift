@@ -33,10 +33,12 @@ extension PlaylistPresenter {
     }
     
     func closeView() {
+        callQuitAudioEffect()
         router.close()
     }
     
     func openItem(at index: Int) {
+        callSwishAudioEffect()
         router.presentContent(index)
     }
 }

@@ -26,6 +26,7 @@ class DrawingPresenter: DrawingPresenterProtocol {
 
 extension DrawingPresenter {
     func closeView() {
+        callQuitAudioEffect()
         router.close()
     }
 }
