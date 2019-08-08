@@ -34,14 +34,15 @@ class ItemPresenter: ItemPresenterProtocol {
 
 extension ItemPresenter {
     // MARK:- Protocol Methods
-    func updateView() {
+    func updateView() {        
         if slideCount % 4 == 0 && controller.checkForQuiz {
-            callSwishAudioEffect()
             passDataAndOpenQuiz()
             return
         }
+        
         updateProperties()
         AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
+        AudioPlayer.contentAudioPlayer.play()
         controller.updateContent(contentKey: contentKey)
     }
     
@@ -61,7 +62,6 @@ extension ItemPresenter {
     }
     
     func closeBtnPressed() {
-        callQuitAudioEffect()
         router.closeView()
     }
 }

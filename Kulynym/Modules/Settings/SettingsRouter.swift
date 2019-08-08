@@ -12,9 +12,7 @@ import Foundation
 import UIKit
 
 protocol SettingsRouterProtocol: class {
-    func showTextView(_ content: String)
-//    func showInfoForParentsViewController()
-//    func showCreditsViewController()
+    func showTextView(_ content: NSAttributedString)
     func close()
 }
 
@@ -29,22 +27,15 @@ class SettingsRouter: SettingsRouterProtocol {
 
 extension SettingsRouter {
     // MARK:- Protocol Methods
-    func showTextView(_ content: String) {
-        controller.textViewController.content = content
+    func showTextView(_ content: NSAttributedString) {
         let vc = TextViewController()
-
         controller.textViewController = vc
+        
+        controller.textViewController.content = content
+        
         controller.show(vc, sender: nil)
     }
     
-//    func showInfoForParentsViewController() {
-//        controller.show(InfoForParentsViewController(), sender: nil)
-//    }
-//
-//    func showCreditsViewController() {
-//        controller.show(CreditsViewController(), sender: nil)
-//    }
-//
     func close() {
         controller.navigationController!.popViewController(animated: true)
     }

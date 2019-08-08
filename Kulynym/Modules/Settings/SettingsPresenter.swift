@@ -13,8 +13,7 @@ import Foundation
 protocol SettingsPresenterProtocol: class {
     func goToTextViewController()
     func closeView()
-//    func goToInfoForParentsViewController()
-//    func goToCreditsViewController()
+    func checkForMusicState()
     func setBackgroundMusicState()
 }
 
@@ -34,17 +33,14 @@ extension SettingsPresenter {
         let content = interactor.getContent(controller.isInfoForParents)
         router.showTextView(content)
     }
-//
-//    func goToInfoForParentsViewController() {
-//        router.showInfoForParentsViewController()
-//    }
-//
-//    func goToCreditsViewController() {
-//        router.showCreditsViewController()
-//    }
     
     func setBackgroundMusicState() {
         interactor.saveMusicState(controller.isChecked)
+    }
+    
+    func checkForMusicState() {
+        guard let state = interactor.getMusicState() else { return }
+        controller.isChecked = state
     }
     
     func closeView() {

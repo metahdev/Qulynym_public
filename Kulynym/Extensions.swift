@@ -88,6 +88,7 @@ extension UIColor {
     static let brightOrange = UIColor(red: 253/255, green: 96/255, blue: 65/255, alpha: 1)
 }
 
+// MARK:- Settings View
 enum ButtonType {
     case music
     case info
@@ -140,11 +141,10 @@ struct SettingsButton {
     }
 }
 
-// MARK:- Audio
-func callSwishAudioEffect() {
-    AudioPlayer.setupExtraAudio(with: "swish", audioPlayer: .effects)
-}
-
-func callQuitAudioEffect() {
-    AudioPlayer.setupExtraAudio(with: "quit", audioPlayer: .effects)
+struct AppUtility {
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.orientationLock = orientation
+        }
+    }
 }

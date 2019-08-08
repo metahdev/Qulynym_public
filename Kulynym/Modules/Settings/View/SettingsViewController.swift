@@ -18,7 +18,6 @@ protocol SettingsViewControllerProtocol: class {
     
     func turnOnMusic()
     func turnOffMusic()
-    func checkForMusicState()
 }
 
 class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
@@ -26,9 +25,13 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     var presenter: SettingsPresenterProtocol!
     weak var textViewController: TextViewControllerProtocol!
     
+    var isChecked = true {
+        didSet {
+            checkboxOperations()
+        }
+    }
     var isInfoForParents: Bool!
     
-    private weak var background: UIImageView!
     private weak var closeBtn: UIButton!
     private weak var checkmarkBtn: UIButton!
     private weak var musicBtn: UIButton!
@@ -38,7 +41,6 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     private let configurator: SettingsConfiguratorProtocol = SettingsConfigurator()
     private var settingsView: SettingsViewProtocol!
     
-    var isChecked = true
     
     // MARK:- View Lifecycle
     override func viewDidLoad() {
@@ -46,11 +48,15 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
         configurator.configure(with: self)
         initLayout()
         settingsView.setupLayout()
-        checkForMusicState()    
         assignViews()
         assignActions()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.checkForMusicState()
+    }
+    
     
     // MARK:- Layout
     private func initLayout() {
@@ -58,7 +64,6 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     }
     
     private func assignViews() {
-        self.background = settingsView.background
         self.closeBtn = settingsView.closeBtn
         self.checkmarkBtn = settingsView.checkmarkBtn
         self.musicBtn = settingsView.musicBtn
@@ -77,6 +82,23 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     
     @objc func checkmarkBtnPressed() {
         isChecked = !isChecked
+    }
+    
+    @objc func infoBtnPressed() {
+        isInfoForParents = true
+        presenter.goToTextViewController()
+    }
+    
+    @objc func creditsBtnPressed() {
+        isInfoForParents = false
+        presenter.goToTextViewController()
+    }
+    
+    @objc func closeBtnPressed() {
+        presenter.closeView()
+    }
+    
+    private func checkboxOperations() {
         if isChecked {
             settingsView.setBoxChecked()
             turnOnMusic()
@@ -86,41 +108,16 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
         }
         presenter.setBackgroundMusicState()
     }
-    
-    @objc func infoBtnPressed() {
-        isInfoForParents = true
-        presenter.goToTextViewController()
-//        presenter.goToInfoForParentsViewController()
-    }
-    
-    @objc func creditsBtnPressed() {
-        isInfoForParents = false
-        presenter.goToTextViewController()
-//        presenter.goToCreditsViewController()
-    }
-    
-    @objc func closeBtnPressed() {
-        presenter.closeView()
-    }
 }
 
 extension SettingsViewController {
+    // MARK:- Protocol Methods
     func turnOffMusic() {
         AudioPlayer.backgroundAudioPlayer.volume = 0
     }
     
     func turnOnMusic() {
         AudioPlayer.backgroundAudioPlayer.volume = 0.5
-    }
-    
-    func checkForMusicState() {
-        let musicPlaying = UserDefaults.standard.bool(forKey: "music playing")
-        
-        if musicPlaying {
-            isChecked = true
-        } else {
-            isChecked = false
-        }
     }
 }
 

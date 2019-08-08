@@ -138,7 +138,6 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        callSwishAudioEffect()
         if menuType == .toddler {
             presenter.didSelectToddlerCell(at: indexPath.row)
         } else if menuType == .main {
@@ -158,10 +157,6 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 84
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        AudioPlayer.setupExtraAudio(with: "bounce", audioPlayer: .effects)
     }
 }
 

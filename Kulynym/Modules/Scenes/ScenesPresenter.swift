@@ -54,7 +54,6 @@ extension ScenesPresenter {
     func skipBtnPressed() {
         timerManager.timer.invalidate()
         AudioPlayer.scenesAudioPlayer.stop()
-        AudioPlayer.setupExtraAudio(with: "swish", audioPlayer: .effects)
         configureDirection()
     }
     

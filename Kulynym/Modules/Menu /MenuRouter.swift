@@ -69,7 +69,7 @@ extension MenuRouter {
     }
     
     func openFlappyBird() {
-        
+        controller.show(GameViewController(), sender: nil)
     }
     
     func close() {

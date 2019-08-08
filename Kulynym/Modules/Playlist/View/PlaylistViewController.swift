@@ -115,7 +115,6 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        AudioPlayer.setupExtraAudio(with: "bounce", audioPlayer: .effects)
     }
 }
 

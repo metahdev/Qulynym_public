@@ -33,6 +33,7 @@ extension PreschoolerPresenter {
     }
     
     func iconPressed(with index: Int) {
+        
     }
     
     func closeView() {

@@ -100,7 +100,6 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol, Me
     
     @objc
     private func slideOut() {
-        callSwishAudioEffect()
         drawingView.toggleDrawingsCV()
     }
     

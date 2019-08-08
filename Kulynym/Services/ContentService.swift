@@ -7,7 +7,12 @@
  * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
-import Foundation
+import UIKit
+
+enum TextType {
+    case infoForParents
+    case credits
+}
 
 struct EduSection {
     var name: String
@@ -54,12 +59,24 @@ struct ContentService {
         "kolobokIcon",
     ]
     
-    static let infoForParents = "Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!Информация для родителей!"
-    
-    static let credits = "Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты.Что-то про кредиты."
+    static var infoForParents = setAttributedText(type: .infoForParents)
+    static var credits = setAttributedText(type: .credits)
     
     private static var colorsSection = EduSection(name: "colorsIcon", scenesNames: [""], timepoints: [0], contentNames: ["red"])
         private static var shapesSection = EduSection(name: "shapesIcon", scenesNames: [""], timepoints: [0], contentNames: ["circle"])
-    private static var animalsSection = EduSection(name: "animalsIcon", scenesNames: [""], timepoints: [0], contentNames: ["cat", "dog", "bear", "eagle", "elephant"])
+    private static var animalsSection = EduSection(name: "animalsIcon", scenesNames: ["Anim1", "Anim2"], timepoints: [5], contentNames: ["cat", "dog", "bear", "eagle", "elephant", "esek", "owl", "ant"])
     private static var plantsSection = EduSection(name: "plantsIcon", scenesNames: [""], timepoints: [0], contentNames: ["rose"])
+    
+    static var parentsInfoBody = "\n \n Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. "
+    
+    static var creditsBody = "\n \n Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. "
+}
+
+func setAttributedText(type: TextType) -> NSAttributedString {
+    let attributedText = NSMutableAttributedString(string: type == .credits ? "Credits": "Info for parents", attributes: [NSAttributedString.Key.font: UIFont(name: "Arial", size: 52)!])
+    
+    attributedText.append(NSAttributedString(string: type == .credits ? ContentService.creditsBody : ContentService.parentsInfoBody, attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 32)!, NSAttributedString.Key.foregroundColor: UIColor.gray]))
+    
+    return attributedText
+    
 }

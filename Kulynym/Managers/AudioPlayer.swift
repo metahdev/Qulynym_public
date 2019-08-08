@@ -56,7 +56,6 @@ struct AudioPlayer {
             scenesAudioTask()
         case .content:
             initPlayers(player: &contentAudioPlayer, url: url)
-            contentAudioPlayer.play()
         case .message:
             initPlayers(player: &messageAudioPlayer, url: url)
             messageAudioPlayer.play()

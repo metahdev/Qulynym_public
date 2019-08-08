@@ -11,8 +11,9 @@
 import Foundation
 
 protocol SettingsInteractorProtocol: class {
-    func getContent(_ isInfoForParents: Bool) -> String
+    func getContent(_ isInfoForParents: Bool) -> NSAttributedString
     func saveMusicState(_ isChecked: Bool)
+    func getMusicState() -> Bool?
 }
 
 class SettingsInteractor: SettingsInteractorProtocol {
@@ -25,11 +26,15 @@ class SettingsInteractor: SettingsInteractorProtocol {
 
 extension SettingsInteractor {
     // MARK:- Protocol Methods
-    func getContent(_ isInfoForParents: Bool) -> String {
+    func getContent(_ isInfoForParents: Bool) -> NSAttributedString {
         return isInfoForParents ? ContentService.infoForParents : ContentService.credits
     }
     
     func saveMusicState(_ isChecked: Bool) {
-        UserDefaults.standard.set(isChecked, forKey: "music playing")
+        UserDefaults.standard.set(isChecked, forKey: "musicPlaying")
+    }
+    
+    func getMusicState() -> Bool? {
+        return UserDefaults.standard.object(forKey: "musicPlaying") as? Bool
     }
 }

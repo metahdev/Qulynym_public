@@ -19,6 +19,8 @@ class PreschoolerViewController: UIViewController, PreschoolerViewControllerProt
     private var iconButtons = [UIButton]()
     private var btnsAndIndexes = [UIButton: Int]()
     
+    private weak var seasonsBtn: UIButton!
+    private weak var profBtn: UIButton!
     private weak var closeBtn: UIButton!
     private weak var mainScrollView: UIScrollView!
     
@@ -34,7 +36,6 @@ class PreschoolerViewController: UIViewController, PreschoolerViewControllerProt
         initLayout()
         preschoolerView.setupLayout()
         assignViews()
-        setupScrollView()
         setupArray()
         assignActions()
         assignActionsAndIndexes()
@@ -53,16 +54,15 @@ class PreschoolerViewController: UIViewController, PreschoolerViewControllerProt
     private func assignViews() {
         self.closeBtn = preschoolerView.closeBtn
         self.mainScrollView = preschoolerView.scrollView
-    }
-    
-    private func setupScrollView() {
-        mainScrollView.delegate = self
+        self.seasonsBtn = preschoolerView.seasonsBtn
+        self.profBtn = preschoolerView.profBtn
     }
     
 
     // MARK:- Array of Buttons
     private func setupArray() {
-        
+        iconButtons.append(seasonsBtn)
+        iconButtons.append(profBtn)
     }
     
     
@@ -101,8 +101,3 @@ extension PreschoolerViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
-extension PreschoolerViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        AudioPlayer.setupExtraAudio(with: "bounce", audioPlayer: .effects)
-    }
-}

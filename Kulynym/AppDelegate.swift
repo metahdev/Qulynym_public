@@ -34,11 +34,11 @@ import CoreData
   11) implemented
   12) implemented
   13) SFXAudioPlayer !
- Eraser icon made by Pixel Buddha at flaticon.com
  */
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var orientationLock = UIInterfaceOrientationMask.landscape
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -56,6 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return self.orientationLock
     }
 }
 

@@ -46,7 +46,6 @@ extension KaraokePresenter {
     }
     
     func close() {
-        callQuitAudioEffect()
         router.close()
     }
 }

@@ -25,10 +25,14 @@ class QuizRouter: QuizRouterProtocol {
 extension QuizRouter {
     func backToItem(didPass: Bool) {
         if !didPass {
-            AudioPlayer.setupExtraAudio(with: "learnMore", audioPlayer: .effects)
+            AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
             controller.itemView.slideCount -= 4
         }
-        controller.dismiss(animated: true, completion: nil)
+        if controller.itemView.slideCount == controller.itemView.contentNames.count {
+            close()
+            return
+        }
+        controller.navigationController?.popViewController(animated: true)
     }
     
     func close() {

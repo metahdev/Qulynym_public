@@ -11,7 +11,6 @@
 import UIKit
 
 protocol SettingsViewProtocol: class {
-    var background: UIImageView {get set}
     var closeBtn: UIButton {get set}
     var checkmarkBtn: UIButton {get set}
     var musicBtn: UIButton {get set}
@@ -25,14 +24,6 @@ protocol SettingsViewProtocol: class {
 
 class SettingsView: SettingsViewProtocol {
     // MARK:- Properties
-    private weak var view: UIView!
-    
-    lazy var background: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "settingsBg"))
-        iv.layer.zPosition = -1
-        return iv
-    }()
-    
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
@@ -60,6 +51,15 @@ class SettingsView: SettingsViewProtocol {
         let button = SettingsButton(buttonType: .credits, view: view)
         return button.setButton
     }()
+    
+    private lazy var background: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "settingsBg"))
+        iv.layer.zPosition = -1
+        return iv
+    }()
+
+    private weak var view: UIView!
+
     
     // MARK:- Initialization
     required init(_ view: UIView) {
@@ -131,5 +131,4 @@ extension SettingsView {
     func setBoxUnchecked() {
         checkmarkBtn.setImage(nil, for: .normal)
     }
-    
 }

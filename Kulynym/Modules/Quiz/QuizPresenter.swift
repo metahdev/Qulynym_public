@@ -68,12 +68,12 @@ extension QuizPresenter {
     }
     
     func closeView() {
-        callQuitAudioEffect()
         router.close() 
     }
     
     func backToItemWithRepeat() {
         AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
+        while AudioPlayer.sfxAudioPlayer.isPlaying {}
         router.backToItem(didPass: false)
     }
 }

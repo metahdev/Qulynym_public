@@ -17,6 +17,8 @@ enum IconPosition {
 }
 
 protocol PreschoolerViewProtocol {
+    var seasonsBtn: UIButton { get set }
+    var profBtn: UIButton { get set }
     var closeBtn: UIButton { get set }
     var scrollView: UIScrollView  { get set }
     
@@ -25,6 +27,14 @@ protocol PreschoolerViewProtocol {
 
 class PreschoolerView: PreschoolerViewProtocol {
     // MARK:- Properties
+    lazy var seasonsBtn: UIButton = {
+        let btn = setupIconButton(image: "seasonsIcon")
+        return btn
+    }()
+    lazy var profBtn: UIButton = {
+        let btn = setupIconButton(image: "profIcon")
+        return btn
+    }()
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
@@ -66,12 +76,16 @@ class PreschoolerView: PreschoolerViewProtocol {
         makeSubviewsMaskFalse()
         closeBtn.configureCloseBtnFrame(view)
         activateConstraints()
+//        addIconButtonConstraints(iconButton: seasonsBtn, positionType: .begin, leftView: view)
+//        addIconButtonConstraints(iconButton: profBtn, positionType: .up, leftView: seasonsBtn)
     }
     
     private func addSubviews() {
         view.addSubview(scrollView)
         view.addSubview(closeBtn)
         scrollView.addSubview(backgroundImageView)
+//        scrollView.addSubview(seasonsBtn)
+//        scrollView.addSubview(profBtn)
     }
     
     private func makeSubviewsMaskFalse() {
@@ -81,7 +95,7 @@ class PreschoolerView: PreschoolerViewProtocol {
     }
     
     private func activateConstraints() {
-        constant = view.frame.height * 0.5
+        constant = view.frame.height * 0.2
         
         addScrollViewAndImageViewConstraints()
         
@@ -98,7 +112,7 @@ class PreschoolerView: PreschoolerViewProtocol {
             backgroundImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             backgroundImageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            backgroundImageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
         ]
     }
     
