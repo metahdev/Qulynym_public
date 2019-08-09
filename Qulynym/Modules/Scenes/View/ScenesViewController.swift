@@ -11,7 +11,6 @@ import UIKit
 
 protocol ScenesViewControllerProtocol: class {
     var manager: ScenesManagerProtocol! { get set }
-    func fillContent(image named: String)
 }
 
 class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
@@ -42,6 +41,10 @@ class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if manager.instruction.hasSuffix("Passed") {
+            sceneImageView.loadGif(name: "congratulationsGif")
+            return 
+        }
         sceneImageView.loadGif(name: manager.instruction + "Gif")
     }
     
@@ -63,12 +66,6 @@ class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
     
     @objc func skipBtnPressed() {
         presenter.skipBtnPressed()
-    }
-}
-
-extension ScenesViewController {
-    func fillContent(image named: String) {
-        sceneImageView.image = UIImage(named: named)
     }
 }
 

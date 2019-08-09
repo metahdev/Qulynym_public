@@ -14,7 +14,6 @@ protocol ScenesManagerProtocol: class {
     var visualEffectView: UIVisualEffectView! { get set }
 }
 
-// ** - references to each other
 class ScenesManager: ScenesManagerProtocol {
     // MARK:- Properties
     var visualEffectView: UIVisualEffectView!

@@ -36,6 +36,11 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     private let configurator: SettingsConfiguratorProtocol = SettingsConfigurator()
     private var settingsView: SettingsViewProtocol!
     
+    // MARK:- Status Bar
+    override var prefersStatusBarHidden: Bool {
+        return true 
+    }
+    
     
     // MARK:- View Lifecycle
     override func viewDidLoad() {
@@ -51,6 +56,7 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
         super.viewWillAppear(animated)
         presenter.checkForMusicState()
     }
+    
     
     
     // MARK:- Layout

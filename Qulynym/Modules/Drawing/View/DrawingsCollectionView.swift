@@ -77,9 +77,9 @@ extension DrawingsCollectionView: UICollectionViewDelegate, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             drawingView.currentImageName = nil
-            drawingView.clearCanvas() 
         }
         drawingView.currentImageName = pictures[indexPath.row]
+        drawingView.clearCanvas()
     }
 }
 

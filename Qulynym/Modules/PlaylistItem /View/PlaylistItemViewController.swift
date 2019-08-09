@@ -41,6 +41,12 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
     private var karaokeView: PlaylistItemViewProtocol!
     
     
+    // MARK:- Status Bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

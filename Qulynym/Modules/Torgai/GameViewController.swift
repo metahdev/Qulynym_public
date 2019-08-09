@@ -74,10 +74,7 @@ class GameViewController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return [.portrait, .portraitUpsideDown]
     }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+
     
     @objc func closeGame() {
         AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)

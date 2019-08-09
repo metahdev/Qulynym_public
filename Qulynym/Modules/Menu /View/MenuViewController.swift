@@ -70,6 +70,10 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
         return [.landscape]
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true 
+    }
+    
     
     // MARK:- Layout
     private func initLayout() {

@@ -157,8 +157,10 @@ class DrawingView: DrawingViewProtocol {
     func toggleDrawingsCV() {
         if isOpen {
             initCloseConstraints()
+            canvasView.isUserInteractionEnabled = true
         } else {
             initOpenConstraints()
+            canvasView.isUserInteractionEnabled = false
         }
         isOpen = !isOpen
     }

@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupWindow()
         window?.makeKeyAndVisible()
         AudioPlayer.turnOnBackgroundMusic()
-        
+                    
         return true
     }
     

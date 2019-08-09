@@ -31,6 +31,12 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
     private let configurator: PlaylistConfiguratorProtocol = PlaylistConfigurator()
     
     
+    // MARK:- Status Bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

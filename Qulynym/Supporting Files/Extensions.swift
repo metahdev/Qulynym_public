@@ -12,11 +12,17 @@ import UIKit
 // UIButton Constraints
 extension UIButton {
     func configureCloseBtnFrame(_ view: UIView) {
+        let topConstraint = self.topAnchor.constraint(equalTo: view.topAnchor)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            topConstraint.constant = -12
+        }
+        
         NSLayoutConstraint.activate([
-            self.topAnchor.constraint(equalTo: view.topAnchor),
+            topConstraint,
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            self.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25, constant: 24),
-            self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25),
+            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
+            self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
         ])
     }
     
@@ -24,8 +30,8 @@ extension UIButton {
         NSLayoutConstraint.activate([
             self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            self.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25, constant: 40),
-            self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25)
+            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
+            self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
         ])
     }
 }

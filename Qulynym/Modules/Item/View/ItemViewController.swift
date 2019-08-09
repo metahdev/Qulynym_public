@@ -43,6 +43,12 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
     private let configurator: ItemConfiguratorProtocol = ItemConfigurator()
 
     
+    // MARK:- Status Bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

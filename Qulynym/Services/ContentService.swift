@@ -16,13 +16,11 @@ enum TextType {
 
 struct EduSection {
     var name: String
-    var scenesNames: [String]
     var timepoints: [Int]
     var contentNames: [String]
     
-    init(name: String, scenesNames: [String], timepoints: [Int], contentNames: [String]) {
+    init(name: String, timepoints: [Int], contentNames: [String]) {
         self.name = name
-        self.scenesNames = scenesNames
         self.timepoints = timepoints
         self.contentNames = contentNames
     }
@@ -67,10 +65,10 @@ struct ContentService {
     static var infoForParents = setAttributedText(type: .infoForParents)
     static var credits = setAttributedText(type: .credits)
     
-    private static var colorsSection = EduSection(name: "Tu'ster", scenesNames: [""], timepoints: [0], contentNames: ["Qyzyl", "Qyzg'ylt-sary", "Sary", "Jasyl", "Ko'gildir", "Ko'k", "K'ulgin", "Qon'yr", "Qara", "Aq"])
-        private static var shapesSection = EduSection(name: "Pishinder", scenesNames: [""], timepoints: [0], contentNames: ["U'shburysh", "Sharshy", "Tikto'rtburysh", "Shen'ber", "Zhuldyz", "Sopaqsha", "Zhu'rek", "Romb"])
-    private static var animalsSection = EduSection(name: "Zhanuarlar", scenesNames: ["Anim1", "Anim2"], timepoints: [5], contentNames: ["Mysyq", "Bu'rkіt", "It", "Esek", "Sıyr", "Qoı", "Shoshqa", "Qoıan", "Qumyrsqa", "Ko'belek", "U'ki", "At", "Torg'ai", "Tıіn", "Aiy'", "Qasqyr", "Tu'lki", "Barys", "Arystan", "Pil"])
-    private static var plantsSection = EduSection(name: "O'simdikter", scenesNames: [""], timepoints: [0], contentNames: ["Qaıyn'", "Alma ag'ashy", "Terek", "Qarag'aı", "Almurt aǵashy", "Shyrsha", "Sheten", "Emen", "Ko'kterek", "Órіk ag'ashy", "Tan'qy'raı", "Mu'kjıdek", "Ray'shan", "Kakty's", "Qon'yray'gu'l", "Shegіrgu'l", "Bo'rtegu'l", "Tu'ımedaq", "Qyzg'aldaq", "Baqbaq"])
+    private static var colorsSection = EduSection(name: "Tu'ster", timepoints: [0], contentNames: ["Qyzyl", "Qyzg'ylt-sary", "Sary", "Jasyl", "Ko'gildir", "Ko'k", "K'ulgin", "Qon'yr", "Qara", "Aq"])
+        private static var shapesSection = EduSection(name: "Pishinder", timepoints: [0], contentNames: ["U'shburysh", "Sharshy", "Tikto'rtburysh", "Shen'ber", "Zhuldyz", "Sopaqsha", "Zhu'rek", "Romb"])
+    private static var animalsSection = EduSection(name: "Zhanuarlar", timepoints: [5], contentNames: ["Mysyq", "Bu'rkіt", "It", "At", "Esek", "Sıyr", "Qoı", "Shoshqa", "Qoıan", "Qumyrsqa", "Ko'belek", "U'ki", "Torg'ai", "Tıіn", "Aiy'", "Qasqyr", "Tu'lki", "Barys", "Arystan", "Pil"])
+    private static var plantsSection = EduSection(name: "O'simdikter", timepoints: [0], contentNames: ["Qaıyn'", "Alma ag'ashy", "Terek", "Qarag'aı", "Almurt aǵashy", "Shyrsha", "Sheten", "Emen", "Ko'kterek", "Órіk ag'ashy", "Tan'qy'raı", "Mu'kjıdek", "Ray'shan", "Kakty's", "Qon'yray'gu'l", "Shegіrgu'l", "Bo'rtegu'l", "Tu'ımedaq", "Qyzg'aldaq", "Baqbaq"])
     
     static var parentsInfoBody = "Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents."
     

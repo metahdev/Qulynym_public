@@ -44,6 +44,12 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     private var configurator: QuizConfiguratorProtocol = QuizConfigurator()
     
     
+    // MARK:- Status Bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,12 +137,13 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width * 0.4, height: view.frame.width * 0.2)
+        return CGSize(width: view.frame.width * 0.4, height: view.frame.height * 0.4)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let distance = (view.frame.width - view.frame.width * 0.8) / 3
-        return UIEdgeInsets(top: 40, left: distance, bottom: 40, right: distance)
+        let rightLeftDistance = (view.frame.width - view.frame.width * 0.8) / 3
+        let topBottomDistance = (view.frame.height - view.frame.height * 0.8) / 3
+        return UIEdgeInsets(top: topBottomDistance, left: rightLeftDistance, bottom: topBottomDistance, right: rightLeftDistance)
     }
 }
 
