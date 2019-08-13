@@ -47,14 +47,14 @@ extension ItemPresenter {
     }
     
     func updateProperties() {
-        self.contentKey = interactor.fillContent(with: self.slideCount, with: controller.contentNames)
+        self.contentKey = interactor.fillContent(with: self.slideCount, with: controller.section.contentNames)
         self.slideCount += 1
         controller.checkForQuiz = true
     }
     
     private func passDataAndOpenQuiz() {
-        let shuffledCards = interactor.getShuffledCards(from: controller.contentNames)
-        router.openQuiz(shuffledCards, with: controller.categoryName)
+        let shuffledCards = interactor.getShuffledCards(from: controller.section.contentNames)
+        router.openQuiz(shuffledCards, with: controller.section.name)
     }
     
     func contentBtnPressed() {

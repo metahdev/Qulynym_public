@@ -28,7 +28,7 @@ extension QuizRouter {
             AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
             controller.itemView.slideCount -= 4
         }
-        if controller.itemView.slideCount == controller.itemView.contentNames.count {
+        if controller.itemView.slideCount == controller.itemView.section.contentNames.count {
             close()
             return
         }

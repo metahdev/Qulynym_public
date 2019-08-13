@@ -10,9 +10,7 @@
 import Foundation
 
 protocol ScenesPresenterProtocol: class {    
-    func getScenes()
     func playAudio()
-    func startTimer()
     func skipBtnPressed()
 }
 
@@ -22,10 +20,6 @@ class ScenesPresenter: ScenesPresenterProtocol {
     var interactor: ScenesInteractorProtocol!
     var router: ScenesRouterProtocol!
     
-    var scenesNames = [String]()
-    var timerManager: TimerController!
-    var timepoints = [Int]()
-    
     required init(_ view: ScenesViewControllerProtocol) {
         self.controller = view
     }
@@ -33,42 +27,12 @@ class ScenesPresenter: ScenesPresenterProtocol {
 
 extension ScenesPresenter {
     // MARK:- Protocol Methods
-    func getScenes() {
-        interactor.section = controller.section
-        scenesNames = interactor.getScenes()
-        timepoints = interactor.getTimepoints()
-        controller.fillContent(image: scenesNames[0])
-    }
-    
     func playAudio() {
-        AudioPlayer.setupExtraAudio(with: controller.section.name, audioPlayer: .scenes)
-    }
-    
-    func startTimer() {
-        timerManager = TimerController()
-        timerManager.delegate = self
-        
-        self.timerManager.startTimer()
+        AudioPlayer.setupExtraAudio(with: controller.manager.instruction, audioPlayer: .scenes)
     }
     
     func skipBtnPressed() {
-        timerManager.timer.invalidate()
         AudioPlayer.scenesAudioPlayer.stop()
-        configureDirection()
-    }
-    
-    private func configureDirection() {
-        router.presentItemVC(contentNames: controller.section.contentNames, categoryName: controller.section.name)
-    }
-}
-
-extension ScenesPresenter: TimerControllerDelegate {
-    // MARK:- Delegate Methods
-    func notifyOfTimepoints() {
-        controller.fillContent(image: scenesNames[timerManager.currentSlide])
-    }
-    
-    func notifyTimerEnded() {
-        configureDirection()
+        router.closeView()
     }
 }

@@ -1,4 +1,3 @@
-//
 /*
  * Kulynym
  * SettingsView.swift
@@ -11,11 +10,11 @@
 import UIKit
 
 protocol SettingsViewProtocol: class {
-    var closeBtn: UIButton {get set}
-    var checkmarkBtn: UIButton {get set}
-    var musicBtn: UIButton {get set}
-    var infoBtn: UIButton {get set}
-    var creditsBtn: UIButton {get set}
+    var closeBtn: UIButton { get }
+    var checkmarkBtn: UIButton { get }
+    var musicBtn: UIButton { get }
+    var infoBtn: UIButton { get }
+    var creditsBtn: UIButton { get }
     
     func setupLayout()
     func setBoxChecked()

@@ -1,11 +1,10 @@
-//
 /*
-* Kulynym
-* InfoForParentsViewController.swift
-*
-* Created by: Баубек on 8/6/19
-*
-* Copyright © 2019 Automatization X Software. All rights reserved.
+ * Kulynym
+ * InfoForParentsViewController.swift
+ *
+ * Created by: Баубек on 8/6/19
+ *
+ * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
 import UIKit
@@ -24,6 +23,7 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
         return btn
     }()
     
+    #warning("alignment")
     lazy var textView: UITextView = {
         var tv = UITextView()
         tv.backgroundColor = .clear
@@ -78,8 +78,8 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
     
     func activateConstraints() {
         NSLayoutConstraint.activate([
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            textView.topAnchor.constraint(equalTo: view.topAnchor),
+            textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])

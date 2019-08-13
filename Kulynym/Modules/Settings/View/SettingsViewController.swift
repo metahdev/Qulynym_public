@@ -1,15 +1,10 @@
-//
 /*
-* Kulynym
-* SettingsViewController.swift
-*
-* Created by: Баубек on 8/5/19
-*
-* Copyright © 2019 Automatization X Software. All rights reserved
- 
- 1) solved
- 2) solved UserDefaults
- 3) Two buttons one class 
+ * Kulynym
+ * SettingsViewController.swift
+ *
+ * Created by: Баубек on 8/5/19
+ *
+ * Copyright © 2019 Automatization X Software. All rights reserved
 */
 import UIKit
 protocol SettingsViewControllerProtocol: class {
@@ -74,6 +69,7 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     
     // MARK:- Actions
     private func assignActions() {
+        musicBtn.addTarget(self, action: #selector(checkmarkBtnPressed), for: .touchUpInside)
         checkmarkBtn.addTarget(self, action: #selector(checkmarkBtnPressed), for: .touchUpInside)
         infoBtn.addTarget(self, action: #selector(infoBtnPressed), for: .touchUpInside)
         creditsBtn.addTarget(self, action: #selector(creditsBtnPressed), for: .touchUpInside)
@@ -113,11 +109,11 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
 extension SettingsViewController {
     // MARK:- Protocol Methods
     func turnOffMusic() {
-        AudioPlayer.backgroundAudioPlayer.volume = 0
+        AudioPlayer.backgroundAudioPlayer.stop()
     }
     
     func turnOnMusic() {
-        AudioPlayer.backgroundAudioPlayer.volume = 0.5
+        AudioPlayer.backgroundAudioPlayer.play()
     }
 }
 

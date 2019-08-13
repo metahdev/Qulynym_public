@@ -14,7 +14,7 @@ protocol MenuRouterProtocol: class {
     func showPlaylist(isKaraoke: Bool)
     func showDrawingView()
     func showPreschoolerEdu()
-    func showScenesView(content section: EduSection)
+    func showItemView(content section: EduSection)
     func showGamesMenu()
     func openFlappyBird()
     func close()
@@ -54,10 +54,10 @@ extension MenuRouter {
         showAnotherView(view: PreschoolerViewController())
     }
     
-    func showScenesView(content section: EduSection) {
-        let vc = ScenesViewController()
-        controller.scenesViewDelegate = vc
-        controller.scenesViewDelegate.section = section
+    func showItemView(content section: EduSection) {
+        let vc = ItemViewController()
+        controller.itemViewDelegate = vc
+        controller.itemViewDelegate.section = section
         showAnotherView(view: vc)
     }
     

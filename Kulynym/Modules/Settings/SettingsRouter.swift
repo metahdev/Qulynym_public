@@ -1,11 +1,10 @@
-//
 /*
-* Kulynym
-* SettingsRouter.swift
-*
-* Created by: Баубек on 8/5/19
-*
-* Copyright © 2019 Automatization X Software. All rights reserved.
+ * Kulynym
+ * SettingsRouter.swift
+ *
+ * Created by: Баубек on 8/5/19
+ *
+ * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
 import Foundation

@@ -14,7 +14,7 @@ protocol PlaylistViewControllerProtocol: class {
     var content: [String] { get set }
 }
 
-class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol, MessageShowingVC {
+class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
     // MARK:- Properties
     var isKaraoke: Bool!
     var content = [String]()
@@ -22,7 +22,7 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol, 
     weak var karaokeViewDelegate: KaraokeViewControllerProtocol!
     weak var storyViewDelegate: StoryViewControllerProtocol!
     
-    var message: MessageManager!
+    var manager: ScenesManager!
 
     private weak var listCollectionView: UICollectionView!
     private weak var closeBtn: UIButton!
@@ -49,7 +49,7 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol, 
         super.viewWillAppear(animated)
         presenter.getContent()
         initMessage()
-        message.showAlert()
+//        manager.showAlert()
     }
     
     
@@ -76,7 +76,7 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol, 
     }
     
     func initMessage() {
-        message = MessageManager(calling: self, showing: isKaraoke ? .karaoke : .stories, and: "upDown")
+//        manager = ScenesManager(calling: self, showing: isKaraoke ? "karaoke" : "stories")
     }
     
     

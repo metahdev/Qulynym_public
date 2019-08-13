@@ -35,12 +35,15 @@ extension KaraokePresenter {
     
     func backToPreviousVideo() {
         controller.content = interactor.getPreviousVideo(&controller.index)
-        controller.setViewsProperties()
-        controller.playVideo()
+        updateForUser()
     }
     
     func nextVideo() {
         controller.content = interactor.getNextVideo(&controller.index)
+        updateForUser()
+    }
+    
+    private func updateForUser() {
         controller.setViewsProperties()
         controller.playVideo()
     }

@@ -10,19 +10,17 @@
 import UIKit
 
 protocol ScenesViewControllerProtocol: class {
-    var section: EduSection! { get set }
-    
+    var manager: ScenesManagerProtocol! { get set }
     func fillContent(image named: String)
 }
 
 class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
     // MARK:- Properties
     var presenter: ScenesPresenterProtocol!
-    weak var itemViewControllerDelegate: ItemViewControllerProtocol!
     
-    var section: EduSection!
+    var manager: ScenesManagerProtocol!
     
-    private weak var sceneImageView: UIImageView!
+    weak var sceneImageView: UIImageView!
     private weak var skipBtn: UIButton!
     
     private var scenesView: ScenesViewProtocol!
@@ -40,13 +38,12 @@ class ScenesViewController: UIViewController, ScenesViewControllerProtocol {
         assignActions()
         
         presenter.playAudio()
-        presenter.startTimer()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        presenter.getScenes()
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        sceneImageView.loadGif(name: manager.instruction + "Gif")
     }
-    
     
     // MARK:- Layout
     private func initLayout() {

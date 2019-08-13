@@ -10,9 +10,9 @@
 import UIKit
 
 protocol MenuViewProtocol: class {
-    var collectionView: UICollectionView { get set }
-    var closeBtn: UIButton { get set }
-    var settingsBtn: UIButton { get set }
+    var collectionView: UICollectionView { get }
+    var closeBtn: UIButton { get }
+    var settingsBtn: UIButton { get }
     
     func setupLayout()
 }

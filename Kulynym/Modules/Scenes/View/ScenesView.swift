@@ -11,8 +11,8 @@ import Foundation
 import UIKit
 
 protocol ScenesViewProtocol: class {
-    var sceneImageView: UIImageView { get set }
-    var skipBtn: UIButton { get set }
+    var sceneImageView: UIImageView { get }
+    var skipBtn: UIButton { get }
     
     func setupLayout()
 }

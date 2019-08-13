@@ -10,7 +10,7 @@
 import Foundation
 
 protocol ScenesRouterProtocol: class {
-    func presentItemVC(contentNames: [String], categoryName: String)
+    func closeView() 
 }
 
 class ScenesRouter: ScenesRouterProtocol {
@@ -24,13 +24,11 @@ class ScenesRouter: ScenesRouterProtocol {
 
 extension ScenesRouter {
     // MARK:- Protocol Methods
-    func presentItemVC(contentNames: [String], categoryName: String) {
-        let itemView = ItemViewController()
-        controller.itemViewControllerDelegate = itemView
-        controller.itemViewControllerDelegate.contentNames = contentNames
-        controller.itemViewControllerDelegate.categoryName = categoryName
-        itemView.transitioningDelegate = controller
-        
-        controller.show(itemView, sender: nil)
+    func closeView() {
+        controller.manager.visualEffectView.removeFromSuperview()
+        controller.willMove(toParent: nil)
+        controller.view.removeFromSuperview()
+        controller.removeFromParent()
+        AudioPlayer.scenesAudioPlayer.stop()
     }
 }

@@ -56,7 +56,7 @@ struct ContentService {
     ]
     
     static var stories = [
-        "kolobokIcon",
+        "Bauyrsaq Ertegi",
     ]
     
     static var infoForParents = setAttributedText(type: .infoForParents)
@@ -67,16 +67,18 @@ struct ContentService {
     private static var animalsSection = EduSection(name: "animalsIcon", scenesNames: ["Anim1", "Anim2"], timepoints: [5], contentNames: ["cat", "dog", "bear", "eagle", "elephant", "esek", "owl", "ant"])
     private static var plantsSection = EduSection(name: "plantsIcon", scenesNames: [""], timepoints: [0], contentNames: ["rose"])
     
+    static var parentsInfoTitle = "          Info for parents"
+    static var creditsTitle = "        Credits"
+    
     static var parentsInfoBody = "\n \n Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. "
     
     static var creditsBody = "\n \n Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. "
 }
 
 func setAttributedText(type: TextType) -> NSAttributedString {
-    let attributedText = NSMutableAttributedString(string: type == .credits ? "Credits": "Info for parents", attributes: [NSAttributedString.Key.font: UIFont(name: "Arial", size: 52)!])
+    let attributedText = NSMutableAttributedString(string: type == .credits ? ContentService.creditsTitle: ContentService.parentsInfoTitle, attributes: [NSAttributedString.Key.font: UIFont(name: "Gill Sans", size: 52)!])
     
-    attributedText.append(NSAttributedString(string: type == .credits ? ContentService.creditsBody : ContentService.parentsInfoBody, attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 32)!, NSAttributedString.Key.foregroundColor: UIColor.gray]))
+    attributedText.append(NSAttributedString(string: type == .credits ? ContentService.creditsBody : ContentService.parentsInfoBody, attributes: [NSAttributedString.Key.font: UIFont(name: "Gill Sans", size: 32)!, NSAttributedString.Key.foregroundColor: UIColor.gray]))
     
     return attributedText
-    
 }

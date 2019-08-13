@@ -21,19 +21,19 @@ protocol MenuViewControllerProtocol: class {
     var eduSections: [EduSection] { get set }
 }
 
-class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageShowingVC {
+class MenuViewController: UIViewController, MenuViewControllerProtocol {
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
     weak var playlistViewDelegate: PlaylistViewControllerProtocol!
     weak var secondMenuViewDelegate: MenuViewControllerProtocol!
-    weak var scenesViewDelegate: ScenesViewControllerProtocol!
+    weak var itemViewDelegate: ItemViewControllerProtocol!
     
     var menuType: Menu = .main
     var sections = [String]()
     var eduSections = [EduSection]()
     
-    var message: MessageManager!
+    var manager: ScenesManager!
     
     private weak var collectionView: UICollectionView!
     private weak var closeBtn: UIButton!
@@ -88,16 +88,16 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, MessageS
     
     // MARK:- Message
     func initMessage() {
-        var emotion: Emotion?
+        var instruction: String?
         if menuType == .main {
-            emotion = .hello
+            instruction = "helloInstruction"
         }
-        if menuType == .games {
-            emotion = .games
-        }
-        guard let nonOptEmotion = emotion else { return }
-        message = MessageManager(calling: self, showing: nonOptEmotion, and: "rightLeft")
-        message.showAlert()
+//        if menuType == .games {
+//            instruction = "gamesInstruction"
+//        }
+        guard let nonOptInstruction = instruction else { return }
+        manager = ScenesManager(calling: self, showing: nonOptInstruction)
+        manager.showAlert()
     }
     
     

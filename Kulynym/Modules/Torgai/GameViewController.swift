@@ -33,19 +33,17 @@ class GameViewController: UIViewController {
     // MARK: View Controller overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppUtility.lockOrientation(.all)
-        AppUtility.lockOrientation(.portrait)
-
+        AppUtility.lockOrientation(.portrait, rotate: true)
+        
+        view = SKView(frame: view.bounds)
+        
         view.addSubview(closeBtn)
         closeBtn.translatesAutoresizingMaskIntoConstraints = false
         closeBtn.configureCloseBtnFrame(view)
         
-        view = SKView(frame: view.bounds)
-        
         if let view = self.view as! SKView? {
-            // Initialise the scene
-            let aspectRatio = view.bounds.size.height / view.bounds.size.width
-            let scene = GameScene(size: CGSize(width: 320, height: 320 * aspectRatio), stateClass: MainMenuState.self)
+            let aspectRatio = view.bounds.size.width / view.bounds.size.height
+            let scene = GameScene(size: CGSize(width: 320 * aspectRatio, height: 320), stateClass: MainMenuState.self)
 
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
@@ -62,7 +60,7 @@ class GameViewController: UIViewController {
     }
 
     override var shouldAutorotate: Bool {
-        return false
+        return true
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

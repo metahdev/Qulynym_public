@@ -10,8 +10,7 @@
 import UIKit
 
 protocol ItemViewControllerProtocol: class {
-    var categoryName: String { get set }
-    var contentNames: [String]! { get set }
+    var section: EduSection! { get set }
     var slideCount: Int { get set }
     var checkForQuiz: Bool { get set }
     
@@ -20,8 +19,7 @@ protocol ItemViewControllerProtocol: class {
 
 class ItemViewController: UIViewController, ItemViewControllerProtocol {
     // MARK:- Properties
-    var categoryName = ""
-    var contentNames: [String]!
+    var section: EduSection!
     var slideCount: Int {
         get {
             return presenter.slideCount

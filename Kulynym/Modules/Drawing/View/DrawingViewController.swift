@@ -14,7 +14,7 @@ protocol DrawingViewControllerProtocol: class {
     var currentImageName: String? { get set }
 }
 
-class DrawingViewController: UIViewController, DrawingViewControllerProtocol, MessageShowingVC {
+class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     // MARK:- Properties
     var presenter: DrawingPresenterProtocol!
     
@@ -24,7 +24,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol, Me
         }
     }
     
-    var message: MessageManager!
+    var manager: ScenesManager!
     
     lazy var tools: [UIColor] = [.red, .orange, .yellow, .green, whiteBlue, .blue, .purple, .brown, .black, .white]
     private let whiteBlue = UIColor(red: 102/255, green: 1, blue: 1, alpha: 1)
@@ -49,7 +49,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol, Me
         assignViews()
         setupCV()
         initMessage()
-        message.showAlert()
+//        manager.showAlert()
         assignActions()
     }
     
@@ -83,7 +83,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol, Me
     
     
     func initMessage() {
-        message = MessageManager(calling: self, showing: .drawing, and: "lines")
+//        manager = ScenesManager(calling: self, showing: "drawing")
     }
     
     // MARK:- Actions

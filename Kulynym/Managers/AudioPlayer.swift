@@ -14,18 +14,20 @@ enum PlayerType {
     case effects
     case scenes
     case content
-    case message
     case question
+    case story
 }
 
 struct AudioPlayer {
     // MARK:- Properties
+    static var storyPlayerInitied = false
+    
     static var backgroundAudioPlayer = AVAudioPlayer()
     static var sfxAudioPlayer = AVAudioPlayer()
     static var contentAudioPlayer = AVAudioPlayer()
     static var scenesAudioPlayer = AVAudioPlayer()
-    static var messageAudioPlayer = AVAudioPlayer()
     static var questionAudioPlayer = AVAudioPlayer()
+    static var storyAudioPlayer = AVAudioPlayer()
     
     
     // MARK: Background Audio
@@ -45,7 +47,6 @@ struct AudioPlayer {
     
     // MARK:- Extra Audios
     static func setupExtraAudio(with name: String, audioPlayer: PlayerType) {
-        // *
         let url = setupPaths(name: name)
         switch audioPlayer {
         case .effects:
@@ -53,14 +54,14 @@ struct AudioPlayer {
             sfxAudioPlayer.play()
         case .scenes:
             initPlayers(player: &scenesAudioPlayer, url: url)
-            scenesAudioTask()
+            scenesAudioPlayer.play()
         case .content:
             initPlayers(player: &contentAudioPlayer, url: url)
-        case .message:
-            initPlayers(player: &messageAudioPlayer, url: url)
-            messageAudioPlayer.play()
         case .question:
             initPlayers(player: &questionAudioPlayer, url: url)
+        case .story:
+            initPlayers(player: &storyAudioPlayer, url: url)
+            storyPlayerInitied = true 
         }
     }
     
@@ -76,10 +77,5 @@ struct AudioPlayer {
         } catch {
             print("unresolver error: \(error)")
         }
-    }
-    
-    private static func scenesAudioTask() {
-        backgroundAudioPlayer.stop()
-        scenesAudioPlayer.play()
     }
 }

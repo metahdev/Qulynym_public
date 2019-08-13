@@ -24,6 +24,7 @@ class StoryRouter: StoryRouterProtocol {
 
 extension StoryRouter {
     func close() {
+        AudioPlayer.storyAudioPlayer.stop()
         controller.navigationController?.popViewController(animated: true)
     }
 }

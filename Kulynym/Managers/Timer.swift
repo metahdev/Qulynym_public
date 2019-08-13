@@ -17,6 +17,7 @@ protocol TimerControllerDelegate: class {
     func notifyTimerEnded()
 }
 
+// ** is not being used
 class TimerController {
     // MARK:- Properties
     var currentSlide = 1
@@ -28,7 +29,7 @@ class TimerController {
     
     // MARK:- Timer
     func startTimer() {
-        #warning("maybe more flexible shit")
+        // **
         seconds = AudioPlayer.scenesAudioPlayer.duration
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkState), userInfo: nil, repeats: true)
     }

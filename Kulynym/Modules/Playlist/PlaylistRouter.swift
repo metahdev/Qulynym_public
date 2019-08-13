@@ -43,6 +43,7 @@ extension PlaylistRouter {
             let storyView = StoryViewController()
             controller.storyViewDelegate = storyView 
             controller.storyViewDelegate.storyName = ContentService.stories[index]
+            controller.storyViewDelegate.index = index 
             storyView.transitioningDelegate = controller
             
             controller.show(storyView, sender: nil)

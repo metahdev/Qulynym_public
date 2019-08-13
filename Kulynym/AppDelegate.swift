@@ -10,7 +10,7 @@
 import UIKit
 import CoreData
 
-#warning("* means code can be refactored and improved")
+#warning("** means code can be refactored and improved")
 /*
  Bugs, which are already found:
   1) Memory Leak with Audio
@@ -19,7 +19,7 @@ import CoreData
   4) Eraser draws white on picture !
   5) solved
   6) Auto Layout on IPad: Karaoke Module(video view & Titles), closeBtn
-  7) audio leak of the message at the beginning(maybe is relatable to 1)
+  7) audio leak of the manager at the beginning(maybe is relatable to 1)
  Solutions, which will be integrated further:
   1) TimerController, AudioManager, Videos on another queue
   2) Back segue falling leaves
@@ -27,13 +27,14 @@ import CoreData
   4) implemented
   5) implemented
   6) Tools at Drawing Module !
-  7) Scroll View at Alert for instructions of the UI !
+  7) implemented
   8) implemented
   9) Concurrency at Quiz: can't scroll while audio is playing
   10) Shuffle animation of cards
   11) implemented
   12) implemented
-  13) SFXAudioPlayer !
+  13) implemented
+  14) ModuleView protocol properties get acccessor
  */
 
 @UIApplicationMain
@@ -59,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return self.orientationLock
+        return self.orientationLock 
     }
 }
 

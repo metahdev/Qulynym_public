@@ -10,16 +10,11 @@
 import Foundation
 
 protocol ScenesInteractorProtocol: class {
-    var section: EduSection! { get set }
-    
-    func getScenes() -> [String]
-    func getTimepoints() -> [Int]
 }
 
 class ScenesInteractor: ScenesInteractorProtocol {
     // MARK:- Properties
     weak var presenter: ScenesPresenterProtocol!
-    var section: EduSection!
     
     required init(_ presenter: ScenesPresenterProtocol) {
         self.presenter = presenter
@@ -27,12 +22,5 @@ class ScenesInteractor: ScenesInteractorProtocol {
 }
 
 extension ScenesInteractor {
-    // MARK:- Protocol Methods
-    func getScenes() -> [String] {
-        return section.scenesNames
-    }
-
-    func getTimepoints() -> [Int] {
-        return section.timepoints
-    }
+    
 }
