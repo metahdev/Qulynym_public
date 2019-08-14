@@ -17,6 +17,7 @@ protocol KaraokeViewProtocol: class {
     var lyricsTextView: UITextView { get }
     var forwardBtn: UIButton { get }
     var backBtn: UIButton { get }
+    var timelineSlider: UISlider { get   }
     
     func setupLayout()
 }
@@ -56,7 +57,23 @@ class KaraokeView: KaraokeViewProtocol {
         textV.isEditable = false
         textV.isSelectable = false
         textV.isScrollEnabled = true
+        textV.backgroundColor = .clear
+        textV.font = UIFont(name: "Gill Sans", size: view.frame.height * 0.1)
+        textV.textAlignment = .center
         return textV
+    }()
+    lazy var timelineSlider: UISlider = {
+        let slider = UISlider()
+        
+        slider.minimumTrackTintColor = .blue
+        slider.maximumTrackTintColor = .red
+        slider.thumbTintColor = .white
+        
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.setValue(100, animated: false)
+        
+        return slider
     }()
     private lazy var storyBackgroundImage: UIImageView = {
         let imageV = UIImageView(image: UIImage(named: "karaokeBg"))
@@ -89,21 +106,26 @@ class KaraokeView: KaraokeViewProtocol {
         view.addSubview(playBtn)
         view.addSubview(forwardBtn)
         view.addSubview(backBtn)
+        view.addSubview(timelineSlider)
     }
     
     private func setSubviewsMask() {
-        view.subviews.map({$0.translatesAutoresizingMaskIntoConstraints = false})
+        _ = view.subviews.map({$0.translatesAutoresizingMaskIntoConstraints = false})
     }
     
     private func activateMainConstraints() {
         NSLayoutConstraint.activate([
             lyricsTextView.topAnchor.constraint(equalTo: view.topAnchor),
             lyricsTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lyricsTextView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
-            lyricsTextView.heightAnchor.constraint(equalTo: lyricsTextView.widthAnchor),
+            lyricsTextView.widthAnchor.constraint(equalTo: view.heightAnchor),
+            lyricsTextView.heightAnchor.constraint(equalTo: lyricsTextView.widthAnchor, multiplier: 0.5),
             
             titleLabel.topAnchor.constraint(equalTo: lyricsTextView.bottomAnchor, constant: 12),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            timelineSlider.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            timelineSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            timelineSlider.widthAnchor.constraint(equalTo: lyricsTextView.widthAnchor),
             
             playBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             playBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
@@ -119,6 +141,7 @@ class KaraokeView: KaraokeViewProtocol {
             backBtn.heightAnchor.constraint(equalTo: playBtn.heightAnchor),
             backBtn.widthAnchor.constraint(equalTo: backBtn.heightAnchor),
             backBtn.bottomAnchor.constraint(equalTo: playBtn.bottomAnchor),
+            
         ])
     }
 }

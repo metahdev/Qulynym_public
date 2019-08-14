@@ -59,6 +59,7 @@ extension StoryPresenter {
     }
     
     private func updateForUser() {
+        AudioPlayer.storyAudioPlayer.stop()
         AudioPlayer.playlistPlayerInitiated = false
         playAudio()
         AudioPlayer.backgroundAudioPlayer.play()

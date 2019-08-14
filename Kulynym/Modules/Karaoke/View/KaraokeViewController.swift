@@ -17,6 +17,7 @@ protocol KaraokeViewControllerProtocol: class {
     var maxIndex: Int { get set }
     
     func setViewsProperties()
+    func playBtnPressed()
 }
 
 class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
@@ -27,7 +28,7 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
     var maxIndex = 0
     var presenter: KaraokePresenterProtocol!
     
-    private var isPlaying = false 
+    private var isPlaying = false
     private let configurator: KaraokeConfiguratorProtocol = KaraokeConfigurator()
     private var karaokeView: KaraokeViewProtocol!
     
@@ -61,11 +62,12 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
         karaokeView.backBtn.addTarget(self, action: #selector(backBtnPressed), for: .touchUpInside)
         karaokeView.forwardBtn.addTarget(self, action: #selector(nextBtnPressed), for: .touchUpInside)
         karaokeView.closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
+        karaokeView.timelineSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
     }
     
-    @objc private func playBtnPressed() {
+    @objc func playBtnPressed() {
         if isPlaying {
-            presenter.stopAudio()
+            presenter.pauseAudio()
             karaokeView.playBtn.setImage(UIImage(named: "playBtn"), for: .normal)
         } else {
             presenter.playAudio()
@@ -92,6 +94,10 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
     @objc
     private func videoEnded() {
         presenter.close()
+    }
+    
+    @objc private func sliderValueChanged(_ sender: UISlider) {
+        presenter.scrollAudio(to: sender.value)
     }
 }
 

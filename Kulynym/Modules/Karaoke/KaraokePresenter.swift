@@ -14,9 +14,10 @@ protocol KaraokePresenterProtocol: class {
     func getMaxCount()
     func getLyricsText()
     func playAudio()
-    func stopAudio()
+    func pauseAudio()
     func backToPreviousAudio()
     func nextAudio()
+    func scrollAudio(to value: Float)
     func close()
 }
 
@@ -48,26 +49,35 @@ extension KaraokePresenter {
         AudioPlayer.karaokeAudioPlayer.play()
     }
     
-    func stopAudio() {
-        AudioPlayer.karaokeAudioPlayer.stop()
+    func pauseAudio() {
+        AudioPlayer.karaokeAudioPlayer.pause()
         AudioPlayer.backgroundAudioPlayer.play()
     }
     
     func backToPreviousAudio() {
         controller.contentName = interactor.getPreviousAudioName(&controller.index)
         updateForUser()
+        controller.playBtnPressed()
     }
     
     func nextAudio() {
         controller.contentName = interactor.getNextAudioName(&controller.index)
         updateForUser()
+        controller.playBtnPressed()
     }
     
     private func updateForUser() {
-        AudioPlayer.karaokeAudioPlayer.stop() 
+        AudioPlayer.backgroundAudioPlayer.play()
         AudioPlayer.playlistPlayerInitiated = false
         getLyricsText()
         controller.setViewsProperties()
+    }
+    
+    func scrollAudio(to value: Float) {
+        AudioPlayer.karaokeAudioPlayer.pause()
+        let secondInPoint = AudioPlayer.karaokeAudioPlayer.duration / TimeInterval(exactly: Float(100.0))!
+        AudioPlayer.karaokeAudioPlayer.currentTime = secondInPoint * TimeInterval(exactly: value)!
+        AudioPlayer.karaokeAudioPlayer.play()
     }
     
     func close() {
