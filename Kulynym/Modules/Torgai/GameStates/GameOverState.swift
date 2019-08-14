@@ -94,6 +94,16 @@ class GameOverState: GKState {
         okText.zPosition = Layer.ui.rawValue
         okButton.addChild(okText)
         
+//        let quitButton = SKSpriteNode(imageNamed: "long button")
+//        quitButton.position = CGPoint(x: gameScene.size.width * 0.5, y: okButton.size.height / 2 + gameScene.margin)
+//        quitButton.zPosition = Layer.ui.rawValue
+//        gameScene.worldNode.addChild(quitButton)
+//
+//        let quitText = SKSpriteNode(imageNamed: "ok")
+//        quitText.position = CGPoint.zero
+//        quitText.zPosition = Layer.ui.rawValue
+//        quitButton.addChild(quitText)
+        
         gameOver.setScale(0)
         gameOver.alpha = 0
         let group = SKAction.group([
@@ -120,5 +130,6 @@ class GameOverState: GKState {
             SKAction.fadeIn(withDuration: animationDelay)
             ])
         okButton.run(fadeIn)
+//        quitButton.run(fadeIn)
     }
 }

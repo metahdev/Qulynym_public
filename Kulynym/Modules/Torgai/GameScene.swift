@@ -94,7 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(worldNode)
         stateMachine.enter(initialState)
     }
-    
+        
     func setupBackground() {
         background.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         background.position = CGPoint(x: size.width / 2, y: size.height)
@@ -261,19 +261,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        switch stateMachine.currentState {
-            
-        case is MainMenuState:
-            restartGame(TutorialState.self)
-        case is TutorialState:
-            stateMachine.enter(PlayingState.self)
-        case is PlayingState:
-            player.movementComponent.applyImpulse(lastUpdateTimeInterval)
-        case is GameOverState:
-            restartGame(TutorialState.self)
-        default:
-            break
-        }
+//        if let touch = touches.first {
+//            let touchLocation = touch.location(in: self)
+//            let gameVC = GameViewController()
+        
+            switch stateMachine.currentState {
+                
+            case is MainMenuState:
+                restartGame(TutorialState.self)
+            case is TutorialState:
+                stateMachine.enter(PlayingState.self)
+            case is PlayingState:
+                player.movementComponent.applyImpulse(lastUpdateTimeInterval)
+            case is GameOverState:
+//                if touchLocation.y > size.height * 0.15 {
+                    restartGame(TutorialState.self)
+//                } else {
+//                    gameVC.closeGame()
+//                }
+            default:
+                break
+            }
+//        }
     }
     
     override func update(_ currentTime: TimeInterval) {
