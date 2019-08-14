@@ -25,7 +25,15 @@ class PlaylistInteractor: PlaylistInteractorProtocol {
 extension PlaylistInteractor {
     // MARK:- Protocol Methods
     func getContent(_ isKaraoke: Bool) -> [String] {
-        return isKaraoke ? ContentService.songs : ContentService.stories
+        if isKaraoke {
+            var songNames = [String]()
+            ContentService.songs.map({(songName, _) in
+                songNames.append(songName)
+            })
+            return songNames
+        } else {
+            return ContentService.stories
+        }
     }
 }
 

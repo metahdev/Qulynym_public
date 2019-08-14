@@ -11,28 +11,23 @@ import UIKit
 import AVKit
 
 protocol KaraokeViewControllerProtocol: class {
-    var content: String! { get set }
+    var contentName: String { get set }
+    var lyricsText: String { get set }
     var index: Int { get set }
     var maxIndex: Int { get set }
     
     func setViewsProperties()
-    func playVideo()
 }
 
 class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
     // MARK:- Properties
-    var content: String!
+    var contentName = ""
+    var lyricsText = ""
     var index = 0
     var maxIndex = 0
     var presenter: KaraokePresenterProtocol!
-    var player: AVPlayer?
     
-    private weak var contentLabel: UILabel!
-    private weak var backBtn: UIButton!
-    private weak var videoView: UIView!
-    private weak var nextBtn: UIButton!
-    private weak var closeBtn: UIButton!
-    
+    private var isPlaying = false 
     private let configurator: KaraokeConfiguratorProtocol = KaraokeConfigurator()
     private var karaokeView: KaraokeViewProtocol!
     
@@ -43,8 +38,8 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
         configurator.configure(with: self)
         initLayout()
         karaokeView.setupLayout()
-        assignViews()
         assignActions()
+        presenter.getLyricsText()
         presenter.getMaxCount()
     }
     
@@ -54,40 +49,39 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
         AudioPlayer.backgroundAudioPlayer.stop()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        playVideo()
-    }
-    
     
     // MARK:- Layout
     private func initLayout() {
         karaokeView = KaraokeView(self.view)
     }
     
-    private func assignViews() {
-        self.contentLabel = karaokeView.contentLabel
-        self.backBtn = karaokeView.backBtn
-        self.videoView = karaokeView.videoView
-        self.nextBtn = karaokeView.nextBtn
-        self.closeBtn = karaokeView.closeBtn
-    }
-    
-    
     // MARK:- Actions
     private func assignActions() {
-        backBtn.addTarget(self, action: #selector(backBtnPressed), for: .touchUpInside)
-        nextBtn.addTarget(self, action: #selector(nextBtnPressed), for: .touchUpInside)
-        closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
+        karaokeView.playBtn.addTarget(self, action: #selector(playBtnPressed), for: .touchUpInside)
+        karaokeView.backBtn.addTarget(self, action: #selector(backBtnPressed), for: .touchUpInside)
+        karaokeView.forwardBtn.addTarget(self, action: #selector(nextBtnPressed), for: .touchUpInside)
+        karaokeView.closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
+    }
+    
+    @objc private func playBtnPressed() {
+        if isPlaying {
+            presenter.stopAudio()
+            karaokeView.playBtn.setImage(UIImage(named: "playBtn"), for: .normal)
+        } else {
+            presenter.playAudio()
+            karaokeView.playBtn.setImage(UIImage(named: "pauseBtn"), for: .normal)
+        }
+        isPlaying = !isPlaying
     }
     
     @objc
     private func backBtnPressed() {
-        presenter.backToPreviousVideo()
+        presenter.backToPreviousAudio()
     }
     
     @objc
     private func nextBtnPressed() {
-        presenter.nextVideo()
+        presenter.nextAudio()
     }
     
     @objc
@@ -105,27 +99,9 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
 extension KaraokeViewController {
     // MARK:- Protocol Methods
     func setViewsProperties() {
-        contentLabel.text = content
-        backBtn.isEnabled = (index != 0)
-        nextBtn.isEnabled = (index != maxIndex)
-    }
-    
-    // MARK: AVKit
-    func playVideo() {
-        player = nil
-        karaokeView.removeLayer()
-        initPath()
-        player?.play()
-        karaokeView.initLayer(player)
-        NotificationCenter.default.addObserver(self, selector: #selector(videoEnded), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
-    }
-    
-    private func initPath() {
-        let videoString = Bundle.main.path(forResource: content, ofType: "mp4")
-        guard let unwrappedVideoPath = videoString else { return }
-        
-        let videoUrl = URL(fileURLWithPath: unwrappedVideoPath)
-        
-        self.player = AVPlayer(url: videoUrl)
+        karaokeView.titleLabel.text = contentName
+        karaokeView.lyricsTextView.text = lyricsText
+        karaokeView.backBtn.isEnabled = (index != 0)
+        karaokeView.forwardBtn.isEnabled = (index != maxIndex)
     }
 }

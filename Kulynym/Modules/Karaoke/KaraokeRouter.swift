@@ -24,7 +24,7 @@ class KaraokeRouter: KaraokeRouterProtocol {
 
 extension KaraokeRouter {
     func close() {
-        controller.player = nil
+        AudioPlayer.karaokeAudioPlayer.stop()
         controller.navigationController?.popViewController(animated: true)
         AudioPlayer.backgroundAudioPlayer.play()
     }

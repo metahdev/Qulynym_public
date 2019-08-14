@@ -34,7 +34,7 @@ extension PlaylistRouter {
             let karaokeView = KaraokeViewController()
             controller.karaokeViewDelegate = karaokeView
             
-            controller.karaokeViewDelegate.content = controller.content[index]
+            controller.karaokeViewDelegate.contentName = controller.content[index]
             controller.karaokeViewDelegate.index = index 
             karaokeView.transitioningDelegate = controller
             

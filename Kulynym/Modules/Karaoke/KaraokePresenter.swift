@@ -12,8 +12,11 @@ import Foundation
 
 protocol KaraokePresenterProtocol: class {
     func getMaxCount()
-    func backToPreviousVideo()
-    func nextVideo() 
+    func getLyricsText()
+    func playAudio()
+    func stopAudio()
+    func backToPreviousAudio()
+    func nextAudio()
     func close()
 }
 
@@ -33,22 +36,42 @@ extension KaraokePresenter {
         controller.maxIndex = interactor.getMaxCount()
     }
     
-    func backToPreviousVideo() {
-        controller.content = interactor.getPreviousVideo(&controller.index)
+    func getLyricsText() {
+        controller.lyricsText = interactor.getLyricsText(controller.index)
+    }
+    
+    func playAudio() {
+        if !AudioPlayer.playlistPlayerInitiated {
+            AudioPlayer.setupExtraAudio(with: controller.contentName, audioPlayer: .song)
+        }
+        AudioPlayer.backgroundAudioPlayer.stop()
+        AudioPlayer.karaokeAudioPlayer.play()
+    }
+    
+    func stopAudio() {
+        AudioPlayer.karaokeAudioPlayer.stop()
+        AudioPlayer.backgroundAudioPlayer.play()
+    }
+    
+    func backToPreviousAudio() {
+        controller.contentName = interactor.getPreviousAudioName(&controller.index)
         updateForUser()
     }
     
-    func nextVideo() {
-        controller.content = interactor.getNextVideo(&controller.index)
+    func nextAudio() {
+        controller.contentName = interactor.getNextAudioName(&controller.index)
         updateForUser()
     }
     
     private func updateForUser() {
+        AudioPlayer.karaokeAudioPlayer.stop() 
+        AudioPlayer.playlistPlayerInitiated = false
+        getLyricsText()
         controller.setViewsProperties()
-        controller.playVideo()
     }
     
     func close() {
+        AudioPlayer.playlistPlayerInitiated = false
         router.close()
     }
 }

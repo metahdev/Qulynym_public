@@ -16,11 +16,12 @@ enum PlayerType {
     case content
     case question
     case story
+    case song
 }
 
 struct AudioPlayer {
     // MARK:- Properties
-    static var storyPlayerInitied = false
+    static var playlistPlayerInitiated = false
     
     static var backgroundAudioPlayer = AVAudioPlayer()
     static var sfxAudioPlayer = AVAudioPlayer()
@@ -28,6 +29,7 @@ struct AudioPlayer {
     static var scenesAudioPlayer = AVAudioPlayer()
     static var questionAudioPlayer = AVAudioPlayer()
     static var storyAudioPlayer = AVAudioPlayer()
+    static var karaokeAudioPlayer = AVAudioPlayer()
     
     
     // MARK: Background Audio
@@ -61,7 +63,10 @@ struct AudioPlayer {
             initPlayers(player: &questionAudioPlayer, url: url)
         case .story:
             initPlayers(player: &storyAudioPlayer, url: url)
-            storyPlayerInitied = true 
+            playlistPlayerInitiated = true
+        case .song:
+            initPlayers(player: &karaokeAudioPlayer, url: url)
+            playlistPlayerInitiated = true 
         }
     }
     

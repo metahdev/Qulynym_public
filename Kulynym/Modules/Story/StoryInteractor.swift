@@ -33,11 +33,11 @@ extension StoryInteractor {
     
     func getPreviousVideo(_ index: inout Int) -> String {
         index -= 1
-        return ContentService.songs[index]
+        return ContentService.stories[index]
     }
     
     func getNextVideo(_ index: inout Int) -> String {
         index += 1
-        return ContentService.songs[index]
+        return ContentService.stories[index]
     }
 }

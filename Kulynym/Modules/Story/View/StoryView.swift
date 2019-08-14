@@ -97,7 +97,7 @@ class StoryView: StoryViewProtocol {
         NSLayoutConstraint.activate([
             storyImageView.topAnchor.constraint(equalTo: view.topAnchor),
             storyImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            storyImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
+            storyImageView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
             storyImageView.heightAnchor.constraint(equalTo: storyImageView.widthAnchor),
             
             titleLabel.topAnchor.constraint(equalTo: storyImageView.bottomAnchor, constant: 12),

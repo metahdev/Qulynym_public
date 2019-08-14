@@ -36,7 +36,7 @@ extension StoryPresenter {
     }
     
     func playAudio() {
-        if !AudioPlayer.storyPlayerInitied {
+        if !AudioPlayer.playlistPlayerInitiated {
             AudioPlayer.setupExtraAudio(with: controller.storyName, audioPlayer: .story)
         }
         AudioPlayer.backgroundAudioPlayer.stop()
@@ -59,11 +59,13 @@ extension StoryPresenter {
     }
     
     private func updateForUser() {
-        AudioPlayer.setupExtraAudio(with: controller.storyName, audioPlayer: .story)
+        AudioPlayer.playlistPlayerInitiated = false
+        playAudio()
         AudioPlayer.backgroundAudioPlayer.play()
     }
     
     func closeView() {
+        AudioPlayer.playlistPlayerInitiated = false
         router.close()
     }
 }
