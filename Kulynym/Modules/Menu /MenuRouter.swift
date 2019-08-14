@@ -69,6 +69,7 @@ extension MenuRouter {
     }
     
     func openFlappyBird() {
+        AppUtility.lockOrientation(.portrait, rotate: true)
         controller.show(GameViewController(), sender: nil)
     }
     
