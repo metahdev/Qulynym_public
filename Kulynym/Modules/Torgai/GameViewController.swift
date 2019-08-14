@@ -27,6 +27,10 @@ import GameplayKit
 class GameViewController: UIViewController {
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.layer.zPosition = 1
+        btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.addTarget(self, action: #selector(closeGame), for: .touchUpInside)
         return btn
     }()
     
@@ -52,6 +56,9 @@ class GameViewController: UIViewController {
             view.showsFPS = false
             view.showsNodeCount = false
         }
+        
+        view.addSubview(closeBtn)
+        closeBtn.configureCloseBtnFrame(self.view)
     }
 
     override var shouldAutorotate: Bool {
@@ -68,5 +75,10 @@ class GameViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    @objc func closeGame() {
+        self.navigationController?.popViewController(animated: true)
+        AppUtility.lockOrientation(.landscape, rotate: true)
     }
 }
