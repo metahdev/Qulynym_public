@@ -153,7 +153,7 @@ class DrawingView: DrawingViewProtocol {
             resetBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             resetBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             
-            slideOutBtn.leadingAnchor.constraint(equalTo: drawingsCollectionView.view.trailingAnchor, constant: -4),
+            slideOutBtn.leadingAnchor.constraint(equalTo: drawingsCollectionView.view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
             slideOutBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             slideOutBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             slideOutBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
