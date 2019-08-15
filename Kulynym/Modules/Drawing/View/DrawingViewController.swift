@@ -142,12 +142,12 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        AudioPlayer.setupExtraAudio(with: "bulp", audioPlayer: .effects)
         canvasView.color = tools[indexPath.row]
         if indexPath.row == 9 {
             canvasView.brushWidth = 10
         } else {
             canvasView.brushWidth = 5
+            AudioPlayer.setupExtraAudio(with: "bloop", audioPlayer: .effects)
         }
     }
 }
