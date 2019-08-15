@@ -59,6 +59,12 @@ class DrawingView: DrawingViewProtocol {
     
     private var drawingCVTrailingConstraint: NSLayoutConstraint!
     private var isOpen = false
+    private var slideOutBtnConstraint: NSLayoutConstraint? {
+        didSet {
+            oldValue?.isActive = false
+            slideOutBtnConstraint?.isActive = true
+        }
+    }
     
     
     // MARK:- Initialization 
@@ -77,6 +83,7 @@ class DrawingView: DrawingViewProtocol {
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
         activateConstraints()
+        initCloseConstraints()
         canvasView.setupAppearence()
     }
     
@@ -115,12 +122,14 @@ class DrawingView: DrawingViewProtocol {
     
     private func initCloseConstraints() {
         slideOutBtn.setImage(UIImage(named: "slideOutOpen"), for: .normal)
+        slideOutBtnConstraint = slideOutBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: -16)
         drawingCVTrailingConstraint.constant = 0
         closeBtn.isEnabled = true
     }
     
     private func initOpenConstraints() {
         slideOutBtn.setImage(UIImage(named: "slideOutClose"), for: .normal)
+        slideOutBtnConstraint = slideOutBtn.leadingAnchor.constraint(equalTo: drawingsCollectionView.view.trailingAnchor, constant: -4)
         drawingCVTrailingConstraint.constant = view.frame.height * 0.4
         closeBtn.isEnabled = false
     }
@@ -153,7 +162,6 @@ class DrawingView: DrawingViewProtocol {
             resetBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             resetBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             
-            slideOutBtn.leadingAnchor.constraint(equalTo: drawingsCollectionView.view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
             slideOutBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             slideOutBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             slideOutBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
