@@ -85,6 +85,7 @@
 		D13D86652217FEE00048A6E4 /* KulynymTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D86642217FEE00048A6E4 /* KulynymTests.swift */; };
 		D13D86702217FEE00048A6E4 /* KulynymUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D866F2217FEE00048A6E4 /* KulynymUITests.swift */; };
 		D13D867E22180E430048A6E4 /* PersistentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D867D22180E430048A6E4 /* PersistentService.swift */; };
+		D1408C352305E750007426F1 /* bloop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1408C342305E74F007426F1 /* bloop.mp3 */; };
 		D146AB2F22E77EB2004520DA /* backgroundAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D146AB2E22E77EB2004520DA /* backgroundAudio.mp3 */; };
 		D146AB3122E78575004520DA /* animalsIcon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D146AB3022E78575004520DA /* animalsIcon.mp3 */; };
 		D146AB3622E7862F004520DA /* bear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D146AB3322E7862E004520DA /* bear.mp3 */; };
@@ -244,6 +245,7 @@
 		D13D866F2217FEE00048A6E4 /* KulynymUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KulynymUITests.swift; sourceTree = "<group>"; };
 		D13D86712217FEE00048A6E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D13D867D22180E430048A6E4 /* PersistentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentService.swift; sourceTree = "<group>"; };
+		D1408C342305E74F007426F1 /* bloop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bloop.mp3; sourceTree = "<group>"; };
 		D146AB2E22E77EB2004520DA /* backgroundAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundAudio.mp3; sourceTree = "<group>"; };
 		D146AB3022E78575004520DA /* animalsIcon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = animalsIcon.mp3; sourceTree = "<group>"; };
 		D146AB3322E7862E004520DA /* bear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bear.mp3; sourceTree = "<group>"; };
@@ -808,6 +810,7 @@
 		D1FAE5EA22F9A5D000FD15F2 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				D1408C342305E74F007426F1 /* bloop.mp3 */,
 				B916B08922FBD15C00AF255A /* bubbles.mp3 */,
 				B916B08722FBD15600AF255A /* wellDone.mp3 */,
 				B916B08522FBD15000AF255A /* tryAgain.mp3 */,
@@ -951,6 +954,7 @@
 				D1F3BE8F22F177C600BD4F97 /* gamesMessage.mp3 in Resources */,
 				D132840F22F4582600C630A6 /* animalsIconQ.mp3 in Resources */,
 				B9E2CE4322FBFDA4006B5697 /* esek.mp3 in Resources */,
+				D1408C352305E750007426F1 /* bloop.mp3 in Resources */,
 				B9E2CE3922FBDF2F006B5697 /* coin.wav in Resources */,
 				D146AB2F22E77EB2004520DA /* backgroundAudio.mp3 in Resources */,
 				D146AB3822E7862F004520DA /* dog.mp3 in Resources */,

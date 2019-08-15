@@ -60,6 +60,9 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
         hideOrUnhideCloseBtn()
     }
 
+    override var shouldAutorotate: Bool {
+        return true
+    }
     
     // MARK:- Layout
     private func initLayout() {

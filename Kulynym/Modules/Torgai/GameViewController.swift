@@ -38,7 +38,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()        
         view = SKView(frame: view.bounds)
-
         
         if let view = self.view as! SKView? {
             let aspectRatio = view.bounds.size.height / view.bounds.size.width
@@ -58,6 +57,7 @@ class GameViewController: UIViewController {
         }
         
         view.addSubview(closeBtn)
+        closeBtn.translatesAutoresizingMaskIntoConstraints = false
         closeBtn.configureCloseBtnFrame(self.view)
     }
 
@@ -78,7 +78,7 @@ class GameViewController: UIViewController {
     }
     
     @objc func closeGame() {
-        self.navigationController?.popViewController(animated: true)
         AppUtility.lockOrientation(.landscape, rotate: true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
