@@ -20,7 +20,7 @@ protocol CanvasViewProtocol: class {
 class CanvasView: UIView, CanvasViewProtocol {
     // MARK:- Properties
     var color = UIColor.red
-    var brushWidth: CGFloat = 5
+    var brushWidth: CGFloat = 20
     
     private var lastPoint: CGPoint!
     private var pointCounter = 0
@@ -49,15 +49,35 @@ class CanvasView: UIView, CanvasViewProtocol {
         let touch: AnyObject? = touches.first
         lastPoint = touch!.location(in: self)
         pointCounter = 0
+        for touch in touches{
+            let location = touch.location(in: self)
+            let dot = UIView(frame: CGRect(x: location.x, y: location.y, width: 20, height:
+                20))
+            dot.backgroundColor = .white
+            dot.layer.cornerRadius = dot.bounds.midY
+            dot.layer.borderColor = UIColor.black.cgColor
+            dot.layer.borderWidth = 5
+            dot.layer.position.x = location.x
+            dot.layer.position.y = location.y
+            
+            self.addSubview(dot) //add dot as subview to your main view
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: AnyObject? = touches.first
         let newPoint = touch!.location(in: self)
+        let dot = self.subviews.last
         
         bezierPath.move(to: lastPoint)
         bezierPath.addLine(to: newPoint)
         lastPoint = newPoint
+        
+        for touch in touches{
+            let location = touch.location(in: self)
+            dot?.layer.position.x = location.x
+            dot?.layer.position.y = location.y
+        }
         
         pointCounter += 1
         
@@ -76,6 +96,7 @@ class CanvasView: UIView, CanvasViewProtocol {
         renderToImage()
         setNeedsDisplay()
         bezierPath.removeAllPoints()
+        self.subviews.last?.removeFromSuperview()
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
