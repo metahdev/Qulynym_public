@@ -32,6 +32,13 @@ class MenuView: MenuViewProtocol {
         btn.setImage(UIImage(named: "settings"), for: .normal)
         return btn
     }()
+    private lazy var titleLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Qulynym"
+        lbl.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.1)
+        lbl.textColor = .white
+        return lbl
+    }()
     private weak var view: UIView!
     
     
@@ -46,6 +53,7 @@ class MenuView: MenuViewProtocol {
         view.addSubview(collectionView)
         view.addSubview(closeBtn)
         view.addSubview(settingsBtn)
+        view.addSubview(titleLabel)
         setAutoresizingFalse()
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
@@ -61,6 +69,9 @@ class MenuView: MenuViewProtocol {
         let constant = view.frame.width * 0.01
         
         NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
+            
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),

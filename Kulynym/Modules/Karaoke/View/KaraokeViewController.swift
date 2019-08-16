@@ -18,6 +18,7 @@ protocol KaraokeViewControllerProtocol: class {
     
     func setViewsProperties()
     func playBtnPressed()
+    func changeSliderValue(_ value: Int)
 }
 
 class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
@@ -42,10 +43,12 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
         assignActions()
         presenter.getLyricsText()
         presenter.getMaxCount()
+        presenter.initTimer() 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        playBtnPressed()
         setViewsProperties()
         AudioPlayer.backgroundAudioPlayer.stop()
     }
@@ -91,11 +94,6 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
         presenter.close()
     }
     
-    @objc
-    private func videoEnded() {
-        presenter.close()
-    }
-    
     @objc private func sliderValueChanged(_ sender: UISlider) {
         presenter.scrollAudio(to: sender.value)
     }
@@ -109,5 +107,10 @@ extension KaraokeViewController {
         karaokeView.lyricsTextView.text = lyricsText
         karaokeView.backBtn.isEnabled = (index != 0)
         karaokeView.forwardBtn.isEnabled = (index != maxIndex)
+        karaokeView.timelineSlider.maximumValue = Float(AudioPlayer.karaokeAudioPlayer.duration)
+    }
+    
+    func changeSliderValue(_ value: Int) {
+        karaokeView.timelineSlider.value = Float(value)
     }
 }

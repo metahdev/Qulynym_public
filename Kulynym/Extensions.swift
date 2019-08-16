@@ -141,14 +141,16 @@ struct SettingsButton {
     }
 }
 
+
+// MARK:- Orientation
 struct AppUtility {
-    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, rotate: Bool) {
+    // MARK:- Landscape Lock
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation: UIInterfaceOrientation) {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             delegate.orientationLock = orientation
         }
-        if rotate {
-            UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
-            UINavigationController.attemptRotationToDeviceOrientation()
-        }
+        
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+        UINavigationController.attemptRotationToDeviceOrientation()
     }
 }

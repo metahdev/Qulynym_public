@@ -11,41 +11,38 @@
 import Foundation
 
 protocol TimerControllerDelegate: class {
-    var timepoints: [Int] { get set }
+    var duration: TimeInterval { get }
     
     func notifyOfTimepoints()
     func notifyTimerEnded()
 }
 
-// ** is not being used
 class TimerController {
     // MARK:- Properties
-    var currentSlide = 1
-    var timer = Timer()
+    var timer: Timer?
     var delegate: TimerControllerDelegate!
     
-    var seconds = 0.0
-    
+    var seconds = 0
     
     // MARK:- Timer
+    func nullifyData() {
+        timer = nil
+        timer?.invalidate()
+        seconds = 0 
+    }
+    
     func startTimer() {
-        // **
-        seconds = AudioPlayer.scenesAudioPlayer.duration
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkState), userInfo: nil, repeats: true)
     }
     
     @objc private func checkState() {
-        seconds -= 1
+        seconds += 1
         
-        for timepoint in delegate.timepoints {
-            if Int(seconds) == timepoint {
-                delegate.notifyOfTimepoints()
-                currentSlide += 1
-            }
-        }
+        delegate.notifyOfTimepoints()
         
-        if Int(seconds) == 0 {
-            timer.invalidate()
+        if seconds == Int(delegate.duration) {
+            timer!.invalidate()
+            timer = nil
             delegate.notifyTimerEnded()
         }
     }

@@ -30,12 +30,11 @@ struct EduSection {
 
 struct ContentService {
     static let menuSections = [
-        "toddlerIcon",
-        "karaokeIcon",
-        "storyIcon",
-        "drawingIcon",
-        "preschoolerIcon",
-        "gamesIcon"
+        "Oqu",
+        "O'len aitu",
+        "Ertegilerdi tyndau",
+        "Su'ret salu",
+        "Oyin Oinau"
     ]
     
     static let toddlerSections = [

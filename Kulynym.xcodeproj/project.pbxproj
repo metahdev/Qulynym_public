@@ -98,6 +98,7 @@
 		D14D537222214853007ACD55 /* ItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D537122214853007ACD55 /* ItemRouter.swift */; };
 		D14D53752221A294007ACD55 /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D53742221A294007ACD55 /* ContentService.swift */; };
 		D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D53782221B185007ACD55 /* AudioPlayer.swift */; };
+		D163A95F2306BB5F00B7DE28 /* MenuImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D163A95E2306BB5F00B7DE28 /* MenuImageCollectionViewCell.swift */; };
 		D168A3F92302D5C700505D40 /* Bauyrsaq Ertegi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D168A3F82302D5C700505D40 /* Bauyrsaq Ertegi.mp3 */; };
 		D19245172284DC2800ABD1BD /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19245162284DC2800ABD1BD /* Timer.swift */; };
 		D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D36E4222BAEEC005188D0 /* Extensions.swift */; };
@@ -258,6 +259,7 @@
 		D14D537122214853007ACD55 /* ItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRouter.swift; sourceTree = "<group>"; };
 		D14D53742221A294007ACD55 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
 		D14D53782221B185007ACD55 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		D163A95E2306BB5F00B7DE28 /* MenuImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		D168A3F82302D5C700505D40 /* Bauyrsaq Ertegi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bauyrsaq Ertegi.mp3"; sourceTree = "<group>"; };
 		D19245162284DC2800ABD1BD /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		D19D36E4222BAEEC005188D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -452,7 +454,7 @@
 			children = (
 				D10687CC22AE68E300A3E6E0 /* MenuViewController.swift */,
 				D10687CE22AE68EE00A3E6E0 /* MenuView.swift */,
-				D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */,
+				D163A95E2306BB5F00B7DE28 /* MenuImageCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -559,6 +561,7 @@
 				D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */,
 				D19D36E4222BAEEC005188D0 /* Extensions.swift */,
 				D1BCE09A2302A1C2002EC22A /* UIImageGIFSupportExtension.swift */,
+				D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */,
 				D13D865B2217FEDF0048A6E4 /* Info.plist */,
 				D1D46951222ADED20096B968 /* Modules */,
 				D1A29F372280C2E8000CC676 /* Managers */,
@@ -991,6 +994,7 @@
 				D135E2AF22A02FD900DC84DE /* KaraokeRouter.swift in Sources */,
 				D1F9ABD522A0456B00989BD3 /* DrawingConfigurator.swift in Sources */,
 				D1D469172229C7FC0096B968 /* PreschoolerViewController.swift in Sources */,
+				D163A95F2306BB5F00B7DE28 /* MenuImageCollectionViewCell.swift in Sources */,
 				D1F9ABC822A0450200989BD3 /* StoryConfigurator.swift in Sources */,
 				D1072A0122877DD2003149E8 /* PlaylistRouter.swift in Sources */,
 				856F349122F87F1800E97C0C /* SettingsRouter.swift in Sources */,

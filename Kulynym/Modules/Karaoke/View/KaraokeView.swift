@@ -71,7 +71,7 @@ class KaraokeView: KaraokeViewProtocol {
         
         slider.minimumValue = 0
         slider.maximumValue = 100
-        slider.setValue(100, animated: false)
+        slider.setValue(0, animated: false)
         
         return slider
     }()

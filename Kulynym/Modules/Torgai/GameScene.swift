@@ -261,12 +261,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if let touch = touches.first {
-//            let touchLocation = touch.location(in: self)
-//            let gameVC = GameViewController()
-        
-            switch stateMachine.currentState {
-                
+        switch stateMachine.currentState {
             case is MainMenuState:
                 restartGame(TutorialState.self)
             case is TutorialState:
@@ -274,15 +269,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case is PlayingState:
                 player.movementComponent.applyImpulse(lastUpdateTimeInterval)
             case is GameOverState:
-//                if touchLocation.y > size.height * 0.15 {
-                    restartGame(TutorialState.self)
-//                } else {
-//                    gameVC.closeGame()
-//                }
+                restartGame(TutorialState.self)
             default:
                 break
             }
-//        }
     }
     
     override func update(_ currentTime: TimeInterval) {

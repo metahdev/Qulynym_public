@@ -60,9 +60,16 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
         hideOrUnhideCloseBtn()
     }
 
+    
+    // MARK:- Orientation
     override var shouldAutorotate: Bool {
         return true
     }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return [.landscape]
+    }
+    
     
     // MARK:- Layout
     private func initLayout() {
@@ -127,7 +134,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        cell.imageName = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
+        cell.imageName = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row] 
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
         
@@ -136,6 +143,23 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             cell.layer.cornerRadius = view.frame.height * 0.25
         }
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.07)
+        label.text = sections[indexPath.row]
+        label.numberOfLines = 3
+        
+        cell.addSubview(label)
+        
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: cell.bottomAnchor, constant: 16),
+            label.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: cell.trailingAnchor)
+        ])
+        
         cell.imageView.layer.cornerRadius = 15
         return cell
     }

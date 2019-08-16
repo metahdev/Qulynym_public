@@ -57,8 +57,12 @@ class GameViewController: UIViewController {
         }
         
         view.addSubview(closeBtn)
-        closeBtn.translatesAutoresizingMaskIntoConstraints = false
-        closeBtn.configureCloseBtnFrame(self.view)
+        NSLayoutConstraint.activate([
+            closeBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            closeBtn.topAnchor.constraint(equalTo: view.topAnchor),
+            closeBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
+            closeBtn.heightAnchor.constraint(equalTo: closeBtn.widthAnchor, constant: -24)
+        ])
     }
 
     override var shouldAutorotate: Bool {
@@ -69,16 +73,12 @@ class GameViewController: UIViewController {
         return [.portrait, .portraitUpsideDown]
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
     @objc func closeGame() {
-        AppUtility.lockOrientation(.landscape, rotate: true)
+        AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
         self.navigationController?.popViewController(animated: true)
     }
 }
