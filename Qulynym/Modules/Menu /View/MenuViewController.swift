@@ -146,10 +146,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = UIColor(red: 97/255, green: 104/255, blue: 189/255, alpha: 1)
         label.textAlignment = .center
         label.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.07)
-        label.text = sections[indexPath.row]
+        label.text = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
         label.numberOfLines = 3
         
         cell.addSubview(label)

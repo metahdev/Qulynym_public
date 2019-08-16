@@ -16,10 +16,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D13D865F2217FEE00048A6E4"
-               BuildableName = "KulynymTests.xctest"
-               BlueprintName = "KulynymTests"
-               ReferencedContainer = "container:Kulynym.xcodeproj">
+               BlueprintIdentifier = "D13D866A2217FEE00048A6E4"
+               BuildableName = "QulynymUITests.xctest"
+               BlueprintName = "QulynymUITests"
+               ReferencedContainer = "container:Qulynym.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

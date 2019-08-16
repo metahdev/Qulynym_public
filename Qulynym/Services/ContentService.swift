@@ -45,7 +45,7 @@ struct ContentService {
     ]
     
     static let gamesSection = [
-        "torgai",
+        "Torg'ai",
     ]
     
     static var songs: [(String, String)] = [
@@ -60,10 +60,10 @@ struct ContentService {
     static var infoForParents = setAttributedText(type: .infoForParents)
     static var credits = setAttributedText(type: .credits)
     
-    private static var colorsSection = EduSection(name: "colorsIcon", scenesNames: [""], timepoints: [0], contentNames: ["red"])
-        private static var shapesSection = EduSection(name: "shapesIcon", scenesNames: [""], timepoints: [0], contentNames: ["circle"])
-    private static var animalsSection = EduSection(name: "animalsIcon", scenesNames: ["Anim1", "Anim2"], timepoints: [5], contentNames: ["cat", "dog", "bear", "eagle", "elephant", "esek", "owl", "ant"])
-    private static var plantsSection = EduSection(name: "plantsIcon", scenesNames: [""], timepoints: [0], contentNames: ["rose"])
+    private static var colorsSection = EduSection(name: "Tu'ster", scenesNames: [""], timepoints: [0], contentNames: ["red"])
+        private static var shapesSection = EduSection(name: "Pishinder", scenesNames: [""], timepoints: [0], contentNames: ["circle"])
+    private static var animalsSection = EduSection(name: "Zhanuarlar", scenesNames: ["Anim1", "Anim2"], timepoints: [5], contentNames: ["cat", "dog", "bear", "eagle", "elephant", "esek", "owl", "ant"])
+    private static var plantsSection = EduSection(name: "O'simdikter", scenesNames: [""], timepoints: [0], contentNames: ["rose"])
     
     static var parentsInfoTitle = "          Info for parents"
     static var creditsTitle = "        Credits"

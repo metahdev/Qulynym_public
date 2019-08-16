@@ -43,8 +43,7 @@ extension MenuPresenter {
         switch index {
         case 0: router.showToddlerEdu()
         case 3: router.showDrawingView()
-        case 4: router.showPreschoolerEdu()
-        case 5: router.showGamesMenu() 
+        case 4: router.showGamesMenu() 
         default: router.showPlaylist(isKaraoke: (index == 1))
         }
     }

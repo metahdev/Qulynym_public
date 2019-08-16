@@ -232,17 +232,17 @@
 		D135E2AE22A02FD900DC84DE /* KaraokeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeRouter.swift; sourceTree = "<group>"; };
 		D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		D1383FAD22B0F730007815DF /* MenuInteractor .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuInteractor .swift"; sourceTree = "<group>"; };
-		D13D86492217FEDF0048A6E4 /* Kulynym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kulynym.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D13D86492217FEDF0048A6E4 /* Qulynym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qulynym.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D13D864E2217FEDF0048A6E4 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		D13D86542217FEDF0048A6E4 /* Kulynym.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kulynym.xcdatamodel; sourceTree = "<group>"; };
 		D13D86562217FEDF0048A6E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D13D86592217FEDF0048A6E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D13D865B2217FEDF0048A6E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D13D86602217FEE00048A6E4 /* KulynymTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KulynymTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D13D86602217FEE00048A6E4 /* QulynymTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QulynymTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D13D86642217FEE00048A6E4 /* KulynymTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KulynymTests.swift; sourceTree = "<group>"; };
 		D13D86662217FEE00048A6E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D13D866B2217FEE00048A6E4 /* KulynymUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KulynymUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D13D866B2217FEE00048A6E4 /* QulynymUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QulynymUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D13D866F2217FEE00048A6E4 /* KulynymUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KulynymUITests.swift; sourceTree = "<group>"; };
 		D13D86712217FEE00048A6E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D13D867D22180E430048A6E4 /* PersistentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentService.swift; sourceTree = "<group>"; };
@@ -537,7 +537,7 @@
 		D13D86402217FEDF0048A6E4 = {
 			isa = PBXGroup;
 			children = (
-				D13D864B2217FEDF0048A6E4 /* Kulynym */,
+				D13D864B2217FEDF0048A6E4 /* Qulynym */,
 				D13D86632217FEE00048A6E4 /* KulynymTests */,
 				D13D866E2217FEE00048A6E4 /* KulynymUITests */,
 				D13D864A2217FEDF0048A6E4 /* Products */,
@@ -547,28 +547,23 @@
 		D13D864A2217FEDF0048A6E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D13D86492217FEDF0048A6E4 /* Kulynym.app */,
-				D13D86602217FEE00048A6E4 /* KulynymTests.xctest */,
-				D13D866B2217FEE00048A6E4 /* KulynymUITests.xctest */,
+				D13D86492217FEDF0048A6E4 /* Qulynym.app */,
+				D13D86602217FEE00048A6E4 /* QulynymTests.xctest */,
+				D13D866B2217FEE00048A6E4 /* QulynymUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D13D864B2217FEDF0048A6E4 /* Kulynym */ = {
+		D13D864B2217FEDF0048A6E4 /* Qulynym */ = {
 			isa = PBXGroup;
 			children = (
 				D1BCE09C2302A1D1002EC22A /* Supporting Files */,
-				D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */,
-				D19D36E4222BAEEC005188D0 /* Extensions.swift */,
-				D1BCE09A2302A1C2002EC22A /* UIImageGIFSupportExtension.swift */,
-				D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */,
-				D13D865B2217FEDF0048A6E4 /* Info.plist */,
 				D1D46951222ADED20096B968 /* Modules */,
 				D1A29F372280C2E8000CC676 /* Managers */,
 				D14D536B2221377C007ACD55 /* Services */,
 				D14D536C22213787007ACD55 /* Resources */,
 			);
-			path = Kulynym;
+			path = Qulynym;
 			sourceTree = "<group>";
 		};
 		D13D86632217FEE00048A6E4 /* KulynymTests */ = {
@@ -629,6 +624,7 @@
 		D14D536C22213787007ACD55 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D13D865B2217FEDF0048A6E4 /* Info.plist */,
 				D14D53762221B0CE007ACD55 /* Audio */,
 				D13D86532217FEDF0048A6E4 /* Kulynym.xcdatamodeld */,
 				D13D86582217FEDF0048A6E4 /* LaunchScreen.storyboard */,
@@ -704,6 +700,10 @@
 		D1BCE09C2302A1D1002EC22A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */,
+				D19D36E4222BAEEC005188D0 /* Extensions.swift */,
+				D1BCE09A2302A1C2002EC22A /* UIImageGIFSupportExtension.swift */,
+				D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -824,9 +824,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D13D86482217FEDF0048A6E4 /* Kulynym */ = {
+		D13D86482217FEDF0048A6E4 /* Qulynym */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D13D86742217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "Kulynym" */;
+			buildConfigurationList = D13D86742217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "Qulynym" */;
 			buildPhases = (
 				D13D86452217FEDF0048A6E4 /* Sources */,
 				D13D86462217FEDF0048A6E4 /* Frameworks */,
@@ -836,14 +836,14 @@
 			);
 			dependencies = (
 			);
-			name = Kulynym;
+			name = Qulynym;
 			productName = Kulynym;
-			productReference = D13D86492217FEDF0048A6E4 /* Kulynym.app */;
+			productReference = D13D86492217FEDF0048A6E4 /* Qulynym.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D13D865F2217FEE00048A6E4 /* KulynymTests */ = {
+		D13D865F2217FEE00048A6E4 /* QulynymTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D13D86772217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "KulynymTests" */;
+			buildConfigurationList = D13D86772217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "QulynymTests" */;
 			buildPhases = (
 				D13D865C2217FEE00048A6E4 /* Sources */,
 				D13D865D2217FEE00048A6E4 /* Frameworks */,
@@ -854,14 +854,14 @@
 			dependencies = (
 				D13D86622217FEE00048A6E4 /* PBXTargetDependency */,
 			);
-			name = KulynymTests;
+			name = QulynymTests;
 			productName = KulynymTests;
-			productReference = D13D86602217FEE00048A6E4 /* KulynymTests.xctest */;
+			productReference = D13D86602217FEE00048A6E4 /* QulynymTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D13D866A2217FEE00048A6E4 /* KulynymUITests */ = {
+		D13D866A2217FEE00048A6E4 /* QulynymUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D13D867A2217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "KulynymUITests" */;
+			buildConfigurationList = D13D867A2217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "QulynymUITests" */;
 			buildPhases = (
 				D13D86672217FEE00048A6E4 /* Sources */,
 				D13D86682217FEE00048A6E4 /* Frameworks */,
@@ -872,9 +872,9 @@
 			dependencies = (
 				D13D866D2217FEE00048A6E4 /* PBXTargetDependency */,
 			);
-			name = KulynymUITests;
+			name = QulynymUITests;
 			productName = KulynymUITests;
-			productReference = D13D866B2217FEE00048A6E4 /* KulynymUITests.xctest */;
+			productReference = D13D866B2217FEE00048A6E4 /* QulynymUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -903,7 +903,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D13D86442217FEDF0048A6E4 /* Build configuration list for PBXProject "Kulynym" */;
+			buildConfigurationList = D13D86442217FEDF0048A6E4 /* Build configuration list for PBXProject "Qulynym" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -916,9 +916,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D13D86482217FEDF0048A6E4 /* Kulynym */,
-				D13D865F2217FEE00048A6E4 /* KulynymTests */,
-				D13D866A2217FEE00048A6E4 /* KulynymUITests */,
+				D13D86482217FEDF0048A6E4 /* Qulynym */,
+				D13D865F2217FEE00048A6E4 /* QulynymTests */,
+				D13D866A2217FEE00048A6E4 /* QulynymUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1109,12 +1109,12 @@
 /* Begin PBXTargetDependency section */
 		D13D86622217FEE00048A6E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D13D86482217FEDF0048A6E4 /* Kulynym */;
+			target = D13D86482217FEDF0048A6E4 /* Qulynym */;
 			targetProxy = D13D86612217FEE00048A6E4 /* PBXContainerItemProxy */;
 		};
 		D13D866D2217FEE00048A6E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D13D86482217FEDF0048A6E4 /* Kulynym */;
+			target = D13D86482217FEDF0048A6E4 /* Qulynym */;
 			targetProxy = D13D866C2217FEE00048A6E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1253,7 +1253,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 674GV257AS;
-				INFOPLIST_FILE = Kulynym/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Qulynym/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1271,7 +1271,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 674GV257AS;
-				INFOPLIST_FILE = Kulynym/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Qulynym/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1300,7 +1300,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kulynym.app/Kulynym";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Qulynym.app/Qulynym";
 			};
 			name = Debug;
 		};
@@ -1321,7 +1321,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kulynym.app/Kulynym";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Qulynym.app/Qulynym";
 			};
 			name = Release;
 		};
@@ -1368,7 +1368,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D13D86442217FEDF0048A6E4 /* Build configuration list for PBXProject "Kulynym" */ = {
+		D13D86442217FEDF0048A6E4 /* Build configuration list for PBXProject "Qulynym" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D13D86722217FEE00048A6E4 /* Debug */,
@@ -1377,7 +1377,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D13D86742217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "Kulynym" */ = {
+		D13D86742217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "Qulynym" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D13D86752217FEE00048A6E4 /* Debug */,
@@ -1386,7 +1386,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D13D86772217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "KulynymTests" */ = {
+		D13D86772217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "QulynymTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D13D86782217FEE00048A6E4 /* Debug */,
@@ -1395,7 +1395,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D13D867A2217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "KulynymUITests" */ = {
+		D13D867A2217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "QulynymUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D13D867B2217FEE00048A6E4 /* Debug */,

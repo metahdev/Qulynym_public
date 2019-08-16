@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D13D86482217FEDF0048A6E4"
-               BuildableName = "Kulynym.app"
-               BlueprintName = "Kulynym"
-               ReferencedContainer = "container:Kulynym.xcodeproj">
+               BuildableName = "Qulynym.app"
+               BlueprintName = "Qulynym"
+               ReferencedContainer = "container:Qulynym.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D13D865F2217FEE00048A6E4"
-               BuildableName = "KulynymTests.xctest"
-               BlueprintName = "KulynymTests"
-               ReferencedContainer = "container:Kulynym.xcodeproj">
+               BuildableName = "QulynymTests.xctest"
+               BlueprintName = "QulynymTests"
+               ReferencedContainer = "container:Qulynym.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D13D866A2217FEE00048A6E4"
-               BuildableName = "KulynymUITests.xctest"
-               BlueprintName = "KulynymUITests"
-               ReferencedContainer = "container:Kulynym.xcodeproj">
+               BuildableName = "QulynymUITests.xctest"
+               BlueprintName = "QulynymUITests"
+               ReferencedContainer = "container:Qulynym.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D13D86482217FEDF0048A6E4"
-            BuildableName = "Kulynym.app"
-            BlueprintName = "Kulynym"
-            ReferencedContainer = "container:Kulynym.xcodeproj">
+            BuildableName = "Qulynym.app"
+            BlueprintName = "Qulynym"
+            ReferencedContainer = "container:Qulynym.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D13D86482217FEDF0048A6E4"
-            BuildableName = "Kulynym.app"
-            BlueprintName = "Kulynym"
-            ReferencedContainer = "container:Kulynym.xcodeproj">
+            BuildableName = "Qulynym.app"
+            BlueprintName = "Qulynym"
+            ReferencedContainer = "container:Qulynym.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D13D86482217FEDF0048A6E4"
-            BuildableName = "Kulynym.app"
-            BlueprintName = "Kulynym"
-            ReferencedContainer = "container:Kulynym.xcodeproj">
+            BuildableName = "Qulynym.app"
+            BlueprintName = "Qulynym"
+            ReferencedContainer = "container:Qulynym.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
