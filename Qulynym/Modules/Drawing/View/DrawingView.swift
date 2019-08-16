@@ -17,6 +17,9 @@ protocol DrawingViewProtocol: class {
     var toolsCollectionView: UICollectionView { get set }
     var resetBtn: UIButton { get set }
     var slideOutBtn: UIButton { get set }
+    var marker: UIButton { get set }
+    var pencil: UIButton { get set }
+    var brush: UIButton { get set }
     
     func setupLayout()
     func toggleDrawingsCV()
@@ -37,7 +40,7 @@ class DrawingView: DrawingViewProtocol {
     }()
     lazy var drawingImageView: UIImageView = {
         let iv = UIImageView()
-        iv.layer.zPosition = -1
+        iv.layer.zPosition = 1
         return iv
     }()
     lazy var toolsCollectionView: UICollectionView = {
@@ -53,6 +56,23 @@ class DrawingView: DrawingViewProtocol {
         btn.setImage(UIImage(named: "slideOutOpen"), for: .normal)
         return btn
     }()
+    lazy var marker: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "marker"), for: .normal)
+        return btn
+    }()
+    lazy var pencil: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "pencil"), for: .normal)
+        return btn
+    }()
+    lazy var brush: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "brush"), for: .normal)
+        btn.isHidden = false
+        return btn
+    }()
+    
     private var drawingsCollectionView: DrawingsCollectionView!
     private weak var drawingViewController: DrawingViewController!
     private weak var view: UIView!
@@ -101,6 +121,9 @@ class DrawingView: DrawingViewProtocol {
         view.addSubview(toolsCollectionView)
         view.addSubview(resetBtn)
         view.addSubview(slideOutBtn)
+        view.addSubview(marker)
+        view.addSubview(pencil)
+        view.addSubview(brush)
     }
     
     private func setSubviewsMask() {
@@ -162,9 +185,24 @@ class DrawingView: DrawingViewProtocol {
             resetBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             resetBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             
+            marker.bottomAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height * 0.065),
+            marker.leadingAnchor.constraint(equalTo: canvasView.trailingAnchor, constant: 20),
+            marker.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
+            marker.widthAnchor.constraint(equalTo: marker.heightAnchor, multiplier: 19),
+            
+            pencil.bottomAnchor.constraint(equalTo: marker.topAnchor, constant: -view.frame.height * 0.065),
+            pencil.leadingAnchor.constraint(equalTo: marker.leadingAnchor),
+            pencil.heightAnchor.constraint(equalTo: marker.heightAnchor),
+            pencil.widthAnchor.constraint(equalTo: pencil.heightAnchor, multiplier: 16.8),
+            
+            brush.bottomAnchor.constraint(equalTo: pencil.topAnchor, constant: -view.frame.height * 0.065),
+            brush.leadingAnchor.constraint(equalTo: marker.leadingAnchor),
+            brush.heightAnchor.constraint(equalTo: marker.heightAnchor),
+            brush.widthAnchor.constraint(equalTo: brush.heightAnchor, multiplier: 19.9),
+            
             slideOutBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             slideOutBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
-            slideOutBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
+            slideOutBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12)
         ])
     }
 }

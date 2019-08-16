@@ -12,6 +12,7 @@ import UIKit
 
 protocol DrawingViewControllerProtocol: class {
     var currentImageName: String? { get set }
+    var selectedTool: UIButton! { get set }
 }
 
 class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
@@ -35,10 +36,18 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     private weak var canvasView: CanvasViewProtocol!
     private weak var resetBtn: UIButton!
     private weak var slideOutBtn: UIButton!
+    private weak var marker: UIButton!
+    private weak var pencil: UIButton!
+    private weak var brush: UIButton!
     
     private var drawingView: DrawingViewProtocol!
     private let configurator: DrawingConfiguratorProtocol = DrawingConfigurator()
     
+    var selectedTool: UIButton! {
+        didSet {
+            selectedToolDidSet()
+        }
+    }
     
     // MARK:- View Lifecycle
     override func viewDidLoad() {
@@ -51,6 +60,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         initMessage()
 //        manager.showAlert()
         assignActions()
+        selectedTool = pencil
     }
     
     
@@ -66,6 +76,9 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         self.canvasView = drawingView.canvasView
         self.resetBtn = drawingView.resetBtn
         self.slideOutBtn = drawingView.slideOutBtn
+        self.marker = drawingView.marker
+        self.pencil = drawingView.pencil
+        self.brush = drawingView.brush
     }
     
     private func setupCV() {
@@ -81,6 +94,31 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         pictureImageView.image = UIImage(named: name)
     }
     
+    func moveLeft(tool: UIButton) {
+        UIView.animate(withDuration: 0.4) {
+            tool.transform = CGAffineTransform(translationX: -10, y: 0)
+        }
+    }
+    
+    func moveRight(tool: UIButton) {
+        UIView.animate(withDuration: 0.4) {
+            tool.transform = CGAffineTransform(translationX: 10, y: 0)
+        }
+    }
+    
+    func setupDrawingLineComponents(of tool: UIButton) {
+        if tool == brush {
+            canvasView.brushWidth = 20
+            canvasView.color = canvasView.color.withAlphaComponent(1)
+        } else if tool == pencil {
+            canvasView.brushWidth = 5
+            canvasView.color = canvasView.color.withAlphaComponent(0.8)
+        } else {
+            canvasView.brushWidth = 12
+            canvasView.color = canvasView.color.withAlphaComponent(0.5)
+        }
+    }
+    
     
     func initMessage() {
 //        manager = ScenesManager(calling: self, showing: "drawing")
@@ -91,6 +129,29 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
         resetBtn.addTarget(self, action: #selector(reset), for: .touchUpInside)
         slideOutBtn.addTarget(self, action: #selector(slideOut), for: .touchUpInside)
+        marker.addTarget(self, action: #selector(markerBtnPressed), for: .touchUpInside)
+        pencil.addTarget(self, action: #selector(pencilBtnPressed), for: .touchUpInside)
+        brush.addTarget(self, action: #selector(brushBtnPressed), for: .touchUpInside)
+
+    }
+    
+    func selectedToolDidSet() {
+        if selectedTool == marker {
+            moveLeft(tool: marker)
+            moveRight(tool: brush)
+            moveRight(tool: pencil)
+            setupDrawingLineComponents(of: marker)
+        } else if selectedTool == pencil {
+            moveLeft(tool: pencil)
+            moveRight(tool: brush)
+            moveRight(tool: marker)
+            setupDrawingLineComponents(of: pencil)
+        } else {
+            moveLeft(tool: brush)
+            moveRight(tool: pencil)
+            moveRight(tool: marker)
+            setupDrawingLineComponents(of: brush)
+        }
     }
     
     @objc
@@ -106,6 +167,18 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     @objc
     private func reset() {
         canvasView.clear()
+    }
+    
+    @objc func brushBtnPressed() {
+        selectedTool = brush
+    }
+    
+    @objc func pencilBtnPressed() {
+        selectedTool = pencil
+    }
+    
+    @objc func markerBtnPressed() {
+        selectedTool = marker
     }
     
     
@@ -144,9 +217,9 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         canvasView.color = tools[indexPath.row]
         if indexPath.row == 9 {
-            canvasView.brushWidth = 10
+            canvasView.brushWidth = 20
         } else {
-            canvasView.brushWidth = 5
+            selectedToolDidSet()
             AudioPlayer.setupExtraAudio(with: "bloop", audioPlayer: .effects)
         }
     }
