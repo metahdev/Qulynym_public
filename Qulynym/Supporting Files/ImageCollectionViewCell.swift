@@ -1,6 +1,5 @@
-//
 /*
-* Kulynym
+* Qulynym
 * ImageCollectionViewCell.swift
 *
 * Created by: Metah on 6/11/19

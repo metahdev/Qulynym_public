@@ -11,10 +11,12 @@ import UIKit
 import AVKit
 
 protocol KaraokeViewControllerProtocol: class {
+    var isKaraoke: Bool { get set }
     var contentName: String { get set }
     var lyricsText: String { get set }
     var index: Int { get set }
     var maxIndex: Int { get set }
+    var isPlaying: Bool { get }
     
     func setViewsProperties()
     func playBtnPressed()
@@ -23,13 +25,16 @@ protocol KaraokeViewControllerProtocol: class {
 
 class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
     // MARK:- Properties
+    var isKaraoke = true
     var contentName = ""
     var lyricsText = ""
     var index = 0
     var maxIndex = 0
+    var isPlaying = false
+    var isOpenSlider = true
     var presenter: KaraokePresenterProtocol!
     
-    private var isPlaying = false
+    private var previouslyNotSetSoundsImage = true
     private let configurator: KaraokeConfiguratorProtocol = KaraokeConfigurator()
     private var karaokeView: KaraokeViewProtocol!
     
@@ -56,7 +61,7 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
     
     // MARK:- Layout
     private func initLayout() {
-        karaokeView = KaraokeView(self.view)
+        karaokeView = KaraokeView(self.view, isKaraoke)
     }
     
     // MARK:- Actions
@@ -65,7 +70,9 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
         karaokeView.backBtn.addTarget(self, action: #selector(backBtnPressed), for: .touchUpInside)
         karaokeView.forwardBtn.addTarget(self, action: #selector(nextBtnPressed), for: .touchUpInside)
         karaokeView.closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
-        karaokeView.timelineSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        karaokeView.timelineSlider.addTarget(self, action: #selector(timelineSliderValueChanged(_:)), for: .valueChanged)
+        karaokeView.soundSlider.addTarget(self, action: #selector(soundSliderValueChanged), for: .valueChanged)
+        karaokeView.soundButton.addTarget(self, action: #selector(soundBtnPressed), for: .touchUpInside)
     }
     
     @objc func playBtnPressed() {
@@ -94,8 +101,45 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
         presenter.close()
     }
     
-    @objc private func sliderValueChanged(_ sender: UISlider) {
+    @objc
+    private func timelineSliderValueChanged(_ sender: UISlider) {
         presenter.scrollAudio(to: sender.value)
+    }
+    
+    @objc
+    private func soundSliderValueChanged(_ sender: UISlider) {
+        presenter.changeAudioVolume(to: sender.value)
+        
+        changeSoundBtnImage(sender.value)
+    }
+    
+    private func changeSoundBtnImage(_ value: Float) {
+        if value == 0.0 {
+            karaokeView.soundButton.setImage(UIImage(named: "soundsIconOff"), for: .normal)
+            previouslyNotSetSoundsImage = true
+        }
+        if previouslyNotSetSoundsImage && value > 0.0 {
+            karaokeView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
+            previouslyNotSetSoundsImage = false
+        }
+    }
+    
+    @objc
+    private func soundBtnPressed() {
+        var value: Float
+        
+        if isOpenSlider {
+            value = 0
+        } else {
+            value = 100
+        }
+        
+        karaokeView.soundSlider.setValue(value, animated: true)
+        presenter.changeAudioVolume(to: value)
+        changeSoundBtnImage(value)
+        
+        isOpenSlider = !isOpenSlider
+//        karaokeView.changeSoundSliderView(isOpenSlider)
     }
 }
 
@@ -104,7 +148,11 @@ extension KaraokeViewController {
     // MARK:- Protocol Methods
     func setViewsProperties() {
         karaokeView.titleLabel.text = contentName
-        karaokeView.lyricsTextView.text = lyricsText
+        if isKaraoke {
+            karaokeView.lyricsTextView.text = lyricsText
+        } else {
+            karaokeView.storyImageView.image = UIImage(named: contentName)
+        }
         karaokeView.backBtn.isEnabled = (index != 0)
         karaokeView.forwardBtn.isEnabled = (index != maxIndex)
         karaokeView.timelineSlider.maximumValue = Float(AudioPlayer.karaokeAudioPlayer.duration)
@@ -112,5 +160,9 @@ extension KaraokeViewController {
     
     func changeSliderValue(_ value: Int) {
         karaokeView.timelineSlider.value = Float(value)
+        
+        if value == 100 {
+            presenter.scrollAudio(to: 0.0)
+        }
     }
 }

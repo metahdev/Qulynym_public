@@ -1,5 +1,5 @@
 /*
-* Kulynym
+* Qulynym
 * MenuRouter.swift
 *
 * Created by: Metah on 6/10/19
@@ -13,7 +13,6 @@ protocol MenuRouterProtocol: class {
     func showToddlerEdu()
     func showPlaylist(isKaraoke: Bool)
     func showDrawingView()
-    func showPreschoolerEdu()
     func showItemView(content section: EduSection)
     func showGamesMenu()
     func openFlappyBird()
@@ -49,11 +48,7 @@ extension MenuRouter {
     func showDrawingView() {
         showAnotherView(view: DrawingViewController())
     }
-    
-    func showPreschoolerEdu() {
-        showAnotherView(view: PreschoolerViewController())
-    }
-    
+   
     func showItemView(content section: EduSection) {
         let vc = ItemViewController()
         controller.itemViewDelegate = vc

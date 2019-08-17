@@ -2,7 +2,7 @@
  * Kulynym
  * SettingsPresenter.swift
  *
- * Created by: Баубек on 8/5/19
+ * Created by: Baubek on 8/5/19
  *
  * Copyright © 2019 Automatization X Software. All rights reserved.
 */

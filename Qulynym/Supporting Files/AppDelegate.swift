@@ -1,5 +1,5 @@
 /*
- * Kulynym
+ * Qulynym
  * AppDelegate.swift
  *
  * Created by: Metah on 2/24/19
@@ -16,17 +16,18 @@ import CoreData
   1) Memory Leak with Audio
   2) solved
   3) solved
-  4) Eraser draws white on picture !
+  4) solved
   5) solved
   6) Auto Layout on IPad: Karaoke Module(video view & Titles), closeBtn
   7) audio leak of the manager at the beginning(maybe is relatable to 1)
+ 8) Karaoke & Story Audio sliders optimization: sound slider is freezing
  Solutions, which will be integrated further:
   1) TimerController, AudioManager, Videos on another queue
   2) Back segue falling leaves
   3) implemented
   4) implemented
   5) implemented
-  6) Tools at Drawing Module !
+  6) solved
   7) implemented
   8) implemented
   9) Concurrency at Quiz: can't scroll while audio is playing
@@ -35,6 +36,7 @@ import CoreData
   12) implemented
   13) implemented
   14) ModuleView protocol properties get acccessor
+  15) Sound slider animations
  */
 
 @UIApplicationMain

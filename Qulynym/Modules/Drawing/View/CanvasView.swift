@@ -49,19 +49,17 @@ class CanvasView: UIView, CanvasViewProtocol {
         let touch: AnyObject? = touches.first
         lastPoint = touch!.location(in: self)
         pointCounter = 0
-        for touch in touches{
-            let location = touch.location(in: self)
-            let dot = UIView(frame: CGRect(x: location.x, y: location.y, width: 20, height:
-                20))
-            dot.backgroundColor = .white
-            dot.layer.cornerRadius = dot.bounds.midY
-            dot.layer.borderColor = UIColor.black.cgColor
-            dot.layer.borderWidth = 5
-            dot.layer.position.x = location.x
-            dot.layer.position.y = location.y
+        let location = touch!.location(in: self)
+        let dot = UIView(frame: CGRect(x: location.x, y: location.y, width: 50, height:
+                50))
+        dot.backgroundColor = .clear
+        dot.layer.cornerRadius = dot.bounds.midY
+        dot.layer.borderColor = UIColor.gray.cgColor
+        dot.layer.borderWidth = 5
+        dot.layer.position.x = location.x
+        dot.layer.position.y = location.y
             
-            self.addSubview(dot) //add dot as subview to your main view
-        }
+        self.addSubview(dot)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -73,12 +71,13 @@ class CanvasView: UIView, CanvasViewProtocol {
         bezierPath.addLine(to: newPoint)
         lastPoint = newPoint
         
-        for touch in touches{
-            let location = touch.location(in: self)
+        let location = touch!.location(in: self)
+        let insideX = location.x < self.bounds.maxX && location.x > self.bounds.minX
+        let insideY = location.y < self.bounds.maxY && location.y > self.bounds.minY
+        if insideX && insideY {
             dot?.layer.position.x = location.x
             dot?.layer.position.y = location.y
         }
-        
         pointCounter += 1
         
         if pointCounter == pointLimit {

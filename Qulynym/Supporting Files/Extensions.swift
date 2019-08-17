@@ -1,5 +1,5 @@
 /*
-* Kulynym
+* Qulynym
 * Extensions.swift
 *
 * Created by: Metah on 3/3/19
@@ -69,14 +69,19 @@ func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDire
     if let imageName = name {
         cv.backgroundView = UIImageView(image: UIImage(named: imageName))
     }
+    
     if type == .white {
         cv.backgroundColor = .white
     } else {
         cv.backgroundColor = .clear
     }
     
-    cv.setCollectionViewLayout(layout, animated: true)
-    cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
+    cv.setCollectionViewLayout(layout, animated: false)
+    if name == "menu" {
+        cv.register(MenuImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
+    } else {
+        cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
+    }
     
     cv.allowsMultipleSelection = false
     return cv
@@ -153,4 +158,19 @@ struct AppUtility {
         UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
         UINavigationController.attemptRotationToDeviceOrientation()
     }
+}
+
+
+func setupPlaylistSlider() -> UISlider {
+    let slider = UISlider()
+    
+    slider.minimumTrackTintColor = .blue
+    slider.maximumTrackTintColor = .red
+    slider.thumbTintColor = .white
+    
+    slider.minimumValue = 0
+    slider.maximumValue = 100
+    slider.setValue(100, animated: false)
+    
+    return slider
 }

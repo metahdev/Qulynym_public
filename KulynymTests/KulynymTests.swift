@@ -8,7 +8,7 @@
  */
 
 import XCTest
-@testable import Kulynym
+@testable import Qulynym
 
 class KulynymTests: XCTestCase {
     override func setUp() {

@@ -1,5 +1,5 @@
 /*
-* Kulynym
+* Qulynym
 * MenuPresenter.swift
 *
 * Created by: Metah on 6/10/19

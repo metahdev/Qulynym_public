@@ -30,23 +30,14 @@ extension PlaylistRouter {
     }
     
     func presentContent(_ index: Int) {
-        if controller.isKaraoke {
-            let karaokeView = KaraokeViewController()
-            controller.karaokeViewDelegate = karaokeView
+        let karaokeView = KaraokeViewController()
+        controller.karaokeViewDelegate = karaokeView
             
-            controller.karaokeViewDelegate.contentName = controller.content[index]
-            controller.karaokeViewDelegate.index = index 
-            karaokeView.transitioningDelegate = controller
+        controller.karaokeViewDelegate.contentName = controller.content[index]
+        controller.karaokeViewDelegate.index = index
+        controller.karaokeViewDelegate.isKaraoke = controller.isKaraoke
+        karaokeView.transitioningDelegate = controller
             
-            controller.show(karaokeView, sender: nil)
-        } else {
-            let storyView = StoryViewController()
-            controller.storyViewDelegate = storyView 
-            controller.storyViewDelegate.storyName = ContentService.stories[index]
-            controller.storyViewDelegate.index = index 
-            storyView.transitioningDelegate = controller
-            
-            controller.show(storyView, sender: nil)
-        }
+        controller.show(karaokeView, sender: nil)
     }
 }

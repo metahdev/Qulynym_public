@@ -1,5 +1,5 @@
 /*
-* Kulynym
+* Qulynym
 * ScenesView.swift
 *
 * Created by: Metah on 3/2/19

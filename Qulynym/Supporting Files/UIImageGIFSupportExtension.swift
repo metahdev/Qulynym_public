@@ -1,5 +1,5 @@
 /*
-* Kulynym
+* Qulynym
 * UIImageGIFSupportExtension.swift
 *
 * Created by: Metah on 8/13/19

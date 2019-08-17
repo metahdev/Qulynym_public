@@ -26,8 +26,8 @@ class TimerController {
     
     // MARK:- Timer
     func nullifyData() {
-        timer = nil
         timer?.invalidate()
+        timer = nil
         seconds = 0 
     }
     

@@ -1,5 +1,5 @@
 /*
-* Kulynym
+* Qulynym
 * MenuViewController.swift
 *
 * Created by: Metah on 6/10/19
@@ -133,7 +133,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! MenuImageCollectionViewCell
         cell.imageName = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row] 
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
@@ -144,21 +144,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.layer.cornerRadius = view.frame.height * 0.25
         }
         
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 97/255, green: 104/255, blue: 189/255, alpha: 1)
-        label.textAlignment = .center
-        label.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.07)
-        label.text = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
-        label.numberOfLines = 3
-        
-        cell.addSubview(label)
-        
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: cell.bottomAnchor, constant: 16),
-            label.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: cell.trailingAnchor)
-        ])
+        cell.text = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
         
         cell.imageView.layer.cornerRadius = 15
         return cell

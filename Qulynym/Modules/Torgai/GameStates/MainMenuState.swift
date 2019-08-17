@@ -57,6 +57,7 @@ class MainMenuState: GKState {
         
         let playButtonText = SKSpriteNode(imageNamed: "play")
         playButtonText.position = CGPoint.zero
+        playButtonText.zPosition = Layer.ui.rawValue
         playButton.addChild(playButtonText)
     }
 }

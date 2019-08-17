@@ -19,6 +19,7 @@ protocol KaraokePresenterProtocol: class {
     func backToPreviousAudio()
     func nextAudio()
     func scrollAudio(to value: Float)
+    func changeAudioVolume(to value: Float)
     func close()
 }
 
@@ -53,9 +54,9 @@ extension KaraokePresenter {
         if !AudioPlayer.playlistPlayerInitiated {
             AudioPlayer.setupExtraAudio(with: controller.contentName, audioPlayer: .song)
         }
-        timer.startTimer()
         AudioPlayer.backgroundAudioPlayer.stop()
         AudioPlayer.karaokeAudioPlayer.play()
+        timer.startTimer()
     }
     
     func pauseAudio() {
@@ -67,20 +68,23 @@ extension KaraokePresenter {
     
     func backToPreviousAudio() {
         controller.contentName = interactor.getPreviousAudioName(&controller.index)
+        timer.nullifyData()
+        if controller.isPlaying {
+            controller.playBtnPressed()
+        }
         updateForUser()
-        controller.playBtnPressed()
     }
     
     func nextAudio() {
         controller.contentName = interactor.getNextAudioName(&controller.index)
-        updateForUser()
+        timer.nullifyData()
         controller.playBtnPressed()
+        updateForUser()
     }
     
     private func updateForUser() {
         timer.nullifyData()
         controller.changeSliderValue(0)
-        AudioPlayer.backgroundAudioPlayer.play()
         AudioPlayer.playlistPlayerInitiated = false
         getLyricsText()
         controller.setViewsProperties()
@@ -92,6 +96,10 @@ extension KaraokePresenter {
         timer.seconds = Int(value)
         AudioPlayer.karaokeAudioPlayer.currentTime = TimeInterval(exactly: value)!
         AudioPlayer.karaokeAudioPlayer.play()
+    }
+    
+    func changeAudioVolume(to value: Float) {
+        AudioPlayer.karaokeAudioPlayer.volume = value
     }
     
     func close() {
@@ -113,6 +121,5 @@ extension KaraokePresenter: TimerControllerDelegate {
     }
     
     func notifyTimerEnded() {
-        // 
     }
 }

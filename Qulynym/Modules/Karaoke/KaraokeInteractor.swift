@@ -1,4 +1,3 @@
-//
 /*
 * Kulynym
 * KaraokeInteractor.swift
