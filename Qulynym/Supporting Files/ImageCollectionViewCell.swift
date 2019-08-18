@@ -19,7 +19,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.clipsToBounds = true 
+        iv.clipsToBounds = true
         return iv
     }()
     
@@ -39,6 +39,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     private func setupLayout() {
         self.addSubview(imageView)
         activateConstraints()
+        self.setupShadow()
     }
     
     private func activateConstraints() {

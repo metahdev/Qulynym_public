@@ -131,6 +131,7 @@ struct SettingsButton {
         self.setButton.titleLabel?.font = UIFont(name: "Gill Sans", size: view.frame.height * 0.08)
         self.setButton.titleLabel?.textAlignment = .center
         self.setButton.setTitleColor(UIColor.white, for: .normal)
+        self.setupShadow()
     }
     
     func musicBtnSetup() {
@@ -143,6 +144,12 @@ struct SettingsButton {
     
     func creditsBtnSetup() {
         self.setButton.setTitle("Siltemeler", for: .normal)
+    }
+    
+    func setupShadow() {
+        self.setButton.layer.shadowOpacity = 0.5
+        self.setButton.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
+        self.setButton.layer.shadowRadius = 5.0
     }
 }
 
@@ -173,4 +180,14 @@ func setupPlaylistSlider() -> UISlider {
     slider.setValue(100, animated: false)
     
     return slider
+}
+
+extension UIView {
+
+    func setupShadow() {
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOffset = CGSize(width: 4, height: 4)
+        self.layer.shadowRadius = 5.0
+    }
+
 }

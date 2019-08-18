@@ -26,6 +26,7 @@ class ScenesView: ScenesViewProtocol {
     lazy var skipBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "forward"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     private weak var view: UIView!

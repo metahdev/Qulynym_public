@@ -25,11 +25,13 @@ class MenuView: MenuViewProtocol {
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     lazy var settingsBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "settings"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     private lazy var titleLabel: UILabel = {
@@ -37,7 +39,6 @@ class MenuView: MenuViewProtocol {
         lbl.text = "Qulynym"
         lbl.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.1)
         lbl.textColor = UIColor(red: 97/255, green: 104/255, blue: 189/255, alpha: 1)
-        lbl.shadowColor = .black
         return lbl
     }()
     private weak var view: UIView!

@@ -27,16 +27,19 @@ class ItemView: ItemViewProtocol {
         btn.layer.borderColor = UIColor.white.cgColor
         btn.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
         btn.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
+        btn.setupShadow()
         return btn
     }()
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     lazy var forwardBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "forward"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     private lazy var backgroundImage: UIImageView = {

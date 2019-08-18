@@ -20,6 +20,7 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     
