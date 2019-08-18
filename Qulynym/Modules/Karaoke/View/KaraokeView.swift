@@ -32,11 +32,13 @@ class KaraokeView: KaraokeViewProtocol {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
         btn.layer.zPosition = 1
+        btn.setupShadow()
         return btn
     }()
     lazy var playBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "playBtn"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     lazy var titleLabel: UILabel = {
@@ -59,6 +61,7 @@ class KaraokeView: KaraokeViewProtocol {
         imageV.layer.borderWidth = 5
         imageV.layer.borderColor = UIColor.brown.cgColor
         imageV.isHidden = true
+        imageV.setupShadow()
         return imageV
     }()
     lazy var lyricsTextView: UITextView = {

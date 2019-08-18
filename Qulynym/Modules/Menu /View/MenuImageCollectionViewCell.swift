@@ -37,6 +37,7 @@ class MenuImageCollectionViewCell: ImageCollectionViewCell {
         super.init(frame: frame)
         self.addSubview(sectionTitleLabel)
         activateLabelConstraints()
+        self.setupShadow()
     }
     
     private func activateLabelConstraints() {

@@ -30,12 +30,14 @@ class DrawingView: DrawingViewProtocol {
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     lazy var canvasView: CanvasView = {
         let v = CanvasView()
         v.isUserInteractionEnabled = true
         v.isMultipleTouchEnabled = true
+        v.setupShadow()
         return v
     }()
     lazy var drawingImageView: UIImageView = {
@@ -49,6 +51,7 @@ class DrawingView: DrawingViewProtocol {
     lazy var resetBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "reset"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     lazy var slideOutBtn: UIButton = {
@@ -60,21 +63,25 @@ class DrawingView: DrawingViewProtocol {
     lazy var marker: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "marker"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     lazy var pencil: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "pencil"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     lazy var brush: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "brush"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     lazy var eraser: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "eraser"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     private lazy var woodenBgImage: UIImageView = {

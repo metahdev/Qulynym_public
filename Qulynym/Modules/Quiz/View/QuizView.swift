@@ -25,11 +25,13 @@ class QuizView: QuizViewProtocol {
     lazy var soundsButton: UIButton = {
         var btn = UIButton()
         btn.setImage(UIImage(named: "soundsIcon"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     lazy var closeBtn: UIButton = {
         var btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     private weak var view: UIView!

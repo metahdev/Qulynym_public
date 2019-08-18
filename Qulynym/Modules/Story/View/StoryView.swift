@@ -26,6 +26,7 @@ class StoryView: StoryViewProtocol {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
         btn.layer.zPosition = 1
+        btn.setupShadow()
         return btn
     }()
     lazy var playBtn: UIButton = {
@@ -52,11 +53,13 @@ class StoryView: StoryViewProtocol {
         let imageV = UIImageView()
         imageV.layer.borderWidth = 5
         imageV.layer.borderColor = UIColor.brown.cgColor
+        imageV.setupShadow()
         return imageV
     }()
     private lazy var storyBackgroundImage: UIImageView = {
         let imageV = UIImageView(image: UIImage(named: "storyBg"))
         imageV.layer.zPosition = -1
+        imageV.setupShadow()
         return imageV
     }()
     private weak var view: UIView!

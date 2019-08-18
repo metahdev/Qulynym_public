@@ -25,6 +25,7 @@ class PlaylistView: PlaylistViewProtocol {
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.setupShadow()
         return btn
     }()
     lazy var titleLabel: UILabel = {
