@@ -103,6 +103,9 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
     
     @objc
     private func timelineSliderValueChanged(_ sender: UISlider) {
+        if !isPlaying {
+            playBtnPressed()
+        }
         presenter.scrollAudio(to: sender.value)
     }
     
@@ -161,7 +164,8 @@ extension KaraokeViewController {
     func changeSliderValue(_ value: Int) {
         karaokeView.timelineSlider.value = Float(value)
         
-        if value == 100 {
+        print(presenter.duration)
+        if value == Int(presenter.duration) {
             presenter.scrollAudio(to: 0.0)
         }
     }

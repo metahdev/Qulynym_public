@@ -10,10 +10,10 @@
 import Foundation
 
 protocol KaraokeInteractorProtocol: class {
-    func getMaxCount() -> Int
+    func getMaxCount(_ isKaraoke: Bool) -> Int
     func getLyricsText(_ index: Int) -> String
-    func getPreviousAudioName(_ index: inout Int) -> String
-    func getNextAudioName(_ index: inout Int) -> String
+    func getPreviousAudioName(_ index: inout Int, isKaraoke: Bool) -> String
+    func getNextAudioName(_ index: inout Int, isKaraoke: Bool) -> String
 }
 
 class KaraokeInteractor: KaraokeInteractorProtocol {
@@ -26,21 +26,30 @@ class KaraokeInteractor: KaraokeInteractorProtocol {
 
 extension KaraokeInteractor {
     // MARK:- Protocol Methods
-    func getMaxCount() -> Int {
-        return ContentService.songs.count - 1
+    func getMaxCount(_ isKaraoke: Bool) -> Int {
+        if isKaraoke {
+            return ContentService.songs.count - 1
+        }
+        return ContentService.stories.count - 1
     }
     
     func getLyricsText(_ index: Int) -> String {
         return ContentService.songs[index].1
     }
     
-    func getPreviousAudioName(_ index: inout Int) -> String {
+    func getPreviousAudioName(_ index: inout Int, isKaraoke: Bool) -> String {
         index -= 1
-        return ContentService.songs[index].0
+        if isKaraoke {
+            return ContentService.songs[index].0
+        }
+        return ContentService.stories[index]
     }
     
-    func getNextAudioName(_ index: inout Int) -> String {
+    func getNextAudioName(_ index: inout Int, isKaraoke: Bool) -> String {
         index += 1
-        return ContentService.songs[index].0
+        if isKaraoke {
+            return ContentService.songs[index].0
+        }
+        return ContentService.stories[index]
     }
 }

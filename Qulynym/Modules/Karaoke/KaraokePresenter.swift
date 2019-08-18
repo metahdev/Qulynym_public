@@ -11,6 +11,8 @@
 import Foundation
 
 protocol KaraokePresenterProtocol: class {
+    var duration: TimeInterval { get }
+    
     func getMaxCount()
     func getLyricsText()
     func initTimer()
@@ -38,7 +40,7 @@ class KaraokePresenter: KaraokePresenterProtocol {
 extension KaraokePresenter {
     // MARK:- Protocol Methods
     func getMaxCount() {
-        controller.maxIndex = interactor.getMaxCount()
+        controller.maxIndex = interactor.getMaxCount(controller.isKaraoke)
     }
     
     func getLyricsText() {
@@ -67,7 +69,7 @@ extension KaraokePresenter {
     }
     
     func backToPreviousAudio() {
-        controller.contentName = interactor.getPreviousAudioName(&controller.index)
+        controller.contentName = interactor.getPreviousAudioName(&controller.index, isKaraoke: controller.isKaraoke)
         timer.nullifyData()
         if controller.isPlaying {
             controller.playBtnPressed()
@@ -76,7 +78,7 @@ extension KaraokePresenter {
     }
     
     func nextAudio() {
-        controller.contentName = interactor.getNextAudioName(&controller.index)
+        controller.contentName = interactor.getNextAudioName(&controller.index, isKaraoke: controller.isKaraoke)
         timer.nullifyData()
         controller.playBtnPressed()
         updateForUser()

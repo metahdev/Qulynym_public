@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Qulynym/Modules/Karaoke/KaraokePresenter.swift"
-            timestampString = "587771295.33874"
+            timestampString = "587850221.349414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "updateForUser()"
             landmarkType = "7">
          </BreakpointContent>

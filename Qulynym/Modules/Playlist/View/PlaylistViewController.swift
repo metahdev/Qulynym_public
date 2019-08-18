@@ -20,7 +20,6 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
     var content = [String]()
     var presenter: PlaylistPresenterProtocol!
     weak var karaokeViewDelegate: KaraokeViewControllerProtocol!
-    weak var storyViewDelegate: StoryViewControllerProtocol!
     
     var manager: ScenesManager!
 
