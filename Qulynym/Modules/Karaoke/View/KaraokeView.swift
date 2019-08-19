@@ -77,7 +77,7 @@ class KaraokeView: KaraokeViewProtocol {
         return textV
     }()
     lazy var timelineSlider: UISlider = {
-        return setupPlaylistSlider()
+        return setupPlaylistSlider(value: 0)
     }()
     lazy var soundButton: UIButton = {
         let btn = UIButton()
@@ -85,7 +85,7 @@ class KaraokeView: KaraokeViewProtocol {
         return btn
     }()
     lazy var soundSlider: UISlider = {
-        return setupPlaylistSlider()
+        return setupPlaylistSlider(value: 100)
     }()
     private lazy var storyBackgroundImage: UIImageView = {
         let imageV = UIImageView(image: UIImage(named: "karaokeBg"))

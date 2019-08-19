@@ -16,11 +16,28 @@ class ImageCollectionViewCell: UICollectionViewCell {
             imageView.image = UIImage(named: imageName)
         }
     }
-    lazy var imageView: UIImageView = {
+    var text: String! {
+        didSet {
+            sectionTitleLabel.text = text
+        }
+    }
+    var textSize: CGFloat! {
+        didSet {
+            sectionTitleLabel.setupContentLabel(size: textSize)
+        }
+    }
+    var imageViewCornerRadius: CGFloat! {
+        didSet {
+            imageView.layer.cornerRadius = imageViewCornerRadius
+        }
+    }
+    private lazy var imageView: UIImageView = {
         let iv = UIImageView()
-        iv.translatesAutoresizingMaskIntoConstraints = false
         iv.clipsToBounds = true
         return iv
+    }()
+    private lazy var sectionTitleLabel: UILabel = {
+        return UILabel()
     }()
     
     
@@ -31,15 +48,17 @@ class ImageCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupLayout()
+        self.addSubview(imageView)
+        self.addSubview(sectionTitleLabel)
+        setAutoresizingMaskToFalse()
+        activateConstraints()
+        self.setupShadow()
     }
     
     
     // MARK:- Layout
-    private func setupLayout() {
-        self.addSubview(imageView)
-        activateConstraints()
-        self.setupShadow()
+    private func setAutoresizingMaskToFalse() {
+        _ = self.subviews.map{ $0.translatesAutoresizingMaskIntoConstraints = false }
     }
     
     private func activateConstraints() {
@@ -47,7 +66,11 @@ class ImageCollectionViewCell: UICollectionViewCell {
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             imageView.topAnchor.constraint(equalTo: self.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
+            sectionTitleLabel.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 16),
+            sectionTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            sectionTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
 }

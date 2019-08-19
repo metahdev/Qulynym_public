@@ -20,7 +20,6 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
     var content = [String]()
     var presenter: PlaylistPresenterProtocol!
     weak var karaokeViewDelegate: KaraokeViewControllerProtocol!
-    weak var storyViewDelegate: StoryViewControllerProtocol!
     
     var manager: ScenesManager!
 
@@ -98,6 +97,8 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         cell.imageName = content[indexPath.row]
+        cell.text = content[indexPath.row]
+        cell.textSize = cell.frame.height * 0.1
         return cell
     }
     
@@ -112,9 +113,6 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let distance = (view.frame.width - view.frame.width * 0.6) / 3
         return UIEdgeInsets(top: 40, left: distance, bottom: 40, right: distance)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
     }
 }
 

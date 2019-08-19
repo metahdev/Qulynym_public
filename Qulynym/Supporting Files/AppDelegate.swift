@@ -14,29 +14,17 @@ import CoreData
 /*
  Bugs, which are already found:
   1) Memory Leak with Audio
-  2) solved
-  3) solved
-  4) solved
-  5) solved
-  6) Auto Layout on IPad: Karaoke Module(video view & Titles), closeBtn
-  7) audio leak of the manager at the beginning(maybe is relatable to 1)
- 8) Karaoke & Story Audio sliders optimization: sound slider is freezing
+  2) Auto Layout on IPad: Karaoke Module(video view & Titles), closeBtn
+  3) audio leak of the manager at the beginning(maybe is relatable to 1)
+  4) Karaoke & Story Audio sliders optimization: sound slider is freezing
  Solutions, which will be integrated further:
   1) TimerController, AudioManager, Videos on another queue
   2) Back segue falling leaves
-  3) implemented
-  4) implemented
-  5) implemented
-  6) solved
-  7) implemented
-  8) implemented
-  9) Concurrency at Quiz: can't scroll while audio is playing
-  10) Shuffle animation of cards
-  11) implemented
-  12) implemented
-  13) implemented
-  14) ModuleView protocol properties get acccessor
-  15) Sound slider animations
+  3) Concurrency at Quiz: can't scroll while audio is playing
+  4) Shuffle animation of cards
+  5) ModuleView protocol properties get acccessor
+  6) Sound slider animations
+  7) Torgai loading is slow at first launch 
  */
 
 @UIApplicationMain

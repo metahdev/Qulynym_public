@@ -21,6 +21,7 @@ enum PlayerType {
 
 struct AudioPlayer {
     // MARK:- Properties
+    static var backgroundAudioStatePlaying = true 
     static var playlistPlayerInitiated = false
     
     static var backgroundAudioPlayer = AVAudioPlayer()

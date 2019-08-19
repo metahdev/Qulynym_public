@@ -30,7 +30,8 @@ extension SettingsPresenter {
     // MARK:- Protocol Methods
     func goToTextViewController() {
         let content = interactor.getContent(controller.isInfoForParents)
-        router.showTextView(content)
+        let title = interactor.getTitle(controller.isInfoForParents)
+        router.showTextView(content, title: title)
     }
     
     func setBackgroundMusicState() {

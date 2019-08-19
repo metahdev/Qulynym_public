@@ -133,7 +133,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! MenuImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         cell.imageName = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row] 
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
@@ -141,12 +141,13 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if menuType == .main {
             cell.layer.cornerRadius = 15
         } else {
-            cell.layer.cornerRadius = view.frame.height * 0.25
+            cell.layer.cornerRadius = cell.frame.midX
         }
         
         cell.text = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
+        cell.textSize = cell.frame.height * 0.17
         
-        cell.imageView.layer.cornerRadius = 15
+        cell.imageViewCornerRadius = 15
         return cell
     }
     

@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 protocol SettingsRouterProtocol: class {
-    func showTextView(_ content: NSAttributedString)
+    func showTextView(_ content: NSAttributedString, title: String)
     func close()
 }
 
@@ -26,11 +26,12 @@ class SettingsRouter: SettingsRouterProtocol {
 
 extension SettingsRouter {
     // MARK:- Protocol Methods
-    func showTextView(_ content: NSAttributedString) {
+    func showTextView(_ content: NSAttributedString, title: String) {
         let vc = TextViewController()
         controller.textViewController = vc
         
         controller.textViewController.content = content
+        controller.textViewController.titleText = title
         
         controller.show(vc, sender: nil)
     }
