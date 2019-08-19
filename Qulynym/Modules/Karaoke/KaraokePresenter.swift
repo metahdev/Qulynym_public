@@ -65,7 +65,9 @@ extension KaraokePresenter {
         timer.timer?.invalidate()
         timer.timer = nil
         AudioPlayer.karaokeAudioPlayer.pause()
-        AudioPlayer.backgroundAudioPlayer.play()
+        if AudioPlayer.backgroundAudioStatePlaying {
+            AudioPlayer.backgroundAudioPlayer.play()
+        }
     }
     
     func backToPreviousAudio() {
@@ -81,12 +83,15 @@ extension KaraokePresenter {
         controller.contentName = interactor.getNextAudioName(&controller.index, isKaraoke: controller.isKaraoke)
         timer.nullifyData()
         controller.playBtnPressed()
+        if controller.isPlaying {
+            controller.playBtnPressed()
+        }
         updateForUser()
     }
     
     private func updateForUser() {
         timer.nullifyData()
-        controller.changeSliderValue(0)
+        controller.checkTimelineSliderValue(0)
         AudioPlayer.playlistPlayerInitiated = false
         getLyricsText()
         controller.setViewsProperties()
@@ -94,7 +99,7 @@ extension KaraokePresenter {
     
     func scrollAudio(to value: Float) {
         AudioPlayer.karaokeAudioPlayer.pause()
-        controller.changeSliderValue(Int(value))
+        controller.checkTimelineSliderValue(Int(value))
         timer.seconds = Int(value)
         AudioPlayer.karaokeAudioPlayer.currentTime = TimeInterval(exactly: value)!
         AudioPlayer.karaokeAudioPlayer.play()
@@ -119,7 +124,7 @@ extension KaraokePresenter: TimerControllerDelegate {
     }
     
     func notifyOfTimepoints() {
-        controller.changeSliderValue(timer!.seconds)
+        controller.checkTimelineSliderValue(timer!.seconds)
     }
     
     func notifyTimerEnded() {

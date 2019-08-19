@@ -26,6 +26,8 @@ extension KaraokeRouter {
     func close() {
         AudioPlayer.karaokeAudioPlayer.stop()
         controller.navigationController?.popViewController(animated: true)
-        AudioPlayer.backgroundAudioPlayer.play()
+        if AudioPlayer.backgroundAudioStatePlaying {
+            AudioPlayer.backgroundAudioPlayer.play()
+        }
     }
 }

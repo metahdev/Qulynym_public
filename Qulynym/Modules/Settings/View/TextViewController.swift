@@ -11,11 +11,13 @@ import UIKit
 
 protocol TextViewControllerProtocol: class {
     var content: NSAttributedString! { get set }
+    var titleText: String! { get set }
 }
 
 class TextViewController: UIViewController, TextViewControllerProtocol {
     //MARK:- Properties
     var content: NSAttributedString!
+    var titleText: String!
     
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
@@ -23,8 +25,12 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
         btn.setupShadow()
         return btn
     }()
-    
-    #warning("alignment")
+    lazy var titleLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = UIFont(name: "Gill Sans", size: view.frame.height * 0.17)
+        lbl.textAlignment = .center
+        return lbl
+    }()
     lazy var textView: UITextView = {
         var tv = UITextView()
         tv.backgroundColor = .clear
@@ -52,6 +58,7 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
         super.viewWillAppear(animated)
         
         textView.attributedText = content
+        titleLabel.text = titleText
     }
     
     
@@ -67,6 +74,7 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
     
     func addSubviews() {
         view.addSubview(backgroundImage)
+        view.addSubview(titleLabel)
         view.addSubview(textView)
         view.addSubview(closeBtn)
     }
@@ -79,8 +87,11 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
     
     func activateConstraints() {
         NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            
             textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32),
             textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])

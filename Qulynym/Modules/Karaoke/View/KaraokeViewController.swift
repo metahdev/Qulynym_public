@@ -20,7 +20,7 @@ protocol KaraokeViewControllerProtocol: class {
     
     func setViewsProperties()
     func playBtnPressed()
-    func changeSliderValue(_ value: Int)
+    func checkTimelineSliderValue(_ value: Int)
 }
 
 class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
@@ -70,12 +70,37 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
         karaokeView.backBtn.addTarget(self, action: #selector(backBtnPressed), for: .touchUpInside)
         karaokeView.forwardBtn.addTarget(self, action: #selector(nextBtnPressed), for: .touchUpInside)
         karaokeView.closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
-        karaokeView.timelineSlider.addTarget(self, action: #selector(timelineSliderValueChanged(_:)), for: .valueChanged)
+        karaokeView.timelineSlider.addTarget(self, action: #selector(timelineSliderValueChanged), for: .valueChanged)
         karaokeView.soundSlider.addTarget(self, action: #selector(soundSliderValueChanged), for: .valueChanged)
         karaokeView.soundButton.addTarget(self, action: #selector(soundBtnPressed), for: .touchUpInside)
+        // **
+        let timelineSliderTap = UITapGestureRecognizer(target: self, action: #selector(timelineSliderTapped(gestureRecognizer:)))
+        let soundSliderTap = UITapGestureRecognizer(target: self, action: #selector(soundSliderTapped(gestureRecognizer:)))
+        karaokeView.timelineSlider.addGestureRecognizer(timelineSliderTap)
+        karaokeView.soundSlider.addGestureRecognizer(soundSliderTap)
     }
     
-    @objc func playBtnPressed() {
+    @objc
+    func soundSliderTapped(gestureRecognizer: UIGestureRecognizer) {
+        sliderTappedActions(karaokeView.soundSlider, point: gestureRecognizer.location(in: view))
+        soundSliderValueChanged()
+    }
+    
+    @objc
+    func timelineSliderTapped(gestureRecognizer: UIGestureRecognizer) {
+        sliderTappedActions(karaokeView.timelineSlider, point: gestureRecognizer.location(in: view))
+        timelineSliderValueChanged()
+    }
+    
+    private func sliderTappedActions(_ slider: UISlider, point position: CGPoint) {
+        let positionOfSlider: CGPoint = slider.frame.origin
+        let widthOfSlider: CGFloat = slider.frame.size.width
+        let newValue = ((position.x - positionOfSlider.x) * CGFloat(slider.maximumValue) / widthOfSlider)
+        slider.value = Float(newValue)
+    }
+    
+    @objc
+    func playBtnPressed() {
         if isPlaying {
             presenter.pauseAudio()
             karaokeView.playBtn.setImage(UIImage(named: "playBtn"), for: .normal)
@@ -102,18 +127,18 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
     }
     
     @objc
-    private func timelineSliderValueChanged(_ sender: UISlider) {
+    private func timelineSliderValueChanged() {
         if !isPlaying {
             playBtnPressed()
         }
-        presenter.scrollAudio(to: sender.value)
+        presenter.scrollAudio(to: karaokeView.timelineSlider.value)
     }
     
     @objc
-    private func soundSliderValueChanged(_ sender: UISlider) {
-        presenter.changeAudioVolume(to: sender.value)
+    private func soundSliderValueChanged() {
+        presenter.changeAudioVolume(to: karaokeView.soundSlider.value / 100)
         
-        changeSoundBtnImage(sender.value)
+        changeSoundBtnImage(karaokeView.soundSlider.value)
     }
     
     private func changeSoundBtnImage(_ value: Float) {
@@ -138,7 +163,7 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
         }
         
         karaokeView.soundSlider.setValue(value, animated: true)
-        presenter.changeAudioVolume(to: value)
+        presenter.changeAudioVolume(to: value / 100)
         changeSoundBtnImage(value)
         
         isOpenSlider = !isOpenSlider
@@ -161,10 +186,9 @@ extension KaraokeViewController {
         karaokeView.timelineSlider.maximumValue = Float(AudioPlayer.karaokeAudioPlayer.duration)
     }
     
-    func changeSliderValue(_ value: Int) {
+    func checkTimelineSliderValue(_ value: Int) {
         karaokeView.timelineSlider.value = Float(value)
         
-        print(presenter.duration)
         if value == Int(presenter.duration) {
             presenter.scrollAudio(to: 0.0)
         }

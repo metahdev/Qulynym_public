@@ -37,7 +37,6 @@ class DrawingView: DrawingViewProtocol {
         let v = CanvasView()
         v.isUserInteractionEnabled = true
         v.isMultipleTouchEnabled = true
-        v.setupShadow()
         return v
     }()
     lazy var drawingImageView: UIImageView = {

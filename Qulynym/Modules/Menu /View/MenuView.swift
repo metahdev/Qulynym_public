@@ -37,8 +37,7 @@ class MenuView: MenuViewProtocol {
     private lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Qulynym"
-        lbl.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.1)
-        lbl.textColor = UIColor(red: 97/255, green: 104/255, blue: 189/255, alpha: 1)
+        lbl.setupContentLabel(size: view.frame.height * 0.1)
         return lbl
     }()
     private weak var view: UIView!

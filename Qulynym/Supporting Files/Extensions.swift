@@ -37,6 +37,8 @@ extension UILabel {
         self.font = UIFont(name: "Arial Rounded MT Bold", size: size)
         self.textColor = UIColor(red: 97/255, green: 104/255, blue: 189/255, alpha: 1)
         self.textAlignment = .center
+        self.shadowColor = .black
+        self.numberOfLines = 2
     }
 }
 
@@ -77,11 +79,7 @@ func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDire
     }
     
     cv.setCollectionViewLayout(layout, animated: false)
-    if name == "menu" {
-        cv.register(MenuImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
-    } else {
-        cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
-    }
+    cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
     
     cv.allowsMultipleSelection = false
     return cv
@@ -89,8 +87,6 @@ func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDire
 
 extension UIColor {
     static let skyColor = UIColor(red: 141/255, green: 232/255, blue: 237/255, alpha: 1)
-    static let lightPink = UIColor(red: 255/255, green: 167/255, blue: 155/255, alpha: 1)
-    static let brightOrange = UIColor(red: 253/255, green: 96/255, blue: 65/255, alpha: 1)
 }
 
 // MARK:- Settings View
@@ -127,7 +123,6 @@ struct SettingsButton {
         self.setButton.layer.borderColor = UIColor.white.cgColor
         self.setButton.layer.borderWidth = 5
         self.setButton.layer.cornerRadius = 20
-        self.setButton.setTitle("a", for: .normal)
         self.setButton.titleLabel?.font = UIFont(name: "Gill Sans", size: view.frame.height * 0.08)
         self.setButton.titleLabel?.textAlignment = .center
         self.setButton.setTitleColor(UIColor.white, for: .normal)
@@ -168,7 +163,7 @@ struct AppUtility {
 }
 
 
-func setupPlaylistSlider() -> UISlider {
+func setupPlaylistSlider(value: Int) -> UISlider {
     let slider = UISlider()
     
     slider.minimumTrackTintColor = .blue
@@ -177,17 +172,15 @@ func setupPlaylistSlider() -> UISlider {
     
     slider.minimumValue = 0
     slider.maximumValue = 100
-    slider.setValue(100, animated: false)
+    slider.setValue(Float(value), animated: false)
     
     return slider
 }
 
 extension UIView {
-
     func setupShadow() {
         self.layer.shadowOpacity = 0.3
         self.layer.shadowOffset = CGSize(width: 4, height: 4)
         self.layer.shadowRadius = 5.0
     }
-
 }
