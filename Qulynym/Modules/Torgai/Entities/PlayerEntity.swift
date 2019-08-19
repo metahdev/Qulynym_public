@@ -57,13 +57,13 @@ class PlayerEntity: GKEntity {
         movementComponent.applyInitialImpulse()
         
         let spriteNode = spriteComponent.node
-        spriteNode.size = CGSize(width: 50,
-                                 height: 50)
+        spriteNode.size = CGSize(width: 53.33,
+                                 height: 40)
         spriteNode.physicsBody = SKPhysicsBody(texture: spriteNode.texture!, size: spriteNode.frame.size)
     
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.Player
         spriteNode.physicsBody?.collisionBitMask = 0
-        spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Ground
+        spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Ground | PhysicsCategory.Top
     }
     
     required init?(coder aDecoder: NSCoder) {
