@@ -19,6 +19,7 @@ protocol KaraokeViewControllerProtocol: class {
     var isPlaying: Bool { get }
     
     func setViewsProperties()
+    func setTimelineSliderMaxValue()
     func playBtnPressed()
     func checkTimelineSliderValue(_ value: Int)
 }
@@ -183,14 +184,20 @@ extension KaraokeViewController {
         }
         karaokeView.backBtn.isEnabled = (index != 0)
         karaokeView.forwardBtn.isEnabled = (index != maxIndex)
+    }
+    
+    func setTimelineSliderMaxValue() {
         karaokeView.timelineSlider.maximumValue = Float(AudioPlayer.karaokeAudioPlayer.duration)
     }
     
     func checkTimelineSliderValue(_ value: Int) {
         karaokeView.timelineSlider.value = Float(value)
         
-        if value == Int(presenter.duration) {
-            presenter.scrollAudio(to: 0.0)
+        if value >= Int(presenter.duration) {
+            karaokeView.timelineSlider.setValue(0, animated: true)
+            presenter.timer.nullifyData()
+            AudioPlayer.karaokeAudioPlayer.currentTime = TimeInterval(exactly: 0.0)!
+            playBtnPressed()
         }
     }
 }

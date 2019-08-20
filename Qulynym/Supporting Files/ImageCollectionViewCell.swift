@@ -52,7 +52,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
         self.addSubview(sectionTitleLabel)
         setAutoresizingMaskToFalse()
         activateConstraints()
-        self.setupShadow()
     }
     
     

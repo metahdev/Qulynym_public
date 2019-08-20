@@ -98,6 +98,8 @@
 		D14D537222214853007ACD55 /* ItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D537122214853007ACD55 /* ItemRouter.swift */; };
 		D14D53752221A294007ACD55 /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D53742221A294007ACD55 /* ContentService.swift */; };
 		D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D53782221B185007ACD55 /* AudioPlayer.swift */; };
+		D163A5A5230C162C0032C4DA /* Aigo'lek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D163A5A4230C162C0032C4DA /* Aigo'lek.mp3 */; };
+		D163A5A7230C16330032C4DA /* Qoshaqanym.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D163A5A6230C16330032C4DA /* Qoshaqanym.mp3 */; };
 		D168A3F92302D5C700505D40 /* Bauyrsaq Ertegi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D168A3F82302D5C700505D40 /* Bauyrsaq Ertegi.mp3 */; };
 		D19245172284DC2800ABD1BD /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19245162284DC2800ABD1BD /* Timer.swift */; };
 		D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D36E4222BAEEC005188D0 /* Extensions.swift */; };
@@ -116,8 +118,6 @@
 		D1D5BC2323017E0300FB3922 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5BC2223017E0300FB3922 /* PlayerEntity.swift */; };
 		D1D5BC2523017E2800FB3922 /* ObstacleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5BC2423017E2800FB3922 /* ObstacleEntity.swift */; };
 		D1E3719322A7A0AA009D97AB /* ScenesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E3719222A7A0AA009D97AB /* ScenesManager.swift */; };
-		D1E71CBB23042E1A006E0F9A /* Qoshaqanym.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1E71CBA23042E1A006E0F9A /* Qoshaqanym.mp3 */; };
-		D1E71CBD23043641006E0F9A /* Aigo'lek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1E71CBC23043641006E0F9A /* Aigo'lek.mp3 */; };
 		D1F3BE8622F1551F00BD4F97 /* helloInstruction.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1F3BE8522F1551F00BD4F97 /* helloInstruction.mp3 */; };
 		D1F3BE8922F1778900BD4F97 /* drawingMessage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1F3BE8822F1778900BD4F97 /* drawingMessage.mp3 */; };
 		D1F3BE8B22F1779100BD4F97 /* storiesMessage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1F3BE8A22F1779100BD4F97 /* storiesMessage.mp3 */; };
@@ -246,6 +246,8 @@
 		D14D537122214853007ACD55 /* ItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRouter.swift; sourceTree = "<group>"; };
 		D14D53742221A294007ACD55 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
 		D14D53782221B185007ACD55 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		D163A5A4230C162C0032C4DA /* Aigo'lek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Aigo'lek.mp3"; sourceTree = "<group>"; };
+		D163A5A6230C16330032C4DA /* Qoshaqanym.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Qoshaqanym.mp3; sourceTree = "<group>"; };
 		D168A3F82302D5C700505D40 /* Bauyrsaq Ertegi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bauyrsaq Ertegi.mp3"; sourceTree = "<group>"; };
 		D19245162284DC2800ABD1BD /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		D19D36E4222BAEEC005188D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -264,8 +266,6 @@
 		D1D5BC2223017E0300FB3922 /* PlayerEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
 		D1D5BC2423017E2800FB3922 /* ObstacleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleEntity.swift; sourceTree = "<group>"; };
 		D1E3719222A7A0AA009D97AB /* ScenesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesManager.swift; sourceTree = "<group>"; };
-		D1E71CBA23042E1A006E0F9A /* Qoshaqanym.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Qoshaqanym.mp3; sourceTree = "<group>"; };
-		D1E71CBC23043641006E0F9A /* Aigo'lek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Aigo'lek.mp3"; sourceTree = "<group>"; };
 		D1F3BE8522F1551F00BD4F97 /* helloInstruction.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = helloInstruction.mp3; sourceTree = "<group>"; };
 		D1F3BE8822F1778900BD4F97 /* drawingMessage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drawingMessage.mp3; sourceTree = "<group>"; };
 		D1F3BE8A22F1779100BD4F97 /* storiesMessage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = storiesMessage.mp3; sourceTree = "<group>"; };
@@ -709,8 +709,8 @@
 		D1E71CB923042E0F006E0F9A /* Songs */ = {
 			isa = PBXGroup;
 			children = (
-				D1E71CBC23043641006E0F9A /* Aigo'lek.mp3 */,
-				D1E71CBA23042E1A006E0F9A /* Qoshaqanym.mp3 */,
+				D163A5A4230C162C0032C4DA /* Aigo'lek.mp3 */,
+				D163A5A6230C16330032C4DA /* Qoshaqanym.mp3 */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -867,17 +867,17 @@
 				B9E2CE3A22FBDF2F006B5697 /* pop.wav in Resources */,
 				B9E2CE3722FBDF2F006B5697 /* flapping.wav in Resources */,
 				D132840D22F4581100C630A6 /* eagle.mp3 in Resources */,
+				D163A5A7230C16330032C4DA /* Qoshaqanym.mp3 in Resources */,
 				D146AB3122E78575004520DA /* animalsIcon.mp3 in Resources */,
 				D168A3F92302D5C700505D40 /* Bauyrsaq Ertegi.mp3 in Resources */,
 				D146AB3622E7862F004520DA /* bear.mp3 in Resources */,
+				D163A5A5230C162C0032C4DA /* Aigo'lek.mp3 in Resources */,
 				D1F3BE8622F1551F00BD4F97 /* helloInstruction.mp3 in Resources */,
 				B9E2CE4522FBFDCD006B5697 /* ant.mp3 in Resources */,
-				D1E71CBB23042E1A006E0F9A /* Qoshaqanym.mp3 in Resources */,
 				D1BCE09E2302A7DA002EC22A /* helloInstructionGif.gif in Resources */,
 				D1F3BE8B22F1779100BD4F97 /* storiesMessage.mp3 in Resources */,
 				D13D86572217FEDF0048A6E4 /* Assets.xcassets in Resources */,
 				D1F3BE8D22F1779F00BD4F97 /* karaokeMessage.mp3 in Resources */,
-				D1E71CBD23043641006E0F9A /* Aigo'lek.mp3 in Resources */,
 				B9E2CE4122FBFD76006B5697 /* owl.mp3 in Resources */,
 				B9E2CE3822FBDF2F006B5697 /* falling.wav in Resources */,
 				D146AB3722E7862F004520DA /* cat.mp3 in Resources */,

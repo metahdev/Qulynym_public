@@ -41,7 +41,7 @@ class TimerController {
         delegate.notifyOfTimepoints()
         
         if seconds == Int(delegate.duration) {
-            timer!.invalidate()
+            timer?.invalidate()
             timer = nil
             delegate.notifyTimerEnded()
         }

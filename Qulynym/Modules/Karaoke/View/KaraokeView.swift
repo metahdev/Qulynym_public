@@ -72,7 +72,7 @@ class KaraokeView: KaraokeViewProtocol {
         textV.isSelectable = false
         textV.isScrollEnabled = true
         textV.backgroundColor = .clear
-        textV.font = UIFont(name: "Gill Sans", size: view.frame.height * 0.1)
+        textV.font = UIFont(name: "Helvetica", size: view.frame.height * 0.08)
         textV.textAlignment = .center
         return textV
     }()

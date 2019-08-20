@@ -123,7 +123,7 @@ struct SettingsButton {
         self.setButton.layer.borderColor = UIColor.white.cgColor
         self.setButton.layer.borderWidth = 5
         self.setButton.layer.cornerRadius = 20
-        self.setButton.titleLabel?.font = UIFont(name: "Gill Sans", size: view.frame.height * 0.08)
+        self.setButton.titleLabel?.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.08)
         self.setButton.titleLabel?.textAlignment = .center
         self.setButton.setTitleColor(UIColor.white, for: .normal)
         self.setupShadow()

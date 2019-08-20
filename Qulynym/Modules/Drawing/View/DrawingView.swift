@@ -42,6 +42,7 @@ class DrawingView: DrawingViewProtocol {
     lazy var drawingImageView: UIImageView = {
         let iv = UIImageView()
         iv.layer.zPosition = 1
+        iv.contentMode = .scaleAspectFit 
         return iv
     }()
     lazy var toolsCollectionView: UICollectionView = {
