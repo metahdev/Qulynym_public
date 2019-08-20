@@ -77,7 +77,7 @@ class KaraokeView: KaraokeViewProtocol {
         return textV
     }()
     lazy var timelineSlider: UISlider = {
-        return setupPlaylistSlider(value: 0)
+        return setupPlaylistSlider(value: 0, secondColor: .gray)
     }()
     lazy var soundButton: UIButton = {
         let btn = UIButton()
@@ -85,7 +85,7 @@ class KaraokeView: KaraokeViewProtocol {
         return btn
     }()
     lazy var soundSlider: UISlider = {
-        return setupPlaylistSlider(value: 100)
+        return setupPlaylistSlider(value: 100, secondColor: .red)
     }()
     private lazy var storyBackgroundImage: UIImageView = {
         let imageV = UIImageView(image: UIImage(named: "karaokeBg"))
@@ -167,14 +167,14 @@ class KaraokeView: KaraokeViewProtocol {
             soundButton.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
             soundButton.heightAnchor.constraint(equalTo: soundButton.widthAnchor),
             
-            playBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            playBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
-            playBtn.widthAnchor.constraint(equalTo: lyricsTextView.widthAnchor, multiplier: 0.3),
-            playBtn.heightAnchor.constraint(equalTo: playBtn.widthAnchor),
-            
             soundSlider.bottomAnchor.constraint(equalTo: soundButton.topAnchor, constant: -view.frame.height * 0.05),
             soundSlider.centerXAnchor.constraint(equalTo: soundButton.centerXAnchor),
             soundSlider.widthAnchor.constraint(equalTo: timelineSlider.widthAnchor, multiplier: 0.2),
+            
+            playBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            playBtn.topAnchor.constraint(equalTo: timelineSlider.topAnchor, constant: 8),
+            playBtn.widthAnchor.constraint(equalTo: lyricsTextView.widthAnchor, multiplier: 0.3),
+            playBtn.heightAnchor.constraint(equalTo: playBtn.widthAnchor),
             
             forwardBtn.leadingAnchor.constraint(equalTo: playBtn.trailingAnchor, constant: 8),
             forwardBtn.heightAnchor.constraint(equalTo: playBtn.heightAnchor),

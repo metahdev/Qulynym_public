@@ -162,12 +162,11 @@ struct AppUtility {
     }
 }
 
-
-func setupPlaylistSlider(value: Int) -> UISlider {
+func setupPlaylistSlider(value: Int, secondColor: UIColor) -> UISlider {
     let slider = UISlider()
     
     slider.minimumTrackTintColor = .blue
-    slider.maximumTrackTintColor = .red
+    slider.maximumTrackTintColor = secondColor
     slider.thumbTintColor = .white
     
     slider.minimumValue = 0
