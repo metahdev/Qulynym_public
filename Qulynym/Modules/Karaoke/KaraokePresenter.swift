@@ -103,6 +103,7 @@ extension KaraokePresenter {
         controller.checkTimelineSliderValue(Int(value))
         timer.seconds = Int(value)
         AudioPlayer.karaokeAudioPlayer.currentTime = TimeInterval(exactly: value)!
+        AudioPlayer.karaokeAudioPlayer.prepareToPlay()
         AudioPlayer.karaokeAudioPlayer.play()
     }
     
