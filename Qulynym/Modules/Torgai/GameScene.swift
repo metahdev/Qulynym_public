@@ -60,7 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deltaTime: TimeInterval = 0
     var lastUpdateTimeInterval: TimeInterval = 0
     
-    let player = PlayerEntity(imageName: "Bird0")
+    let player = PlayerEntity(imageName: "torgai0")
     
     var initialState: AnyClass
     lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
