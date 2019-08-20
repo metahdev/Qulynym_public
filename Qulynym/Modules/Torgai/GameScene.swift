@@ -37,6 +37,7 @@ struct PhysicsCategory {
     static let Player: UInt32 = 0b1
     static let Obstacle: UInt32 = 0b10
     static let Ground: UInt32 = 0b100
+    static let Top: UInt32 = 0b1000
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -99,7 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         background.position = CGPoint(x: size.width / 2, y: size.height)
         background.zPosition = Layer.background.rawValue
-        background.size.height = size.height * 0.8
+        background.size.height = size.height * 0.72
         
         playableStart = size.height - background.size.height
         playableHeight = background.size.height
@@ -108,7 +109,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let lowerLeft = CGPoint(x: 0, y: playableStart)
         let lowerRight = CGPoint(x: size.width, y: playableStart)
-        physicsBody = SKPhysicsBody(edgeFrom: lowerLeft, to: lowerRight)
+        
+        let topLimitLeft = CGPoint(x: 0, y: frame.height + 200)
+        let topLimitRight = CGPoint(x: size.width, y: frame.height + 200)
+        
+        physicsBody = SKPhysicsBody(bodies: [SKPhysicsBody(edgeFrom: lowerLeft, to: lowerRight), SKPhysicsBody(edgeFrom: topLimitLeft, to: topLimitRight)])
         physicsBody?.categoryBitMask = PhysicsCategory.Ground
         physicsBody?.collisionBitMask = 0
         physicsBody?.contactTestBitMask = PhysicsCategory.Player
