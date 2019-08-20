@@ -1,2 +1,2 @@
-Qulynym - is an educational mobile app in Kazakh language for little kids. The app contains educational games for different age categories: 3-4 years and 5-6 years.
+Qulynym - is an educational mobile app in Kazakh language for little kids. The app contains educational games for 3-4 years old kids.
 Automatization X Software 2019. All rights reserved. 
