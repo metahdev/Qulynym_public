@@ -32,11 +32,12 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
     var presenter: ItemPresenterProtocol!
     var quizViewController: QuizViewControllerProtocol!
     
+    private weak var titleLabel: UILabel!
     private weak var contentBtn: UIButton!
     private weak var closeBtn: UIButton!
     private weak var forwardBtn: UIButton!
     
-    private var autoLayout: ItemViewProtocol!
+    private var itemView: ItemViewProtocol!
     private let configurator: ItemConfiguratorProtocol = ItemConfigurator()
 
     
@@ -46,7 +47,7 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
         configurator.configure(with: self)
         
         initLayout()
-        autoLayout.setupLayout()
+        itemView.setupLayout()
         assignViews()
         assignActions()
         
@@ -62,13 +63,14 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
     
     // MARK:- Layout
     private func initLayout() {
-        self.autoLayout = ItemView(self.view)
+        self.itemView = ItemView(self.view)
     }
     
     private func assignViews() {
-        self.contentBtn = autoLayout.contentBtn
-        self.closeBtn = autoLayout.closeBtn
-        self.forwardBtn = autoLayout.forwardBtn
+        self.titleLabel = itemView.titleLabel
+        self.contentBtn = itemView.contentBtn
+        self.closeBtn = itemView.closeBtn
+        self.forwardBtn = itemView.forwardBtn
     }
     
     // MARK:- Actions
@@ -96,6 +98,7 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
 extension ItemViewController {
     // MARK:- Protocol Methods
     func updateContent(contentKey: String) {
+        titleLabel.text = contentKey
         contentBtn.setImage(UIImage(named: contentKey), for: .normal)
         contentBtn.imageView?.contentMode = .scaleAspectFill
     }

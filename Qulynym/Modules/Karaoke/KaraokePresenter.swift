@@ -33,7 +33,8 @@ class KaraokePresenter: KaraokePresenterProtocol {
     var router: KaraokeRouterProtocol!
     
     var timer: TimerController!
-    var timepoints: [Int: Int]!
+    var forwardTimepoints: [Int: Int]!
+    var rewindTimepoints: [Int: Int]!
     
     required init(_ controller: KaraokeViewControllerProtocol) {
         self.controller = controller
@@ -51,7 +52,8 @@ extension KaraokePresenter {
     }
     
     func getTextViewTimepoints() {
-        timepoints = interactor.getTextViewTimepoints(controller.index)
+        forwardTimepoints = interactor.getForwardTextViewTimepoints(controller.index)
+        rewindTimepoints = interactor.getRewindTextViewTimepoints(controller.index)
     }
     
     func initTimer() {
@@ -142,7 +144,11 @@ extension KaraokePresenter: TimerControllerDelegate {
     }
     
     func notifyOfTimepoints() {
-        controller.scrollTextView(to: self.timepoints[timer.timepoint!]!)
+        if let forwardTimepoint = self.forwardTimepoints[timer.timepoint!] {
+            controller.scrollTextView(to: forwardTimepoint)
+        } else {
+            controller.scrollTextView(to: self.rewindTimepoints[timer.timepoint!]!)
+        }
     }
     
     func notifyTimerEnded() {

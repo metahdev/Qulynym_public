@@ -31,7 +31,8 @@ struct EduSection {
 struct Song {
     var name: String
     var lyrics: String
-    var textViewTimepoints: [Int: Int]
+    var forwardTextViewTimepoints: [Int: Int]
+    var rewindTextViewTimepoints: [Int: Int]
 }
 
 struct ContentService {
@@ -55,8 +56,8 @@ struct ContentService {
     ]
     
     static var songs: [Song] = [
-        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, textViewTimepoints: [0: 0, 44: 173]),
-        Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, textViewTimepoints: [0: 0])
+        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, forwardTextViewTimepoints: [44: 173], rewindTextViewTimepoints: [43: 0]),
+        Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, forwardTextViewTimepoints: [0: 0], rewindTextViewTimepoints: [0: 0])
     ]
     
     static var stories = [

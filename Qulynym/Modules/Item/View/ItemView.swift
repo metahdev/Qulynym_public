@@ -10,9 +10,10 @@
 import UIKit
 
 protocol ItemViewProtocol: class {
-    var contentBtn: UIButton { get set }
-    var closeBtn: UIButton { get set }
-    var forwardBtn: UIButton { get set }
+    var titleLabel: UILabel { get }
+    var contentBtn: UIButton { get }
+    var closeBtn: UIButton { get }
+    var forwardBtn: UIButton { get }
     
     func setupLayout()
 }
@@ -29,6 +30,11 @@ class ItemView: ItemViewProtocol {
         btn.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         btn.setupShadow()
         return btn
+    }()
+    lazy var titleLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.setupContentLabel(size: view.frame.height * 0.1)
+        return lbl
     }()
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
@@ -68,6 +74,7 @@ class ItemView: ItemViewProtocol {
     }
     
     private func addSubviews() {
+        view.addSubview(titleLabel)
         view.addSubview(contentBtn)
         view.addSubview(closeBtn)
         view.addSubview(forwardBtn)
@@ -82,6 +89,9 @@ class ItemView: ItemViewProtocol {
     
     private func activateConstraints() {
         NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: contentBtn.topAnchor, constant: -16),
+            
             contentBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             contentBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             contentBtn.widthAnchor.constraint(equalTo: view.heightAnchor),
