@@ -28,6 +28,12 @@ struct EduSection {
     }
 }
 
+struct Song {
+    var name: String
+    var lyrics: String
+    var textViewTimepoints: [Int: Int]
+}
+
 struct ContentService {
     static let menuSections = [
         "Oqu",
@@ -48,9 +54,9 @@ struct ContentService {
         "Torg'ai",
     ]
     
-    static var songs: [(String, String)] = [
-        ("Qoshaqanym", ContentService.qoshakanymLyrics),
-        ("Aigo'lek", ContentService.aigolekLyrics)
+    static var songs: [Song] = [
+        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, textViewTimepoints: [0: 0, 44: 173]),
+        Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, textViewTimepoints: [0: 0])
     ]
     
     static var stories = [
@@ -69,7 +75,7 @@ struct ContentService {
     
     static var creditsBody = "Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com. Eraser icon made by PixelBuddha at the flaticon.com."
     
-    private static var qoshakanymLyrics = "Jazda apamnyń aýylyna,\nBaryp edіm qydyryp.\nBіr qoshaqan aldymnan,\nOınap shyqty júgіrіp.\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nDemalysta ózіńdі,\nTaǵy іzdep baramyn.\nBіr qoshaqan bárі bіr,\nSenі taýyp alamyn.\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nQozylarym júr me eken?Erke sulý sol ma eken?!\nMenі qashan keler dep,\nSaǵynyp ol júr me eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!"
+    private static var qoshakanymLyrics = "Jazda apamnyń aýylyna,\nBaryp edіm qydyryp.\nBіr qoshaqan aldymnan,\n Shug'a keldi júgіrіp.\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nDemalysta ózіńdі,\nTaǵy іzdep baramyn.\nBіr qoshaqan bárі bіr,\nSenі taýyp alamyn.\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nQozylarym júr me eken?Erke sulý sol ma eken?!\nMenі qashan keler dep,\nSaǵynyp ol júr me eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!?!"
     private static var aigolekLyrics = "Kóldeı shalqyp jas ómіr,\nTasyp jatqan shaǵynda\nKemerіnen shalyqtap,\nAsyp shatqan shaǵynda\n\nOıyn oınap, án salmaı\nÓser bala bolar ma\nKúmіs kúlkі kórmeı ol\nKemelіne tolar ma.\n\nAıgólek aý aıgólek,\nAıdyń júzі dóńgelek,\nAıgólek dep án shyrqa\nEl bóbegі kel, bóbek.\n\nAıgólek aý aıgólek,\nAıdyń júzі dóńgelek,\nAıgólek dep án shyrqa\nEl bóbegі kel, bóbek.\n\nAsyl sózdіń ustasy-\nAqyn bolar urpaqpyz\nÓner, bіlіm, eńbekke,\nJaqyn bolar urpaqpyz\n\nOn saýsaǵy maıysqan\nSheber bolar urpaqpyz,\nTula boıy tolǵan bіr\nÓner bolar urpaqpyz.\n\nAıgólek aý aıgólek,\nAıdyń júzі dóńgelek,\nAıgólek dep án shyrqa\nEl bóbegі kel, bóbek.\n\nAıgólek aý aıgólek,\nAıdyń júzі dóńgelek,\nAıgólek dep án shyrqa\nEl bóbegі kel, bóbek."
 }
 

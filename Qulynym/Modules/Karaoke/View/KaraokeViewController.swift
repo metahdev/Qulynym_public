@@ -21,7 +21,8 @@ protocol KaraokeViewControllerProtocol: class {
     func setViewsProperties()
     func setTimelineSliderMaxValue()
     func playBtnPressed()
-    func checkTimelineSliderValue(_ value: Int)
+    func setTimelineSliderValue(_ value: Int)
+    func scrollTextView(to: Int)
 }
 
 class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
@@ -49,7 +50,8 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
         assignActions()
         presenter.getLyricsText()
         presenter.getMaxCount()
-        presenter.initTimer() 
+        presenter.getTextViewTimepoints()
+        presenter.initTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -186,18 +188,22 @@ extension KaraokeViewController {
         karaokeView.forwardBtn.isEnabled = (index != maxIndex)
     }
     
+    func scrollTextView(to: Int) {
+        let range = NSMakeRange(to, 0)
+        karaokeView.lyricsTextView.scrollRangeToVisible(range)
+    }
+    
     func setTimelineSliderMaxValue() {
         karaokeView.timelineSlider.maximumValue = Float(AudioPlayer.karaokeAudioPlayer.duration)
     }
     
-    func checkTimelineSliderValue(_ value: Int) {
+    func setTimelineSliderValue(_ value: Int) {
         karaokeView.timelineSlider.value = Float(value)
         
-        if value >= Int(presenter.duration) {
+        if value == Int(presenter.duration) {
             karaokeView.timelineSlider.setValue(0, animated: true)
-            presenter.timer.nullifyData()
-            AudioPlayer.karaokeAudioPlayer.currentTime = TimeInterval(exactly: 0.0)!
             playBtnPressed()
+            presenter.timer.timerEnded()
         }
     }
 }

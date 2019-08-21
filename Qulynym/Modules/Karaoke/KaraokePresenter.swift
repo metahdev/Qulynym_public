@@ -16,6 +16,7 @@ protocol KaraokePresenterProtocol: class {
     
     func getMaxCount()
     func getLyricsText()
+    func getTextViewTimepoints() 
     func initTimer()
     func playAudio()
     func pauseAudio()
@@ -32,6 +33,7 @@ class KaraokePresenter: KaraokePresenterProtocol {
     var router: KaraokeRouterProtocol!
     
     var timer: TimerController!
+    var timepoints: [Int: Int]!
     
     required init(_ controller: KaraokeViewControllerProtocol) {
         self.controller = controller
@@ -46,6 +48,10 @@ extension KaraokePresenter {
     
     func getLyricsText() {
         controller.lyricsText = interactor.getLyricsText(controller.index)
+    }
+    
+    func getTextViewTimepoints() {
+        timepoints = interactor.getTextViewTimepoints(controller.index)
     }
     
     func initTimer() {
@@ -92,7 +98,7 @@ extension KaraokePresenter {
     
     private func updateForUser() {
         timer.nullifyData()
-        controller.checkTimelineSliderValue(0)
+        controller.setTimelineSliderValue(0)
         AudioPlayer.playlistPlayerInitiated = false
         getLyricsText()
         controller.setViewsProperties()
@@ -100,8 +106,14 @@ extension KaraokePresenter {
     
     func scrollAudio(to value: Float) {
         AudioPlayer.karaokeAudioPlayer.pause()
-        controller.checkTimelineSliderValue(Int(value))
+        controller.setTimelineSliderValue(Int(value))
+        let previousValue = timer.seconds
         timer.seconds = Int(value)
+        if previousValue < timer.seconds {
+            timer.checkForForwardScroll()
+        } else {
+            timer.checkForRewindScroll()
+        }
         AudioPlayer.karaokeAudioPlayer.currentTime = TimeInterval(exactly: value)!
         AudioPlayer.karaokeAudioPlayer.prepareToPlay()
         AudioPlayer.karaokeAudioPlayer.play()
@@ -118,17 +130,22 @@ extension KaraokePresenter {
     }
 }
 
-extension KaraokePresenter: TimerControllerDelegate {
+extension KaraokePresenter: TimerControllerDelegate {    
     var duration: TimeInterval {
         get {
             return AudioPlayer.karaokeAudioPlayer.duration
         }
     }
     
+    func notifyOfSecondPassed() {
+        controller.setTimelineSliderValue(timer!.seconds)
+    }
+    
     func notifyOfTimepoints() {
-        controller.checkTimelineSliderValue(timer!.seconds)
+        controller.scrollTextView(to: self.timepoints[timer.timepoint!]!)
     }
     
     func notifyTimerEnded() {
+        AudioPlayer.karaokeAudioPlayer.currentTime = TimeInterval(exactly: 0.0)!
     }
 }

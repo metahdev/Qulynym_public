@@ -12,6 +12,7 @@ import Foundation
 protocol KaraokeInteractorProtocol: class {
     func getMaxCount(_ isKaraoke: Bool) -> Int
     func getLyricsText(_ index: Int) -> String
+    func getTextViewTimepoints(_ index: Int) -> [Int: Int]
     func getPreviousAudioName(_ index: inout Int, isKaraoke: Bool) -> String
     func getNextAudioName(_ index: inout Int, isKaraoke: Bool) -> String
 }
@@ -34,13 +35,17 @@ extension KaraokeInteractor {
     }
     
     func getLyricsText(_ index: Int) -> String {
-        return ContentService.songs[index].1
+        return ContentService.songs[index].lyrics
+    }
+    
+    func getTextViewTimepoints(_ index: Int) -> [Int: Int] {
+        return ContentService.songs[index].textViewTimepoints
     }
     
     func getPreviousAudioName(_ index: inout Int, isKaraoke: Bool) -> String {
         index -= 1
         if isKaraoke {
-            return ContentService.songs[index].0
+            return ContentService.songs[index].name
         }
         return ContentService.stories[index]
     }
@@ -48,7 +53,7 @@ extension KaraokeInteractor {
     func getNextAudioName(_ index: inout Int, isKaraoke: Bool) -> String {
         index += 1
         if isKaraoke {
-            return ContentService.songs[index].0
+            return ContentService.songs[index].name
         }
         return ContentService.stories[index]
     }

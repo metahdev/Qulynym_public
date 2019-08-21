@@ -11,8 +11,10 @@
 import Foundation
 
 protocol TimerControllerDelegate: class {
+    var timepoints: [Int: Int]! { get }
     var duration: TimeInterval { get }
     
+    func notifyOfSecondPassed()
     func notifyOfTimepoints()
     func notifyTimerEnded()
 }
@@ -23,6 +25,7 @@ class TimerController {
     var delegate: TimerControllerDelegate!
     
     var seconds = 0
+    var timepoint: Int?
     
     // MARK:- Timer
     func nullifyData() {
@@ -38,12 +41,53 @@ class TimerController {
     @objc private func checkState() {
         seconds += 1
         
-        delegate.notifyOfTimepoints()
+        delegate.notifyOfSecondPassed()
+        
+        if delegate.timepoints[seconds] != nil {
+            delegate.notifyOfTimepoints()
+        }
         
         if seconds == Int(delegate.duration) {
-            timer?.invalidate()
-            timer = nil
-            delegate.notifyTimerEnded()
+            timerEnded()
+        }
+    }
+    
+    func timerEnded() {
+        nullifyData()
+        delegate.notifyTimerEnded()
+    }
+    
+    func checkForForwardScroll() {
+        var lastTimepoint: Int?
+        
+        for timepoint in Array(delegate.timepoints.keys) {
+            if seconds > timepoint {
+                lastTimepoint = timepoint
+            } else {
+                break
+            }
+        }
+        
+        if let timepoint = lastTimepoint {
+            self.timepoint = timepoint
+            delegate.notifyOfTimepoints()
+        }
+    }
+    
+    func checkForRewindScroll() {
+        var lastTimepoint: Int?
+        
+        for timepoint in Array(delegate.timepoints.keys) {
+            if seconds < timepoint {
+                lastTimepoint = timepoint
+            } else {
+                continue
+            }
+        }
+        
+        if let timepoint = lastTimepoint {
+            self.timepoint = timepoint
+            delegate.notifyOfTimepoints()
         }
     }
 }

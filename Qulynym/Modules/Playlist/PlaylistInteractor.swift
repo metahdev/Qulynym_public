@@ -27,9 +27,9 @@ extension PlaylistInteractor {
     func getContent(_ isKaraoke: Bool) -> [String] {
         if isKaraoke {
             var songNames = [String]()
-            ContentService.songs.map({(songName, _) in
-                songNames.append(songName)
-            })
+            for song in ContentService.songs {
+                songNames.append(song.name)
+            }
             return songNames
         } else {
             return ContentService.stories
