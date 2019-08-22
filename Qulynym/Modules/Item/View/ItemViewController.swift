@@ -11,6 +11,7 @@ import UIKit
 
 protocol ItemViewControllerProtocol: class {
     var section: EduSection! { get set }
+    var areImagesTransparent: Bool { get set }
     var slideCount: Int { get set }
     var checkForQuiz: Bool { get set }
     
@@ -20,6 +21,7 @@ protocol ItemViewControllerProtocol: class {
 class ItemViewController: UIViewController, ItemViewControllerProtocol {
     // MARK:- Properties
     var section: EduSection!
+    var areImagesTransparent = true
     var slideCount: Int {
         get {
             return presenter.slideCount
@@ -57,7 +59,9 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkForQuiz = false
+        presenter.getAreImagesTransparentInfo()
         presenter.updateView()
+        setupContentButtonBorder()
     }
     
     
@@ -72,6 +76,14 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
         self.closeBtn = itemView.closeBtn
         self.forwardBtn = itemView.forwardBtn
     }
+    
+    private func setupContentButtonBorder() {
+        if !areImagesTransparent {
+            contentBtn.layer.borderWidth = 5
+            contentBtn.layer.borderColor = UIColor.white.cgColor
+        }
+    }
+    
     
     // MARK:- Actions
     private func assignActions() {
@@ -100,6 +112,10 @@ extension ItemViewController {
     func updateContent(contentKey: String) {
         titleLabel.text = contentKey
         contentBtn.setImage(UIImage(named: contentKey), for: .normal)
-        contentBtn.imageView?.contentMode = .scaleAspectFill
+        if areImagesTransparent {
+            contentBtn.imageView?.contentMode = .scaleAspectFit
+        } else {
+            contentBtn.imageView?.contentMode = .scaleAspectFill
+        }
     }
 }

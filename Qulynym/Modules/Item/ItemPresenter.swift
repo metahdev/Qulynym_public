@@ -14,6 +14,7 @@ protocol ItemPresenterProtocol: class {
     var contentKey: String { get set }
     
     func updateView()
+    func getAreImagesTransparentInfo()
     func contentBtnPressed()
     func closeBtnPressed()
 }
@@ -41,9 +42,15 @@ extension ItemPresenter {
         }
         
         updateProperties()
-        AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
-        AudioPlayer.contentAudioPlayer.play()
+//        AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
+//        AudioPlayer.contentAudioPlayer.play()
         controller.updateContent(contentKey: contentKey)
+    }
+    
+    func getAreImagesTransparentInfo() {
+        if controller.section.name == "Zhanuarlar" || controller.section.name == "O'simdikter" {
+            controller.areImagesTransparent = false
+        }
     }
     
     func updateProperties() {

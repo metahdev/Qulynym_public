@@ -23,9 +23,7 @@ class ItemView: ItemViewProtocol {
     lazy var contentBtn: UIButton = {
         let btn = UIButton()
         btn.layer.cornerRadius = 5
-        btn.layer.borderWidth = 5
         btn.imageView?.layer.cornerRadius = 5
-        btn.layer.borderColor = UIColor.white.cgColor
         btn.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
         btn.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         btn.setupShadow()

@@ -140,14 +140,14 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if menuType == .main {
             cell.layer.cornerRadius = 15
+            cell.imageViewCornerRadius = 15
         } else {
-            cell.layer.cornerRadius = cell.frame.midX
+            cell.layer.cornerRadius = cell.frame.height * 0.5
         }
         
         cell.text = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
         cell.textSize = cell.frame.height * 0.17
         
-        cell.imageViewCornerRadius = 15
         return cell
     }
     
