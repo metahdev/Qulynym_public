@@ -26,7 +26,7 @@ class TimerController {
     var delegate: TimerControllerDelegate!
     
     var seconds = 0
-    var timepoint: Int?
+    var scrollTimepoint: Int?
     
     // MARK:- Timer
     func nullifyData() {
@@ -45,8 +45,9 @@ class TimerController {
         delegate.notifyOfSecondPassed()
         
         if delegate.forwardTimepoints[seconds] != nil {
-            timepoint = seconds
+            scrollTimepoint = seconds
             delegate.notifyOfTimepoints()
+            self.scrollTimepoint = nil
         }
         
         if seconds == Int(delegate.duration) {
@@ -59,37 +60,45 @@ class TimerController {
         delegate.notifyTimerEnded()
     }
     
-    func checkForForwardScroll() {
-        var lastTimepoint: Int?
+    func checkForScroll(rewind: Bool) {
+        let timepointsArray: [Int]!
         
-        for timepoint in Array(delegate.forwardTimepoints.keys) {
+        if rewind {
+            timepointsArray = Array(delegate.forwardTimepoints.keys)
+        } else {
+            timepointsArray = Array(delegate.rewindTimepoints.keys)
+        }
+        
+        if rewind {
+            checkForForwardScroll(timepointsArray)
+        } else {
+            checkForRewindScroll(timepointsArray)
+        }
+        
+        if scrollTimepoint != nil {
+            delegate.notifyOfTimepoints()
+        }
+        
+        scrollTimepoint = nil
+    }
+    
+    func checkForForwardScroll(_ arr: [Int]) {
+        for timepoint in arr {
             if seconds > timepoint {
-                lastTimepoint = timepoint
+                self.scrollTimepoint = timepoint
             } else {
                 break
             }
-        }
-        
-        if let timepoint = lastTimepoint {
-            self.timepoint = timepoint
-            delegate.notifyOfTimepoints()
         }
     }
     
-    func checkForRewindScroll() {
-        var lastTimepoint: Int?
-        
-        for timepoint in Array(delegate.rewindTimepoints.keys) {
+    func checkForRewindScroll(_ arr: [Int]) {
+        for timepoint in arr {
             if seconds < timepoint {
-                lastTimepoint = timepoint
+                self.scrollTimepoint = timepoint
             } else {
                 break
             }
-        }
-        
-        if let timepoint = lastTimepoint {
-            self.timepoint = timepoint
-            delegate.notifyOfTimepoints()
         }
     }
 }

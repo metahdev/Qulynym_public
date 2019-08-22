@@ -1,6 +1,6 @@
 /*
 * Kulynym
-* KaraokeInteractor.swift
+* PlaylistItemInteractor.swift
 *
 * Created by: Metah on 8/4/19
 *
@@ -9,7 +9,7 @@
 
 import Foundation
 
-protocol KaraokeInteractorProtocol: class {
+protocol PlaylistItemInteractorProtocol: class {
     func getMaxCount(_ isKaraoke: Bool) -> Int
     func getLyricsText(_ index: Int) -> String
     func getForwardTextViewTimepoints(_ index: Int) -> [Int: Int]
@@ -18,15 +18,15 @@ protocol KaraokeInteractorProtocol: class {
     func getNextAudioName(_ index: inout Int, isKaraoke: Bool) -> String
 }
 
-class KaraokeInteractor: KaraokeInteractorProtocol {
-    weak var presenter: KaraokePresenterProtocol!
+class PlaylistItemInteractor: PlaylistItemInteractorProtocol {
+    weak var presenter: PlaylistItemPresenterProtocol!
     
-    required init(_ presenter: KaraokePresenterProtocol) {
+    required init(_ presenter: PlaylistItemPresenterProtocol) {
         self.presenter = presenter
     }
 }
 
-extension KaraokeInteractor {
+extension PlaylistItemInteractor {
     // MARK:- Protocol Methods
     func getMaxCount(_ isKaraoke: Bool) -> Int {
         if isKaraoke {

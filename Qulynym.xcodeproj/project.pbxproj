@@ -71,10 +71,10 @@
 		D132840B22F4573C00C630A6 /* elephant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D132840A22F4573C00C630A6 /* elephant.mp3 */; };
 		D132840D22F4581100C630A6 /* eagle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D132840C22F4581100C630A6 /* eagle.mp3 */; };
 		D132840F22F4582600C630A6 /* ZhanuarlarQ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D132840E22F4582600C630A6 /* ZhanuarlarQ.mp3 */; };
-		D135E2A422A02F7B00DC84DE /* KaraokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A322A02F7B00DC84DE /* KaraokeViewController.swift */; };
-		D135E2A722A02F9800DC84DE /* KaraokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A622A02F9800DC84DE /* KaraokeView.swift */; };
-		D135E2AB22A02FBC00DC84DE /* KaraokeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AA22A02FBC00DC84DE /* KaraokeConfigurator.swift */; };
-		D135E2AF22A02FD900DC84DE /* KaraokeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AE22A02FD900DC84DE /* KaraokeRouter.swift */; };
+		D135E2A422A02F7B00DC84DE /* PlaylistItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A322A02F7B00DC84DE /* PlaylistItemViewController.swift */; };
+		D135E2A722A02F9800DC84DE /* PlaylistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A622A02F9800DC84DE /* PlaylistItemView.swift */; };
+		D135E2AB22A02FBC00DC84DE /* PlaylistItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AA22A02FBC00DC84DE /* PlaylistItemConfigurator.swift */; };
+		D135E2AF22A02FD900DC84DE /* PlaylistItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AE22A02FD900DC84DE /* PlaylistItemRouter.swift */; };
 		D1383F8E22AFCD42007815DF /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */; };
 		D1383FAE22B0F730007815DF /* MenuInteractor .swift in Sources */ = {isa = PBXBuildFile; fileRef = D1383FAD22B0F730007815DF /* MenuInteractor .swift */; };
 		D13D864D2217FEDF0048A6E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */; };
@@ -106,8 +106,8 @@
 		D1A7913522F82690005BF325 /* DrawingsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */; };
 		D1BCE09B2302A1C2002EC22A /* UIImageGIFSupportExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BCE09A2302A1C2002EC22A /* UIImageGIFSupportExtension.swift */; };
 		D1BCE09E2302A7DA002EC22A /* helloInstructionGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = D1BCE09D2302A7D9002EC22A /* helloInstructionGif.gif */; };
-		D1C69D1222F631DD003D0D05 /* KaraokePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1122F631DD003D0D05 /* KaraokePresenter.swift */; };
-		D1C69D1422F631E9003D0D05 /* KaraokeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1322F631E9003D0D05 /* KaraokeInteractor.swift */; };
+		D1C69D1222F631DD003D0D05 /* PlaylistItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1122F631DD003D0D05 /* PlaylistItemPresenter.swift */; };
+		D1C69D1422F631E9003D0D05 /* PlaylistItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1322F631E9003D0D05 /* PlaylistItemInteractor.swift */; };
 		D1D46927222A8C1E0096B968 /* ScenesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D46926222A8C1E0096B968 /* ScenesViewController.swift */; };
 		D1D46929222A8C320096B968 /* ScenesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D46928222A8C320096B968 /* ScenesView.swift */; };
 		D1D4692C222A8C5D0096B968 /* ScenesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4692B222A8C5D0096B968 /* ScenesConfigurator.swift */; };
@@ -213,10 +213,10 @@
 		D132840A22F4573C00C630A6 /* elephant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elephant.mp3; sourceTree = "<group>"; };
 		D132840C22F4581100C630A6 /* eagle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eagle.mp3; sourceTree = "<group>"; };
 		D132840E22F4582600C630A6 /* ZhanuarlarQ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZhanuarlarQ.mp3; sourceTree = "<group>"; };
-		D135E2A322A02F7B00DC84DE /* KaraokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeViewController.swift; sourceTree = "<group>"; };
-		D135E2A622A02F9800DC84DE /* KaraokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeView.swift; sourceTree = "<group>"; };
-		D135E2AA22A02FBC00DC84DE /* KaraokeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeConfigurator.swift; sourceTree = "<group>"; };
-		D135E2AE22A02FD900DC84DE /* KaraokeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeRouter.swift; sourceTree = "<group>"; };
+		D135E2A322A02F7B00DC84DE /* PlaylistItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemViewController.swift; sourceTree = "<group>"; };
+		D135E2A622A02F9800DC84DE /* PlaylistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemView.swift; sourceTree = "<group>"; };
+		D135E2AA22A02FBC00DC84DE /* PlaylistItemConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemConfigurator.swift; sourceTree = "<group>"; };
+		D135E2AE22A02FD900DC84DE /* PlaylistItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemRouter.swift; sourceTree = "<group>"; };
 		D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		D1383FAD22B0F730007815DF /* MenuInteractor .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuInteractor .swift"; sourceTree = "<group>"; };
 		D13D86492217FEDF0048A6E4 /* Qulynym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qulynym.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,8 +254,8 @@
 		D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingsCollectionView.swift; sourceTree = "<group>"; };
 		D1BCE09A2302A1C2002EC22A /* UIImageGIFSupportExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageGIFSupportExtension.swift; sourceTree = "<group>"; };
 		D1BCE09D2302A7D9002EC22A /* helloInstructionGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = helloInstructionGif.gif; sourceTree = "<group>"; };
-		D1C69D1122F631DD003D0D05 /* KaraokePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokePresenter.swift; sourceTree = "<group>"; };
-		D1C69D1322F631E9003D0D05 /* KaraokeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeInteractor.swift; sourceTree = "<group>"; };
+		D1C69D1122F631DD003D0D05 /* PlaylistItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemPresenter.swift; sourceTree = "<group>"; };
+		D1C69D1322F631E9003D0D05 /* PlaylistItemInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemInteractor.swift; sourceTree = "<group>"; };
 		D1D46926222A8C1E0096B968 /* ScenesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesViewController.swift; sourceTree = "<group>"; };
 		D1D46928222A8C320096B968 /* ScenesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesView.swift; sourceTree = "<group>"; };
 		D1D4692B222A8C5D0096B968 /* ScenesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesConfigurator.swift; sourceTree = "<group>"; };
@@ -453,16 +453,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D10729F8228768D0003149E8 /* Karaoke */ = {
+		D10729F8228768D0003149E8 /* PlaylistItem  */ = {
 			isa = PBXGroup;
 			children = (
-				D135E2AA22A02FBC00DC84DE /* KaraokeConfigurator.swift */,
+				D135E2AA22A02FBC00DC84DE /* PlaylistItemConfigurator.swift */,
 				D135E2A522A02F8400DC84DE /* View */,
-				D1C69D1122F631DD003D0D05 /* KaraokePresenter.swift */,
-				D1C69D1322F631E9003D0D05 /* KaraokeInteractor.swift */,
-				D135E2AE22A02FD900DC84DE /* KaraokeRouter.swift */,
+				D1C69D1122F631DD003D0D05 /* PlaylistItemPresenter.swift */,
+				D1C69D1322F631E9003D0D05 /* PlaylistItemInteractor.swift */,
+				D135E2AE22A02FD900DC84DE /* PlaylistItemRouter.swift */,
 			);
-			path = Karaoke;
+			path = "PlaylistItem ";
 			sourceTree = "<group>";
 		};
 		D10729F9228768D9003149E8 /* Drawing */ = {
@@ -480,8 +480,8 @@
 		D135E2A522A02F8400DC84DE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D135E2A322A02F7B00DC84DE /* KaraokeViewController.swift */,
-				D135E2A622A02F9800DC84DE /* KaraokeView.swift */,
+				D135E2A322A02F7B00DC84DE /* PlaylistItemViewController.swift */,
+				D135E2A622A02F9800DC84DE /* PlaylistItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -690,7 +690,7 @@
 				D14D5366222136B9007ACD55 /* Item */,
 				D102930622F1A10600C7B2F2 /* Quiz */,
 				D10729EE22876725003149E8 /* Playlist */,
-				D10729F8228768D0003149E8 /* Karaoke */,
+				D10729F8228768D0003149E8 /* PlaylistItem  */,
 				D10729F9228768D9003149E8 /* Drawing */,
 				D16CE02F22EF4E260057835D /* Torgai */,
 			);
@@ -917,15 +917,15 @@
 				D1D46932222A8C9A0096B968 /* ScenesRouter.swift in Sources */,
 				D1A7913522F82690005BF325 /* DrawingsCollectionView.swift in Sources */,
 				B916B09322FBDC3400AF255A /* MainMenuState.swift in Sources */,
-				D135E2A722A02F9800DC84DE /* KaraokeView.swift in Sources */,
+				D135E2A722A02F9800DC84DE /* PlaylistItemView.swift in Sources */,
 				B9E2CE2A22FBDF2F006B5697 /* CGVector+Extensions.swift in Sources */,
 				D1D5BC2523017E2800FB3922 /* ObstacleEntity.swift in Sources */,
-				D135E2AF22A02FD900DC84DE /* KaraokeRouter.swift in Sources */,
+				D135E2AF22A02FD900DC84DE /* PlaylistItemRouter.swift in Sources */,
 				D1F9ABD522A0456B00989BD3 /* DrawingConfigurator.swift in Sources */,
 				D1072A0122877DD2003149E8 /* PlaylistRouter.swift in Sources */,
 				856F349122F87F1800E97C0C /* SettingsRouter.swift in Sources */,
 				D1D4692E222A8C6B0096B968 /* ScenesPresenter.swift in Sources */,
-				D135E2AB22A02FBC00DC84DE /* KaraokeConfigurator.swift in Sources */,
+				D135E2AB22A02FBC00DC84DE /* PlaylistItemConfigurator.swift in Sources */,
 				B9E2CE2922FBDF2F006B5697 /* SKColor+Extensions.swift in Sources */,
 				856F348B22F87EDD00E97C0C /* SettingsConfigurator.swift in Sources */,
 				B9E2CE2D22FBDF2F006B5697 /* SKAction+Extensions.swift in Sources */,
@@ -977,7 +977,7 @@
 				D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */,
 				B916B09422FBDC3400AF255A /* FallingState.swift in Sources */,
 				D1D5599222A82FED001674A7 /* Emitters.swift in Sources */,
-				D1C69D1222F631DD003D0D05 /* KaraokePresenter.swift in Sources */,
+				D1C69D1222F631DD003D0D05 /* PlaylistItemPresenter.swift in Sources */,
 				D102930F22F1AE0200C7B2F2 /* QuizInteractor.swift in Sources */,
 				D1F9ABDB22A0458C00989BD3 /* DrawingRouter.swift in Sources */,
 				D14D536E222137B2007ACD55 /* ItemInteractor.swift in Sources */,
@@ -985,7 +985,7 @@
 				B916B0CE22FBDCA000AF255A /* GameViewController.swift in Sources */,
 				D10729FF22877D5C003149E8 /* PlaylistInteractor.swift in Sources */,
 				B9E2CE2F22FBDF2F006B5697 /* SKNode+Extensions.swift in Sources */,
-				D135E2A422A02F7B00DC84DE /* KaraokeViewController.swift in Sources */,
+				D135E2A422A02F7B00DC84DE /* PlaylistItemViewController.swift in Sources */,
 				D1BCE09B2302A1C2002EC22A /* UIImageGIFSupportExtension.swift in Sources */,
 				D102931122F1AE1100C7B2F2 /* QuizRouter.swift in Sources */,
 				D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */,
@@ -993,7 +993,7 @@
 				8528917622F9A22600A7CEA7 /* TextViewController.swift in Sources */,
 				B916B0A022FBDC5400AF255A /* AnimationComponent.swift in Sources */,
 				D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */,
-				D1C69D1422F631E9003D0D05 /* KaraokeInteractor.swift in Sources */,
+				D1C69D1422F631E9003D0D05 /* PlaylistItemInteractor.swift in Sources */,
 				D10729F722876879003149E8 /* PlaylistView.swift in Sources */,
 				B916B0CD22FBDCA000AF255A /* GameScene.swift in Sources */,
 				B916B09122FBDC3400AF255A /* GameOverState.swift in Sources */,

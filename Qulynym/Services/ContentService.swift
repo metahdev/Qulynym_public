@@ -56,7 +56,7 @@ struct ContentService {
     ]
     
     static var songs: [Song] = [
-        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, forwardTextViewTimepoints: [44: 173], rewindTextViewTimepoints: [43: 0]),
+        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, forwardTextViewTimepoints: [44: 173, 56: 268], rewindTextViewTimepoints: [43: 0, 55: 173]),
         Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, forwardTextViewTimepoints: [0: 0], rewindTextViewTimepoints: [0: 0])
     ]
     

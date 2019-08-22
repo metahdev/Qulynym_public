@@ -1,6 +1,6 @@
 /*
 * Kulynym
-* KaraokeRouter.swift
+* PlaylistItemRouter.swift
 *
 * Created by: Metah on 5/30/19
 *
@@ -9,20 +9,20 @@
 
 import Foundation
 
-protocol KaraokeRouterProtocol: class {
+protocol PlaylistItemRouterProtocol: class {
     func close()
 }
 
-class KaraokeRouter: KaraokeRouterProtocol {
+class PlaylistItemRouter: PlaylistItemRouterProtocol {
     // MARK:- Properties
-    weak var controller: KaraokeViewController!
+    weak var controller: PlaylistItemViewController!
     
-    required init(_ controller: KaraokeViewController) {
+    required init(_ controller: PlaylistItemViewController) {
         self.controller = controller
     }
 }
 
-extension KaraokeRouter {
+extension PlaylistItemRouter {
     func close() {
         AudioPlayer.karaokeAudioPlayer.stop()
         controller.navigationController?.popViewController(animated: true)

@@ -1,7 +1,6 @@
-//
 /*
 * Kulynym
-* KaraokePresenter.swift
+* PlaylistItemPresenter.swift
 *
 * Created by: Metah on 8/4/19
 *
@@ -10,7 +9,7 @@
 
 import Foundation
 
-protocol KaraokePresenterProtocol: class {
+protocol PlaylistItemPresenterProtocol: class {
     var duration: TimeInterval { get }
     var timer: TimerController! { get }
     
@@ -27,21 +26,21 @@ protocol KaraokePresenterProtocol: class {
     func close()
 }
 
-class KaraokePresenter: KaraokePresenterProtocol {
-    weak var controller: KaraokeViewControllerProtocol!
-    var interactor: KaraokeInteractorProtocol!
-    var router: KaraokeRouterProtocol!
+class PlaylistItemPresenter: PlaylistItemPresenterProtocol {
+    weak var controller: PlaylistItemViewControllerProtocol!
+    var interactor: PlaylistItemInteractorProtocol!
+    var router: PlaylistItemRouterProtocol!
     
     var timer: TimerController!
     var forwardTimepoints: [Int: Int]!
     var rewindTimepoints: [Int: Int]!
     
-    required init(_ controller: KaraokeViewControllerProtocol) {
+    required init(_ controller: PlaylistItemViewControllerProtocol) {
         self.controller = controller
     }
 }
 
-extension KaraokePresenter {
+extension PlaylistItemPresenter {
     // MARK:- Protocol Methods
     func getMaxCount() {
         controller.maxIndex = interactor.getMaxCount(controller.isKaraoke)
@@ -111,11 +110,7 @@ extension KaraokePresenter {
         controller.setTimelineSliderValue(Int(value))
         let previousValue = timer.seconds
         timer.seconds = Int(value)
-        if previousValue < timer.seconds {
-            timer.checkForForwardScroll()
-        } else {
-            timer.checkForRewindScroll()
-        }
+        timer.checkForScroll(rewind: previousValue < timer.seconds)
         AudioPlayer.karaokeAudioPlayer.currentTime = TimeInterval(exactly: value)!
         AudioPlayer.karaokeAudioPlayer.prepareToPlay()
         AudioPlayer.karaokeAudioPlayer.play()
@@ -132,7 +127,7 @@ extension KaraokePresenter {
     }
 }
 
-extension KaraokePresenter: TimerControllerDelegate {    
+extension PlaylistItemPresenter: TimerControllerDelegate {    
     var duration: TimeInterval {
         get {
             return AudioPlayer.karaokeAudioPlayer.duration
@@ -144,10 +139,10 @@ extension KaraokePresenter: TimerControllerDelegate {
     }
     
     func notifyOfTimepoints() {
-        if let forwardTimepoint = self.forwardTimepoints[timer.timepoint!] {
+        if let forwardTimepoint = self.forwardTimepoints[timer.scrollTimepoint!] {
             controller.scrollTextView(to: forwardTimepoint)
         } else {
-            controller.scrollTextView(to: self.rewindTimepoints[timer.timepoint!]!)
+            controller.scrollTextView(to: self.rewindTimepoints![timer.scrollTimepoint!]!)
         }
     }
     

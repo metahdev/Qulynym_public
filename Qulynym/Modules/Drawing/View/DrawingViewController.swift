@@ -12,6 +12,8 @@ import UIKit
 protocol DrawingViewControllerProtocol: class {
     var currentImageName: String? { get set }
     var selectedTool: UIButton! { get set }
+    
+    func clearCanvas() 
 }
 
 class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
@@ -198,6 +200,13 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     // MARK:- Other
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
+    }
+}
+
+
+extension DrawingViewController {
+    func clearCanvas() {
+        canvasView.clear()
     }
 }
 

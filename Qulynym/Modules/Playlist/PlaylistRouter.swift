@@ -30,7 +30,7 @@ extension PlaylistRouter {
     }
     
     func presentContent(_ index: Int) {
-        let karaokeView = KaraokeViewController()
+        let karaokeView = PlaylistItemViewController()
         controller.karaokeViewDelegate = karaokeView
             
         controller.karaokeViewDelegate.contentName = controller.content[index]

@@ -19,7 +19,7 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
     var isKaraoke: Bool!
     var content = [String]()
     var presenter: PlaylistPresenterProtocol!
-    weak var karaokeViewDelegate: KaraokeViewControllerProtocol!
+    weak var karaokeViewDelegate: PlaylistItemViewControllerProtocol!
     
     var manager: ScenesManager!
 

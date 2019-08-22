@@ -1,6 +1,6 @@
 /*
 * Kulynym
-* KaraokeViewController.swift
+* PlaylistItemViewController.swift
 *
 * Created by: Metah on 5/30/19
 *
@@ -10,7 +10,7 @@
 import UIKit
 import AVKit
 
-protocol KaraokeViewControllerProtocol: class {
+protocol PlaylistItemViewControllerProtocol: class {
     var isKaraoke: Bool { get set }
     var contentName: String { get set }
     var lyricsText: String { get set }
@@ -25,7 +25,7 @@ protocol KaraokeViewControllerProtocol: class {
     func scrollTextView(to: Int)
 }
 
-class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
+class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerProtocol {
     // MARK:- Properties
     var isKaraoke = true
     var contentName = ""
@@ -34,11 +34,11 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
     var maxIndex = 0
     var isPlaying = false
     var isOpenSlider = true
-    var presenter: KaraokePresenterProtocol!
+    var presenter: PlaylistItemPresenterProtocol!
     
     private var previouslyNotSetSoundsImage = true
-    private let configurator: KaraokeConfiguratorProtocol = KaraokeConfigurator()
-    private var karaokeView: KaraokeViewProtocol!
+    private let configurator: PLaylistItemConfiguratorProtocol = PlaylistItemConfigurator()
+    private var karaokeView: PlaylistItemViewProtocol!
     
     
     // MARK:- View Lifecycle
@@ -64,7 +64,7 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
     
     // MARK:- Layout
     private func initLayout() {
-        karaokeView = KaraokeView(self.view, isKaraoke)
+        karaokeView = PlaylistItemView(self.view, isKaraoke)
     }
     
     // MARK:- Actions
@@ -175,7 +175,7 @@ class KaraokeViewController: UIViewController, KaraokeViewControllerProtocol {
 }
 
 
-extension KaraokeViewController {
+extension PlaylistItemViewController {
     // MARK:- Protocol Methods
     func setViewsProperties() {
         karaokeView.titleLabel.text = contentName

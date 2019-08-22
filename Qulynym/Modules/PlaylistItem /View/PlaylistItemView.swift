@@ -1,6 +1,6 @@
 /*
 * Kulynym
-* KaraokeView.swift
+* PlaylistItemView.swift
 *
 * Created by: Metah on 5/30/19
 *
@@ -10,7 +10,7 @@
 import UIKit
 import AVKit
 
-protocol KaraokeViewProtocol: class {
+protocol PlaylistItemViewProtocol: class {
     var closeBtn: UIButton { get }
     var playBtn: UIButton { get }
     var titleLabel: UILabel { get }
@@ -26,7 +26,7 @@ protocol KaraokeViewProtocol: class {
     func changeSoundSliderView(_ isOpen: Bool)
 }
 
-class KaraokeView: KaraokeViewProtocol {
+class PlaylistItemView: PlaylistItemViewProtocol {
     // MARK:- Properties
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
@@ -208,7 +208,7 @@ class KaraokeView: KaraokeViewProtocol {
 }
 
 
-extension KaraokeView {
+extension PlaylistItemView {
     // MARK:- Animation
     func changeSoundSliderView(_ isOpen: Bool) {
     }
