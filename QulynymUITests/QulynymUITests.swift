@@ -1,5 +1,5 @@
 /*
- * Kulynym
+ * Qulynym
  * DrawingInteractor.swift
  *
  * Created by: Metah on 5/30/19
@@ -8,12 +8,12 @@
  */
 
 import XCTest
-@testable import Qulynym
 
-class KulynymTests: XCTestCase {
+class QulynymUITests: XCTestCase {
     override func setUp() {
-        super.setUp()
-        
+        continueAfterFailure = true
+
+        XCUIApplication().launch()
     }
 
     override func tearDown() {

@@ -1,10 +1,10 @@
 /*
-* Kulynym
-* QuizPresenter.swift
-*
-* Created by: Metah on 7/31/19
-*
-* Copyright © 2019 Automatization X Software. All rights reserved.
+ * Qulynym
+ * QuizPresenter.swift
+ *
+ * Created by: Metah on 7/31/19
+ *
+ * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
 import Foundation

@@ -1,5 +1,5 @@
 /*
-* Kulynym
+* Qulynym
 * KaraokeConfigurator.swift
 *
 * Created by: Metah on 5/30/19

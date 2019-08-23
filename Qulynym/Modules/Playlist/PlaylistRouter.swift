@@ -1,5 +1,5 @@
 /*
-* Kulynym
+* Qulynym
 * PlaylistRouter.swift
 *
 * Created by: Metah on 5/12/19

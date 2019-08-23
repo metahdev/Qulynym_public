@@ -170,7 +170,7 @@ func setupPlaylistSlider(value: Int, secondColor: UIColor) -> UISlider {
     slider.thumbTintColor = .white
     
     slider.minimumValue = 0
-    slider.maximumValue = 100
+    slider.maximumValue = 1
     slider.setValue(Float(value), animated: false)
     
     return slider

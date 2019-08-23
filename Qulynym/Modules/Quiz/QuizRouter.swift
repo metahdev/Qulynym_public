@@ -1,10 +1,10 @@
 /*
-* Kulynym
-* QuizRouter.swift
-*
-* Created by: Metah on 7/31/19
-*
-* Copyright © 2019 Automatization X Software. All rights reserved.
+ * Qulynym
+ * QuizRouter.swift
+ *
+ * Created by: Metah on 7/31/19
+ *
+ * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
 import Foundation

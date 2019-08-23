@@ -1,5 +1,5 @@
 /*
- * Kulynym
+ * Qulynym
  * SettingsPresenter.swift
  *
  * Created by: Baubek on 8/5/19

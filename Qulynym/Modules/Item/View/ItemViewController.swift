@@ -1,5 +1,5 @@
 /*
- * Kulynym
+ * Qulynym
  * ItemViewController.swift
  *
  * Created by: Metah on 2/24/19

@@ -1,10 +1,10 @@
 /*
-* Kulynym
-* QuizView.swift
-*
+ * Qulynym
+ * QuizView.swift
+ *
 * Created by: Metah on 7/31/19
-*
-* Copyright © 2019 Automatization X Software. All rights reserved.
+ *
+ * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
 import UIKit

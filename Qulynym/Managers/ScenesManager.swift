@@ -1,11 +1,11 @@
-/*
-* Kulynym
+ /*
+* Qulynym
 * ScenesManager.swift
 *
 * Created by: Metah on 6/5/19
 *
 * Copyright © 2019 Automatization X Software. All rights reserved.
-*/
+ */
 
 import UIKit
 

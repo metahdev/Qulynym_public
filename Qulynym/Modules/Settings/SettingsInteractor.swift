@@ -1,5 +1,5 @@
 /*
- * Kulynym
+ * Qulynym
  * SettingsInteractor.swift
  *
  * Created by: Baubek on 8/5/19
@@ -35,7 +35,7 @@ extension SettingsInteractor {
     }
     
     func saveMusicState(_ isChecked: Bool) {
-        AudioPlayer.backgroundAudioStatePlaying = true
+        AudioPlayer.backgroundAudioStatePlaying = isChecked
     }
     
     func getMusicState() -> Bool? {

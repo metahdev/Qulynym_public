@@ -18,23 +18,25 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */
+*/
 
 import UIKit
 import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    // MARK:- Properties
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.layer.zPosition = 1
-        btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.setImage(UIImage(named: "torg'aiClose"), for: .normal)
         btn.addTarget(self, action: #selector(closeGame), for: .touchUpInside)
         return btn
     }()
     
-    // MARK: View Controller overrides
+    
+    // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()        
         view = SKView(frame: view.bounds)
@@ -58,10 +60,10 @@ class GameViewController: UIViewController {
         
         view.addSubview(closeBtn)
         NSLayoutConstraint.activate([
-            closeBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            closeBtn.topAnchor.constraint(equalTo: view.topAnchor),
-            closeBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
-            closeBtn.heightAnchor.constraint(equalTo: closeBtn.widthAnchor, constant: -24)
+            closeBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            closeBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            closeBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1),
+            closeBtn.heightAnchor.constraint(equalTo: closeBtn.widthAnchor)
         ])
     }
 

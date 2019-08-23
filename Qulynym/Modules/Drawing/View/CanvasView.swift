@@ -1,12 +1,11 @@
-//
-/*
-* Kulynym
+ /*
+* Qulynym
 * CanvasImageView.swift
 *
 * Created by: Metah on 7/28/19
 *
 * Copyright © 2019 Automatization X Software. All rights reserved.
-*/
+ */
 
 import UIKit
 

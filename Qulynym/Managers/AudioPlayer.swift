@@ -1,5 +1,5 @@
 /*
- * Kulynym
+ * Qulynym
  * AudioPlayer.swift
  *
  * Created by: Metah on 2/24/19
@@ -81,7 +81,7 @@ struct AudioPlayer {
         do {
             player = try AVAudioPlayer(contentsOf: url)
         } catch {
-            print("unresolver error: \(error)")
+            return 
         }
     }
 }

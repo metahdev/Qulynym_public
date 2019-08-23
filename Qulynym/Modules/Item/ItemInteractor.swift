@@ -1,5 +1,5 @@
 /*
- * Kulynym
+ * Qulynym
  * ItemInteractor.swift
  *
  * Created by: Metah on 2/24/19

@@ -1,11 +1,11 @@
-/*
-* Kulynym
+ /*
+* Qulynym
 * PlaylistItemInteractor.swift
 *
 * Created by: Metah on 8/4/19
 *
 * Copyright © 2019 Automatization X Software. All rights reserved.
-*/
+ */
 
 import Foundation
 

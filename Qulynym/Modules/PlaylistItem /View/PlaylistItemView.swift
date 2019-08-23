@@ -1,11 +1,11 @@
-/*
-* Kulynym
+ /*
+* Qulynym
 * PlaylistItemView.swift
 *
 * Created by: Metah on 5/30/19
 *
 * Copyright © 2019 Automatization X Software. All rights reserved.
-*/
+ */
 
 import UIKit
 import AVKit
@@ -23,7 +23,6 @@ protocol PlaylistItemViewProtocol: class {
     var soundSlider: UISlider { get }
     
     func setupLayout()
-    func changeSoundSliderView(_ isOpen: Bool)
 }
 
 class PlaylistItemView: PlaylistItemViewProtocol {
@@ -85,7 +84,7 @@ class PlaylistItemView: PlaylistItemViewProtocol {
         return btn
     }()
     lazy var soundSlider: UISlider = {
-        return setupPlaylistSlider(value: 100, secondColor: .red)
+        return setupPlaylistSlider(value: 1, secondColor: .red)
     }()
     private lazy var storyBackgroundImage: UIImageView = {
         let imageV = UIImageView(image: UIImage(named: "karaokeBg"))
@@ -208,8 +207,3 @@ class PlaylistItemView: PlaylistItemViewProtocol {
 }
 
 
-extension PlaylistItemView {
-    // MARK:- Animation
-    func changeSoundSliderView(_ isOpen: Bool) {
-    }
-}

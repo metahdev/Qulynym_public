@@ -1,10 +1,10 @@
 /*
-* Kulynym
-* PlaylistView.swift
-*
-* Created by: Metah on 5/12/19
-*
-* Copyright © 2019 Automatization X Software. All rights reserved.
+ * Qulynym
+ * PlaylistView.swift
+ *
+ * Created by: Metah on 5/12/19
+ *
+ * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
 import UIKit

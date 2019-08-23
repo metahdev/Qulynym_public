@@ -1,11 +1,11 @@
-/*
-* Kulynym
+ /*
+* Qulynym
 * PlaylistItemViewController.swift
 *
 * Created by: Metah on 5/30/19
 *
 * Copyright © 2019 Automatization X Software. All rights reserved.
-*/
+ */
 
 import UIKit
 import AVKit
@@ -36,7 +36,7 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
     var isOpenSlider = true
     var presenter: PlaylistItemPresenterProtocol!
     
-    private var previouslyNotSetSoundsImage = true
+    private var scrolledToEnd = false
     private let configurator: PLaylistItemConfiguratorProtocol = PlaylistItemConfigurator()
     private var karaokeView: PlaylistItemViewProtocol!
     
@@ -76,23 +76,21 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
         karaokeView.timelineSlider.addTarget(self, action: #selector(timelineSliderValueChanged), for: .valueChanged)
         karaokeView.soundSlider.addTarget(self, action: #selector(soundSliderValueChanged), for: .valueChanged)
         karaokeView.soundButton.addTarget(self, action: #selector(soundBtnPressed), for: .touchUpInside)
-        // **
-        let timelineSliderTap = UITapGestureRecognizer(target: self, action: #selector(timelineSliderTapped(gestureRecognizer:)))
-        let soundSliderTap = UITapGestureRecognizer(target: self, action: #selector(soundSliderTapped(gestureRecognizer:)))
-        karaokeView.timelineSlider.addGestureRecognizer(timelineSliderTap)
-        karaokeView.soundSlider.addGestureRecognizer(soundSliderTap)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
+        karaokeView.timelineSlider.addGestureRecognizer(tap)
+        karaokeView.soundSlider.addGestureRecognizer(tap)
     }
     
     @objc
-    func soundSliderTapped(gestureRecognizer: UIGestureRecognizer) {
-        sliderTappedActions(karaokeView.soundSlider, point: gestureRecognizer.location(in: view))
-        soundSliderValueChanged()
-    }
-    
-    @objc
-    func timelineSliderTapped(gestureRecognizer: UIGestureRecognizer) {
-        sliderTappedActions(karaokeView.timelineSlider, point: gestureRecognizer.location(in: view))
-        timelineSliderValueChanged()
+    func sliderTapped(gestureRecognizer: UIGestureRecognizer) {
+        if gestureRecognizer.view == karaokeView.timelineSlider {
+            sliderTappedActions(karaokeView.timelineSlider, point: gestureRecognizer.location(in: view))
+            timelineSliderValueChanged()
+        } else {
+            sliderTappedActions(karaokeView.soundSlider, point: gestureRecognizer.location(in: view))
+            soundSliderValueChanged()
+        }
     }
     
     private func sliderTappedActions(_ slider: UISlider, point position: CGPoint) {
@@ -139,7 +137,7 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
     
     @objc
     private func soundSliderValueChanged() {
-        presenter.changeAudioVolume(to: karaokeView.soundSlider.value / 100)
+        presenter.changeAudioVolume(to: karaokeView.soundSlider.value)
         
         changeSoundBtnImage(karaokeView.soundSlider.value)
     }
@@ -147,11 +145,10 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
     private func changeSoundBtnImage(_ value: Float) {
         if value == 0.0 {
             karaokeView.soundButton.setImage(UIImage(named: "soundsIconOff"), for: .normal)
-            previouslyNotSetSoundsImage = true
-        }
-        if previouslyNotSetSoundsImage && value > 0.0 {
+            isOpenSlider = false
+        } else {
             karaokeView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
-            previouslyNotSetSoundsImage = false
+            isOpenSlider = true
         }
     }
     
@@ -162,15 +159,12 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
         if isOpenSlider {
             value = 0
         } else {
-            value = 100
+            value = 1
         }
         
         karaokeView.soundSlider.setValue(value, animated: true)
-        presenter.changeAudioVolume(to: value / 100)
+        presenter.changeAudioVolume(to: value)
         changeSoundBtnImage(value)
-        
-        isOpenSlider = !isOpenSlider
-//        karaokeView.changeSoundSliderView(isOpenSlider)
     }
 }
 
@@ -201,9 +195,9 @@ extension PlaylistItemViewController {
         karaokeView.timelineSlider.value = Float(value)
         
         if value == Int(presenter.duration) {
-            karaokeView.timelineSlider.setValue(0, animated: true)
-            playBtnPressed()
             presenter.timer.timerEnded()
+            karaokeView.timelineSlider.value = 0 
+            playBtnPressed()
         }
     }
 }

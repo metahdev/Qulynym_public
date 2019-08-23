@@ -1,5 +1,5 @@
 /*
- * Kulynym
+ * Qulynym
  * SettingsRouter.swift
  *
  * Created by: Baubek on 8/5/19

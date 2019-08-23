@@ -1,5 +1,5 @@
 /*
- * Kulynym
+ * Qulynym
  * PersistentService.swift
  *
  * Created by: Metah on 2/24/19
@@ -13,7 +13,7 @@ import CoreData
 class PersistentService {
     // MARK:- Core Data Stack
     static var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Kulynym")
+        let container = NSPersistentContainer(name: "Qulynym")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")

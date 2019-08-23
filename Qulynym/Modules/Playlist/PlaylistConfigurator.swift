@@ -1,10 +1,10 @@
 /*
-* Kulynym
-* PlaylistConfigurator.swift
-*
-* Created by: Metah on 5/12/19
-*
-* Copyright © 2019 Automatization X Software. All rights reserved.
+ * Qulynym
+ * PlaylistConfigurator.swift
+ *
+ * Created by: Metah on 5/12/19
+ *
+ * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
 import Foundation

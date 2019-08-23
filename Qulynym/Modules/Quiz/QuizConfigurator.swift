@@ -1,6 +1,5 @@
-//
 /*
-* Kulynym
+* Qulynym
 * QuizConfigurator.swift
 *
 * Created by: Metah on 7/31/19
