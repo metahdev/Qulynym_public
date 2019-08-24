@@ -9,7 +9,6 @@
 
 import UIKit
 
-#warning("cell border color")
 
 protocol QuizViewControllerProtocol: class {
     var categoryName: String { get set }
@@ -17,6 +16,7 @@ protocol QuizViewControllerProtocol: class {
     var cards: [String]! { get set }
     
     func returnCellState(_ cellIndex: Int)
+    func changeViewsEnableState(enable: Bool)
     func shuffleCards()
 }
 
@@ -115,10 +115,17 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell
         let indexOfRandCard = cards.firstIndex(of: randomCard)
         if indexPath.row == indexOfRandCard {
-            presenter.deleteItem()
-            cell!.layer.borderWidth = 5
             cell!.layer.borderColor = UIColor.green.cgColor
+            changeViewsEnableState(enable: false)
+            AudioPlayer.audioQueue.asyncAfter(deadline: .now() + 0.5, execute: {
+                AudioPlayer.setupExtraAudio(with: "wellDone", audioPlayer: .effects)
+                DispatchQueue.main.async {
+                    self.presenter.playAudio()
+                    self.presenter.deleteItem()
+                }
+            })
         } else {
+            cell!.layer.borderColor = UIColor.red.cgColor
             presenter.backToItemWithRepeat()
         }
     }
@@ -139,6 +146,14 @@ extension QuizViewController {
         let indexPath = IndexPath(item: cellIndex, section: 0)
         let cell = cardsCollectionView.cellForItem(at: indexPath)
         cell!.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    func changeViewsEnableState(enable: Bool) {
+        for cell in cardsCollectionView.visibleCells {
+            cell.isUserInteractionEnabled = enable
+        }
+        soundsBtn.isEnabled = enable
+        closeBtn.isEnabled = enable
     }
     
     func shuffleCards() {

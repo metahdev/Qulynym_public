@@ -42,8 +42,8 @@ extension ItemPresenter {
         }
         
         updateProperties()
-//        AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
-//        AudioPlayer.contentAudioPlayer.play()
+        AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
+        AudioPlayer.contentAudioPlayer.play()
         controller.updateContent(contentKey: contentKey)
     }
     

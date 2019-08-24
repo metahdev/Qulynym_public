@@ -24,13 +24,15 @@ struct AudioPlayer {
     static var backgroundAudioStatePlaying = true 
     static var playlistPlayerInitiated = false
     
+    static var audioQueue = DispatchQueue.global(qos: .userInteractive)
+    
     static var backgroundAudioPlayer = AVAudioPlayer()
     static var sfxAudioPlayer = AVAudioPlayer()
     static var contentAudioPlayer = AVAudioPlayer()
     static var scenesAudioPlayer = AVAudioPlayer()
     static var questionAudioPlayer = AVAudioPlayer()
     static var storyAudioPlayer = AVAudioPlayer()
-    static var karaokeAudioPlayer = AVAudioPlayer()
+    static var playlistItemAudioPlayer = AVAudioPlayer()
     
     
     // MARK: Background Audio
@@ -66,7 +68,7 @@ struct AudioPlayer {
             initPlayers(player: &storyAudioPlayer, url: url)
             playlistPlayerInitiated = true
         case .song:
-            initPlayers(player: &karaokeAudioPlayer, url: url)
+            initPlayers(player: &playlistItemAudioPlayer, url: url)
             playlistPlayerInitiated = true 
         }
     }

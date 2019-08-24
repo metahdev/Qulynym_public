@@ -65,7 +65,7 @@ extension PlaylistItemPresenter {
             AudioPlayer.setupExtraAudio(with: controller.contentName, audioPlayer: .song)
         }
         AudioPlayer.backgroundAudioPlayer.stop()
-        AudioPlayer.karaokeAudioPlayer.play()
+        AudioPlayer.playlistItemAudioPlayer.play()
         timer.startTimer()
         controller.setTimelineSliderMaxValue()
     }
@@ -73,7 +73,7 @@ extension PlaylistItemPresenter {
     func pauseAudio() {
         timer.timer?.invalidate()
         timer.timer = nil
-        AudioPlayer.karaokeAudioPlayer.pause()
+        AudioPlayer.playlistItemAudioPlayer.pause()
         if AudioPlayer.backgroundAudioStatePlaying {
             AudioPlayer.backgroundAudioPlayer.play()
         }
@@ -106,18 +106,18 @@ extension PlaylistItemPresenter {
     }
     
     func scrollAudio(to value: Float) {
-        AudioPlayer.karaokeAudioPlayer.pause()
+        AudioPlayer.playlistItemAudioPlayer.pause()
         controller.setTimelineSliderValue(Int(value))
         let previousValue = timer.seconds
         timer.seconds = Int(value)
         timer.checkForScroll(rewind: previousValue < timer.seconds)
-        AudioPlayer.karaokeAudioPlayer.currentTime = TimeInterval(exactly: value)!
-        AudioPlayer.karaokeAudioPlayer.prepareToPlay()
-        AudioPlayer.karaokeAudioPlayer.play()
+        AudioPlayer.playlistItemAudioPlayer.currentTime = TimeInterval(exactly: value)!
+        AudioPlayer.playlistItemAudioPlayer.prepareToPlay()
+        AudioPlayer.playlistItemAudioPlayer.play()
     }
     
     func changeAudioVolume(to value: Float) {
-        AudioPlayer.karaokeAudioPlayer.volume = value
+        AudioPlayer.playlistItemAudioPlayer.volume = value
     }
     
     func close() {
@@ -130,7 +130,7 @@ extension PlaylistItemPresenter {
 extension PlaylistItemPresenter: TimerControllerDelegate {    
     var duration: TimeInterval {
         get {
-            return AudioPlayer.karaokeAudioPlayer.duration
+            return AudioPlayer.playlistItemAudioPlayer.duration
         }
     }
     
@@ -147,6 +147,6 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
     }
     
     func notifyTimerEnded() {
-        AudioPlayer.karaokeAudioPlayer.currentTime = TimeInterval(exactly: 0.0)!
+        AudioPlayer.playlistItemAudioPlayer.currentTime = TimeInterval(exactly: 0.0)!
     }
 }

@@ -20,7 +20,7 @@ protocol QuizPresenterProtocol: class {
 
 class QuizPresenter: QuizPresenterProtocol {
     // MARK:- Properites
-    weak var view: QuizViewControllerProtocol!
+    weak var controller: QuizViewControllerProtocol!
     var interactor: QuizInteractorProtocol!
     var router: QuizRouterProtocol!
     private var modifiedCards = [String]()
@@ -28,29 +28,34 @@ class QuizPresenter: QuizPresenterProtocol {
     
     // MARK:- Initialization
     required init(_ view: QuizViewControllerProtocol) {
-        self.view = view
+        self.controller = view
     }
 }
 
 extension QuizPresenter {
     // MARK:- Protocol Methods
     func setCards() {
-        modifiedCards = view.cards
+        modifiedCards = controller.cards
     }
     
     func getRandom() {
-        view.randomCard = modifiedCards[Int.random(in: 0...modifiedCards.count - 1)]
+        controller.randomCard = modifiedCards[Int.random(in: 0...modifiedCards.count - 1)]
     }
     
     func playAudio() {
-        while AudioPlayer.sfxAudioPlayer.isPlaying{}
-        AudioPlayer.questionAudioPlayer.play()
-        while AudioPlayer.questionAudioPlayer.isPlaying {}
-        AudioPlayer.contentAudioPlayer.play()
+        controller.changeViewsEnableState(enable: false)
+        AudioPlayer.audioQueue.async {
+            while AudioPlayer.sfxAudioPlayer.isPlaying {}
+            AudioPlayer.questionAudioPlayer.play()
+            while AudioPlayer.questionAudioPlayer.isPlaying {}
+            AudioPlayer.contentAudioPlayer.play()
+            DispatchQueue.main.async {
+                self.controller.changeViewsEnableState(enable: true)
+            }
+        }
     }
     
     func deleteItem() {
-        AudioPlayer.setupExtraAudio(with: "wellDone", audioPlayer: .effects)
         if modifiedCards.count == 1 {
             router.backToItem(didPass: true)
             return
@@ -58,22 +63,33 @@ extension QuizPresenter {
         
         removePreviousCard()
         getRandom()
-        view.shuffleCards()
-        playAudio()
+        controller.shuffleCards()
     }
     
     private func removePreviousCard() {
-        let index = modifiedCards.firstIndex(of: view.randomCard)
+        let index = modifiedCards.firstIndex(of: controller.randomCard)
         modifiedCards.remove(at: index!)
     }
     
     func closeView() {
-        router.close() 
+        stopAudios()
+        router.close()
     }
     
     func backToItemWithRepeat() {
-        AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
-        while AudioPlayer.sfxAudioPlayer.isPlaying {}
-        router.backToItem(didPass: false)
+        stopAudios()
+        controller.changeViewsEnableState(enable: false)
+        AudioPlayer.audioQueue.async {
+            AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
+            while AudioPlayer.sfxAudioPlayer.isPlaying {}
+            DispatchQueue.main.async {
+                self.router.backToItem(didPass: false)
+            }
+        }
+    }
+    
+    private func stopAudios() {
+        AudioPlayer.questionAudioPlayer.stop()
+        AudioPlayer.contentAudioPlayer.stop()
     }
 }

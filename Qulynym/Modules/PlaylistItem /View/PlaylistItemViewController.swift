@@ -77,9 +77,10 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
         karaokeView.soundSlider.addTarget(self, action: #selector(soundSliderValueChanged), for: .valueChanged)
         karaokeView.soundButton.addTarget(self, action: #selector(soundBtnPressed), for: .touchUpInside)
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
-        karaokeView.timelineSlider.addGestureRecognizer(tap)
-        karaokeView.soundSlider.addGestureRecognizer(tap)
+        let timelineSliderTap = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
+        let soundSliderTap = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
+        karaokeView.timelineSlider.addGestureRecognizer(timelineSliderTap)
+        karaokeView.soundSlider.addGestureRecognizer(soundSliderTap)
     }
     
     @objc
@@ -188,7 +189,7 @@ extension PlaylistItemViewController {
     }
     
     func setTimelineSliderMaxValue() {
-        karaokeView.timelineSlider.maximumValue = Float(AudioPlayer.karaokeAudioPlayer.duration)
+        karaokeView.timelineSlider.maximumValue = Float(AudioPlayer.playlistItemAudioPlayer.duration)
     }
     
     func setTimelineSliderValue(_ value: Int) {
