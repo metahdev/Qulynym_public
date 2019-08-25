@@ -15,7 +15,6 @@ protocol PlaylistItemPresenterProtocol: class {
     
     func getMaxCount()
     func getLyricsText()
-    func getTextViewTimepoints() 
     func initTimer()
     func playAudio()
     func pauseAudio()
@@ -32,8 +31,6 @@ class PlaylistItemPresenter: PlaylistItemPresenterProtocol {
     var router: PlaylistItemRouterProtocol!
     
     var timer: TimerController!
-    var forwardTimepoints: [Int: Int]!
-    var rewindTimepoints: [Int: Int]!
     
     required init(_ controller: PlaylistItemViewControllerProtocol) {
         self.controller = controller
@@ -48,11 +45,6 @@ extension PlaylistItemPresenter {
     
     func getLyricsText() {
         controller.lyricsText = interactor.getLyricsText(controller.index)
-    }
-    
-    func getTextViewTimepoints() {
-        forwardTimepoints = interactor.getForwardTextViewTimepoints(controller.index)
-        rewindTimepoints = interactor.getRewindTextViewTimepoints(controller.index)
     }
     
     func initTimer() {
@@ -108,9 +100,7 @@ extension PlaylistItemPresenter {
     func scrollAudio(to value: Float) {
         AudioPlayer.playlistItemAudioPlayer.pause()
         controller.setTimelineSliderValue(Int(value))
-        let previousValue = timer.seconds
         timer.seconds = Int(value)
-        timer.checkForScroll(forward: previousValue < timer.seconds)
         AudioPlayer.playlistItemAudioPlayer.currentTime = TimeInterval(exactly: value)!
         AudioPlayer.playlistItemAudioPlayer.prepareToPlay()
         AudioPlayer.playlistItemAudioPlayer.play()
@@ -136,14 +126,6 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
     
     func notifyOfSecondPassed() {
         controller.setTimelineSliderValue(timer!.seconds)
-    }
-    
-    func notifyOfTimepoints() {
-        if let forwardTimepoint = self.forwardTimepoints[timer.scrollTimepoint!] {
-            controller.scrollTextView(to: forwardTimepoint)
-        } else {
-            controller.scrollTextView(to: self.rewindTimepoints![timer.scrollTimepoint!]!)
-        }
     }
     
     func notifyTimerEnded() {

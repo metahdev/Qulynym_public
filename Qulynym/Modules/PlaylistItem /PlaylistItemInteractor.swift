@@ -12,8 +12,6 @@ import Foundation
 protocol PlaylistItemInteractorProtocol: class {
     func getMaxCount(_ isKaraoke: Bool) -> Int
     func getLyricsText(_ index: Int) -> String
-    func getForwardTextViewTimepoints(_ index: Int) -> [Int: Int]
-    func getRewindTextViewTimepoints(_ index: Int) -> [Int: Int]
     func getPreviousAudioName(_ index: inout Int, isKaraoke: Bool) -> String
     func getNextAudioName(_ index: inout Int, isKaraoke: Bool) -> String
 }
@@ -37,14 +35,6 @@ extension PlaylistItemInteractor {
     
     func getLyricsText(_ index: Int) -> String {
         return ContentService.songs[index].lyrics
-    }
-    
-    func getForwardTextViewTimepoints(_ index: Int) -> [Int: Int] {
-        return ContentService.songs[index].forwardTextViewTimepoints
-    }
-    
-    func getRewindTextViewTimepoints(_ index: Int) -> [Int: Int] {
-        return ContentService.songs[index].rewindTextViewTimepoints
     }
     
     func getPreviousAudioName(_ index: inout Int, isKaraoke: Bool) -> String {

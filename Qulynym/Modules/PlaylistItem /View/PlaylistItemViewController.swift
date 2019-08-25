@@ -50,7 +50,6 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
         assignActions()
         presenter.getLyricsText()
         presenter.getMaxCount()
-        presenter.getTextViewTimepoints()
         presenter.initTimer()
     }
     
