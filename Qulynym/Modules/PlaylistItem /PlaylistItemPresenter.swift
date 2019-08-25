@@ -110,7 +110,7 @@ extension PlaylistItemPresenter {
         controller.setTimelineSliderValue(Int(value))
         let previousValue = timer.seconds
         timer.seconds = Int(value)
-        timer.checkForScroll(rewind: previousValue < timer.seconds)
+        timer.checkForScroll(forward: previousValue < timer.seconds)
         AudioPlayer.playlistItemAudioPlayer.currentTime = TimeInterval(exactly: value)!
         AudioPlayer.playlistItemAudioPlayer.prepareToPlay()
         AudioPlayer.playlistItemAudioPlayer.play()

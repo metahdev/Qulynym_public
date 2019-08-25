@@ -59,19 +59,17 @@ class TimerController {
         delegate.notifyTimerEnded()
     }
     
-    func checkForScroll(rewind: Bool) {
-        let timepointsArray: [Int]!
+    func checkForScroll(forward: Bool) {
+        var timepointsArray: [Int]!
         
-        if rewind {
-            timepointsArray = Array(delegate.forwardTimepoints.keys)
-        } else {
+        if forward {
             timepointsArray = Array(delegate.rewindTimepoints.keys)
-        }
-        
-        if rewind {
-            checkForForwardScroll(timepointsArray)
-        } else {
+            timepointsArray.sort(by: >)
             checkForRewindScroll(timepointsArray)
+        } else {
+            timepointsArray = Array(delegate.forwardTimepoints.keys)
+            timepointsArray.sort()
+            checkForForwardScroll(timepointsArray)
         }
         
         if scrollTimepoint != nil {
@@ -83,7 +81,7 @@ class TimerController {
     
     func checkForForwardScroll(_ arr: [Int]) {
         for timepoint in arr {
-            if seconds > timepoint {
+            if seconds >= timepoint {
                 self.scrollTimepoint = timepoint
             } else {
                 break
@@ -93,7 +91,7 @@ class TimerController {
     
     func checkForRewindScroll(_ arr: [Int]) {
         for timepoint in arr {
-            if seconds < timepoint {
+            if seconds <= timepoint {
                 self.scrollTimepoint = timepoint
             } else {
                 break
