@@ -46,7 +46,7 @@ struct AudioPlayer {
         initPlayers(player: &backgroundAudioPlayer, url: url)
         
         backgroundAudioPlayer.numberOfLoops = -1
-        backgroundAudioPlayer.volume = 0.5
+        backgroundAudioPlayer.volume = 0.2
     }
     
     
@@ -57,6 +57,7 @@ struct AudioPlayer {
         case .effects:
             initPlayers(player: &sfxAudioPlayer, url: url)
             sfxAudioPlayer.play()
+            sfxAudioPlayer.volume = 1.5
         case .scenes:
             initPlayers(player: &scenesAudioPlayer, url: url)
             scenesAudioPlayer.play()
