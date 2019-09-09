@@ -58,8 +58,6 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
         itemView.setupLayout()
         assignViews()
         assignActions()
-        
-        AudioPlayer.backgroundAudioPlayer.play()
     }
     
     override func viewWillAppear(_ animated: Bool) {

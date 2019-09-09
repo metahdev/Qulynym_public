@@ -16,12 +16,10 @@ enum TextType {
 
 struct EduSection {
     var name: String
-    var timepoints: [Int]
     var contentNames: [String]
     
-    init(name: String, timepoints: [Int], contentNames: [String]) {
+    init(name: String, contentNames: [String]) {
         self.name = name
-        self.timepoints = timepoints
         self.contentNames = contentNames
     }
 }
@@ -29,8 +27,6 @@ struct EduSection {
 struct Song {
     var name: String
     var lyrics: String
-    var forwardTextViewTimepoints: [Int: Int]
-    var rewindTextViewTimepoints: [Int: Int]
 }
 
 struct ContentService {
@@ -54,8 +50,8 @@ struct ContentService {
     ]
     
     static var songs: [Song] = [
-        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, forwardTextViewTimepoints: [44: 173, 58: 268, 73: 373, 87: 458, 130: 553, 155: 717], rewindTextViewTimepoints: [43: 0, 55: 173, 76: 268, 86: 337, 129: 432, 154: 526]),
-        Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, forwardTextViewTimepoints: [26: 0, 34: 0, 42: 0, 51: 0, 59: 0, 67: 0, 75: 0, 84: 0], rewindTextViewTimepoints: [25: 0, 33: 0, 41: 0, 50: 0, 58: 0, 66: 0, 74: 0])
+        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics),
+        Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics)
     ]
     
     static var stories = [
@@ -65,10 +61,10 @@ struct ContentService {
     static var infoForParents = setAttributedText(type: .infoForParents)
     static var credits = setAttributedText(type: .credits)
     
-    private static var colorsSection = EduSection(name: "Tu'ster", timepoints: [0], contentNames: ["Qyzyl", "Qyzg'ylt-sary", "Sary", "Jasyl", "Ko'gildir", "Ko'k", "K'ulgin", "Qon'yr", "Qara", "Aq"])
-        private static var shapesSection = EduSection(name: "Pishinder", timepoints: [0], contentNames: ["U'shburysh", "Sharshy", "Tikto'rtburysh", "Shen'ber", "Zhuldyz", "Sopaqsha", "Zhu'rek", "Romb"])
-    private static var animalsSection = EduSection(name: "Zhanuarlar", timepoints: [5], contentNames: ["Mysyq", "Bu'rkіt", "It", "Esek", "At", "Sıyr", "Qoı", "Shoshqa", "Qoıan", "Qumyrsqa", "Ko'belek", "U'ki", "Torg'ai", "Tıіn", "Aiy'", "Qasqyr", "Tu'lki", "Barys", "Arystan", "Pil"])
-    private static var plantsSection = EduSection(name: "O'simdikter", timepoints: [0], contentNames: ["Qaıyn'", "Alma ag'ashy", "Terek", "Qarag'aı", "Almurt aǵashy", "Shyrsha", "Sheten", "Emen", "Ko'kterek", "Órіk ag'ashy", "Tan'qy'raı", "Mu'kjıdek", "Ray'shan", "Kakty's", "Qon'yray'gu'l", "Shegіrgu'l", "Bo'rtegu'l", "Tu'ımedaq", "Qyzg'aldaq", "Baqbaq"])
+    private static var colorsSection = EduSection(name: "Tu'ster", contentNames: ["Qyzyl", "Qyzg'ylt-sary", "Sary", "Jasyl", "Ko'gildir", "Ko'k", "K'ulgin", "Qon'yr", "Qara", "Qyzg'ylt", "Aq", "Sur"])
+        private static var shapesSection = EduSection(name: "Pishinder", contentNames: ["U'shburysh", "Sharshy", "Tikto'rtburysh", "Shen'ber", "Zhuldyz", "Sopaqsha", "Zhu'rek", "Romb"])
+    private static var animalsSection = EduSection(name: "Zhanuarlar", contentNames: ["Mysyq", "It", "At", "Sıyr", "Esek", "Qoı", "Shoshqa", "Qoıan", "Qumyrsqa", "Ko'belek", "U'ki", "Bu'rkit", "Torg'ai", "Tıіn", "Aiy'", "Qasqyr", "Tu'lki", "Barys", "Arystan", "Pil"])
+    private static var plantsSection = EduSection(name: "O'simdikter", contentNames: ["Qaıyn'", "Alma ag'ashy", "Terek", "Qarag'aı", "Almurt aǵashy", "Shyrsha", "Sheten", "Emen", "Ko'kterek", "Órіk ag'ashy", "Tan'qy'raı", "Mu'kjıdek", "Ray'shan", "Kakty's", "Qon'yray'gu'l", "Shegіrgu'l", "Bo'rtegu'l", "Tu'ımedaq", "Qyzg'aldaq", "Baqbaq"])
     
     static var parentsInfoBody = "Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents. Information for parents."
     

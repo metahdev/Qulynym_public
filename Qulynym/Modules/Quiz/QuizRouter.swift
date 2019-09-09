@@ -29,7 +29,12 @@ extension QuizRouter {
             controller.itemView.slideCount -= 4
         }
         if controller.itemView.slideCount == controller.itemView.section.contentNames.count {
-            close(showCongratulationsScenes: true)
+            AudioPlayer.audioQueue.async {
+                while AudioPlayer.sfxAudioPlayer.isPlaying {}
+                DispatchQueue.main.async {
+                    self.close(showCongratulationsScenes: true)
+                }
+            }
             return
         }
         controller.navigationController?.popViewController(animated: true)
@@ -39,10 +44,10 @@ extension QuizRouter {
         if let firstViewController = controller.navigationController?.viewControllers[1] {
             controller.navigationController?.popToViewController(firstViewController, animated: true)
             
-            if showCongratulationsScenes {
-                let scenes = ScenesManager(calling: firstViewController, showing: self.controller.categoryName + "Passed")
-                scenes.showAlert()
-            }
+//            if showCongratulationsScenes {
+//                let scenes = ScenesManager(calling: firstViewController, showing: self.controller.categoryName + "Passed")
+//                scenes.showAlert()
+//            }
         }
     }
 }

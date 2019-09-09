@@ -121,14 +121,3 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         return UIEdgeInsets(top: 40, left: distance, bottom: 40, right: distance)
     }
 }
-
-
-extension PlaylistViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return Animator()
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return Animator()
-    }
-}

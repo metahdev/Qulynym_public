@@ -12,11 +12,11 @@ import QuartzCore
 
 class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     // MARK:- Properties
-    let duration = 0.7
-    weak var fromView: UIView!
-    weak var toView: UIView!
     weak var containerView: UIView!
+    weak var toView: UIView!
     var bubbleClipView: UIView!
+    
+    private let duration = 0.7
     
     
     // MARK:- Protocol Methods
@@ -26,9 +26,11 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         AudioPlayer.setupExtraAudio(with: "bubbles", audioPlayer: .effects)
+        
         setupViews(context: transitionContext)
         containerView.addSubview(toView)
-        initBubbleView(view: containerView)
+        
+        initBubbleView()
         setupBeginningValues()
         
         UIView.animateKeyframes(withDuration: duration, delay: 0.0, animations: {
@@ -42,24 +44,21 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     
     // MARK: Helper Methods
     private func setupViews(context: UIViewControllerContextTransitioning) {
-        fromView = context.viewController(forKey: .from)!.view
-        toView = context.viewController(forKey: .to)!.view
         containerView = context.containerView
+        toView = context.viewController(forKey: .to)!.view
     }
     
-    private func initBubbleView(view: UIView) {
-        bubbleClipView = UIView(frame: view.frame.offsetBy(dx: 0, dy: 0))
+    private func initBubbleView() {
+        bubbleClipView = UIView(frame: containerView.frame.offsetBy(dx: 0, dy: 0))
         bubbleClipView.clipsToBounds = true
-        let bubbleView = BubbleView(frame: CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: view.frame.height))        
+        let bubbleView = BubbleView(frame: bubbleClipView.frame)
         bubbleClipView.addSubview(bubbleView)
-        view.addSubview(bubbleClipView)
+        containerView.addSubview(bubbleClipView)
     }
     
     private func setupBeginningValues() {
         toView.alpha = 0
         bubbleClipView.alpha = 0
-        fromView.backgroundColor = .black
-        fromView.layer.opacity = 0.6
     }
     
     private func callKeyframes() {
@@ -73,8 +72,7 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     private func setupEndingValues() {
-        toView.alpha = 1
-        fromView.layer.opacity = 1
         bubbleClipView.alpha = 0
+        toView.alpha = 1
     }
 }

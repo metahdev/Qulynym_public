@@ -36,8 +36,7 @@ extension PlaylistRouter {
         controller.karaokeViewDelegate.contentName = controller.content[index]
         controller.karaokeViewDelegate.index = index
         controller.karaokeViewDelegate.isKaraoke = controller.isKaraoke
-        karaokeView.transitioningDelegate = controller
-            
+        
         controller.show(karaokeView, sender: nil)
     }
 }

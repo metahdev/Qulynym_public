@@ -38,7 +38,7 @@ class GameViewController: UIViewController {
     
     // MARK: View Lifecycle
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         view = SKView(frame: view.bounds)
         
         if let view = self.view as! SKView? {

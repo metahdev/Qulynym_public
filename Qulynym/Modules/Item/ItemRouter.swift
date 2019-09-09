@@ -37,6 +37,7 @@ extension ItemRouter: ItemRouterProtocol {
         controller.quizViewController = vc
         controller.quizViewController.cards = cards
         controller.quizViewController.categoryName = categoryName
+        controller.quizViewController.areImagesTransparent = controller.areImagesTransparent
         vc.itemView = controller
         controller.show(vc, sender: nil)
     }

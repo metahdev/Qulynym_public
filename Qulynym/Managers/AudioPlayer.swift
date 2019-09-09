@@ -57,7 +57,6 @@ struct AudioPlayer {
         case .effects:
             initPlayers(player: &sfxAudioPlayer, url: url)
             sfxAudioPlayer.play()
-            sfxAudioPlayer.volume = 1.5
         case .scenes:
             initPlayers(player: &scenesAudioPlayer, url: url)
             scenesAudioPlayer.play()

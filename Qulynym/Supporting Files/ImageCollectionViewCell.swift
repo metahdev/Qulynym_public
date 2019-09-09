@@ -31,6 +31,11 @@ class ImageCollectionViewCell: UICollectionViewCell {
             imageView.layer.cornerRadius = imageViewCornerRadius
         }
     }
+    var imageViewContentMode: ContentMode! {
+        didSet {
+            imageView.contentMode = imageViewContentMode
+        }
+    }
     private lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.clipsToBounds = true

@@ -43,6 +43,10 @@ extension QuizPresenter {
     }
     
     func playAudio() {
+        if modifiedCards.count == 1 {
+            return
+        }
+        
         controller.changeViewsEnableState(enable: false)
         AudioPlayer.audioQueue.async {
             while AudioPlayer.sfxAudioPlayer.isPlaying {}
@@ -57,7 +61,12 @@ extension QuizPresenter {
     
     func deleteItem() {
         if modifiedCards.count == 1 {
-            router.backToItem(didPass: true)
+            AudioPlayer.audioQueue.async {
+                while AudioPlayer.sfxAudioPlayer.isPlaying {}
+                DispatchQueue.main.async {
+                    self.router.backToItem(didPass: true)
+                }
+            }
             return
         }
         

@@ -14,6 +14,7 @@ protocol QuizViewControllerProtocol: class {
     var categoryName: String { get set }
     var randomCard: String { get set }
     var cards: [String]! { get set }
+    var areImagesTransparent: Bool! { get set }
     
     func returnCellState(_ cellIndex: Int)
     func changeViewsEnableState(enable: Bool)
@@ -32,7 +33,9 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
             AudioPlayer.setupExtraAudio(with: randomCard, audioPlayer: .content)
         }
     }
-    var cards: [String]!    
+    var cards: [String]!
+    var areImagesTransparent: Bool!
+
     var presenter: QuizPresenterProtocol!
     weak var itemView: ItemViewControllerProtocol!
     
@@ -112,8 +115,12 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         cell.imageName = cards[indexPath.row]
-        cell.layer.borderWidth = 5
-        cell.layer.borderColor = UIColor.white.cgColor
+        if areImagesTransparent {
+            cell.imageViewContentMode = .scaleAspectFit
+        } else {
+            cell.layer.borderWidth = 5
+            cell.layer.borderColor = UIColor.white.cgColor
+        }
         return cell
     }
     
