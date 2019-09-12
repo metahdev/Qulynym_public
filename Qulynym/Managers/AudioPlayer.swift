@@ -34,7 +34,7 @@ struct AudioPlayer {
     static var storyAudioPlayer = AVAudioPlayer()
     static var playlistItemAudioPlayer = AVAudioPlayer()
     
-    
+ 
     // MARK: Background Audio
     static func turnOnBackgroundMusic() {
         initBackgroundAudio()
@@ -46,7 +46,7 @@ struct AudioPlayer {
         initPlayers(player: &backgroundAudioPlayer, url: url)
         
         backgroundAudioPlayer.numberOfLoops = -1
-        backgroundAudioPlayer.volume = 0.2
+        backgroundAudioPlayer.volume = 0.1
     }
     
     
@@ -62,8 +62,10 @@ struct AudioPlayer {
             scenesAudioPlayer.play()
         case .content:
             initPlayers(player: &contentAudioPlayer, url: url)
+            contentAudioPlayer.volume = 1.5
         case .question:
             initPlayers(player: &questionAudioPlayer, url: url)
+            questionAudioPlayer.volume = 1.5
         case .story:
             initPlayers(player: &storyAudioPlayer, url: url)
             playlistPlayerInitiated = true

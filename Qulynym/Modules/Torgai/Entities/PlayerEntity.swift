@@ -63,7 +63,8 @@ class PlayerEntity: GKEntity {
     
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.Player
         spriteNode.physicsBody?.collisionBitMask = 0
-        spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Ground | PhysicsCategory.Top
+        spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Ground
+        // ***
     }
     
     required init?(coder aDecoder: NSCoder) {

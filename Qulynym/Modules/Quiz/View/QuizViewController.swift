@@ -18,6 +18,7 @@ protocol QuizViewControllerProtocol: class {
     
     func returnCellState(_ cellIndex: Int)
     func changeViewsEnableState(enable: Bool)
+    func changeSelectedCellOpacity(to number: Float)
     func shuffleCards()
 }
 
@@ -45,6 +46,8 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     
     private var quizView: QuizViewProtocol!
     private var configurator: QuizConfiguratorProtocol = QuizConfigurator()
+    
+    private var selectedIndex: Int?
     
     
     // MARK:- Status Bar
@@ -125,20 +128,25 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCell
         let indexOfRandCard = cards.firstIndex(of: randomCard)
-        if indexPath.row == indexOfRandCard {
-            cell!.layer.borderColor = UIColor.green.cgColor
+        selectedIndex = indexPath.row
+        
+        self.changeSelectedCellOpacity(to: 0.5)
+        
+        if selectedIndex == indexOfRandCard {
+            cell.layer.borderColor = UIColor.green.cgColor
             changeViewsEnableState(enable: false)
             AudioPlayer.audioQueue.asyncAfter(deadline: .now() + 0.5, execute: {
                 AudioPlayer.setupExtraAudio(with: "wellDone", audioPlayer: .effects)
                 DispatchQueue.main.async {
                     self.presenter.playAudio()
+                    self.changeSelectedCellOpacity(to: 1.0)
                     self.presenter.deleteItem()
                 }
             })
         } else {
-            cell!.layer.borderColor = UIColor.red.cgColor
+            cell.layer.borderColor = UIColor.red.cgColor
             presenter.backToItemWithRepeat()
         }
     }
@@ -168,6 +176,12 @@ extension QuizViewController {
         }
         soundsBtn.isEnabled = enable
         closeBtn.isEnabled = enable
+    }
+    
+    func changeSelectedCellOpacity(to number: Float) {
+        let indexPath = IndexPath(row: selectedIndex!, section: 0)
+        let cell = cardsCollectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell
+        cell!.imageViewOpacity = number
     }
     
     func shuffleCards() {

@@ -49,6 +49,7 @@ extension QuizPresenter {
         
         controller.changeViewsEnableState(enable: false)
         AudioPlayer.audioQueue.async {
+            // *** asyncAfter
             while AudioPlayer.sfxAudioPlayer.isPlaying {}
             AudioPlayer.questionAudioPlayer.play()
             while AudioPlayer.questionAudioPlayer.isPlaying {}
@@ -92,6 +93,7 @@ extension QuizPresenter {
             AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
             while AudioPlayer.sfxAudioPlayer.isPlaying {}
             DispatchQueue.main.async {
+                self.controller.changeSelectedCellOpacity(to: 1.0)
                 self.router.backToItem(didPass: false)
             }
         }

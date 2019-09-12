@@ -37,7 +37,7 @@ struct PhysicsCategory {
     static let Player: UInt32 = 0b1
     static let Obstacle: UInt32 = 0b10
     static let Ground: UInt32 = 0b100
-    static let Top: UInt32 = 0b1000
+//    static let Top: UInt32 = 0b1000
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {

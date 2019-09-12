@@ -36,6 +36,11 @@ class ImageCollectionViewCell: UICollectionViewCell {
             imageView.contentMode = imageViewContentMode
         }
     }
+    var imageViewOpacity: Float! {
+        didSet {
+            imageView.layer.opacity = imageViewOpacity
+        }
+    }
     private lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.clipsToBounds = true
