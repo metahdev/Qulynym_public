@@ -25,7 +25,7 @@ import GameplayKit
 
 class MovementComponent: GKComponent {
     let spriteComponent: SpriteComponent
-    
+        
     let flapAction = SKAction.playSoundFileNamed("flapping.wav", waitForCompletion: false)
     
     let impulse: CGFloat = 400
@@ -41,6 +41,7 @@ class MovementComponent: GKComponent {
     var lasyTouchY: CGFloat = 0.0
     
     var playableStart: CGFloat = 0
+    var playableHeight = GameScene.playableHeight
     
     init(entity: GKEntity) {
         self.spriteComponent = entity.component(ofType: SpriteComponent.self)!
@@ -84,6 +85,10 @@ class MovementComponent: GKComponent {
         
         if spriteNode.position.y - spriteNode.size.height / 2 < playableStart {
             spriteNode.position = CGPoint(x: spriteNode.position.x, y: playableStart + spriteNode.size.height / 2)
+        }
+        
+        if spriteNode.position.y - spriteNode.size.height/2 > playableHeight {
+            spriteNode.position = CGPoint(x: spriteNode.position.x, y: playableHeight + spriteNode.size.height/2)
         }
     }
     
