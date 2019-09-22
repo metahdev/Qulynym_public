@@ -167,7 +167,7 @@ class DrawingView: DrawingViewProtocol {
     
     private func initCloseConstraints() {
         slideOutBtn.setImage(UIImage(named: "slideOutOpen"), for: .normal)
-        slideOutBtnConstraint = slideOutBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: -16)
+        slideOutBtnConstraint = slideOutBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
         drawingCVTrailingConstraint.constant = 0
         closeBtn.isEnabled = true
     }
@@ -215,7 +215,7 @@ class DrawingView: DrawingViewProtocol {
             marker.heightAnchor.constraint(equalToConstant: marker.intrinsicContentSize.height),
             marker.leadingAnchor.constraint(equalTo: toolsCollectionView.trailingAnchor, constant: 16),
             marker.topAnchor.constraint(equalTo: toolsCollectionView.topAnchor),
-            marker.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1, constant: -48),
+            marker.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.075, constant: -20),
             
             pencil.topAnchor.constraint(equalTo: marker.topAnchor),
             pencil.leadingAnchor.constraint(equalTo: marker.trailingAnchor, constant: 16),
