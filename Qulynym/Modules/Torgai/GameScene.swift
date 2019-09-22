@@ -45,7 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let worldNode = SKNode()
     var playableStart: CGFloat = 0
-    var playableHeight: CGFloat = 0
+    static var playableHeight: CGFloat = 0
     
     let numberOfForegrounds = 2
     let groundSpeed: CGFloat = 150
@@ -103,7 +103,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.size.height = size.height * 0.72
         
         playableStart = size.height - background.size.height
-        playableHeight = background.size.height
+        GameScene.playableHeight = size.height
         
         worldNode.addChild(background)
         
@@ -135,7 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupPlayer() {
         let playerNode = player.spriteComponent.node
-        playerNode.position = CGPoint(x: size.width * 0.2, y: playableHeight * 0.4 + playableStart)
+        playerNode.position = CGPoint(x: size.width * 0.2, y: GameScene.playableHeight * 0.4 + playableStart)
         playerNode.zPosition = Layer.player.rawValue
         
         worldNode.addChild(playerNode)
@@ -186,8 +186,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bottomObstacle = createObstacle()
         let startX = size.width + bottomObstacle.size.width / 2
         
-        let bottomObstacleMin = (playableStart - bottomObstacle.size.height / 2) + playableHeight * bottomObstacleMinFraction
-        let bottomObstacleMax = (playableStart - bottomObstacle.size.height / 2) + playableHeight * bottomObstacleMaxFraction
+        let bottomObstacleMin = (playableStart - bottomObstacle.size.height / 2) + background.size.height * bottomObstacleMinFraction
+        let bottomObstacleMax = (playableStart - bottomObstacle.size.height / 2) + background.size.height * bottomObstacleMaxFraction
         
         let randomSource = GKARC4RandomSource()
         let randomDistribution = GKRandomDistribution(randomSource: randomSource, lowestValue: Int(round(bottomObstacleMin)), highestValue: Int(round(bottomObstacleMax)))

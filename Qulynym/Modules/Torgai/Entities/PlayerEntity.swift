@@ -24,7 +24,7 @@ import SpriteKit
 import GameplayKit
 
 class PlayerEntity: GKEntity {
-    
+
     var spriteComponent: SpriteComponent!
     var movementComponent: MovementComponent!
     var animationComponent: AnimationComponent!
@@ -65,6 +65,7 @@ class PlayerEntity: GKEntity {
         spriteNode.physicsBody?.collisionBitMask = 0
         spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Ground
         // ***
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
