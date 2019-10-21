@@ -14,6 +14,10 @@
 		856F349122F87F1800E97C0C /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349022F87F1800E97C0C /* SettingsRouter.swift */; };
 		856F349422F87F5800E97C0C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349322F87F5800E97C0C /* SettingsViewController.swift */; };
 		856F349622F87F8900E97C0C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349522F87F8900E97C0C /* SettingsView.swift */; };
+		8597726D235DD79800D29D8C /* Ertegіler álemі.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85977269235DD79800D29D8C /* Ertegіler álemі.mp3 */; };
+		8597726E235DD79800D29D8C /* Sarjaılay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8597726A235DD79800D29D8C /* Sarjaılay.mp3 */; };
+		8597726F235DD79800D29D8C /* Bіr bala.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8597726B235DD79800D29D8C /* Bіr bala.mp3 */; };
+		85977270235DD79800D29D8C /* Asyl áje.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8597726C235DD79800D29D8C /* Asyl áje.mp3 */; };
 		B916B09122FBDC3400AF255A /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08C22FBDC3400AF255A /* GameOverState.swift */; };
 		B916B09222FBDC3400AF255A /* TutorialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08D22FBDC3400AF255A /* TutorialState.swift */; };
 		B916B09322FBDC3400AF255A /* MainMenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08E22FBDC3400AF255A /* MainMenuState.swift */; };
@@ -211,6 +215,10 @@
 		856F349022F87F1800E97C0C /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		856F349322F87F5800E97C0C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		856F349522F87F8900E97C0C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		85977269235DD79800D29D8C /* Ertegіler álemі.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Ertegіler álemі.mp3"; path = "../../../../../qulynym songs/Ertegіler álemі.mp3"; sourceTree = "<group>"; };
+		8597726A235DD79800D29D8C /* Sarjaılay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Sarjaılay.mp3"; path = "../../../../../qulynym songs/Sarjaılay.mp3"; sourceTree = "<group>"; };
+		8597726B235DD79800D29D8C /* Bіr bala.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Bіr bala.mp3"; path = "../../../../../qulynym songs/Bіr bala.mp3"; sourceTree = "<group>"; };
+		8597726C235DD79800D29D8C /* Asyl áje.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Asyl áje.mp3"; path = "../../../../../qulynym songs/Asyl áje.mp3"; sourceTree = "<group>"; };
 		B916B08C22FBDC3400AF255A /* GameOverState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 		B916B08D22FBDC3400AF255A /* TutorialState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialState.swift; sourceTree = "<group>"; };
 		B916B08E22FBDC3400AF255A /* MainMenuState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuState.swift; sourceTree = "<group>"; };
@@ -735,6 +743,10 @@
 			children = (
 				D18E30BB2325566400C0E012 /* Aigo'lek.mp3 */,
 				D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */,
+				8597726C235DD79800D29D8C /* Asyl áje.mp3 */,
+				8597726B235DD79800D29D8C /* Bіr bala.mp3 */,
+				85977269235DD79800D29D8C /* Ertegіler álemі.mp3 */,
+				8597726A235DD79800D29D8C /* Sarjaılay.mp3 */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -1092,6 +1104,7 @@
 				D1D8CED22326720B00531F3F /* Mysyq.mp3 in Resources */,
 				D1D8CEDF2326720B00531F3F /* Qasqyr.mp3 in Resources */,
 				D1D8CEDD2326720B00531F3F /* Ko'belek.mp3 in Resources */,
+				8597726F235DD79800D29D8C /* Bіr bala.mp3 in Resources */,
 				D18E30C02325566C00C0E012 /* Bauyrsaq Ertegi.mp3 in Resources */,
 				D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */,
 				D1D8CF262326A68F00531F3F /* PishinderQ.mp3 in Resources */,
@@ -1100,6 +1113,7 @@
 				D1D8CF2A2326A68F00531F3F /* Sopaqsha.mp3 in Resources */,
 				D1D8CF0D2326A1AA00531F3F /* Kakty's.mp3 in Resources */,
 				D1D8CF2D2326A68F00531F3F /* Tikto'rtburysh.mp3 in Resources */,
+				8597726E235DD79800D29D8C /* Sarjaılay.mp3 in Resources */,
 				D1D8CED62326720B00531F3F /* ZhanuarlarQ.mp3 in Resources */,
 				D1D8CF5A2326A80100531F3F /* Qyzyl.mp3 in Resources */,
 				D1D8CEE52326720B00531F3F /* Torg'ai.mp3 in Resources */,
@@ -1110,6 +1124,7 @@
 				D1D8CF622326A80200531F3F /* Aq.mp3 in Resources */,
 				D1D8CF0B2326A1AA00531F3F /* Qyzg'aldaq.mp3 in Resources */,
 				D1D8CF582326A80100531F3F /* Qon'yr.mp3 in Resources */,
+				85977270235DD79800D29D8C /* Asyl áje.mp3 in Resources */,
 				D1D8CF632326A80200531F3F /* Sur.mp3 in Resources */,
 				D1D8CF192326A1AA00531F3F /* Ko'kterek.mp3 in Resources */,
 				D1D8CEE12326720B00531F3F /* Qoı.mp3 in Resources */,
@@ -1123,6 +1138,7 @@
 				D1D8CF292326A68F00531F3F /* Romb.mp3 in Resources */,
 				D1D8CEE22326720B00531F3F /* At.mp3 in Resources */,
 				D1D8CED72326720B00531F3F /* Esek.mp3 in Resources */,
+				8597726D235DD79800D29D8C /* Ertegіler álemі.mp3 in Resources */,
 				D15318CC2326376D0035EE05 /* ending.mp3 in Resources */,
 				D146AB2F22E77EB2004520DA /* backgroundAudio.mp3 in Resources */,
 				D1D8CED52326720B00531F3F /* Bu'rkit.mp3 in Resources */,
