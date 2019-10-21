@@ -10,6 +10,7 @@
 import UIKit
 
 protocol MenuRouterProtocol: class {
+    func showBeinelerView() 
     func showToddlerEdu()
     func showPlaylist(isKaraoke: Bool)
     func showDrawingView()
@@ -31,6 +32,10 @@ class MenuRouter: MenuRouterProtocol {
 
 extension MenuRouter {
     // MARK:- Protocol Methods
+    func showBeinelerView() {
+        showAnotherView(view: BeinelerViewController())
+    }
+    
     func showToddlerEdu() {
         let vc = MenuViewController()
         controller.secondMenuViewDelegate = vc

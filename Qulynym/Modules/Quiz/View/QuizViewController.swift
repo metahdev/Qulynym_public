@@ -40,6 +40,8 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     var presenter: QuizPresenterProtocol!
     weak var itemView: ItemViewControllerProtocol!
     
+    var selectedIndex: Int?
+
     private var cardsCollectionView: UICollectionView!
     private var closeBtn: UIButton!
     private var soundsBtn: UIButton!
@@ -47,9 +49,7 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     private var quizView: QuizViewProtocol!
     private var configurator: QuizConfiguratorProtocol = QuizConfigurator()
     
-    private var selectedIndex: Int?
-    
-    
+
     // MARK:- Status Bar
     override var prefersStatusBarHidden: Bool {
         return true

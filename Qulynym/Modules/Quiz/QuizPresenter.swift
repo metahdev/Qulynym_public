@@ -23,7 +23,7 @@ class QuizPresenter: QuizPresenterProtocol {
     weak var controller: QuizViewControllerProtocol!
     var interactor: QuizInteractorProtocol!
     var router: QuizRouterProtocol!
-    private var modifiedCards = [String]()
+    var modifiedCards = [String]()
     
     
     // MARK:- Initialization
@@ -76,7 +76,7 @@ extension QuizPresenter {
         controller.shuffleCards()
     }
     
-    private func removePreviousCard() {
+    func removePreviousCard() {
         let index = modifiedCards.firstIndex(of: controller.randomCard)
         modifiedCards.remove(at: index!)
     }

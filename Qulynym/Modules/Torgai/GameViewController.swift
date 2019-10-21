@@ -77,7 +77,7 @@ class GameViewController: UIViewController {
 
     
     @objc func closeGame() {
-        AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
         self.navigationController?.popViewController(animated: true)
+        AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
     }
 }

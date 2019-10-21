@@ -61,14 +61,7 @@ extension UIImageView {
     }
 }
 
-
-// MARK:- UICollectionView
-enum BackgroundType {
-    case white
-    case clear
-}
-
-func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDirection, image name: String?, background type: BackgroundType?) -> UICollectionView {
+func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDirection, image name: String?, background type: UIColor?) -> UICollectionView {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = direction
     
@@ -78,12 +71,8 @@ func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDire
         cv.backgroundView = UIImageView(image: UIImage(named: imageName))
     }
     
-    if type == .white {
-        cv.backgroundColor = .white
-    } else {
-        cv.backgroundColor = .clear
-    }
-    
+    cv.backgroundColor = type
+        
     cv.setCollectionViewLayout(layout, animated: false)
     cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
     

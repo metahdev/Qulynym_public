@@ -16,6 +16,11 @@ class ImageCollectionViewCell: UICollectionViewCell {
             imageView.image = UIImage(named: imageName)
         }
     }
+    var image: UIImage? {
+        didSet {
+            imageView.image = image!
+        }
+    }
     var text: String! {
         didSet {
             sectionTitleLabel.text = text

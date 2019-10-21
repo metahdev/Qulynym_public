@@ -29,8 +29,14 @@ struct Song {
     var lyrics: String
 }
 
+struct Video {
+    var title: String
+    var image: Data
+}
+
 struct ContentService {
     static let menuSections = [
+        "Beıneler",
         "Oqu",
         "O'len aitu",
         "Ertegilerdi tyndau",
