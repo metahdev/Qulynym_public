@@ -51,7 +51,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
         menuView.setupLayout()
         setupProperties()
         assignActions()
-//        initMessage()
     }
     
     override func viewWillAppear(_ animated: Bool) {

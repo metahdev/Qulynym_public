@@ -118,6 +118,13 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let distance = (view.frame.width - view.frame.width * 0.6) / 3
-        return UIEdgeInsets(top: distance , left: distance, bottom: distance , right: distance)
+        return UIEdgeInsets(top: 40, left: distance, bottom: distance, right: distance)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        let distance = (view.frame.width - view.frame.width * 0.6) / 3
+        return distance
     }
 }

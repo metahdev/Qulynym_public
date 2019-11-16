@@ -7,7 +7,6 @@
 * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
-// balapantv
 
 import UIKit
 
@@ -87,8 +86,8 @@ extension BeinelerViewController: UICollectionViewDelegate, UICollectionViewData
         cell.imageViewCornerRadius = 15
         
         let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration)
-        let url = URL(string: "https://youtube.com")!
+//        let session = URLSession(configuration: configuration)
+//        let url = URL(string: "https://youtube.com")!
         
 //        let task = session.dataTask(with: url) { (data, response, error) in
 //            guard let httpResponse = response as? HTTPURLResponse,
@@ -109,7 +108,6 @@ extension BeinelerViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

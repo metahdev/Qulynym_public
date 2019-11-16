@@ -36,7 +36,6 @@ struct Video {
 
 struct ContentService {
     static let menuSections = [
-        "Beıneler",
         "Oqu",
         "O'len aitu",
         "Ertegilerdi tyndau",

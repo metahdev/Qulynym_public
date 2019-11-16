@@ -91,7 +91,7 @@
 		D1621EC2235E257500FF2537 /* Asyl áje.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EBE235E257400FF2537 /* Asyl áje.mp3 */; };
 		D1621EC3235E257500FF2537 /* Bіr bala.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EBF235E257500FF2537 /* Bіr bala.mp3 */; };
 		D1621EC4235E257500FF2537 /* Ertegіler álemі.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EC0235E257500FF2537 /* Ertegіler álemі.mp3 */; };
-		D1621EC5235E257500FF2537 /* Sarjaılay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EC1235E257500FF2537 /* Sarjaılay.mp3 */; };
+		D1621EC5235E257500FF2537 /* Sarjaılay'.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EC1235E257500FF2537 /* Sarjaılay'.mp3 */; };
 		D18E30BD2325566500C0E012 /* Aigo'lek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BB2325566400C0E012 /* Aigo'lek.mp3 */; };
 		D18E30BE2325566500C0E012 /* Qoshaqanym.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */; };
 		D18E30C02325566C00C0E012 /* Bauyrsaq Ertegi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */; };
@@ -301,7 +301,7 @@
 		D1621EBE235E257400FF2537 /* Asyl áje.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Asyl áje.mp3"; sourceTree = "<group>"; };
 		D1621EBF235E257500FF2537 /* Bіr bala.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bіr bala.mp3"; sourceTree = "<group>"; };
 		D1621EC0235E257500FF2537 /* Ertegіler álemі.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ertegіler álemі.mp3"; sourceTree = "<group>"; };
-		D1621EC1235E257500FF2537 /* Sarjaılay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sarjaılay.mp3"; sourceTree = "<group>"; };
+		D1621EC1235E257500FF2537 /* Sarjaılay'.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sarjaılay'.mp3"; sourceTree = "<group>"; };
 		D18E30BB2325566400C0E012 /* Aigo'lek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Aigo'lek.mp3"; sourceTree = "<group>"; };
 		D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Qoshaqanym.mp3; sourceTree = "<group>"; };
 		D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bauyrsaq Ertegi.mp3"; sourceTree = "<group>"; };
@@ -757,7 +757,7 @@
 				D1621EBE235E257400FF2537 /* Asyl áje.mp3 */,
 				D1621EBF235E257500FF2537 /* Bіr bala.mp3 */,
 				D1621EC0235E257500FF2537 /* Ertegіler álemі.mp3 */,
-				D1621EC1235E257500FF2537 /* Sarjaılay.mp3 */,
+				D1621EC1235E257500FF2537 /* Sarjaılay'.mp3 */,
 				D18E30BB2325566400C0E012 /* Aigo'lek.mp3 */,
 				D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */,
 			);
@@ -1155,7 +1155,7 @@
 				D1D8CF152326A1AA00531F3F /* Alma ag'ashy.mp3 in Resources */,
 				D1D8CF5D2326A80200531F3F /* Ko'k.mp3 in Resources */,
 				D1D8CF292326A68F00531F3F /* Romb.mp3 in Resources */,
-				D1621EC5235E257500FF2537 /* Sarjaılay.mp3 in Resources */,
+				D1621EC5235E257500FF2537 /* Sarjaılay'.mp3 in Resources */,
 				D1D8CEE22326720B00531F3F /* At.mp3 in Resources */,
 				D1D8CED72326720B00531F3F /* Esek.mp3 in Resources */,
 				D1621EC3235E257500FF2537 /* Bіr bala.mp3 in Resources */,
