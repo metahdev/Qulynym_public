@@ -33,8 +33,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     var sections = [String]()
     var eduSections = [EduSection]()
     
-    var manager: ScenesManager!
-    
     private weak var collectionView: UICollectionView!
     private weak var closeBtn: UIButton!
     private weak var settingsBtn: UIButton!
@@ -96,21 +94,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     private func hideOrUnhideCloseBtn() {
         closeBtn.isHidden = menuType == .main
         settingsBtn.isHidden = menuType != .main
-    }
-    
-    
-    // MARK:- Message
-    func initMessage() {
-        var instruction: String?
-        if menuType == .main {
-            instruction = "helloInstruction"
-        }
-//        if menuType == .games {
-//            instruction = "gamesInstruction"
-//        }
-        guard let nonOptInstruction = instruction else { return }
-        manager = ScenesManager(calling: self, showing: nonOptInstruction)
-        manager.showAlert()
     }
     
     

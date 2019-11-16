@@ -98,15 +98,8 @@
 		D19245172284DC2800ABD1BD /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19245162284DC2800ABD1BD /* Timer.swift */; };
 		D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D36E4222BAEEC005188D0 /* Extensions.swift */; };
 		D1A7913522F82690005BF325 /* DrawingsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */; };
-		D1BCE09B2302A1C2002EC22A /* UIImageGIFSupportExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BCE09A2302A1C2002EC22A /* UIImageGIFSupportExtension.swift */; };
 		D1C69D1222F631DD003D0D05 /* PlaylistItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1122F631DD003D0D05 /* PlaylistItemPresenter.swift */; };
 		D1C69D1422F631E9003D0D05 /* PlaylistItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1322F631E9003D0D05 /* PlaylistItemInteractor.swift */; };
-		D1D46927222A8C1E0096B968 /* ScenesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D46926222A8C1E0096B968 /* ScenesViewController.swift */; };
-		D1D46929222A8C320096B968 /* ScenesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D46928222A8C320096B968 /* ScenesView.swift */; };
-		D1D4692C222A8C5D0096B968 /* ScenesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4692B222A8C5D0096B968 /* ScenesConfigurator.swift */; };
-		D1D4692E222A8C6B0096B968 /* ScenesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4692D222A8C6B0096B968 /* ScenesPresenter.swift */; };
-		D1D46930222A8C8E0096B968 /* ScenesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D4692F222A8C8E0096B968 /* ScenesInteractor.swift */; };
-		D1D46932222A8C9A0096B968 /* ScenesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D46931222A8C9A0096B968 /* ScenesRouter.swift */; };
 		D1D5599222A82FED001674A7 /* Emitters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5599122A82FED001674A7 /* Emitters.swift */; };
 		D1D5BC2323017E0300FB3922 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5BC2223017E0300FB3922 /* PlayerEntity.swift */; };
 		D1D5BC2523017E2800FB3922 /* ObstacleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5BC2423017E2800FB3922 /* ObstacleEntity.swift */; };
@@ -183,7 +176,6 @@
 		D1D8CF622326A80200531F3F /* Aq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF552326A80100531F3F /* Aq.mp3 */; };
 		D1D8CF632326A80200531F3F /* Sur.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF562326A80100531F3F /* Sur.mp3 */; };
 		D1D8CF642326A80200531F3F /* Tu'sterQ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF572326A80100531F3F /* Tu'sterQ.mp3 */; };
-		D1E3719322A7A0AA009D97AB /* ScenesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E3719222A7A0AA009D97AB /* ScenesManager.swift */; };
 		D1F9ABD122A0454600989BD3 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD022A0454600989BD3 /* DrawingViewController.swift */; };
 		D1F9ABD322A0455A00989BD3 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD222A0455A00989BD3 /* DrawingView.swift */; };
 		D1F9ABD522A0456B00989BD3 /* DrawingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD422A0456B00989BD3 /* DrawingConfigurator.swift */; };
@@ -308,15 +300,8 @@
 		D19245162284DC2800ABD1BD /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		D19D36E4222BAEEC005188D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingsCollectionView.swift; sourceTree = "<group>"; };
-		D1BCE09A2302A1C2002EC22A /* UIImageGIFSupportExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageGIFSupportExtension.swift; sourceTree = "<group>"; };
 		D1C69D1122F631DD003D0D05 /* PlaylistItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemPresenter.swift; sourceTree = "<group>"; };
 		D1C69D1322F631E9003D0D05 /* PlaylistItemInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemInteractor.swift; sourceTree = "<group>"; };
-		D1D46926222A8C1E0096B968 /* ScenesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesViewController.swift; sourceTree = "<group>"; };
-		D1D46928222A8C320096B968 /* ScenesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesView.swift; sourceTree = "<group>"; };
-		D1D4692B222A8C5D0096B968 /* ScenesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesConfigurator.swift; sourceTree = "<group>"; };
-		D1D4692D222A8C6B0096B968 /* ScenesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesPresenter.swift; sourceTree = "<group>"; };
-		D1D4692F222A8C8E0096B968 /* ScenesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesInteractor.swift; sourceTree = "<group>"; };
-		D1D46931222A8C9A0096B968 /* ScenesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesRouter.swift; sourceTree = "<group>"; };
 		D1D5599122A82FED001674A7 /* Emitters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitters.swift; sourceTree = "<group>"; };
 		D1D5BC2223017E0300FB3922 /* PlayerEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
 		D1D5BC2423017E2800FB3922 /* ObstacleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleEntity.swift; sourceTree = "<group>"; };
@@ -393,7 +378,6 @@
 		D1D8CF552326A80100531F3F /* Aq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Aq.mp3; sourceTree = "<group>"; };
 		D1D8CF562326A80100531F3F /* Sur.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sur.mp3; sourceTree = "<group>"; };
 		D1D8CF572326A80100531F3F /* Tu'sterQ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Tu'sterQ.mp3"; sourceTree = "<group>"; };
-		D1E3719222A7A0AA009D97AB /* ScenesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesManager.swift; sourceTree = "<group>"; };
 		D1F9ABD022A0454600989BD3 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		D1F9ABD222A0455A00989BD3 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		D1F9ABD422A0456B00989BD3 /* DrawingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingConfigurator.swift; sourceTree = "<group>"; };
@@ -775,7 +759,6 @@
 		D1A29F372280C2E8000CC676 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				D1E3719222A7A0AA009D97AB /* ScenesManager.swift */,
 				D19245162284DC2800ABD1BD /* Timer.swift */,
 				D14D53782221B185007ACD55 /* AudioPlayer.swift */,
 				D107786A22858CEC00D869D3 /* Animator.swift */,
@@ -789,37 +772,14 @@
 			children = (
 				D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */,
 				D19D36E4222BAEEC005188D0 /* Extensions.swift */,
-				D1BCE09A2302A1C2002EC22A /* UIImageGIFSupportExtension.swift */,
 				D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D1D469232229C92F0096B968 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				D1D4692B222A8C5D0096B968 /* ScenesConfigurator.swift */,
-				D1D4692A222A8C380096B968 /* View */,
-				D1D4692D222A8C6B0096B968 /* ScenesPresenter.swift */,
-				D1D4692F222A8C8E0096B968 /* ScenesInteractor.swift */,
-				D1D46931222A8C9A0096B968 /* ScenesRouter.swift */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
-		D1D4692A222A8C380096B968 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D1D46928222A8C320096B968 /* ScenesView.swift */,
-				D1D46926222A8C1E0096B968 /* ScenesViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		D1D46951222ADED20096B968 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				D1D469232229C92F0096B968 /* Scenes */,
 				D10687C822AE68A000A3E6E0 /* Menu  */,
 				D105806D235BE3F100082DA3 /* Beineler */,
 				856F348922F87E7B00E97C0C /* Settings */,
@@ -1189,7 +1149,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D46932222A8C9A0096B968 /* ScenesRouter.swift in Sources */,
 				D1A7913522F82690005BF325 /* DrawingsCollectionView.swift in Sources */,
 				B916B09322FBDC3400AF255A /* MainMenuState.swift in Sources */,
 				D135E2A722A02F9800DC84DE /* PlaylistItemView.swift in Sources */,
@@ -1199,12 +1158,10 @@
 				D1F9ABD522A0456B00989BD3 /* DrawingConfigurator.swift in Sources */,
 				D1072A0122877DD2003149E8 /* PlaylistRouter.swift in Sources */,
 				856F349122F87F1800E97C0C /* SettingsRouter.swift in Sources */,
-				D1D4692E222A8C6B0096B968 /* ScenesPresenter.swift in Sources */,
 				D135E2AB22A02FBC00DC84DE /* PlaylistItemConfigurator.swift in Sources */,
 				B9E2CE2922FBDF2F006B5697 /* SKColor+Extensions.swift in Sources */,
 				856F348B22F87EDD00E97C0C /* SettingsConfigurator.swift in Sources */,
 				B9E2CE2D22FBDF2F006B5697 /* SKAction+Extensions.swift in Sources */,
-				D1D46927222A8C1E0096B968 /* ScenesViewController.swift in Sources */,
 				D1383FAE22B0F730007815DF /* MenuInteractor .swift in Sources */,
 				B916B09522FBDC3400AF255A /* PlayingState.swift in Sources */,
 				856F349622F87F8900E97C0C /* SettingsView.swift in Sources */,
@@ -1212,8 +1169,6 @@
 				D14D53752221A294007ACD55 /* ContentService.swift in Sources */,
 				B916B09222FBDC3400AF255A /* TutorialState.swift in Sources */,
 				B9E2CE3322FBDF2F006B5697 /* Vector3.swift in Sources */,
-				D1E3719322A7A0AA009D97AB /* ScenesManager.swift in Sources */,
-				D1D4692C222A8C5D0096B968 /* ScenesConfigurator.swift in Sources */,
 				D13D867E22180E430048A6E4 /* PersistentService.swift in Sources */,
 				D10687D122AE68FA00A3E6E0 /* MenuPresenter.swift in Sources */,
 				B9E2CE3422FBDF2F006B5697 /* CGFloat+Extensions.swift in Sources */,
@@ -1226,7 +1181,6 @@
 				D14D537222214853007ACD55 /* ItemRouter.swift in Sources */,
 				D1F9ABD122A0454600989BD3 /* DrawingViewController.swift in Sources */,
 				D105806F235BE41900082DA3 /* BeinelerViewController.swift in Sources */,
-				D1D46929222A8C320096B968 /* ScenesView.swift in Sources */,
 				B9E2CE2B22FBDF2F006B5697 /* Int+Extensions.swift in Sources */,
 				B9E2CE3122FBDF2F006B5697 /* SKTEffects.swift in Sources */,
 				D1F9ABD722A0457900989BD3 /* DrawingPresenter.swift in Sources */,
@@ -1245,7 +1199,6 @@
 				D10729FD22877D48003149E8 /* PlaylistPresenter.swift in Sources */,
 				D102930A22F1A14000C7B2F2 /* QuizView.swift in Sources */,
 				D102931322F1AF1C00C7B2F2 /* QuizConfigurator.swift in Sources */,
-				D1D46930222A8C8E0096B968 /* ScenesInteractor.swift in Sources */,
 				D1F9ABD322A0455A00989BD3 /* DrawingView.swift in Sources */,
 				B916B09F22FBDC5400AF255A /* SpriteComponent.swift in Sources */,
 				B9E2CE2E22FBDF2F006B5697 /* SKAction+SpecialEffects.swift in Sources */,
@@ -1262,7 +1215,6 @@
 				D10729FF22877D5C003149E8 /* PlaylistInteractor.swift in Sources */,
 				B9E2CE2F22FBDF2F006B5697 /* SKNode+Extensions.swift in Sources */,
 				D135E2A422A02F7B00DC84DE /* PlaylistItemViewController.swift in Sources */,
-				D1BCE09B2302A1C2002EC22A /* UIImageGIFSupportExtension.swift in Sources */,
 				D1058076235C0E7F00082DA3 /* VideoViewController.swift in Sources */,
 				D102931122F1AE1100C7B2F2 /* QuizRouter.swift in Sources */,
 				D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */,

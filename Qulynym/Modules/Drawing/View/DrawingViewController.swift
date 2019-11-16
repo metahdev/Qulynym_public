@@ -25,9 +25,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
             updateImage()
         }
     }
-    
-    var manager: ScenesManager!
-    
+        
     lazy var tools: [UIColor] = [.red, .orange, .yellow, .green, whiteBlue, .blue, .purple, .brown, .black]
     private let whiteBlue = UIColor(red: 102/255, green: 1, blue: 1, alpha: 1)
 

@@ -85,7 +85,7 @@ extension BeinelerViewController: UICollectionViewDelegate, UICollectionViewData
         cell.layer.cornerRadius = 15
         cell.imageViewCornerRadius = 15
         
-        let configuration = URLSessionConfiguration.default
+//        let configuration = URLSessionConfiguration.default
 //        let session = URLSession(configuration: configuration)
 //        let url = URL(string: "https://youtube.com")!
         

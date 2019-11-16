@@ -21,8 +21,6 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
     var presenter: PlaylistPresenterProtocol!
     weak var karaokeViewDelegate: PlaylistItemViewControllerProtocol!
     
-    var manager: ScenesManager!
-
     private weak var listCollectionView: UICollectionView!
     private weak var closeBtn: UIButton!
     private weak var titleLabel: UILabel!
