@@ -12,7 +12,6 @@ import AVFoundation
 
 enum PlayerType {
     case effects
-    case scenes
     case content
     case question
     case story
@@ -29,7 +28,6 @@ struct AudioPlayer {
     static var backgroundAudioPlayer = AVAudioPlayer()
     static var sfxAudioPlayer = AVAudioPlayer()
     static var contentAudioPlayer = AVAudioPlayer()
-    static var scenesAudioPlayer = AVAudioPlayer()
     static var questionAudioPlayer = AVAudioPlayer()
     static var storyAudioPlayer = AVAudioPlayer()
     static var playlistItemAudioPlayer = AVAudioPlayer()
@@ -57,9 +55,6 @@ struct AudioPlayer {
         case .effects:
             initPlayers(player: &sfxAudioPlayer, url: url)
             sfxAudioPlayer.play()
-        case .scenes:
-            initPlayers(player: &scenesAudioPlayer, url: url)
-            scenesAudioPlayer.play()
         case .content:
             initPlayers(player: &contentAudioPlayer, url: url)
             contentAudioPlayer.volume = 1.5

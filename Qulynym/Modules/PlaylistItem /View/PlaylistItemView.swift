@@ -67,6 +67,7 @@ class PlaylistItemView: PlaylistItemViewProtocol {
         let textV = UITextView()
         textV.layer.borderWidth = 5
         textV.layer.borderColor = UIColor.brown.cgColor
+        textV.textColor = .black
         textV.isEditable = false
         textV.isSelectable = false
         textV.isScrollEnabled = true
