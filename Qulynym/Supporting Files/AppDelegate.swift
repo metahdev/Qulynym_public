@@ -20,7 +20,8 @@ import CoreData
   2) Back segue falling leaves
   3) Shuffle animation of cards
   4) ModuleView protocol properties get acccessor
-  5) Torgai loading is slow at first launch
+  5) Reusing the Menu module for beineler
+  6) Karaoke Scrolling Text
  */
 
 @UIApplicationMain

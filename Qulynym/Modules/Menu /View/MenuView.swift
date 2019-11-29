@@ -13,6 +13,7 @@ protocol MenuViewProtocol: class {
     var collectionView: UICollectionView { get }
     var closeBtn: UIButton { get }
     var settingsBtn: UIButton { get }
+    var titleLabel: UILabel { get }
     
     func setupLayout()
 }
@@ -34,9 +35,12 @@ class MenuView: MenuViewProtocol {
         btn.setupShadow()
         return btn
     }()
-    private lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Qulynym"
+        lbl.backgroundColor = .white
+        lbl.clipsToBounds = true
+        lbl.layer.cornerRadius = 15
         lbl.setupContentLabel(size: view.frame.height * 0.1)
         return lbl
     }()
@@ -72,6 +76,7 @@ class MenuView: MenuViewProtocol {
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
+            titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
             
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),

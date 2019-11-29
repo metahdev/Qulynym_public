@@ -33,10 +33,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     var sections = [String]()
     var eduSections = [EduSection]()
     
-    private weak var collectionView: UICollectionView!
-    private weak var closeBtn: UIButton!
-    private weak var settingsBtn: UIButton!
-    
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
     private var menuView: MenuViewProtocol!
     
@@ -78,12 +74,8 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     }
     
     private func setupProperties() {
-        self.collectionView = menuView.collectionView
-        self.closeBtn = menuView.closeBtn
-        self.settingsBtn = menuView.settingsBtn
-        
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+        menuView.collectionView.delegate = self
+        menuView.collectionView.dataSource = self
         
         if menuType == .main {
             self.navigationController!.delegate = self
@@ -92,15 +84,23 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     }
     
     private func hideOrUnhideCloseBtn() {
-        closeBtn.isHidden = menuType == .main
-        settingsBtn.isHidden = menuType != .main
+        menuView.closeBtn.isHidden = menuType == .main
+        menuView.settingsBtn.isHidden = menuType != .main
+        
+        if menuType == .main {
+            menuView.titleLabel.text = "Qulynym"
+        } else if menuType == .toddler {
+            menuView.titleLabel.text = "Oqu"
+        } else {
+            menuView.titleLabel.text = "Oyin Oinau"
+        }
     }
     
     
     // MARK:- Actions
     private func assignActions() {
-        closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
-        settingsBtn.addTarget(self, action: #selector(settingsBtnPressed), for: .touchUpInside)
+        menuView.closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
+        menuView.settingsBtn.addTarget(self, action: #selector(settingsBtnPressed), for: .touchUpInside)
     }
     
     @objc

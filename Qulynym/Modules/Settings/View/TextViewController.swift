@@ -39,12 +39,6 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
         tv.isScrollEnabled = true
         return tv
     }()
-    
-    private lazy var backgroundImage: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "settingsBg")
-        return iv
-    }()
 
     
     // MARK:- View Lifecycle
@@ -64,16 +58,16 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
     
     // MARK:- Layout
     func setupLayout() {
+        view.backgroundColor = UIColor(red: 0.99, green: 0.9, blue: 0.9, alpha: 1)
+        
         addSubviews()
         makeMaskFalse()
         closeBtn.configureCloseBtnFrame(view)
-        backgroundImage.configureBackgroundImagePosition(view)
         activateConstraints()
     }
 
     
     func addSubviews() {
-        view.addSubview(backgroundImage)
         view.addSubview(titleLabel)
         view.addSubview(textView)
         view.addSubview(closeBtn)

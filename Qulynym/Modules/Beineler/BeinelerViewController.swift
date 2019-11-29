@@ -7,11 +7,24 @@
 * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
-
 import UIKit
+
+class Beine {
+    var title: String
+    var image: Data
+    var url: URL
+    
+    init(title: String, image: Data, url: URL) {
+        self.title = title
+        self.image = image
+        self.url = url
+    }
+}
 
 class BeinelerViewController: UIViewController {
     // MARK:- Properties
+    weak var videoViewController: VideoViewControllerProtocol!
+    
     private lazy var videosCollectionView: UICollectionView = {
         return configureImagesCollectionView(scroll: .horizontal, image: "menu", background: nil)
     }()
@@ -21,8 +34,15 @@ class BeinelerViewController: UIViewController {
         btn.setupShadow()
         return btn
     }()
-    var titles = [String]()
-    var images = [UIImage]()
+    private lazy var titleLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Beineler"
+        lbl.backgroundColor = .white
+        lbl.clipsToBounds = true
+        lbl.layer.cornerRadius = 15
+        lbl.setupContentLabel(size: view.frame.height * 0.1)
+        return lbl
+    }()
     
     
     // MARK:- View Lifecycle
@@ -30,6 +50,7 @@ class BeinelerViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(videosCollectionView)
         view.addSubview(closeBtn)
+        view.addSubview(titleLabel)
         setupCV()
         setAutoresizingFalse()
         activateConstraints()
@@ -54,6 +75,10 @@ class BeinelerViewController: UIViewController {
     
     func activateConstraints() {
         NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
+            titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
+            
             videosCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             videosCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             videosCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -85,29 +110,14 @@ extension BeinelerViewController: UICollectionViewDelegate, UICollectionViewData
         cell.layer.cornerRadius = 15
         cell.imageViewCornerRadius = 15
         
-//        let configuration = URLSessionConfiguration.default
-//        let session = URLSession(configuration: configuration)
-//        let url = URL(string: "https://youtube.com")!
-        
-//        let task = session.dataTask(with: url) { (data, response, error) in
-//            guard let httpResponse = response as? HTTPURLResponse,
-//                httpResponse.statusCode == 200 else { return }
-//
-//            guard let data = data else {
-//                return
-//            }
-//
-//            let jsonDecoder = JSONDecoder()
-//            let media = JSONDecoder.decode()
-//        }
-//
-//        cell.text = titles[indexPath.row]
-//        cell.image = images[indexPath.row]
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = VideoViewController()
+        videoViewController = vc
+        
+        videoViewController.videoURL = URL(string: "https://www.youtube.com/embed/v=HluANRwPyNo")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
