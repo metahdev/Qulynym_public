@@ -66,7 +66,6 @@ extension DrawingsCollectionView: UICollectionViewDelegate, UICollectionViewDele
         } else {
             cell.imageName = pictures[indexPath.row]
         }
-        
         return cell
     }
     
@@ -79,6 +78,7 @@ extension DrawingsCollectionView: UICollectionViewDelegate, UICollectionViewDele
             drawingView.currentImageName = nil
         }
         drawingView.currentImageName = pictures[indexPath.row]
+        drawingView.moveMenu()
         drawingView.clearCanvas()
     }
 }

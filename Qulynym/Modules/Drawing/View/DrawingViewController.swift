@@ -13,7 +13,8 @@ protocol DrawingViewControllerProtocol: class {
     var currentImageName: String? { get set }
     var selectedTool: UIButton! { get set }
     
-    func clearCanvas() 
+    func clearCanvas()
+    func moveMenu()
 }
 
 class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
@@ -175,9 +176,13 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         presenter.closeView()
     }
     
+    func moveMenu() {
+        drawingView.toggleDrawingsCV()
+    }
+    
     @objc
     private func slideOut() {
-        drawingView.toggleDrawingsCV()
+        moveMenu()
     }
     
     @objc
