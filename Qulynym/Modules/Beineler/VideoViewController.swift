@@ -8,6 +8,7 @@
 */
 
 import UIKit
+import YoutubePlayer_in_WKWebView
 
 protocol VideoViewControllerProtocol: class {
     var videoURL: URL! { get set }
@@ -22,13 +23,23 @@ class VideoViewController: UIViewController,VideoViewControllerProtocol {
         btn.setupShadow()
         return btn
     }()
-    #warning("WKWebView")
-    private lazy var videoView: UIView = {
-        let view = UIView()
+    #warning("Layout isn't correct: buttons are hidden")
+    private lazy var videoView: WKYTPlayerView = {
+        let view = WKYTPlayerView()
         return view
     }()
     private lazy var recommendationsCV: UICollectionView = {
         return configureImagesCollectionView(scroll: .horizontal, image: nil, background: nil)
+    }()
+    private lazy var nextVideoBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "nextVideo"), for: .normal)
+        return btn
+    }()
+    private lazy var previousVideoBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "previousVideo"), for: .normal)
+        return btn
     }()
     
     
@@ -38,11 +49,19 @@ class VideoViewController: UIViewController,VideoViewControllerProtocol {
         view.addSubview(videoView)
         view.addSubview(closeBtn)
         view.addSubview(recommendationsCV)
+        view.addSubview(nextVideoBtn)
+        view.addSubview(previousVideoBtn)
         setupCV()
         setAutoresizingFalse()
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
         closeBtn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        videoView.load(withVideoId: "HluANRwPyNo")
+        AudioPlayer.backgroundAudioPlayer.pause()
     }
     
     private func setupCV() {
@@ -57,7 +76,27 @@ class VideoViewController: UIViewController,VideoViewControllerProtocol {
     }
     
     private func activateConstraints() {
-        
+        NSLayoutConstraint.activate([
+            videoView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -(closeBtn.frame.width * 2 + 24)),
+            videoView.topAnchor.constraint(equalTo: view.topAnchor),
+            videoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
+            videoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            nextVideoBtn.leadingAnchor.constraint(equalTo: videoView.trailingAnchor, constant: 16),
+            nextVideoBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
+            nextVideoBtn.heightAnchor.constraint(equalTo: nextVideoBtn.widthAnchor),
+            nextVideoBtn.centerYAnchor.constraint(equalTo: videoView.centerYAnchor),
+            
+            previousVideoBtn.trailingAnchor.constraint(equalTo: videoView.leadingAnchor, constant: -16),
+            previousVideoBtn.widthAnchor.constraint(equalTo: nextVideoBtn.widthAnchor),
+            previousVideoBtn.heightAnchor.constraint(equalTo: previousVideoBtn.widthAnchor),
+            previousVideoBtn.centerYAnchor.constraint(equalTo: previousVideoBtn.centerYAnchor),
+            
+            recommendationsCV.topAnchor.constraint(equalTo: videoView.bottomAnchor, constant: 12),
+            recommendationsCV.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            recommendationsCV.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            recommendationsCV.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
     }
     
     
@@ -89,6 +128,6 @@ extension VideoViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-           return CGSize(width: view.frame.width * 0.5, height: view.frame.height * 0.5)
+        return CGSize(width: recommendationsCV.frame.width * 0.5, height: recommendationsCV.frame.height * 0.5)
     }
 }

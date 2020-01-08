@@ -117,7 +117,8 @@ extension BeinelerViewController: UICollectionViewDelegate, UICollectionViewData
         let vc = VideoViewController()
         videoViewController = vc
         
-        videoViewController.videoURL = URL(string: "https://www.youtube.com/embed/v=HluANRwPyNo")
+        videoViewController.videoURL = URL(string: "https://www.youtube.com/watch?v=HluANRwPyNo")
+        self.show(vc, sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
