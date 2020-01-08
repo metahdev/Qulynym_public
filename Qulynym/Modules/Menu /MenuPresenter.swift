@@ -41,11 +41,11 @@ extension MenuPresenter {
     
     func didSelectMenuCell(at index: Int) {
         switch index {
-//        case : router.showBeinelerView()
-        case 0: router.showToddlerEdu()
-        case 3: router.showDrawingView()
-        case 4: router.showGamesMenu()
-        default: router.showPlaylist(isKaraoke: (index == 1))
+        case 0: router.showBeinelerView()
+        case 1: router.showToddlerEdu()
+        case 4: router.showDrawingView()
+        case 5: router.showGamesMenu()
+        default: router.showPlaylist(isKaraoke: (index == 2))
         }
     }
     
