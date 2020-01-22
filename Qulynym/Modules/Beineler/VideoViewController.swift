@@ -10,22 +10,39 @@
 import UIKit
 import YoutubePlayer_in_WKWebView
 
-protocol VideoViewControllerProtocol: class {
-    var videoURL: URL! { get set }
+class Beine {
+    var title: String
+    var image: Data
+    var id: String
+    
+    init(title: String, image: Data, id: String) {
+        self.title = title
+        self.image = image
+        self.id = id
+    }
 }
 
+protocol VideoViewControllerProtocol: class {
+    var videoID: String! { get set }
+}
+
+#warning("rethink UI: youtube player, view borders and background color")
 class VideoViewController: UIViewController,VideoViewControllerProtocol {
     // MARK:- Properties
-    var videoURL: URL!
+    var videoID: String!
     private lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
         btn.setupShadow()
         return btn
     }()
-    #warning("Layout isn't correct: buttons are hidden")
     private lazy var videoView: WKYTPlayerView = {
         let view = WKYTPlayerView()
+        view.delegate = self
+        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.borderWidth = 5
+        view.layer.cornerRadius = 15
+        view.clipsToBounds = true
         return view
     }()
     private lazy var recommendationsCV: UICollectionView = {
@@ -56,11 +73,15 @@ class VideoViewController: UIViewController,VideoViewControllerProtocol {
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
         closeBtn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        
+        view.backgroundColor = .black
     }
     
+    //to hide recommendations when video is finished and info 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        videoView.load(withVideoId: "HluANRwPyNo")
+        let playvarsDic = ["controls": 0, "playsinline": 1, "showinfo": 0, "autoplay": 1, "rel": 0]
+        videoView.load(withVideoId: videoID, playerVars: playvarsDic)
         AudioPlayer.backgroundAudioPlayer.pause()
     }
     
@@ -77,20 +98,20 @@ class VideoViewController: UIViewController,VideoViewControllerProtocol {
     
     private func activateConstraints() {
         NSLayoutConstraint.activate([
-            videoView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -(closeBtn.frame.width * 2 + 24)),
+            videoView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65),
             videoView.topAnchor.constraint(equalTo: view.topAnchor),
             videoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
             videoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             nextVideoBtn.leadingAnchor.constraint(equalTo: videoView.trailingAnchor, constant: 16),
-            nextVideoBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
+            nextVideoBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.05),
             nextVideoBtn.heightAnchor.constraint(equalTo: nextVideoBtn.widthAnchor),
             nextVideoBtn.centerYAnchor.constraint(equalTo: videoView.centerYAnchor),
             
             previousVideoBtn.trailingAnchor.constraint(equalTo: videoView.leadingAnchor, constant: -16),
             previousVideoBtn.widthAnchor.constraint(equalTo: nextVideoBtn.widthAnchor),
             previousVideoBtn.heightAnchor.constraint(equalTo: previousVideoBtn.widthAnchor),
-            previousVideoBtn.centerYAnchor.constraint(equalTo: previousVideoBtn.centerYAnchor),
+            previousVideoBtn.centerYAnchor.constraint(equalTo: nextVideoBtn.centerYAnchor),
             
             recommendationsCV.topAnchor.constraint(equalTo: videoView.bottomAnchor, constant: 12),
             recommendationsCV.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -128,6 +149,13 @@ extension VideoViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: recommendationsCV.frame.width * 0.5, height: recommendationsCV.frame.height * 0.5)
+        return CGSize(width: recommendationsCV.frame.width * 0.3, height: recommendationsCV.frame.height - 8)
+    }
+}
+
+
+extension VideoViewController: WKYTPlayerViewDelegate {
+    func playerViewPreferredWebViewBackgroundColor(_ playerView: WKYTPlayerView) -> UIColor {
+        return .clear
     }
 }

@@ -36,7 +36,8 @@ class DrawingView: DrawingViewProtocol {
     lazy var canvasView: CanvasView = {
         let v = CanvasView()
         v.isUserInteractionEnabled = true
-        v.isMultipleTouchEnabled = true
+        v.isMultipleTouchEnabled = false
+        v.clipsToBounds = true
         return v
     }()
     lazy var drawingImageView: UIImageView = {

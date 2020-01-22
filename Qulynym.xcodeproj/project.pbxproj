@@ -50,7 +50,6 @@
 		D102930F22F1AE0200C7B2F2 /* QuizInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930E22F1AE0200C7B2F2 /* QuizInteractor.swift */; };
 		D102931122F1AE1100C7B2F2 /* QuizRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102931022F1AE1100C7B2F2 /* QuizRouter.swift */; };
 		D102931322F1AF1C00C7B2F2 /* QuizConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102931222F1AF1C00C7B2F2 /* QuizConfigurator.swift */; };
-		D105806F235BE41900082DA3 /* BeinelerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D105806E235BE41900082DA3 /* BeinelerViewController.swift */; };
 		D1058076235C0E7F00082DA3 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1058075235C0E7F00082DA3 /* VideoViewController.swift */; };
 		D10687CA22AE68BC00A3E6E0 /* MenuConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687C922AE68BC00A3E6E0 /* MenuConfigurator.swift */; };
 		D10687CD22AE68E300A3E6E0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687CC22AE68E300A3E6E0 /* MenuViewController.swift */; };
@@ -135,7 +134,7 @@
 		D1D8CEE52326720B00531F3F /* Torg'ai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CED02326720A00531F3F /* Torg'ai.mp3 */; };
 		D1D8CEE92326746200531F3F /* tryAgain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEE82326746200531F3F /* tryAgain.mp3 */; };
 		D1D8CEF0232690AA00531F3F /* wellDone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEEF232690AA00531F3F /* wellDone.mp3 */; };
-		D1D8CF072326A1AA00531F3F /* Almurt aǵashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEF22326A1AA00531F3F /* Almurt aǵashy.mp3 */; };
+		D1D8CF072326A1AA00531F3F /* Almurt aǵashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEF22326A1AA00531F3F /* Almurt aǵashy.mp3 */; };
 		D1D8CF082326A1AA00531F3F /* Qaıyn'.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEF32326A1AA00531F3F /* Qaıyn'.mp3 */; };
 		D1D8CF092326A1AA00531F3F /* Mu'kjıdek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEF42326A1AA00531F3F /* Mu'kjıdek.mp3 */; };
 		D1D8CF0A2326A1AA00531F3F /* Qon'yray'gu'l.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEF52326A1AA00531F3F /* Qon'yray'gu'l.mp3 */; };
@@ -154,7 +153,7 @@
 		D1D8CF172326A1AA00531F3F /* Terek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF022326A1AA00531F3F /* Terek.mp3 */; };
 		D1D8CF182326A1AA00531F3F /* O'simdikterQ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF032326A1AA00531F3F /* O'simdikterQ.mp3 */; };
 		D1D8CF192326A1AA00531F3F /* Ko'kterek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF042326A1AA00531F3F /* Ko'kterek.mp3 */; };
-		D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */; };
+		D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */; };
 		D1D8CF1B2326A1AA00531F3F /* Shyrsha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF062326A1AA00531F3F /* Shyrsha.mp3 */; };
 		D1D8CF262326A68F00531F3F /* PishinderQ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF1D2326A68F00531F3F /* PishinderQ.mp3 */; };
 		D1D8CF272326A68F00531F3F /* Zhuldyz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF1E2326A68F00531F3F /* Zhuldyz.mp3 */; };
@@ -254,7 +253,6 @@
 		D102930E22F1AE0200C7B2F2 /* QuizInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizInteractor.swift; sourceTree = "<group>"; };
 		D102931022F1AE1100C7B2F2 /* QuizRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRouter.swift; sourceTree = "<group>"; };
 		D102931222F1AF1C00C7B2F2 /* QuizConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizConfigurator.swift; sourceTree = "<group>"; };
-		D105806E235BE41900082DA3 /* BeinelerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeinelerViewController.swift; sourceTree = "<group>"; };
 		D1058075235C0E7F00082DA3 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		D10687C922AE68BC00A3E6E0 /* MenuConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuConfigurator.swift; sourceTree = "<group>"; };
 		D10687CC22AE68E300A3E6E0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -344,7 +342,7 @@
 		D1D8CED02326720A00531F3F /* Torg'ai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Torg'ai.mp3"; sourceTree = "<group>"; };
 		D1D8CEE82326746200531F3F /* tryAgain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tryAgain.mp3; sourceTree = "<group>"; };
 		D1D8CEEF232690AA00531F3F /* wellDone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wellDone.mp3; sourceTree = "<group>"; };
-		D1D8CEF22326A1AA00531F3F /* Almurt aǵashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Almurt aǵashy.mp3"; sourceTree = "<group>"; };
+		D1D8CEF22326A1AA00531F3F /* Almurt aǵashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Almurt aǵashy.mp3"; sourceTree = "<group>"; };
 		D1D8CEF32326A1AA00531F3F /* Qaıyn'.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Qaıyn'.mp3"; sourceTree = "<group>"; };
 		D1D8CEF42326A1AA00531F3F /* Mu'kjıdek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mu'kjıdek.mp3"; sourceTree = "<group>"; };
 		D1D8CEF52326A1AA00531F3F /* Qon'yray'gu'l.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Qon'yray'gu'l.mp3"; sourceTree = "<group>"; };
@@ -363,7 +361,7 @@
 		D1D8CF022326A1AA00531F3F /* Terek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Terek.mp3; sourceTree = "<group>"; };
 		D1D8CF032326A1AA00531F3F /* O'simdikterQ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "O'simdikterQ.mp3"; sourceTree = "<group>"; };
 		D1D8CF042326A1AA00531F3F /* Ko'kterek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ko'kterek.mp3"; sourceTree = "<group>"; };
-		D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Órіk ag'ashy.mp3"; sourceTree = "<group>"; };
+		D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Órіk ag'ashy.mp3"; sourceTree = "<group>"; };
 		D1D8CF062326A1AA00531F3F /* Shyrsha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Shyrsha.mp3; sourceTree = "<group>"; };
 		D1D8CF1D2326A68F00531F3F /* PishinderQ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PishinderQ.mp3; sourceTree = "<group>"; };
 		D1D8CF1E2326A68F00531F3F /* Zhuldyz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Zhuldyz.mp3; sourceTree = "<group>"; };
@@ -559,7 +557,6 @@
 		D105806D235BE3F100082DA3 /* Beineler */ = {
 			isa = PBXGroup;
 			children = (
-				D105806E235BE41900082DA3 /* BeinelerViewController.swift */,
 				D1058075235C0E7F00082DA3 /* VideoViewController.swift */,
 			);
 			path = Beineler;
@@ -887,7 +884,7 @@
 		D1D8CEF12326A1AA00531F3F /* Plants */ = {
 			isa = PBXGroup;
 			children = (
-				D1D8CEF22326A1AA00531F3F /* Almurt aǵashy.mp3 */,
+				D1D8CEF22326A1AA00531F3F /* Almurt aǵashy.mp3 */,
 				D1D8CEF32326A1AA00531F3F /* Qaıyn'.mp3 */,
 				D1D8CEF42326A1AA00531F3F /* Mu'kjıdek.mp3 */,
 				D1D8CEF52326A1AA00531F3F /* Qon'yray'gu'l.mp3 */,
@@ -906,7 +903,7 @@
 				D1D8CF022326A1AA00531F3F /* Terek.mp3 */,
 				D1D8CF032326A1AA00531F3F /* O'simdikterQ.mp3 */,
 				D1D8CF042326A1AA00531F3F /* Ko'kterek.mp3 */,
-				D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */,
+				D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */,
 				D1D8CF062326A1AA00531F3F /* Shyrsha.mp3 */,
 			);
 			path = Plants;
@@ -1097,7 +1094,7 @@
 				D1D8CF0F2326A1AA00531F3F /* Ray'shan.mp3 in Resources */,
 				D1D8CF142326A1AA00531F3F /* Emen.mp3 in Resources */,
 				D1D8CEE32326720B00531F3F /* Barys.mp3 in Resources */,
-				D1D8CF072326A1AA00531F3F /* Almurt aǵashy.mp3 in Resources */,
+				D1D8CF072326A1AA00531F3F /* Almurt aǵashy.mp3 in Resources */,
 				D1D8CED42326720B00531F3F /* Tıіn.mp3 in Resources */,
 				D1D8CEE02326720B00531F3F /* Arystan.mp3 in Resources */,
 				D1D8CF092326A1AA00531F3F /* Mu'kjıdek.mp3 in Resources */,
@@ -1130,7 +1127,7 @@
 				D1D8CEDF2326720B00531F3F /* Qasqyr.mp3 in Resources */,
 				D1D8CEDD2326720B00531F3F /* Ko'belek.mp3 in Resources */,
 				D18E30C02325566C00C0E012 /* Bauyrsaq Ertegi.mp3 in Resources */,
-				D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */,
+				D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */,
 				D1D8CF262326A68F00531F3F /* PishinderQ.mp3 in Resources */,
 				D1D8CF2C2326A68F00531F3F /* Sharshy.mp3 in Resources */,
 				D18E30BD2325566500C0E012 /* Aigo'lek.mp3 in Resources */,
@@ -1299,7 +1296,6 @@
 				D13D864F2217FEDF0048A6E4 /* ItemViewController.swift in Sources */,
 				D14D537222214853007ACD55 /* ItemRouter.swift in Sources */,
 				D1F9ABD122A0454600989BD3 /* DrawingViewController.swift in Sources */,
-				D105806F235BE41900082DA3 /* BeinelerViewController.swift in Sources */,
 				B9E2CE2B22FBDF2F006B5697 /* Int+Extensions.swift in Sources */,
 				B9E2CE3122FBDF2F006B5697 /* SKTEffects.swift in Sources */,
 				D1F9ABD722A0457900989BD3 /* DrawingPresenter.swift in Sources */,

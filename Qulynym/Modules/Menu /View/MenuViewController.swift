@@ -10,8 +10,10 @@
 import UIKit
 
 enum Menu {
-    case toddler
     case main
+    case beinelerPlaylists
+    case beineler
+    case toddler
     case games
 }
 
@@ -25,6 +27,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
+    weak var videoViewDelegate: VideoViewControllerProtocol! 
     weak var playlistViewDelegate: PlaylistViewControllerProtocol!
     weak var secondMenuViewDelegate: MenuViewControllerProtocol!
     weak var itemViewDelegate: ItemViewControllerProtocol!
@@ -91,8 +94,12 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
             menuView.titleLabel.text = "Qulynym"
         } else if menuType == .toddler {
             menuView.titleLabel.text = "Oqu"
-        } else {
+        } else if menuType == .games {
             menuView.titleLabel.text = "Oyin Oinau"
+        } else if menuType == .beinelerPlaylists {
+            menuView.titleLabel.text = "Oınatý Tіzіmderi"
+        } else {
+            menuView.titleLabel.text = "Beineler"
         }
     }
     
@@ -115,33 +122,50 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
 extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK:- UICollectionView Protocols
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        #warning("rewrite this method for beineler")
+        if menuType == .beinelerPlaylists || menuType == .beineler {
+            return 20
+        }
         return menuType == .toddler ? eduSections.count : sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        #warning("rewrite this method for data parsing")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        cell.imageName = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row] 
+        if menuType != .beinelerPlaylists && menuType != .beineler {
+            cell.imageName = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
+        }
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
         
-        if menuType == .main {
-            cell.layer.cornerRadius = 15
-            cell.imageViewCornerRadius = 15
-        } else {
-            cell.layer.cornerRadius = cell.frame.height * 0.5
+        if menuType == .beinelerPlaylists || menuType == .beineler {
+            cell.backgroundColor = .gray
         }
         
-        cell.text = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
-        cell.textSize = cell.frame.height * 0.17
+        if menuType == .toddler || menuType == .games {
+            cell.layer.cornerRadius = cell.frame.height * 0.5
+        } else {
+            cell.layer.cornerRadius = 15
+            cell.imageViewCornerRadius = 15
+        }
+        
+        if menuType != .beinelerPlaylists && menuType != .beineler {
+            cell.text = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
+            cell.textSize = cell.frame.height * 0.17
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if menuType == .toddler {
-            presenter.didSelectToddlerCell(at: indexPath.row)
-        } else if menuType == .main {
+        if menuType == .main {
             presenter.didSelectMenuCell(at: indexPath.row)
+        } else if menuType == .beinelerPlaylists {
+            presenter.didSelectPlaylistCell(at: indexPath.row)
+        } else if menuType == .beineler {
+            presenter.didSelectVideoCell(at: indexPath.row)
+        } else if menuType == .toddler {
+                presenter.didSelectToddlerCell(at: indexPath.row)
         } else {
             presenter.didSelectGamesCell(at: indexPath.row)
         }
@@ -149,10 +173,11 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if menuType == .main  {
+        if menuType == .toddler || menuType == .games  {
+            return CGSize(width: view.frame.height * 0.5, height: view.frame.height * 0.5)
+        } else {
             return CGSize(width: view.frame.width * 0.5, height: view.frame.height * 0.5)
         }
-        return CGSize(width: view.frame.height * 0.5, height: view.frame.height * 0.5)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

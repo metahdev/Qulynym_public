@@ -70,7 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         PlayingState(scene: self),
         FallingState(scene: self),
         GameOverState(scene: self)
-        
+    
         ])
     
     var score = 0

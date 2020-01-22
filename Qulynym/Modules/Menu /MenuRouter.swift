@@ -10,7 +10,9 @@
 import UIKit
 
 protocol MenuRouterProtocol: class {
-    func showBeinelerView() 
+    func showBeinelerPlaylists()
+    func showBeineler()
+    func showVideoView(video id: String)
     func showToddlerEdu()
     func showPlaylist(isKaraoke: Bool)
     func showDrawingView()
@@ -32,15 +34,23 @@ class MenuRouter: MenuRouterProtocol {
 
 extension MenuRouter {
     // MARK:- Protocol Methods
-    func showBeinelerView() {
-        showAnotherView(view: BeinelerViewController())
+    func showBeinelerPlaylists() {
+        reuseMenu(menuType: .beinelerPlaylists)
+    }
+    
+    func showBeineler() {
+        reuseMenu(menuType: .beineler)
+    }
+    
+    func showVideoView(video id: String) {
+        let vc = VideoViewController()
+        controller.videoViewDelegate = vc
+        controller.videoViewDelegate.videoID = id 
+        showAnotherView(view: vc)
     }
     
     func showToddlerEdu() {
-        let vc = MenuViewController()
-        controller.secondMenuViewDelegate = vc
-        controller.secondMenuViewDelegate.menuType = .toddler
-        showAnotherView(view: vc)
+        reuseMenu(menuType: .toddler)
     }
     
     func showPlaylist(isKaraoke: Bool) {
@@ -62,10 +72,7 @@ extension MenuRouter {
     }
     
     func showGamesMenu() {
-        let vc = MenuViewController()
-        controller.secondMenuViewDelegate = vc
-        controller.secondMenuViewDelegate.menuType = .games
-        showAnotherView(view: vc)
+        reuseMenu(menuType: .games)
     }
     
     func openFlappyBird() {
@@ -79,6 +86,13 @@ extension MenuRouter {
     
     func showSettings() {
         showAnotherView(view: SettingsViewController())
+    }
+    
+    private func reuseMenu(menuType: Menu) {
+        let vc = MenuViewController()
+        controller.secondMenuViewDelegate = vc
+        controller.secondMenuViewDelegate.menuType = menuType
+        showAnotherView(view: vc)
     }
     
     private func showAnotherView(view toPresent: UIViewController) {
