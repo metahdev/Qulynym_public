@@ -47,12 +47,12 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     }()
     lazy var forwardBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "nextVideoBtn"), for: .normal)
+        btn.setImage(UIImage(named: "nextAudio"), for: .normal)
         return btn
     }()
     lazy var backBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "backVideoBtn"), for: .normal)
+        btn.setImage(UIImage(named: "backAudio"), for: .normal)
         return btn
     }()
     lazy var storyImageView: UIImageView = {

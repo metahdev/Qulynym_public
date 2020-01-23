@@ -125,6 +125,8 @@ class VideoViewController: UIViewController,VideoViewControllerProtocol {
     @objc
     private func closeView() {
         self.navigationController!.popViewController(animated: true)
+        #warning("test it")
+        AudioPlayer.backgroundAudioPlayer.play()
     }
 }
 
