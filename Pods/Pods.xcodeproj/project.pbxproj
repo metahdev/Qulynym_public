@@ -3,379 +3,483 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E25407BE947A0932A710924C34CA8C8 /* YoutubePlayer-in-WKWebView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 100D19CC06F68AFAF26CB191FF467D32 /* YoutubePlayer-in-WKWebView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		15E39133F94BB6D4FD532E53D17EFB63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		1B33DEC1A94C35F27752BCAFABC63264 /* Pods-QulynymTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AC0E1A17DC497DF3771C3A7C8BF27AA3 /* Pods-QulynymTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F19A34F5B964139891E031431B1041C /* Pods-QulynymUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 17ACE69EB814B7F41CD3339055442402 /* Pods-QulynymUITests-dummy.m */; };
-		37D460E52FADDC691FD038F44B281D04 /* Pods-QulynymTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CCB8B7A5B0B486E1F4707A96212C94 /* Pods-QulynymTests-dummy.m */; };
-		3DC6579D670C1486023894D2C073A09C /* Pods-Qulynym-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08BAC788F517C76EFA584B5660E4A29A /* Pods-Qulynym-dummy.m */; };
-		6310156927F5CBEB69B957F3DF614517 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		661B9BCB9D6C133B478E3166C12B9F0B /* WKYTPlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C4F71D655041BCC94CCCC765B5DE8 /* WKYTPlayerView.bundle */; };
-		69585304B1AD61ABD859AD27A581594D /* Pods-QulynymUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0478C36321C11D44993AD1E31D34F3FD /* Pods-QulynymUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		870D980B98D45DCCF510CEBB0EAB42D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		9829B6F9960FA29069092AC69444AA9E /* WKYTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 92A3F0E7E2D5A1B68541EE06729B7091 /* WKYTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A97A649E9859DC0C3E6DDBD157B98139 /* Pods-Qulynym-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BF600A224E01895A4F35A0CE4A3ADA3 /* Pods-Qulynym-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DBDA4D333DC68E427F09E763C8077710 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		ED412947C1BB4E1427904AF1992A9849 /* WKYTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E42C32CE42AB56306A5BBA325733B5A1 /* WKYTPlayerView.m */; };
-		F26286AAE4798E72EC47FFD078420FF9 /* YoutubePlayer-in-WKWebView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEE8C68721C1EE3E0A7FBFA49DA82C3 /* YoutubePlayer-in-WKWebView-dummy.m */; };
+		032677890C482E8B1CD343C160A1F183 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE38908CE0174F533B4AC8380B86E30 /* Response.swift */; };
+		05C10588B1D1A336657D5CF2E19ACE10 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEA6F4B0AEBC0A528E77C36CCF7A358 /* ServerTrustPolicy.swift */; };
+		0F1C9EA558F5CF6B41A8C4570C9A8237 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018E5AF74E7AABD0D1BA5FFA0B5832A /* Alamofire.swift */; };
+		11E206C6826DF735A4680E3418CF69BC /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD708B08F05C0BFC8172248EA106ED20 /* Manager.swift */; };
+		1826138458E87F84569AD648D49B20D7 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB081EAF9CE8B6BEE6DFB81FA2460AD /* ParameterEncoding.swift */; };
+		1BBC582FCEA1B2926269F3CCE3F1D923 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		233C868E2F1E7AE57291CA3705C512D8 /* Pods-Qulynym-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B31B7BD16DFF3749FFAE7360EE21A9B /* Pods-Qulynym-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29820061F9A7942E23D4188EDC2A054D /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC890D29F09DE07B57EA0CA4762254 /* Upload.swift */; };
+		2F163F388DC05F4CEEFEE639106FE7FD /* Pods-QulynymUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D032A3F83C7D2C0C118B73C3C6B99F7 /* Pods-QulynymUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		40160088AA9BE70463B711F71EEE7697 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		43C2692D7A8138DF5FF7A9B4FB078491 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		4B51BE4AF3CEF2F0DA2001DD149CF22F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCBBD4946736540DDE46AE4E778768A /* Request.swift */; };
+		4BBBDD52873061AC9A8355C11FCA5B44 /* YoutubePlayer-in-WKWebView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3517F16C58D6B3473FB2DF793B0D8BE /* YoutubePlayer-in-WKWebView-dummy.m */; };
+		4BE71872B53B310616AFB209B920595F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		52B013FFD0542488A3335D91F2769BA2 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F68B795C48AC44BA84F6F3B69DA8B2A /* Stream.swift */; };
+		68DD024221C6A2CF6B174F3312EC1C3C /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9C80B22AA35EA757FCB4749E02826 /* Download.swift */; };
+		75CB230CCD03E85092E68CA4FB0282EF /* Pods-QulynymTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3176A6DC9DC77FC9EAA115AB5F64EE52 /* Pods-QulynymTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7664FD4F59A0C00866CBAE60B0A3AD64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		7E8447C90F2842AF57371C1043681AE2 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39444E6F69702178069F71F353ABB8FF /* Notifications.swift */; };
+		7F24DC12BA6AE3D86A164B5A69D90E21 /* Pods-Qulynym-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA35D280395257CCF4E796AD251661B5 /* Pods-Qulynym-dummy.m */; };
+		803A943F40E9733AC61489FB25186CF9 /* YoutubePlayer-in-WKWebView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44F28E42F0698DECD0351571CD3B499D /* YoutubePlayer-in-WKWebView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A7909A0E995D2FF329DCF38A0309871 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D0AD15070C10A282E4D05EE0513A88 /* Result.swift */; };
+		992479EA1B71F40F83A30618B5FA0FCD /* Pods-QulynymUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CB14C5E21AEE57ECC6860E2180E3E930 /* Pods-QulynymUITests-dummy.m */; };
+		9AD84D555FE3F3C4519344CBBAB1D565 /* WKYTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD4F144A96D94BCF3C3DAB2DED4CBBC /* WKYTPlayerView.m */; };
+		9E989C61C80DD8853F08265084EE4054 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 716E701F2A049603574461F6D86C4DED /* Alamofire-dummy.m */; };
+		AC2DAB585BB0882BA230FA4F976EEA73 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C092B2AF8EBBDBE64BCDA8634B6B4 /* Timeline.swift */; };
+		C619C1BC7064A22969720F9762B0047E /* Pods-QulynymTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F8594948417C0EF5673B4865DBC935 /* Pods-QulynymTests-dummy.m */; };
+		CCF11406FC25C84082E70B3DE2871690 /* WKYTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CB7B3ACCAA1428C5468E3FAC38E2CCE /* WKYTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D334D5A0AA88F6DEE11C8667AAE43596 /* WKYTPlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7234482C70F8F5C73A124145120CE060 /* WKYTPlayerView.bundle */; };
+		D9E9B2F83FD83B7CC053E665A852B644 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D2D9D6B2641D31775C120D7D516F8 /* Validation.swift */; };
+		E4E194B0AA3CC55B52C4A62E43B8BBD4 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D584F9FD57F14DDF895235CDA7B56848 /* MultipartFormData.swift */; };
+		E88FA556B2A631E42E3FAAD41F9CDB7A /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62254281A628FF6A6C9FC15109D333 /* ResponseSerialization.swift */; };
+		EDB2E0C033F849EF13F0325B7099C801 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B9B98E6E59ED772BDC66D5FC6AB39 /* Error.swift */; };
+		F7B74645E07C39771156A1FA413B98D4 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AEE9C42B4A5076E70DB25AC6805AF050 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC1A85E3EC60655ED8A5042BC8F27F1B /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35FD6FFC85BE81C81C81396DCE7A0E7 /* NetworkReachabilityManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0422614EC63DC6ED4F19FE4EF7811C06 /* PBXContainerItemProxy */ = {
+		0A203D823757C549945C3EC6A7FBF944 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1348657191E7AF2EA810F88570A26486;
-			remoteInfo = "Pods-Qulynym";
-		};
-		2D24B0EF4D7B093384F245CD72C09434 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A645E4271FC05A43521099E991711921;
+			remoteGlobalIDString = DABE3AD6EBA3822D4F04FBC550E7158D;
 			remoteInfo = "YoutubePlayer-in-WKWebView";
 		};
-		3F9CA495FFEA5A592DB27DFE57FD8897 /* PBXContainerItemProxy */ = {
+		1789D88788A1029CA2932392333F4A0E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1348657191E7AF2EA810F88570A26486;
+			remoteGlobalIDString = 02E21641F54918415895897DFDFCEEEE;
+			remoteInfo = "Pods-Qulynym";
+		};
+		2638D58CD029637D9A9E22920F3299AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
+			remoteInfo = Alamofire;
+		};
+		896C6719813D24B78DC01F7E6BE4E63A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02E21641F54918415895897DFDFCEEEE;
 			remoteInfo = "Pods-Qulynym";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0061698E3D2D9AC879A31AE7B1E7B4A3 /* Pods-Qulynym.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Qulynym.release.xcconfig"; sourceTree = "<group>"; };
-		0478C36321C11D44993AD1E31D34F3FD /* Pods-QulynymUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QulynymUITests-umbrella.h"; sourceTree = "<group>"; };
-		0594BAA2A23B2163EF95FED725C73F99 /* Pods-QulynymUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QulynymUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		08BAC788F517C76EFA584B5660E4A29A /* Pods-Qulynym-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Qulynym-dummy.m"; sourceTree = "<group>"; };
-		0A8C4F71D655041BCC94CCCC765B5DE8 /* WKYTPlayerView.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WKYTPlayerView.bundle; path = WKYTPlayerView/WKYTPlayerView.bundle; sourceTree = "<group>"; };
-		100D19CC06F68AFAF26CB191FF467D32 /* YoutubePlayer-in-WKWebView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YoutubePlayer-in-WKWebView-umbrella.h"; sourceTree = "<group>"; };
-		17393A8FDE432065C70211F3E96822A9 /* YoutubePlayer-in-WKWebView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "YoutubePlayer-in-WKWebView.xcconfig"; sourceTree = "<group>"; };
-		17ACE69EB814B7F41CD3339055442402 /* Pods-QulynymUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QulynymUITests-dummy.m"; sourceTree = "<group>"; };
-		1891A3D3FEE08B897C2C8FEB00CB603B /* Pods-Qulynym.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Qulynym.debug.xcconfig"; sourceTree = "<group>"; };
-		24AB4A7E45851F8415346D41FD05A390 /* Pods-QulynymUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QulynymUITests-frameworks.sh"; sourceTree = "<group>"; };
-		2BF600A224E01895A4F35A0CE4A3ADA3 /* Pods-Qulynym-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Qulynym-umbrella.h"; sourceTree = "<group>"; };
-		2F95E2DA1194222796DDDF3740255FA5 /* YoutubePlayer_in_WKWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YoutubePlayer_in_WKWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		431A0A13C7B4BEDF3E839571BC8E486E /* Pods-QulynymTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QulynymTests-frameworks.sh"; sourceTree = "<group>"; };
-		44ED0D39F1E5C9E9BE63CEF1471E816F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52923D264BEF84B740261D2F5548C67D /* YoutubePlayer-in-WKWebView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YoutubePlayer-in-WKWebView-prefix.pch"; sourceTree = "<group>"; };
-		5458BC99ADA3905C3D44E403484DEE7A /* Pods_QulynymUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QulynymUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		5B19F5A937E5CF16A1FE22FE68A9F7C3 /* Pods-QulynymUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QulynymUITests.modulemap"; sourceTree = "<group>"; };
-		5FFD84CDDD829F789AFB50D03B8D128B /* Pods-QulynymTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QulynymTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		605EC368BFE9610DE42E2049A4C7CF2D /* Pods-QulynymTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QulynymTests.modulemap"; sourceTree = "<group>"; };
-		6560AA790BF755FB44AC46DB37733D3B /* Pods-Qulynym.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Qulynym.modulemap"; sourceTree = "<group>"; };
-		666D00C1DEE38213C6942DBE12464A9A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		70E2527BD9C7B0B0DA5A218A1A9E1DD2 /* Pods-QulynymUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QulynymUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		739A496573878DD508DF758A2F5819C2 /* Pods-QulynymTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QulynymTests.release.xcconfig"; sourceTree = "<group>"; };
-		7495136F19F05445E5576675A625CF3B /* Pods_Qulynym.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qulynym.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7964568C7EA2F84C5B44B76A42899947 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C93290F18C0BA19937E276A210B8073 /* YoutubePlayer-in-WKWebView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "YoutubePlayer-in-WKWebView.modulemap"; sourceTree = "<group>"; };
-		7ED1CEBB1566135E23A3560270C2DA12 /* Pods-Qulynym-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Qulynym-acknowledgements.markdown"; sourceTree = "<group>"; };
-		80D2D5F567AFAC216EE0384EEC8792FE /* Pods-QulynymUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QulynymUITests.release.xcconfig"; sourceTree = "<group>"; };
-		8CD6AFB57C7D4059C36EC5C4FEB899EB /* Pods-Qulynym-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Qulynym-resources.sh"; sourceTree = "<group>"; };
-		8CEE8C68721C1EE3E0A7FBFA49DA82C3 /* YoutubePlayer-in-WKWebView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YoutubePlayer-in-WKWebView-dummy.m"; sourceTree = "<group>"; };
-		92A3F0E7E2D5A1B68541EE06729B7091 /* WKYTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WKYTPlayerView.h; path = WKYTPlayerView/WKYTPlayerView.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		AC0E1A17DC497DF3771C3A7C8BF27AA3 /* Pods-QulynymTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QulynymTests-umbrella.h"; sourceTree = "<group>"; };
-		B6554100E58B98818F984F849076B89E /* Pods-QulynymTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QulynymTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		DE17B3797E85BC22DA78F4474CED7080 /* Pods-QulynymUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QulynymUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E42C32CE42AB56306A5BBA325733B5A1 /* WKYTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WKYTPlayerView.m; path = WKYTPlayerView/WKYTPlayerView.m; sourceTree = "<group>"; };
-		E874EBFC307146E7320B69EF6AC4E489 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9CCB8B7A5B0B486E1F4707A96212C94 /* Pods-QulynymTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QulynymTests-dummy.m"; sourceTree = "<group>"; };
-		EA6657404A0FD66D4076A4149F9D4ACC /* Pods-Qulynym-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Qulynym-frameworks.sh"; sourceTree = "<group>"; };
-		ED541B7B15CFAEA5B8EEA21EEC5D98B6 /* Pods-Qulynym-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Qulynym-acknowledgements.plist"; sourceTree = "<group>"; };
-		F1A67D94A24BACDB1A5CB02200827AE0 /* Pods-QulynymTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QulynymTests-resources.sh"; sourceTree = "<group>"; };
-		F744CFF81D3B3AC171632F3A30CB6500 /* Pods_QulynymTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QulynymTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA2AAEEECAA9FB5BB9A183D16D73ED22 /* Pods-QulynymTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QulynymTests.debug.xcconfig"; sourceTree = "<group>"; };
-		FEFBCB0C143302BAED1C7ACBD8DD3AA8 /* Pods-QulynymUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QulynymUITests-resources.sh"; sourceTree = "<group>"; };
+		0CB7B3ACCAA1428C5468E3FAC38E2CCE /* WKYTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WKYTPlayerView.h; path = WKYTPlayerView/WKYTPlayerView.h; sourceTree = "<group>"; };
+		0F5CF23E337496D871AECE27A9638EFA /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		15282E8EC1EFA56EFE1A1D0C5A32CC8D /* YoutubePlayer-in-WKWebView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "YoutubePlayer-in-WKWebView.modulemap"; sourceTree = "<group>"; };
+		1705D4E55191D7A3544DCE5810AAEAAE /* YoutubePlayer-in-WKWebView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YoutubePlayer-in-WKWebView-prefix.pch"; sourceTree = "<group>"; };
+		22B4C8461C5BE2A2ECE5C0C3487E4F10 /* Pods-Qulynym.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Qulynym.debug.xcconfig"; sourceTree = "<group>"; };
+		2B31B7BD16DFF3749FFAE7360EE21A9B /* Pods-Qulynym-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Qulynym-umbrella.h"; sourceTree = "<group>"; };
+		2CEA6F4B0AEBC0A528E77C36CCF7A358 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		2F02ECEC0B8FA2ECF5AE54D432D949F2 /* Pods-QulynymUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QulynymUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		314CB00BACCAC3530E4B4EF776F127CE /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		3176A6DC9DC77FC9EAA115AB5F64EE52 /* Pods-QulynymTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QulynymTests-umbrella.h"; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		32673BF18F86AE17DD6ACFA887989CD6 /* YoutubePlayer-in-WKWebView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "YoutubePlayer-in-WKWebView-Info.plist"; sourceTree = "<group>"; };
+		39444E6F69702178069F71F353ABB8FF /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		3BB4070D657BA7790956F089AEB8FA34 /* Alamofire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
+		403C989430BC5E1CA5F2441A9FA68325 /* Pods_QulynymTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_QulynymTests.framework; path = "Pods-QulynymTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		443F4B44E104009D6F368ABE142DDB3B /* Pods-Qulynym.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Qulynym.release.xcconfig"; sourceTree = "<group>"; };
+		44F28E42F0698DECD0351571CD3B499D /* YoutubePlayer-in-WKWebView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YoutubePlayer-in-WKWebView-umbrella.h"; sourceTree = "<group>"; };
+		4F68B795C48AC44BA84F6F3B69DA8B2A /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
+		5358CDDB5E649B59D3566F4F0532FA97 /* Pods_Qulynym.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Qulynym.framework; path = "Pods-Qulynym.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		557B9B98E6E59ED772BDC66D5FC6AB39 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
+		5B45B14E161E3B6C81621E6120E30310 /* Pods-QulynymTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QulynymTests.release.xcconfig"; sourceTree = "<group>"; };
+		5D032A3F83C7D2C0C118B73C3C6B99F7 /* Pods-QulynymUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QulynymUITests-umbrella.h"; sourceTree = "<group>"; };
+		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65FED8A0936275013A155F2C378860AB /* Pods-Qulynym-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Qulynym-acknowledgements.markdown"; sourceTree = "<group>"; };
+		67DC890D29F09DE07B57EA0CA4762254 /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
+		70EB036852015935A669294A627BFEF6 /* Pods-QulynymTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QulynymTests.modulemap"; sourceTree = "<group>"; };
+		716E701F2A049603574461F6D86C4DED /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
+		7234482C70F8F5C73A124145120CE060 /* WKYTPlayerView.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WKYTPlayerView.bundle; path = WKYTPlayerView/WKYTPlayerView.bundle; sourceTree = "<group>"; };
+		792C578DA694AEF59E8FD6657FFA7DDE /* Pods-QulynymUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QulynymUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7BE73CCE682F11E6D9763824D987DAB7 /* Pods-Qulynym.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Qulynym.modulemap"; sourceTree = "<group>"; };
+		8281CCFFAE751C3039F7E0405AAD9595 /* Pods-QulynymTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QulynymTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		8C46ACFF66A8F3CE4804322CCE01F4F5 /* Pods-QulynymUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QulynymUITests-Info.plist"; sourceTree = "<group>"; };
+		8E6C092B2AF8EBBDBE64BCDA8634B6B4 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		8FA9A845414C857AD2AD9EA43E134071 /* Pods-QulynymUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QulynymUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		96E9C80B22AA35EA757FCB4749E02826 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
+		9BA07D00EC024E599B624738B1BAB214 /* Pods-Qulynym-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Qulynym-acknowledgements.plist"; sourceTree = "<group>"; };
+		9BCBBD4946736540DDE46AE4E778768A /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		9BEFB35DA1143820157944C433094B13 /* Pods_QulynymUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_QulynymUITests.framework; path = "Pods-QulynymUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A9D0AD15070C10A282E4D05EE0513A88 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
+		AAB081EAF9CE8B6BEE6DFB81FA2460AD /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		AB1D2D9D6B2641D31775C120D7D516F8 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		AEE9C42B4A5076E70DB25AC6805AF050 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		B2117B116B2F0237205202FEC179C8EF /* Pods-QulynymUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QulynymUITests.modulemap"; sourceTree = "<group>"; };
+		B3F8594948417C0EF5673B4865DBC935 /* Pods-QulynymTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QulynymTests-dummy.m"; sourceTree = "<group>"; };
+		BA35D280395257CCF4E796AD251661B5 /* Pods-Qulynym-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Qulynym-dummy.m"; sourceTree = "<group>"; };
+		BC62254281A628FF6A6C9FC15109D333 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		BD708B08F05C0BFC8172248EA106ED20 /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
+		C018E5AF74E7AABD0D1BA5FFA0B5832A /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		C1283FF986C7DB27E07620FB83AE555E /* YoutubePlayer-in-WKWebView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "YoutubePlayer-in-WKWebView.xcconfig"; sourceTree = "<group>"; };
+		CB14C5E21AEE57ECC6860E2180E3E930 /* Pods-QulynymUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QulynymUITests-dummy.m"; sourceTree = "<group>"; };
+		CB390B364353E3213670FFF34AD11CF6 /* Pods-QulynymUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QulynymUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D584F9FD57F14DDF895235CDA7B56848 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		D5BD2F8A2DA0FFEF28F2A833121998E0 /* Pods-QulynymTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QulynymTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D6CB902592142B19927ABB45E4A2CFE5 /* Pods-Qulynym-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Qulynym-frameworks.sh"; sourceTree = "<group>"; };
+		DAE38908CE0174F533B4AC8380B86E30 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
+		DE0FAB1DA724AB86C0E299518F5E580A /* YoutubePlayer_in_WKWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YoutubePlayer_in_WKWebView.framework; path = "YoutubePlayer-in-WKWebView.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE18DBD3CB00D13DB20932111C82277E /* Pods-QulynymTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QulynymTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DFD4F144A96D94BCF3C3DAB2DED4CBBC /* WKYTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WKYTPlayerView.m; path = WKYTPlayerView/WKYTPlayerView.m; sourceTree = "<group>"; };
+		E0A869D8DF52EE19AC9564A5115F16CA /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		F18AABCD45A234301DC3D9355A2AFC60 /* Pods-QulynymTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QulynymTests-Info.plist"; sourceTree = "<group>"; };
+		F3517F16C58D6B3473FB2DF793B0D8BE /* YoutubePlayer-in-WKWebView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YoutubePlayer-in-WKWebView-dummy.m"; sourceTree = "<group>"; };
+		F35FD6FFC85BE81C81C81396DCE7A0E7 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		FA5AC0EC2523DA23E3A1E0E35BD50A8C /* Pods-Qulynym-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Qulynym-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		14A5E55F725C17BB193558717C476901 /* Frameworks */ = {
+		016DE8CB2930AF3B51A864CE6A131341 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6310156927F5CBEB69B957F3DF614517 /* Foundation.framework in Frameworks */,
+				4BE71872B53B310616AFB209B920595F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		33566D09E064A367C90BAD13BBD67F49 /* Frameworks */ = {
+		090C1D63463ACF622287EFF9D5C9392D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15E39133F94BB6D4FD532E53D17EFB63 /* Foundation.framework in Frameworks */,
+				7664FD4F59A0C00866CBAE60B0A3AD64 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		39A71BB45598720DA50C584457B3A639 /* Frameworks */ = {
+		3B56E321A6D113F09D7A25C3FF675984 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				870D980B98D45DCCF510CEBB0EAB42D2 /* Foundation.framework in Frameworks */,
+				40160088AA9BE70463B711F71EEE7697 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6DD96D92F8F506A2589D768E4F3C06F1 /* Frameworks */ = {
+		7CDC59D9EA5135562D55D273C51B0EC5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBDA4D333DC68E427F09E763C8077710 /* Foundation.framework in Frameworks */,
+				43C2692D7A8138DF5FF7A9B4FB078491 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83B31952B9520750E964E0A44C07C4B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BBC582FCEA1B2926269F3CCE3F1D923 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		368AAB64A320860DE7F77021BDE5C461 /* Pods-QulynymUITests */ = {
+		2E20B1CB209386F56B71AAFC5BEAE3ED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				666D00C1DEE38213C6942DBE12464A9A /* Info.plist */,
-				5B19F5A937E5CF16A1FE22FE68A9F7C3 /* Pods-QulynymUITests.modulemap */,
-				DE17B3797E85BC22DA78F4474CED7080 /* Pods-QulynymUITests-acknowledgements.markdown */,
-				70E2527BD9C7B0B0DA5A218A1A9E1DD2 /* Pods-QulynymUITests-acknowledgements.plist */,
-				17ACE69EB814B7F41CD3339055442402 /* Pods-QulynymUITests-dummy.m */,
-				24AB4A7E45851F8415346D41FD05A390 /* Pods-QulynymUITests-frameworks.sh */,
-				FEFBCB0C143302BAED1C7ACBD8DD3AA8 /* Pods-QulynymUITests-resources.sh */,
-				0478C36321C11D44993AD1E31D34F3FD /* Pods-QulynymUITests-umbrella.h */,
-				0594BAA2A23B2163EF95FED725C73F99 /* Pods-QulynymUITests.debug.xcconfig */,
-				80D2D5F567AFAC216EE0384EEC8792FE /* Pods-QulynymUITests.release.xcconfig */,
+				7234482C70F8F5C73A124145120CE060 /* WKYTPlayerView.bundle */,
 			);
-			name = "Pods-QulynymUITests";
-			path = "Target Support Files/Pods-QulynymUITests";
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		3831A8CB6035DFC95D28D972CC40520A /* Pods-Qulynym */ = {
+		344E8EB8AC7AB994721CBC6A9380BD38 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7964568C7EA2F84C5B44B76A42899947 /* Info.plist */,
-				6560AA790BF755FB44AC46DB37733D3B /* Pods-Qulynym.modulemap */,
-				7ED1CEBB1566135E23A3560270C2DA12 /* Pods-Qulynym-acknowledgements.markdown */,
-				ED541B7B15CFAEA5B8EEA21EEC5D98B6 /* Pods-Qulynym-acknowledgements.plist */,
-				08BAC788F517C76EFA584B5660E4A29A /* Pods-Qulynym-dummy.m */,
-				EA6657404A0FD66D4076A4149F9D4ACC /* Pods-Qulynym-frameworks.sh */,
-				8CD6AFB57C7D4059C36EC5C4FEB899EB /* Pods-Qulynym-resources.sh */,
-				2BF600A224E01895A4F35A0CE4A3ADA3 /* Pods-Qulynym-umbrella.h */,
-				1891A3D3FEE08B897C2C8FEB00CB603B /* Pods-Qulynym.debug.xcconfig */,
-				0061698E3D2D9AC879A31AE7B1E7B4A3 /* Pods-Qulynym.release.xcconfig */,
+				FABFDD5D2EF6F3482300DC2D6538F78E /* Pods-Qulynym */,
+				3B6577B508F44F0761DCEC553FBC715F /* Pods-QulynymTests */,
+				476FF23EF4678575708CE163038B2D24 /* Pods-QulynymUITests */,
 			);
-			name = "Pods-Qulynym";
-			path = "Target Support Files/Pods-Qulynym";
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		3A3513F8D56275E72A850A91565BE9B9 /* Pods */ = {
+		3B6577B508F44F0761DCEC553FBC715F /* Pods-QulynymTests */ = {
 			isa = PBXGroup;
 			children = (
-				4031B4051A360730A2C12D8D51C1151E /* YoutubePlayer-in-WKWebView */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		4031B4051A360730A2C12D8D51C1151E /* YoutubePlayer-in-WKWebView */ = {
-			isa = PBXGroup;
-			children = (
-				92A3F0E7E2D5A1B68541EE06729B7091 /* WKYTPlayerView.h */,
-				E42C32CE42AB56306A5BBA325733B5A1 /* WKYTPlayerView.m */,
-				B614C574D841822C5EF66BAFCAD90BC7 /* Resources */,
-				BE310A4FB2242962E38DDA005DCF52A2 /* Support Files */,
-			);
-			path = "YoutubePlayer-in-WKWebView";
-			sourceTree = "<group>";
-		};
-		5C8EF0249F77434A50D8EA6E0BCB3D41 /* Pods-QulynymTests */ = {
-			isa = PBXGroup;
-			children = (
-				E874EBFC307146E7320B69EF6AC4E489 /* Info.plist */,
-				605EC368BFE9610DE42E2049A4C7CF2D /* Pods-QulynymTests.modulemap */,
-				5FFD84CDDD829F789AFB50D03B8D128B /* Pods-QulynymTests-acknowledgements.markdown */,
-				B6554100E58B98818F984F849076B89E /* Pods-QulynymTests-acknowledgements.plist */,
-				E9CCB8B7A5B0B486E1F4707A96212C94 /* Pods-QulynymTests-dummy.m */,
-				431A0A13C7B4BEDF3E839571BC8E486E /* Pods-QulynymTests-frameworks.sh */,
-				F1A67D94A24BACDB1A5CB02200827AE0 /* Pods-QulynymTests-resources.sh */,
-				AC0E1A17DC497DF3771C3A7C8BF27AA3 /* Pods-QulynymTests-umbrella.h */,
-				FA2AAEEECAA9FB5BB9A183D16D73ED22 /* Pods-QulynymTests.debug.xcconfig */,
-				739A496573878DD508DF758A2F5819C2 /* Pods-QulynymTests.release.xcconfig */,
+				70EB036852015935A669294A627BFEF6 /* Pods-QulynymTests.modulemap */,
+				D5BD2F8A2DA0FFEF28F2A833121998E0 /* Pods-QulynymTests-acknowledgements.markdown */,
+				8281CCFFAE751C3039F7E0405AAD9595 /* Pods-QulynymTests-acknowledgements.plist */,
+				B3F8594948417C0EF5673B4865DBC935 /* Pods-QulynymTests-dummy.m */,
+				F18AABCD45A234301DC3D9355A2AFC60 /* Pods-QulynymTests-Info.plist */,
+				3176A6DC9DC77FC9EAA115AB5F64EE52 /* Pods-QulynymTests-umbrella.h */,
+				DE18DBD3CB00D13DB20932111C82277E /* Pods-QulynymTests.debug.xcconfig */,
+				5B45B14E161E3B6C81621E6120E30310 /* Pods-QulynymTests.release.xcconfig */,
 			);
 			name = "Pods-QulynymTests";
 			path = "Target Support Files/Pods-QulynymTests";
 			sourceTree = "<group>";
 		};
-		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+		476FF23EF4678575708CE163038B2D24 /* Pods-QulynymUITests */ = {
 			isa = PBXGroup;
 			children = (
-				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+				B2117B116B2F0237205202FEC179C8EF /* Pods-QulynymUITests.modulemap */,
+				CB390B364353E3213670FFF34AD11CF6 /* Pods-QulynymUITests-acknowledgements.markdown */,
+				8FA9A845414C857AD2AD9EA43E134071 /* Pods-QulynymUITests-acknowledgements.plist */,
+				CB14C5E21AEE57ECC6860E2180E3E930 /* Pods-QulynymUITests-dummy.m */,
+				8C46ACFF66A8F3CE4804322CCE01F4F5 /* Pods-QulynymUITests-Info.plist */,
+				5D032A3F83C7D2C0C118B73C3C6B99F7 /* Pods-QulynymUITests-umbrella.h */,
+				2F02ECEC0B8FA2ECF5AE54D432D949F2 /* Pods-QulynymUITests.debug.xcconfig */,
+				792C578DA694AEF59E8FD6657FFA7DDE /* Pods-QulynymUITests.release.xcconfig */,
 			);
-			name = iOS;
+			name = "Pods-QulynymUITests";
+			path = "Target Support Files/Pods-QulynymUITests";
 			sourceTree = "<group>";
 		};
-		7DB346D0F39D3F0E887471402A8071AB = {
+		601836A3ED055FDE6AD6FB0BDACDBF79 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				3A3513F8D56275E72A850A91565BE9B9 /* Pods */,
-				88CB480BF6547CDCB1F934440747A893 /* Products */,
-				842A965D8BDCB3E52BB2270F76727608 /* Targets Support Files */,
+				BF9DB25B173FD8AC10859CF1358DF596 /* Alamofire */,
+				6FD2BCB4EBEF91B92F5AF1AE14CCD27F /* YoutubePlayer-in-WKWebView */,
 			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		842A965D8BDCB3E52BB2270F76727608 /* Targets Support Files */ = {
+		6FD2BCB4EBEF91B92F5AF1AE14CCD27F /* YoutubePlayer-in-WKWebView */ = {
 			isa = PBXGroup;
 			children = (
-				3831A8CB6035DFC95D28D972CC40520A /* Pods-Qulynym */,
-				5C8EF0249F77434A50D8EA6E0BCB3D41 /* Pods-QulynymTests */,
-				368AAB64A320860DE7F77021BDE5C461 /* Pods-QulynymUITests */,
+				0CB7B3ACCAA1428C5468E3FAC38E2CCE /* WKYTPlayerView.h */,
+				DFD4F144A96D94BCF3C3DAB2DED4CBBC /* WKYTPlayerView.m */,
+				2E20B1CB209386F56B71AAFC5BEAE3ED /* Resources */,
+				8495C00FF178F801811F6AE80D476002 /* Support Files */,
 			);
-			name = "Targets Support Files";
+			name = "YoutubePlayer-in-WKWebView";
+			path = "YoutubePlayer-in-WKWebView";
 			sourceTree = "<group>";
 		};
-		88CB480BF6547CDCB1F934440747A893 /* Products */ = {
+		8495C00FF178F801811F6AE80D476002 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7495136F19F05445E5576675A625CF3B /* Pods_Qulynym.framework */,
-				F744CFF81D3B3AC171632F3A30CB6500 /* Pods_QulynymTests.framework */,
-				5458BC99ADA3905C3D44E403484DEE7A /* Pods_QulynymUITests.framework */,
-				2F95E2DA1194222796DDDF3740255FA5 /* YoutubePlayer_in_WKWebView.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		B614C574D841822C5EF66BAFCAD90BC7 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0A8C4F71D655041BCC94CCCC765B5DE8 /* WKYTPlayerView.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5E0D919E635D23B70123790B8308F8EF /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BE310A4FB2242962E38DDA005DCF52A2 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				44ED0D39F1E5C9E9BE63CEF1471E816F /* Info.plist */,
-				7C93290F18C0BA19937E276A210B8073 /* YoutubePlayer-in-WKWebView.modulemap */,
-				17393A8FDE432065C70211F3E96822A9 /* YoutubePlayer-in-WKWebView.xcconfig */,
-				8CEE8C68721C1EE3E0A7FBFA49DA82C3 /* YoutubePlayer-in-WKWebView-dummy.m */,
-				52923D264BEF84B740261D2F5548C67D /* YoutubePlayer-in-WKWebView-prefix.pch */,
-				100D19CC06F68AFAF26CB191FF467D32 /* YoutubePlayer-in-WKWebView-umbrella.h */,
+				15282E8EC1EFA56EFE1A1D0C5A32CC8D /* YoutubePlayer-in-WKWebView.modulemap */,
+				C1283FF986C7DB27E07620FB83AE555E /* YoutubePlayer-in-WKWebView.xcconfig */,
+				F3517F16C58D6B3473FB2DF793B0D8BE /* YoutubePlayer-in-WKWebView-dummy.m */,
+				32673BF18F86AE17DD6ACFA887989CD6 /* YoutubePlayer-in-WKWebView-Info.plist */,
+				1705D4E55191D7A3544DCE5810AAEAAE /* YoutubePlayer-in-WKWebView-prefix.pch */,
+				44F28E42F0698DECD0351571CD3B499D /* YoutubePlayer-in-WKWebView-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/YoutubePlayer-in-WKWebView";
 			sourceTree = "<group>";
 		};
+		BF9DB25B173FD8AC10859CF1358DF596 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				C018E5AF74E7AABD0D1BA5FFA0B5832A /* Alamofire.swift */,
+				96E9C80B22AA35EA757FCB4749E02826 /* Download.swift */,
+				557B9B98E6E59ED772BDC66D5FC6AB39 /* Error.swift */,
+				BD708B08F05C0BFC8172248EA106ED20 /* Manager.swift */,
+				D584F9FD57F14DDF895235CDA7B56848 /* MultipartFormData.swift */,
+				F35FD6FFC85BE81C81C81396DCE7A0E7 /* NetworkReachabilityManager.swift */,
+				39444E6F69702178069F71F353ABB8FF /* Notifications.swift */,
+				AAB081EAF9CE8B6BEE6DFB81FA2460AD /* ParameterEncoding.swift */,
+				9BCBBD4946736540DDE46AE4E778768A /* Request.swift */,
+				DAE38908CE0174F533B4AC8380B86E30 /* Response.swift */,
+				BC62254281A628FF6A6C9FC15109D333 /* ResponseSerialization.swift */,
+				A9D0AD15070C10A282E4D05EE0513A88 /* Result.swift */,
+				2CEA6F4B0AEBC0A528E77C36CCF7A358 /* ServerTrustPolicy.swift */,
+				4F68B795C48AC44BA84F6F3B69DA8B2A /* Stream.swift */,
+				8E6C092B2AF8EBBDBE64BCDA8634B6B4 /* Timeline.swift */,
+				67DC890D29F09DE07B57EA0CA4762254 /* Upload.swift */,
+				AB1D2D9D6B2641D31775C120D7D516F8 /* Validation.swift */,
+				C25CE49FC2E843D713FA3A4DABD54E70 /* Support Files */,
+			);
+			name = Alamofire;
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C25CE49FC2E843D713FA3A4DABD54E70 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				314CB00BACCAC3530E4B4EF776F127CE /* Alamofire.modulemap */,
+				E0A869D8DF52EE19AC9564A5115F16CA /* Alamofire.xcconfig */,
+				716E701F2A049603574461F6D86C4DED /* Alamofire-dummy.m */,
+				3BB4070D657BA7790956F089AEB8FA34 /* Alamofire-Info.plist */,
+				0F5CF23E337496D871AECE27A9638EFA /* Alamofire-prefix.pch */,
+				AEE9C42B4A5076E70DB25AC6805AF050 /* Alamofire-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Alamofire";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				601836A3ED055FDE6AD6FB0BDACDBF79 /* Pods */,
+				DFCA30D5B3CB06B6792BD762AF1B7332 /* Products */,
+				344E8EB8AC7AB994721CBC6A9380BD38 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFCA30D5B3CB06B6792BD762AF1B7332 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */,
+				5358CDDB5E649B59D3566F4F0532FA97 /* Pods_Qulynym.framework */,
+				403C989430BC5E1CA5F2441A9FA68325 /* Pods_QulynymTests.framework */,
+				9BEFB35DA1143820157944C433094B13 /* Pods_QulynymUITests.framework */,
+				DE0FAB1DA724AB86C0E299518F5E580A /* YoutubePlayer_in_WKWebView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FABFDD5D2EF6F3482300DC2D6538F78E /* Pods-Qulynym */ = {
+			isa = PBXGroup;
+			children = (
+				7BE73CCE682F11E6D9763824D987DAB7 /* Pods-Qulynym.modulemap */,
+				65FED8A0936275013A155F2C378860AB /* Pods-Qulynym-acknowledgements.markdown */,
+				9BA07D00EC024E599B624738B1BAB214 /* Pods-Qulynym-acknowledgements.plist */,
+				BA35D280395257CCF4E796AD251661B5 /* Pods-Qulynym-dummy.m */,
+				D6CB902592142B19927ABB45E4A2CFE5 /* Pods-Qulynym-frameworks.sh */,
+				FA5AC0EC2523DA23E3A1E0E35BD50A8C /* Pods-Qulynym-Info.plist */,
+				2B31B7BD16DFF3749FFAE7360EE21A9B /* Pods-Qulynym-umbrella.h */,
+				22B4C8461C5BE2A2ECE5C0C3487E4F10 /* Pods-Qulynym.debug.xcconfig */,
+				443F4B44E104009D6F368ABE142DDB3B /* Pods-Qulynym.release.xcconfig */,
+			);
+			name = "Pods-Qulynym";
+			path = "Target Support Files/Pods-Qulynym";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		184A81B6FD2A0CEF9FC2A1F9B4A6F6DC /* Headers */ = {
+		17828FFF5E257528483A782A6C37CA18 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69585304B1AD61ABD859AD27A581594D /* Pods-QulynymUITests-umbrella.h in Headers */,
+				CCF11406FC25C84082E70B3DE2871690 /* WKYTPlayerView.h in Headers */,
+				803A943F40E9733AC61489FB25186CF9 /* YoutubePlayer-in-WKWebView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E3C6C9F24A56B5C67CEBEFB5B83C5DA /* Headers */ = {
+		2582784E4FA6A1AC5D23FC53AC3F6EE2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B33DEC1A94C35F27752BCAFABC63264 /* Pods-QulynymTests-umbrella.h in Headers */,
+				F7B74645E07C39771156A1FA413B98D4 /* Alamofire-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B20AAF2245BD2BFD8D41991E2A4D3534 /* Headers */ = {
+		6D31EE4F734A244C9161A695C0476495 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9829B6F9960FA29069092AC69444AA9E /* WKYTPlayerView.h in Headers */,
-				0E25407BE947A0932A710924C34CA8C8 /* YoutubePlayer-in-WKWebView-umbrella.h in Headers */,
+				75CB230CCD03E85092E68CA4FB0282EF /* Pods-QulynymTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D3EC34145C1F2B8F4B5C830D16B05F42 /* Headers */ = {
+		82643435E68FED10F289CFB14F579C66 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A97A649E9859DC0C3E6DDBD157B98139 /* Pods-Qulynym-umbrella.h in Headers */,
+				2F163F388DC05F4CEEFEE639106FE7FD /* Pods-QulynymUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2DC3A2BD5DE819D00CF5A338101579 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				233C868E2F1E7AE57291CA3705C512D8 /* Pods-Qulynym-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1348657191E7AF2EA810F88570A26486 /* Pods-Qulynym */ = {
+		02E21641F54918415895897DFDFCEEEE /* Pods-Qulynym */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58316874CC8B2485AE5339D4F9D5A998 /* Build configuration list for PBXNativeTarget "Pods-Qulynym" */;
+			buildConfigurationList = 78B2CD098BEA3AA1720AAA4EB271448B /* Build configuration list for PBXNativeTarget "Pods-Qulynym" */;
 			buildPhases = (
-				7FD6E094CC1EFAA9B6C45AFA73FAA0AF /* Sources */,
-				6DD96D92F8F506A2589D768E4F3C06F1 /* Frameworks */,
-				D3EC34145C1F2B8F4B5C830D16B05F42 /* Headers */,
+				FF2DC3A2BD5DE819D00CF5A338101579 /* Headers */,
+				FF6812E66B0B0C25DE65B5D4761652E4 /* Sources */,
+				016DE8CB2930AF3B51A864CE6A131341 /* Frameworks */,
+				2B732AEDD56DA46E899BC40A7BD124E8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A7468F31DFF568013C78DE76CD54D089 /* PBXTargetDependency */,
+				6468DCA8110F0CB8E3C475318FE599B0 /* PBXTargetDependency */,
+				17F191242828624353C0004F7776459D /* PBXTargetDependency */,
 			);
 			name = "Pods-Qulynym";
 			productName = "Pods-Qulynym";
-			productReference = 7495136F19F05445E5576675A625CF3B /* Pods_Qulynym.framework */;
+			productReference = 5358CDDB5E649B59D3566F4F0532FA97 /* Pods_Qulynym.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		2D4ACBBF3A25E723E32A76EAD6A6CF6B /* Pods-QulynymUITests */ = {
+		A57E20BFC220FD322B539FE7F33DB605 /* Pods-QulynymUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 09C623FA07D7C58FCA739E0EAD19DC63 /* Build configuration list for PBXNativeTarget "Pods-QulynymUITests" */;
+			buildConfigurationList = 46518D3675BDD84528717359F5A7582F /* Build configuration list for PBXNativeTarget "Pods-QulynymUITests" */;
 			buildPhases = (
-				AD48FBA338DEB16539CDE3A278AACF81 /* Sources */,
-				33566D09E064A367C90BAD13BBD67F49 /* Frameworks */,
-				184A81B6FD2A0CEF9FC2A1F9B4A6F6DC /* Headers */,
+				82643435E68FED10F289CFB14F579C66 /* Headers */,
+				8A0CB2A0B430D4B2C82827952D7A7A75 /* Sources */,
+				7CDC59D9EA5135562D55D273C51B0EC5 /* Frameworks */,
+				F2DE370E6BF1D2B9C0779811E55CD32B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				201D4F871DCA1F1B426CAA8F2351E851 /* PBXTargetDependency */,
+				2AC220D7FA706705E7D6A4EF58181093 /* PBXTargetDependency */,
 			);
 			name = "Pods-QulynymUITests";
 			productName = "Pods-QulynymUITests";
-			productReference = 5458BC99ADA3905C3D44E403484DEE7A /* Pods_QulynymUITests.framework */;
+			productReference = 9BEFB35DA1143820157944C433094B13 /* Pods_QulynymUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4FF3E7A2C7646EDD37B800DAD9CA7401 /* Pods-QulynymTests */ = {
+		BE6E421F8D66BE8BCEBF541E2E3ED1A1 /* Pods-QulynymTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0FA73E9A3B660A9970EB6CF6088FE9A1 /* Build configuration list for PBXNativeTarget "Pods-QulynymTests" */;
+			buildConfigurationList = A8D1AA4854E6DC977C0D41B9BC96DE5D /* Build configuration list for PBXNativeTarget "Pods-QulynymTests" */;
 			buildPhases = (
-				D73AFC3CE4A0C93739B47DF94716FE02 /* Sources */,
-				14A5E55F725C17BB193558717C476901 /* Frameworks */,
-				9E3C6C9F24A56B5C67CEBEFB5B83C5DA /* Headers */,
+				6D31EE4F734A244C9161A695C0476495 /* Headers */,
+				884D875EA1B886189584F064E48EF005 /* Sources */,
+				3B56E321A6D113F09D7A25C3FF675984 /* Frameworks */,
+				82786CFACF0D01FF6CC953BBD9119B2F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F53843FDE003D8EBF09943997BEED2C0 /* PBXTargetDependency */,
+				B7E8A5BB607F3A597398AE5C02EE01AD /* PBXTargetDependency */,
 			);
 			name = "Pods-QulynymTests";
 			productName = "Pods-QulynymTests";
-			productReference = F744CFF81D3B3AC171632F3A30CB6500 /* Pods_QulynymTests.framework */;
+			productReference = 403C989430BC5E1CA5F2441A9FA68325 /* Pods_QulynymTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A645E4271FC05A43521099E991711921 /* YoutubePlayer-in-WKWebView */ = {
+		DABE3AD6EBA3822D4F04FBC550E7158D /* YoutubePlayer-in-WKWebView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 25BC47DA108D4A0F51952F22541E74B8 /* Build configuration list for PBXNativeTarget "YoutubePlayer-in-WKWebView" */;
+			buildConfigurationList = 047221B88B466188D7B28CF17DB79C8D /* Build configuration list for PBXNativeTarget "YoutubePlayer-in-WKWebView" */;
 			buildPhases = (
-				B43326036EDBCE73848BBAA7B4F703B0 /* Sources */,
-				39A71BB45598720DA50C584457B3A639 /* Frameworks */,
-				B20AAF2245BD2BFD8D41991E2A4D3534 /* Headers */,
-				E804F6A478655569142388A02CE5A232 /* Resources */,
+				17828FFF5E257528483A782A6C37CA18 /* Headers */,
+				DC2087E01AAFD2B9411B8C3022709F9A /* Sources */,
+				83B31952B9520750E964E0A44C07C4B5 /* Frameworks */,
+				8175522B524A37D3936801F6C2DE743F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -383,113 +487,264 @@
 			);
 			name = "YoutubePlayer-in-WKWebView";
 			productName = "YoutubePlayer-in-WKWebView";
-			productReference = 2F95E2DA1194222796DDDF3740255FA5 /* YoutubePlayer_in_WKWebView.framework */;
+			productReference = DE0FAB1DA724AB86C0E299518F5E580A /* YoutubePlayer_in_WKWebView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4A5194ABAF7A4780609E0E581DA6B54 /* Build configuration list for PBXNativeTarget "Alamofire" */;
+			buildPhases = (
+				2582784E4FA6A1AC5D23FC53AC3F6EE2 /* Headers */,
+				F07AB4ACE29FA993343319B4C6D295E6 /* Sources */,
+				090C1D63463ACF622287EFF9D5C9392D /* Frameworks */,
+				473D3E892ABB6C798CFF290644259B34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Alamofire;
+			productName = Alamofire;
+			productReference = 5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1120;
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 88CB480BF6547CDCB1F934440747A893 /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = DFCA30D5B3CB06B6792BD762AF1B7332 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1348657191E7AF2EA810F88570A26486 /* Pods-Qulynym */,
-				4FF3E7A2C7646EDD37B800DAD9CA7401 /* Pods-QulynymTests */,
-				2D4ACBBF3A25E723E32A76EAD6A6CF6B /* Pods-QulynymUITests */,
-				A645E4271FC05A43521099E991711921 /* YoutubePlayer-in-WKWebView */,
+				EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */,
+				02E21641F54918415895897DFDFCEEEE /* Pods-Qulynym */,
+				BE6E421F8D66BE8BCEBF541E2E3ED1A1 /* Pods-QulynymTests */,
+				A57E20BFC220FD322B539FE7F33DB605 /* Pods-QulynymUITests */,
+				DABE3AD6EBA3822D4F04FBC550E7158D /* YoutubePlayer-in-WKWebView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E804F6A478655569142388A02CE5A232 /* Resources */ = {
+		2B732AEDD56DA46E899BC40A7BD124E8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				661B9BCB9D6C133B478E3166C12B9F0B /* WKYTPlayerView.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		473D3E892ABB6C798CFF290644259B34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8175522B524A37D3936801F6C2DE743F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D334D5A0AA88F6DEE11C8667AAE43596 /* WKYTPlayerView.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82786CFACF0D01FF6CC953BBD9119B2F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2DE370E6BF1D2B9C0779811E55CD32B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7FD6E094CC1EFAA9B6C45AFA73FAA0AF /* Sources */ = {
+		884D875EA1B886189584F064E48EF005 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DC6579D670C1486023894D2C073A09C /* Pods-Qulynym-dummy.m in Sources */,
+				C619C1BC7064A22969720F9762B0047E /* Pods-QulynymTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD48FBA338DEB16539CDE3A278AACF81 /* Sources */ = {
+		8A0CB2A0B430D4B2C82827952D7A7A75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F19A34F5B964139891E031431B1041C /* Pods-QulynymUITests-dummy.m in Sources */,
+				992479EA1B71F40F83A30618B5FA0FCD /* Pods-QulynymUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B43326036EDBCE73848BBAA7B4F703B0 /* Sources */ = {
+		DC2087E01AAFD2B9411B8C3022709F9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED412947C1BB4E1427904AF1992A9849 /* WKYTPlayerView.m in Sources */,
-				F26286AAE4798E72EC47FFD078420FF9 /* YoutubePlayer-in-WKWebView-dummy.m in Sources */,
+				9AD84D555FE3F3C4519344CBBAB1D565 /* WKYTPlayerView.m in Sources */,
+				4BBBDD52873061AC9A8355C11FCA5B44 /* YoutubePlayer-in-WKWebView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D73AFC3CE4A0C93739B47DF94716FE02 /* Sources */ = {
+		F07AB4ACE29FA993343319B4C6D295E6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37D460E52FADDC691FD038F44B281D04 /* Pods-QulynymTests-dummy.m in Sources */,
+				9E989C61C80DD8853F08265084EE4054 /* Alamofire-dummy.m in Sources */,
+				0F1C9EA558F5CF6B41A8C4570C9A8237 /* Alamofire.swift in Sources */,
+				68DD024221C6A2CF6B174F3312EC1C3C /* Download.swift in Sources */,
+				EDB2E0C033F849EF13F0325B7099C801 /* Error.swift in Sources */,
+				11E206C6826DF735A4680E3418CF69BC /* Manager.swift in Sources */,
+				E4E194B0AA3CC55B52C4A62E43B8BBD4 /* MultipartFormData.swift in Sources */,
+				FC1A85E3EC60655ED8A5042BC8F27F1B /* NetworkReachabilityManager.swift in Sources */,
+				7E8447C90F2842AF57371C1043681AE2 /* Notifications.swift in Sources */,
+				1826138458E87F84569AD648D49B20D7 /* ParameterEncoding.swift in Sources */,
+				4B51BE4AF3CEF2F0DA2001DD149CF22F /* Request.swift in Sources */,
+				032677890C482E8B1CD343C160A1F183 /* Response.swift in Sources */,
+				E88FA556B2A631E42E3FAAD41F9CDB7A /* ResponseSerialization.swift in Sources */,
+				8A7909A0E995D2FF329DCF38A0309871 /* Result.swift in Sources */,
+				05C10588B1D1A336657D5CF2E19ACE10 /* ServerTrustPolicy.swift in Sources */,
+				52B013FFD0542488A3335D91F2769BA2 /* Stream.swift in Sources */,
+				AC2DAB585BB0882BA230FA4F976EEA73 /* Timeline.swift in Sources */,
+				29820061F9A7942E23D4188EDC2A054D /* Upload.swift in Sources */,
+				D9E9B2F83FD83B7CC053E665A852B644 /* Validation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF6812E66B0B0C25DE65B5D4761652E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F24DC12BA6AE3D86A164B5A69D90E21 /* Pods-Qulynym-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		201D4F871DCA1F1B426CAA8F2351E851 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-Qulynym";
-			target = 1348657191E7AF2EA810F88570A26486 /* Pods-Qulynym */;
-			targetProxy = 3F9CA495FFEA5A592DB27DFE57FD8897 /* PBXContainerItemProxy */;
-		};
-		A7468F31DFF568013C78DE76CD54D089 /* PBXTargetDependency */ = {
+		17F191242828624353C0004F7776459D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "YoutubePlayer-in-WKWebView";
-			target = A645E4271FC05A43521099E991711921 /* YoutubePlayer-in-WKWebView */;
-			targetProxy = 2D24B0EF4D7B093384F245CD72C09434 /* PBXContainerItemProxy */;
+			target = DABE3AD6EBA3822D4F04FBC550E7158D /* YoutubePlayer-in-WKWebView */;
+			targetProxy = 0A203D823757C549945C3EC6A7FBF944 /* PBXContainerItemProxy */;
 		};
-		F53843FDE003D8EBF09943997BEED2C0 /* PBXTargetDependency */ = {
+		2AC220D7FA706705E7D6A4EF58181093 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Qulynym";
-			target = 1348657191E7AF2EA810F88570A26486 /* Pods-Qulynym */;
-			targetProxy = 0422614EC63DC6ED4F19FE4EF7811C06 /* PBXContainerItemProxy */;
+			target = 02E21641F54918415895897DFDFCEEEE /* Pods-Qulynym */;
+			targetProxy = 1789D88788A1029CA2932392333F4A0E /* PBXContainerItemProxy */;
+		};
+		6468DCA8110F0CB8E3C475318FE599B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
+			targetProxy = 2638D58CD029637D9A9E22920F3299AC /* PBXContainerItemProxy */;
+		};
+		B7E8A5BB607F3A597398AE5C02EE01AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Qulynym";
+			target = 02E21641F54918415895897DFDFCEEEE /* Pods-Qulynym */;
+			targetProxy = 896C6719813D24B78DC01F7E6BE4E63A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		063198AB09B9CDB3A695432FC17AD8CA /* Release */ = {
+		26E9A7B7CC36D753291E2D3570A8DB18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0A869D8DF52EE19AC9564A5115F16CA /* Alamofire.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				PRODUCT_MODULE_NAME = Alamofire;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2B9A1FC409F33C2A22F89956255955E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE18DBD3CB00D13DB20932111C82277E /* Pods-QulynymTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		32C2FB3BD9A2402E2347CE50F405010A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -518,8 +773,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -538,46 +791,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		14BCFC640A0F42AD98A96C9E188FF154 /* Debug */ = {
+		39864C14806FF3EDAAE3ADDF958383AB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17393A8FDE432065C70211F3E96822A9 /* YoutubePlayer-in-WKWebView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView.modulemap";
-				PRODUCT_MODULE_NAME = YoutubePlayer_in_WKWebView;
-				PRODUCT_NAME = YoutubePlayer_in_WKWebView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		449FC622C0A977B154B4E321E91164FD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0594BAA2A23B2163EF95FED725C73F99 /* Pods-QulynymUITests.debug.xcconfig */;
+			baseConfigurationReference = 22B4C8461C5BE2A2ECE5C0C3487E4F10 /* Pods-Qulynym.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -590,12 +816,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-QulynymUITests/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Qulynym/Pods-Qulynym-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-QulynymUITests/Pods-QulynymUITests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Qulynym/Pods-Qulynym.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -609,10 +839,12 @@
 			};
 			name = Debug;
 		};
-		58C61108CEED418412493A249D05A586 /* Release */ = {
+		44F01B1652A39086F1663122849DD88E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17393A8FDE432065C70211F3E96822A9 /* YoutubePlayer-in-WKWebView.xcconfig */;
+			baseConfigurationReference = 443F4B44E104009D6F368ABE142DDB3B /* Pods-Qulynym.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -622,18 +854,23 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Qulynym/Pods-Qulynym-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView.modulemap";
-				PRODUCT_MODULE_NAME = YoutubePlayer_in_WKWebView;
-				PRODUCT_NAME = YoutubePlayer_in_WKWebView;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Qulynym/Pods-Qulynym.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -641,45 +878,10 @@
 			};
 			name = Release;
 		};
-		7EF4F950B52DF123C81D4B7535B5C87C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA2AAEEECAA9FB5BB9A183D16D73ED22 /* Pods-QulynymTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-QulynymTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		87EAC867385563488A6D8F1E74AC46B4 /* Debug */ = {
+		65E8432CA1AC1817F746BE6B5C4F067E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -708,8 +910,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -730,18 +930,21 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		A8C4EC923C53033A9102A6986E5F056C /* Debug */ = {
+		74ACD5C50DAE79C3854D02003C3188BB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1891A3D3FEE08B897C2C8FEB00CB603B /* Pods-Qulynym.debug.xcconfig */;
+			baseConfigurationReference = 792C578DA694AEF59E8FD6657FFA7DDE /* Pods-QulynymUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -754,114 +957,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Qulynym/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-QulynymUITests/Pods-QulynymUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Qulynym/Pods-Qulynym.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C4323E1A45B8AAE1A4B0F38AC9EDE156 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 739A496573878DD508DF758A2F5819C2 /* Pods-QulynymTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-QulynymTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E1F4C55EDA0EA3D61222B2D1F92ABE75 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0061698E3D2D9AC879A31AE7B1E7B4A3 /* Pods-Qulynym.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Qulynym/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Qulynym/Pods-Qulynym.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		EFAB0C04F468ABAD3B122947EF0795AD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80D2D5F567AFAC216EE0384EEC8792FE /* Pods-QulynymUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-QulynymUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-QulynymUITests/Pods-QulynymUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -878,55 +981,247 @@
 			};
 			name = Release;
 		};
+		925349B2533DC8C0EC4346C339078306 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F02ECEC0B8FA2ECF5AE54D432D949F2 /* Pods-QulynymUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-QulynymUITests/Pods-QulynymUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-QulynymUITests/Pods-QulynymUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AF94E4F03A1358ABB2D4718F08DB2B6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B45B14E161E3B6C81621E6120E30310 /* Pods-QulynymTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B63B8B9A3DC0B86B8560A3526C388A7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0A869D8DF52EE19AC9564A5115F16CA /* Alamofire.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				PRODUCT_MODULE_NAME = Alamofire;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C283CCE0FDEDC41C8F0F0FB568F14500 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1283FF986C7DB27E07620FB83AE555E /* YoutubePlayer-in-WKWebView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView.modulemap";
+				PRODUCT_MODULE_NAME = YoutubePlayer_in_WKWebView;
+				PRODUCT_NAME = YoutubePlayer_in_WKWebView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C388FB829F42D2C5EDBFE005872CC531 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1283FF986C7DB27E07620FB83AE555E /* YoutubePlayer-in-WKWebView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/YoutubePlayer-in-WKWebView/YoutubePlayer-in-WKWebView.modulemap";
+				PRODUCT_MODULE_NAME = YoutubePlayer_in_WKWebView;
+				PRODUCT_NAME = YoutubePlayer_in_WKWebView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		09C623FA07D7C58FCA739E0EAD19DC63 /* Build configuration list for PBXNativeTarget "Pods-QulynymUITests" */ = {
+		047221B88B466188D7B28CF17DB79C8D /* Build configuration list for PBXNativeTarget "YoutubePlayer-in-WKWebView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				449FC622C0A977B154B4E321E91164FD /* Debug */,
-				EFAB0C04F468ABAD3B122947EF0795AD /* Release */,
+				C283CCE0FDEDC41C8F0F0FB568F14500 /* Debug */,
+				C388FB829F42D2C5EDBFE005872CC531 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0FA73E9A3B660A9970EB6CF6088FE9A1 /* Build configuration list for PBXNativeTarget "Pods-QulynymTests" */ = {
+		46518D3675BDD84528717359F5A7582F /* Build configuration list for PBXNativeTarget "Pods-QulynymUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7EF4F950B52DF123C81D4B7535B5C87C /* Debug */,
-				C4323E1A45B8AAE1A4B0F38AC9EDE156 /* Release */,
+				925349B2533DC8C0EC4346C339078306 /* Debug */,
+				74ACD5C50DAE79C3854D02003C3188BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		25BC47DA108D4A0F51952F22541E74B8 /* Build configuration list for PBXNativeTarget "YoutubePlayer-in-WKWebView" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				14BCFC640A0F42AD98A96C9E188FF154 /* Debug */,
-				58C61108CEED418412493A249D05A586 /* Release */,
+				65E8432CA1AC1817F746BE6B5C4F067E /* Debug */,
+				32C2FB3BD9A2402E2347CE50F405010A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		78B2CD098BEA3AA1720AAA4EB271448B /* Build configuration list for PBXNativeTarget "Pods-Qulynym" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				87EAC867385563488A6D8F1E74AC46B4 /* Debug */,
-				063198AB09B9CDB3A695432FC17AD8CA /* Release */,
+				39864C14806FF3EDAAE3ADDF958383AB /* Debug */,
+				44F01B1652A39086F1663122849DD88E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58316874CC8B2485AE5339D4F9D5A998 /* Build configuration list for PBXNativeTarget "Pods-Qulynym" */ = {
+		A8D1AA4854E6DC977C0D41B9BC96DE5D /* Build configuration list for PBXNativeTarget "Pods-QulynymTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A8C4EC923C53033A9102A6986E5F056C /* Debug */,
-				E1F4C55EDA0EA3D61222B2D1F92ABE75 /* Release */,
+				2B9A1FC409F33C2A22F89956255955E0 /* Debug */,
+				AF94E4F03A1358ABB2D4718F08DB2B6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4A5194ABAF7A4780609E0E581DA6B54 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B63B8B9A3DC0B86B8560A3526C388A7C /* Debug */,
+				26E9A7B7CC36D753291E2D3570A8DB18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1120"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A645E4271FC05A43521099E991711921"
+               BlueprintIdentifier = "DABE3AD6EBA3822D4F04FBC550E7158D"
                BuildableName = "YoutubePlayer_in_WKWebView.framework"
                BlueprintName = "YoutubePlayer-in-WKWebView"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -44,7 +44,7 @@ extension UILabel {
         self.textColor = UIColor(red: 97/255, green: 104/255, blue: 189/255, alpha: 1)
         self.textAlignment = .center
         self.shadowColor = .black
-        self.numberOfLines = 2
+        self.numberOfLines = 2 
     }
 }
 

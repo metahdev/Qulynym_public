@@ -42,6 +42,7 @@ class MenuView: MenuViewProtocol {
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
         lbl.setupContentLabel(size: view.frame.height * 0.1)
+        lbl.numberOfLines = 1
         return lbl
     }()
     private weak var view: UIView!

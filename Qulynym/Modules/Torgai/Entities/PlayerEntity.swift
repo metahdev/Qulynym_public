@@ -33,6 +33,7 @@ class PlayerEntity: GKEntity {
     var numberOfFrames = 2
     
     init (imageName: String) {
+        #warning("could not create physical body")
         super.init()
         let texture = SKTexture(imageNamed: imageName)
         spriteComponent = SpriteComponent(entity: self, texture: texture, size: texture.size())

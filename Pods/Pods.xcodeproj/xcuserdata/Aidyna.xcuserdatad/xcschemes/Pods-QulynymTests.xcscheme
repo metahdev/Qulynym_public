@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1120"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4FF3E7A2C7646EDD37B800DAD9CA7401"
+               BlueprintIdentifier = "BE6E421F8D66BE8BCEBF541E2E3ED1A1"
                BuildableName = "Pods_QulynymTests.framework"
                BlueprintName = "Pods-QulynymTests"
                ReferencedContainer = "container:Pods.xcodeproj">

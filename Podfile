@@ -7,6 +7,7 @@ target 'Qulynym' do
 
   # Pods for Qulynym
   pod "YoutubePlayer-in-WKWebView", "~> 0.2.0" 
+  pod 'Alamofire', '~> 3.0'  
 
   target 'QulynymTests' do
     inherit! :search_paths

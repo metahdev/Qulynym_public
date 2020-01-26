@@ -1,16 +1,21 @@
 PODS:
+  - Alamofire (3.5.1)
   - YoutubePlayer-in-WKWebView (0.2.3)
 
 DEPENDENCIES:
+  - Alamofire (~> 3.0)
   - YoutubePlayer-in-WKWebView (~> 0.2.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - YoutubePlayer-in-WKWebView
+  trunk:
+    - Alamofire
 
 SPEC CHECKSUMS:
+  Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   YoutubePlayer-in-WKWebView: 9cfe2a1208c91f82d5cc5eaff1f0dfc8552dd3f1
 
-PODFILE CHECKSUM: 1031d9f399f40d0a5a62e7b26ec2a05a4579b5e4
+PODFILE CHECKSUM: 3d792cc06830d1572fd147183b00405cc297db73
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

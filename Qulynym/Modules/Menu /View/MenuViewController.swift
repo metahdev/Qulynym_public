@@ -83,6 +83,9 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
         if menuType == .main {
             self.navigationController!.delegate = self
         }
+        if menuType == .beinelerPlaylists {
+            self.menuView.titleLabel.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.09)
+        }
         self.navigationController!.isNavigationBarHidden = true
     }
     

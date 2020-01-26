@@ -8,6 +8,7 @@
 */
 
 import Foundation
+import Alamofire
 
 protocol MenuInteractorProtocol: class {
     func getStringSections(_ type: Menu) -> [String]
@@ -17,6 +18,8 @@ protocol MenuInteractorProtocol: class {
 class MenuInteractor: MenuInteractorProtocol {
     /// MARK:- Properties
     weak var presenter: MenuPresenterProtocol!
+    var playlistURL: String!
+    private let apiKey = "AIzaSyAxwDKck_8Ve5hrqIZfaJK1lgoVmGc4qr0"
     
     required init(_ presenter: MenuPresenterProtocol) {
         self.presenter = presenter
@@ -34,5 +37,9 @@ extension MenuInteractor {
     
     func getEduSections() -> [EduSection] {
         return ContentService.toddlerSections
+    }
+    
+    func fetchPlaylistVideos() {
+        
     }
 }
