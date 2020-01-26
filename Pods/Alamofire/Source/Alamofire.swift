@@ -1,7 +1,7 @@
 //
 //  Alamofire.swift
 //
-//  Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
+//  Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,352 +24,497 @@
 
 import Foundation
 
-// MARK: - URLStringConvertible
+/// Global namespace containing API for the `default` `Session` instance.
+public enum AF {
+    /// Current Alamofire version. Necessary since SPM doesn't use dynamic libraries. Plus this will be more accurate.
+    static let version = "5.0.0-rc.3"
 
-/**
-    Types adopting the `URLStringConvertible` protocol can be used to construct URL strings, which are then used to
-    construct URL requests.
-*/
-public protocol URLStringConvertible {
-    /**
-        A URL that conforms to RFC 2396.
+    // MARK: - Data Request
 
-        Methods accepting a `URLStringConvertible` type parameter parse it according to RFCs 1738 and 1808.
-
-        See https://tools.ietf.org/html/rfc2396
-        See https://tools.ietf.org/html/rfc1738
-        See https://tools.ietf.org/html/rfc1808
-    */
-    var URLString: String { get }
-}
-
-extension String: URLStringConvertible {
-    public var URLString: String { return self }
-}
-
-extension NSURL: URLStringConvertible {
-    public var URLString: String {
-        #if swift(>=2.3)
-            return absoluteString!
-        #else
-            return absoluteString
-        #endif
-    }
-}
-
-extension NSURLComponents: URLStringConvertible {
-    public var URLString: String { return URL!.URLString }
-}
-
-extension NSURLRequest: URLStringConvertible {
-    public var URLString: String { return URL!.URLString }
-}
-
-// MARK: - URLRequestConvertible
-
-/**
-    Types adopting the `URLRequestConvertible` protocol can be used to construct URL requests.
-*/
-public protocol URLRequestConvertible {
-    /// The URL request.
-    var URLRequest: NSMutableURLRequest { get }
-}
-
-extension NSURLRequest: URLRequestConvertible {
-    public var URLRequest: NSMutableURLRequest { return self.mutableCopy() as! NSMutableURLRequest }
-}
-
-// MARK: - Convenience
-
-func URLRequest(
-    method: Method,
-    _ URLString: URLStringConvertible,
-    headers: [String: String]? = nil)
-    -> NSMutableURLRequest
-{
-    let mutableURLRequest: NSMutableURLRequest
-
-    if URLString.dynamicType == NSMutableURLRequest.self {
-        mutableURLRequest = URLString as! NSMutableURLRequest
-    } else if URLString.dynamicType == NSURLRequest.self {
-        mutableURLRequest = (URLString as! NSURLRequest).URLRequest
-    } else {
-        mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URLString.URLString)!)
+    /// Creates a `DataRequest` using `Session.default` to retrieve the contents of the specified `url` using the
+    /// `method`, `parameters`, `encoding`, and `headers` provided.
+    ///
+    /// - Parameters:
+    ///   - url:           The `URLConvertible` value.
+    ///   - method:        The `HTTPMethod`, `.get` by default.
+    ///   - parameters:    The `Parameters`, `nil` by default.
+    ///   - encoding:      The `ParameterEncoding`, `URLEncoding.default` by default.
+    ///   - headers:       The `HTTPHeaders`, `nil` by default.
+    ///   - interceptor:   The `RequestInterceptor`, `nil` by default.
+    ///
+    /// - Returns: The created `DataRequest`.
+    public static func request(_ url: URLConvertible,
+                               method: HTTPMethod = .get,
+                               parameters: Parameters? = nil,
+                               encoding: ParameterEncoding = URLEncoding.default,
+                               headers: HTTPHeaders? = nil,
+                               interceptor: RequestInterceptor? = nil) -> DataRequest {
+        return Session.default.request(url,
+                                       method: method,
+                                       parameters: parameters,
+                                       encoding: encoding,
+                                       headers: headers,
+                                       interceptor: interceptor)
     }
 
-    mutableURLRequest.HTTPMethod = method.rawValue
-
-    if let headers = headers {
-        for (headerField, headerValue) in headers {
-            mutableURLRequest.setValue(headerValue, forHTTPHeaderField: headerField)
-        }
+    /// Creates a `DataRequest` using `Session.default` to retrieve the contents of the specified `url` using the
+    /// `method`, `parameters`, `encoding`, and `headers` provided.
+    ///
+    /// - Parameters:
+    ///   - url:           The `URLConvertible` value.
+    ///   - method:        The `HTTPMethod`, `.get` by default.
+    ///   - parameters:    The `Encodable` parameters, `nil` by default.
+    ///   - encoding:      The `ParameterEncoder`, `URLEncodedFormParameterEncoder.default` by default.
+    ///   - headers:       The `HTTPHeaders`, `nil` by default.
+    ///   - interceptor:   The `RequestInterceptor`, `nil` by default.
+    ///
+    /// - Returns: The created `DataRequest`.
+    public static func request<Parameters: Encodable>(_ url: URLConvertible,
+                                                      method: HTTPMethod = .get,
+                                                      parameters: Parameters? = nil,
+                                                      encoder: ParameterEncoder = URLEncodedFormParameterEncoder.default,
+                                                      headers: HTTPHeaders? = nil,
+                                                      interceptor: RequestInterceptor? = nil) -> DataRequest {
+        return Session.default.request(url,
+                                       method: method,
+                                       parameters: parameters,
+                                       encoder: encoder,
+                                       headers: headers,
+                                       interceptor: interceptor)
     }
 
-    return mutableURLRequest
-}
+    /// Creates a `DataRequest` using `Session.default` to execute the specified `urlRequest`.
+    ///
+    /// - Parameters:
+    ///   - urlRequest:    The `URLRequestConvertible` value.
+    ///   - interceptor:   The `RequestInterceptor`, `nil` by default.
+    ///
+    /// - Returns: The created `DataRequest`.
+    public static func request(_ urlRequest: URLRequestConvertible, interceptor: RequestInterceptor? = nil) -> DataRequest {
+        return Session.default.request(urlRequest, interceptor: interceptor)
+    }
 
-// MARK: - Request Methods
+    // MARK: - Download Request
 
-/**
-    Creates a request using the shared manager instance for the specified method, URL string, parameters, and
-    parameter encoding.
+    /// Creates a `DownloadRequest` using `Session.default` to download the contents of the specified `url` to
+    /// the provided `destination` using the `method`, `parameters`, `encoding`, and `headers` provided.
+    ///
+    /// If `destination` is not specified, the download will be moved to a temporary location determined by Alamofire.
+    ///
+    /// - Parameters:
+    ///   - url:           The `URLConvertible` value.
+    ///   - method:        The `HTTPMethod`, `.get` by default.
+    ///   - parameters:    The `Parameters`, `nil` by default.
+    ///   - encoding:      The `ParameterEncoding`, `URLEncoding.default` by default.
+    ///   - headers:       The `HTTPHeaders`, `nil` by default.
+    ///   - interceptor:   The `RequestInterceptor`, `nil` by default.
+    ///   - destination:   The `DownloadRequest.Destination` closure used the determine the destination of the
+    ///                    downloaded file. `nil` by default.
+    ///
+    /// - Returns: The created `DownloadRequest`.
+    public static func download(_ url: URLConvertible,
+                                method: HTTPMethod = .get,
+                                parameters: Parameters? = nil,
+                                encoding: ParameterEncoding = URLEncoding.default,
+                                headers: HTTPHeaders? = nil,
+                                interceptor: RequestInterceptor? = nil,
+                                to destination: DownloadRequest.Destination? = nil) -> DownloadRequest {
+        return Session.default.download(url,
+                                        method: method,
+                                        parameters: parameters,
+                                        encoding: encoding,
+                                        headers: headers,
+                                        interceptor: interceptor,
+                                        to: destination)
+    }
 
-    - parameter method:     The HTTP method.
-    - parameter URLString:  The URL string.
-    - parameter parameters: The parameters. `nil` by default.
-    - parameter encoding:   The parameter encoding. `.URL` by default.
-    - parameter headers:    The HTTP headers. `nil` by default.
+    /// Creates a `DownloadRequest` using `Session.default` to download the contents of the specified `url` to the
+    /// provided `destination` using the `method`, encodable `parameters`, `encoder`, and `headers` provided.
+    ///
+    /// - Note: If `destination` is not specified, the download will be moved to a temporary location determined by
+    ///         Alamofire.
+    ///
+    /// - Parameters:
+    ///   - url:           The `URLConvertible` value.
+    ///   - method:        The `HTTPMethod`, `.get` by default.
+    ///   - parameters:    The `Encodable` parameters, `nil` by default.
+    ///   - encoder:       The `ParameterEncoder`, `URLEncodedFormParameterEncoder.default` by default.
+    ///   - headers:       The `HTTPHeaders`, `nil` by default.
+    ///   - interceptor:   The `RequestInterceptor`, `nil` by default.
+    ///   - destination:   The `DownloadRequest.Destination` closure used the determine the destination of the
+    ///                    downloaded file. `nil` by default.
+    ///
+    /// - Returns: The created `DownloadRequest`.
+    public static func download<Parameters: Encodable>(_ url: URLConvertible,
+                                                       method: HTTPMethod = .get,
+                                                       parameters: Parameters? = nil,
+                                                       encoder: ParameterEncoder = URLEncodedFormParameterEncoder.default,
+                                                       headers: HTTPHeaders? = nil,
+                                                       interceptor: RequestInterceptor? = nil,
+                                                       to destination: DownloadRequest.Destination? = nil) -> DownloadRequest {
+        return Session.default.download(url,
+                                        method: method,
+                                        parameters: parameters,
+                                        encoder: encoder,
+                                        headers: headers,
+                                        interceptor: interceptor,
+                                        to: destination)
+    }
 
-    - returns: The created request.
-*/
-public func request(
-    method: Method,
-    _ URLString: URLStringConvertible,
-    parameters: [String: AnyObject]? = nil,
-    encoding: ParameterEncoding = .URL,
-    headers: [String: String]? = nil)
-    -> Request
-{
-    return Manager.sharedInstance.request(
-        method,
-        URLString,
-        parameters: parameters,
-        encoding: encoding,
-        headers: headers
-    )
-}
+    // MARK: URLRequest
 
-/**
-    Creates a request using the shared manager instance for the specified URL request.
+    /// Creates a `DownloadRequest` using `Session.default` to execute the specified `urlRequest` and download
+    /// the result to the provided `destination`.
+    ///
+    /// - Parameters:
+    ///   - urlRequest:    The `URLRequestConvertible` value.
+    ///   - interceptor:   The `RequestInterceptor`, `nil` by default.
+    ///   - destination:   The `DownloadRequest.Destination` closure used the determine the destination of the
+    ///                    downloaded file. `nil` by default.
+    ///
+    /// - Returns: The created `DownloadRequest`.
+    public static func download(_ urlRequest: URLRequestConvertible,
+                                interceptor: RequestInterceptor? = nil,
+                                to destination: DownloadRequest.Destination? = nil) -> DownloadRequest {
+        return Session.default.download(urlRequest, interceptor: interceptor, to: destination)
+    }
 
-    If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
+    // MARK: Resume Data
 
-    - parameter URLRequest: The URL request
+    /// Creates a `DownloadRequest` using the `Session.default` from the `resumeData` produced from a previous
+    /// `DownloadRequest` cancellation to retrieve the contents of the original request and save them to the `destination`.
+    ///
+    /// - Note: If `destination` is not specified, the download will be moved to a temporary location determined by
+    ///         Alamofire.
+    ///
+    /// - Note: On some versions of all Apple platforms (iOS 10 - 10.2, macOS 10.12 - 10.12.2, tvOS 10 - 10.1, watchOS 3 - 3.1.1),
+    /// `resumeData` is broken on background URL session configurations. There's an underlying bug in the `resumeData`
+    /// generation logic where the data is written incorrectly and will always fail to resume the download. For more
+    /// information about the bug and possible workarounds, please refer to the [this Stack Overflow post](http://stackoverflow.com/a/39347461/1342462).
+    ///
+    /// - Parameters:
+    ///   - resumeData:    The resume `Data`. This is an opaque blob produced by `URLSessionDownloadTask` when a task is
+    ///                    cancelled. See [Apple's documentation](https://developer.apple.com/documentation/foundation/urlsessiondownloadtask/1411634-cancel)
+    ///                    for more information.
+    ///   - interceptor:   The `RequestInterceptor`, `nil` by default.
+    ///   - destination:   The `DownloadRequest.Destination` closure used to determine the destination of the downloaded
+    ///                    file. `nil` by default.
+    ///
+    /// - Returns:         The created `DownloadRequest`.
+    public static func download(resumingWith resumeData: Data,
+                                interceptor: RequestInterceptor? = nil,
+                                to destination: DownloadRequest.Destination? = nil) -> DownloadRequest {
+        return Session.default.download(resumingWith: resumeData, interceptor: interceptor, to: destination)
+    }
 
-    - returns: The created request.
-*/
-public func request(URLRequest: URLRequestConvertible) -> Request {
-    return Manager.sharedInstance.request(URLRequest.URLRequest)
-}
+    // MARK: - Upload Request
 
-// MARK: - Upload Methods
+    // MARK: Data
 
-// MARK: File
+    /// Creates an `UploadRequest` for the given `Data`, `URLRequest` components, and `RequestInterceptor`.
+    ///
+    /// - Parameters:
+    ///   - data:        The `Data` to upload.
+    ///   - convertible: `URLConvertible` value to be used as the `URLRequest`'s `URL`.
+    ///   - method:      `HTTPMethod` for the `URLRequest`. `.post` by default.
+    ///   - headers:     `HTTPHeaders` value to be added to the `URLRequest`. `nil` by default.
+    ///   - interceptor: `RequestInterceptor` value to be used by the returned `DataRequest`. `nil` by default.
+    ///   - fileManager: `FileManager` instance to be used by the returned `UploadRequest`. `.default` instance by
+    ///                  default.
+    ///
+    /// - Returns:       The created `UploadRequest`.
+    public static func upload(_ data: Data,
+                              to convertible: URLConvertible,
+                              method: HTTPMethod = .post,
+                              headers: HTTPHeaders? = nil,
+                              interceptor: RequestInterceptor? = nil,
+                              fileManager: FileManager = .default) -> UploadRequest {
+        return Session.default.upload(data,
+                                      to: convertible,
+                                      method: method,
+                                      headers: headers,
+                                      interceptor: interceptor,
+                                      fileManager: fileManager)
+    }
 
-/**
-    Creates an upload request using the shared manager instance for the specified method, URL string, and file.
+    /// Creates an `UploadRequest` for the given `Data` using the `URLRequestConvertible` value and `RequestInterceptor`.
+    ///
+    /// - Parameters:
+    ///   - data:        The `Data` to upload.
+    ///   - convertible: `URLRequestConvertible` value to be used to create the `URLRequest`.
+    ///   - interceptor: `RequestInterceptor` value to be used by the returned `DataRequest`. `nil` by default.
+    ///   - fileManager: `FileManager` instance to be used by the returned `UploadRequest`. `.default` instance by
+    ///                  default.
+    ///
+    /// - Returns:       The created `UploadRequest`.
+    public static func upload(_ data: Data,
+                              with convertible: URLRequestConvertible,
+                              interceptor: RequestInterceptor? = nil,
+                              fileManager: FileManager = .default) -> UploadRequest {
+        return Session.default.upload(data, with: convertible, interceptor: interceptor, fileManager: fileManager)
+    }
 
-    - parameter method:    The HTTP method.
-    - parameter URLString: The URL string.
-    - parameter headers:   The HTTP headers. `nil` by default.
-    - parameter file:      The file to upload.
+    // MARK: File
 
-    - returns: The created upload request.
-*/
-public func upload(
-    method: Method,
-    _ URLString: URLStringConvertible,
-    headers: [String: String]? = nil,
-    file: NSURL)
-    -> Request
-{
-    return Manager.sharedInstance.upload(method, URLString, headers: headers, file: file)
-}
+    /// Creates an `UploadRequest` for the file at the given file `URL`, using a `URLRequest` from the provided
+    /// components and `RequestInterceptor`.
+    ///
+    /// - Parameters:
+    ///   - fileURL:     The `URL` of the file to upload.
+    ///   - convertible: `URLConvertible` value to be used as the `URLRequest`'s `URL`.
+    ///   - method:      `HTTPMethod` for the `URLRequest`. `.post` by default.
+    ///   - headers:     `HTTPHeaders` value to be added to the `URLRequest`. `nil` by default.
+    ///   - interceptor: `RequestInterceptor` value to be used by the returned `UploadRequest`. `nil` by default.
+    ///   - fileManager: `FileManager` instance to be used by the returned `UploadRequest`. `.default` instance by
+    ///                  default.
+    ///
+    /// - Returns:       The created `UploadRequest`.
+    public static func upload(_ fileURL: URL,
+                              to convertible: URLConvertible,
+                              method: HTTPMethod = .post,
+                              headers: HTTPHeaders? = nil,
+                              interceptor: RequestInterceptor? = nil,
+                              fileManager: FileManager = .default) -> UploadRequest {
+        return Session.default.upload(fileURL,
+                                      to: convertible,
+                                      method: method,
+                                      headers: headers,
+                                      interceptor: interceptor,
+                                      fileManager: fileManager)
+    }
 
-/**
-    Creates an upload request using the shared manager instance for the specified URL request and file.
+    /// Creates an `UploadRequest` for the file at the given file `URL` using the `URLRequestConvertible` value and
+    /// `RequestInterceptor`.
+    ///
+    /// - Parameters:
+    ///   - fileURL:     The `URL` of the file to upload.
+    ///   - convertible: `URLRequestConvertible` value to be used to create the `URLRequest`.
+    ///   - interceptor: `RequestInterceptor` value to be used by the returned `DataRequest`. `nil` by default.
+    ///   - fileManager: `FileManager` instance to be used by the returned `UploadRequest`. `.default` instance by
+    ///                  default.
+    ///
+    /// - Returns:       The created `UploadRequest`.
+    public static func upload(_ fileURL: URL,
+                              with convertible: URLRequestConvertible,
+                              interceptor: RequestInterceptor? = nil,
+                              fileManager: FileManager = .default) -> UploadRequest {
+        return Session.default.upload(fileURL, with: convertible, interceptor: interceptor, fileManager: fileManager)
+    }
 
-    - parameter URLRequest: The URL request.
-    - parameter file:       The file to upload.
+    // MARK: InputStream
 
-    - returns: The created upload request.
-*/
-public func upload(URLRequest: URLRequestConvertible, file: NSURL) -> Request {
-    return Manager.sharedInstance.upload(URLRequest, file: file)
-}
+    /// Creates an `UploadRequest` from the `InputStream` provided using a `URLRequest` from the provided components and
+    /// `RequestInterceptor`.
+    ///
+    /// - Parameters:
+    ///   - stream:      The `InputStream` that provides the data to upload.
+    ///   - convertible: `URLConvertible` value to be used as the `URLRequest`'s `URL`.
+    ///   - method:      `HTTPMethod` for the `URLRequest`. `.post` by default.
+    ///   - headers:     `HTTPHeaders` value to be added to the `URLRequest`. `nil` by default.
+    ///   - interceptor: `RequestInterceptor` value to be used by the returned `DataRequest`. `nil` by default.
+    ///   - fileManager: `FileManager` instance to be used by the returned `UploadRequest`. `.default` instance by
+    ///                  default.
+    ///
+    /// - Returns:       The created `UploadRequest`.
+    public static func upload(_ stream: InputStream,
+                              to convertible: URLConvertible,
+                              method: HTTPMethod = .post,
+                              headers: HTTPHeaders? = nil,
+                              interceptor: RequestInterceptor? = nil,
+                              fileManager: FileManager = .default) -> UploadRequest {
+        return Session.default.upload(stream,
+                                      to: convertible,
+                                      method: method,
+                                      headers: headers,
+                                      interceptor: interceptor,
+                                      fileManager: fileManager)
+    }
 
-// MARK: Data
+    /// Creates an `UploadRequest` from the provided `InputStream` using the `URLRequestConvertible` value and
+    /// `RequestInterceptor`.
+    ///
+    /// - Parameters:
+    ///   - stream:      The `InputStream` that provides the data to upload.
+    ///   - convertible: `URLRequestConvertible` value to be used to create the `URLRequest`.
+    ///   - interceptor: `RequestInterceptor` value to be used by the returned `DataRequest`. `nil` by default.
+    ///   - fileManager: `FileManager` instance to be used by the returned `UploadRequest`. `.default` instance by
+    ///                  default.
+    ///
+    /// - Returns:       The created `UploadRequest`.
+    public static func upload(_ stream: InputStream,
+                              with convertible: URLRequestConvertible,
+                              interceptor: RequestInterceptor? = nil,
+                              fileManager: FileManager = .default) -> UploadRequest {
+        return Session.default.upload(stream, with: convertible, interceptor: interceptor, fileManager: fileManager)
+    }
 
-/**
-    Creates an upload request using the shared manager instance for the specified method, URL string, and data.
+    // MARK: MultipartFormData
 
-    - parameter method:    The HTTP method.
-    - parameter URLString: The URL string.
-    - parameter headers:   The HTTP headers. `nil` by default.
-    - parameter data:      The data to upload.
+    /// Creates an `UploadRequest` for the multipart form data built using a closure and sent using the provided
+    /// `URLRequest` components and `RequestInterceptor`.
+    ///
+    /// It is important to understand the memory implications of uploading `MultipartFormData`. If the cumulative
+    /// payload is small, encoding the data in-memory and directly uploading to a server is the by far the most
+    /// efficient approach. However, if the payload is too large, encoding the data in-memory could cause your app to
+    /// be terminated. Larger payloads must first be written to disk using input and output streams to keep the memory
+    /// footprint low, then the data can be uploaded as a stream from the resulting file. Streaming from disk MUST be
+    /// used for larger payloads such as video content.
+    ///
+    /// The `encodingMemoryThreshold` parameter allows Alamofire to automatically determine whether to encode in-memory
+    /// or stream from disk. If the content length of the `MultipartFormData` is below the `encodingMemoryThreshold`,
+    /// encoding takes place in-memory. If the content length exceeds the threshold, the data is streamed to disk
+    /// during the encoding process. Then the result is uploaded as data or as a stream depending on which encoding
+    /// technique was used.
+    ///
+    /// - Parameters:
+    ///   - multipartFormData:       `MultipartFormData` building closure.
+    ///   - convertible:             `URLConvertible` value to be used as the `URLRequest`'s `URL`.
+    ///   - encodingMemoryThreshold: Byte threshold used to determine whether the form data is encoded into memory or
+    ///                              onto disk before being uploaded. `MultipartFormData.encodingMemoryThreshold` by
+    ///                              default.
+    ///   - method:                  `HTTPMethod` for the `URLRequest`. `.post` by default.
+    ///   - headers:                 `HTTPHeaders` value to be added to the `URLRequest`. `nil` by default.
+    ///   - interceptor:             `RequestInterceptor` value to be used by the returned `DataRequest`. `nil` by default.
+    ///   - fileManager:             `FileManager` to be used if the form data exceeds the memory threshold and is
+    ///                              written to disk before being uploaded. `.default` instance by default.
+    ///
+    /// - Returns:                   The created `UploadRequest`.
+    public static func upload(multipartFormData: @escaping (MultipartFormData) -> Void,
+                              to url: URLConvertible,
+                              usingThreshold encodingMemoryThreshold: UInt64 = MultipartFormData.encodingMemoryThreshold,
+                              method: HTTPMethod = .post,
+                              headers: HTTPHeaders? = nil,
+                              interceptor: RequestInterceptor? = nil,
+                              fileManager: FileManager = .default) -> UploadRequest {
+        return Session.default.upload(multipartFormData: multipartFormData,
+                                      to: url,
+                                      usingThreshold: encodingMemoryThreshold,
+                                      method: method,
+                                      headers: headers,
+                                      interceptor: interceptor,
+                                      fileManager: fileManager)
+    }
 
-    - returns: The created upload request.
-*/
-public func upload(
-    method: Method,
-    _ URLString: URLStringConvertible,
-    headers: [String: String]? = nil,
-    data: NSData)
-    -> Request
-{
-    return Manager.sharedInstance.upload(method, URLString, headers: headers, data: data)
-}
+    /// Creates an `UploadRequest` using a `MultipartFormData` building closure, the provided `URLRequestConvertible`
+    /// value, and a `RequestInterceptor`.
+    ///
+    /// It is important to understand the memory implications of uploading `MultipartFormData`. If the cumulative
+    /// payload is small, encoding the data in-memory and directly uploading to a server is the by far the most
+    /// efficient approach. However, if the payload is too large, encoding the data in-memory could cause your app to
+    /// be terminated. Larger payloads must first be written to disk using input and output streams to keep the memory
+    /// footprint low, then the data can be uploaded as a stream from the resulting file. Streaming from disk MUST be
+    /// used for larger payloads such as video content.
+    ///
+    /// The `encodingMemoryThreshold` parameter allows Alamofire to automatically determine whether to encode in-memory
+    /// or stream from disk. If the content length of the `MultipartFormData` is below the `encodingMemoryThreshold`,
+    /// encoding takes place in-memory. If the content length exceeds the threshold, the data is streamed to disk
+    /// during the encoding process. Then the result is uploaded as data or as a stream depending on which encoding
+    /// technique was used.
+    ///
+    /// - Parameters:
+    ///   - multipartFormData:       `MultipartFormData` building closure.
+    ///   - request:                 `URLRequestConvertible` value to be used to create the `URLRequest`.
+    ///   - encodingMemoryThreshold: Byte threshold used to determine whether the form data is encoded into memory or
+    ///                              onto disk before being uploaded. `MultipartFormData.encodingMemoryThreshold` by
+    ///                              default.
+    ///   - interceptor:             `RequestInterceptor` value to be used by the returned `DataRequest`. `nil` by default.
+    ///   - fileManager:             `FileManager` to be used if the form data exceeds the memory threshold and is
+    ///                              written to disk before being uploaded. `.default` instance by default.
+    ///
+    /// - Returns:                   The created `UploadRequest`.
+    public static func upload(multipartFormData: @escaping (MultipartFormData) -> Void,
+                              with request: URLRequestConvertible,
+                              usingThreshold encodingMemoryThreshold: UInt64 = MultipartFormData.encodingMemoryThreshold,
+                              interceptor: RequestInterceptor? = nil,
+                              fileManager: FileManager = .default) -> UploadRequest {
+        return Session.default.upload(multipartFormData: multipartFormData,
+                                      with: request,
+                                      usingThreshold: encodingMemoryThreshold,
+                                      interceptor: interceptor,
+                                      fileManager: fileManager)
+    }
 
-/**
-    Creates an upload request using the shared manager instance for the specified URL request and data.
+    /// Creates an `UploadRequest` for the prebuilt `MultipartFormData` value using the provided `URLRequest` components
+    /// and `RequestInterceptor`.
+    ///
+    /// It is important to understand the memory implications of uploading `MultipartFormData`. If the cumulative
+    /// payload is small, encoding the data in-memory and directly uploading to a server is the by far the most
+    /// efficient approach. However, if the payload is too large, encoding the data in-memory could cause your app to
+    /// be terminated. Larger payloads must first be written to disk using input and output streams to keep the memory
+    /// footprint low, then the data can be uploaded as a stream from the resulting file. Streaming from disk MUST be
+    /// used for larger payloads such as video content.
+    ///
+    /// The `encodingMemoryThreshold` parameter allows Alamofire to automatically determine whether to encode in-memory
+    /// or stream from disk. If the content length of the `MultipartFormData` is below the `encodingMemoryThreshold`,
+    /// encoding takes place in-memory. If the content length exceeds the threshold, the data is streamed to disk
+    /// during the encoding process. Then the result is uploaded as data or as a stream depending on which encoding
+    /// technique was used.
+    ///
+    /// - Parameters:
+    ///   - multipartFormData:       `MultipartFormData` instance to upload.
+    ///   - url:                     `URLConvertible` value to be used as the `URLRequest`'s `URL`.
+    ///   - encodingMemoryThreshold: Byte threshold used to determine whether the form data is encoded into memory or
+    ///                              onto disk before being uploaded. `MultipartFormData.encodingMemoryThreshold` by
+    ///                              default.
+    ///   - method:                  `HTTPMethod` for the `URLRequest`. `.post` by default.
+    ///   - headers:                 `HTTPHeaders` value to be added to the `URLRequest`. `nil` by default.
+    ///   - interceptor:             `RequestInterceptor` value to be used by the returned `DataRequest`. `nil` by default.
+    ///   - fileManager:             `FileManager` to be used if the form data exceeds the memory threshold and is
+    ///                              written to disk before being uploaded. `.default` instance by default.
+    ///
+    /// - Returns:                   The created `UploadRequest`.
+    public static func upload(multipartFormData: MultipartFormData,
+                              to url: URLConvertible,
+                              usingThreshold encodingMemoryThreshold: UInt64 = MultipartFormData.encodingMemoryThreshold,
+                              method: HTTPMethod = .post,
+                              headers: HTTPHeaders? = nil,
+                              interceptor: RequestInterceptor? = nil,
+                              fileManager: FileManager = .default) -> UploadRequest {
+        return Session.default.upload(multipartFormData: multipartFormData,
+                                      to: url,
+                                      usingThreshold: encodingMemoryThreshold,
+                                      method: method,
+                                      headers: headers,
+                                      interceptor: interceptor,
+                                      fileManager: fileManager)
+    }
 
-    - parameter URLRequest: The URL request.
-    - parameter data:       The data to upload.
-
-    - returns: The created upload request.
-*/
-public func upload(URLRequest: URLRequestConvertible, data: NSData) -> Request {
-    return Manager.sharedInstance.upload(URLRequest, data: data)
-}
-
-// MARK: Stream
-
-/**
-    Creates an upload request using the shared manager instance for the specified method, URL string, and stream.
-
-    - parameter method:    The HTTP method.
-    - parameter URLString: The URL string.
-    - parameter headers:   The HTTP headers. `nil` by default.
-    - parameter stream:    The stream to upload.
-
-    - returns: The created upload request.
-*/
-public func upload(
-    method: Method,
-    _ URLString: URLStringConvertible,
-    headers: [String: String]? = nil,
-    stream: NSInputStream)
-    -> Request
-{
-    return Manager.sharedInstance.upload(method, URLString, headers: headers, stream: stream)
-}
-
-/**
-    Creates an upload request using the shared manager instance for the specified URL request and stream.
-
-    - parameter URLRequest: The URL request.
-    - parameter stream:     The stream to upload.
-
-    - returns: The created upload request.
-*/
-public func upload(URLRequest: URLRequestConvertible, stream: NSInputStream) -> Request {
-    return Manager.sharedInstance.upload(URLRequest, stream: stream)
-}
-
-// MARK: MultipartFormData
-
-/**
-    Creates an upload request using the shared manager instance for the specified method and URL string.
-
-    - parameter method:                  The HTTP method.
-    - parameter URLString:               The URL string.
-    - parameter headers:                 The HTTP headers. `nil` by default.
-    - parameter multipartFormData:       The closure used to append body parts to the `MultipartFormData`.
-    - parameter encodingMemoryThreshold: The encoding memory threshold in bytes.
-                                         `MultipartFormDataEncodingMemoryThreshold` by default.
-    - parameter encodingCompletion:      The closure called when the `MultipartFormData` encoding is complete.
-*/
-public func upload(
-    method: Method,
-    _ URLString: URLStringConvertible,
-    headers: [String: String]? = nil,
-    multipartFormData: MultipartFormData -> Void,
-    encodingMemoryThreshold: UInt64 = Manager.MultipartFormDataEncodingMemoryThreshold,
-    encodingCompletion: (Manager.MultipartFormDataEncodingResult -> Void)?)
-{
-    return Manager.sharedInstance.upload(
-        method,
-        URLString,
-        headers: headers,
-        multipartFormData: multipartFormData,
-        encodingMemoryThreshold: encodingMemoryThreshold,
-        encodingCompletion: encodingCompletion
-    )
-}
-
-/**
-    Creates an upload request using the shared manager instance for the specified method and URL string.
-
-    - parameter URLRequest:              The URL request.
-    - parameter multipartFormData:       The closure used to append body parts to the `MultipartFormData`.
-    - parameter encodingMemoryThreshold: The encoding memory threshold in bytes.
-                                         `MultipartFormDataEncodingMemoryThreshold` by default.
-    - parameter encodingCompletion:      The closure called when the `MultipartFormData` encoding is complete.
-*/
-public func upload(
-    URLRequest: URLRequestConvertible,
-    multipartFormData: MultipartFormData -> Void,
-    encodingMemoryThreshold: UInt64 = Manager.MultipartFormDataEncodingMemoryThreshold,
-    encodingCompletion: (Manager.MultipartFormDataEncodingResult -> Void)?)
-{
-    return Manager.sharedInstance.upload(
-        URLRequest,
-        multipartFormData: multipartFormData,
-        encodingMemoryThreshold: encodingMemoryThreshold,
-        encodingCompletion: encodingCompletion
-    )
-}
-
-// MARK: - Download Methods
-
-// MARK: URL Request
-
-/**
-    Creates a download request using the shared manager instance for the specified method and URL string.
-
-    - parameter method:      The HTTP method.
-    - parameter URLString:   The URL string.
-    - parameter parameters:  The parameters. `nil` by default.
-    - parameter encoding:    The parameter encoding. `.URL` by default.
-    - parameter headers:     The HTTP headers. `nil` by default.
-    - parameter destination: The closure used to determine the destination of the downloaded file.
-
-    - returns: The created download request.
-*/
-public func download(
-    method: Method,
-    _ URLString: URLStringConvertible,
-    parameters: [String: AnyObject]? = nil,
-    encoding: ParameterEncoding = .URL,
-    headers: [String: String]? = nil,
-    destination: Request.DownloadFileDestination)
-    -> Request
-{
-    return Manager.sharedInstance.download(
-        method,
-        URLString,
-        parameters: parameters,
-        encoding: encoding,
-        headers: headers,
-        destination: destination
-    )
-}
-
-/**
-    Creates a download request using the shared manager instance for the specified URL request.
-
-    - parameter URLRequest:  The URL request.
-    - parameter destination: The closure used to determine the destination of the downloaded file.
-
-    - returns: The created download request.
-*/
-public func download(URLRequest: URLRequestConvertible, destination: Request.DownloadFileDestination) -> Request {
-    return Manager.sharedInstance.download(URLRequest, destination: destination)
-}
-
-// MARK: Resume Data
-
-/**
-    Creates a request using the shared manager instance for downloading from the resume data produced from a
-    previous request cancellation.
-
-    - parameter resumeData:  The resume data. This is an opaque data blob produced by `NSURLSessionDownloadTask`
-                             when a task is cancelled. See `NSURLSession -downloadTaskWithResumeData:` for additional
-                             information.
-    - parameter destination: The closure used to determine the destination of the downloaded file.
-
-    - returns: The created download request.
-*/
-public func download(resumeData data: NSData, destination: Request.DownloadFileDestination) -> Request {
-    return Manager.sharedInstance.download(data, destination: destination)
+    /// Creates an `UploadRequest` for the prebuilt `MultipartFormData` value using the providing `URLRequestConvertible`
+    /// value and `RequestInterceptor`.
+    ///
+    /// It is important to understand the memory implications of uploading `MultipartFormData`. If the cumulative
+    /// payload is small, encoding the data in-memory and directly uploading to a server is the by far the most
+    /// efficient approach. However, if the payload is too large, encoding the data in-memory could cause your app to
+    /// be terminated. Larger payloads must first be written to disk using input and output streams to keep the memory
+    /// footprint low, then the data can be uploaded as a stream from the resulting file. Streaming from disk MUST be
+    /// used for larger payloads such as video content.
+    ///
+    /// The `encodingMemoryThreshold` parameter allows Alamofire to automatically determine whether to encode in-memory
+    /// or stream from disk. If the content length of the `MultipartFormData` is below the `encodingMemoryThreshold`,
+    /// encoding takes place in-memory. If the content length exceeds the threshold, the data is streamed to disk
+    /// during the encoding process. Then the result is uploaded as data or as a stream depending on which encoding
+    /// technique was used.
+    ///
+    /// - Parameters:
+    ///   - multipartFormData:       `MultipartFormData` instance to upload.
+    ///   - request:                 `URLRequestConvertible` value to be used to create the `URLRequest`.
+    ///   - encodingMemoryThreshold: Byte threshold used to determine whether the form data is encoded into memory or
+    ///                              onto disk before being uploaded. `MultipartFormData.encodingMemoryThreshold` by
+    ///                              default.
+    ///   - interceptor:             `RequestInterceptor` value to be used by the returned `DataRequest`. `nil` by default.
+    ///   - fileManager:             `FileManager` instance to be used by the returned `UploadRequest`. `.default` instance by
+    ///                              default.
+    ///
+    /// - Returns:                   The created `UploadRequest`.
+    public static func upload(multipartFormData: MultipartFormData,
+                              with request: URLRequestConvertible,
+                              usingThreshold encodingMemoryThreshold: UInt64 = MultipartFormData.encodingMemoryThreshold,
+                              interceptor: RequestInterceptor? = nil,
+                              fileManager: FileManager = .default) -> UploadRequest {
+        return Session.default.upload(multipartFormData: multipartFormData,
+                                      with: request,
+                                      usingThreshold: encodingMemoryThreshold,
+                                      interceptor: interceptor,
+                                      fileManager: fileManager)
+    }
 }

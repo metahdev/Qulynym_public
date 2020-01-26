@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_QulynymUITestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_QulynymUITestsVersionString[];
+FOUNDATION_EXPORT double Pods_Qulynym_QulynymUITestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Qulynym_QulynymUITestsVersionString[];
 

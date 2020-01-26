@@ -18,8 +18,9 @@ protocol MenuInteractorProtocol: class {
 class MenuInteractor: MenuInteractorProtocol {
     /// MARK:- Properties
     weak var presenter: MenuPresenterProtocol!
-    var playlistURL: String!
+    var playlistID = "PLm8b4TrIR2AcXTsUw9BrBcL4552pE6wA2"
     private let apiKey = "AIzaSyAxwDKck_8Ve5hrqIZfaJK1lgoVmGc4qr0"
+    private let stringURL = "https://www.googleapis.com/youtube/v3/playlists"
     
     required init(_ presenter: MenuPresenterProtocol) {
         self.presenter = presenter
@@ -40,6 +41,16 @@ extension MenuInteractor {
     }
     
     func fetchPlaylistVideos() {
-        
+        AF.request(stringURL, method: .get, parameters: ["part": "snippet", "playlistID": playlistID, "key": apiKey], encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: nil).responseJSON(completionHandler: { response in
+            
+            guard response.error == nil else {
+                #warning("show an error message")
+                return
+            }
+            
+            if let json = response.value as? NSDictionary {
+                print(json)
+            }
+        })
     }
 }

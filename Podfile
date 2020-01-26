@@ -2,12 +2,11 @@
 # platform :ios, '9.0'
 
 target 'Qulynym' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Qulynym
   pod "YoutubePlayer-in-WKWebView", "~> 0.2.0" 
-  pod 'Alamofire', '~> 3.0'  
+  pod 'Alamofire', '~> 5.0.0-rc.3'
 
   target 'QulynymTests' do
     inherit! :search_paths
@@ -15,7 +14,6 @@ target 'Qulynym' do
   end
 
   target 'QulynymUITests' do
-    inherit! :search_paths
     # Pods for testing
   end
 

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A57E20BFC220FD322B539FE7F33DB605"
-               BuildableName = "Pods_QulynymUITests.framework"
-               BlueprintName = "Pods-QulynymUITests"
+               BlueprintIdentifier = "9EEAB3EC34FAAEB8A5A2C286EBEB69E9"
+               BuildableName = "Pods_Qulynym_QulynymUITests.framework"
+               BlueprintName = "Pods-Qulynym-QulynymUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

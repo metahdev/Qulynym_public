@@ -8,6 +8,7 @@
 */
 
 import UIKit
+import Alamofire
 
 enum Menu {
     case main
@@ -54,6 +55,25 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
         super.viewWillAppear(animated)
         presenter.getSections()
         hideOrUnhideCloseBtn()
+        fetchPlaylistVideos()
+    }
+    
+    func fetchPlaylistVideos() {
+        var playlistID = "PLm8b4TrIR2AcXTsUw9BrBcL4552pE6wA2"
+        let apiKey = "AIzaSyAxwDKck_8Ve5hrqIZfaJK1lgoVmGc4qr0"
+        let stringURL = "https://www.googleapis.com/youtube/v3/playlists"
+        
+        AF.request(stringURL, method: .get, parameters: ["part": "snippet", "playlistID": playlistID, "key": apiKey, "channelId": "UCSJKvyZVC0FLiyvo3LeEllg"], encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: nil).responseJSON(completionHandler: { response in
+            
+            guard response.error == nil else {
+                #warning("show an error message")
+                return
+            }
+            
+            if let json = response.value as? NSDictionary {
+                print(json)
+            }
+        })
     }
 
     

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D686A310E54BC2F5D56BBEA /* Pods_QulynymTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C205908B1F3D009DD896E27 /* Pods_QulynymTests.framework */; };
+		6FD1ABE470AE2BB88B3EEF7D /* Pods_Qulynym_QulynymUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2252C2CF606A04AC8867777C /* Pods_Qulynym_QulynymUITests.framework */; };
 		8528917622F9A22600A7CEA7 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528917522F9A22600A7CEA7 /* TextViewController.swift */; };
 		856F348B22F87EDD00E97C0C /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F348A22F87EDD00E97C0C /* SettingsConfigurator.swift */; };
 		856F348D22F87EF100E97C0C /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F348C22F87EF100E97C0C /* SettingsPresenter.swift */; };
@@ -14,7 +16,6 @@
 		856F349122F87F1800E97C0C /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349022F87F1800E97C0C /* SettingsRouter.swift */; };
 		856F349422F87F5800E97C0C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349322F87F5800E97C0C /* SettingsViewController.swift */; };
 		856F349622F87F8900E97C0C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349522F87F8900E97C0C /* SettingsView.swift */; };
-		B5D189421CD5A4B123F54873 /* Pods_QulynymTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A98BBC454E43DB87DC434BC5 /* Pods_QulynymTests.framework */; };
 		B916B09122FBDC3400AF255A /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08C22FBDC3400AF255A /* GameOverState.swift */; };
 		B916B09222FBDC3400AF255A /* TutorialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08D22FBDC3400AF255A /* TutorialState.swift */; };
 		B916B09322FBDC3400AF255A /* MainMenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08E22FBDC3400AF255A /* MainMenuState.swift */; };
@@ -42,7 +43,7 @@
 		B9E2CE3822FBDF2F006B5697 /* falling.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2522FBDF2F006B5697 /* falling.wav */; };
 		B9E2CE3922FBDF2F006B5697 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2622FBDF2F006B5697 /* coin.wav */; };
 		B9E2CE3B22FBDF2F006B5697 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2822FBDF2F006B5697 /* ding.wav */; };
-		C24D1D8F8CB754ADF1FABFC1 /* Pods_Qulynym.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEDB5F1CC415758D0AA71172 /* Pods_Qulynym.framework */; };
+		CA4E6B9457DFEF7D503D4A1D /* Pods_Qulynym.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E031261186D933A33C7C5772 /* Pods_Qulynym.framework */; };
 		D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10221DB22ECD2B40081C95E /* CanvasView.swift */; };
 		D102930822F1A13500C7B2F2 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930722F1A13500C7B2F2 /* QuizViewController.swift */; };
 		D102930A22F1A14000C7B2F2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930922F1A14000C7B2F2 /* QuizView.swift */; };
@@ -183,7 +184,6 @@
 		D1F9ABD722A0457900989BD3 /* DrawingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD622A0457900989BD3 /* DrawingPresenter.swift */; };
 		D1F9ABD922A0458400989BD3 /* DrawingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD822A0458400989BD3 /* DrawingInteractor.swift */; };
 		D1F9ABDB22A0458C00989BD3 /* DrawingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABDA22A0458C00989BD3 /* DrawingRouter.swift */; };
-		E047D6B8B296A0821810E014 /* Pods_QulynymUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA3E56B233D8D27913E77F0 /* Pods_QulynymUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,9 +204,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0153942034D241C2D9B1BD0C /* Pods-QulynymTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulynymTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QulynymTests/Pods-QulynymTests.debug.xcconfig"; sourceTree = "<group>"; };
-		11F2AD342508CD8882573ED1 /* Pods-QulynymUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulynymUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QulynymUITests/Pods-QulynymUITests.release.xcconfig"; sourceTree = "<group>"; };
-		2EA3E56B233D8D27913E77F0 /* Pods_QulynymUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QulynymUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B7969DFE4A77B5E06526433 /* Pods-Qulynym-QulynymUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym-QulynymUITests.release.xcconfig"; path = "Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1D4E9BEED70DC17F8A889EB8 /* Pods-Qulynym.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.debug.xcconfig"; path = "Target Support Files/Pods-Qulynym/Pods-Qulynym.debug.xcconfig"; sourceTree = "<group>"; };
+		2252C2CF606A04AC8867777C /* Pods_Qulynym_QulynymUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qulynym_QulynymUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3967BDCF5F753F01882358FB /* Pods-QulynymTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulynymTests.debug.xcconfig"; path = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3C205908B1F3D009DD896E27 /* Pods_QulynymTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QulynymTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8528917522F9A22600A7CEA7 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		856F348A22F87EDD00E97C0C /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
 		856F348C22F87EF100E97C0C /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -214,9 +216,7 @@
 		856F349022F87F1800E97C0C /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		856F349322F87F5800E97C0C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		856F349522F87F8900E97C0C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A375596A8F68210121FD3BCD /* Pods-QulynymTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulynymTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QulynymTests/Pods-QulynymTests.release.xcconfig"; sourceTree = "<group>"; };
-		A82493CD17C6645FF5804025 /* Pods-Qulynym.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qulynym/Pods-Qulynym.debug.xcconfig"; sourceTree = "<group>"; };
-		A98BBC454E43DB87DC434BC5 /* Pods_QulynymTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QulynymTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A60B3FFC7A9900BB4BF332C1 /* Pods-Qulynym.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.release.xcconfig"; path = "Target Support Files/Pods-Qulynym/Pods-Qulynym.release.xcconfig"; sourceTree = "<group>"; };
 		B916B08C22FBDC3400AF255A /* GameOverState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 		B916B08D22FBDC3400AF255A /* TutorialState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialState.swift; sourceTree = "<group>"; };
 		B916B08E22FBDC3400AF255A /* MainMenuState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuState.swift; sourceTree = "<group>"; };
@@ -391,9 +391,9 @@
 		D1F9ABD622A0457900989BD3 /* DrawingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPresenter.swift; sourceTree = "<group>"; };
 		D1F9ABD822A0458400989BD3 /* DrawingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingInteractor.swift; sourceTree = "<group>"; };
 		D1F9ABDA22A0458C00989BD3 /* DrawingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingRouter.swift; sourceTree = "<group>"; };
-		E8E6C6028A95F2EF1E68274C /* Pods-QulynymUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulynymUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QulynymUITests/Pods-QulynymUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		EBE271B8BFB3BB79B7829143 /* Pods-Qulynym.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qulynym/Pods-Qulynym.release.xcconfig"; sourceTree = "<group>"; };
-		FEDB5F1CC415758D0AA71172 /* Pods_Qulynym.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qulynym.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E031261186D933A33C7C5772 /* Pods_Qulynym.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qulynym.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2CF92BA8D286FA7FE91861B /* Pods-QulynymTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulynymTests.release.xcconfig"; path = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests.release.xcconfig"; sourceTree = "<group>"; };
+		EE06D32ED08FACEC7EE61581 /* Pods-Qulynym-QulynymUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym-QulynymUITests.debug.xcconfig"; path = "Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,7 +401,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5D189421CD5A4B123F54873 /* Pods_QulynymTests.framework in Frameworks */,
+				0D686A310E54BC2F5D56BBEA /* Pods_QulynymTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +409,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C24D1D8F8CB754ADF1FABFC1 /* Pods_Qulynym.framework in Frameworks */,
+				CA4E6B9457DFEF7D503D4A1D /* Pods_Qulynym.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,7 +417,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E047D6B8B296A0821810E014 /* Pods_QulynymUITests.framework in Frameworks */,
+				6FD1ABE470AE2BB88B3EEF7D /* Pods_Qulynym_QulynymUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,27 +446,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8C293B04F5715A4D417E8809 /* Frameworks */ = {
+		87E877A727894FFFC3518CA5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FEDB5F1CC415758D0AA71172 /* Pods_Qulynym.framework */,
-				A98BBC454E43DB87DC434BC5 /* Pods_QulynymTests.framework */,
-				2EA3E56B233D8D27913E77F0 /* Pods_QulynymUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A818CAEA8B2B5F2BF9EF7CE2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A82493CD17C6645FF5804025 /* Pods-Qulynym.debug.xcconfig */,
-				EBE271B8BFB3BB79B7829143 /* Pods-Qulynym.release.xcconfig */,
-				0153942034D241C2D9B1BD0C /* Pods-QulynymTests.debug.xcconfig */,
-				A375596A8F68210121FD3BCD /* Pods-QulynymTests.release.xcconfig */,
-				E8E6C6028A95F2EF1E68274C /* Pods-QulynymUITests.debug.xcconfig */,
-				11F2AD342508CD8882573ED1 /* Pods-QulynymUITests.release.xcconfig */,
+				1D4E9BEED70DC17F8A889EB8 /* Pods-Qulynym.debug.xcconfig */,
+				A60B3FFC7A9900BB4BF332C1 /* Pods-Qulynym.release.xcconfig */,
+				EE06D32ED08FACEC7EE61581 /* Pods-Qulynym-QulynymUITests.debug.xcconfig */,
+				0B7969DFE4A77B5E06526433 /* Pods-Qulynym-QulynymUITests.release.xcconfig */,
+				3967BDCF5F753F01882358FB /* Pods-QulynymTests.debug.xcconfig */,
+				E2CF92BA8D286FA7FE91861B /* Pods-QulynymTests.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		B916B08B22FBDC3400AF255A /* GameStates */ = {
@@ -531,6 +522,16 @@
 				B9E2CE2822FBDF2F006B5697 /* ding.wav */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		D01C313A6B5806898267DC51 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E031261186D933A33C7C5772 /* Pods_Qulynym.framework */,
+				2252C2CF606A04AC8867777C /* Pods_Qulynym_QulynymUITests.framework */,
+				3C205908B1F3D009DD896E27 /* Pods_QulynymTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D102930622F1A10600C7B2F2 /* Quiz */ = {
@@ -653,8 +654,8 @@
 				D13E7D39235C38C700D25A29 /* QulynymUITests */,
 				D1071A09235C3AD90078B33F /* QulynymTests */,
 				D13D864A2217FEDF0048A6E4 /* Products */,
-				A818CAEA8B2B5F2BF9EF7CE2 /* Pods */,
-				8C293B04F5715A4D417E8809 /* Frameworks */,
+				87E877A727894FFFC3518CA5 /* Pods */,
+				D01C313A6B5806898267DC51 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -963,7 +964,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1071A0F235C3AD90078B33F /* Build configuration list for PBXNativeTarget "QulynymTests" */;
 			buildPhases = (
-				1F8101C552320AA8B6F3190D /* [CP] Check Pods Manifest.lock */,
+				C49AFD9C55239C0A2E5BACCC /* [CP] Check Pods Manifest.lock */,
 				D1071A04235C3AD90078B33F /* Sources */,
 				D1071A05235C3AD90078B33F /* Frameworks */,
 				D1071A06235C3AD90078B33F /* Resources */,
@@ -982,11 +983,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D13D86742217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "Qulynym" */;
 			buildPhases = (
-				F6972644736B70A799651DF6 /* [CP] Check Pods Manifest.lock */,
+				5280DE2CFC4746D1E66FE067 /* [CP] Check Pods Manifest.lock */,
 				D13D86452217FEDF0048A6E4 /* Sources */,
 				D13D86462217FEDF0048A6E4 /* Frameworks */,
 				D13D86472217FEDF0048A6E4 /* Resources */,
-				E8A73C42356B559463AE9469 /* [CP] Embed Pods Frameworks */,
+				4B79A3D9B42E5A2AC31D686F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1001,10 +1002,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D13E7D3F235C38C700D25A29 /* Build configuration list for PBXNativeTarget "QulynymUITests" */;
 			buildPhases = (
-				28E1AD5AF12E88C0C7DC21A5 /* [CP] Check Pods Manifest.lock */,
+				4299C6DC5DB8965DDC5596A9 /* [CP] Check Pods Manifest.lock */,
 				D13E7D34235C38C700D25A29 /* Sources */,
 				D13E7D35235C38C700D25A29 /* Frameworks */,
 				D13E7D36235C38C700D25A29 /* Resources */,
+				7EDD385713BC4177DA151009 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1178,43 +1180,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F8101C552320AA8B6F3190D /* [CP] Check Pods Manifest.lock */ = {
+		4299C6DC5DB8965DDC5596A9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-QulynymTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Qulynym-QulynymUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		28E1AD5AF12E88C0C7DC21A5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-QulynymUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E8A73C42356B559463AE9469 /* [CP] Embed Pods Frameworks */ = {
+		4B79A3D9B42E5A2AC31D686F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1231,18 +1219,61 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Qulynym/Pods-Qulynym-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F6972644736B70A799651DF6 /* [CP] Check Pods Manifest.lock */ = {
+		5280DE2CFC4746D1E66FE067 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Qulynym-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EDD385713BC4177DA151009 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C49AFD9C55239C0A2E5BACCC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QulynymTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1384,7 +1415,7 @@
 /* Begin XCBuildConfiguration section */
 		D1071A10235C3AD90078B33F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0153942034D241C2D9B1BD0C /* Pods-QulynymTests.debug.xcconfig */;
+			baseConfigurationReference = 3967BDCF5F753F01882358FB /* Pods-QulynymTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -1408,7 +1439,7 @@
 		};
 		D1071A11235C3AD90078B33F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A375596A8F68210121FD3BCD /* Pods-QulynymTests.release.xcconfig */;
+			baseConfigurationReference = E2CF92BA8D286FA7FE91861B /* Pods-QulynymTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -1547,7 +1578,7 @@
 		};
 		D13D86752217FEE00048A6E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A82493CD17C6645FF5804025 /* Pods-Qulynym.debug.xcconfig */;
+			baseConfigurationReference = 1D4E9BEED70DC17F8A889EB8 /* Pods-Qulynym.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1566,7 +1597,7 @@
 		};
 		D13D86762217FEE00048A6E4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBE271B8BFB3BB79B7829143 /* Pods-Qulynym.release.xcconfig */;
+			baseConfigurationReference = A60B3FFC7A9900BB4BF332C1 /* Pods-Qulynym.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1585,7 +1616,7 @@
 		};
 		D13E7D40235C38C700D25A29 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8E6C6028A95F2EF1E68274C /* Pods-QulynymUITests.debug.xcconfig */;
+			baseConfigurationReference = EE06D32ED08FACEC7EE61581 /* Pods-Qulynym-QulynymUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 674GV257AS;
@@ -1606,7 +1637,7 @@
 		};
 		D13E7D41235C38C700D25A29 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11F2AD342508CD8882573ED1 /* Pods-QulynymUITests.release.xcconfig */;
+			baseConfigurationReference = 0B7969DFE4A77B5E06526433 /* Pods-Qulynym-QulynymUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 674GV257AS;
