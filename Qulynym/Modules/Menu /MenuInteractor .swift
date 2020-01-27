@@ -22,7 +22,7 @@ class MenuInteractor: MenuInteractorProtocol {
     weak var presenter: MenuPresenterProtocol!
     
     var fetchIDs = ["UCSJKvyZVC0FLiyvo3LeEllg", nil]
-    private let apiKey = "AIzaSyAxwDKck_8Ve5hrqIZfaJK1lgoVmGc4qr0"
+    private let apiKey = "AIzaSyD3nA8srC9ZsfFXFTP066VP6Bmrrq9l_C0"
     private let stringURL = "https://www.googleapis.com/youtube/v3/playlists"
     
     required init(_ presenter: MenuPresenterProtocol) {

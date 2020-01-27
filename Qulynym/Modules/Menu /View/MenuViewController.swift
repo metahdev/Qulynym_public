@@ -151,7 +151,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.image = UIImage(named: ContentService.menuSections[indexPath.row])
         } else if menuType == .beinelerPlaylists || menuType == .beineler {
             cell.backgroundColor = .gray
-            cell.text = beineler[indexPath.row].title
+//            cell.text = beineler[indexPath.row].title
             #warning("image data")
         } else {
             cell.layer.cornerRadius = cell.frame.height * 0.5
