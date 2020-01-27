@@ -1,6 +1,6 @@
 /*
 * Qulynym
-* VideoViewController.swift
+* BeineViewController.swift
 *
 * Created by: Metah on 10/20/19
 *
@@ -10,24 +10,13 @@
 import UIKit
 import YoutubePlayer_in_WKWebView
 
-class Beine {
-    var title: String
-    var image: Data
-    var id: String
-    
-    init(title: String, image: Data, id: String) {
-        self.title = title
-        self.image = image
-        self.id = id
-    }
-}
 
 protocol VideoViewControllerProtocol: class {
     var videoID: String! { get set }
 }
 
 #warning("rethink UI: youtube player, view borders and background color")
-class VideoViewController: UIViewController,VideoViewControllerProtocol {
+class BeineViewController: UIViewController,VideoViewControllerProtocol {
     // MARK:- Properties
     var videoID: String!
     private lazy var closeBtn: UIButton = {
@@ -130,7 +119,7 @@ class VideoViewController: UIViewController,VideoViewControllerProtocol {
 }
 
 
-extension VideoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20
     }
@@ -155,7 +144,7 @@ extension VideoViewController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 
-extension VideoViewController: WKYTPlayerViewDelegate {
+extension BeineViewController: WKYTPlayerViewDelegate {
     func playerViewPreferredWebViewBackgroundColor(_ playerView: WKYTPlayerView) -> UIColor {
         return .clear
     }

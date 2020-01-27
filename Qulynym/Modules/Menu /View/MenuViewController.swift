@@ -10,18 +10,18 @@
 import UIKit
 import Alamofire
 
-enum Menu {
+enum Menu: String {
     case main
-    case beinelerPlaylists
-    case beineler
+    case beinelerPlaylists = "channelId"
+    case beineler = "id"
     case toddler
     case games
 }
 
 protocol MenuViewControllerProtocol: class {
     var menuType: Menu { get set }
-    var sections: [String] { get set }
-    var eduSections: [EduSection] { get set }
+    var playlistID: String! { get set }
+    var beineler: [Beine] { get set }
 }
 
 class MenuViewController: UIViewController, MenuViewControllerProtocol {
@@ -34,8 +34,8 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     weak var itemViewDelegate: ItemViewControllerProtocol!
     
     var menuType: Menu = .main
-    var sections = [String]()
-    var eduSections = [EduSection]()
+    var playlistID: String!
+    var beineler = [Beine]()
     
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
     private var menuView: MenuViewProtocol!
@@ -53,29 +53,12 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.getSections()
+        if menuType == .beineler || menuType == .beinelerPlaylists {
+            presenter.getSections()
+        }
         hideOrUnhideCloseBtn()
-        fetchPlaylistVideos()
     }
     
-    func fetchPlaylistVideos() {
-        var playlistID = "PLm8b4TrIR2AcXTsUw9BrBcL4552pE6wA2"
-        let apiKey = "AIzaSyAxwDKck_8Ve5hrqIZfaJK1lgoVmGc4qr0"
-        let stringURL = "https://www.googleapis.com/youtube/v3/playlists"
-        
-        AF.request(stringURL, method: .get, parameters: ["part": "snippet", "playlistID": playlistID, "key": apiKey, "channelId": "UCSJKvyZVC0FLiyvo3LeEllg"], encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: nil).responseJSON(completionHandler: { response in
-            
-            guard response.error == nil else {
-                #warning("show an error message")
-                return
-            }
-            
-            if let json = response.value as? NSDictionary {
-                print(json)
-            }
-        })
-    }
-
     
     // MARK:- Orientation
     override var shouldAutorotate: Bool {
@@ -145,37 +128,39 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
 extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK:- UICollectionView Protocols
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        #warning("rewrite this method for beineler")
-        if menuType == .beinelerPlaylists || menuType == .beineler {
-            return 20
+        if menuType == .main {
+            return ContentService.menuSections.count
         }
-        return menuType == .toddler ? eduSections.count : sections.count
+        if menuType == .beinelerPlaylists || menuType == .beineler {
+            if beineler.count == 0 {
+                return 20
+            }
+        }
+        return ContentService.sections[menuType]!.count        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        #warning("rewrite this method for data parsing")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        if menuType != .beinelerPlaylists && menuType != .beineler {
-            cell.imageName = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
-        }
+
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
+        cell.textSize = cell.frame.height * 0.17
         
-        if menuType == .beinelerPlaylists || menuType == .beineler {
+        if menuType == .main {
+            cell.text = ContentService.menuSections[indexPath.row]
+            cell.image = UIImage(named: ContentService.menuSections[indexPath.row])
+        } else if menuType == .beinelerPlaylists || menuType == .beineler {
             cell.backgroundColor = .gray
-        }
-        
-        if menuType == .toddler || menuType == .games {
-            cell.layer.cornerRadius = cell.frame.height * 0.5
+            cell.text = beineler[indexPath.row].title
+            #warning("image data")
         } else {
-            cell.layer.cornerRadius = 15
-            cell.imageViewCornerRadius = 15
+            cell.layer.cornerRadius = cell.frame.height * 0.5
+            cell.text = ContentService.sections[menuType]![indexPath.row]
+            return cell
         }
         
-        if menuType != .beinelerPlaylists && menuType != .beineler {
-            cell.text = menuType == .toddler ? eduSections[indexPath.row].name : sections[indexPath.row]
-            cell.textSize = cell.frame.height * 0.17
-        }
+        cell.layer.cornerRadius = 15
+        cell.imageViewCornerRadius = 15
         
         return cell
     }
@@ -188,7 +173,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else if menuType == .beineler {
             presenter.didSelectVideoCell(at: indexPath.row)
         } else if menuType == .toddler {
-                presenter.didSelectToddlerCell(at: indexPath.row)
+            presenter.didSelectToddlerCell(at: indexPath.row)
         } else {
             presenter.didSelectGamesCell(at: indexPath.row)
         }

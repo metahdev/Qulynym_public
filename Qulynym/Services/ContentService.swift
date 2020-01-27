@@ -34,7 +34,22 @@ struct Video {
     var image: Data
 }
 
+
+class Beine {
+    var title: String
+    var thumbnailURL: String
+    var id: String
+    
+    init(title: String, thumbnailURL: String, id: String) {
+        self.title = title
+        self.thumbnailURL = thumbnailURL
+        self.id = id 
+    }
+}
+
 struct ContentService {
+    static let sections: [Menu: [String]] = [.main: menuSections, .games: gamesSection]
+    
     static let menuSections = [
         "Beıneler",
         "Oqu",
@@ -43,7 +58,7 @@ struct ContentService {
         "Su'ret salu",
         "Oyin Oinau"
     ]
-    
+        
     static let toddlerSections = [
         colorsSection,
         shapesSection,

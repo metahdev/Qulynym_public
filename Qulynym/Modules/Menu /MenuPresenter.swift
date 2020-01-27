@@ -34,12 +34,10 @@ class MenuPresenter: MenuPresenterProtocol {
 extension MenuPresenter {
     // MARK:- Protocol Methods
     func getSections() {
-        #warning("beineler data passing")
-        if controller.menuType == .toddler {
-            controller.eduSections = interactor.getEduSections()
-        } else {
-            controller.sections = interactor.getStringSections(controller.menuType)
+        if controller.menuType == .beineler {
+            interactor.fetchIDs[1] = controller.playlistID
         }
+        controller.beineler = interactor.fetchBeine()
     }
     
     func didSelectMenuCell(at index: Int) {
@@ -53,16 +51,15 @@ extension MenuPresenter {
     }
     
     func didSelectPlaylistCell(at index: Int) {
-        router.showBeineler()
+        router.showBeineler(playlist: controller.beineler[index].id)
     }
     
     func didSelectVideoCell(at index: Int) {
-        #warning("data passing")
-        router.showVideoView(video: "Oet7BDrTfhM")
+        router.showVideoView(video: controller.beineler[index].id)
     }
     
     func didSelectToddlerCell(at index: Int) {
-        router.showItemView(content: controller.eduSections[index])
+        router.showItemView(content: ContentService.toddlerSections[index])
     }
     
     func didSelectGamesCell(at index: Int) {
