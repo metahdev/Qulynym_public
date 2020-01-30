@@ -111,7 +111,6 @@ extension PlaylistItemPresenter {
     }
     
     func close() {
-        #warning("wtf?")
         AudioPlayer.playlistPlayerInitiated = false
         timer.nullifyData()
         router.close()

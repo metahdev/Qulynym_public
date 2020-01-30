@@ -35,16 +35,10 @@ struct Video {
 }
 
 
-class Beine {
+struct Beine {
     var title: String
-    var thumbnailURL: String
     var id: String
-    
-    init(title: String, thumbnailURL: String, id: String) {
-        self.title = title
-        self.thumbnailURL = thumbnailURL
-        self.id = id 
-    }
+    var thumbnailURL: String
 }
 
 struct ContentService {

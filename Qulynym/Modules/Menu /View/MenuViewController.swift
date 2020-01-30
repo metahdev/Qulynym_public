@@ -22,6 +22,8 @@ protocol MenuViewControllerProtocol: class {
     var menuType: Menu { get set }
     var playlistID: String! { get set }
     var beineler: [Beine] { get set }
+    
+    func reloadData()
 }
 
 class MenuViewController: UIViewController, MenuViewControllerProtocol {
@@ -134,6 +136,8 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if menuType == .beinelerPlaylists || menuType == .beineler {
             if beineler.count == 0 {
                 return 20
+            } else {
+                return beineler.count
             }
         }
         return ContentService.sections[menuType]!.count        
@@ -151,8 +155,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.image = UIImage(named: ContentService.menuSections[indexPath.row])
         } else if menuType == .beinelerPlaylists || menuType == .beineler {
             cell.backgroundColor = .gray
-//            cell.text = beineler[indexPath.row].title
-            #warning("image data")
+            if beineler.count != 0 {
+                cell.text = self.beineler[indexPath.row].title
+                #warning("image fetch as in screenshot at the working folder")
+            }
         } else {
             cell.layer.cornerRadius = cell.frame.height * 0.5
             cell.text = ContentService.sections[menuType]![indexPath.row]
@@ -194,9 +200,17 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 
+extension MenuViewController {
+    func reloadData() {
+        menuView.collectionView.reloadData()
+    }
+}
+
+
 extension MenuViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = Animator()
         return animator
     }
 }
+
