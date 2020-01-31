@@ -92,6 +92,9 @@ extension MenuRouter {
         let vc = MenuViewController()
         controller.secondMenuViewDelegate = vc
         controller.secondMenuViewDelegate.menuType = menuType
+        if let id = id {
+            controller.secondMenuViewDelegate.playlistID = id
+        }
         showAnotherView(view: vc)
     }
     

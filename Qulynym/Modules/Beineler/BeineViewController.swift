@@ -19,6 +19,7 @@ protocol VideoViewControllerProtocol: class {
 class BeineViewController: UIViewController,VideoViewControllerProtocol {
     // MARK:- Properties
     var videoID: String!
+    
     private lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)

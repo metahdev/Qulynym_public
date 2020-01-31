@@ -157,7 +157,25 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.backgroundColor = .gray
             if beineler.count != 0 {
                 cell.text = self.beineler[indexPath.row].title
-                #warning("image fetch as in screenshot at the working folder")
+                
+                let configuration = URLSessionConfiguration.default
+                configuration.waitsForConnectivity = true
+                let session = URLSession(configuration: configuration)
+
+                let url = URL(string: self.beineler[indexPath.row].thumbnailURL)!
+                let task = session.dataTask(with: url) {(data, response, error) in
+                    guard let httpResponse = response as? HTTPURLResponse,
+                        httpResponse.statusCode == 200 else {    return }
+                    
+                    guard let data = data else {
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        cell.image = UIImage(data: data)
+                    }
+                }
+                task.resume()
             }
         } else {
             cell.layer.cornerRadius = cell.frame.height * 0.5

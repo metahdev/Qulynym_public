@@ -57,12 +57,10 @@ extension MenuPresenter {
     }
     
     func didSelectPlaylistCell(at index: Int) {
-        #warning("refactor this so it won't generate an error if beineler isn't loaded")
         router.showBeineler(playlist: controller.beineler[index].id)
     }
     
     func didSelectVideoCell(at index: Int) {
-        // same as in warning 
         router.showVideoView(video: controller.beineler[index].id)
     }
     

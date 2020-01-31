@@ -23,8 +23,8 @@ class MenuInteractor: MenuInteractorProtocol {
     var beineler = [Beine]()
     
     var fetchIDs = ["UCSJKvyZVC0FLiyvo3LeEllg", nil]
+    private var stringURL = "https://www.googleapis.com/youtube/v3/playlists"
     private let apiKey = "AIzaSyD3nA8srC9ZsfFXFTP066VP6Bmrrq9l_C0"
-    private let stringURL = "https://www.googleapis.com/youtube/v3/playlists"
     
     required init(_ presenter: MenuPresenterProtocol) {
         self.presenter = presenter
@@ -35,29 +35,19 @@ extension MenuInteractor {
     // MARK:- Protocol Methods
     func fetchBeine()  {
         #warning("refactor this")
-        /* make several requests by nextPageToken(the maxResults 50 isn't working with the 7th element giving the name of 6th, output of titles:
-         «Сәби» мультхикаясы (2019)
-         Абай Құнанбайұлының 175 жылдығы
-         «Таңжарық» бағдарламасы (2019)
-         «Ертемір» мультхикаясы (2019 ж.) 2-маусым
-         «Айдар» мультхикаясы (2019 ж.) 2-маусым
-         «Немене» телехикаясы
-         Немене * Unexpectedly found nil while unwrapping an Optional value * error occurs
-         )
-         */
-        
-        #warning("by some reason the beineler menu is showing playlists again")
-        var key = ""
+        /* make several requests by nextPageToken */
+
+        var key = "channelId"
+        var idKey = "id"
         var index = 0
-        if fetchIDs[1] == nil {
-            key = "channelId"
-        } else {
-            key = "id"
+        if fetchIDs[1] != nil {
+            key = "playlistId"
+            stringURL = stringURL.replacingOccurrences(of: "playlists", with: "playlistItems")
+            idKey = "snippet.resourceId.videoId"
             index = 1
         }
         
-        AF.request(stringURL, method: .get, parameters: ["part": "snippet", key: fetchIDs[index], "key": apiKey], encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: nil).responseJSON(completionHandler: { response in
-            
+        AF.request(stringURL, method: .get, parameters: ["part": "snippet", key: fetchIDs[index]!, "key": apiKey, "maxResults": "10"], encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: nil).responseJSON(completionHandler: { response in
             switch response.result {
             case .success(let value):
                 if let JSON = value as? [String: Any] {
@@ -65,9 +55,10 @@ extension MenuInteractor {
                         print(JSON)
                         for video in videos {
                             let title = (video as AnyObject).value(forKeyPath: "snippet.title") as! String
-                            let id = (video as AnyObject).value(forKeyPath: "id") as! String
-                            let thumbnail = (video as AnyObject).value(forKeyPath: "snippet.thumbnails.maxres.url") as! String
-                            self.beineler.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
+                            let id = (video as AnyObject).value(forKeyPath: idKey) as! String
+                            if let thumbnail = (video as AnyObject).value(forKeyPath: "snippet.thumbnails.maxres.url") as? String {
+                                self.beineler.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
+                            }
                         }
                     }
                 }
