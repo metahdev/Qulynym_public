@@ -10,7 +10,7 @@
 import Foundation
 
 protocol MenuPresenterProtocol: class {
-    func getSections()
+    func fetchData()
     func dataReady() 
     func didSelectMenuCell(at index: Int)
     func didSelectPlaylistCell(at index: Int)
@@ -34,7 +34,7 @@ class MenuPresenter: MenuPresenterProtocol {
 
 extension MenuPresenter {
     // MARK:- Protocol Methods
-    func getSections() {
+    func fetchData() {
         if controller.menuType == .beineler {
             interactor.fetchIDs[1] = controller.playlistID
         }

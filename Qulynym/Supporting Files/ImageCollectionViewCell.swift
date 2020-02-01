@@ -18,7 +18,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }
     var image: UIImage? {
         didSet {
-            imageView.image = image!
+            imageView.image = image
         }
     }
     var text: String! {
@@ -90,5 +90,11 @@ class ImageCollectionViewCell: UICollectionViewCell {
             sectionTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             sectionTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.sectionTitleLabel.text = ""
+        self.imageView.image = nil // or set a placeholder image
     }
 }

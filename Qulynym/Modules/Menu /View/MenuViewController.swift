@@ -56,7 +56,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if menuType == .beineler || menuType == .beinelerPlaylists {
-            presenter.getSections()
+            presenter.fetchData()
         }
         hideOrUnhideCloseBtn()
     }
@@ -130,8 +130,8 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
 extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK:- UICollectionView Protocols
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if menuType == .main {
-            return ContentService.menuSections.count
+        if menuType == .toddler {
+            return ContentService.toddlerSections.count
         }
         if menuType == .beinelerPlaylists || menuType == .beineler {
             if beineler.count == 0 {
@@ -151,11 +151,13 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.textSize = cell.frame.height * 0.17
         
         if menuType == .main {
-            cell.text = ContentService.menuSections[indexPath.row]
-            cell.image = UIImage(named: ContentService.menuSections[indexPath.row])
+            cell.text = ContentService.sections[menuType]![indexPath.row]
+            cell.image = UIImage(named: ContentService.sections[menuType]![indexPath.row])
         } else if menuType == .beinelerPlaylists || menuType == .beineler {
+            cell.isUserInteractionEnabled = false
             cell.backgroundColor = .gray
             if beineler.count != 0 {
+                cell.isUserInteractionEnabled = true
                 cell.text = self.beineler[indexPath.row].title
                 
                 let configuration = URLSessionConfiguration.default
@@ -177,9 +179,15 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
                 task.resume()
             }
+        } else if menuType == .toddler {
+            cell.layer.cornerRadius = cell.frame.height * 0.5
+            cell.text = ContentService.toddlerSections[indexPath.row].name
+            cell.image = UIImage(named: ContentService.toddlerSections[indexPath.row].name)
+            return cell
         } else {
             cell.layer.cornerRadius = cell.frame.height * 0.5
             cell.text = ContentService.sections[menuType]![indexPath.row]
+            cell.image = UIImage(named: ContentService.sections[menuType]![indexPath.row])
             return cell
         }
         
@@ -201,6 +209,14 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             presenter.didSelectGamesCell(at: indexPath.row)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard menuType == .beineler || menuType == .beinelerPlaylists else { return }
+        
+         if (indexPath.row == beineler.count - 1 ) {
+            self.presenter.fetchData()
+         }
     }
     
     

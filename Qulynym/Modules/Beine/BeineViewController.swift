@@ -12,13 +12,17 @@ import YoutubePlayer_in_WKWebView
 
 
 protocol VideoViewControllerProtocol: class {
+    var beineler: [Beine]! { get set }
     var videoID: String! { get set }
+    var index: Int! { get set }
 }
 
-#warning("rethink UI: youtube player, view borders and background color")
+// add slider, loadingView and etc. 
 class BeineViewController: UIViewController,VideoViewControllerProtocol {
     // MARK:- Properties
+    var beineler: [Beine]!
     var videoID: String!
+    var index: Int!
     
     private lazy var closeBtn: UIButton = {
         let btn = UIButton()
@@ -29,10 +33,7 @@ class BeineViewController: UIViewController,VideoViewControllerProtocol {
     private lazy var videoView: WKYTPlayerView = {
         let view = WKYTPlayerView()
         view.delegate = self
-        view.layer.borderColor = UIColor.white.cgColor
-        view.layer.borderWidth = 5
-        view.layer.cornerRadius = 15
-        view.clipsToBounds = true
+        view.clipsToBounds = false
         return view
     }()
     private lazy var recommendationsCV: UICollectionView = {
@@ -70,8 +71,8 @@ class BeineViewController: UIViewController,VideoViewControllerProtocol {
     //to hide recommendations when video is finished and info 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let playvarsDic = ["controls": 0, "playsinline": 1, "showinfo": 0, "autoplay": 1, "rel": 0]
-        videoView.load(withVideoId: videoID, playerVars: playvarsDic)
+        let playVarsDic = ["controls": 0, "playsinline": 1, "showinfo": 0, "autoplay": 1, "rel": 0]
+        videoView.load(withVideoId: videoID, playerVars: playVarsDic)
         AudioPlayer.backgroundAudioPlayer.pause()
     }
     
@@ -131,10 +132,10 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         cell.backgroundColor = .gray
         
         cell.textSize = view.frame.height * 0.1
-        cell.layer.borderColor = UIColor.white.cgColor
-        cell.layer.borderWidth = 5
+//        cell.layer.borderColor = UIColor.white.cgColor
+//        cell.layer.borderWidth = 5
         cell.layer.cornerRadius = 15
-        cell.imageViewCornerRadius = 15
+//        cell.imageViewCornerRadius = 15
         
         return cell
     }

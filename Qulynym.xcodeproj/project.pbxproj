@@ -554,12 +554,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D105806D235BE3F100082DA3 /* Beineler */ = {
+		D105806D235BE3F100082DA3 /* Beine */ = {
 			isa = PBXGroup;
 			children = (
 				D1058075235C0E7F00082DA3 /* BeineViewController.swift */,
 			);
-			path = Beineler;
+			path = Beine;
 			sourceTree = "<group>";
 		};
 		D10687C822AE68A000A3E6E0 /* Menu  */ = {
@@ -818,7 +818,7 @@
 			isa = PBXGroup;
 			children = (
 				D10687C822AE68A000A3E6E0 /* Menu  */,
-				D105806D235BE3F100082DA3 /* Beineler */,
+				D105806D235BE3F100082DA3 /* Beine */,
 				856F348922F87E7B00E97C0C /* Settings */,
 				D14D5366222136B9007ACD55 /* Item */,
 				D102930622F1A10600C7B2F2 /* Quiz */,
