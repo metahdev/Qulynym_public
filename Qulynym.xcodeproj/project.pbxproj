@@ -94,6 +94,7 @@
 		D1621EC3235E257500FF2537 /* Bіr bala.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EBF235E257500FF2537 /* Bіr bala.mp3 */; };
 		D1621EC4235E257500FF2537 /* Ertegіler álemі.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EC0235E257500FF2537 /* Ertegіler álemі.mp3 */; };
 		D1621EC5235E257500FF2537 /* Sarjaılay'.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EC1235E257500FF2537 /* Sarjaılay'.mp3 */; };
+		D171887C23E6EF4C006FAB72 /* DataFetchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171887B23E6EF4C006FAB72 /* DataFetchAPI.swift */; };
 		D18E30BD2325566500C0E012 /* Aigo'lek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BB2325566400C0E012 /* Aigo'lek.mp3 */; };
 		D18E30BE2325566500C0E012 /* Qoshaqanym.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */; };
 		D18E30C02325566C00C0E012 /* Bauyrsaq Ertegi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */; };
@@ -301,6 +302,7 @@
 		D1621EBF235E257500FF2537 /* Bіr bala.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bіr bala.mp3"; sourceTree = "<group>"; };
 		D1621EC0235E257500FF2537 /* Ertegіler álemі.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ertegіler álemі.mp3"; sourceTree = "<group>"; };
 		D1621EC1235E257500FF2537 /* Sarjaılay'.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sarjaılay'.mp3"; sourceTree = "<group>"; };
+		D171887B23E6EF4C006FAB72 /* DataFetchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetchAPI.swift; sourceTree = "<group>"; };
 		D18E30BB2325566400C0E012 /* Aigo'lek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Aigo'lek.mp3"; sourceTree = "<group>"; };
 		D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Qoshaqanym.mp3; sourceTree = "<group>"; };
 		D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bauyrsaq Ertegi.mp3"; sourceTree = "<group>"; };
@@ -704,8 +706,9 @@
 		D14D536B2221377C007ACD55 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D13D867D22180E430048A6E4 /* PersistentService.swift */,
+				D171887B23E6EF4C006FAB72 /* DataFetchAPI.swift */,
 				D14D53742221A294007ACD55 /* ContentService.swift */,
+				D13D867D22180E430048A6E4 /* PersistentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1323,6 +1326,7 @@
 				B916B0A122FBDC5400AF255A /* MovementComponent.swift in Sources */,
 				D102930822F1A13500C7B2F2 /* QuizViewController.swift in Sources */,
 				D13D864F2217FEDF0048A6E4 /* ItemViewController.swift in Sources */,
+				D171887C23E6EF4C006FAB72 /* DataFetchAPI.swift in Sources */,
 				D14D537222214853007ACD55 /* ItemRouter.swift in Sources */,
 				D1F9ABD122A0454600989BD3 /* DrawingViewController.swift in Sources */,
 				B9E2CE2B22FBDF2F006B5697 /* Int+Extensions.swift in Sources */,

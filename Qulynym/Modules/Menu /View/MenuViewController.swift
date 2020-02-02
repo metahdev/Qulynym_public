@@ -22,6 +22,7 @@ protocol MenuViewControllerProtocol: class {
     var menuType: Menu { get set }
     var playlistID: String! { get set }
     var beineler: [Beine] { get set }
+    var token: String? { get set }
     
     func reloadData()
 }
@@ -38,7 +39,9 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     var menuType: Menu = .main
     var playlistID: String!
     var beineler = [Beine]()
+    var token: String?
     
+    private var ifFetchHasAlreadyDone = false
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
     private var menuView: MenuViewProtocol!
     
@@ -56,7 +59,10 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if menuType == .beineler || menuType == .beinelerPlaylists {
-            presenter.fetchData()
+            if !ifFetchHasAlreadyDone {
+                ifFetchHasAlreadyDone = true
+                presenter.fetchData()
+            }
         }
         hideOrUnhideCloseBtn()
     }
@@ -213,6 +219,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard menuType == .beineler || menuType == .beinelerPlaylists else { return }
+        guard let t = self.token else { return }
         
          if (indexPath.row == beineler.count - 1 ) {
             self.presenter.fetchData()

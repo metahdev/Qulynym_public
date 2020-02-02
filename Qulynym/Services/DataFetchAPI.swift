@@ -1,8 +1,8 @@
 /*
 * Qulynym
-* MenuInteractor .swift
+* DataFetchAPI.swift
 *
-* Created by: Metah on 6/12/19
+* Created by: Metah on 2/2/20
 *
 * Copyright © 2019 Automatization X Software. All rights reserved.
 */
@@ -10,45 +10,41 @@
 import Foundation
 import Alamofire
 
-protocol MenuInteractorProtocol: class {
-    var fetchIDs: [String?] { get set }
-    var nextPageToken: String? { get set }
-    var beineler: [Beine] { get }
-   
-    func fetchBeine()
+protocol DataFetchAPIDelegate: class {
+    var playlistID: String? { get set }
+    var token: String? { get set }
+    func dataReceived()
 }
 
-class MenuInteractor: MenuInteractorProtocol {
-    /// MARK:- Properties
-    weak var presenter: MenuPresenterProtocol!
+class DataFetchAPI {
+    // MARK:- Properties
     var beineler = [Beine]()
-    var fetchIDs = ["UCSJKvyZVC0FLiyvo3LeEllg", nil]
-    var nextPageToken: String?
     
+    private var firstFetchIsCompleted = false
     private var stringURL = "https://www.googleapis.com/youtube/v3/playlists"
     private let apiKey = "AIzaSyD3nA8srC9ZsfFXFTP066VP6Bmrrq9l_C0"
     
-    required init(_ presenter: MenuPresenterProtocol) {
-        self.presenter = presenter
-    }
-}
+    private weak var delegate: DataFetchAPIDelegate!
 
-extension MenuInteractor {
-    // MARK:- Protocol Methods
+    required init(delegate: DataFetchAPIDelegate) {
+        self.delegate = delegate
+    }
+    
+    // MARK:- Methods
     func fetchBeine()  {
-        var key = "channelId"
+        var fetchIDKey = "channelId"
+        var fetchIDValue = "UCSJKvyZVC0FLiyvo3LeEllg"
         var idKey = "id"
-        var index = 0
-        if fetchIDs[1] != nil {
-            key = "playlistId"
-            stringURL = stringURL.replacingOccurrences(of: "playlists", with: "playlistItems")
+        if let id = delegate.playlistID {
+            fetchIDKey = "playlistId"
+            fetchIDValue = id
             idKey = "snippet.resourceId.videoId"
-            index = 1
+            stringURL = stringURL.replacingOccurrences(of: "playlists", with: "playlistItems")
         }
         
-        var parameters = ["part": "snippet", key: fetchIDs[index]!, "key": apiKey, "maxResults": "10"]
+        var parameters = ["part": "snippet", fetchIDKey: fetchIDValue, "key": apiKey, "maxResults": "10"]
          
-        if let token = nextPageToken {
+        if let token = delegate.token {
             parameters["pageToken"] = token
         }
         
@@ -67,10 +63,10 @@ extension MenuInteractor {
                             
                         }
                     }
-                    self.nextPageToken = JSON["nextPageToken"] as? String
+                    self.delegate.token = JSON["nextPageToken"] as? String
                 }
                 self.beineler += tempBeineler
-                self.presenter.dataReady()
+                self.delegate.dataReceived()
             case .failure(let error):
                 #warning("error message")
             }

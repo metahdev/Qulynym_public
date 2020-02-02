@@ -43,6 +43,7 @@ extension MenuPresenter {
     
     func dataReady() {
         controller.beineler = interactor.beineler
+        controller.token = interactor.nextPageToken
         controller.reloadData()
     }
     
