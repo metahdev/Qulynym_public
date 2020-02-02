@@ -20,14 +20,10 @@ enum Menu: String {
 
 protocol MenuViewControllerProtocol: class {
     var menuType: Menu { get set }
-    var playlistID: String! { get set }
-    var beineler: [Beine] { get set }
-    var token: String? { get set }
-    
-    func reloadData()
+    var playlistID: String? { get set }
 }
 
-class MenuViewController: UIViewController, MenuViewControllerProtocol {
+class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate {    
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
@@ -37,13 +33,13 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     weak var itemViewDelegate: ItemViewControllerProtocol!
     
     var menuType: Menu = .main
-    var playlistID: String!
-    var beineler = [Beine]()
+    var playlistID: String?
     var token: String?
     
     private var ifFetchHasAlreadyDone = false
-    private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
+    private var dataFetchAPI: DataFetchAPI!
     private var menuView: MenuViewProtocol!
+    private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
     
     
     // MARK:- View Lifecycle
@@ -61,7 +57,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
         if menuType == .beineler || menuType == .beinelerPlaylists {
             if !ifFetchHasAlreadyDone {
                 ifFetchHasAlreadyDone = true
-                presenter.fetchData()
+                dataFetchAPI.fetchBeine()
             }
         }
         hideOrUnhideCloseBtn()
@@ -88,6 +84,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol {
     }
     
     private func setupProperties() {
+        dataFetchAPI = DataFetchAPI(delegate: self)
         menuView.collectionView.delegate = self
         menuView.collectionView.dataSource = self
         
@@ -140,10 +137,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return ContentService.toddlerSections.count
         }
         if menuType == .beinelerPlaylists || menuType == .beineler {
-            if beineler.count == 0 {
+            if dataFetchAPI.beineler.count == 0 {
                 return 20
             } else {
-                return beineler.count
+                return dataFetchAPI.beineler.count
             }
         }
         return ContentService.sections[menuType]!.count        
@@ -162,15 +159,16 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else if menuType == .beinelerPlaylists || menuType == .beineler {
             cell.isUserInteractionEnabled = false
             cell.backgroundColor = .gray
-            if beineler.count != 0 {
+            if self.dataFetchAPI.beineler.count != 0 {
                 cell.isUserInteractionEnabled = true
-                cell.text = self.beineler[indexPath.row].title
+                cell.text = self.dataFetchAPI.beineler[indexPath.row].title
                 
+                #warning("refactor")
                 let configuration = URLSessionConfiguration.default
                 configuration.waitsForConnectivity = true
                 let session = URLSession(configuration: configuration)
 
-                let url = URL(string: self.beineler[indexPath.row].thumbnailURL)!
+                let url = URL(string: self.dataFetchAPI.beineler[indexPath.row].thumbnailURL)!
                 let task = session.dataTask(with: url) {(data, response, error) in
                     guard let httpResponse = response as? HTTPURLResponse,
                         httpResponse.statusCode == 200 else {    return }
@@ -207,9 +205,9 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if menuType == .main {
             presenter.didSelectMenuCell(at: indexPath.row)
         } else if menuType == .beinelerPlaylists {
-            presenter.didSelectPlaylistCell(at: indexPath.row)
+            presenter.didSelectPlaylistCell(playlist: self.dataFetchAPI.beineler[indexPath.row].id)
         } else if menuType == .beineler {
-            presenter.didSelectVideoCell(at: indexPath.row)
+            presenter.didSelectVideoCell(index: indexPath.row, fetchAPI: self.dataFetchAPI)
         } else if menuType == .toddler {
             presenter.didSelectToddlerCell(at: indexPath.row)
         } else {
@@ -219,10 +217,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard menuType == .beineler || menuType == .beinelerPlaylists else { return }
-        guard let t = self.token else { return }
+        guard self.token != nil else { return }
         
-         if (indexPath.row == beineler.count - 1 ) {
-            self.presenter.fetchData()
+         if (indexPath.row == dataFetchAPI.beineler.count - 1 ) {
+            self.dataFetchAPI.fetchBeine()
          }
     }
     
@@ -242,7 +240,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 
 extension MenuViewController {
-    func reloadData() {
+    func dataReceived() {
         menuView.collectionView.reloadData()
     }
 }

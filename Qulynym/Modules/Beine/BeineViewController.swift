@@ -12,18 +12,17 @@ import YoutubePlayer_in_WKWebView
 
 
 protocol VideoViewControllerProtocol: class {
-    var beineler: [Beine]! { get set }
-    var videoID: String! { get set }
+    var dataFetchAPI: DataFetchAPI! { get set }
     var index: Int! { get set }
 }
 
 // add slider, loadingView and etc. 
 class BeineViewController: UIViewController,VideoViewControllerProtocol {
     // MARK:- Properties
-    var beineler: [Beine]!
-    var videoID: String!
+    weak var dataFetchAPI: DataFetchAPI!
     var index: Int!
     
+    private let playVarsDic = ["controls": 0, "playsinline": 1, "showinfo": 0, "autoplay": 1, "rel": 0]
     private lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
@@ -64,16 +63,43 @@ class BeineViewController: UIViewController,VideoViewControllerProtocol {
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
         closeBtn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        nextVideoBtn.addTarget(self, action: #selector(nextVideo), for: .touchUpInside)
+        previousVideoBtn.addTarget(self, action: #selector(previousVideo), for: .touchUpInside)
         
         view.backgroundColor = .black
     }
     
-    //to hide recommendations when video is finished and info 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if index == 0 {
+            previousVideoBtn.isEnabled = false
+        }
+        if index == dataFetchAPI.beineler.count - 1{
+            nextVideoBtn.isEnabled = false
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let playVarsDic = ["controls": 0, "playsinline": 1, "showinfo": 0, "autoplay": 1, "rel": 0]
-        videoView.load(withVideoId: videoID, playerVars: playVarsDic)
+        videoView.load(withVideoId: dataFetchAPI.beineler[index].id, playerVars: playVarsDic)
         AudioPlayer.backgroundAudioPlayer.pause()
+        
+        #warning("the last cell is also selected somehow")
+        let indexPath = IndexPath(item: index, section: 0)
+        recommendationsCV.scrollToItem(at: indexPath, at: .left, animated: true)
+        makeCellSelected(recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0))!)
+    }
+    
+    
+    // MARK:- Layout
+    func makeCellSelected(_ cell: UICollectionViewCell) {
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 5
+    }
+    
+    func makeCellDeselected(_ cell: UICollectionViewCell) {
+        cell.layer.borderColor = nil
+        cell.layer.borderWidth = 0
     }
     
     private func setupCV() {
@@ -118,30 +144,92 @@ class BeineViewController: UIViewController,VideoViewControllerProtocol {
         self.navigationController!.popViewController(animated: true)
         AudioPlayer.backgroundAudioPlayer.play()
     }
+    
+    #warning("refactor these 2 methods")
+    @objc
+    private func nextVideo() {
+        makeCellDeselected(recommendationsCV.cellForItem(at: IndexPath(item: self.index, section: 0))!)
+        index += 1
+        videoView.load(withVideoId: dataFetchAPI.beineler[index].id, playerVars: playVarsDic)
+        recommendationsCV.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
+        makeCellSelected(recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0))!)
+    }
+    
+    @objc
+    private func previousVideo() {
+        makeCellDeselected(recommendationsCV.cellForItem(at: IndexPath(item: self.index, section: 0))!)
+        index -= 1
+        videoView.load(withVideoId: dataFetchAPI.beineler[index].id, playerVars: playVarsDic)
+        recommendationsCV.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
+        makeCellSelected(recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0))!)
+    }
 }
 
 
 extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return dataFetchAPI.beineler.count == 0 ? 20 : dataFetchAPI.beineler.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         
         cell.backgroundColor = .gray
-        
         cell.textSize = view.frame.height * 0.1
-//        cell.layer.borderColor = UIColor.white.cgColor
-//        cell.layer.borderWidth = 5
         cell.layer.cornerRadius = 15
-//        cell.imageViewCornerRadius = 15
+        cell.imageViewCornerRadius = 15
+        
+        cell.isUserInteractionEnabled = false
+        cell.backgroundColor = .gray
+        if self.dataFetchAPI.beineler.count != 0 {
+            cell.isUserInteractionEnabled = true
+            cell.text = self.dataFetchAPI.beineler[indexPath.row].title
+            
+            let configuration = URLSessionConfiguration.default
+            configuration.waitsForConnectivity = true
+            let session = URLSession(configuration: configuration)
+
+            let url = URL(string: self.dataFetchAPI.beineler[indexPath.row].thumbnailURL)!
+            let task = session.dataTask(with: url) {(data, response, error) in
+                guard let httpResponse = response as? HTTPURLResponse,
+                    httpResponse.statusCode == 200 else {    return }
+                
+                guard let data = data else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    cell.image = UIImage(data: data)
+                }
+            }
+            task.resume()
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: recommendationsCV.frame.width * 0.3, height: recommendationsCV.frame.height - 8)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        #warning("bug if deselected cell isn't visible")
+        makeCellDeselected(collectionView.cellForItem(at: IndexPath(item: self.index, section: 0))!)
+        if indexPath.row != index {
+            videoView.load(withVideoId: dataFetchAPI.beineler[indexPath.row].id, playerVars: playVarsDic)
+            recommendationsCV.scrollToItem(at: indexPath, at: .left, animated: true)
+            makeCellSelected(collectionView.cellForItem(at: indexPath)!)
+            index = indexPath.row
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        #warning("make the implementation here also")
+//        guard self.token != nil else { return }
+        
+         if (indexPath.row == dataFetchAPI.beineler.count - 1 ) {
+            self.dataFetchAPI.fetchBeine()
+         }
     }
 }
 

@@ -10,11 +10,9 @@
 import Foundation
 
 protocol MenuPresenterProtocol: class {
-    func fetchData()
-    func dataReady() 
     func didSelectMenuCell(at index: Int)
-    func didSelectPlaylistCell(at index: Int)
-    func didSelectVideoCell(at index: Int)
+    func didSelectPlaylistCell(playlist id: String)
+    func didSelectVideoCell(index: Int, fetchAPI: DataFetchAPI)
     func didSelectToddlerCell(at index: Int)
     func didSelectGamesCell(at index: Int)
     func closeView()
@@ -34,19 +32,6 @@ class MenuPresenter: MenuPresenterProtocol {
 
 extension MenuPresenter {
     // MARK:- Protocol Methods
-    func fetchData() {
-        if controller.menuType == .beineler {
-            interactor.fetchIDs[1] = controller.playlistID
-        }
-        interactor.fetchBeine()
-    }
-    
-    func dataReady() {
-        controller.beineler = interactor.beineler
-        controller.token = interactor.nextPageToken
-        controller.reloadData()
-    }
-    
     func didSelectMenuCell(at index: Int) {
         switch index {
         case 0: router.showBeinelerPlaylists()
@@ -57,12 +42,12 @@ extension MenuPresenter {
         }
     }
     
-    func didSelectPlaylistCell(at index: Int) {
-        router.showBeineler(playlist: controller.beineler[index].id)
+    func didSelectPlaylistCell(playlist id: String) {
+        router.showBeineler(playlist: id)
     }
     
-    func didSelectVideoCell(at index: Int) {
-        router.showVideoView(video: controller.beineler[index].id)
+    func didSelectVideoCell(index: Int, fetchAPI: DataFetchAPI) {
+        router.showVideoView(index: index, fetchAPI: fetchAPI)
     }
     
     func didSelectToddlerCell(at index: Int) {

@@ -10,23 +10,13 @@
 import Foundation
 import Alamofire
 
+#warning("delete this file")
 protocol MenuInteractorProtocol: class {
-    var fetchIDs: [String?] { get set }
-    var nextPageToken: String? { get set }
-    var beineler: [Beine] { get }
-   
-    func fetchBeine()
 }
 
 class MenuInteractor: MenuInteractorProtocol {
     /// MARK:- Properties
     weak var presenter: MenuPresenterProtocol!
-    var beineler = [Beine]()
-    var fetchIDs = ["UCSJKvyZVC0FLiyvo3LeEllg", nil]
-    var nextPageToken: String?
-    
-    private var stringURL = "https://www.googleapis.com/youtube/v3/playlists"
-    private let apiKey = "AIzaSyD3nA8srC9ZsfFXFTP066VP6Bmrrq9l_C0"
     
     required init(_ presenter: MenuPresenterProtocol) {
         self.presenter = presenter
@@ -35,45 +25,5 @@ class MenuInteractor: MenuInteractorProtocol {
 
 extension MenuInteractor {
     // MARK:- Protocol Methods
-    func fetchBeine()  {
-        var key = "channelId"
-        var idKey = "id"
-        var index = 0
-        if fetchIDs[1] != nil {
-            key = "playlistId"
-            stringURL = stringURL.replacingOccurrences(of: "playlists", with: "playlistItems")
-            idKey = "snippet.resourceId.videoId"
-            index = 1
-        }
-        
-        var parameters = ["part": "snippet", key: fetchIDs[index]!, "key": apiKey, "maxResults": "10"]
-         
-        if let token = nextPageToken {
-            parameters["pageToken"] = token
-        }
-        
-        AF.request(stringURL, method: .get, parameters: parameters, encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: nil).responseJSON(completionHandler: { response in
-            switch response.result {
-            case .success(let value):
-                var tempBeineler = [Beine]()
-                if let JSON = value as? [String: Any] {
-                    if let videos = JSON["items"] as? NSArray {
-                        for video in videos {
-                            let title = (video as AnyObject).value(forKeyPath: "snippet.title") as! String
-                            let id = (video as AnyObject).value(forKeyPath: idKey) as! String
-                            if let thumbnail = (video as AnyObject).value(forKeyPath: "snippet.thumbnails.maxres.url") as? String {
-                                tempBeineler.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
-                            }
-                            
-                        }
-                    }
-                    self.nextPageToken = JSON["nextPageToken"] as? String
-                }
-                self.beineler += tempBeineler
-                self.presenter.dataReady()
-            case .failure(let error):
-                #warning("error message")
-            }
-        })
-    }
+    
 }

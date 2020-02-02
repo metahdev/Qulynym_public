@@ -19,6 +19,7 @@ protocol DataFetchAPIDelegate: class {
 class DataFetchAPI {
     // MARK:- Properties
     var beineler = [Beine]()
+    var imageIndex: Int!
     
     private var firstFetchIsCompleted = false
     private var stringURL = "https://www.googleapis.com/youtube/v3/playlists"
@@ -48,6 +49,7 @@ class DataFetchAPI {
             parameters["pageToken"] = token
         }
         
+        #warning("refactor")
         AF.request(stringURL, method: .get, parameters: parameters, encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: nil).responseJSON(completionHandler: { response in
             switch response.result {
             case .success(let value):
@@ -60,7 +62,6 @@ class DataFetchAPI {
                             if let thumbnail = (video as AnyObject).value(forKeyPath: "snippet.thumbnails.maxres.url") as? String {
                                 tempBeineler.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
                             }
-                            
                         }
                     }
                     self.delegate.token = JSON["nextPageToken"] as? String
@@ -70,6 +71,6 @@ class DataFetchAPI {
             case .failure(let error):
                 #warning("error message")
             }
-        })
-    }
+        })        
+    }    
 }
