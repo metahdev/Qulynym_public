@@ -10,6 +10,7 @@
 		0D686A310E54BC2F5D56BBEA /* Pods_QulynymTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C205908B1F3D009DD896E27 /* Pods_QulynymTests.framework */; };
 		6FD1ABE470AE2BB88B3EEF7D /* Pods_Qulynym_QulynymUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2252C2CF606A04AC8867777C /* Pods_Qulynym_QulynymUITests.framework */; };
 		8528917622F9A22600A7CEA7 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528917522F9A22600A7CEA7 /* TextViewController.swift */; };
+		856AADA623E6F93300376A4C /* ConnectionWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856AADA523E6F93300376A4C /* ConnectionWarningViewController.swift */; };
 		856F348B22F87EDD00E97C0C /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F348A22F87EDD00E97C0C /* SettingsConfigurator.swift */; };
 		856F348D22F87EF100E97C0C /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F348C22F87EF100E97C0C /* SettingsPresenter.swift */; };
 		856F348F22F87F0400E97C0C /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F348E22F87F0400E97C0C /* SettingsInteractor.swift */; };
@@ -211,6 +212,7 @@
 		3967BDCF5F753F01882358FB /* Pods-QulynymTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulynymTests.debug.xcconfig"; path = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3C205908B1F3D009DD896E27 /* Pods_QulynymTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QulynymTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8528917522F9A22600A7CEA7 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		856AADA523E6F93300376A4C /* ConnectionWarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionWarningViewController.swift; sourceTree = "<group>"; };
 		856F348A22F87EDD00E97C0C /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
 		856F348C22F87EF100E97C0C /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		856F348E22F87F0400E97C0C /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 			isa = PBXGroup;
 			children = (
 				D1058075235C0E7F00082DA3 /* BeineViewController.swift */,
+				856AADA523E6F93300376A4C /* ConnectionWarningViewController.swift */,
 			);
 			path = Beine;
 			sourceTree = "<group>";
@@ -1364,6 +1367,7 @@
 				B9E2CE2F22FBDF2F006B5697 /* SKNode+Extensions.swift in Sources */,
 				D135E2A422A02F7B00DC84DE /* PlaylistItemViewController.swift in Sources */,
 				D1058076235C0E7F00082DA3 /* BeineViewController.swift in Sources */,
+				856AADA623E6F93300376A4C /* ConnectionWarningViewController.swift in Sources */,
 				D102931122F1AE1100C7B2F2 /* QuizRouter.swift in Sources */,
 				D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */,
 				B9E2CE3022FBDF2F006B5697 /* CGPoint+Extensions.swift in Sources */,

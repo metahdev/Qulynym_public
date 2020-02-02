@@ -89,9 +89,10 @@ enum ButtonType {
     case music
     case info
     case credits
+    case tryAgain
 }
 
-struct SettingsButton {
+struct CustomButton {
     weak var view: UIView!
     var buttonType: ButtonType
     var setButton: UIButton
@@ -110,6 +111,7 @@ struct SettingsButton {
         case .music: musicBtnSetup()
         case .info: infoBtnSetup()
         case .credits: creditsBtnSetup()
+        case .tryAgain: tryAgainBtnSetup()
         }
     }
     
@@ -134,6 +136,11 @@ struct SettingsButton {
     
     func creditsBtnSetup() {
         self.setButton.setTitle("Siltemeler", for: .normal)
+    }
+    
+    func tryAgainBtnSetup() {
+        self.setButton.setTitle("Try Again", for: .normal)
+        self.setButton.sizeToFit()
     }
     
     func setupShadow() {

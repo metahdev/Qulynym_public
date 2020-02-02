@@ -38,17 +38,17 @@ class SettingsView: SettingsViewProtocol {
     }()
     
     lazy var musicBtn: UIButton = {
-        let button = SettingsButton(buttonType: .music, view: view)
+        let button = CustomButton(buttonType: .music, view: view)
         return button.setButton
     }()
     
     lazy var infoBtn: UIButton = {
-        let button = SettingsButton(buttonType: .info, view: view)
+        let button = CustomButton(buttonType: .info, view: view)
         return button.setButton
     }()
     
     lazy var creditsBtn: UIButton = {
-        let button = SettingsButton(buttonType: .credits, view: view)
+        let button = CustomButton(buttonType: .credits, view: view)
         return button.setButton
     }()
     
