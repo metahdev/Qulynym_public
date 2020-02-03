@@ -34,7 +34,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     
     var menuType: Menu = .main
     var playlistID: String?
-    var token: String?
     
     private var ifFetchHasAlreadyDone = false
     private var dataFetchAPI: DataFetchAPI!
@@ -217,7 +216,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard menuType == .beineler || menuType == .beinelerPlaylists else { return }
-        guard self.token != nil else { return }
+        guard dataFetchAPI.token != nil else { return }
         
          if (indexPath.row == dataFetchAPI.beineler.count - 1 ) {
             self.dataFetchAPI.fetchBeine()
@@ -241,6 +240,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension MenuViewController {
     func dataReceived() {
+        #warning("add some variable to be sure when we can pass beineler data to another fetchAPI in VideoVC")
         menuView.collectionView.reloadData()
     }
 }

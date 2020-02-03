@@ -16,13 +16,13 @@ protocol VideoViewControllerProtocol: class {
     var index: Int! { get set }
 }
 
-// add slider, loadingView and etc. 
+#warning("refactor")
 class BeineViewController: UIViewController,VideoViewControllerProtocol {
     // MARK:- Properties
     weak var dataFetchAPI: DataFetchAPI!
     var index: Int!
     
-    private let playVarsDic = ["controls": 0, "playsinline": 1, "showinfo": 0, "autoplay": 1, "rel": 0]
+    private let playVarsDic = ["controls": 1, "playsinline": 1, "showinfo": 1, "autoplay": 0, "rel": 0]
     private lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
@@ -65,6 +65,8 @@ class BeineViewController: UIViewController,VideoViewControllerProtocol {
         closeBtn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         nextVideoBtn.addTarget(self, action: #selector(nextVideo), for: .touchUpInside)
         previousVideoBtn.addTarget(self, action: #selector(previousVideo), for: .touchUpInside)
+//        let pausePlayTap = UITapGestureRecognizer(target: self, action: #selector(videoViewTapped))
+//        self.view.addGestureRecognizer(pausePlayTap)
         
         view.backgroundColor = .black
     }
@@ -142,8 +144,22 @@ class BeineViewController: UIViewController,VideoViewControllerProtocol {
     @objc
     private func closeView() {
         self.navigationController!.popViewController(animated: true)
-        AudioPlayer.backgroundAudioPlayer.play()
+        if AudioPlayer.backgroundAudioStatePlaying == true {
+            AudioPlayer.backgroundAudioPlayer.play()
+        }
     }
+//    
+//    @objc
+//    private func videoViewTapped() {
+//        videoView.getPlayerState({(state, error) in
+//            guard error == nil else { return }
+//            if state == .playing {
+//                self.videoView.stopVideo()
+//            } else if state == .paused {
+//                self.videoView.playVideo()
+//            }
+//        })
+//    }
     
     #warning("refactor these 2 methods")
     @objc
@@ -225,7 +241,7 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         #warning("make the implementation here also")
-//        guard self.token != nil else { return }
+        guard dataFetchAPI.token != nil else { return }
         
          if (indexPath.row == dataFetchAPI.beineler.count - 1 ) {
             self.dataFetchAPI.fetchBeine()

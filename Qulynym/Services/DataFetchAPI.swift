@@ -12,7 +12,6 @@ import Alamofire
 
 protocol DataFetchAPIDelegate: class {
     var playlistID: String? { get set }
-    var token: String? { get set }
     func dataReceived()
 }
 
@@ -20,6 +19,7 @@ class DataFetchAPI {
     // MARK:- Properties
     var beineler = [Beine]()
     var imageIndex: Int!
+    var token: String?
     
     private var firstFetchIsCompleted = false
     private var stringURL = "https://www.googleapis.com/youtube/v3/playlists"
@@ -32,7 +32,7 @@ class DataFetchAPI {
     }
     
     // MARK:- Methods
-    func fetchBeine()  {
+    func fetchBeine() {
         var fetchIDKey = "channelId"
         var fetchIDValue = "UCSJKvyZVC0FLiyvo3LeEllg"
         var idKey = "id"
@@ -45,7 +45,7 @@ class DataFetchAPI {
         
         var parameters = ["part": "snippet", fetchIDKey: fetchIDValue, "key": apiKey, "maxResults": "10"]
          
-        if let token = delegate.token {
+        if let token = self.token {
             parameters["pageToken"] = token
         }
         
@@ -64,7 +64,7 @@ class DataFetchAPI {
                             }
                         }
                     }
-                    self.delegate.token = JSON["nextPageToken"] as? String
+                    self.token = JSON["nextPageToken"] as? String
                 }
                 self.beineler += tempBeineler
                 self.delegate.dataReceived()
