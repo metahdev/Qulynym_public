@@ -12,7 +12,7 @@ import Foundation
 protocol MenuPresenterProtocol: class {
     func didSelectMenuCell(at index: Int)
     func didSelectPlaylistCell(playlist id: String)
-    func didSelectVideoCell(index: Int, fetchAPI: DataFetchAPI)
+    func didSelectVideoCell(index: Int)
     func didSelectToddlerCell(at index: Int)
     func didSelectGamesCell(at index: Int)
     func closeView()
@@ -22,7 +22,6 @@ protocol MenuPresenterProtocol: class {
 class MenuPresenter: MenuPresenterProtocol {
     // MARK:- Properties
     weak var controller: MenuViewControllerProtocol!
-    var interactor: MenuInteractor!
     var router: MenuRouterProtocol!
     
     required init(_ controller: MenuViewControllerProtocol) {
@@ -46,8 +45,8 @@ extension MenuPresenter {
         router.showBeineler(playlist: id)
     }
     
-    func didSelectVideoCell(index: Int, fetchAPI: DataFetchAPI) {
-        router.showVideoView(index: index, fetchAPI: fetchAPI)
+    func didSelectVideoCell(index: Int) {
+        router.showVideoView(index: index, beineler: controller.dataFetchAPI.beineler, token: controller.dataFetchAPI.token, playlistID: controller.playlistID)
     }
     
     func didSelectToddlerCell(at index: Int) {

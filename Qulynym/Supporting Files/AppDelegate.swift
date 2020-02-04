@@ -13,14 +13,12 @@ import CoreData
 /*
  Bugs, which are already found:
   1) Memory Leak with Audio
-  2) Auto Layout on IPad
-  3) audio leak of the manager at the beginning(maybe is relatable to 1)
  Solutions, which will be integrated further:
-  1) Concurrency Optimization(check quiz concurrency)
-  2) Back segue falling leaves
-  3) Shuffle animation of cards
-  4) ModuleView protocol properties get acccessor
-  5) Karaoke Scrolling Text
+  1) Back segue falling leaves
+  2) Shuffle animation of cards
+  3) ModuleView protocol properties get acccessor
+  4) Karaoke Scrolling Text
+  5) The audio shouldn't play while user is holding slider(PlaylistItem)
  */
 
 @UIApplicationMain

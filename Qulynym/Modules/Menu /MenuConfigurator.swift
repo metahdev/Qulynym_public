@@ -16,11 +16,9 @@ protocol MenuConfiguratorProtocol: class {
 class MenuConfigurator: MenuConfiguratorProtocol {
     func configure(with controller: MenuViewController) {
         let presenter = MenuPresenter(controller)
-        let interactor = MenuInteractor(presenter)
         let router = MenuRouter(controller)
         
         controller.presenter = presenter
-        presenter.interactor = interactor 
         presenter.router = router
     }
 }

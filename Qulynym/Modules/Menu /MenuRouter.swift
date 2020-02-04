@@ -12,7 +12,7 @@ import UIKit
 protocol MenuRouterProtocol: class {
     func showBeinelerPlaylists()
     func showBeineler(playlist id: String)
-    func showVideoView(index: Int, fetchAPI: DataFetchAPI)
+    func showVideoView(index: Int, beineler: [Beine], token: String?, playlistID: String?)
     func showToddlerEdu()
     func showPlaylist(isKaraoke: Bool)
     func showDrawingView()
@@ -42,11 +42,13 @@ extension MenuRouter {
         reuseMenu(menuType: .beineler, id: id)
     }
     
-    func showVideoView(index: Int, fetchAPI: DataFetchAPI) {
+    func showVideoView(index: Int, beineler: [Beine], token: String?, playlistID: String?) {
         let vc = BeineViewController()
-        controller.videoViewDelegate = vc
-        controller.videoViewDelegate.index = index
-        controller.videoViewDelegate.dataFetchAPI = fetchAPI
+        controller.beineViewDelegate = vc
+        controller.beineViewDelegate.index = index
+        controller.beineViewDelegate.beineler = beineler
+        controller.beineViewDelegate.token = token
+        controller.beineViewDelegate.playlistID = playlistID
         showAnotherView(view: vc)
     }
     

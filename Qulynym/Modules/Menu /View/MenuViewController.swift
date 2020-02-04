@@ -21,22 +21,24 @@ enum Menu: String {
 protocol MenuViewControllerProtocol: class {
     var menuType: Menu { get set }
     var playlistID: String? { get set }
+    var dataFetchAPI: DataFetchAPI! { get } 
 }
 
 class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate {    
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
-    weak var videoViewDelegate: VideoViewControllerProtocol! 
+    weak var beineViewDelegate: BeineViewControllerProtocol! 
     weak var playlistViewDelegate: PlaylistViewControllerProtocol!
     weak var secondMenuViewDelegate: MenuViewControllerProtocol!
     weak var itemViewDelegate: ItemViewControllerProtocol!
     
     var menuType: Menu = .main
     var playlistID: String?
+    var dataFetchAPI: DataFetchAPI!
+    var isPassingSafe = false
     
     private var ifFetchHasAlreadyDone = false
-    private var dataFetchAPI: DataFetchAPI!
     private var menuView: MenuViewProtocol!
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
     
@@ -53,6 +55,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        #warning("do we actually need that? The willDisplayCell method is alreay fetching data without checking and it looks ok?")
         if menuType == .beineler || menuType == .beinelerPlaylists {
             if !ifFetchHasAlreadyDone {
                 ifFetchHasAlreadyDone = true
@@ -206,7 +209,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else if menuType == .beinelerPlaylists {
             presenter.didSelectPlaylistCell(playlist: self.dataFetchAPI.beineler[indexPath.row].id)
         } else if menuType == .beineler {
-            presenter.didSelectVideoCell(index: indexPath.row, fetchAPI: self.dataFetchAPI)
+            presenter.didSelectVideoCell(index: indexPath.row)
         } else if menuType == .toddler {
             presenter.didSelectToddlerCell(at: indexPath.row)
         } else {
@@ -239,8 +242,9 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 
 extension MenuViewController {
+    // MARK:- DataFetchAPIDelegate Methods
     func dataReceived() {
-        #warning("add some variable to be sure when we can pass beineler data to another fetchAPI in VideoVC")
+        self.isPassingSafe = true 
         menuView.collectionView.reloadData()
     }
 }

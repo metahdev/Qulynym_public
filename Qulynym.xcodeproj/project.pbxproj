@@ -72,7 +72,6 @@
 		D135E2AB22A02FBC00DC84DE /* PlaylistItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AA22A02FBC00DC84DE /* PlaylistItemConfigurator.swift */; };
 		D135E2AF22A02FD900DC84DE /* PlaylistItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AE22A02FD900DC84DE /* PlaylistItemRouter.swift */; };
 		D1383F8E22AFCD42007815DF /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */; };
-		D1383FAE22B0F730007815DF /* MenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1383FAD22B0F730007815DF /* MenuInteractor.swift */; };
 		D13C1B262310250000A5D8DA /* Qulynym.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D13C1B252310250000A5D8DA /* Qulynym.xcdatamodel */; };
 		D13D864D2217FEDF0048A6E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */; };
 		D13D864F2217FEDF0048A6E4 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D864E2217FEDF0048A6E4 /* ItemViewController.swift */; };
@@ -277,7 +276,6 @@
 		D135E2AA22A02FBC00DC84DE /* PlaylistItemConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemConfigurator.swift; sourceTree = "<group>"; };
 		D135E2AE22A02FD900DC84DE /* PlaylistItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemRouter.swift; sourceTree = "<group>"; };
 		D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		D1383FAD22B0F730007815DF /* MenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInteractor.swift; sourceTree = "<group>"; };
 		D13C1B252310250000A5D8DA /* Qulynym.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = Qulynym.xcdatamodel; path = Qulynym.xcdatamodeld/Qulynym.xcdatamodel; sourceTree = "<group>"; };
 		D13D86492217FEDF0048A6E4 /* Qulynym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qulynym.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -573,7 +571,6 @@
 				D10687C922AE68BC00A3E6E0 /* MenuConfigurator.swift */,
 				D10687CB22AE68C000A3E6E0 /* View */,
 				D10687D022AE68FA00A3E6E0 /* MenuPresenter.swift */,
-				D1383FAD22B0F730007815DF /* MenuInteractor.swift */,
 				D10687D522AE691B00A3E6E0 /* MenuRouter.swift */,
 			);
 			path = "Menu ";
@@ -1313,7 +1310,6 @@
 				B9E2CE2922FBDF2F006B5697 /* SKColor+Extensions.swift in Sources */,
 				856F348B22F87EDD00E97C0C /* SettingsConfigurator.swift in Sources */,
 				B9E2CE2D22FBDF2F006B5697 /* SKAction+Extensions.swift in Sources */,
-				D1383FAE22B0F730007815DF /* MenuInteractor.swift in Sources */,
 				B916B09522FBDC3400AF255A /* PlayingState.swift in Sources */,
 				856F349622F87F8900E97C0C /* SettingsView.swift in Sources */,
 				856F348D22F87EF100E97C0C /* SettingsPresenter.swift in Sources */,

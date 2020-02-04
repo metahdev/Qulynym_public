@@ -11,16 +11,23 @@ import UIKit
 import YoutubePlayer_in_WKWebView
 
 
-protocol VideoViewControllerProtocol: class {
-    var dataFetchAPI: DataFetchAPI! { get set }
+protocol BeineViewControllerProtocol: class {
+    var beineler: [Beine]! { get set }
+    var token: String? { get set }
+    var playlistID: String? { get set }
     var index: Int! { get set }
 }
 
 #warning("refactor")
-class BeineViewController: UIViewController,VideoViewControllerProtocol {
+class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFetchAPIDelegate {
     // MARK:- Properties
-    weak var dataFetchAPI: DataFetchAPI!
+    var dataFetchAPI: DataFetchAPI!
+    var beineler: [Beine]!
+    var token: String?
     var index: Int!
+    
+    var playlistID: String?
+    var isPassingSafe = false
     
     private let playVarsDic = ["controls": 1, "playsinline": 1, "showinfo": 1, "autoplay": 0, "rel": 0]
     private lazy var closeBtn: UIButton = {
@@ -65,8 +72,10 @@ class BeineViewController: UIViewController,VideoViewControllerProtocol {
         closeBtn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         nextVideoBtn.addTarget(self, action: #selector(nextVideo), for: .touchUpInside)
         previousVideoBtn.addTarget(self, action: #selector(previousVideo), for: .touchUpInside)
-//        let pausePlayTap = UITapGestureRecognizer(target: self, action: #selector(videoViewTapped))
-//        self.view.addGestureRecognizer(pausePlayTap)
+        
+        dataFetchAPI = DataFetchAPI(delegate: self)
+        dataFetchAPI.beineler = self.beineler
+        dataFetchAPI.token = self.token
         
         view.backgroundColor = .black
     }
@@ -148,18 +157,6 @@ class BeineViewController: UIViewController,VideoViewControllerProtocol {
             AudioPlayer.backgroundAudioPlayer.play()
         }
     }
-//    
-//    @objc
-//    private func videoViewTapped() {
-//        videoView.getPlayerState({(state, error) in
-//            guard error == nil else { return }
-//            if state == .playing {
-//                self.videoView.stopVideo()
-//            } else if state == .paused {
-//                self.videoView.playVideo()
-//            }
-//        })
-//    }
     
     #warning("refactor these 2 methods")
     @objc
@@ -178,6 +175,13 @@ class BeineViewController: UIViewController,VideoViewControllerProtocol {
         videoView.load(withVideoId: dataFetchAPI.beineler[index].id, playerVars: playVarsDic)
         recommendationsCV.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
         makeCellSelected(recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0))!)
+    }
+}
+
+extension BeineViewController {
+    // MARK:- DataFetchAPIDelegate Methods
+    func dataReceived() {
+        recommendationsCV.reloadData()
     }
 }
 
@@ -240,7 +244,7 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        #warning("make the implementation here also")
+        #warning("test that")
         guard dataFetchAPI.token != nil else { return }
         
          if (indexPath.row == dataFetchAPI.beineler.count - 1 ) {

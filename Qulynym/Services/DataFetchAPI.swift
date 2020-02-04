@@ -12,6 +12,7 @@ import Alamofire
 
 protocol DataFetchAPIDelegate: class {
     var playlistID: String? { get set }
+    var isPassingSafe: Bool { get set }
     func dataReceived()
 }
 
@@ -43,13 +44,14 @@ class DataFetchAPI {
             stringURL = stringURL.replacingOccurrences(of: "playlists", with: "playlistItems")
         }
         
-        var parameters = ["part": "snippet", fetchIDKey: fetchIDValue, "key": apiKey, "maxResults": "10"]
+        var parameters = ["part": "snippet", fetchIDKey: fetchIDValue, "key": apiKey, "maxResults": "5"]
          
         if let token = self.token {
             parameters["pageToken"] = token
         }
         
         #warning("refactor")
+        delegate.isPassingSafe = false
         AF.request(stringURL, method: .get, parameters: parameters, encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: nil).responseJSON(completionHandler: { response in
             switch response.result {
             case .success(let value):
@@ -67,6 +69,7 @@ class DataFetchAPI {
                     self.token = JSON["nextPageToken"] as? String
                 }
                 self.beineler += tempBeineler
+                #warning("when user exits the beineler vc but the loading started, this causes an error")
                 self.delegate.dataReceived()
             case .failure(let error):
                 #warning("error message")

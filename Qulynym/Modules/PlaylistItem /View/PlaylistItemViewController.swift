@@ -91,8 +91,11 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
     @objc
     func sliderTapped(gestureRecognizer: UIGestureRecognizer) {
         if gestureRecognizer.view == karaokeView.timelineSlider {
-            sliderTappedActions(karaokeView.timelineSlider, point: gestureRecognizer.location(in: view))
-            timelineSliderValueChanged()
+            #warning("test that")
+            if gestureRecognizer.location(in: view).x < self.view.frame.height + karaokeView.timelineSlider.frame.minX {
+                self.sliderTappedActions(karaokeView.timelineSlider, point: gestureRecognizer.location(in: view))
+                self.timelineSliderValueChanged()
+            }
         } else {
             sliderTappedActions(karaokeView.soundSlider, point: gestureRecognizer.location(in: view))
             soundSliderValueChanged()
