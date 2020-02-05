@@ -68,6 +68,8 @@ class DataFetchAPI {
                     }
                     self.token = JSON["nextPageToken"] as? String
                 }
+                print("fetched data:")
+                tempBeineler.map{print($0.title)}
                 self.beineler += tempBeineler
                 #warning("when user exits the beineler vc but the loading started, this causes an error")
                 self.delegate.dataReceived()

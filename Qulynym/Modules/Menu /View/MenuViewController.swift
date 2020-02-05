@@ -209,7 +209,9 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else if menuType == .beinelerPlaylists {
             presenter.didSelectPlaylistCell(playlist: self.dataFetchAPI.beineler[indexPath.row].id)
         } else if menuType == .beineler {
-            presenter.didSelectVideoCell(index: indexPath.row)
+            if self.isPassingSafe {
+                presenter.didSelectVideoCell(index: indexPath.row)
+            }
         } else if menuType == .toddler {
             presenter.didSelectToddlerCell(at: indexPath.row)
         } else {

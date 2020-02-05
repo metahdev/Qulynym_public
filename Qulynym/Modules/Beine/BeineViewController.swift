@@ -95,7 +95,6 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
         videoView.load(withVideoId: dataFetchAPI.beineler[index].id, playerVars: playVarsDic)
         AudioPlayer.backgroundAudioPlayer.pause()
         
-        #warning("the last cell is also selected somehow")
         let indexPath = IndexPath(item: index, section: 0)
         recommendationsCV.scrollToItem(at: indexPath, at: .left, animated: true)
         makeCellSelected(recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0))!)
@@ -161,27 +160,51 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
     #warning("refactor these 2 methods")
     @objc
     private func nextVideo() {
-        makeCellDeselected(recommendationsCV.cellForItem(at: IndexPath(item: self.index, section: 0))!)
+        if let cell = recommendationsCV.cellForItem(at: IndexPath(item: self.index, section: 0)) {
+            makeCellDeselected(cell)
+        }
         index += 1
+        if index == dataFetchAPI.beineler.count - 1{
+            nextVideoBtn.isEnabled = false
+        }
+        previousVideoBtn.isEnabled = true
         videoView.load(withVideoId: dataFetchAPI.beineler[index].id, playerVars: playVarsDic)
         recommendationsCV.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
-        makeCellSelected(recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0))!)
+        if let cell = recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0)) {
+            makeCellSelected(cell)
+        }
     }
     
     @objc
     private func previousVideo() {
-        makeCellDeselected(recommendationsCV.cellForItem(at: IndexPath(item: self.index, section: 0))!)
+        if let cell = recommendationsCV.cellForItem(at: IndexPath(item: self.index, section: 0)) {
+            makeCellDeselected(cell)
+        }
         index -= 1
+        if index == 0 {
+            previousVideoBtn.isEnabled = false
+        }
+        nextVideoBtn.isEnabled = true
         videoView.load(withVideoId: dataFetchAPI.beineler[index].id, playerVars: playVarsDic)
         recommendationsCV.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
-        makeCellSelected(recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0))!)
+        if let cell = recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0)) {
+            makeCellSelected(cell)
+        }
     }
 }
 
 extension BeineViewController {
     // MARK:- DataFetchAPIDelegate Methods
     func dataReceived() {
+        print("fullArray:")
+        dataFetchAPI.beineler.map{print($0.title)}
         recommendationsCV.reloadData()
+        if index > 0 {
+            previousVideoBtn.isEnabled = true
+        }
+        if index < dataFetchAPI.beineler.count - 1 {
+            nextVideoBtn.isEnabled = true
+        }
     }
 }
 
@@ -195,15 +218,16 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         
         cell.backgroundColor = .gray
-        cell.textSize = view.frame.height * 0.1
+        cell.titleLabelBackgroundColor = .black
         cell.layer.cornerRadius = 15
         cell.imageViewCornerRadius = 15
         
         cell.isUserInteractionEnabled = false
         cell.backgroundColor = .gray
+
+        
         if self.dataFetchAPI.beineler.count != 0 {
             cell.isUserInteractionEnabled = true
-            cell.text = self.dataFetchAPI.beineler[indexPath.row].title
             
             let configuration = URLSessionConfiguration.default
             configuration.waitsForConnectivity = true
@@ -233,23 +257,31 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        #warning("bug if deselected cell isn't visible")
-        makeCellDeselected(collectionView.cellForItem(at: IndexPath(item: self.index, section: 0))!)
+        if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) {
+            makeCellDeselected(cell)
+        }
         if indexPath.row != index {
             videoView.load(withVideoId: dataFetchAPI.beineler[indexPath.row].id, playerVars: playVarsDic)
-            recommendationsCV.scrollToItem(at: indexPath, at: .left, animated: true)
+            collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
             makeCellSelected(collectionView.cellForItem(at: indexPath)!)
             index = indexPath.row
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        #warning("test that")
+        if indexPath.row == index {
+            makeCellSelected(cell)
+        } else {
+            makeCellDeselected(cell)
+        }
+        
         guard dataFetchAPI.token != nil else { return }
         
-         if (indexPath.row == dataFetchAPI.beineler.count - 1 ) {
+        if (indexPath.row == dataFetchAPI.beineler.count - 1 ) {
+            print("before:")
+            dataFetchAPI.beineler.map{print($0.title)}
             self.dataFetchAPI.fetchBeine()
-         }
+        }
     }
 }
 
