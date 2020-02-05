@@ -17,6 +17,8 @@
 		856F349122F87F1800E97C0C /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349022F87F1800E97C0C /* SettingsRouter.swift */; };
 		856F349422F87F5800E97C0C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349322F87F5800E97C0C /* SettingsViewController.swift */; };
 		856F349622F87F8900E97C0C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349522F87F8900E97C0C /* SettingsView.swift */; };
+		85FB619B23EB3EEA00BC750C /* Tolag'ai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85FB619923EB3EEA00BC750C /* Tolag'ai.mp3 */; };
+		85FB619F23EB4D4000BC750C /* G'ajap qus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85FB619E23EB4D4000BC750C /* G'ajap qus.mp3 */; };
 		B916B09122FBDC3400AF255A /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08C22FBDC3400AF255A /* GameOverState.swift */; };
 		B916B09222FBDC3400AF255A /* TutorialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08D22FBDC3400AF255A /* TutorialState.swift */; };
 		B916B09322FBDC3400AF255A /* MainMenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08E22FBDC3400AF255A /* MainMenuState.swift */; };
@@ -218,6 +220,8 @@
 		856F349022F87F1800E97C0C /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		856F349322F87F5800E97C0C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		856F349522F87F8900E97C0C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		85FB619923EB3EEA00BC750C /* Tolag'ai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Tolag'ai.mp3"; path = "../../../../../../../../Desktop/Tolag'ai.mp3"; sourceTree = "<group>"; };
+		85FB619E23EB4D4000BC750C /* G'ajap qus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "G'ajap qus.mp3"; path = "../../../../../../../../Downloads/G'ajap qus.mp3"; sourceTree = "<group>"; };
 		A60B3FFC7A9900BB4BF332C1 /* Pods-Qulynym.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.release.xcconfig"; path = "Target Support Files/Pods-Qulynym/Pods-Qulynym.release.xcconfig"; sourceTree = "<group>"; };
 		B916B08C22FBDC3400AF255A /* GameOverState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 		B916B08D22FBDC3400AF255A /* TutorialState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialState.swift; sourceTree = "<group>"; };
@@ -792,6 +796,8 @@
 			isa = PBXGroup;
 			children = (
 				D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */,
+				85FB619923EB3EEA00BC750C /* Tolag'ai.mp3 */,
+				85FB619E23EB4D4000BC750C /* G'ajap qus.mp3 */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -1093,10 +1099,12 @@
 				B9E2CE3522FBDF2F006B5697 /* hitGround.wav in Resources */,
 				D15318CD2326376D0035EE05 /* bloop.mp3 in Resources */,
 				D1D8CF1B2326A1AA00531F3F /* Shyrsha.mp3 in Resources */,
+				85FB619B23EB3EEA00BC750C /* Tolag'ai.mp3 in Resources */,
 				D1D8CF602326A80200531F3F /* Qara.mp3 in Resources */,
 				D1D8CF0C2326A1AA00531F3F /* Qarag'aı.mp3 in Resources */,
 				D1D8CF0F2326A1AA00531F3F /* Ray'shan.mp3 in Resources */,
 				D1D8CF142326A1AA00531F3F /* Emen.mp3 in Resources */,
+				85FB619F23EB4D4000BC750C /* G'ajap qus.mp3 in Resources */,
 				D1D8CEE32326720B00531F3F /* Barys.mp3 in Resources */,
 				D1D8CF072326A1AA00531F3F /* Almurt aǵashy.mp3 in Resources */,
 				D1D8CED42326720B00531F3F /* Tıіn.mp3 in Resources */,
