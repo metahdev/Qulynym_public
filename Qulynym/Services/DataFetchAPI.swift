@@ -13,7 +13,7 @@ import Alamofire
 protocol DataFetchAPIDelegate: class {
     var playlistID: String? { get set }
     var isPassingSafe: Bool { get set }
-    func dataReceived()
+    func dataIsReady()
 }
 
 class DataFetchAPI {
@@ -21,6 +21,7 @@ class DataFetchAPI {
     var beineler = [Beine]()
     var imageIndex: Int!
     var token: String?
+    var images = [Data]()
     
     private var firstFetchIsCompleted = false
     private var stringURL = "https://www.googleapis.com/youtube/v3/playlists"
@@ -33,6 +34,21 @@ class DataFetchAPI {
     }
     
     // MARK:- Methods
+    func fetchImagesData(_ tempBeineler: [Beine]) {
+        for beine in tempBeineler {
+            AF.request(beine.thumbnailURL).responseData {(response) in
+                guard response.error == nil else {
+                    return
+                }
+            
+                if let data = response.data {
+                    self.images.append(data)
+                }
+            }
+        }
+        self.delegate.dataIsReady()
+    }
+    
     func fetchBeine() {
         var fetchIDKey = "channelId"
         var fetchIDValue = "UCSJKvyZVC0FLiyvo3LeEllg"
@@ -68,11 +84,10 @@ class DataFetchAPI {
                     }
                     self.token = JSON["nextPageToken"] as? String
                 }
-                print("fetched data:")
-                tempBeineler.map{print($0.title)}
                 self.beineler += tempBeineler
+                self.fetchImagesData(tempBeineler)
+                self.delegate.dataIsReady()
                 #warning("when user exits the beineler vc but the loading started, this causes an error")
-                self.delegate.dataReceived()
             case .failure(let error):
                 #warning("error message")
             }

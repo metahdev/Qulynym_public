@@ -55,7 +55,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        #warning("do we actually need that? The willDisplayCell method is alreay fetching data without checking and it looks ok?")
         if menuType == .beineler || menuType == .beinelerPlaylists {
             if !ifFetchHasAlreadyDone {
                 ifFetchHasAlreadyDone = true
@@ -164,26 +163,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             if self.dataFetchAPI.beineler.count != 0 {
                 cell.isUserInteractionEnabled = true
                 cell.text = self.dataFetchAPI.beineler[indexPath.row].title
-                
-                #warning("refactor")
-                let configuration = URLSessionConfiguration.default
-                configuration.waitsForConnectivity = true
-                let session = URLSession(configuration: configuration)
-
-                let url = URL(string: self.dataFetchAPI.beineler[indexPath.row].thumbnailURL)!
-                let task = session.dataTask(with: url) {(data, response, error) in
-                    guard let httpResponse = response as? HTTPURLResponse,
-                        httpResponse.statusCode == 200 else {    return }
-                    
-                    guard let data = data else {
-                        return
-                    }
-                    
-                    DispatchQueue.main.async {
-                        cell.image = UIImage(data: data)
-                    }
+                let isIndexValid = self.dataFetchAPI.images.indices.contains(indexPath.row)
+                if isIndexValid {
+                    cell.image = UIImage(data: self.dataFetchAPI.images[indexPath.row])
                 }
-                task.resume()
             }
         } else if menuType == .toddler {
             cell.layer.cornerRadius = cell.frame.height * 0.5
@@ -245,7 +228,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension MenuViewController {
     // MARK:- DataFetchAPIDelegate Methods
-    func dataReceived() {
+    func dataIsReady() {
         self.isPassingSafe = true 
         menuView.collectionView.reloadData()
     }

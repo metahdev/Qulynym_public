@@ -195,9 +195,7 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
 
 extension BeineViewController {
     // MARK:- DataFetchAPIDelegate Methods
-    func dataReceived() {
-        print("fullArray:")
-        dataFetchAPI.beineler.map{print($0.title)}
+    func dataIsReady() {
         recommendationsCV.reloadData()
         if index > 0 {
             previousVideoBtn.isEnabled = true
@@ -228,25 +226,10 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         if self.dataFetchAPI.beineler.count != 0 {
             cell.isUserInteractionEnabled = true
-            
-            let configuration = URLSessionConfiguration.default
-            configuration.waitsForConnectivity = true
-            let session = URLSession(configuration: configuration)
-
-            let url = URL(string: self.dataFetchAPI.beineler[indexPath.row].thumbnailURL)!
-            let task = session.dataTask(with: url) {(data, response, error) in
-                guard let httpResponse = response as? HTTPURLResponse,
-                    httpResponse.statusCode == 200 else {    return }
-                
-                guard let data = data else {
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    cell.image = UIImage(data: data)
-                }
+            let isIndexValid = self.dataFetchAPI.images.indices.contains(indexPath.row)
+            if isIndexValid {
+                cell.image = UIImage(data: self.dataFetchAPI.images[indexPath.row])
             }
-            task.resume()
         }
         
         return cell
@@ -278,8 +261,6 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         guard dataFetchAPI.token != nil else { return }
         
         if (indexPath.row == dataFetchAPI.beineler.count - 1 ) {
-            print("before:")
-            dataFetchAPI.beineler.map{print($0.title)}
             self.dataFetchAPI.fetchBeine()
         }
     }
