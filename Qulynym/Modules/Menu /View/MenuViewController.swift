@@ -24,7 +24,7 @@ protocol MenuViewControllerProtocol: class {
     var dataFetchAPI: DataFetchAPI! { get } 
 }
 
-class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate {    
+class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate {
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
@@ -37,6 +37,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     var playlistID: String?
     var dataFetchAPI: DataFetchAPI!
     var isPassingSafe = false
+    var isConnectionErrorShowing = false
     
     private var ifFetchHasAlreadyDone = false
     private var menuView: MenuViewProtocol!
@@ -62,6 +63,16 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
             }
         }
         hideOrUnhideCloseBtn()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if menuType == .beineler || menuType == .beinelerPlaylists {
+            if !Connectivity.isConnectedToInternet {
+                showAnErrorMessage()
+                isConnectionErrorShowing = true
+            }
+        }
     }
     
     
@@ -163,9 +174,14 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             if self.dataFetchAPI.beineler.count != 0 {
                 cell.isUserInteractionEnabled = true
                 cell.text = self.dataFetchAPI.beineler[indexPath.row].title
-                let isIndexValid = self.dataFetchAPI.images.indices.contains(indexPath.row)
-                if isIndexValid {
-                    cell.image = UIImage(data: self.dataFetchAPI.images[indexPath.row])
+                AF.request(self.dataFetchAPI.beineler[indexPath.row].thumbnailURL).responseData {(response) in
+                    guard response.error == nil else {
+                        return
+                    }
+
+                    if let data = response.data {
+                        cell.image = UIImage(data: data)
+                    }
                 }
             }
         } else if menuType == .toddler {
@@ -231,6 +247,20 @@ extension MenuViewController {
     func dataIsReady() {
         self.isPassingSafe = true 
         menuView.collectionView.reloadData()
+    }
+    
+    func showAnErrorMessage() {
+        if !self.isConnectionErrorShowing {
+            let vc = ConnectionWarningViewController()
+            vc.delegateVC = self
+            self.show(vc, sender: nil)
+        }
+    }
+    
+    
+    // MARK:- ConnectionWarningViewControllerDelegate Methods
+    func fetchData() {
+        self.dataFetchAPI.fetchBeine()
     }
 }
 

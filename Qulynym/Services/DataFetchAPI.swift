@@ -13,43 +13,30 @@ import Alamofire
 protocol DataFetchAPIDelegate: class {
     var playlistID: String? { get set }
     var isPassingSafe: Bool { get set }
+    var isConnectionErrorShowing: Bool { get set }
     func dataIsReady()
+    func showAnErrorMessage()
 }
 
 class DataFetchAPI {
     // MARK:- Properties
     var beineler = [Beine]()
-    var imageIndex: Int!
     var token: String?
-    var images = [Data]()
     
     private var firstFetchIsCompleted = false
     private var stringURL = "https://www.googleapis.com/youtube/v3/playlists"
     private let apiKey = "AIzaSyD3nA8srC9ZsfFXFTP066VP6Bmrrq9l_C0"
     
-    private weak var delegate: DataFetchAPIDelegate!
+    private weak var delegate: DataFetchAPIDelegate?
 
     required init(delegate: DataFetchAPIDelegate) {
         self.delegate = delegate
     }
     
     // MARK:- Methods
-    func fetchImagesData(_ tempBeineler: [Beine]) {
-        for beine in tempBeineler {
-            AF.request(beine.thumbnailURL).responseData {(response) in
-                guard response.error == nil else {
-                    return
-                }
-            
-                if let data = response.data {
-                    self.images.append(data)
-                }
-            }
-        }
-        self.delegate.dataIsReady()
-    }
-    
     func fetchBeine() {
+        guard let delegate = self.delegate else { return }
+
         var fetchIDKey = "channelId"
         var fetchIDValue = "UCSJKvyZVC0FLiyvo3LeEllg"
         var idKey = "id"
@@ -85,11 +72,9 @@ class DataFetchAPI {
                     self.token = JSON["nextPageToken"] as? String
                 }
                 self.beineler += tempBeineler
-                self.fetchImagesData(tempBeineler)
-                self.delegate.dataIsReady()
-                #warning("when user exits the beineler vc but the loading started, this causes an error")
-            case .failure(let error):
-                #warning("error message")
+                delegate.dataIsReady()
+            case .failure(let _):
+                delegate.showAnErrorMessage()
             }
         })        
     }    

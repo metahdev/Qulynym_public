@@ -9,25 +9,28 @@
 
 import UIKit
 import YoutubePlayer_in_WKWebView
-
+import Alamofire
 
 protocol BeineViewControllerProtocol: class {
     var beineler: [Beine]! { get set }
+    var images: [Data]! { get set }
     var token: String? { get set }
     var playlistID: String? { get set }
     var index: Int! { get set }
 }
 
 #warning("refactor")
-class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFetchAPIDelegate {
+class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate {
     // MARK:- Properties
     var dataFetchAPI: DataFetchAPI!
     var beineler: [Beine]!
+    var images: [Data]!
     var token: String?
     var index: Int!
     
     var playlistID: String?
     var isPassingSafe = false
+    var isConnectionErrorShowing = false
     
     private let playVarsDic = ["controls": 1, "playsinline": 1, "showinfo": 1, "autoplay": 0, "rel": 0]
     private lazy var closeBtn: UIButton = {
@@ -97,7 +100,15 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
         
         let indexPath = IndexPath(item: index, section: 0)
         recommendationsCV.scrollToItem(at: indexPath, at: .left, animated: true)
-        makeCellSelected(recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0))!)
+        
+        checkForConnection()
+    }
+    
+    private func checkForConnection() {
+        if !Connectivity.isConnectedToInternet {
+            showAnErrorMessage()
+            isConnectionErrorShowing = true
+        }
     }
     
     
@@ -173,6 +184,8 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
         if let cell = recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0)) {
             makeCellSelected(cell)
         }
+        
+        checkForConnection()
     }
     
     @objc
@@ -190,6 +203,8 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
         if let cell = recommendationsCV.cellForItem(at: IndexPath(item: index, section: 0)) {
             makeCellSelected(cell)
         }
+        
+        checkForConnection()
     }
 }
 
@@ -203,6 +218,22 @@ extension BeineViewController {
         if index < dataFetchAPI.beineler.count - 1 {
             nextVideoBtn.isEnabled = true
         }
+    }
+    
+    func showAnErrorMessage() {
+        if AudioPlayer.backgroundAudioStatePlaying == true {
+            AudioPlayer.backgroundAudioPlayer.play()
+        }
+        if !self.isConnectionErrorShowing {
+            let vc = ConnectionWarningViewController()
+            vc.delegateVC = self
+            self.show(vc, sender: nil)
+        }
+    }
+    
+    // MARK:- ConnectionWarningViewControllerDelegate Methods
+    func fetchData() {
+        self.dataFetchAPI.fetchBeine()
     }
 }
 
@@ -226,9 +257,14 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         if self.dataFetchAPI.beineler.count != 0 {
             cell.isUserInteractionEnabled = true
-            let isIndexValid = self.dataFetchAPI.images.indices.contains(indexPath.row)
-            if isIndexValid {
-                cell.image = UIImage(data: self.dataFetchAPI.images[indexPath.row])
+            AF.request(self.dataFetchAPI.beineler[indexPath.row].thumbnailURL).responseData {(response) in
+                guard response.error == nil else {
+                    return
+                }
+
+                if let data = response.data {
+                    cell.image = UIImage(data: data)
+                }
             }
         }
         
@@ -240,8 +276,11 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) {
-            makeCellDeselected(cell)
+        // cell doesn't need to deselect if it's not changing
+        if index != indexPath.row {
+            if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) {
+                makeCellDeselected(cell)
+            }
         }
         if indexPath.row != index {
             videoView.load(withVideoId: dataFetchAPI.beineler[indexPath.row].id, playerVars: playVarsDic)
@@ -249,6 +288,8 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
             makeCellSelected(collectionView.cellForItem(at: indexPath)!)
             index = indexPath.row
         }
+        
+        checkForConnection()
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

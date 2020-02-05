@@ -100,6 +100,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.sectionTitleLabel.text = ""
-        self.imageView.image = nil // or set a placeholder image
+        self.imageView.image = nil
     }
 }
