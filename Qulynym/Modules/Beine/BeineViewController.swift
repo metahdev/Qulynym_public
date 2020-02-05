@@ -233,6 +233,7 @@ extension BeineViewController {
     
     // MARK:- ConnectionWarningViewControllerDelegate Methods
     func fetchData() {
+        #warning("maybe creating a variable fetchIsGoing will help...")
         self.dataFetchAPI.fetchBeine()
     }
 }
