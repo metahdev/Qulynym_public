@@ -251,10 +251,10 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         cell.backgroundColor = UIColor(red: 149/255, green: 165/255, blue: 166/255, alpha: 1)
         cell.imageView.isSkeletonable = true
-        cell.imageViewLayerMasksToBounds = true
         cell.titleLabelBackgroundColor = .black
         cell.layer.cornerRadius = 15
         cell.imageViewCornerRadius = 15
+        cell.imageViewLayerMasksToBounds = true
         cell.isUserInteractionEnabled = false
         
         if self.dataFetchAPI.beineler.count != 0 {

@@ -69,9 +69,9 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if menuType == .beineler || menuType == .beinelerPlaylists {
-//            if !Connectivity.isConnectedToInternet {
-//                showAnErrorMessage()
-//            }
+            if !Connectivity.isConnectedToInternet {
+                showAnErrorMessage()
+            }
         }
     }
     
@@ -163,6 +163,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         cell.backgroundColor = UIColor(red: 149/255, green: 165/255, blue: 166/255, alpha: 1)
         cell.imageView.isSkeletonable = true
+        cell.imageViewCornerRadius = 15
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
         cell.imageViewLayerMasksToBounds = true

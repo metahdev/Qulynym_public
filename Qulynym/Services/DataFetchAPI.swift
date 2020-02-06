@@ -38,7 +38,7 @@ class DataFetchAPI {
     func fetchBeine() {
         guard let delegate = self.delegate else { return }
         guard Connectivity.isConnectedToInternet else {
-//            delegate.showAnErrorMessage()
+            delegate.showAnErrorMessage()
             return 
         }
         
