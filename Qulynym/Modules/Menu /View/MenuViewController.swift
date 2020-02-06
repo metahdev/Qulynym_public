@@ -70,7 +70,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
         if menuType == .beineler || menuType == .beinelerPlaylists {
             if !Connectivity.isConnectedToInternet {
                 showAnErrorMessage()
-                isConnectionErrorShowing = true
             }
         }
     }
@@ -251,9 +250,13 @@ extension MenuViewController {
     
     func showAnErrorMessage() {
         if !self.isConnectionErrorShowing {
+            if AudioPlayer.backgroundAudioStatePlaying == true {
+                AudioPlayer.backgroundAudioPlayer.play()
+            }
             let vc = ConnectionWarningViewController()
             vc.delegateVC = self
             self.show(vc, sender: nil)
+            self.isConnectionErrorShowing = true
         }
     }
     

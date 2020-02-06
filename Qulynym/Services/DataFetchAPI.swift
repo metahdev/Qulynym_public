@@ -73,7 +73,7 @@ class DataFetchAPI {
                 }
                 self.beineler += tempBeineler
                 delegate.dataIsReady()
-            case .failure(let _):
+            case .failure(_):
                 delegate.showAnErrorMessage()
             }
         })        

@@ -107,7 +107,6 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
     private func checkForConnection() {
         if !Connectivity.isConnectedToInternet {
             showAnErrorMessage()
-            isConnectionErrorShowing = true
         }
     }
     
@@ -221,13 +220,14 @@ extension BeineViewController {
     }
     
     func showAnErrorMessage() {
-        if AudioPlayer.backgroundAudioStatePlaying == true {
-            AudioPlayer.backgroundAudioPlayer.play()
-        }
         if !self.isConnectionErrorShowing {
+            if AudioPlayer.backgroundAudioStatePlaying == true {
+                AudioPlayer.backgroundAudioPlayer.play()
+            }
             let vc = ConnectionWarningViewController()
             vc.delegateVC = self
             self.show(vc, sender: nil)
+            self.isConnectionErrorShowing = true
         }
     }
     

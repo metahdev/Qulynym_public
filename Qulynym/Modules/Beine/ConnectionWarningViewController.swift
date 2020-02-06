@@ -37,6 +37,7 @@ class ConnectionWarningViewController: UIViewController {
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitle("Try Again", for: .normal)
         btn.sizeToFit()
+        btn.showsTouchWhenHighlighted = true
         return btn
     }()
  
