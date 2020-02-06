@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.0.0-rc.3)
+  - SkeletonView (1.8.3)
   - YoutubePlayer-in-WKWebView (0.2.5)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
+  - SkeletonView
   - YoutubePlayer-in-WKWebView (~> 0.2.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - SkeletonView
     - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  SkeletonView: ce0c2a2e8154c57b32f5b31b65f4cb92ca119861
   YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
 
-PODFILE CHECKSUM: ad6ef3463b7c50cad7ab37f2e9f47f819b9c3762
+PODFILE CHECKSUM: 68cb654dbdb9848a6c232de98ea6bf433f644087
 
 COCOAPODS: 1.8.4

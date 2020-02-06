@@ -9,6 +9,7 @@
 
 import UIKit
 import Alamofire
+import SkeletonView
 
 enum Menu: String {
     case main
@@ -68,9 +69,9 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if menuType == .beineler || menuType == .beinelerPlaylists {
-            if !Connectivity.isConnectedToInternet {
-                showAnErrorMessage()
-            }
+//            if !Connectivity.isConnectedToInternet {
+//                showAnErrorMessage()
+//            }
         }
     }
     
@@ -160,8 +161,11 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
 
+        cell.backgroundColor = UIColor(red: 149/255, green: 165/255, blue: 166/255, alpha: 1)
+        cell.imageView.isSkeletonable = true
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
+        cell.imageViewLayerMasksToBounds = true
         cell.textSize = cell.frame.height * 0.17
         
         if menuType == .main {
@@ -169,16 +173,19 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.image = UIImage(named: ContentService.sections[menuType]![indexPath.row])
         } else if menuType == .beinelerPlaylists || menuType == .beineler {
             cell.isUserInteractionEnabled = false
-            cell.backgroundColor = .gray
             if self.dataFetchAPI.beineler.count != 0 {
                 cell.isUserInteractionEnabled = true
                 cell.text = self.dataFetchAPI.beineler[indexPath.row].title
+                
+                let gradient = SkeletonGradient(baseColor: .concrete)
+                cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
                 AF.request(self.dataFetchAPI.beineler[indexPath.row].thumbnailURL).responseData {(response) in
                     guard response.error == nil else {
                         return
                     }
 
                     if let data = response.data {
+                        cell.imageView.hideSkeleton()
                         cell.image = UIImage(data: data)
                     }
                 }
@@ -263,7 +270,7 @@ extension MenuViewController {
     
     // MARK:- ConnectionWarningViewControllerDelegate Methods
     func fetchData() {
-        if self.dataFetchAPI.isLoadingBegan {
+        if !self.dataFetchAPI.isLoadingBegan {
             self.dataFetchAPI.fetchBeine()
         }
     }

@@ -37,7 +37,10 @@ class DataFetchAPI {
     // MARK:- Methods
     func fetchBeine() {
         guard let delegate = self.delegate else { return }
-        guard Connectivity.isConnectedToInternet else { return }
+        guard Connectivity.isConnectedToInternet else {
+//            delegate.showAnErrorMessage()
+            return 
+        }
         
         isLoadingBegan = true
         var fetchIDKey = "channelId"
@@ -77,6 +80,7 @@ class DataFetchAPI {
                 }
                 self.beineler += tempBeineler
                 delegate.dataIsReady()
+                self.isLoadingBegan = false
             case .failure(_):
                 delegate.showAnErrorMessage()
             }

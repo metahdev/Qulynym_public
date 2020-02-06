@@ -46,12 +46,17 @@ class ImageCollectionViewCell: UICollectionViewCell {
             imageView.layer.opacity = imageViewOpacity
         }
     }
+    var imageViewLayerMasksToBounds: Bool! {
+        didSet {
+            imageView.layer.masksToBounds = imageViewLayerMasksToBounds
+        }
+    }
     var titleLabelBackgroundColor: UIColor? {
         didSet {
             sectionTitleLabel.backgroundColor = titleLabelBackgroundColor
         }
     }
-    private lazy var imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.clipsToBounds = true
         return iv

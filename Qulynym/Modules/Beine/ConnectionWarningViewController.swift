@@ -25,7 +25,7 @@ class ConnectionWarningViewController: UIViewController {
         return btn
     }()
     
-    private lazy var warningImageView = UIImageView(image: UIImage(named: "no connection"))
+    private lazy var warningImageView = UIImageView(image: UIImage(named: "rocket"))
     
     private lazy var tryAgainBtn: UIButton = {
         let btn = UIButton(type: .system)
@@ -46,15 +46,17 @@ class ConnectionWarningViewController: UIViewController {
         lbl.text = "Oh no! Internet connection lost!"
         lbl.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.074)
         lbl.textAlignment = .center
+        lbl.textColor = .black
         return lbl
     }()
     
     #warning("change the text")
     private lazy var warningDescriptionLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Alakay! You're not connected! Try again or ata-anany shaqyr!"
+        lbl.text = "You're offline"
         lbl.font = UIFont(name: "Arial", size: view.frame.height * 0.038)
         lbl.textAlignment = .center
+        lbl.textColor = .black
         return lbl
     }()
     
@@ -66,6 +68,8 @@ class ConnectionWarningViewController: UIViewController {
         closeBtn.addTarget(self, action: #selector(closeView), for: .touchDown)
         closeBtn.configureCloseBtnFrame(view)
         tryAgainBtn.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
+        
+        view.backgroundColor = .beigePink
     }
     
     func addSubviewsToTheViews() {
@@ -114,7 +118,6 @@ class ConnectionWarningViewController: UIViewController {
     
     @objc
     private func tryAgain() {
-        #warning("make it clear that it's pressed")
         if Connectivity.isConnectedToInternet {
             self.navigationController?.popViewController(animated: true)
             delegateVC.fetchData()

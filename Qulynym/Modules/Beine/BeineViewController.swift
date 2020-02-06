@@ -10,6 +10,7 @@
 import UIKit
 import YoutubePlayer_in_WKWebView
 import Alamofire
+import SkeletonView
 
 protocol BeineViewControllerProtocol: class {
     var beineler: [Beine]! { get set }
@@ -233,8 +234,7 @@ extension BeineViewController {
     
     // MARK:- ConnectionWarningViewControllerDelegate Methods
     func fetchData() {
-        #warning("maybe creating a variable fetchIsGoing will help...")
-        if self.dataFetchAPI.isLoadingBegan {
+        if !self.dataFetchAPI.isLoadingBegan {
             self.dataFetchAPI.fetchBeine()
         }
     }
@@ -249,23 +249,25 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         
-        cell.backgroundColor = .gray
+        cell.backgroundColor = UIColor(red: 149/255, green: 165/255, blue: 166/255, alpha: 1)
+        cell.imageView.isSkeletonable = true
+        cell.imageViewLayerMasksToBounds = true
         cell.titleLabelBackgroundColor = .black
         cell.layer.cornerRadius = 15
         cell.imageViewCornerRadius = 15
-        
         cell.isUserInteractionEnabled = false
-        cell.backgroundColor = .gray
-
         
         if self.dataFetchAPI.beineler.count != 0 {
             cell.isUserInteractionEnabled = true
+            let gradient = SkeletonGradient(baseColor: .concrete)
+            cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
             AF.request(self.dataFetchAPI.beineler[indexPath.row].thumbnailURL).responseData {(response) in
                 guard response.error == nil else {
                     return
                 }
 
                 if let data = response.data {
+                    cell.imageView.hideSkeleton()
                     cell.image = UIImage(data: data)
                 }
             }
@@ -303,7 +305,6 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
         
         guard dataFetchAPI.token != nil else { return }
-        
         if (indexPath.row == dataFetchAPI.beineler.count - 1 ) {
             self.dataFetchAPI.fetchBeine()
         }
