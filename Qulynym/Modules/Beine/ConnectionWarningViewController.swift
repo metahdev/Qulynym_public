@@ -16,7 +16,6 @@ protocol ConnectionWarningViewControllerDelegate: class {
 
 class ConnectionWarningViewController: UIViewController {
     //MARK: - Properties
-    #warning("maybe background?")
     weak var delegateVC: ConnectionWarningViewControllerDelegate!
     
     private lazy var closeBtn: UIButton = {
@@ -29,22 +28,23 @@ class ConnectionWarningViewController: UIViewController {
     private lazy var warningImageView = UIImageView(image: UIImage(named: "no connection"))
     
     private lazy var tryAgainBtn: UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = .skyColor
+        let btn = UIButton(type: .system)
+        btn.backgroundColor = .skyBlue
         btn.layer.cornerRadius = 20
         btn.titleLabel?.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.04)
         btn.titleLabel?.textAlignment = .center
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitle("Try Again", for: .normal)
         btn.sizeToFit()
-        btn.showsTouchWhenHighlighted = true
+        btn.layer.borderColor = UIColor.white.cgColor
+        btn.layer.borderWidth = 4
         return btn
     }()
  
     private lazy var warningLbl: UILabel = {
         let lbl = UILabel()
         lbl.text = "Oh no! Internet connection lost!"
-        lbl.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.068)
+        lbl.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.074)
         lbl.textAlignment = .center
         return lbl
     }()
@@ -53,17 +53,17 @@ class ConnectionWarningViewController: UIViewController {
     private lazy var warningDescriptionLbl: UILabel = {
         let lbl = UILabel()
         lbl.text = "Alakay! You're not connected! Try again or ata-anany shaqyr!"
-        lbl.font = UIFont(name: "Arial", size: view.frame.height * 0.032)
+        lbl.font = UIFont(name: "Arial", size: view.frame.height * 0.038)
         lbl.textAlignment = .center
         return lbl
     }()
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
+        view.backgroundColor = .beigePink
         addSubviewsToTheViews()
         makeMaskFalse()
         activateConstraints()
-        closeBtn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        closeBtn.addTarget(self, action: #selector(closeView), for: .touchDown)
         closeBtn.configureCloseBtnFrame(view)
         tryAgainBtn.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
     }

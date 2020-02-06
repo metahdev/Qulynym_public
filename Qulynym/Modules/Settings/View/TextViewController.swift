@@ -58,7 +58,7 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
     
     // MARK:- Layout
     func setupLayout() {
-        view.backgroundColor = UIColor(red: 0.99, green: 0.9, blue: 0.9, alpha: 1)
+        view.backgroundColor = .beigePink
         
         addSubviews()
         makeMaskFalse()

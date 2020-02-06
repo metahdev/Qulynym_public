@@ -88,7 +88,8 @@ func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDire
 }
 
 extension UIColor {
-    static let skyColor = UIColor(red: 141/255, green: 232/255, blue: 237/255, alpha: 1)
+    static let skyBlue = UIColor(red: 141/255, green: 232/255, blue: 237/255, alpha: 1)
+    static let beigePink = UIColor(red: 0.99, green: 0.9, blue: 0.9, alpha: 1)
 }
 
 // MARK:- Settings View
@@ -107,7 +108,7 @@ struct CustomButton {
     init(buttonType: ButtonType, view: UIView) {
         self.buttonType = buttonType
         self.view = view
-        setButton = UIButton()
+        setButton = UIButton(type: .system)
         
         setup()
     }
@@ -123,7 +124,7 @@ struct CustomButton {
     }
     
     func generalSetup() {
-        self.setButton.backgroundColor = UIColor.skyColor
+        self.setButton.backgroundColor = UIColor.skyBlue
         self.setButton.layer.borderColor = UIColor.white.cgColor
         self.setButton.layer.borderWidth = 5
         self.setButton.layer.cornerRadius = 20
