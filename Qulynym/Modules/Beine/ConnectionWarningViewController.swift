@@ -10,8 +10,15 @@
 
 import UIKit
 
+protocol ConnectionWarningViewControllerDelegate: class {
+    func fetchData()
+}
+
 class ConnectionWarningViewController: UIViewController {
     //MARK: - Properties
+    #warning("maybe background?")
+    weak var delegateVC: ConnectionWarningViewControllerDelegate!
+    
     private lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
@@ -30,6 +37,7 @@ class ConnectionWarningViewController: UIViewController {
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitle("Try Again", for: .normal)
         btn.sizeToFit()
+        btn.showsTouchWhenHighlighted = true
         return btn
     }()
  
@@ -41,6 +49,7 @@ class ConnectionWarningViewController: UIViewController {
         return lbl
     }()
     
+    #warning("change the text")
     private lazy var warningDescriptionLbl: UILabel = {
         let lbl = UILabel()
         lbl.text = "Alakay! You're not connected! Try again or ata-anany shaqyr!"
@@ -56,6 +65,7 @@ class ConnectionWarningViewController: UIViewController {
         activateConstraints()
         closeBtn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         closeBtn.configureCloseBtnFrame(view)
+        tryAgainBtn.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
     }
     
     func addSubviewsToTheViews() {
@@ -97,7 +107,17 @@ class ConnectionWarningViewController: UIViewController {
     //MARK: - Actions
     @objc
     private func closeView() {
-        self.navigationController!.popViewController(animated: true)
-        AudioPlayer.backgroundAudioPlayer.play()
+        if let firstViewController = self.navigationController?.viewControllers[0] {
+            self.navigationController?.popToViewController(firstViewController, animated: true)
+        }
+    }
+    
+    @objc
+    private func tryAgain() {
+        #warning("make it clear that it's pressed")
+        if Connectivity.isConnectedToInternet {
+            self.navigationController?.popViewController(animated: true)
+            delegateVC.fetchData()
+        }
     }
 }

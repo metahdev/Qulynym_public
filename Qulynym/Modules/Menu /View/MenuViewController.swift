@@ -24,7 +24,7 @@ protocol MenuViewControllerProtocol: class {
     var dataFetchAPI: DataFetchAPI! { get } 
 }
 
-class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate {    
+class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate {
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
@@ -37,6 +37,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     var playlistID: String?
     var dataFetchAPI: DataFetchAPI!
     var isPassingSafe = false
+    var isConnectionErrorShowing = false
     
     private var ifFetchHasAlreadyDone = false
     private var menuView: MenuViewProtocol!
@@ -55,7 +56,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        #warning("do we actually need that? The willDisplayCell method is alreay fetching data without checking and it looks ok?")
         if menuType == .beineler || menuType == .beinelerPlaylists {
             if !ifFetchHasAlreadyDone {
                 ifFetchHasAlreadyDone = true
@@ -63,6 +63,15 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
             }
         }
         hideOrUnhideCloseBtn()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if menuType == .beineler || menuType == .beinelerPlaylists {
+            if !Connectivity.isConnectedToInternet {
+                showAnErrorMessage()
+            }
+        }
     }
     
     
@@ -164,26 +173,15 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             if self.dataFetchAPI.beineler.count != 0 {
                 cell.isUserInteractionEnabled = true
                 cell.text = self.dataFetchAPI.beineler[indexPath.row].title
-                
-                #warning("refactor")
-                let configuration = URLSessionConfiguration.default
-                configuration.waitsForConnectivity = true
-                let session = URLSession(configuration: configuration)
-
-                let url = URL(string: self.dataFetchAPI.beineler[indexPath.row].thumbnailURL)!
-                let task = session.dataTask(with: url) {(data, response, error) in
-                    guard let httpResponse = response as? HTTPURLResponse,
-                        httpResponse.statusCode == 200 else {    return }
-                    
-                    guard let data = data else {
+                AF.request(self.dataFetchAPI.beineler[indexPath.row].thumbnailURL).responseData {(response) in
+                    guard response.error == nil else {
                         return
                     }
-                    
-                    DispatchQueue.main.async {
+
+                    if let data = response.data {
                         cell.image = UIImage(data: data)
                     }
                 }
-                task.resume()
             }
         } else if menuType == .toddler {
             cell.layer.cornerRadius = cell.frame.height * 0.5
@@ -245,9 +243,27 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension MenuViewController {
     // MARK:- DataFetchAPIDelegate Methods
-    func dataReceived() {
+    func dataIsReady() {
         self.isPassingSafe = true 
         menuView.collectionView.reloadData()
+    }
+    
+    func showAnErrorMessage() {
+        if !self.isConnectionErrorShowing {
+            if AudioPlayer.backgroundAudioStatePlaying == true {
+                AudioPlayer.backgroundAudioPlayer.play()
+            }
+            let vc = ConnectionWarningViewController()
+            vc.delegateVC = self
+            self.show(vc, sender: nil)
+            self.isConnectionErrorShowing = true
+        }
+    }
+    
+    
+    // MARK:- ConnectionWarningViewControllerDelegate Methods
+    func fetchData() {
+        self.dataFetchAPI.fetchBeine()
     }
 }
 
