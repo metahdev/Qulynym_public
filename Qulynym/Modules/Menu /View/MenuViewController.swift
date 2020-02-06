@@ -263,7 +263,9 @@ extension MenuViewController {
     
     // MARK:- ConnectionWarningViewControllerDelegate Methods
     func fetchData() {
-        self.dataFetchAPI.fetchBeine()
+        if self.dataFetchAPI.isLoadingBegan {
+            self.dataFetchAPI.fetchBeine()
+        }
     }
 }
 

@@ -22,6 +22,7 @@ class DataFetchAPI {
     // MARK:- Properties
     var beineler = [Beine]()
     var token: String?
+    var isLoadingBegan = false
     
     private var firstFetchIsCompleted = false
     private var stringURL = "https://www.googleapis.com/youtube/v3/playlists"
@@ -36,10 +37,13 @@ class DataFetchAPI {
     // MARK:- Methods
     func fetchBeine() {
         guard let delegate = self.delegate else { return }
-
+        guard Connectivity.isConnectedToInternet else { return }
+        
+        isLoadingBegan = true
         var fetchIDKey = "channelId"
         var fetchIDValue = "UCSJKvyZVC0FLiyvo3LeEllg"
         var idKey = "id"
+        
         if let id = delegate.playlistID {
             fetchIDKey = "playlistId"
             fetchIDValue = id
