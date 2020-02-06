@@ -77,12 +77,10 @@ class ConnectionWarningViewController: UIViewController {
             warningLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             warningLbl.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             warningLbl.widthAnchor.constraint(equalTo: view.widthAnchor),
-            warningLbl.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
             
             warningDescriptionLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             warningDescriptionLbl.topAnchor.constraint(equalTo: warningLbl.bottomAnchor, constant: 5),
             warningDescriptionLbl.widthAnchor.constraint(equalTo: view.widthAnchor),
-            warningDescriptionLbl.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.04),
             
             tryAgainBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tryAgainBtn.topAnchor.constraint(equalTo: warningDescriptionLbl.bottomAnchor, constant: 40),
