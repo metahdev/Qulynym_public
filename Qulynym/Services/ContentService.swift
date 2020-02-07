@@ -91,9 +91,56 @@ struct ContentService {
     private static var animalsSection = EduSection(name: "Zhanuarlar", contentNames: ["Mysyq", "It", "At", "Sıyr", "Esek", "Qoı", "Shoshqa", "Qoıan", "Qumyrsqa", "Ko'belek", "U'ki", "Bu'rkit", "Torg'ai", "Tıіn", "Aiy'", "Qasqyr", "Tu'lki", "Barys", "Arystan", "Pil"])
     private static var plantsSection = EduSection(name: "O'simdikter", contentNames: ["Qaıyn'", "Alma ag'ashy", "Terek", "Qarag'aı", "Almurt aǵashy", "Shyrsha", "Sheten", "Emen", "Ko'kterek", "Órіk ag'ashy", "Tan'qy'raı", "Mu'kjıdek", "Ray'shan", "Kakty's", "Qon'yray'gu'l", "Shegіrgu'l", "Bo'rtegu'l", "Tu'ımedaq", "Qyzg'aldaq", "Baqbaq"])
     
-    static var parentsInfoBody = ""
+    static var parentsInfoBody = """
+    Qulynym - balalarǵa arnalǵan mobıldі alań. Bul salada án aıtýǵa, oınaýǵa, aqparattyq beınelerdі qaraýǵa, oqýǵa, ertegіlerdі tyńdaýǵa jáne sýret salýǵa bolady.
+
+    Bіzdіń qoldanýymyz - balanyń bіlіmі men damýy úshіn qaýіpsіz orta. Qosymshanyń barlyq mazmuny balanyń ana tіlіn tez árі tıіmdі damytatyndaı etіp qazaq tіlіnde usynylǵan.
+
+    Bala qosymshany paıdalanǵan kezde ata-ananyń qatysýy mіndettі emes, óıtkenі naqty ınteraktıvtі dızaın onyń joǵalýyna jol bermeıdі.
+    """
     
-    static var creditsBody = "Left, right icons by icons8.com"
+    static var creditsBody = """
+    Qatysýshylarǵa rahmet:
+
+    Zhumabaev Baubek, Meiramuly Rauan - iOS baǵdarlamashylar
+    Amangeldy Aruzhan, Dospolova Dana - dızaınerler
+    Ahmetgali Daulet - uıymdastyrý kómekshіsі
+    Imash Daulet, Eldosova Aruzhan - daýyspen áreket etý
+    
+    Some icons are taken from icons8.com and flaticon.com
+
+    Flappy Torǵaı Raywenderlich.com saıtyna negіzdelgen
+    
+    Ertegіler:
+
+    Bay'yrsak' - Balapan telearnasy
+    Tolag'ai - Sha'ken Aımanov atyndaǵy "Qazaqfılm" AQ
+    G'ajap qus - Azia Animation
+    
+    A'nder:
+
+    Qoshakanym:
+    túpnusqa - halyq a'nі
+    kaver - Aınel Sapargalı
+
+    Aigolek:
+    túpnusqa - Roza Rymbaeva
+    kaver - ARUKA MIX(Youtube arnasy)
+
+    Sarjailay:
+    túpnusqa - Mýkagalı Makataev
+    kaver - Altynaı Jorabaeva
+
+    ErtegilerAlemi:
+    túpnusqa - Aıgerım Kalay'baeva
+    
+    AsylAzhe:
+    túpnusqa - Qaraqat
+    
+    BirBala:
+    túpnusqa - halyq a'nі
+    kaver - Aı-Madı
+    """
     
     
     /*
