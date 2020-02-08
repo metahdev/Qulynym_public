@@ -176,20 +176,11 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.isUserInteractionEnabled = false
             if self.dataFetchAPI.beineler.count != 0 {
                 cell.isUserInteractionEnabled = true
-                cell.text = self.dataFetchAPI.beineler[indexPath.row].title
                 
                 let gradient = SkeletonGradient(baseColor: .concrete)
                 cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
-                AF.request(self.dataFetchAPI.beineler[indexPath.row].thumbnailURL).responseData {(response) in
-                    guard response.error == nil else {
-                        return
-                    }
-
-                    if let data = response.data {
-                        cell.imageView.hideSkeleton()
-                        cell.image = UIImage(data: data)
-                    }
-                }
+                
+                cell.beine = self.dataFetchAPI.beineler[indexPath.row]
             }
         } else if menuType == .toddler {
             cell.layer.cornerRadius = cell.frame.height * 0.5

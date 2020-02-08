@@ -11,6 +11,13 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     // MARK:- Properties
+    #warning("refactor")
+    var beine: Beine? {
+        didSet {
+            sectionTitleLabel.text = beine?.title
+            setupThumbnailImage()
+        }
+    }
     var imageName: String! {
         didSet {
             imageView.image = UIImage(named: imageName)
@@ -56,8 +63,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
             sectionTitleLabel.backgroundColor = titleLabelBackgroundColor
         }
     }
-    lazy var imageView: UIImageView = {
-        let iv = UIImageView()
+    lazy var imageView: CustomImageView = {
+        let iv = CustomImageView()
         iv.clipsToBounds = true
         return iv
     }()
@@ -81,6 +88,15 @@ class ImageCollectionViewCell: UICollectionViewCell {
         self.addSubview(sectionTitleLabel)
         setAutoresizingMaskToFalse()
         activateConstraints()
+    }
+    
+    
+    // MARK:- Methods
+    func setupThumbnailImage() {
+        if let thumbnailImageUrl = beine?.thumbnailURL {
+            imageView.loadImageUsingUrlString(urlString: thumbnailImageUrl)
+            
+        }
     }
     
     

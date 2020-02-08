@@ -101,6 +101,7 @@
 		D18E30BE2325566500C0E012 /* Qoshaqanym.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */; };
 		D18E30C02325566C00C0E012 /* Bauyrsaq Ertegi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */; };
 		D19245172284DC2800ABD1BD /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19245162284DC2800ABD1BD /* Timer.swift */; };
+		D19D32E123EF06EC00DC533B /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D32E023EF06EC00DC533B /* CustomImageView.swift */; };
 		D19D36E5222BAEEC005188D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D36E4222BAEEC005188D0 /* Extensions.swift */; };
 		D1A7913522F82690005BF325 /* DrawingsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */; };
 		D1C69D1222F631DD003D0D05 /* PlaylistItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C69D1122F631DD003D0D05 /* PlaylistItemPresenter.swift */; };
@@ -311,6 +312,7 @@
 		D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Qoshaqanym.mp3; sourceTree = "<group>"; };
 		D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bauyrsaq Ertegi.mp3"; sourceTree = "<group>"; };
 		D19245162284DC2800ABD1BD /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		D19D32E023EF06EC00DC533B /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		D19D36E4222BAEEC005188D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D1A7913422F82690005BF325 /* DrawingsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingsCollectionView.swift; sourceTree = "<group>"; };
 		D1C69D1122F631DD003D0D05 /* PlaylistItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemPresenter.swift; sourceTree = "<group>"; };
@@ -819,6 +821,7 @@
 				D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */,
 				D19D36E4222BAEEC005188D0 /* Extensions.swift */,
 				D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */,
+				D19D32E023EF06EC00DC533B /* CustomImageView.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1306,6 +1309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1A7913522F82690005BF325 /* DrawingsCollectionView.swift in Sources */,
+				D19D32E123EF06EC00DC533B /* CustomImageView.swift in Sources */,
 				B916B09322FBDC3400AF255A /* MainMenuState.swift in Sources */,
 				D135E2A722A02F9800DC84DE /* PlaylistItemView.swift in Sources */,
 				B9E2CE2A22FBDF2F006B5697 /* CGVector+Extensions.swift in Sources */,
