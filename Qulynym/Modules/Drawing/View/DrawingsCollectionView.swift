@@ -16,11 +16,17 @@ class DrawingsCollectionView: UIViewController {
     private lazy var mainCollectionView: UICollectionView = {
         return configureImagesCollectionView(scroll: .vertical, image: nil, background: .white)
     }()
+    private lazy var invisibleButtonToExit: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .clear
+        return btn
+    }()
     
     
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         view.addSubview(mainCollectionView)
+        view.addSubview(invisibleButtonToExit)
         setupCollectionView()
         setupAppearence()
         activateConstraints()
@@ -42,15 +48,14 @@ class DrawingsCollectionView: UIViewController {
     }
     
     func activateConstraints() {
+        #warning("invisibleBtn layout")
         NSLayoutConstraint.activate([
             mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
             mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
+        ])
     }
-    
-    
 }
 
 extension DrawingsCollectionView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -78,7 +83,7 @@ extension DrawingsCollectionView: UICollectionViewDelegate, UICollectionViewDele
             drawingView.currentImageName = nil
         }
         drawingView.currentImageName = pictures[indexPath.row]
-        drawingView.moveMenu()
+        drawingView.closeMenu()
         drawingView.clearCanvas()
     }
 }

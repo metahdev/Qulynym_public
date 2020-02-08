@@ -14,7 +14,7 @@ protocol DrawingViewControllerProtocol: class {
     var selectedTool: UIButton! { get set }
     
     func clearCanvas()
-    func moveMenu()
+    func closeMenu()
 }
 
 class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
@@ -30,6 +30,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     lazy var tools: [UIColor] = [.red, .orange, .yellow, .green, whiteBlue, .blue, .purple, .brown, .black]
     private let whiteBlue = UIColor(red: 102/255, green: 1, blue: 1, alpha: 1)
 
+    private var drawingView: DrawingViewProtocol!
     private weak var closeBtn: UIButton!
     private weak var toolsCV: UICollectionView!
     private weak var pictureImageView: UIImageView!
@@ -41,7 +42,6 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     private weak var brush: UIButton!
     private weak var eraser: UIButton!
     
-    private var drawingView: DrawingViewProtocol!
     private let configurator: DrawingConfiguratorProtocol = DrawingConfigurator()
     
     private var previousTool: UIButton?
@@ -67,8 +67,6 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         drawingView.setupLayout()
         assignViews()
         setupCV()
-        initMessage()
-//        manager.showAlert()
         assignActions()
         selectedTool = pencil
     }
@@ -137,10 +135,6 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     }
     
     
-    func initMessage() {
-//        manager = ScenesManager(calling: self, showing: "drawing")
-    }
-    
     // MARK:- Actions
     private func assignActions() {
         closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
@@ -176,13 +170,15 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         presenter.closeView()
     }
     
-    func moveMenu() {
-        drawingView.toggleDrawingsCV()
+    func closeMenu() {
+        if drawingView.isOpen == true {
+            drawingView.toggleDrawingsCV()
+        }
     }
     
     @objc
     private func slideOut() {
-        moveMenu()
+        drawingView.toggleDrawingsCV()
     }
     
     @objc
@@ -191,18 +187,22 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     }
     
     @objc func brushBtnPressed() {
+        closeMenu()
         selectedTool = brush
     }
     
     @objc func pencilBtnPressed() {
+        closeMenu()
         selectedTool = pencil
     }
     
     @objc func markerBtnPressed() {
+        closeMenu()
         selectedTool = marker
     }
     
     @objc func eraserBtnPressed() {
+        closeMenu()
         selectedTool = eraser
     }
     
@@ -244,6 +244,7 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        closeMenu()
         canvasView.color = tools[indexPath.row]
         toolDidSet()
         AudioPlayer.setupExtraAudio(with: "bloop", audioPlayer: .effects)

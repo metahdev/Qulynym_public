@@ -12,7 +12,7 @@ import UIKit
 protocol CanvasViewProtocol: class {
     var color: UIColor { get set }
     var brushWidth: CGFloat { get set }
-    
+        
     func clear()
 }
 
@@ -20,7 +20,7 @@ class CanvasView: UIView, CanvasViewProtocol {
     // MARK:- Properties
     var color = UIColor.red
     var brushWidth: CGFloat = 20
-    
+        
     private var lastPoint: CGPoint!
     private var pointCounter = 0
     private let pointLimit = 128

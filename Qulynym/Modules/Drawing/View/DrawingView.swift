@@ -10,6 +10,7 @@
 import UIKit
 
 protocol DrawingViewProtocol: class {
+    var isOpen: Bool { get set }
     var closeBtn: UIButton { get set }
     var drawingImageView: UIImageView { get set }
     var canvasView: CanvasView { get set }
@@ -27,6 +28,7 @@ protocol DrawingViewProtocol: class {
 
 class DrawingView: DrawingViewProtocol {
     // MARK:- Properties
+    var isOpen = false
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
@@ -96,7 +98,6 @@ class DrawingView: DrawingViewProtocol {
     private weak var view: UIView!
     
     private var drawingCVTrailingConstraint: NSLayoutConstraint!
-    private var isOpen = false
     private var slideOutBtnConstraint: NSLayoutConstraint? {
         didSet {
             oldValue?.isActive = false
