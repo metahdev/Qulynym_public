@@ -46,6 +46,7 @@ class BubbleView: UIView {
         emitterCell = CAEmitterCell()
         emitterCell.contents = UIImage(named: "bubble")!.cgImage
         emitterCell.birthRate = 100
+//        emitterCell.birthRate = 250
         emitterCell.lifetime = 2
         emitterCell.color = UIColor.white.cgColor
         emitterCell.blueRange = 0.1

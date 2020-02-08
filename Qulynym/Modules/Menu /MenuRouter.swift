@@ -80,6 +80,18 @@ extension MenuRouter {
     
     func openFlappyBird() {
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
+        #warning("refactor")
+        let v = UIView()
+        v.backgroundColor = .black
+        v.tag = 10000
+        controller.view.addSubview(v)
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.leadingAnchor.constraint(equalTo: controller.view.leadingAnchor).isActive = true
+        v.trailingAnchor.constraint(equalTo: controller.view.trailingAnchor, constant: controller.view!.frame.width * 1.5).isActive = true
+        v.topAnchor.constraint(equalTo: controller.view.topAnchor).isActive = true
+        v.bottomAnchor.constraint(equalTo: controller.view.bottomAnchor).isActive = true
+        
         showAnotherView(view: GameViewController())
     }
     

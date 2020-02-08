@@ -234,9 +234,7 @@ extension BeineViewController {
     
     // MARK:- ConnectionWarningViewControllerDelegate Methods
     func fetchData() {
-        if !self.dataFetchAPI.isLoadingBegan {
-            self.dataFetchAPI.fetchBeine()
-        }
+        self.dataFetchAPI.fetchBeine()
     }
 }
 
@@ -259,18 +257,12 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         if self.dataFetchAPI.beineler.count != 0 {
             cell.isUserInteractionEnabled = true
-            let gradient = SkeletonGradient(baseColor: .concrete)
-            cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
-            AF.request(self.dataFetchAPI.beineler[indexPath.row].thumbnailURL).responseData {(response) in
-                guard response.error == nil else {
-                    return
-                }
-
-                if let data = response.data {
-                    cell.imageView.hideSkeleton()
-                    cell.image = UIImage(data: data)
-                }
-            }
+//            if cell.beine == nil {
+//                let gradient = SkeletonGradient(baseColor: .concrete)
+//                cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
+//            }
+            
+            cell.beine = self.dataFetchAPI.beineler[indexPath.row]
         }
         
         return cell

@@ -41,6 +41,7 @@ class DataFetchAPI {
             delegate.showAnErrorMessage()
             return 
         }
+        guard isLoadingBegan == false else { return }
         
         isLoadingBegan = true
         var fetchIDKey = "channelId"

@@ -91,11 +91,10 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // MARK:- Methods
+    // MARK:- Methods    
     func setupThumbnailImage() {
         if let thumbnailImageUrl = beine?.thumbnailURL {
             imageView.loadImageUsingUrlString(urlString: thumbnailImageUrl)
-            
         }
     }
     

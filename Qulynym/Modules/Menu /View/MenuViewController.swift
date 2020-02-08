@@ -177,8 +177,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             if self.dataFetchAPI.beineler.count != 0 {
                 cell.isUserInteractionEnabled = true
                 
-                let gradient = SkeletonGradient(baseColor: .concrete)
-                cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
+//                if cell.beine == nil {
+//                    let gradient = SkeletonGradient(baseColor: .concrete)
+//                    cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
+//                }
                 
                 cell.beine = self.dataFetchAPI.beineler[indexPath.row]
             }
@@ -262,9 +264,7 @@ extension MenuViewController {
     
     // MARK:- ConnectionWarningViewControllerDelegate Methods
     func fetchData() {
-        if !self.dataFetchAPI.isLoadingBegan {
-            self.dataFetchAPI.fetchBeine()
-        }
+        self.dataFetchAPI.fetchBeine()
     }
 }
 

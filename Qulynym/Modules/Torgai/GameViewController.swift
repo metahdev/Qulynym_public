@@ -77,7 +77,14 @@ class GameViewController: UIViewController {
 
     
     @objc func closeGame() {
-        self.navigationController?.popViewController(animated: true)
+        if let vc = self.navigationController?.viewControllers[1] {
+            self.navigationController?.popToViewController(vc, animated: true)
+            _ = vc.view.subviews.map{
+                if $0.tag == 10000 {
+                    $0.removeFromSuperview()
+                }
+            }
+        }
         AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
     }
 }

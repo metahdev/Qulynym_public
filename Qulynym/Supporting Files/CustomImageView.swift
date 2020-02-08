@@ -11,8 +11,8 @@ import Foundation
 import UIKit
 import Alamofire
 
-let imageCache = NSCache<NSString, UIImage>()
 
+let imageCache = NSCache<NSString, UIImage>()
 class CustomImageView: UIImageView {
     var imageUrlString: String?
     
@@ -37,6 +37,7 @@ class CustomImageView: UIImageView {
                     
                     if self.imageUrlString == urlString {
                         self.image = imageToCache
+//                      self.hideSkeleton()
                     }
                     
                     imageCache.setObject(imageToCache!, forKey: urlString as NSString)

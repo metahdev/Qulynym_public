@@ -50,6 +50,7 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     private func initBubbleView() {
+//        bubbleClipView = UIView(frame: CGRect(x: 0, y: 0, width: containerView.frame.width * 2, height: containerView.frame.height * 2))
         bubbleClipView = UIView(frame: containerView.frame.offsetBy(dx: 0, dy: 0))
         bubbleClipView.clipsToBounds = true
         let bubbleView = BubbleView(frame: bubbleClipView.frame)
