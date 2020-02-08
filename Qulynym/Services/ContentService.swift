@@ -100,7 +100,7 @@ struct ContentService {
     """
     
     static var creditsBody = """
-    Qatysýshylarǵa rahmet:
+    Qatysýshylarǵa úlken rahmet:
 
     Zhumabaev Baubek, Meiramuly Rauan - iOS baǵdarlamashylar
     Amangeldy Aruzhan, Dospolova Dana - dızaınerler
