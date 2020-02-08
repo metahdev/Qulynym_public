@@ -104,12 +104,12 @@ struct ContentService {
 
     Zhumabaev Baubek, Meiramuly Rauan - iOS baǵdarlamashylar
     Amangeldy Aruzhan, Dospolova Dana - dızaınerler
-    Ahmetgali Daulet - uıymdastyrý kómekshіsі
-    Imash Daulet, Eldosova Aruzhan - daýyspen áreket etý
+    Akhmetgali Daulet - uıymdastyrý kómekshіsі
+    Imash Daulet, Yeldossova Aruzhan - daýyspen áreket etý
     
     Some icons are taken from icons8.com and flaticon.com
 
-    Flappy Torǵaı Raywenderlich.com saıtyna negіzdelgen
+    Flappy Torǵaı is based on a Raywenderlich.com course.
     
     Ertegіler:
 
