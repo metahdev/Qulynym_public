@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D686A310E54BC2F5D56BBEA /* Pods_QulynymTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C205908B1F3D009DD896E27 /* Pods_QulynymTests.framework */; };
-		6FD1ABE470AE2BB88B3EEF7D /* Pods_Qulynym_QulynymUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2252C2CF606A04AC8867777C /* Pods_Qulynym_QulynymUITests.framework */; };
 		8528917622F9A22600A7CEA7 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528917522F9A22600A7CEA7 /* TextViewController.swift */; };
 		856AADA623E6F93300376A4C /* ConnectionWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856AADA523E6F93300376A4C /* ConnectionWarningViewController.swift */; };
 		856F348B22F87EDD00E97C0C /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F348A22F87EDD00E97C0C /* SettingsConfigurator.swift */; };
@@ -60,7 +58,6 @@
 		D10687CF22AE68EE00A3E6E0 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687CE22AE68EE00A3E6E0 /* MenuView.swift */; };
 		D10687D122AE68FA00A3E6E0 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687D022AE68FA00A3E6E0 /* MenuPresenter.swift */; };
 		D10687D622AE691B00A3E6E0 /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10687D522AE691B00A3E6E0 /* MenuRouter.swift */; };
-		D1071A13235C3AFA0078B33F /* QulynymTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1071A12235C3AFA0078B33F /* QulynymTests.swift */; };
 		D10729F5228767D9003149E8 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10729F4228767D9003149E8 /* PlaylistViewController.swift */; };
 		D10729F722876879003149E8 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10729F622876879003149E8 /* PlaylistView.swift */; };
 		D10729FB22877D3B003149E8 /* PlaylistConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10729FA22877D3B003149E8 /* PlaylistConfigurator.swift */; };
@@ -80,7 +77,6 @@
 		D13D86572217FEDF0048A6E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D13D86562217FEDF0048A6E4 /* Assets.xcassets */; };
 		D13D865A2217FEDF0048A6E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D13D86582217FEDF0048A6E4 /* LaunchScreen.storyboard */; };
 		D13D867E22180E430048A6E4 /* PersistentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13D867D22180E430048A6E4 /* PersistentService.swift */; };
-		D13E7D3B235C38C700D25A29 /* QulynymUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E7D3A235C38C700D25A29 /* QulynymUITests.swift */; };
 		D146AB2F22E77EB2004520DA /* backgroundAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D146AB2E22E77EB2004520DA /* backgroundAudio.mp3 */; };
 		D14D536822213769007ACD55 /* ItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D536722213769007ACD55 /* ItemPresenter.swift */; };
 		D14D536A22213775007ACD55 /* ItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D536922213775007ACD55 /* ItemConfigurator.swift */; };
@@ -190,23 +186,6 @@
 		D1F9ABDB22A0458C00989BD3 /* DrawingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABDA22A0458C00989BD3 /* DrawingRouter.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		D1071A0D235C3AD90078B33F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D13D86412217FEDF0048A6E4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D13D86482217FEDF0048A6E4;
-			remoteInfo = Qulynym;
-		};
-		D13E7D3D235C38C700D25A29 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D13D86412217FEDF0048A6E4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D13D86482217FEDF0048A6E4;
-			remoteInfo = Qulynym;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0B7969DFE4A77B5E06526433 /* Pods-Qulynym-QulynymUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym-QulynymUITests.release.xcconfig"; path = "Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1D4E9BEED70DC17F8A889EB8 /* Pods-Qulynym.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.debug.xcconfig"; path = "Target Support Files/Pods-Qulynym/Pods-Qulynym.debug.xcconfig"; sourceTree = "<group>"; };
@@ -266,7 +245,6 @@
 		D10687CE22AE68EE00A3E6E0 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D10687D022AE68FA00A3E6E0 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		D10687D522AE691B00A3E6E0 /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
-		D1071A08235C3AD90078B33F /* QulynymTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QulynymTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1071A0C235C3AD90078B33F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1071A12235C3AFA0078B33F /* QulynymTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QulynymTests.swift; sourceTree = "<group>"; };
 		D10729F4228767D9003149E8 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
@@ -289,7 +267,6 @@
 		D13D86592217FEDF0048A6E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D13D865B2217FEDF0048A6E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D13D867D22180E430048A6E4 /* PersistentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentService.swift; sourceTree = "<group>"; };
-		D13E7D38235C38C700D25A29 /* QulynymUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QulynymUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D13E7D3A235C38C700D25A29 /* QulynymUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QulynymUITests.swift; sourceTree = "<group>"; };
 		D13E7D3C235C38C700D25A29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D146AB2E22E77EB2004520DA /* backgroundAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundAudio.mp3; sourceTree = "<group>"; };
@@ -405,27 +382,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D1071A05235C3AD90078B33F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0D686A310E54BC2F5D56BBEA /* Pods_QulynymTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D13D86462217FEDF0048A6E4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CA4E6B9457DFEF7D503D4A1D /* Pods_Qulynym.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D13E7D35235C38C700D25A29 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6FD1ABE470AE2BB88B3EEF7D /* Pods_Qulynym_QulynymUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,8 +631,6 @@
 			isa = PBXGroup;
 			children = (
 				D13D86492217FEDF0048A6E4 /* Qulynym.app */,
-				D13E7D38235C38C700D25A29 /* QulynymUITests.xctest */,
-				D1071A08235C3AD90078B33F /* QulynymTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -971,25 +930,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D1071A07235C3AD90078B33F /* QulynymTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D1071A0F235C3AD90078B33F /* Build configuration list for PBXNativeTarget "QulynymTests" */;
-			buildPhases = (
-				C49AFD9C55239C0A2E5BACCC /* [CP] Check Pods Manifest.lock */,
-				D1071A04235C3AD90078B33F /* Sources */,
-				D1071A05235C3AD90078B33F /* Frameworks */,
-				D1071A06235C3AD90078B33F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D1071A0E235C3AD90078B33F /* PBXTargetDependency */,
-			);
-			name = QulynymTests;
-			productName = QulynymTests;
-			productReference = D1071A08235C3AD90078B33F /* QulynymTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		D13D86482217FEDF0048A6E4 /* Qulynym */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D13D86742217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "Qulynym" */;
@@ -1009,26 +949,6 @@
 			productReference = D13D86492217FEDF0048A6E4 /* Qulynym.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D13E7D37235C38C700D25A29 /* QulynymUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D13E7D3F235C38C700D25A29 /* Build configuration list for PBXNativeTarget "QulynymUITests" */;
-			buildPhases = (
-				4299C6DC5DB8965DDC5596A9 /* [CP] Check Pods Manifest.lock */,
-				D13E7D34235C38C700D25A29 /* Sources */,
-				D13E7D35235C38C700D25A29 /* Frameworks */,
-				D13E7D36235C38C700D25A29 /* Resources */,
-				7EDD385713BC4177DA151009 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D13E7D3E235C38C700D25A29 /* PBXTargetDependency */,
-			);
-			name = QulynymUITests;
-			productName = QulynymUITests;
-			productReference = D13E7D38235C38C700D25A29 /* QulynymUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1039,18 +959,9 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = AXware;
 				TargetAttributes = {
-					D1071A07235C3AD90078B33F = {
-						CreatedOnToolsVersion = 10.2.1;
-						LastSwiftMigration = 1020;
-						TestTargetID = D13D86482217FEDF0048A6E4;
-					};
 					D13D86482217FEDF0048A6E4 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
-					};
-					D13E7D37235C38C700D25A29 = {
-						CreatedOnToolsVersion = 10.2.1;
-						TestTargetID = D13D86482217FEDF0048A6E4;
 					};
 				};
 			};
@@ -1068,20 +979,11 @@
 			projectRoot = "";
 			targets = (
 				D13D86482217FEDF0048A6E4 /* Qulynym */,
-				D13E7D37235C38C700D25A29 /* QulynymUITests */,
-				D1071A07235C3AD90078B33F /* QulynymTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D1071A06235C3AD90078B33F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D13D86472217FEDF0048A6E4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1183,38 +1085,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D13E7D36235C38C700D25A29 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4299C6DC5DB8965DDC5596A9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Qulynym-QulynymUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4B79A3D9B42E5A2AC31D686F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1254,56 +1127,9 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7EDD385713BC4177DA151009 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C49AFD9C55239C0A2E5BACCC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-QulynymTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D1071A04235C3AD90078B33F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1071A13235C3AFA0078B33F /* QulynymTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D13D86452217FEDF0048A6E4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1393,28 +1219,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D13E7D34235C38C700D25A29 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D13E7D3B235C38C700D25A29 /* QulynymUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D1071A0E235C3AD90078B33F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D13D86482217FEDF0048A6E4 /* Qulynym */;
-			targetProxy = D1071A0D235C3AD90078B33F /* PBXContainerItemProxy */;
-		};
-		D13E7D3E235C38C700D25A29 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D13D86482217FEDF0048A6E4 /* Qulynym */;
-			targetProxy = D13E7D3D235C38C700D25A29 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D13D86582217FEDF0048A6E4 /* LaunchScreen.storyboard */ = {
@@ -1428,53 +1233,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		D1071A10235C3AD90078B33F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3967BDCF5F753F01882358FB /* Pods-QulynymTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 674GV257AS;
-				INFOPLIST_FILE = QulynymTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AXware.QulynymTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Qulynym.app/Qulynym";
-			};
-			name = Debug;
-		};
-		D1071A11235C3AD90078B33F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2CF92BA8D286FA7FE91861B /* Pods-QulynymTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 674GV257AS;
-				INFOPLIST_FILE = QulynymTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AXware.QulynymTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Qulynym.app/Qulynym";
-			};
-			name = Release;
-		};
 		D13D86722217FEE00048A6E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1597,13 +1355,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XCJQAJBY89;
+				DEVELOPMENT_TEAM = 5SZVQ22BR7;
 				INFOPLIST_FILE = "$(SRCROOT)/Qulynym/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mhgfhdy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.metahDev.Qulynym;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1616,73 +1374,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XCJQAJBY89;
+				DEVELOPMENT_TEAM = 5SZVQ22BR7;
 				INFOPLIST_FILE = "$(SRCROOT)/Qulynym/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mhgfhdy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.metahDev.Qulynym;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D13E7D40235C38C700D25A29 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE06D32ED08FACEC7EE61581 /* Pods-Qulynym-QulynymUITests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 674GV257AS;
-				INFOPLIST_FILE = QulynymUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AXware.QulynymUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Qulynym;
-			};
-			name = Debug;
-		};
-		D13E7D41235C38C700D25A29 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B7969DFE4A77B5E06526433 /* Pods-Qulynym-QulynymUITests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 674GV257AS;
-				INFOPLIST_FILE = QulynymUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AXware.QulynymUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Qulynym;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D1071A0F235C3AD90078B33F /* Build configuration list for PBXNativeTarget "QulynymTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D1071A10235C3AD90078B33F /* Debug */,
-				D1071A11235C3AD90078B33F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D13D86442217FEDF0048A6E4 /* Build configuration list for PBXProject "Qulynym" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1697,15 +1404,6 @@
 			buildConfigurations = (
 				D13D86752217FEE00048A6E4 /* Debug */,
 				D13D86762217FEE00048A6E4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D13E7D3F235C38C700D25A29 /* Build configuration list for PBXNativeTarget "QulynymUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D13E7D40235C38C700D25A29 /* Debug */,
-				D13E7D41235C38C700D25A29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
