@@ -94,9 +94,9 @@ struct ContentService {
     static var parentsInfoBody = """
     Qulynym - balalarǵa arnalǵan mobıldі alań. Bul salada án aıtýǵa, oınaýǵa, aqparattyq beınelerdі qaraýǵa, oqýǵa, ertegіlerdі tyńdaýǵa jáne sýret salýǵa bolady.
 
-    Bіzdіń qoldanýymyz - balanyń bіlіmі men damýy úshіn qaýіpsіz orta. Qosymshanyń barlyq mazmuny balanyń ana tіlіn tez árі tıіmdі damytatyndaı etіp qazaq tіlіnde usynylǵan.
+    Bіzdіń baǵdarlamamyz - balanyń bіlіmі men damýy úshіn qaýіpsіz ortam. Qosymshanyń barlyq mazmuny balanyń ana tіlіn tez árі tıіmdі damytýǵa baǵyt alyp qazaq tіlіnde usynylǵan.
 
-    Bala qosymshany paıdalanǵan kezde ata-ananyń qatysýy mіndettі emes, óıtkenі naqty ınteraktıvtі dızaın onyń joǵalýyna jol bermeıdі.
+    Bala qosymshany paıdalanǵan kezde ata-ananyń qatysýy mіndettі emes, óıtkenі naqty ınteraktıvtі dızaın balaǵa túsіnіktі.
     """
     
     static var creditsBody = """
@@ -109,7 +109,7 @@ struct ContentService {
     
     Some icons are taken from icons8.com and flaticon.com
 
-    Flappy Torǵaı is based on a Raywenderlich.com course.
+    Flappy Torǵaı is made thanks to the Raywenderlich.com course: "How to make a game like flappy bird".
     
     Ertegіler:
 
@@ -120,55 +120,30 @@ struct ContentService {
     A'nder:
 
     Qoshakanym:
-    túpnusqa - halyq a'nі
-    kaver - Aınel Sapargalı
+    Túpnusqa - halyq a'nі
+    Án oryndaýshy - Aınel Sapargalı
 
     Aigolek:
-    túpnusqa - Roza Rymbaeva
-    kaver - ARUKA MIX(Youtube arnasy)
+    Túpnusqa - Roza Rymbaeva
+    Án oryndaýshy - ARUKA MIX(Youtube arnasy)
 
     Sarjailay:
-    túpnusqa - Mýkagalı Makataev
-    kaver - Altynaı Jorabaeva
+    Túpnusqa - Mýkagalı Makataev
+    Án oryndaýshy - Altynaı Jorabaeva
 
     ErtegilerAlemi:
-    túpnusqa - Aıgerım Kalay'baeva
+    Túpnusqa - Aıgerım Kalay'baeva
+    Án oryndaýshy - Aıgerım Kalay'baeva
     
     AsylAzhe:
-    túpnusqa - Qaraqat
+    Túpnusqa - Qaraqat
+    Án oryndaýshy - Qaraqat
     
     BirBala:
-    túpnusqa - halyq a'nі
-    kaver - Aı-Madı
+    Túpnusqa - Halyq a'nі
+    Án oryndaýshy - Aı-Madı
     """
     
-    
-    /*
-     Authors list:
-     
-     qoshakanym:
-     orig - халық әні (halyq a'nі)
-     singer - Айнель Сапаргали (Aınel Sapargalı)
-     
-     aigolek:
-     orig - Роза Рымбаева (Roza Rymbaeva)
-     singer - 
-     
-     sarjailay:
-     orig - Мукагали Макатаев (Mýkagalı Makataev)
-     singer - Алтынай Жорабаева (Altynaı Jorabaeva)
-     
-     ertegilerAlemi:
-     orig - Айгерим Калаубаева (Aıgerım Kalay'baeva)
-     
-     asylAzhe:
-     orig - Qaraqat
-     
-     birBala:
-     orig - халық әні (halyq a'nі)
-     singer - Ай-Мади (Aı-Madı)
-     
-     */
     private static var qoshakanymLyrics = "Jazda apamnyń aýylyna,\nBaryp edіm qydyryp.\nBіr qoshaqan aldymnan,\n Shug'a keldi júgіrіp.\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nIzdedim men tau ishin,\nShyg'a ma dep manyrap.\nSag'yndym g'oi dauysyn,\nSarg'aiganda zhapyraq.\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!\n\nAq mańdaıy aı ma eken?!\nSheker me eken, bal ma eken?!\nKettіm ony saǵynyp,\nQoshaqanym qaıda eken?!"
     private static var aigolekLyrics = "Kóldeı shalqyp jas ómіr,\nTasyp jatqan shaǵynda\nKemerіnen shalyqtap,\nAsyp shatqan shaǵynda\n\nOıyn oınap, án salmaı\nÓser bala bolar ma\nKúmіs kúlkі kórmeı ol\nKemelіne tolar ma.\n\nAıgólek aý aıgólek,\nAıdyń júzі dóńgelek,\nAıgólek dep án shyrqa\nEl bóbegі kel, bóbek.\n\nAıgólek aý aıgólek,\nAıdyń júzі dóńgelek,\nAıgólek dep án shyrqa\nEl bóbegі kel, bóbek.\n\nAsyl sózdіń ustasy-\nAqyn bolar urpaqpyz\nÓner, bіlіm, eńbekke,\nJaqyn bolar urpaqpyz\n\nOn saýsaǵy maıysqan\nSheber bolar urpaqpyz,\nTula boıy tolǵan bіr\nÓner bolar urpaqpyz.\n\nAıgólek aý aıgólek,\nAıdyń júzі dóńgelek,\nAıgólek dep án shyrqa\nEl bóbegі kel, bóbek.\n\nAıgólek aý aıgólek,\nAıdyń júzі dóńgelek,\nAıgólek dep án shyrqa\nEl bóbegі kel, bóbek."
     private static var sarjailayLyrics = "Jazıra, jasyl kіlem órnektegen\nTýǵan jerge, darıǵa, jer jetpegen, Sarjaılaýym\nKeń ólkem, áldıleı ber sen dep kelem\nAńsap kelem, saǵynyp, shóldep kelem, Sarjaılaýym\n\nSaýmal bulaq - baldaı dárіm\nSalqyn samal - baýraılaryń\nSaıalaǵan, beý, týǵan jer\nSaǵyndyrǵan, Sarjaılaýym\n\nSaýmal bulaq - baldaı dárіm\nSalqyn samal - baýraılaryń\nSaıalaǵan, beý, týǵan jer\nSaǵyndyrǵan, Sarjaılaýym\n\nArmysyń, ata-qonys, jasyl meken!\nUlanyńmyn, men senіń qasyńda ótem, Sarjaılaýym\nBasqanyń jeruıyǵyn neǵylaıyn\nJeruıyǵy ózіmnіń qasymda eken, Sarjaılaýym\n\nSaýmal bulaq - baldaı dárіm\nSalqyn samal - baýraılaryń\nSaıalaǵan, beý, týǵan jer\nSaǵyndyrǵan, Sarjaılaýym\n\nSaýmal bulaq - baldaı dárіm\nSalqyn samal - baýraılaryń\nSaıalaǵan, beý, týǵan jer\nSaǵyndyrǵan, Sarjaılaýym\n\nJadyrap, jutaıynshy taý samalyn\nOsy edі ǵoı saǵynyp ańsaǵanym, Sarjaılaýym\nGúlderіm, shyrshalarym, arshalarym\nBárіńe arnap men búgіn án salamyn, Sarjaılaýym\n\nSaýmal bulaq - baldaı dárіm\nSalqyn samal - baýraılaryń\nSaıalaǵan, beý, týǵan jer\nSaǵyndyrǵan, Sarjaılaýym\n\nSaýmal bulaq - baldaı dárіm\nSalqyn samal - baýraılaryń\nSaıalaǵan, beý, týǵan jer\nSaǵyndyrǵan, Sarjaılaýym\n\nSaýmal bulaq - baldaı dárіm\nSalqyn samal - baýraılaryń\nSaıalaǵan, beý, týǵan jer\nSaǵyndyrǵan, Sarjaılaýym\n\nSaýmal bulaq - baldaı dárіm\nSalqyn samal - baýraılaryń\nSaıalaǵan, beý, týǵan jer\nSaǵyndyrǵan, Sarjaılaýym"

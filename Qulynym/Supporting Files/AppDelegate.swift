@@ -22,6 +22,7 @@ import CoreData
   3) ModuleView protocol properties get acccessor
   4) Karaoke Scrolling Text
   5) The audio shouldn't play while user is holding slider(PlaylistItem)
+  6) Icons from icons8.com are not resizing 
  */
 
 @UIApplicationMain
