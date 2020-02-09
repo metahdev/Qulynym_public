@@ -10,11 +10,12 @@
 import UIKit
 import CoreData
 
+#warning("bugs and solutions")
 /*
  Bugs, which are already found:
   1) Memory Leak with Audio
   2) Beineler's data is messing when a network is slow
-  3) SkeletonView doesn't work properly: the first index of the CV is not animating(should look for an alternative)
+  3) SkeletonView doesn't work properly: the first index of the CV is not animating(should look for an alternative) - this version isn't working with skeleton view
  Solutions, which will be integrated further:
   1) Back segue falling leaves
   2) Shuffle animation of cards

@@ -43,17 +43,16 @@ class ConnectionWarningViewController: UIViewController {
  
     private lazy var warningLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Oh no! Internet connection lost!"
+        lbl.text = "Oı-oı! Internet qaıda eken?🤔"
         lbl.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.074)
         lbl.textAlignment = .center
         lbl.textColor = .black
         return lbl
     }()
     
-    #warning("change the text")
     private lazy var warningDescriptionLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "You're offline"
+        lbl.text = "Bіrdene jasamaı qaldy😬. Ata-anadan kómek sura😅"
         lbl.font = UIFont(name: "Arial", size: view.frame.height * 0.038)
         lbl.textAlignment = .center
         lbl.textColor = .black
