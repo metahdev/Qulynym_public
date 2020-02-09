@@ -9,6 +9,7 @@
 
 import UIKit
 
+#warning("maybe it should be refactored into just a view, not VC - for invisibleBtn")
 class DrawingsCollectionView: UIViewController {
     // MARK:- Properties
     var pictures = ["whiteCanvas", "flowerDrawing", "penguinDrawing", "catterpilarDrawing", "butterflyDrawing"]
