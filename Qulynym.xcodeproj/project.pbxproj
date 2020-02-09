@@ -245,8 +245,6 @@
 		D10687CE22AE68EE00A3E6E0 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D10687D022AE68FA00A3E6E0 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		D10687D522AE691B00A3E6E0 /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
-		D1071A0C235C3AD90078B33F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D1071A12235C3AFA0078B33F /* QulynymTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QulynymTests.swift; sourceTree = "<group>"; };
 		D10729F4228767D9003149E8 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		D10729F622876879003149E8 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		D10729FA22877D3B003149E8 /* PlaylistConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistConfigurator.swift; sourceTree = "<group>"; };
@@ -267,8 +265,6 @@
 		D13D86592217FEDF0048A6E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D13D865B2217FEDF0048A6E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D13D867D22180E430048A6E4 /* PersistentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentService.swift; sourceTree = "<group>"; };
-		D13E7D3A235C38C700D25A29 /* QulynymUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QulynymUITests.swift; sourceTree = "<group>"; };
-		D13E7D3C235C38C700D25A29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D146AB2E22E77EB2004520DA /* backgroundAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundAudio.mp3; sourceTree = "<group>"; };
 		D14D536722213769007ACD55 /* ItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPresenter.swift; sourceTree = "<group>"; };
 		D14D536922213775007ACD55 /* ItemConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemConfigurator.swift; sourceTree = "<group>"; };
@@ -552,15 +548,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D1071A09235C3AD90078B33F /* QulynymTests */ = {
-			isa = PBXGroup;
-			children = (
-				D1071A0C235C3AD90078B33F /* Info.plist */,
-				D1071A12235C3AFA0078B33F /* QulynymTests.swift */,
-			);
-			path = QulynymTests;
-			sourceTree = "<group>";
-		};
 		D10729EE22876725003149E8 /* Playlist */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,8 +606,6 @@
 			isa = PBXGroup;
 			children = (
 				D13D864B2217FEDF0048A6E4 /* Qulynym */,
-				D13E7D39235C38C700D25A29 /* QulynymUITests */,
-				D1071A09235C3AD90078B33F /* QulynymTests */,
 				D13D864A2217FEDF0048A6E4 /* Products */,
 				87E877A727894FFFC3518CA5 /* Pods */,
 				D01C313A6B5806898267DC51 /* Frameworks */,
@@ -645,15 +630,6 @@
 				D14D536C22213787007ACD55 /* Resources */,
 			);
 			path = Qulynym;
-			sourceTree = "<group>";
-		};
-		D13E7D39235C38C700D25A29 /* QulynymUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D13E7D3A235C38C700D25A29 /* QulynymUITests.swift */,
-				D13E7D3C235C38C700D25A29 /* Info.plist */,
-			);
-			path = QulynymUITests;
 			sourceTree = "<group>";
 		};
 		D14D5366222136B9007ACD55 /* Item */ = {
