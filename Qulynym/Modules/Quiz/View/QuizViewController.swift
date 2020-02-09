@@ -42,6 +42,7 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     
     var selectedIndex: Int?
 
+    private var closeBtnHasBeenPressed = false
     private var cardsCollectionView: UICollectionView!
     private var closeBtn: UIButton!
     private var soundsBtn: UIButton!
@@ -100,6 +101,7 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     
     @objc
     private func closeBtnPressed() {
+        self.closeBtnHasBeenPressed = true
         presenter.closeView()
     }
     
@@ -140,9 +142,11 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
             AudioPlayer.audioQueue.asyncAfter(deadline: .now() + 0.5, execute: {
                 AudioPlayer.setupExtraAudio(with: "wellDone", audioPlayer: .effects)
                 DispatchQueue.main.async {
-                    self.presenter.playAudio()
-                    self.changeSelectedCellOpacity(to: 1.0)
-                    self.presenter.deleteItem()
+                    if !self.closeBtnHasBeenPressed {
+                        self.presenter.playAudio()
+                        self.changeSelectedCellOpacity(to: 1.0)
+                        self.presenter.deleteItem()
+                    }
                 }
             })
         } else {
@@ -152,12 +156,12 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width * 0.4, height: view.frame.height * 0.4)
+        return CGSize(width: view.frame.width * 0.3, height: view.frame.height * 0.3)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let rightLeftDistance = (view.frame.width - view.frame.width * 0.8) / 3
-        let topBottomDistance = (view.frame.height - view.frame.height * 0.8) / 3
+        let rightLeftDistance = (view.frame.width - view.frame.width * 0.6) / 3
+        let topBottomDistance = (view.frame.height - view.frame.height * 0.6) / 3
         return UIEdgeInsets(top: topBottomDistance, left: rightLeftDistance, bottom: topBottomDistance, right: rightLeftDistance)
     }
 }

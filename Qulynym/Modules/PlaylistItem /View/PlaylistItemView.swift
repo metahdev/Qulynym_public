@@ -27,6 +27,7 @@ protocol PlaylistItemViewProtocol: class {
 
 class PlaylistItemView: PlaylistItemViewProtocol {
     // MARK:- Properties
+    #warning("how about notes animation(from gramophone and microphone images)")
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)

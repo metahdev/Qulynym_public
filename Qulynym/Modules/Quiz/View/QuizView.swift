@@ -24,8 +24,9 @@ class QuizView: QuizViewProtocol {
     }()
     lazy var soundsButton: UIButton = {
         var btn = UIButton()
-        btn.setImage(UIImage(named: "soundsIcon"), for: .normal)
+        btn.setImage(UIImage(named: "itemSound"), for: .normal)
         btn.setupShadow()
+        btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return btn
     }()
     lazy var closeBtn: UIButton = {
@@ -69,7 +70,7 @@ class QuizView: QuizViewProtocol {
         NSLayoutConstraint.activate([
             soundsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             soundsButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            soundsButton.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
+            soundsButton.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
             soundsButton.heightAnchor.constraint(equalTo: soundsButton.widthAnchor),
             
             cardsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
