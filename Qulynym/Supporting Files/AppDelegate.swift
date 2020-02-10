@@ -14,15 +14,15 @@ import CoreData
 /*
  Bugs, which are already found:
   1) Memory Leak with Audio
-  2) Beineler's data is messing when a network is slow
-  3) SkeletonView doesn't work properly: the first index of the CV is not animating(should look for an alternative) - this version isn't working with skeleton view
+  2) SkeletonView doesn't work properly: the first index of the CV is not animating(should look for an alternative) - this version isn't working with skeleton view
+  3) IPad Drawing View brush width
  Solutions, which will be integrated further:
   1) Back segue falling leaves
   2) Shuffle animation of cards
   3) ModuleView protocol properties get acccessor
   4) Karaoke Scrolling Text
   5) The audio shouldn't play while user is holding slider(PlaylistItem)
-  6) Icons from icons8.com are not resizing 
+  6) Icons from icons8.com are not resizing
  */
 
 @UIApplicationMain

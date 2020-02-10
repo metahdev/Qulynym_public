@@ -70,7 +70,7 @@ class QuizView: QuizViewProtocol {
         NSLayoutConstraint.activate([
             soundsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             soundsButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            soundsButton.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            soundsButton.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
             soundsButton.heightAnchor.constraint(equalTo: soundsButton.widthAnchor),
             
             cardsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
