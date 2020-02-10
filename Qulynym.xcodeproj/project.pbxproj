@@ -44,7 +44,6 @@
 		B9E2CE3822FBDF2F006B5697 /* falling.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2522FBDF2F006B5697 /* falling.wav */; };
 		B9E2CE3922FBDF2F006B5697 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2622FBDF2F006B5697 /* coin.wav */; };
 		B9E2CE3B22FBDF2F006B5697 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2822FBDF2F006B5697 /* ding.wav */; };
-		CA4E6B9457DFEF7D503D4A1D /* Pods_Qulynym.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E031261186D933A33C7C5772 /* Pods_Qulynym.framework */; };
 		D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10221DB22ECD2B40081C95E /* CanvasView.swift */; };
 		D102930822F1A13500C7B2F2 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930722F1A13500C7B2F2 /* QuizViewController.swift */; };
 		D102930A22F1A14000C7B2F2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930922F1A14000C7B2F2 /* QuizView.swift */; };
@@ -66,6 +65,8 @@
 		D1072A0122877DD2003149E8 /* PlaylistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1072A0022877DD2003149E8 /* PlaylistRouter.swift */; };
 		D107786B22858CEC00D869D3 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D107786A22858CEC00D869D3 /* Animator.swift */; };
 		D11A59BE23043F8C00D68CEF /* whack.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2322FBDF2F006B5697 /* whack.wav */; };
+		D12ACAB323F158360061EF06 /* Pods_Qulynym.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E031261186D933A33C7C5772 /* Pods_Qulynym.framework */; };
+		D12ACAB423F158360061EF06 /* Pods_Qulynym.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E031261186D933A33C7C5772 /* Pods_Qulynym.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D135E2A422A02F7B00DC84DE /* PlaylistItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A322A02F7B00DC84DE /* PlaylistItemViewController.swift */; };
 		D135E2A722A02F9800DC84DE /* PlaylistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A622A02F9800DC84DE /* PlaylistItemView.swift */; };
 		D135E2AB22A02FBC00DC84DE /* PlaylistItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AA22A02FBC00DC84DE /* PlaylistItemConfigurator.swift */; };
@@ -185,6 +186,20 @@
 		D1F9ABD922A0458400989BD3 /* DrawingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD822A0458400989BD3 /* DrawingInteractor.swift */; };
 		D1F9ABDB22A0458C00989BD3 /* DrawingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABDA22A0458C00989BD3 /* DrawingRouter.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D12ACAB523F158360061EF06 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D12ACAB423F158360061EF06 /* Pods_Qulynym.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0B7969DFE4A77B5E06526433 /* Pods-Qulynym-QulynymUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym-QulynymUITests.release.xcconfig"; path = "Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -382,7 +397,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA4E6B9457DFEF7D503D4A1D /* Pods_Qulynym.framework in Frameworks */,
+				D12ACAB323F158360061EF06 /* Pods_Qulynym.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,6 +930,7 @@
 				D13D86462217FEDF0048A6E4 /* Frameworks */,
 				D13D86472217FEDF0048A6E4 /* Resources */,
 				4B79A3D9B42E5A2AC31D686F /* [CP] Embed Pods Frameworks */,
+				D12ACAB523F158360061EF06 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -34,7 +34,7 @@ class ConnectionWarningViewController: UIViewController {
         btn.titleLabel?.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.04)
         btn.titleLabel?.textAlignment = .center
         btn.setTitleColor(UIColor.white, for: .normal)
-        btn.setTitle("Try Again", for: .normal)
+        btn.setTitle("Jańartý", for: .normal)
         btn.sizeToFit()
         btn.layer.borderColor = UIColor.white.cgColor
         btn.layer.borderWidth = 4
