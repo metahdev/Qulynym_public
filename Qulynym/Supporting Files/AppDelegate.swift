@@ -21,7 +21,7 @@ import CoreData
   2) Shuffle animation of cards
   3) ModuleView protocol properties get acccessor
   4) Karaoke Scrolling Text
-  5) The audio shouldn't play while user is holding slider(PlaylistItem)
+  5) Improve PlaylistItem
   6) Icons from icons8.com are not resizing
  */
 
