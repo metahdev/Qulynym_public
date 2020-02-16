@@ -16,6 +16,8 @@ import CoreData
   1) Memory Leak with Audio
   2) SkeletonView doesn't work properly: the first index of the CV is not animating(should look for an alternative) - this version isn't working with skeleton view
   3) IPad Drawing View brush width
+  4) PlaylistItem timer bug
+  5) Bug with content changing after several button touches 
  Solutions, which will be integrated further:
   1) Back segue falling leaves
   2) Shuffle animation of cards
