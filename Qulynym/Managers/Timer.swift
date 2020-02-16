@@ -28,9 +28,10 @@ class TimerController {
     func nullifyData() {
         timer?.invalidate()
         timer = nil
-        seconds = 0 
+        seconds = 0
     }
     
+    #warning("bug with time: timeInterval should be less")
     func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkState), userInfo: nil, repeats: true)
     }

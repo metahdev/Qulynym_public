@@ -107,7 +107,7 @@ struct ContentService {
     Akhmetgali Daulet - uıymdastyrý kómekshіsі
     Imash Daulet, Yeldossova Aruzhan - daýyspen áreket etý
     
-    Some icons are taken from icons8.com and flaticon.com
+    Some icons are taken from the icons8.com and the flaticon.com
 
     Flappy Torǵaı is made thanks to the Raywenderlich.com course: "How to make a game like flappy bird".
     

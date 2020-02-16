@@ -241,7 +241,7 @@ extension BeineViewController {
 
 extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataFetchAPI.beineler.count == 0 ? 20 : dataFetchAPI.beineler.count
+        return dataFetchAPI.beineler.count == 0 ? 5 : dataFetchAPI.beineler.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

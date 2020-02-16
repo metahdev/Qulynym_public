@@ -44,7 +44,9 @@ extension PlaylistItemPresenter {
     }
     
     func getLyricsText() {
-        controller.lyricsText = interactor.getLyricsText(controller.index)
+        if controller.isKaraoke {
+            controller.lyricsText = interactor.getLyricsText(controller.index)
+        }
     }
     
     func initTimer() {

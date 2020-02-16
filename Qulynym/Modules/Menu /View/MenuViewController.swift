@@ -150,7 +150,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         if menuType == .beinelerPlaylists || menuType == .beineler {
             if dataFetchAPI.beineler.count == 0 {
-                return 20
+                return 5
             } else {
                 return dataFetchAPI.beineler.count
             }

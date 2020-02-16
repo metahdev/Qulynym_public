@@ -186,6 +186,9 @@ extension PlaylistItemViewController {
         } else {
             karaokeView.storyImageView.image = UIImage(named: contentName)
         }
+        karaokeView.soundSlider.value = 1
+        karaokeView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
+        isOpenSlider = true
         karaokeView.backBtn.isEnabled = (index != 0)
         karaokeView.forwardBtn.isEnabled = (index != maxIndex)
     }
