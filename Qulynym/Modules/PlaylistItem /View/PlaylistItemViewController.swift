@@ -38,7 +38,7 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
     
     private var scrolledToEnd = false
     private let configurator: PLaylistItemConfiguratorProtocol = PlaylistItemConfigurator()
-    private var karaokeView: PlaylistItemViewProtocol!
+    private var playlistItemView: PlaylistItemViewProtocol!
     
     
     // MARK:- Status Bar
@@ -52,7 +52,7 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
         super.viewDidLoad()
         configurator.configure(with: self)
         initLayout()
-        karaokeView.setupLayout()
+        playlistItemView.setupLayout()
         assignActions()
         presenter.getLyricsText()
         presenter.getMaxCount()
@@ -63,40 +63,41 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
         super.viewWillAppear(animated)
         playBtnPressed()
         setViewsProperties()
+        configureBtnsEnability()
         AudioPlayer.backgroundAudioPlayer.stop()
     }
     
     
     // MARK:- Layout
     private func initLayout() {
-        karaokeView = PlaylistItemView(self.view, isKaraoke)
+        playlistItemView = PlaylistItemView(self.view, isKaraoke)
     }
     
     // MARK:- Actions
     private func assignActions() {
-        karaokeView.playBtn.addTarget(self, action: #selector(playBtnPressed), for: .touchUpInside)
-        karaokeView.backBtn.addTarget(self, action: #selector(backBtnPressed), for: .touchUpInside)
-        karaokeView.forwardBtn.addTarget(self, action: #selector(nextBtnPressed), for: .touchUpInside)
-        karaokeView.closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
-        karaokeView.timelineSlider.addTarget(self, action: #selector(timelineSliderValueChanged), for: .valueChanged)
-        karaokeView.soundSlider.addTarget(self, action: #selector(soundSliderValueChanged), for: .valueChanged)
-        karaokeView.soundButton.addTarget(self, action: #selector(soundBtnPressed), for: .touchUpInside)
+        playlistItemView.playBtn.addTarget(self, action: #selector(playBtnPressed), for: .touchUpInside)
+        playlistItemView.backBtn.addTarget(self, action: #selector(backBtnPressed), for: .touchUpInside)
+        playlistItemView.forwardBtn.addTarget(self, action: #selector(nextBtnPressed), for: .touchUpInside)
+        playlistItemView.closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
+        playlistItemView.timelineSlider.addTarget(self, action: #selector(timelineSliderValueChanged), for: .valueChanged)
+        playlistItemView.soundSlider.addTarget(self, action: #selector(soundSliderValueChanged), for: .valueChanged)
+        playlistItemView.soundButton.addTarget(self, action: #selector(soundBtnPressed), for: .touchUpInside)
 
         let timelineSliderTap = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
         let soundSliderTap = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
-        karaokeView.timelineSlider.addGestureRecognizer(timelineSliderTap)
-        karaokeView.soundSlider.addGestureRecognizer(soundSliderTap)
+        playlistItemView.timelineSlider.addGestureRecognizer(timelineSliderTap)
+        playlistItemView.soundSlider.addGestureRecognizer(soundSliderTap)
     }
     
     @objc
     func sliderTapped(gestureRecognizer: UIGestureRecognizer) {
-        if gestureRecognizer.view == karaokeView.timelineSlider {
-            if gestureRecognizer.location(in: view).x < karaokeView.timelineSlider.frame.width + karaokeView.timelineSlider.frame.minX {
-                self.sliderTappedActions(karaokeView.timelineSlider, point: gestureRecognizer.location(in: view))
+        if gestureRecognizer.view == playlistItemView.timelineSlider {
+            if gestureRecognizer.location(in: view).x < playlistItemView.timelineSlider.frame.width + playlistItemView.timelineSlider.frame.minX {
+                self.sliderTappedActions(playlistItemView.timelineSlider, point: gestureRecognizer.location(in: view))
                 self.timelineSliderValueChanged()
             }
         } else {
-            sliderTappedActions(karaokeView.soundSlider, point: gestureRecognizer.location(in: view))
+            sliderTappedActions(playlistItemView.soundSlider, point: gestureRecognizer.location(in: view))
             soundSliderValueChanged()
         }
     }
@@ -112,10 +113,10 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
     func playBtnPressed() {
         if isPlaying {
             presenter.pauseAudio()
-            karaokeView.playBtn.setImage(UIImage(named: "playBtn"), for: .normal)
+            playlistItemView.playBtn.setImage(UIImage(named: "playBtn"), for: .normal)
         } else {
             presenter.playAudio()
-            karaokeView.playBtn.setImage(UIImage(named: "pauseBtn"), for: .normal)
+            playlistItemView.playBtn.setImage(UIImage(named: "pauseBtn"), for: .normal)
         }
         isPlaying = !isPlaying
     }
@@ -123,11 +124,22 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
     @objc
     private func backBtnPressed() {
         presenter.backToPreviousAudio()
+        playlistItemView.backBtn.isEnabled = false
+        playlistItemView.forwardBtn.isEnabled = false
+        playlistItemView.forwardBtn.alpha = 1
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            self.configureBtnsEnability()
+        })
     }
     
     @objc
     private func nextBtnPressed() {
         presenter.nextAudio()
+        playlistItemView.backBtn.isEnabled = false
+        playlistItemView.forwardBtn.isEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+            self.configureBtnsEnability()
+        })
     }
     
     @objc
@@ -135,27 +147,32 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
         presenter.close()
     }
     
+    private func configureBtnsEnability() {
+        playlistItemView.backBtn.isEnabled = (index != 0)
+        playlistItemView.forwardBtn.isEnabled = (index != maxIndex)
+    }
+    
     @objc
     private func timelineSliderValueChanged() {
         if !isPlaying {
             playBtnPressed()
         }
-        presenter.scrollAudio(to: karaokeView.timelineSlider.value)
+        presenter.scrollAudio(to: playlistItemView.timelineSlider.value)
     }
     
     @objc
     private func soundSliderValueChanged() {
-        presenter.changeAudioVolume(to: karaokeView.soundSlider.value)
+        presenter.changeAudioVolume(to: playlistItemView.soundSlider.value)
         
-        changeSoundBtnImage(karaokeView.soundSlider.value)
+        changeSoundBtnImage(playlistItemView.soundSlider.value)
     }
     
     private func changeSoundBtnImage(_ value: Float) {
         if value == 0.0 {
-            karaokeView.soundButton.setImage(UIImage(named: "soundsIconOff"), for: .normal)
+            playlistItemView.soundButton.setImage(UIImage(named: "soundsIconOff"), for: .normal)
             isOpenSlider = false
         } else {
-            karaokeView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
+            playlistItemView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
             isOpenSlider = true
         }
     }
@@ -170,7 +187,7 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
             value = 1
         }
         
-        karaokeView.soundSlider.setValue(value, animated: true)
+        playlistItemView.soundSlider.setValue(value, animated: true)
         presenter.changeAudioVolume(to: value)
         changeSoundBtnImage(value)
     }
@@ -180,34 +197,32 @@ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerPr
 extension PlaylistItemViewController {
     // MARK:- Protocol Methods
     func setViewsProperties() {
-        karaokeView.titleLabel.text = contentName
+        playlistItemView.titleLabel.text = contentName
         if isKaraoke {
-            karaokeView.lyricsTextView.text = lyricsText
+            playlistItemView.lyricsTextView.text = lyricsText
         } else {
-            karaokeView.storyImageView.image = UIImage(named: contentName)
+            playlistItemView.storyImageView.image = UIImage(named: contentName)
         }
-        karaokeView.soundSlider.value = 1
-        karaokeView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
+        playlistItemView.soundSlider.value = 1
+        playlistItemView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
         isOpenSlider = true
-        karaokeView.backBtn.isEnabled = (index != 0)
-        karaokeView.forwardBtn.isEnabled = (index != maxIndex)
     }
     
     func scrollTextView(to: Int) {
         let range = NSMakeRange(to, 0)
-        karaokeView.lyricsTextView.scrollRangeToVisible(range)
+        playlistItemView.lyricsTextView.scrollRangeToVisible(range)
     }
     
     func setTimelineSliderMaxValue() {
-        karaokeView.timelineSlider.maximumValue = Float(AudioPlayer.playlistItemAudioPlayer.duration)
+        playlistItemView.timelineSlider.maximumValue = Float(AudioPlayer.playlistItemAudioPlayer.duration)
     }
     
     func setTimelineSliderValue(_ value: Int) {
-        karaokeView.timelineSlider.value = Float(value)
+        playlistItemView.timelineSlider.value = Float(value)
         
         if value == Int(presenter.duration) {
             presenter.timer.timerEnded()
-            karaokeView.timelineSlider.value = 0 
+            playlistItemView.timelineSlider.value = 0 
             playBtnPressed()
         }
     }

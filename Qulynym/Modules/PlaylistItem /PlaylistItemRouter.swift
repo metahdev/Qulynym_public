@@ -24,10 +24,6 @@ class PlaylistItemRouter: PlaylistItemRouterProtocol {
 
 extension PlaylistItemRouter {
     func close() {
-        AudioPlayer.playlistItemAudioPlayer.stop()
         controller.navigationController?.popViewController(animated: true)
-        if AudioPlayer.backgroundAudioStatePlaying {
-            AudioPlayer.backgroundAudioPlayer.play()
-        }
     }
 }

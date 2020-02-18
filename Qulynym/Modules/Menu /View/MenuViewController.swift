@@ -37,7 +37,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     var menuType: Menu = .main
     var playlistID: String?
     var dataFetchAPI: DataFetchAPI!
-    var isPassingSafe = false
     var isConnectionErrorShowing = false
     
     private var ifFetchHasAlreadyDone = false
@@ -174,14 +173,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.image = UIImage(named: ContentService.sections[menuType]![indexPath.row])
         } else if menuType == .beinelerPlaylists || menuType == .beineler {
             cell.isUserInteractionEnabled = false
+            let gradient = SkeletonGradient(baseColor: .concrete)
+            cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
             if self.dataFetchAPI.beineler.count != 0 {
                 cell.isUserInteractionEnabled = true
-                
-//                if cell.beine == nil {
-//                    let gradient = SkeletonGradient(baseColor: .concrete)
-//                    cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
-//                }
-                
                 cell.beine = self.dataFetchAPI.beineler[indexPath.row]
             }
         } else if menuType == .toddler {
@@ -208,9 +203,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else if menuType == .beinelerPlaylists {
             presenter.didSelectPlaylistCell(playlist: self.dataFetchAPI.beineler[indexPath.row].id)
         } else if menuType == .beineler {
-            if self.isPassingSafe {
-                presenter.didSelectVideoCell(index: indexPath.row)
-            }
+            presenter.didSelectVideoCell(index: indexPath.row)
         } else if menuType == .toddler {
             presenter.didSelectToddlerCell(at: indexPath.row)
         } else {
@@ -245,7 +238,6 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MenuViewController {
     // MARK:- DataFetchAPIDelegate Methods
     func dataIsReady() {
-        self.isPassingSafe = true 
         menuView.collectionView.reloadData()
     }
     

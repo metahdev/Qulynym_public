@@ -12,7 +12,6 @@ import Alamofire
 
 protocol DataFetchAPIDelegate: class {
     var playlistID: String? { get set }
-    var isPassingSafe: Bool { get set }
     var isConnectionErrorShowing: Bool { get set }
     func dataIsReady()
     func showAnErrorMessage()
@@ -62,7 +61,6 @@ class DataFetchAPI {
         }
         
         #warning("refactor")
-        delegate.isPassingSafe = false
         AF.request(stringURL, method: .get, parameters: parameters, encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: nil).responseJSON(completionHandler: { response in
             switch response.result {
             case .success(let value):

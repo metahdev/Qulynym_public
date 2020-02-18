@@ -68,9 +68,6 @@ extension PlaylistItemPresenter {
         timer.timer?.invalidate()
         timer.timer = nil
         AudioPlayer.playlistItemAudioPlayer.pause()
-        if AudioPlayer.backgroundAudioStatePlaying {
-            AudioPlayer.backgroundAudioPlayer.play()
-        }
     }
     
     func backToPreviousAudio() {
@@ -114,6 +111,10 @@ extension PlaylistItemPresenter {
     
     func close() {
         AudioPlayer.playlistPlayerInitiated = false
+        AudioPlayer.playlistItemAudioPlayer.stop()
+        if AudioPlayer.backgroundAudioStatePlaying {
+            AudioPlayer.backgroundAudioPlayer.play()
+        }
         timer.nullifyData()
         router.close()
     }

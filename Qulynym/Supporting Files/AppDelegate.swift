@@ -10,6 +10,14 @@
 import UIKit
 import CoreData
 
+#warning("resolve before the uploading:")
+/*
+ Improve Timer accuracy
+ Call ConnectionWarning:
+ if it takes longer than 25 seconds for data to fetch
+ if image fetching was unsuccessful 
+ */
+
 #warning("bugs and solutions")
 /*
  Bugs, which are already found:
@@ -17,14 +25,16 @@ import CoreData
   2) SkeletonView doesn't work properly: the first index of the CV is not animating(should look for an alternative) - this version isn't working with skeleton view
   3) IPad Drawing View brush width
   4) PlaylistItem timer bug
-  5) Bug with content changing after several button touches 
+  5) Bug with content changing after several button touches
+  6) Some icons are not resizing(icons8.com and etc)
  Solutions, which will be integrated further:
   1) Back segue falling leaves
   2) Shuffle animation of cards
   3) ModuleView protocol properties get acccessor
   4) Karaoke Scrolling Text
-  5) Improve PlaylistItem
-  6) Icons from icons8.com are not resizing
+  5) Improve PlaylistItem logic
+  6) Check whether concurrency is performing normally in all modules 
+  7) Blur effect when new beineler are loading
  */
 
 @UIApplicationMain

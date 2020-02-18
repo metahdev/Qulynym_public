@@ -10,7 +10,7 @@
 import Foundation
 import UIKit
 import Alamofire
-
+import SkeletonView
 
 let imageCache = NSCache<NSString, UIImage>()
 class CustomImageView: UIImageView {
@@ -23,6 +23,7 @@ class CustomImageView: UIImageView {
         
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             self.image = imageFromCache
+            self.hideSkeleton(transition: .crossDissolve(0.25))
             return
         }
         
@@ -37,10 +38,10 @@ class CustomImageView: UIImageView {
                     
                     if self.imageUrlString == urlString {
                         self.image = imageToCache
-//                      self.hideSkeleton()
                     }
                     
                     imageCache.setObject(imageToCache!, forKey: urlString as NSString)
+                    self.hideSkeleton(transition: .crossDissolve(0.25))
                 }
             }
         }

@@ -44,6 +44,7 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
         let view = WKYTPlayerView()
         view.delegate = self
         view.clipsToBounds = false
+        view.isSkeletonable = true
         return view
     }()
     private lazy var recommendationsCV: UICollectionView = {
@@ -97,8 +98,8 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         videoView.load(withVideoId: dataFetchAPI.beineler[index].id, playerVars: playVarsDic)
+        videoViewLoading()
         AudioPlayer.backgroundAudioPlayer.pause()
-        
         let indexPath = IndexPath(item: index, section: 0)
         recommendationsCV.scrollToItem(at: indexPath, at: .left, animated: true)
         
@@ -113,6 +114,10 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
     
     
     // MARK:- Layout
+    private func videoViewLoading() {
+        videoView.showAnimatedSkeleton(usingColor: .darkClouds, animation: nil, transition: .none)
+    }
+    
     func makeCellSelected(_ cell: UICollectionViewCell) {
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
@@ -171,6 +176,7 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
     #warning("refactor these 2 methods")
     @objc
     private func nextVideo() {
+        videoViewLoading()
         if let cell = recommendationsCV.cellForItem(at: IndexPath(item: self.index, section: 0)) {
             makeCellDeselected(cell)
         }
@@ -190,6 +196,7 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
     
     @objc
     private func previousVideo() {
+        videoViewLoading()
         if let cell = recommendationsCV.cellForItem(at: IndexPath(item: self.index, section: 0)) {
             makeCellDeselected(cell)
         }
@@ -255,13 +262,11 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         cell.imageViewLayerMasksToBounds = true
         cell.isUserInteractionEnabled = false
         
+        let gradient = SkeletonGradient(baseColor: .concrete)
+        cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
+        
         if self.dataFetchAPI.beineler.count != 0 {
             cell.isUserInteractionEnabled = true
-//            if cell.beine == nil {
-//                let gradient = SkeletonGradient(baseColor: .concrete)
-//                cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
-//            }
-            
             cell.beine = self.dataFetchAPI.beineler[indexPath.row]
         }
         
@@ -273,13 +278,11 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // cell doesn't need to deselect if it's not changing
-        if index != indexPath.row {
+        if indexPath.row != index {
+            videoViewLoading()
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) {
                 makeCellDeselected(cell)
             }
-        }
-        if indexPath.row != index {
             videoView.load(withVideoId: dataFetchAPI.beineler[indexPath.row].id, playerVars: playVarsDic)
             collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
             makeCellSelected(collectionView.cellForItem(at: indexPath)!)
@@ -307,5 +310,9 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
 extension BeineViewController: WKYTPlayerViewDelegate {
     func playerViewPreferredWebViewBackgroundColor(_ playerView: WKYTPlayerView) -> UIColor {
         return .clear
+    }
+    
+    func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
+        playerView.hideSkeleton(transition: .crossDissolve(0.5))
     }
 }
