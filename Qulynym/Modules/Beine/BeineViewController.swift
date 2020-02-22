@@ -21,7 +21,7 @@ protocol BeineViewControllerProtocol: class {
 }
 
 #warning("refactor")
-class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate {
+class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningCaller, ConnectionWarningViewControllerDelegate {
     // MARK:- Properties
     var dataFetchAPI: DataFetchAPI!
     var beineler: [Beine]!
@@ -78,7 +78,7 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
         nextVideoBtn.addTarget(self, action: #selector(nextVideo), for: .touchUpInside)
         previousVideoBtn.addTarget(self, action: #selector(previousVideo), for: .touchUpInside)
         
-        dataFetchAPI = DataFetchAPI(delegate: self)
+        dataFetchAPI = DataFetchAPI(fetchAPIDelegate: self, connectionDelegate: self)
         dataFetchAPI.beineler = self.beineler
         dataFetchAPI.token = self.token
         
@@ -265,6 +265,8 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let gradient = SkeletonGradient(baseColor: .concrete)
         cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
         
+        cell.warningCaller = self
+
         if self.dataFetchAPI.beineler.count != 0 {
             cell.isUserInteractionEnabled = true
             cell.beine = self.dataFetchAPI.beineler[indexPath.row]

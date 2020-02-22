@@ -63,6 +63,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
             sectionTitleLabel.backgroundColor = titleLabelBackgroundColor
         }
     }
+    weak var warningCaller: ConnectionWarningCaller!
     lazy var imageView: CustomImageView = {
         let iv = CustomImageView()
         iv.clipsToBounds = true
@@ -94,7 +95,9 @@ class ImageCollectionViewCell: UICollectionViewCell {
     // MARK:- Methods    
     func setupThumbnailImage() {
         if let thumbnailImageUrl = beine?.thumbnailURL {
-            imageView.loadImageUsingUrlString(urlString: thumbnailImageUrl)
+            if imageView.loadImageUsingUrlString(urlString: thumbnailImageUrl) == .failure {
+                warningCaller.showAnErrorMessage()
+            }
         }
     }
     

@@ -188,24 +188,6 @@ class PlaylistItemView: PlaylistItemViewProtocol {
             backBtn.bottomAnchor.constraint(equalTo: playBtn.bottomAnchor),
         ])
     }
-    
-    private func activateTextViewConstraints() {
-        NSLayoutConstraint.activate([
-            lyricsTextView.topAnchor.constraint(equalTo: view.topAnchor),
-            lyricsTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lyricsTextView.widthAnchor.constraint(equalTo: view.heightAnchor),
-            lyricsTextView.heightAnchor.constraint(equalTo: lyricsTextView.widthAnchor, multiplier: 0.5),
-        ])
-    }
-    
-    private func activateImageViewConstraints() {
-        NSLayoutConstraint.activate([
-            storyImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            storyImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            storyImageView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
-            storyImageView.heightAnchor.constraint(equalTo: storyImageView.widthAnchor),
-        ])
-    }
 }
 
 

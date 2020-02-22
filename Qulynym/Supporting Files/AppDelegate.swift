@@ -12,10 +12,8 @@ import CoreData
 
 #warning("resolve before the uploading:")
 /*
- Improve Timer accuracy
  Call ConnectionWarning:
  if it takes longer than 25 seconds for data to fetch
- if image fetching was unsuccessful 
  */
 
 #warning("bugs and solutions")

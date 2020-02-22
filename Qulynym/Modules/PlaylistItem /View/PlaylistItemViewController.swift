@@ -21,11 +21,10 @@ protocol PlaylistItemViewControllerProtocol: class {
     func setViewsProperties()
     func setTimelineSliderMaxValue()
     func playBtnPressed()
-    func setTimelineSliderValue(_ value: Int)
-    func scrollTextView(to: Int)
+    func setTimelineSliderValue(_ value: Float)
 }
 
-class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerProtocol {
+ class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerProtocol {
     // MARK:- Properties
     var isKaraoke = true
     var contentName = ""
@@ -207,22 +206,18 @@ extension PlaylistItemViewController {
         playlistItemView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
         isOpenSlider = true
     }
-    
-    func scrollTextView(to: Int) {
-        let range = NSMakeRange(to, 0)
-        playlistItemView.lyricsTextView.scrollRangeToVisible(range)
-    }
+
     
     func setTimelineSliderMaxValue() {
         playlistItemView.timelineSlider.maximumValue = Float(AudioPlayer.playlistItemAudioPlayer.duration)
     }
     
-    func setTimelineSliderValue(_ value: Int) {
-        playlistItemView.timelineSlider.value = Float(value)
+    func setTimelineSliderValue(_ value: Float) {
+        playlistItemView.timelineSlider.value = value
         
-        if value == Int(presenter.duration) {
+        if value >= Float(presenter.duration) {
             presenter.timer.timerEnded()
-            playlistItemView.timelineSlider.value = 0 
+            playlistItemView.timelineSlider.setValue(0, animated: true)
             playBtnPressed()
         }
     }

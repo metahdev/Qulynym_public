@@ -25,7 +25,7 @@ protocol MenuViewControllerProtocol: class {
     var dataFetchAPI: DataFetchAPI! { get } 
 }
 
-class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate {
+class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate, ConnectionWarningCaller {
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
@@ -95,7 +95,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     }
     
     private func setupProperties() {
-        dataFetchAPI = DataFetchAPI(delegate: self)
+        dataFetchAPI = DataFetchAPI(fetchAPIDelegate: self, connectionDelegate: self)
         menuView.collectionView.delegate = self
         menuView.collectionView.dataSource = self
         
@@ -175,6 +175,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.isUserInteractionEnabled = false
             let gradient = SkeletonGradient(baseColor: .concrete)
             cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
+            cell.warningCaller = self
             if self.dataFetchAPI.beineler.count != 0 {
                 cell.isUserInteractionEnabled = true
                 cell.beine = self.dataFetchAPI.beineler[indexPath.row]

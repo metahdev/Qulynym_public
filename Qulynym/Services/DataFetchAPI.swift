@@ -10,11 +10,14 @@
 import Foundation
 import Alamofire
 
+protocol ConnectionWarningCaller: class {
+    var isConnectionErrorShowing: Bool { get set }
+    func showAnErrorMessage()
+}
+
 protocol DataFetchAPIDelegate: class {
     var playlistID: String? { get set }
-    var isConnectionErrorShowing: Bool { get set }
     func dataIsReady()
-    func showAnErrorMessage()
 }
 
 class DataFetchAPI {
@@ -23,66 +26,129 @@ class DataFetchAPI {
     var token: String?
     var isLoadingBegan = false
     
-    private var firstFetchIsCompleted = false
-    private var stringURL = "https://www.googleapis.com/youtube/v3/playlists"
-    private let apiKey = "AIzaSyD3nA8srC9ZsfFXFTP066VP6Bmrrq9l_C0"
+    private weak var fetchAPIDelegate: DataFetchAPIDelegate?
+    private weak var connectionDelegate: ConnectionWarningCaller?
     
-    private weak var delegate: DataFetchAPIDelegate?
+    private var stringURL: String!
+    private var idKey: String!
+    private var fetchIDKey: String!
+    private var fetchIDValue: String!
+    private var parameters: [String: String]!
+    
+    private var tempData: [Beine]!
+    
+    private var secondsToFetch = 0
+    private var timer: Timer?
+    private let apiKey = "AIzaSyD3nA8srC9ZsfFXFTP066VP6Bmrrq9l_C0"
 
-    required init(delegate: DataFetchAPIDelegate) {
-        self.delegate = delegate
+    
+    // MARK:- Initialization
+    required init(fetchAPIDelegate: DataFetchAPIDelegate, connectionDelegate: ConnectionWarningCaller) {
+        self.fetchAPIDelegate = fetchAPIDelegate
+        self.connectionDelegate = connectionDelegate
     }
+    
     
     // MARK:- Methods
     func fetchBeine() {
-        guard let delegate = self.delegate else { return }
+        guard self.fetchAPIDelegate != nil else { return }
+        guard let connectionDelegate = self.connectionDelegate else { return }
         guard Connectivity.isConnectedToInternet else {
-            delegate.showAnErrorMessage()
-            return 
+            connectionDelegate.showAnErrorMessage()
+            return
         }
         guard isLoadingBegan == false else { return }
         
-        isLoadingBegan = true
-        var fetchIDKey = "channelId"
-        var fetchIDValue = "UCSJKvyZVC0FLiyvo3LeEllg"
-        var idKey = "id"
+        initTimer()
+        assignVariablesStartingValues()
+        definingPlaylistRequestParameters()
+        defineLoadingStateAndParameters()
         
-        if let id = delegate.playlistID {
+        makeRequest()
+    }
+    
+    #warning("make these a custom class' methods")
+    private func initTimer() {
+        timer = Timer(timeInterval: 1, repeats: true) { [weak self] _ in
+            self?.checkState()
+        }
+        RunLoop.current.add(timer!, forMode: .common)
+    }
+    
+    private func checkState() {
+        secondsToFetch += 1
+        if secondsToFetch == 25 {
+            connectionDelegate!.showAnErrorMessage()
+            timer?.invalidate()
+            timer = nil
+            secondsToFetch = 0
+        }
+    }
+    
+    private func assignVariablesStartingValues() {
+        stringURL = "https://www.googleapis.com/youtube/v3/playlists"
+        idKey = "id"
+        fetchIDKey = "channelId"
+        fetchIDValue = "UCSJKvyZVC0FLiyvo3LeEllg"
+        parameters = [String: String]()
+        tempData = [Beine]()
+    }
+    
+    private func definingPlaylistRequestParameters() {
+        if let id = self.fetchAPIDelegate!.playlistID {
+            stringURL = stringURL.replacingOccurrences(of: "playlists", with: "playlistItems")
+            idKey = "snippet.resourceId.videoId"
             fetchIDKey = "playlistId"
             fetchIDValue = id
-            idKey = "snippet.resourceId.videoId"
-            stringURL = stringURL.replacingOccurrences(of: "playlists", with: "playlistItems")
         }
-        
-        var parameters = ["part": "snippet", fetchIDKey: fetchIDValue, "key": apiKey, "maxResults": "5"]
-         
+    }
+    
+    private func defineLoadingStateAndParameters() {
+        isLoadingBegan = true
+        parameters = ["part": "snippet", fetchIDKey: fetchIDValue, "key": apiKey, "maxResults": "5"]
         if let token = self.token {
             parameters["pageToken"] = token
         }
-        
-        #warning("refactor")
-        AF.request(stringURL, method: .get, parameters: parameters, encoder: URLEncodedFormParameterEncoder(destination: .queryString), headers: nil).responseJSON(completionHandler: { response in
+    }
+    
+    private func makeRequest() {
+        AF.request(stringURL,
+                   method: .get,
+                   parameters: parameters,
+                   encoder: URLEncodedFormParameterEncoder(destination: .queryString),
+                   headers: nil)
+            .responseJSON(completionHandler: { response in
+                
             switch response.result {
             case .success(let value):
-                var tempBeineler = [Beine]()
-                if let JSON = value as? [String: Any] {
-                    if let videos = JSON["items"] as? NSArray {
-                        for video in videos {
-                            let title = (video as AnyObject).value(forKeyPath: "snippet.title") as! String
-                            let id = (video as AnyObject).value(forKeyPath: idKey) as! String
-                            if let thumbnail = (video as AnyObject).value(forKeyPath: "snippet.thumbnails.maxres.url") as? String {
-                                tempBeineler.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
-                            }
-                        }
-                    }
-                    self.token = JSON["nextPageToken"] as? String
-                }
-                self.beineler += tempBeineler
-                delegate.dataIsReady()
-                self.isLoadingBegan = false
+                self.parsingJSON(value as? [String: Any])
             case .failure(_):
-                delegate.showAnErrorMessage()
+                self.connectionDelegate!.showAnErrorMessage()
             }
-        })        
-    }    
+        })
+    }
+    
+    private func parsingJSON(_ value: [String: Any]?) {
+        if let JSON = value {
+            guard let videos = JSON["items"] as? NSArray else { return }
+            appendBeineEntities(videos)
+            self.token = JSON["nextPageToken"] as? String
+        }
+        self.beineler += tempData
+        self.fetchAPIDelegate!.dataIsReady()
+        self.isLoadingBegan = false
+    }
+    
+    private func appendBeineEntities(_ videos: NSArray) {
+        for video in videos {
+            let title = (video as AnyObject).value(forKeyPath: "snippet.title") as! String
+            let id = (video as AnyObject).value(forKeyPath: self.idKey) as! String
+            
+            let imageKeyPath = "snippet.thumbnails.maxres.url"
+            let convertedVideo = video as AnyObject
+            if let thumbnail = convertedVideo.value(forKeyPath: imageKeyPath) as? String {
+                tempData.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
+            }
+        }
+    }
 }

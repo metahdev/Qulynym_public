@@ -98,8 +98,8 @@ extension PlaylistItemPresenter {
     
     func scrollAudio(to value: Float) {
         AudioPlayer.playlistItemAudioPlayer.pause()
-        controller.setTimelineSliderValue(Int(value))
-        timer.seconds = Int(value)
+        controller.setTimelineSliderValue(value)
+        timer.counter = Double(value)
         AudioPlayer.playlistItemAudioPlayer.currentTime = TimeInterval(exactly: value)!
         AudioPlayer.playlistItemAudioPlayer.prepareToPlay()
         AudioPlayer.playlistItemAudioPlayer.play()
@@ -127,8 +127,8 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
         }
     }
     
-    func notifyOfSecondPassed() {
-        controller.setTimelineSliderValue(timer!.seconds)
+    func notifyOfMillisecondPassed() {
+        controller.setTimelineSliderValue(Float(timer!.counter))
     }
     
     func notifyTimerEnded() {

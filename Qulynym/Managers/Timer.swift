@@ -12,7 +12,7 @@ import Foundation
 protocol TimerControllerDelegate: class {
     var duration: TimeInterval { get }
     
-    func notifyOfSecondPassed()
+    func notifyOfMillisecondPassed()
     func notifyTimerEnded()
 }
 
@@ -21,29 +21,28 @@ class TimerController {
     var timer: Timer?
     var delegate: TimerControllerDelegate!
     
-    var seconds = 0
+    var counter = 0.0
     var scrollTimepoint: Int?
     
     // MARK:- Timer
     func nullifyData() {
         timer?.invalidate()
         timer = nil
-        seconds = 0
+        counter = 0.0
     }
     
-    #warning("bug with time: timeInterval should be less")
     func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkState), userInfo: nil, repeats: true)
+        timer = Timer(timeInterval: 0.1, repeats: true) { [weak self] _ in
+            self?.checkState()
+        }
+        RunLoop.current.add(timer!, forMode: .common)
     }
     
     @objc private func checkState() {
-        seconds += 1
+        counter += 0.1
         
-        delegate.notifyOfSecondPassed()
-        
-        if seconds == Int(delegate.duration) {
-            timerEnded()
-        }
+        print(counter)
+        delegate.notifyOfMillisecondPassed()
     }
     
     func timerEnded() {
