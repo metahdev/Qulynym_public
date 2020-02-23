@@ -22,8 +22,9 @@ let imageCache = NSCache<NSString, UIImage>()
 class CustomImageView: UIImageView {
     var imageUrlString: String?
     private var result: Responce?
+    private var alamofireManager: Session?
     
-    func loadImageUsingUrlString(urlString: String) -> Responce? {
+    func loadImageUsingUrlString(urlString: String, warningCaller: ConnectionWarningCaller) -> Responce? {
         imageUrlString = urlString
         image = nil
         result = nil
@@ -37,11 +38,13 @@ class CustomImageView: UIImageView {
         guard Connectivity.isConnectedToInternet else {
             return .failure
         }
-        
-        let request = NSMutableURLRequest(url: URL(string: urlString)!)
-        request.httpMethod = "GET"
-        request.timeoutInterval = 10
-        AF.request(request as! URLRequestConvertible).responseData {(response) in
+
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 5
+        configuration.timeoutIntervalForResource = 5
+        alamofireManager = Alamofire.Session(configuration: configuration)
+
+        alamofireManager!.request(URL(string: urlString)!).responseData {(response) in
             guard response.error == nil else {
                 self.result = .failure
                 return

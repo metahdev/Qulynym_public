@@ -33,6 +33,7 @@ class DataFetchAPI {
     private var tempData: [Beine]!
     
     private let apiKey = "AIzaSyBPpfghleZOpf0m4vw69sJ8t2zxvvxmj8w"
+    private var alamofireManager: Session?
 
     
     // MARK:- Initialization
@@ -86,7 +87,12 @@ class DataFetchAPI {
     }
     
     private func makeRequest() {
-        AF.request(stringURL,
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 15
+        configuration.timeoutIntervalForResource = 15
+        alamofireManager = Alamofire.Session(configuration: configuration)
+        
+        alamofireManager!.request(stringURL,
                    method: .get,
                    parameters: parameters,
                    encoder: URLEncodedFormParameterEncoder(destination: .queryString),
@@ -97,8 +103,9 @@ class DataFetchAPI {
             case .success(let value):
                 self.parsingJSON(value as? [String: Any])
             case .failure(_):
-                self.connectionDelegate!.showAnErrorMessage()
+                self.connectionDelegate?.showAnErrorMessage()
             }
+            self.isLoadingBegan = false
         })
     }
     
@@ -110,7 +117,6 @@ class DataFetchAPI {
         }
         self.beineler += tempData
         self.fetchAPIDelegate!.dataIsReady()
-        self.isLoadingBegan = false
     }
     
     private func appendBeineEntities(_ videos: NSArray) {
