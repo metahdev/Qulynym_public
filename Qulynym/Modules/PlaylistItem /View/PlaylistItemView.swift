@@ -27,7 +27,6 @@ protocol PlaylistItemViewProtocol: class {
 
 class PlaylistItemView: PlaylistItemViewProtocol {
     // MARK:- Properties
-    #warning("how about notes animation(from gramophone and microphone images)?")
     // idremember the reason why i rejected this idea? I think the emitterView blocked textView interaction(check it)
     lazy var closeBtn: UIButton = {
         let btn = UIButton()

@@ -20,7 +20,6 @@ protocol BeineViewControllerProtocol: class {
     var index: Int! { get set }
 }
 
-#warning("refactor")
 class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningCaller, ConnectionWarningViewControllerDelegate {
     // MARK:- Properties
     var dataFetchAPI: DataFetchAPI!
@@ -173,7 +172,6 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
         }
     }
     
-    #warning("refactor these 2 methods")
     @objc
     private func nextVideo() {
         videoViewLoading()

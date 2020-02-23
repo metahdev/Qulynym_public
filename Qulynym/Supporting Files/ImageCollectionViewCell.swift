@@ -11,7 +11,6 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     // MARK:- Properties
-    #warning("refactor")
     var beine: Beine? {
         didSet {
             sectionTitleLabel.text = beine?.title
@@ -95,6 +94,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     // MARK:- Methods    
     func setupThumbnailImage() {
         if let thumbnailImageUrl = beine?.thumbnailURL {
+            imageView.warningIsAlreadyShowing = false 
             imageView.loadImageUsingUrlString(urlString: thumbnailImageUrl, warningCaller: self.warningCaller)
         }
     }

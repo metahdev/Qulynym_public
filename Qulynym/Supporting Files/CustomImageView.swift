@@ -12,41 +12,42 @@ import UIKit
 import Alamofire
 import SkeletonView
 
-enum Responce {
-    case success
-    case failure
-}
-
 let imageCache = NSCache<NSString, UIImage>()
 
 class CustomImageView: UIImageView {
     var imageUrlString: String?
-    private var result: Responce?
+    var warningIsAlreadyShowing = false
     private var alamofireManager: Session?
     
-    func loadImageUsingUrlString(urlString: String, warningCaller: ConnectionWarningCaller) -> Responce? {
+    func loadImageUsingUrlString(urlString: String, warningCaller: ConnectionWarningCaller){
         imageUrlString = urlString
         image = nil
-        result = nil
                 
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             self.image = imageFromCache
             self.hideSkeleton()
-            return .success
+            return
         }
         
         guard Connectivity.isConnectedToInternet else {
-            return .failure
+//            if !self.warningIsAlreadyShowing {
+//                warningCaller.showAnErrorMessage()
+//                self.warningIsAlreadyShowing = true
+//            }
+            return
         }
 
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 5
-        configuration.timeoutIntervalForResource = 5
-        alamofireManager = Alamofire.Session(configuration: configuration)
+//        let configuration = URLSessionConfiguration.default
+//        configuration.timeoutIntervalForRequest = 10
+//        configuration.timeoutIntervalForResource = 10
+//        alamofireManager = Alamofire.Session(configuration: configuration)
 
-        alamofireManager!.request(URL(string: urlString)!).responseData {(response) in
+        AF.request(URL(string: urlString)!).responseData {(response) in
             guard response.error == nil else {
-                self.result = .failure
+//                if !self.warningIsAlreadyShowing {
+//                    warningCaller.showAnErrorMessage()
+//                    self.warningIsAlreadyShowing = true
+//                }
                 return
             }
 
@@ -60,12 +61,8 @@ class CustomImageView: UIImageView {
                     
                     imageCache.setObject(imageToCache!, forKey: urlString as NSString)
                     self.hideSkeleton(transition: .crossDissolve(0.25))
-                    
-                    self.result = .success
                 }
             }
         }
-
-        return result
     }
 }

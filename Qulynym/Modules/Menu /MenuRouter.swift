@@ -81,7 +81,6 @@ extension MenuRouter {
     func openFlappyBird() {
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         
-        #warning("refactor1")
         let v = UIView()
         v.backgroundColor = .black
         v.tag = 10000
