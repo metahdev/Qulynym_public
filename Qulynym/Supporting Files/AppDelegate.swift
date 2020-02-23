@@ -12,8 +12,8 @@ import CoreData
 
 #warning("resolve before the uploading:")
 /*
- Call ConnectionWarning:
- if it takes longer than 25 seconds for data to fetch
+ YouTubeAPI New Key
+ Privacy policy in a new google account's drive
  */
 
 #warning("bugs and solutions")
@@ -30,9 +30,8 @@ import CoreData
   2) Shuffle animation of cards
   3) ModuleView protocol properties get acccessor
   4) Karaoke Scrolling Text
-  5) Improve PlaylistItem logic
-  6) Check whether concurrency is performing normally in all modules 
-  7) Blur effect when new beineler are loading
+  5) Check whether concurrency is performing normally in all modules(especially PlaylistItem)
+  6) Blur effect when new beineler are loading
  */
 
 @UIApplicationMain

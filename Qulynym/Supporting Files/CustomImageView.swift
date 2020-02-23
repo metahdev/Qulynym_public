@@ -37,6 +37,10 @@ class CustomImageView: UIImageView {
             return .success
         }
         
+        guard Connectivity.isConnectedToInternet else {
+            return .failure
+        }
+        initTimer() 
         AF.request(url).responseData {(response) in
             guard response.error == nil else {
                 self.result = .failure

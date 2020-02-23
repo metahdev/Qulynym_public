@@ -39,7 +39,7 @@ class DataFetchAPI {
     
     private var secondsToFetch = 0
     private var timer: Timer?
-    private let apiKey = "AIzaSyD3nA8srC9ZsfFXFTP066VP6Bmrrq9l_C0"
+    private let apiKey = "AIzaSyBPpfghleZOpf0m4vw69sJ8t2zxvvxmj8w"
 
     
     // MARK:- Initialization
