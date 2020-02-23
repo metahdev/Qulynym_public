@@ -10,6 +10,11 @@
 
 import UIKit
 
+protocol ConnectionWarningCaller: class {
+    var isConnectionErrorShowing: Bool { get set }
+    func showAnErrorMessage()
+}
+
 protocol ConnectionWarningViewControllerDelegate: class {
     func fetchData()
 }
@@ -64,8 +69,9 @@ class ConnectionWarningViewController: UIViewController {
         addSubviewsToTheViews()
         makeMaskFalse()
         activateConstraints()
-        closeBtn.addTarget(self, action: #selector(closeView), for: .touchDown)
         closeBtn.configureCloseBtnFrame(view)
+        
+        closeBtn.addTarget(self, action: #selector(closeView), for: .touchDown)
         tryAgainBtn.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
         
         view.backgroundColor = .beigePink

@@ -10,11 +10,6 @@
 import Foundation
 import Alamofire
 
-protocol ConnectionWarningCaller: class {
-    var isConnectionErrorShowing: Bool { get set }
-    func showAnErrorMessage()
-}
-
 protocol DataFetchAPIDelegate: class {
     var playlistID: String? { get set }
     func dataIsReady()
@@ -37,8 +32,6 @@ class DataFetchAPI {
     
     private var tempData: [Beine]!
     
-    private var secondsToFetch = 0
-    private var timer: Timer?
     private let apiKey = "AIzaSyBPpfghleZOpf0m4vw69sJ8t2zxvvxmj8w"
 
     
@@ -59,30 +52,11 @@ class DataFetchAPI {
         }
         guard isLoadingBegan == false else { return }
         
-        initTimer()
         assignVariablesStartingValues()
         definingPlaylistRequestParameters()
         defineLoadingStateAndParameters()
         
         makeRequest()
-    }
-    
-    #warning("make these a custom class' methods")
-    private func initTimer() {
-        timer = Timer(timeInterval: 1, repeats: true) { [weak self] _ in
-            self?.checkState()
-        }
-        RunLoop.current.add(timer!, forMode: .common)
-    }
-    
-    private func checkState() {
-        secondsToFetch += 1
-        if secondsToFetch == 25 {
-            connectionDelegate!.showAnErrorMessage()
-            timer?.invalidate()
-            timer = nil
-            secondsToFetch = 0
-        }
     }
     
     private func assignVariablesStartingValues() {
@@ -118,7 +92,7 @@ class DataFetchAPI {
                    encoder: URLEncodedFormParameterEncoder(destination: .queryString),
                    headers: nil)
             .responseJSON(completionHandler: { response in
-                
+
             switch response.result {
             case .success(let value):
                 self.parsingJSON(value as? [String: Any])

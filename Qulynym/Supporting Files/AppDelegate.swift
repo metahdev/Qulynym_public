@@ -10,28 +10,19 @@
 import UIKit
 import CoreData
 
-#warning("resolve before the uploading:")
-/*
- YouTubeAPI New Key
- Privacy policy in a new google account's drive
- */
 
-#warning("bugs and solutions")
+#warning("Improvements")
 /*
- Bugs, which are already found:
-  1) Memory Leak with Audio
-  2) SkeletonView doesn't work properly: the first index of the CV is not animating(should look for an alternative) - this version isn't working with skeleton view
-  3) IPad Drawing View brush width
-  4) PlaylistItem timer bug
-  5) Bug with content changing after several button touches
-  6) Some icons are not resizing(icons8.com and etc)
- Solutions, which will be integrated further:
-  1) Back segue falling leaves
-  2) Shuffle animation of cards
-  3) ModuleView protocol properties get acccessor
-  4) Karaoke Scrolling Text
-  5) Check whether concurrency is performing normally in all modules(especially PlaylistItem)
-  6) Blur effect when new beineler are loading
+ Improvements:
+  1) Practical Instruments usage(memory leaks and etc)
+  2) IPad Drawing View brush width & IPad layout overall
+  3) Some icons are not resizing(icons8.com and etc)
+ Refactor:
+  1) MenuRouter
+  2) CustomImageView
+  3) 
+  1) ModuleView protocol properties get acccessor & architecture overall
+  2) Check whether concurrency is performing normally in all modules(especially PlaylistItem)
  */
 
 @UIApplicationMain

@@ -17,17 +17,14 @@ enum Responce {
     case failure
 }
 
-#warning("refactor")
 let imageCache = NSCache<NSString, UIImage>()
+
 class CustomImageView: UIImageView {
     var imageUrlString: String?
-    private var secondsToFetch = 0
-    private var timer: Timer?
     private var result: Responce?
     
     func loadImageUsingUrlString(urlString: String) -> Responce? {
         imageUrlString = urlString
-        let url = URL(string: urlString)!
         image = nil
         result = nil
                 
@@ -40,8 +37,11 @@ class CustomImageView: UIImageView {
         guard Connectivity.isConnectedToInternet else {
             return .failure
         }
-        initTimer() 
-        AF.request(url).responseData {(response) in
+        
+        let request = NSMutableURLRequest(url: URL(string: urlString)!)
+        request.httpMethod = "GET"
+        request.timeoutInterval = 10
+        AF.request(request as! URLRequestConvertible).responseData {(response) in
             guard response.error == nil else {
                 self.result = .failure
                 return
@@ -62,25 +62,7 @@ class CustomImageView: UIImageView {
                 }
             }
         }
-        
+
         return result
-    }
-    
-    private func initTimer() {
-        timer = Timer(timeInterval: 1, repeats: true) { [weak self] _ in
-            self?.checkState()
-        }
-        RunLoop.current.add(timer!, forMode: .common)
-    }
-    
-    private func checkState() {
-        secondsToFetch += 1
-        
-        if (secondsToFetch == 10) {
-            self.result = .failure
-            self.timer?.invalidate()
-            self.timer = nil
-            self.secondsToFetch = 0
-        }
     }
 }
