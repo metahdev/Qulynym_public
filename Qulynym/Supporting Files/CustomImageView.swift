@@ -30,21 +30,13 @@ class CustomImageView: UIImageView {
         
         guard Connectivity.isConnectedToInternet else {
             warningCaller.showAnErrorMessage()
-            warningCaller.isConnectionErrorShowing = true
             return
         }
-
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 10
-        configuration.timeoutIntervalForResource = 10
-        alamofireManager = Alamofire.Session(configuration: configuration)
-
-        alamofireManager!.request(URL(string: urlString)!).responseData {(response) in
+    
+        let url = URL(string: urlString)!
+        AF.request(url).responseData {(response) in
             guard response.error == nil else {
-                if !warningCaller.isConnectionErrorShowing {
-                    warningCaller.showAnErrorMessage()
-                    warningCaller.isConnectionErrorShowing = true
-                }
+                warningCaller.showAnErrorMessage()
                 return
             }
 
