@@ -40,6 +40,15 @@ class DataFetchAPI {
     required init(fetchAPIDelegate: DataFetchAPIDelegate, connectionDelegate: ConnectionWarningCaller) {
         self.fetchAPIDelegate = fetchAPIDelegate
         self.connectionDelegate = connectionDelegate
+        
+        setupConfiguration()
+    }
+    
+    private func setupConfiguration() {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 15
+        configuration.timeoutIntervalForResource = 15
+        alamofireManager = Alamofire.Session(configuration: configuration)
     }
     
     
@@ -87,9 +96,7 @@ class DataFetchAPI {
     }
     
     private func makeRequest() {
-//        setupConfiguration()
-        
-        AF.request(stringURL,
+        alamofireManager!.request(stringURL,
                    method: .get,
                    parameters: parameters,
                    encoder: URLEncodedFormParameterEncoder(destination: .queryString),
@@ -104,13 +111,6 @@ class DataFetchAPI {
             }
             self.isLoadingBegan = false
         })
-    }
-    
-    private func setupConfiguration() {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 15
-        configuration.timeoutIntervalForResource = 15
-        alamofireManager = Alamofire.Session(configuration: configuration)
     }
     
     private func parsingJSON(_ value: [String: Any]?) {

@@ -16,7 +16,6 @@ let imageCache = NSCache<NSString, UIImage>()
 
 class CustomImageView: UIImageView {
     var imageUrlString: String?
-    var warningIsAlreadyShowing = false
     private var alamofireManager: Session?
     
     func loadImageUsingUrlString(urlString: String, warningCaller: ConnectionWarningCaller){
@@ -30,24 +29,22 @@ class CustomImageView: UIImageView {
         }
         
         guard Connectivity.isConnectedToInternet else {
-//            if !self.warningIsAlreadyShowing {
-//                warningCaller.showAnErrorMessage()
-//                self.warningIsAlreadyShowing = true
-//            }
+            warningCaller.showAnErrorMessage()
+            warningCaller.isConnectionErrorShowing = true
             return
         }
 
-//        let configuration = URLSessionConfiguration.default
-//        configuration.timeoutIntervalForRequest = 10
-//        configuration.timeoutIntervalForResource = 10
-//        alamofireManager = Alamofire.Session(configuration: configuration)
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 10
+        configuration.timeoutIntervalForResource = 10
+        alamofireManager = Alamofire.Session(configuration: configuration)
 
-        AF.request(URL(string: urlString)!).responseData {(response) in
+        alamofireManager!.request(URL(string: urlString)!).responseData {(response) in
             guard response.error == nil else {
-//                if !self.warningIsAlreadyShowing {
-//                    warningCaller.showAnErrorMessage()
-//                    self.warningIsAlreadyShowing = true
-//                }
+                if !warningCaller.isConnectionErrorShowing {
+                    warningCaller.showAnErrorMessage()
+                    warningCaller.isConnectionErrorShowing = true
+                }
                 return
             }
 

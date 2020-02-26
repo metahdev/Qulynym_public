@@ -94,7 +94,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
     // MARK:- Methods    
     func setupThumbnailImage() {
         if let thumbnailImageUrl = beine?.thumbnailURL {
-            imageView.warningIsAlreadyShowing = false 
             imageView.loadImageUsingUrlString(urlString: thumbnailImageUrl, warningCaller: self.warningCaller)
         }
     }
