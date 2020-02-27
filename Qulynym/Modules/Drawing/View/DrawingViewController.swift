@@ -27,7 +27,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         }
     }
         
-    lazy var tools: [UIColor] = [.red, .orange, .yellow, .green, whiteBlue, .blue, .purple, .brown, .black]
+    lazy var colors: [UIColor] = [.red, .orange, .yellow, .green, whiteBlue, .blue, .purple, .brown, .black]
     private let whiteBlue = UIColor(red: 102/255, green: 1, blue: 1, alpha: 1)
 
     private var drawingView: DrawingViewProtocol!
@@ -44,11 +44,12 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     
     private let configurator: DrawingConfiguratorProtocol = DrawingConfigurator()
     
+    private var previousColor: UIColor?
     private var previousTool: UIButton?
     var selectedTool: UIButton! {
         didSet {
             previousTool = oldValue
-            toolDidSet()
+            movePreviousToolDown()
         }
     }
     
@@ -69,6 +70,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         setupCV()
         assignActions()
         selectedTool = pencil
+        moveUp(tool: pencil)
     }
     
     
@@ -116,8 +118,13 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     }
     
     func setupDrawingLineComponents(of tool: UIButton) {
+        if tool == eraser {
+            canvasView.brushWidth = 25
+            canvasView.color = .white
+            return
+        }
         if canvasView.color == .white {
-            canvasView.color = .red
+            canvasView.color = previousColor ?? .red
         }
         if tool == brush {
             canvasView.brushWidth = 20
@@ -125,12 +132,9 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         } else if tool == pencil {
             canvasView.brushWidth = 5
             canvasView.color = canvasView.color.withAlphaComponent(0.7)
-        } else if tool == marker {
+        } else {
             canvasView.brushWidth = 12
             canvasView.color = canvasView.color.withAlphaComponent(0.5)
-        } else {
-            canvasView.brushWidth = 25
-            canvasView.color = .white
         }
     }
     
@@ -146,20 +150,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         eraser.addTarget(self, action: #selector(eraserBtnPressed), for: .touchUpInside)
     }
     
-    func toolDidSet() {
-        if selectedTool == marker {
-            moveUp(tool: marker)
-            setupDrawingLineComponents(of: marker)
-        } else if selectedTool == pencil {
-            moveUp(tool: pencil)
-            setupDrawingLineComponents(of: pencil)
-        } else if selectedTool == brush {
-            moveUp(tool: brush)
-            setupDrawingLineComponents(of: brush)
-        } else {
-            moveUp(tool: eraser)
-            setupDrawingLineComponents(of: eraser)
-        }
+    func movePreviousToolDown() {
         if previousTool != nil && previousTool != selectedTool {
             moveDown(tool: previousTool!)
         }
@@ -188,21 +179,30 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     
     @objc func brushBtnPressed() {
         closeMenu()
+        moveUp(tool: brush)
+        setupDrawingLineComponents(of: brush)
         selectedTool = brush
     }
     
     @objc func pencilBtnPressed() {
         closeMenu()
+        moveUp(tool: pencil)
+        setupDrawingLineComponents(of: pencil)
         selectedTool = pencil
     }
     
     @objc func markerBtnPressed() {
         closeMenu()
+        moveUp(tool: marker)
+        setupDrawingLineComponents(of: marker)
         selectedTool = marker
     }
     
     @objc func eraserBtnPressed() {
         closeMenu()
+        moveUp(tool: eraser)
+        previousColor = canvasView.color
+        setupDrawingLineComponents(of: eraser)
         selectedTool = eraser
     }
     
@@ -224,12 +224,12 @@ extension DrawingViewController {
 extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK:- UICollectionView Protocols
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tools.count
+        return colors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        cell.backgroundColor = tools[indexPath.row]
+        cell.backgroundColor = colors[indexPath.row]
         cell.layer.cornerRadius = cell.frame.width * 0.5
         
         return cell
@@ -245,8 +245,8 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         closeMenu()
-        canvasView.color = tools[indexPath.row]
-        toolDidSet()
+        canvasView.color = colors[indexPath.row]
+        setupDrawingLineComponents(of: selectedTool)
         AudioPlayer.setupExtraAudio(with: "bloop", audioPlayer: .effects)
     }
 }
