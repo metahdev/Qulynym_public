@@ -16,6 +16,7 @@ protocol QuizPresenterProtocol: class {
     func deleteItem()
     func closeView()
     func backToItemWithRepeat()
+    func stopAudios()
 }
 
 class QuizPresenter: QuizPresenterProtocol {
@@ -49,7 +50,6 @@ extension QuizPresenter {
         
         controller.changeViewsEnableState(enable: false)
         AudioPlayer.audioQueue.async {
-            // *** asyncAfter
             while AudioPlayer.sfxAudioPlayer.isPlaying {}
             AudioPlayer.questionAudioPlayer.play()
             while AudioPlayer.questionAudioPlayer.isPlaying {}
@@ -87,19 +87,10 @@ extension QuizPresenter {
     }
     
     func backToItemWithRepeat() {
-        stopAudios()
-        controller.changeViewsEnableState(enable: false)
-        AudioPlayer.audioQueue.async {
-            AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
-            while AudioPlayer.sfxAudioPlayer.isPlaying {}
-            DispatchQueue.main.async {
-                self.controller.changeSelectedCellOpacity(to: 1.0)
-                self.router.backToItem(didPass: false)
-            }
-        }
+        self.router.backToItem(didPass: false)
     }
     
-    private func stopAudios() {
+    func stopAudios() {
         AudioPlayer.questionAudioPlayer.stop()
         AudioPlayer.contentAudioPlayer.stop()
     }

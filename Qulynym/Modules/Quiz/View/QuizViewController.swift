@@ -15,6 +15,7 @@ protocol QuizViewControllerProtocol: class {
     var randomCard: String { get set }
     var cards: [String]! { get set }
     var areImagesTransparent: Bool! { get set }
+    var closeBtnHasBeenPressed: Bool { get set }
     
     func returnCellState(_ cellIndex: Int)
     func changeViewsEnableState(enable: Bool)
@@ -42,7 +43,7 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     
     var selectedIndex: Int?
 
-    private var closeBtnHasBeenPressed = false
+    var closeBtnHasBeenPressed = false
     private var cardsCollectionView: UICollectionView!
     private var closeBtn: UIButton!
     private var soundsBtn: UIButton!
@@ -136,22 +137,28 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         self.changeSelectedCellOpacity(to: 0.5)
         
+        changeViewsEnableState(enable: false)
         if selectedIndex == indexOfRandCard {
             cell.layer.borderColor = UIColor.green.cgColor
-            changeViewsEnableState(enable: false)
-            AudioPlayer.audioQueue.asyncAfter(deadline: .now() + 0.5, execute: {
-                AudioPlayer.setupExtraAudio(with: "wellDone", audioPlayer: .effects)
-                DispatchQueue.main.async {
-                    if !self.closeBtnHasBeenPressed {
-                        self.presenter.playAudio()
-                        self.changeSelectedCellOpacity(to: 1.0)
-                        self.presenter.deleteItem()
-                    }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                if !self.closeBtnHasBeenPressed {
+                    AudioPlayer.setupExtraAudio(with: "wellDone", audioPlayer: .effects)
+                    self.presenter.playAudio()
+                    self.changeSelectedCellOpacity(to: 1.0)
+                    self.presenter.deleteItem()
                 }
             })
         } else {
             cell.layer.borderColor = UIColor.red.cgColor
-            presenter.backToItemWithRepeat()
+            presenter.stopAudios()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                if !self.closeBtnHasBeenPressed {
+                    AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
+                    while AudioPlayer.sfxAudioPlayer.isPlaying {}
+                    self.changeSelectedCellOpacity(to: 1.0)
+                    self.presenter.backToItemWithRepeat()
+                }
+            })
         }
     }
     
