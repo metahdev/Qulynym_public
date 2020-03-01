@@ -33,7 +33,7 @@ struct AudioPlayer {
     static var playlistItemAudioPlayer = AVAudioPlayer()
     
  
-    // MARK: Background Audio
+    // MARK:- Background Audio
     static func turnOnBackgroundMusic() {
         initBackgroundAudio()
         backgroundAudioPlayer.play()
