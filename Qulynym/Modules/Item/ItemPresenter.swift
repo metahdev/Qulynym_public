@@ -12,6 +12,7 @@ import Foundation
 protocol ItemPresenterProtocol: class {
     var slideCount: Int { get set }
     var contentKey: String { get set }
+    var openedQuiz: Bool { get set }
     
     func updateView()
     func getAreImagesTransparentInfo()
@@ -23,11 +24,14 @@ class ItemPresenter: ItemPresenterProtocol {
     // MARK:- Properties
     var slideCount = 0
     var contentKey = ""
+    var openedQuiz = false
     
     weak var controller: ItemViewControllerProtocol!
     var router: ItemRouterProtocol!
     var interactor: ItemInteractorProtocol!
     
+    
+    // MARK:- Initialization
     required init(_ controller: ItemViewControllerProtocol) {
         self.controller = controller
     }
@@ -35,9 +39,14 @@ class ItemPresenter: ItemPresenterProtocol {
 
 extension ItemPresenter {
     // MARK:- Protocol Methods
-    func updateView() {        
-        if slideCount % 4 == 0 && controller.checkForQuiz {
+    func updateView() {
+        if openedQuiz {
+            return
+        }
+        
+        if slideCount % 4 == 0 && slideCount != 0 {
             passDataAndOpenQuiz()
+            openedQuiz = true
             return
         }
         
@@ -56,7 +65,6 @@ extension ItemPresenter {
     func updateProperties() {
         self.contentKey = interactor.fillContent(with: self.slideCount, with: controller.section.contentNames)
         self.slideCount += 1
-        controller.checkForQuiz = true
     }
     
     private func passDataAndOpenQuiz() {

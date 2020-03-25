@@ -13,7 +13,6 @@ protocol ItemViewControllerProtocol: class {
     var section: EduSection! { get set }
     var areImagesTransparent: Bool { get set }
     var slideCount: Int { get set }
-    var checkForQuiz: Bool { get set }
     
     func updateContent(contentKey: String)
 }
@@ -30,7 +29,6 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
             presenter.slideCount = newValue
         }
     }
-    var checkForQuiz = false
     var presenter: ItemPresenterProtocol!
     var quizViewController: QuizViewControllerProtocol!
     
@@ -62,7 +60,7 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        checkForQuiz = false
+        presenter.openedQuiz = false 
         presenter.getAreImagesTransparentInfo()
         presenter.updateView()
         setupContentButtonBorder()
