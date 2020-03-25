@@ -201,7 +201,9 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     @objc func eraserBtnPressed() {
         closeMenu()
         moveUp(tool: eraser)
-        previousColor = canvasView.color
+        if canvasView.color != .white {
+            previousColor = canvasView.color
+        }
         setupDrawingLineComponents(of: eraser)
         selectedTool = eraser
     }
