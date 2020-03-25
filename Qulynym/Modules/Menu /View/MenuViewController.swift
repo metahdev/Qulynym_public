@@ -83,7 +83,13 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     }
     
     private func setupArrowAnimation() {
-        if menuView.collectionView.visibleCells.count < menuView.collectionView.numberOfItems(inSection: 0) {
+        #warning("incorrect realization")
+        let numberOfItems = menuView.collectionView.numberOfItems(inSection: 0)
+        let visibleCells = menuView.collectionView.visibleCells
+        let indexOfLastVisibleCell = menuView.collectionView.indexPath(for: visibleCells[visibleCells.count - 1])
+        let notAllInFrame = visibleCells.count < numberOfItems
+        let notScrolledToTheEnd = !(indexOfLastVisibleCell!.row == numberOfItems - 1)
+        if notAllInFrame && notScrolledToTheEnd {
             setupTimer()
         }
     }
