@@ -83,10 +83,8 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     }
     
     private func setupArrowAnimation() {
-        if menuView.collectionView.numberOfItems(inSection: 0) > 2 {
+        if menuView.collectionView.visibleCells.count < menuView.collectionView.numberOfItems(inSection: 0) {
             setupTimer()
-            addGestures()
-            showArrowAnimation()
         }
     }
        
@@ -97,23 +95,9 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     }
        
     private func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(timeHasExceeded), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(timeHasExceeded), userInfo: nil, repeats: false)
     }
        
-    private func addGestures() {
-        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(resetTimer))
-        menuView.collectionView.addGestureRecognizer(swipeGestureRecognizer)
-    }
-       
-    private func showArrowAnimation() {
-        UIView.animate(withDuration: 1,
-                          delay: 0,
-                          options: [.repeat, .autoreverse],
-                          animations: {
-                           self.menuView.arrowImageView.alpha = 0.5
-        },
-                          completion: nil)
-    }
 
     // MARK:- Orientation
     override var shouldAutorotate: Bool {
@@ -183,14 +167,17 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     @objc
     private func timeHasExceeded() {
         menuView.arrowImageView.isHidden = false
-        timer.invalidate()
+        showArrowAnimation()
     }
     
-    @objc
-    private func resetTimer() {
-        menuView.arrowImageView.isHidden = true
-        timer.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(timeHasExceeded), userInfo: nil, repeats: true)
+    private func showArrowAnimation() {
+        UIView.animate(withDuration: 1, delay: 0, options: [.repeat], animations: {
+            if self.menuView.arrowImageView.alpha == 0.5 {
+                self.menuView.arrowImageView.alpha = 1
+                return
+            }
+            self.menuView.arrowImageView.alpha = 0.5
+        }, completion: nil)
     }
 }
 
@@ -212,7 +199,6 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-
         cell.backgroundColor = UIColor(red: 149/255, green: 165/255, blue: 166/255, alpha: 1)
         cell.imageView.isSkeletonable = true
         cell.imageViewCornerRadius = 15
@@ -285,6 +271,11 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 84
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        cancelArrowAnimation()
+        setupTimer()
     }
 }
 

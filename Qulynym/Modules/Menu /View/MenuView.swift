@@ -49,6 +49,8 @@ class MenuView: MenuViewProtocol {
     lazy var arrowImageView: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "arrow"))
         iv.isHidden = true
+        iv.backgroundColor = .lightGray
+        iv.backgroundColor?.withAlphaComponent(0.5)
         return iv
     }()
     private weak var view: UIView!

@@ -19,7 +19,7 @@ import CoreData
   3) Some icons are not resizing(icons8.com and etc)
   4) Check whether concurrency is performing normally in all modules(especially QuizView)
  Refactor:
-  1) MenuRouter
+  1) MenuRouter + MenuViewCotnroller
   2) CustomImageView(maybe delegate something to DataFetchAPI)
   3) BeineViewController(architecture & nextVideo methods
   4) ImageCollectionViewCell
