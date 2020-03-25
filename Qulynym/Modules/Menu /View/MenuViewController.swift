@@ -22,7 +22,8 @@ enum Menu: String {
 protocol MenuViewControllerProtocol: class {
     var menuType: Menu { get set }
     var playlistID: String? { get set }
-    var dataFetchAPI: DataFetchAPI! { get } 
+    var dataFetchAPI: DataFetchAPI! { get }
+    var timer: Timer { get set }
 }
 
 class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate, ConnectionWarningCaller {
@@ -38,6 +39,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     var playlistID: String?
     var dataFetchAPI: DataFetchAPI!
     var isConnectionErrorShowing = false
+    var timer = Timer()
     
     private var ifFetchHasAlreadyDone = false
     private var menuView: MenuViewProtocol!
@@ -72,9 +74,47 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
                 showAnErrorMessage()
             }
         }
+        setupArrowAnimation()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        cancelArrowAnimation()
+    }
     
+    private func setupArrowAnimation() {
+        if menuView.collectionView.numberOfItems(inSection: 0) > 2 {
+            setupTimer()
+            addGestures()
+            showArrowAnimation()
+        }
+    }
+       
+    private func cancelArrowAnimation() {
+        timer.invalidate()
+        menuView.arrowImageView.isHidden = true
+        menuView.arrowImageView.layer.removeAllAnimations()
+    }
+       
+    private func setupTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(timeHasExceeded), userInfo: nil, repeats: true)
+    }
+       
+    private func addGestures() {
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(resetTimer))
+        menuView.collectionView.addGestureRecognizer(swipeGestureRecognizer)
+    }
+       
+    private func showArrowAnimation() {
+        UIView.animate(withDuration: 1,
+                          delay: 0,
+                          options: [.repeat, .autoreverse],
+                          animations: {
+                           self.menuView.arrowImageView.alpha = 0.5
+        },
+                          completion: nil)
+    }
+
     // MARK:- Orientation
     override var shouldAutorotate: Bool {
         return true
@@ -138,6 +178,19 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     }
     @objc func settingsBtnPressed() {
         presenter.goToSettings()
+    }
+    
+    @objc
+    private func timeHasExceeded() {
+        menuView.arrowImageView.isHidden = false
+        timer.invalidate()
+    }
+    
+    @objc
+    private func resetTimer() {
+        menuView.arrowImageView.isHidden = true
+        timer.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(timeHasExceeded), userInfo: nil, repeats: true)
     }
 }
 

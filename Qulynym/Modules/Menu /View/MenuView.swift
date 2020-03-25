@@ -14,6 +14,7 @@ protocol MenuViewProtocol: class {
     var closeBtn: UIButton { get }
     var settingsBtn: UIButton { get }
     var titleLabel: UILabel { get }
+    var arrowImageView: UIImageView { get }
     
     func setupLayout()
 }
@@ -45,6 +46,11 @@ class MenuView: MenuViewProtocol {
         lbl.numberOfLines = 1
         return lbl
     }()
+    lazy var arrowImageView: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "arrow"))
+        iv.isHidden = true
+        return iv
+    }()
     private weak var view: UIView!
     
     
@@ -60,6 +66,7 @@ class MenuView: MenuViewProtocol {
         view.addSubview(closeBtn)
         view.addSubview(settingsBtn)
         view.addSubview(titleLabel)
+        view.addSubview(arrowImageView)
         setAutoresizingFalse()
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
@@ -87,7 +94,12 @@ class MenuView: MenuViewProtocol {
             settingsBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant),
             settingsBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: constant),
             settingsBtn.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.06),
-            settingsBtn.widthAnchor.constraint(equalTo: settingsBtn.heightAnchor)
+            settingsBtn.widthAnchor.constraint(equalTo: settingsBtn.heightAnchor),
+            
+            arrowImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -2),
+            arrowImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            arrowImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18),
+            arrowImageView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor)
         ])
     }
 }
