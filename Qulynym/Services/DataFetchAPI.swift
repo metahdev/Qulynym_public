@@ -120,7 +120,7 @@ class DataFetchAPI {
             self.token = JSON["nextPageToken"] as? String
         }
         self.beineler += tempData
-        self.fetchAPIDelegate!.dataIsReady()
+        self.fetchAPIDelegate?.dataIsReady()
     }
     
     private func appendBeineEntities(_ videos: NSArray) {

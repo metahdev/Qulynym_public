@@ -97,6 +97,8 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     private func cancelArrowAnimation() {
         timer.invalidate()
         menuView.arrowImageView.isHidden = true
+        menuView.backgroundOfArrowIV.isHidden = true
+        menuView.blurArrowBackground.isHidden = true
         menuView.arrowImageView.layer.removeAllAnimations()
     }
        
@@ -173,16 +175,19 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     @objc
     private func timeHasExceeded() {
         menuView.arrowImageView.isHidden = false
+        menuView.backgroundOfArrowIV.isHidden = false
+        menuView.blurArrowBackground.isHidden = false
         showArrowAnimation()
     }
     
     private func showArrowAnimation() {
-        UIView.animate(withDuration: 1, delay: 0, options: [.repeat], animations: {
-            if self.menuView.arrowImageView.alpha == 0.5 {
+        UIView.animateKeyframes(withDuration: 1, delay: 0, options: [.repeat], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
+                self.menuView.arrowImageView.alpha = 0.5
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
                 self.menuView.arrowImageView.alpha = 1
-                return
-            }
-            self.menuView.arrowImageView.alpha = 0.5
+            })
         }, completion: nil)
     }
 }
