@@ -64,7 +64,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
                 dataFetchAPI.fetchBeine()
             }
         }
-        hideOrUnhideCloseBtn()
+        configureViewContentDependingOnType()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,8 +97,8 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     private func cancelArrowAnimation() {
         timer.invalidate()
         menuView.arrowImageView.isHidden = true
-        menuView.backgroundOfArrowIV.isHidden = true
-        menuView.blurArrowBackground.isHidden = true
+        menuView.containerView.isHidden = true
+        menuView.blurView.isHidden = true
         menuView.arrowImageView.layer.removeAllAnimations()
     }
        
@@ -140,7 +140,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
         self.navigationController!.isNavigationBarHidden = true
     }
     
-    private func hideOrUnhideCloseBtn() {
+    private func configureViewContentDependingOnType() {
         menuView.closeBtn.isHidden = menuType == .main
         menuView.settingsBtn.isHidden = menuType != .main
         
@@ -155,6 +155,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
         } else {
             menuView.titleLabel.text = "Beineler"
         }
+        
     }
     
     
@@ -174,10 +175,15 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     
     @objc
     private func timeHasExceeded() {
-        menuView.arrowImageView.isHidden = false
-        menuView.backgroundOfArrowIV.isHidden = false
-        menuView.blurArrowBackground.isHidden = false
+        changeViewsState()
         showArrowAnimation()
+    }
+    
+    private func changeViewsState() {
+        menuView.arrowImageView.isHidden = false
+        menuView.containerView.isHidden = false
+        menuView.blurView.isHidden = false
+        menuView.blurView.layer.cornerRadius = menuView.containerView.frame.width * 0.5
     }
     
     private func showArrowAnimation() {

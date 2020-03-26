@@ -15,8 +15,8 @@ protocol MenuViewProtocol: class {
     var settingsBtn: UIButton { get }
     var titleLabel: UILabel { get }
     var arrowImageView: UIImageView { get }
-    var backgroundOfArrowIV: UIView { get }
-    var blurArrowBackground: UIVisualEffectView { get }
+    var containerView: UIView { get }
+    var blurView: UIVisualEffectView { get }
     
     func setupLayout()
 }
@@ -48,27 +48,27 @@ class MenuView: MenuViewProtocol {
         lbl.numberOfLines = 1
         return lbl
     }()
+    lazy var containerView: UIView = {
+        let view = UIView()
+        view.isHidden = true
+        view.backgroundColor = .clear
+        return view
+    }()
     lazy var arrowImageView: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "arrow"))
+        let image = UIImage(named: "arrow")
+        let iv = UIImageView(image: image)
         iv.isHidden = true
-        iv.layer.zPosition = 1
+        iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
-    lazy var backgroundOfArrowIV: UIView = {
-        let v = UIView()
-        v.isHidden = true
-        v.backgroundColor = .clear
-        v.translatesAutoresizingMaskIntoConstraints = false
-        return v
-    }()
-    lazy var blurArrowBackground: UIVisualEffectView = {
+    lazy var blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = backgroundOfArrowIV.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurEffectView.isHidden = true
-        blurEffectView.layer.cornerRadius = backgroundOfArrowIV.frame.width * 0.5
-        return blurEffectView
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        
+        blurView.isHidden = true
+        blurView.clipsToBounds = true
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        return blurView
     }()
     private weak var view: UIView!
     
@@ -85,12 +85,17 @@ class MenuView: MenuViewProtocol {
         view.addSubview(closeBtn)
         view.addSubview(settingsBtn)
         view.addSubview(titleLabel)
-        view.addSubview(arrowImageView)
-        view.addSubview(backgroundOfArrowIV)
+        view.addSubview(containerView)
+        containerView.addSubview(blurView)
+        containerView.addSubview(arrowImageView)
         setAutoresizingFalse()
-        activateConstraints()
+        
+        activateMainConstraints()
+        constraintSubviewToFitSuperview(subview: collectionView, superview: view)
+        constraintSubviewToFitSuperview(subview: arrowImageView, superview: containerView)
+        constraintSubviewToFitSuperview(subview: blurView, superview: containerView)
+        
         closeBtn.configureCloseBtnFrame(view)
-        backgroundOfArrowIV.addSubview(blurArrowBackground)
     }
     
     private func setAutoresizingFalse() {
@@ -99,7 +104,7 @@ class MenuView: MenuViewProtocol {
         }
     }
     
-    private func activateConstraints() {
+    private func activateMainConstraints() {
         let constant = view.frame.width * 0.01
         
         NSLayoutConstraint.activate([
@@ -107,25 +112,15 @@ class MenuView: MenuViewProtocol {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
             titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
             
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
             settingsBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant),
             settingsBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: constant),
             settingsBtn.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.06),
             settingsBtn.widthAnchor.constraint(equalTo: settingsBtn.heightAnchor),
             
-            arrowImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -2),
-            arrowImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            arrowImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18),
-            arrowImageView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor),
-            
-            backgroundOfArrowIV.leadingAnchor.constraint(equalTo: arrowImageView.leadingAnchor),
-            backgroundOfArrowIV.trailingAnchor.constraint(equalTo: arrowImageView.trailingAnchor),
-            backgroundOfArrowIV.topAnchor.constraint(equalTo: arrowImageView.topAnchor),
-            backgroundOfArrowIV.bottomAnchor.constraint(equalTo: arrowImageView.bottomAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -2),
+            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18),
+            containerView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor),
         ])
     }
 }

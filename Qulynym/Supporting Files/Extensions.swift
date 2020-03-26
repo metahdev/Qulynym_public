@@ -68,6 +68,16 @@ extension UIImageView {
     }
 }
 
+#warning("refactor all code to call this method")
+func constraintSubviewToFitSuperview(subview: UIView, superview: UIView) {
+    NSLayoutConstraint.activate([
+        subview.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+        subview.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+        subview.topAnchor.constraint(equalTo: superview.topAnchor),
+        subview.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
+    ])
+}
+
 func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDirection, image name: String?, background type: UIColor?) -> UICollectionView {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = direction
