@@ -42,6 +42,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     var timer = Timer()
     
     private var ifFetchHasAlreadyDone = false
+    private var reachedTheEnd = false
     private var menuView: MenuViewProtocol!
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
     
@@ -83,13 +84,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     }
     
     private func setupArrowAnimation() {
-        #warning("incorrect realization")
-        let numberOfItems = menuView.collectionView.numberOfItems(inSection: 0)
-        let visibleCells = menuView.collectionView.visibleCells
-        let indexOfLastVisibleCell = menuView.collectionView.indexPath(for: visibleCells[visibleCells.count - 1])
-        let notAllInFrame = visibleCells.count < numberOfItems
-        let notScrolledToTheEnd = !(indexOfLastVisibleCell!.row == numberOfItems - 1)
-        if notAllInFrame && notScrolledToTheEnd {
+        if menuView.collectionView.visibleCells.count < menuView.collectionView.numberOfItems(inSection: 0) {
             setupTimer()
         }
     }
@@ -187,7 +182,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     }
     
     private func showArrowAnimation() {
-        UIView.animateKeyframes(withDuration: 1, delay: 0, options: [.repeat], animations: {
+        UIView.animateKeyframes(withDuration: 2, delay: 0, options: [.repeat], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
                 self.menuView.arrowImageView.alpha = 0.5
             })
@@ -269,7 +264,13 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard menuType == .beineler || menuType == .beinelerPlaylists else { return }
+        if (indexPath.row == collectionView.numberOfItems(inSection: 0) - 1) {
+            cancelArrowAnimation()
+            reachedTheEnd = true
+        }
+        guard menuType == .beineler || menuType == .beinelerPlaylists else {
+            return
+        }
         guard dataFetchAPI.token != nil else { return }
         
          if (indexPath.row == dataFetchAPI.beineler.count - 1 ) {
@@ -291,6 +292,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        guard !reachedTheEnd else { return }
         cancelArrowAnimation()
         setupTimer()
     }

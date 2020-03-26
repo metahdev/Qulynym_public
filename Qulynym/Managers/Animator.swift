@@ -64,11 +64,10 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     private func callKeyframes() {
-        let halfOfDuration = self.duration * 0.5
-        UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: halfOfDuration, animations: {
+        UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
             self.bubbleClipView.alpha = 1
         })
-        UIView.addKeyframe(withRelativeStartTime: halfOfDuration, relativeDuration: halfOfDuration, animations: {
+        UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
             self.setupEndingValues()
         })
     }
