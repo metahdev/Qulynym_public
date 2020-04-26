@@ -157,6 +157,41 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     }
     
     @objc
+    func brushBtnPressed() {
+        closeMenu()
+        moveUp(tool: brush)
+        setupDrawingLineComponents(of: brush)
+        selectedTool = brush
+    }
+    
+    @objc
+    func pencilBtnPressed() {
+        closeMenu()
+        moveUp(tool: pencil)
+        setupDrawingLineComponents(of: pencil)
+        selectedTool = pencil
+    }
+    
+    @objc
+    func markerBtnPressed() {
+        closeMenu()
+        moveUp(tool: marker)
+        setupDrawingLineComponents(of: marker)
+        selectedTool = marker
+    }
+    
+    @objc
+    func eraserBtnPressed() {
+        closeMenu()
+        moveUp(tool: eraser)
+        if canvasView.color != .white {
+            previousColor = canvasView.color
+        }
+        setupDrawingLineComponents(of: eraser)
+        selectedTool = eraser
+    }
+    
+    @objc
     private func closeBtnPressed() {
         presenter.closeView()
     }
@@ -177,35 +212,9 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         canvasView.clear()
     }
     
-    @objc func brushBtnPressed() {
-        closeMenu()
-        moveUp(tool: brush)
-        setupDrawingLineComponents(of: brush)
-        selectedTool = brush
-    }
-    
-    @objc func pencilBtnPressed() {
-        closeMenu()
-        moveUp(tool: pencil)
-        setupDrawingLineComponents(of: pencil)
-        selectedTool = pencil
-    }
-    
-    @objc func markerBtnPressed() {
-        closeMenu()
-        moveUp(tool: marker)
-        setupDrawingLineComponents(of: marker)
-        selectedTool = marker
-    }
-    
-    @objc func eraserBtnPressed() {
-        closeMenu()
-        moveUp(tool: eraser)
-        if canvasView.color != .white {
-            previousColor = canvasView.color
-        }
-        setupDrawingLineComponents(of: eraser)
-        selectedTool = eraser
+    @objc
+    private func exitDrawingsMenu() {
+        drawingView.toggleDrawingsCV()
     }
     
     

@@ -30,6 +30,7 @@ class DrawingsCollectionView: UIViewController {
         setupCollectionView()
         setupAppearence()
         activateConstraints()
+        invisibleButtonToExit.addTarget(self, action: #selector(exitFromMenu), for: .touchUpOutside)
     }
     
     private func setupCollectionView() {
@@ -52,8 +53,22 @@ class DrawingsCollectionView: UIViewController {
             mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            invisibleButtonToExit.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            invisibleButtonToExit.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            invisibleButtonToExit.topAnchor.constraint(equalTo: view.topAnchor),
+            invisibleButtonToExit.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    
+    // MARK:- Methods
+    @objc
+    private func exitFromMenu() {
+        #warning("still not working")
+        print("A")
+        drawingView.closeMenu()
     }
 }
 

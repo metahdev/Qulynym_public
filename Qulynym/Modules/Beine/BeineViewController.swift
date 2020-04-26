@@ -274,7 +274,9 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: recommendationsCV.frame.width * 0.3, height: recommendationsCV.frame.height - 8)
+        #warning("compare appearence")
+        let height = recommendationsCV.frame.height - 8
+        return CGSize(width: height * 2, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
