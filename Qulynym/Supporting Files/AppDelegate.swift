@@ -23,7 +23,7 @@ import CoreData
   2) CustomImageView(maybe delegate something to DataFetchAPI)
   3) BeineViewController(architecture & nextVideo methods
   4) ImageCollectionViewCell
-  5) DrawingViewControllers into one view, overall code logic
+  5) DrawingViewControllers into one view, overall code logic(touchUpOutside)
   6) Quiz Module
   7) ModuleView protocol properties get acccessor & architecture overall
  */
