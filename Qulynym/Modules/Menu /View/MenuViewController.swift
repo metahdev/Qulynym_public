@@ -23,7 +23,6 @@ protocol MenuViewControllerProtocol: class {
     var menuType: Menu { get set }
     var playlistID: String? { get set }
     var dataFetchAPI: DataFetchAPI! { get }
-    var timer: Timer { get set }
 }
 
 class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate, ConnectionWarningCaller {
@@ -39,12 +38,13 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     var playlistID: String?
     var dataFetchAPI: DataFetchAPI!
     var isConnectionErrorShowing = false
-    var timer = Timer()
     
     private var ifFetchHasAlreadyDone = false
     private var reachedTheEnd = false
     private var menuView: MenuViewProtocol!
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
+    private var rightArrowTimer = Timer()
+    private var leftArrowTimer = Timer()
     
     
     // MARK:- View Lifecycle
@@ -75,33 +75,15 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
                 showAnErrorMessage()
             }
         }
-        setupArrowAnimation()
+        setupInitialTimer()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        cancelArrowAnimation()
-    }
-    
-    private func setupArrowAnimation() {
-        if menuView.collectionView.visibleCells.count < menuView.collectionView.numberOfItems(inSection: 0) {
-            setupTimer()
-        }
+        cancelArrowAnimations()
+        removeAllArrowAnimations()
     }
        
-    private func cancelArrowAnimation() {
-        timer.invalidate()
-        menuView.arrowImageView.isHidden = true
-        menuView.containerView.isHidden = true
-        menuView.blurView.isHidden = true
-        menuView.arrowImageView.layer.removeAllAnimations()
-    }
-       
-    private func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(timeHasExceeded), userInfo: nil, repeats: false)
-    }
-       
-
     // MARK:- Orientation
     override var shouldAutorotate: Bool {
         return true
@@ -160,6 +142,47 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
         menuView.settingsBtn.addTarget(self, action: #selector(settingsBtnPressed), for: .touchUpInside)
     }
     
+    private func setupInitialTimer() {
+        if menuView.collectionView.visibleCells.count < menuView.collectionView.numberOfItems(inSection: 0) {
+            setupRightTimer()
+        }
+    }
+    
+    private func cancelArrowAnimations() {
+        rightArrowTimer.invalidate()
+        menuView.rightContainerView.isHidden = true
+        leftArrowTimer.invalidate()
+        menuView.leftContainerView.isHidden = true
+    }
+    
+    private func removeAllArrowAnimations() {
+        menuView.rightContainerView.layer.removeAllAnimations()
+        menuView.leftContainerView.layer.removeAllAnimations()
+    }
+    
+    private func setupRightTimer() {
+        rightArrowTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(showRightContainerView), userInfo: nil, repeats: false)
+    }
+    
+    private func setupLeftTimer() {
+        leftArrowTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(showLeftContainerView), userInfo: nil, repeats: false)
+    }
+    
+    private func changeState(of containerView: UIView) {
+        containerView.isHidden = false
+    }
+    
+    private func animate(arrowView: UIView) {
+        UIView.animateKeyframes(withDuration: 2, delay: 0, options: [.repeat], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
+                arrowView.alpha = 0.5
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
+                arrowView.alpha = 1
+            })
+        }, completion: nil)
+    }
+    
     @objc
     private func closeBtnPressed() {
         presenter.closeView() 
@@ -167,29 +190,14 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     @objc func settingsBtnPressed() {
         presenter.goToSettings()
     }
-    
     @objc
-    private func timeHasExceeded() {
-        changeViewsState()
-        showArrowAnimation()
+    private func showRightContainerView() {
+        animate(arrowView: menuView.rightContainerView)
+        changeState(of: menuView.rightContainerView)
     }
-    
-    private func changeViewsState() {
-        menuView.arrowImageView.isHidden = false
-        menuView.containerView.isHidden = false
-        menuView.blurView.isHidden = false
-        menuView.blurView.layer.cornerRadius = menuView.containerView.frame.width * 0.5
-    }
-    
-    private func showArrowAnimation() {
-        UIView.animateKeyframes(withDuration: 2, delay: 0, options: [.repeat], animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
-                self.menuView.arrowImageView.alpha = 0.5
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.menuView.arrowImageView.alpha = 1
-            })
-        }, completion: nil)
+    @objc func showLeftContainerView() {
+        animate(arrowView: menuView.leftContainerView)
+        changeState(of: menuView.leftContainerView)
     }
 }
 
@@ -264,10 +272,6 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.row == collectionView.numberOfItems(inSection: 0) - 1) {
-            cancelArrowAnimation()
-            reachedTheEnd = true
-        }
         guard menuType == .beineler || menuType == .beinelerPlaylists else {
             return
         }
@@ -292,9 +296,27 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        guard !reachedTheEnd else { return }
-        cancelArrowAnimation()
-        setupTimer()
+        cancelArrowAnimations()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        for cell in menuView.collectionView.visibleCells {
+            let indexPath = menuView.collectionView.indexPath(for: cell)
+            let indexPathRow = indexPath?.last
+            if menuView.collectionView.visibleCells.count < menuView.collectionView.numberOfItems(inSection: 0) {
+                if indexPathRow == menuView.collectionView.numberOfItems(inSection: 0) - 1 {
+                    cancelArrowAnimations()
+                    setupLeftTimer()
+                } else if indexPathRow == 0 {
+                    cancelArrowAnimations()
+                    setupRightTimer()
+                } else {
+                    cancelArrowAnimations()
+                    setupRightTimer()
+                    setupLeftTimer()
+                }
+            }
+        }
     }
 }
 

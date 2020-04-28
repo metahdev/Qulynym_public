@@ -168,6 +168,45 @@ struct CustomButton {
     }
 }
 
+// MARK: - ContainerView
+enum ArrowDirection {
+    case right
+    case left
+}
+
+struct ContainerView {
+    weak var view: UIView!
+    var setView: UIView
+    lazy var arrowImageView: UIImageView = {
+        let image = UIImage(named: "arrow")
+        let iv = UIImageView(image: image)
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    
+    init(superview: UIView) {
+        self.view = superview
+        setView = UIView()
+        
+        setup()
+    }
+    
+    mutating func setup() {
+        generalSetup()
+        constraintSubviewToFitSuperview(subview: arrowImageView, superview: setView)
+    }
+    
+    mutating func generalSetup() {
+        self.setView.isHidden = true
+        self.setView.backgroundColor = .skyBlue
+        self.setView.translatesAutoresizingMaskIntoConstraints = false
+        self.setView.layer.cornerRadius = view.frame.height * 0.09
+        self.setView.layer.borderColor = UIColor.white.cgColor
+        self.setView.layer.borderWidth = 5
+        self.setView.addSubview(arrowImageView)
+    }
+}
+
 
 // MARK:- Orientation
 struct AppUtility {

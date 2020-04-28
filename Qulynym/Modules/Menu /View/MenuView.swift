@@ -14,9 +14,8 @@ protocol MenuViewProtocol: class {
     var closeBtn: UIButton { get }
     var settingsBtn: UIButton { get }
     var titleLabel: UILabel { get }
-    var arrowImageView: UIImageView { get }
-    var containerView: UIView { get }
-    var blurView: UIVisualEffectView { get }
+    var rightContainerView: UIView { get }
+    var leftContainerView: UIView { get }
     
     func setupLayout()
 }
@@ -48,27 +47,14 @@ class MenuView: MenuViewProtocol {
         lbl.numberOfLines = 1
         return lbl
     }()
-    lazy var containerView: UIView = {
-        let view = UIView()
-        view.isHidden = true
-        view.backgroundColor = .clear
-        return view
+    lazy var rightContainerView: UIView = {
+        let v = ContainerView(superview: view)
+        return v.setView
     }()
-    lazy var arrowImageView: UIImageView = {
-        let image = UIImage(named: "arrow")
-        let iv = UIImageView(image: image)
-        iv.isHidden = true
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        return iv
-    }()
-    lazy var blurView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        
-        blurView.isHidden = true
-        blurView.clipsToBounds = true
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        return blurView
+    lazy var leftContainerView: UIView = {
+        let v = ContainerView(superview: view)
+        v.setView.transform = CGAffineTransform(rotationAngle: .pi)
+        return v.setView
     }()
     private weak var view: UIView!
     
@@ -85,16 +71,11 @@ class MenuView: MenuViewProtocol {
         view.addSubview(closeBtn)
         view.addSubview(settingsBtn)
         view.addSubview(titleLabel)
-        view.addSubview(containerView)
-        containerView.addSubview(blurView)
-        containerView.addSubview(arrowImageView)
+        view.addSubview(rightContainerView)
+        view.addSubview(leftContainerView)
         setAutoresizingFalse()
-        
         activateMainConstraints()
         constraintSubviewToFitSuperview(subview: collectionView, superview: view)
-        constraintSubviewToFitSuperview(subview: arrowImageView, superview: containerView)
-        constraintSubviewToFitSuperview(subview: blurView, superview: containerView)
-        
         closeBtn.configureCloseBtnFrame(view)
     }
     
@@ -117,10 +98,15 @@ class MenuView: MenuViewProtocol {
             settingsBtn.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.06),
             settingsBtn.widthAnchor.constraint(equalTo: settingsBtn.heightAnchor),
             
-            containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -2),
-            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18),
-            containerView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor),
+            rightContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            rightContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -2),
+            rightContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18),
+            rightContainerView.widthAnchor.constraint(equalTo: rightContainerView.heightAnchor),
+
+            leftContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 2),
+            leftContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            leftContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18),
+            leftContainerView.widthAnchor.constraint(equalTo: leftContainerView.heightAnchor)
         ])
     }
 }
