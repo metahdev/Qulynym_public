@@ -287,7 +287,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if menuType == .toddler || menuType == .games  {
             return CGSize(width: view.frame.height * 0.5, height: view.frame.height * 0.5)
         } else {
-            return CGSize(width: view.frame.width * 0.5, height: view.frame.height * 0.5)
+            return CGSize(width: view.frame.height * 0.5 * 16/9, height: view.frame.height * 0.5)
         }
     }
     
