@@ -22,7 +22,6 @@
 
 import CoreGraphics
 
-/** The value of π as a CGFloat */
 let π = CGFloat(Double.pi)
 
 public extension CGFloat {
@@ -32,7 +31,6 @@ public extension CGFloat {
 }
 
 public func shortestAngleBetween(_ angle1: CGFloat, angle2: CGFloat) -> CGFloat {
-    
     let twoπ = π * 2.0
     var angle = (angle2 - angle1).truncatingRemainder(dividingBy: twoπ)
     if (angle >= π) {
@@ -42,5 +40,4 @@ public func shortestAngleBetween(_ angle1: CGFloat, angle2: CGFloat) -> CGFloat 
         angle = angle + twoπ
     }
     return angle
-    
 }

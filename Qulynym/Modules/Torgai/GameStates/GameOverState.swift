@@ -63,6 +63,7 @@ class GameOverState: GKState {
         scorecard.position = CGPoint(x: gameScene.size.width * 0.5, y: gameScene.size.height * 0.5)
         scorecard.name = "Tutorial"
         scorecard.zPosition = Layer.ui.rawValue
+        scorecard.size = CGSize(width: 272, height: 104)
         gameScene.worldNode.addChild(scorecard)
         
         let lastScore = SKLabelNode(fontNamed: gameScene.fontName)
@@ -82,6 +83,8 @@ class GameOverState: GKState {
         let gameOver = SKSpriteNode(imageNamed: "game over")
         gameOver.position = CGPoint(x: gameScene.size.width / 2, y: gameScene.size.height / 2 + scorecard.size.height / 2 + gameScene.margin + gameOver.size.height / 2)
         gameOver.zPosition = Layer.ui.rawValue
+        gameOver.size = CGSize(width: 186, height: 82)
+        
         gameScene.worldNode.addChild(gameOver)
         
         let okButton  = SKSpriteNode(imageNamed: "long button")
@@ -92,17 +95,8 @@ class GameOverState: GKState {
         let okText = SKSpriteNode(imageNamed: "ok")
         okText.position = CGPoint.zero
         okText.zPosition = Layer.ui.rawValue
+        okText.size = CGSize(width: 250, height: 250)
         okButton.addChild(okText)
-        
-//        let quitButton = SKSpriteNode(imageNamed: "long button")
-//        quitButton.position = CGPoint(x: gameScene.size.width * 0.5, y: okButton.size.height / 2 + gameScene.margin)
-//        quitButton.zPosition = Layer.ui.rawValue
-//        gameScene.worldNode.addChild(quitButton)
-//
-//        let quitText = SKSpriteNode(imageNamed: "ok")
-//        quitText.position = CGPoint.zero
-//        quitText.zPosition = Layer.ui.rawValue
-//        quitButton.addChild(quitText)
         
         gameOver.setScale(0)
         gameOver.alpha = 0
@@ -130,6 +124,5 @@ class GameOverState: GKState {
             SKAction.fadeIn(withDuration: animationDelay)
             ])
         okButton.run(fadeIn)
-//        quitButton.run(fadeIn)
     }
 }

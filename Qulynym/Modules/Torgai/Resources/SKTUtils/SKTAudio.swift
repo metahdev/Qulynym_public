@@ -22,10 +22,6 @@
 
 import AVFoundation
 
-/**
- * Audio player that uses AVFoundation to play looping background music and
- * short sound effects. For when using SKActions just isn't good enough.
- */
 open class SKTAudio {
     open var backgroundMusicPlayer: AVAudioPlayer?
     open var soundEffectPlayer: AVAudioPlayer?

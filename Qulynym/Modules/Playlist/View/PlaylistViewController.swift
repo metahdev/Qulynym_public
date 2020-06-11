@@ -103,6 +103,8 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         cell.imageName = content[indexPath.row]
         cell.text = content[indexPath.row]
         cell.textSize = cell.frame.height * 0.1
+        cell.imageViewCornerRadius = 15
+//        cell.titleLabelConstantFromTop = 4
         return cell
     }
     

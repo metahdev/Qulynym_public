@@ -34,6 +34,7 @@ class ObstacleEntity: GKEntity {
         addComponent(spriteComponent)
         
         let spriteNode = spriteComponent.node
+        spriteNode.size = CGSize(width: 54, height: 316)
         spriteNode.physicsBody = SKPhysicsBody(rectangleOf: spriteNode.size)
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
         spriteNode.physicsBody?.collisionBitMask = 0

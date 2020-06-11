@@ -45,13 +45,10 @@ class GameViewController: UIViewController {
             let aspectRatio = view.bounds.size.height / view.bounds.size.width
             let scene = GameScene(size: CGSize(width: 320, height: 320 * aspectRatio), stateClass: MainMenuState.self)
 
-            // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
             
-            // Present the scene
             view.presentScene(scene)
             
-            // Scene properties
             view.showsPhysics = false
             view.ignoresSiblingOrder = true
             view.showsFPS = false

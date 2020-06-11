@@ -62,6 +62,11 @@ class ImageCollectionViewCell: UICollectionViewCell {
             sectionTitleLabel.backgroundColor = titleLabelBackgroundColor
         }
     }
+    var titleLabelConstantFromTop: CGFloat! {
+        didSet {
+            self.updateConstraints()
+        }
+    }
     weak var warningCaller: ConnectionWarningCaller!
     lazy var imageView: CustomImageView = {
         let iv = CustomImageView()
@@ -76,8 +81,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    
     // MARK:- Initialization
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -105,15 +110,16 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }
     
     private func activateConstraints() {
+        titleLabelConstantFromTop = 16
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             imageView.topAnchor.constraint(equalTo: self.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            sectionTitleLabel.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 16),
             sectionTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            sectionTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            sectionTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            sectionTitleLabel.topAnchor.constraint(equalTo: self.bottomAnchor, constant: titleLabelConstantFromTop)
         ])
     }
     

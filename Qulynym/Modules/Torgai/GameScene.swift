@@ -37,7 +37,6 @@ struct PhysicsCategory {
     static let Player: UInt32 = 0b1
     static let Obstacle: UInt32 = 0b10
     static let Ground: UInt32 = 0b100
-//    static let Top: UInt32 = 0b1000
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -64,13 +63,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var initialState: AnyClass
     lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
-        
         MainMenuState(scene: self),
         TutorialState(scene: self),
         PlayingState(scene: self),
         FallingState(scene: self),
         GameOverState(scene: self)
-    
         ])
     
     var score = 0
@@ -145,7 +142,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupScoreLabel() {
-        scoreLabel = SKLabelNode(fontNamed: fontName)
+        scoreLabel = SKLabelNode(fontNamed: "Arial")
         scoreLabel.fontColor = SKColor(red: 101.0/255.0, green: 71.0/255.0, blue: 73.0/255.0, alpha: 1.0)
         scoreLabel.position = CGPoint(x: size.width / 2, y: size.height - margin)
         scoreLabel.verticalAlignmentMode = .top

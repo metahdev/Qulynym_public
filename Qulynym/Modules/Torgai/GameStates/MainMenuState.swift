@@ -48,6 +48,7 @@ class MainMenuState: GKState {
         let logo = SKSpriteNode(imageNamed: "logotype")
         logo.position = CGPoint(x: gameScene.size.width / 2, y: gameScene.size.height * 0.8)
         logo.zPosition = Layer.ui.rawValue
+        logo.size = CGSize(width: 276, height: 82)
         gameScene.worldNode.addChild(logo)
         
         let playButton = SKSpriteNode(imageNamed: "long button")
@@ -58,6 +59,7 @@ class MainMenuState: GKState {
         let playButtonText = SKSpriteNode(imageNamed: "play")
         playButtonText.position = CGPoint.zero
         playButtonText.zPosition = Layer.ui.rawValue
+        playButtonText.size = CGSize(width: 74, height: 20)
         playButton.addChild(playButtonText)
     }
 }

@@ -21,13 +21,6 @@
  */
 
 import SpriteKit
-
-/**
- * Allows you to perform actions with custom timing functions.
- *
- * Unfortunately, SKAction does not have a concept of a timing function, so
- * we need to replicate the actions using SKTEffect subclasses.
- */
 open class SKTEffect {
     unowned var node: SKNode
     var duration: TimeInterval
@@ -40,13 +33,8 @@ open class SKTEffect {
     }
     
     open func update(_ t: CGFloat) {
-        // subclasses implement this
     }
 }
-
-/**
- * Moves a node from its current position to a new position.
- */
 open class SKTMoveEffect: SKTEffect {
     var startPosition: CGPoint
     var delta: CGPoint
@@ -60,8 +48,6 @@ open class SKTMoveEffect: SKTEffect {
     }
     
     open override func update(_ t: CGFloat) {
-        // This allows multiple SKTMoveEffect objects to modify the same node
-        // at the same time.
         let newPosition = startPosition + delta*t
         let diff = newPosition - previousPosition
         previousPosition = newPosition
@@ -69,9 +55,6 @@ open class SKTMoveEffect: SKTEffect {
     }
 }
 
-/**
- * Scales a node to a certain scale factor.
- */
 open class SKTScaleEffect: SKTEffect {
     var startScale: CGPoint
     var delta: CGPoint
@@ -93,9 +76,6 @@ open class SKTScaleEffect: SKTEffect {
     }
 }
 
-/**
- * Rotates a node to a certain angle.
- */
 open class SKTRotateEffect: SKTEffect {
     var startAngle: CGFloat
     var delta: CGFloat
@@ -116,16 +96,13 @@ open class SKTRotateEffect: SKTEffect {
     }
 }
 
-/**
- * Wrapper that allows you to use SKTEffect objects as regular SKActions.
- */
 public extension SKAction {
     class func actionWithEffect(_ effect: SKTEffect) -> SKAction {
         return SKAction.customAction(withDuration: effect.duration) { node, elapsedTime in
             var t = elapsedTime / CGFloat(effect.duration)
             
             if let timingFunction = effect.timingFunction {
-                t = timingFunction(t)  // the magic happens here
+                t = timingFunction(t) 
             }
             
             effect.update(t)

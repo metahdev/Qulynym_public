@@ -24,43 +24,34 @@ import CoreGraphics
 import SpriteKit
 
 public extension CGPoint {
-    
     init(vector: CGVector) {
         self.init(x: vector.dx, y: vector.dy)
     }
-    
     init(angle: CGFloat) {
         self.init(x: cos(angle), y: sin(angle))
     }
-    
     mutating func offset(_ dx: CGFloat, dy: CGFloat) -> CGPoint {
         x += dx
         y += dy
         return self
     }
-    
     func length() -> CGFloat {
         return sqrt(x*x + y*y)
     }
-    
     func lengthSquared() -> CGFloat {
         return x*x + y*y
     }
-    
     func normalized() -> CGPoint {
         let len = length()
         return len>0 ? self / len : CGPoint.zero
     }
-    
     mutating func normalize() -> CGPoint {
         self = normalized()
         return self
     }
-    
     func distanceTo(_ point: CGPoint) -> CGFloat {
         return (self - point).length()
     }
-    
     var angle: CGFloat {
         return atan2(y, x)
     }
@@ -69,83 +60,63 @@ public extension CGPoint {
 public func + (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x + right.x, y: left.y + right.y)
 }
-
 public func += (left: inout CGPoint, right: CGPoint) {
     left = left + right
 }
-
 public func + (left: CGPoint, right: CGVector) -> CGPoint {
     return CGPoint(x: left.x + right.dx, y: left.y + right.dy)
 }
-
 public func += (left: inout CGPoint, right: CGVector) {
     left = left + right
 }
-
 public func - (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x - right.x, y: left.y - right.y)
 }
-
 public func -= (left: inout CGPoint, right: CGPoint) {
     left = left - right
 }
-
 public func - (left: CGPoint, right: CGVector) -> CGPoint {
     return CGPoint(x: left.x - right.dx, y: left.y - right.dy)
 }
-
 public func -= (left: inout CGPoint, right: CGVector) {
     left = left - right
 }
-
 public func * (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x * right.x, y: left.y * right.y)
 }
-
 public func *= (left: inout CGPoint, right: CGPoint) {
     left = left * right
 }
-
 public func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
     return CGPoint(x: point.x * scalar, y: point.y * scalar)
 }
-
 public func *= (point: inout CGPoint, scalar: CGFloat) {
     point = point * scalar
 }
-
 public func * (left: CGPoint, right: CGVector) -> CGPoint {
     return CGPoint(x: left.x * right.dx, y: left.y * right.dy)
 }
-
 public func *= (left: inout CGPoint, right: CGVector) {
     left = left * right
 }
-
 public func / (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x / right.x, y: left.y / right.y)
 }
-
 public func /= (left: inout CGPoint, right: CGPoint) {
     left = left / right
 }
-
 public func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
     return CGPoint(x: point.x / scalar, y: point.y / scalar)
 }
-
 public func /= (point: inout CGPoint, scalar: CGFloat) {
     point = point / scalar
 }
-
 public func / (left: CGPoint, right: CGVector) -> CGPoint {
     return CGPoint(x: left.x / right.dx, y: left.y / right.dy)
 }
-
 public func /= (left: inout CGPoint, right: CGVector) {
     left = left / right
 }
-
 public func lerp(_ start: CGPoint, end: CGPoint, t: CGFloat) -> CGPoint {
     return start + (end - start) * t
 }
