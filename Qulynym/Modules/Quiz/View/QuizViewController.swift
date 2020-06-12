@@ -196,19 +196,15 @@ extension QuizViewController {
     }
     
     func shuffleCards() {
-        self.view.layoutIfNeeded()
-        for cell in self.quizView.cardsCollectionView.visibleCells {
-            UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-                cell.layer.transform = CATransform3DTranslate(CATransform3DIdentity, self.quizView.cardsCollectionView.frame.width * 0.5, self.quizView.cardsCollectionView.frame.height * 0.5, 0)
-                self.cards = self.cards.shuffled()
-                self.cardsCollectionView.reloadData()
-                self.view.layoutIfNeeded()
-                UIView.animate(withDuration: 0.5) {
-                    cell.layer.transform = CATransform3DIdentity
-                    self.view.layoutIfNeeded()
-                }
-            }, completion: nil)
-        }
+//        for cell in cardsCollectionView.visibleCells {
+//            cardsCollectionView.performBatchUpdates(nil)
+//            UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromRight, animations: {
+//                UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromRight, animations: {
+                        self.cards = self.cards.shuffled()
+                        self.cardsCollectionView.reloadData()
+//                }, completion: nil)
+//            }, completion: nil)
+//        }
     }
 
 }

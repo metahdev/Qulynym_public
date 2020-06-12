@@ -128,4 +128,9 @@ class ImageCollectionViewCell: UICollectionViewCell {
         self.sectionTitleLabel.text = ""
         self.imageView.image = nil
     }
+    
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        layoutIfNeeded()
+    }
 }
