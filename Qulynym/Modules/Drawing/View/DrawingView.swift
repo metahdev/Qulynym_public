@@ -169,11 +169,7 @@ class DrawingView: DrawingViewProtocol {
     
     private func initCloseConstraints() {
         slideOutBtn.setImage(UIImage(named: "slideOutOpen"), for: .normal)
-        if UIDevice.current.orientation == .landscapeLeft {
-            slideOutBtnConstraint = slideOutBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
-        } else {
-            slideOutBtnConstraint = slideOutBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        }
+        slideOutBtnConstraint = slideOutBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
         drawingCVTrailingConstraint.constant = 0
         closeBtn.isEnabled = true
     }

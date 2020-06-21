@@ -41,7 +41,6 @@ class TimerController {
     @objc private func checkState() {
         counter += 0.1
         
-        print(counter)
         delegate.notifyOfMillisecondPassed()
     }
     
