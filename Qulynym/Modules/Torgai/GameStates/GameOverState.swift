@@ -95,7 +95,7 @@ class GameOverState: GKState {
         let okText = SKSpriteNode(imageNamed: "ok")
         okText.position = CGPoint.zero
         okText.zPosition = Layer.ui.rawValue
-        okText.size = CGSize(width: 250, height: 250)
+        okText.size = CGSize(width: 38, height: 20)
         okButton.addChild(okText)
         
         gameOver.setScale(0)
