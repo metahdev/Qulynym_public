@@ -243,3 +243,20 @@ extension UIView {
     }
 }
 
+// MARK: - Torgai
+enum Layer: CGFloat {
+    case background
+    case obstacle
+    case foreground
+    case player
+    case ui
+    case flash
+}
+
+struct PhysicsCategory {
+    static let None: UInt32 = 0
+    static let Player: UInt32 = 0b1
+    static let Obstacle: UInt32 = 0b10
+    static let Ground: UInt32 = 0b100
+}
+

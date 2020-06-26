@@ -447,13 +447,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		B9E2CE1322FBDF2F006B5697 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		B9E2CE2122FBDF2F006B5697 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,10 +651,10 @@
 		D14D53762221B0CE007ACD55 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				85C9331524A25A48000358D5 /* Torgai */,
 				D1D8CF4A2326A80100531F3F /* Colors */,
 				D1D8CF1C2326A68F00531F3F /* Shapes */,
 				D1D8CEF12326A1AA00531F3F /* Plants */,
+				85C9331524A25A48000358D5 /* Torgai */,
 				D1D8CEBB2326720A00531F3F /* Animals  */,
 				D1D8CE292326688100531F3F /* Messages */,
 				D15318C72326376D0035EE05 /* Effects */,
@@ -688,7 +681,6 @@
 			isa = PBXGroup;
 			children = (
 				D1D5BC2123017DB600FB3922 /* Entities */,
-				B9E2CE1322FBDF2F006B5697 /* Resources */,
 				B916B0CB22FBDCA000AF255A /* GameScene.swift */,
 				B916B0CC22FBDCA000AF255A /* GameViewController.swift */,
 				B916B09B22FBDC5400AF255A /* Components */,

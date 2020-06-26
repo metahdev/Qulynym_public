@@ -23,35 +23,23 @@
 import SpriteKit
 import GameplayKit
 
-enum Layer: CGFloat {
-    case background
-    case obstacle
-    case foreground
-    case player
-    case ui
-    case flash
-}
-
-struct PhysicsCategory {
-    static let None: UInt32 = 0
-    static let Player: UInt32 = 0b1
-    static let Obstacle: UInt32 = 0b10
-    static let Ground: UInt32 = 0b100
-}
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    let background = SKSpriteNode(imageNamed: "background")
+    // MARK: - Properties
+    var scoreFontName = "Arial"
+    var scoreNumber = 0
     
-    let worldNode = SKNode()
+    let numberOfForegrounds = 2
+    
     var playableStart: CGFloat = 0
     static var playableHeight: CGFloat = 0
     
-    let numberOfForegrounds = 2
     let groundSpeed: CGFloat = 150
     
     let bottomObstacleMinFraction: CGFloat = 0.1
     let bottomObstacleMaxFraction: CGFloat = 0.6
     let gapMultiplier: CGFloat = 4.5
+    
+    var margin: CGFloat = 28.0
     
     let firstSpawnDelay: TimeInterval = 1.75
     let everySpawnDelay: TimeInterval = 1.5
@@ -59,9 +47,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deltaTime: TimeInterval = 0
     var lastUpdateTimeInterval: TimeInterval = 0
     
-    let player = PlayerEntity(imageName: "torgai0")
+    let backgroundNode = SKSpriteNode(imageNamed: "background")
+    
+    let worldNode = SKNode()
+        
+    lazy var player = PlayerEntity(imageName: "torgai0")
+    
+    lazy var playerNode = player.spriteComponent.node
     
     var initialState: AnyClass
+    
     lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
         MainMenuState(scene: self),
         TutorialState(scene: self),
@@ -70,12 +65,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GameOverState(scene: self)
         ])
     
-    var score = 0
-    var scoreLabel: SKLabelNode!
-    var fontName = "AmericanTypewriter-Bold"
-    var margin: CGFloat = 28.0
+    var scoreLabel = SKLabelNode(fontNamed: "Arial")
     let pointAction = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: false)
     
+    // MARK: - Inits
     init(size: CGSize, stateClass: AnyClass) {
         initialState = stateClass
         super.init(size: size)
@@ -85,6 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Override funcs
     override func didMove(to view: SKView) {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
@@ -92,18 +86,52 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(worldNode)
         stateMachine.enter(initialState)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        switch stateMachine.currentState {
+            case is MainMenuState:
+                restartGame(TutorialState.self)
+            case is TutorialState:
+                stateMachine.enter(PlayingState.self)
+            case is PlayingState:
+                player.movementComponent.applyImpulse(lastUpdateTimeInterval)
+            case is GameOverState:
+                restartGame(TutorialState.self)
+            default:
+                break
+            }
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        if lastUpdateTimeInterval == 0 {
+            lastUpdateTimeInterval = currentTime
+        }
         
-    func setupBackground() {
-        background.anchorPoint = CGPoint(x: 0.5, y: 1.0)
-        background.position = CGPoint(x: size.width / 2, y: size.height)
-        background.zPosition = Layer.background.rawValue
-        background.size.height = size.height * 0.72
+        deltaTime = currentTime - lastUpdateTimeInterval
+        lastUpdateTimeInterval = currentTime
         
-        playableStart = size.height - background.size.height
+        stateMachine.update(deltaTime: deltaTime)
+        
+        player.update(deltaTime: deltaTime)
+    }
+        
+    // MARK: - Layout
+    func setupAndAddBackgroundNode() {
+        setupBackgroundNodeParameters()
+        setupBackgroundPhysicsBody()
+        worldNode.addChild(backgroundNode)
+    }
+    
+    func setupBackgroundNodeParameters() {
+        backgroundNode.anchorPoint = CGPoint(x: 0.5, y: 1.0)
+        backgroundNode.position = CGPoint(x: size.width / 2, y: size.height)
+        backgroundNode.zPosition = Layer.background.rawValue
+        backgroundNode.size.height = size.height * 0.72
+        playableStart = size.height - backgroundNode.size.height
         GameScene.playableHeight = size.height
-        
-        worldNode.addChild(background)
-        
+    }
+    
+    func setupBackgroundPhysicsBody() {
         let lowerLeft = CGPoint(x: 0, y: playableStart)
         let lowerRight = CGPoint(x: size.width, y: playableStart)
         
@@ -116,39 +144,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsBody?.contactTestBitMask = PhysicsCategory.Player
     }
     
-    func setupForeground() {
+    func setupForegroundNode() {
         for i in 0..<numberOfForegrounds {
-            
-            let foreground = SKSpriteNode(imageNamed: "foreground")
-            foreground.anchorPoint = CGPoint(x: 0.0, y: 1.0)
-            foreground.position = CGPoint(x: CGFloat(i) * foreground.size.width, y: playableStart)
-            foreground.zPosition = Layer.foreground.rawValue
-            foreground.name = "foreground"
-            foreground.size.height = size.height - background.size.height
-            foreground.size.width = size.width
-            worldNode.addChild(foreground)
+            let foregroundNode = SKSpriteNode(imageNamed: "foreground")
+            foregroundNode.anchorPoint = CGPoint(x: 0.0, y: 1.0)
+            foregroundNode.size.width = size.width
+            foregroundNode.position = CGPoint(x: CGFloat(i) * foregroundNode.size.width, y: playableStart)
+            foregroundNode.zPosition = Layer.foreground.rawValue
+            foregroundNode.name = "foreground"
+            foregroundNode.size.height = size.height - backgroundNode.size.height
+            worldNode.addChild(foregroundNode)
         }
     }
     
+    func setupAndAddPlayer() {
+        setupPlayer()
+        worldNode.addChild(playerNode)
+    }
+    
     func setupPlayer() {
-        let playerNode = player.spriteComponent.node
         playerNode.position = CGPoint(x: size.width * 0.2, y: GameScene.playableHeight * 0.4 + playableStart)
         playerNode.zPosition = Layer.player.rawValue
-        
-        worldNode.addChild(playerNode)
         
         player.movementComponent.playableStart = playableStart
         player.animationComponent.startWobble()
     }
     
+    func setupAndAddScoreLabel() {
+        setupScoreLabel()
+        worldNode.addChild(scoreLabel)
+    }
+    
     func setupScoreLabel() {
-        scoreLabel = SKLabelNode(fontNamed: "Arial")
         scoreLabel.fontColor = SKColor(red: 101.0/255.0, green: 71.0/255.0, blue: 73.0/255.0, alpha: 1.0)
         scoreLabel.position = CGPoint(x: size.width / 2, y: size.height - margin)
         scoreLabel.verticalAlignmentMode = .top
         scoreLabel.zPosition = Layer.ui.rawValue
-        scoreLabel.text = "\(score)"
-        worldNode.addChild(scoreLabel)
+        scoreLabel.text = "\(scoreNumber)"
     }
     
     func createObstacle() -> SKSpriteNode {
@@ -183,8 +215,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bottomObstacle = createObstacle()
         let startX = size.width + bottomObstacle.size.width / 2
         
-        let bottomObstacleMin = (playableStart - bottomObstacle.size.height / 2) + background.size.height * bottomObstacleMinFraction
-        let bottomObstacleMax = (playableStart - bottomObstacle.size.height / 2) + background.size.height * bottomObstacleMaxFraction
+        let bottomObstacleMin = (playableStart - bottomObstacle.size.height / 2) + backgroundNode.size.height * bottomObstacleMinFraction
+        let bottomObstacleMax = (playableStart - bottomObstacle.size.height / 2) + backgroundNode.size.height * bottomObstacleMaxFraction
         
         let randomSource = GKARC4RandomSource()
         let randomDistribution = GKRandomDistribution(randomSource: randomSource, lowestValue: Int(round(bottomObstacleMin)), highestValue: Int(round(bottomObstacleMax)))
@@ -235,8 +267,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
                 if self.player.spriteComponent.node.position.x > barrier.position.x + barrier.size.width / 2 {
-                    self.score += 1
-                    self.scoreLabel.text = "\(self.score / 2)"
+                    self.scoreNumber += 1
+                    self.scoreLabel.text = "\(self.scoreNumber / 2)"
                     barrier.userData?["Passed"] = NSNumber(value: true as Bool)
                     self.run(self.pointAction)
                 }
@@ -260,33 +292,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if other.categoryBitMask == PhysicsCategory.Obstacle {
             stateMachine.enter(FallingState.self)
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        switch stateMachine.currentState {
-            case is MainMenuState:
-                restartGame(TutorialState.self)
-            case is TutorialState:
-                stateMachine.enter(PlayingState.self)
-            case is PlayingState:
-                player.movementComponent.applyImpulse(lastUpdateTimeInterval)
-            case is GameOverState:
-                restartGame(TutorialState.self)
-            default:
-                break
-            }
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        if lastUpdateTimeInterval == 0 {
-            lastUpdateTimeInterval = currentTime
-        }
-        
-        deltaTime = currentTime - lastUpdateTimeInterval
-        lastUpdateTimeInterval = currentTime
-        
-        stateMachine.update(deltaTime: deltaTime)
-        
-        player.update(deltaTime: deltaTime)
     }
 }

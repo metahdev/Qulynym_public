@@ -32,9 +32,9 @@ class MainMenuState: GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        gameScene.setupBackground()
-        gameScene.setupForeground()
-        gameScene.setupPlayer()
+        gameScene.setupAndAddBackgroundNode()
+        gameScene.setupForegroundNode()
+        gameScene.setupAndAddPlayer()
         setupMainMenu()
         
         gameScene.player.movementAllowed = false
