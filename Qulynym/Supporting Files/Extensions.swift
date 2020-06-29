@@ -110,7 +110,7 @@ enum ButtonType {
     case tryAgain
 }
 
-struct CustomButton {
+class CustomButton {
     weak var view: UIView!
     var buttonType: ButtonType
     var setButton: UIButton
@@ -174,7 +174,8 @@ enum ArrowDirection {
     case left
 }
 
-struct ContainerView {
+#warning("make SetView instead of this")
+class ContainerView {
     weak var view: UIView!
     var setView: UIView
     lazy var arrowImageView: UIImageView = {
@@ -191,16 +192,16 @@ struct ContainerView {
         setup()
     }
     
-    mutating func setup() {
+    func setup() {
         generalSetup()
         constraintSubviewToFitSuperview(subview: arrowImageView, superview: setView)
     }
     
-    mutating func generalSetup() {
+    func generalSetup() {
         self.setView.isHidden = true
         self.setView.backgroundColor = .skyBlue
         self.setView.translatesAutoresizingMaskIntoConstraints = false
-        self.setView.layer.cornerRadius = view.frame.height * 0.09
+        self.setView.layer.cornerRadius = view.frame.height * 0.06
         self.setView.layer.borderColor = UIColor.white.cgColor
         self.setView.layer.borderWidth = 5
         self.setView.addSubview(arrowImageView)
