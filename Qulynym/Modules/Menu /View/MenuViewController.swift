@@ -40,11 +40,14 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     var isConnectionErrorShowing = false
     
     private var ifFetchHasAlreadyDone = false
-    private var reachedTheEnd = false
-    private var menuView: MenuViewProtocol!
-    private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
+    
+    private var showRight = true
+    private var showLeft = false
     private var arrowTimer = Timer()
     
+    private var menuView: MenuViewProtocol!
+    private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
+        
     
     // MARK:- View Lifecycle
     override func viewDidLoad() {
@@ -186,10 +189,11 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     }
     
     @objc
-    private func showContainerView(_ showRight: Bool, _ showLeft: Bool) {
+    private func showContainerView() {
         if showRight {
             showArrow(menuView.rightContainerView)
-        } else {
+        }
+        if showLeft {
             showArrow(menuView.leftContainerView)
         }
     }
@@ -303,9 +307,20 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let indexPath = menuView.collectionView.indexPath(for: cell)
             let indexPathRow = indexPath?.last
             if menuView.collectionView.visibleCells.count < menuView.collectionView.numberOfItems(inSection: 0) {
-                let showLeft = indexPathRow == menuView.collectionView.numberOfItems(inSection: 0) - 1
-                let showRight = indexPathRow == 0
-                showContainerView(showRight,showLeft)
+                let atEnd = indexPathRow == menuView.collectionView.numberOfItems(inSection: 0) - 1
+                let atBeginning = indexPathRow == 0
+                
+                showLeft = atEnd && !atBeginning
+                showRight = atBeginning && !atEnd
+                
+                if !showRight && !showLeft {
+                    showRight = true
+                    showLeft = true
+                }
+                
+                cancelArrowAnimations()
+                showRight = indexPathRow != menuView.collectionView.numberOfItems(inSection: 0) - 1
+                setupTimer()
             }
         }
     }
