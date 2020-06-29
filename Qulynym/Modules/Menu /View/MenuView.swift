@@ -99,13 +99,13 @@ class MenuView: MenuViewProtocol {
             settingsBtn.widthAnchor.constraint(equalTo: settingsBtn.heightAnchor),
             
             rightContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            rightContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -2),
-            rightContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18),
+            rightContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
+            rightContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             rightContainerView.widthAnchor.constraint(equalTo: rightContainerView.heightAnchor),
 
-            leftContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 2),
+            leftContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 4),
             leftContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            leftContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18),
+            leftContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
             leftContainerView.widthAnchor.constraint(equalTo: leftContainerView.heightAnchor)
         ])
     }

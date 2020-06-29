@@ -49,10 +49,10 @@ class TutorialState: GKState {
     }
     
     func setupExplanation() {
-        gameScene.setupBackground()
-        gameScene.setupForeground()
-        gameScene.setupPlayer()
-        gameScene.setupScoreLabel()
+        gameScene.setupAndAddBackgroundNode()
+        gameScene.setupForegroundNode()
+        gameScene.setupAndAddPlayer()
+        gameScene.setupAndAddScoreLabel()
         
         let tutorial = SKSpriteNode(imageNamed: "tutorial")
         tutorial.position = CGPoint(x: gameScene.size.width * 0.5, y: GameScene.playableHeight * 0.4 + gameScene.playableStart)

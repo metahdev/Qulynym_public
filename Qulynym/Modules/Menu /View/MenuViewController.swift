@@ -43,8 +43,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     private var reachedTheEnd = false
     private var menuView: MenuViewProtocol!
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
-    private var rightArrowTimer = Timer()
-    private var leftArrowTimer = Timer()
+    private var arrowTimer = Timer()
     
     
     // MARK:- View Lifecycle
@@ -144,14 +143,13 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     
     private func setupInitialTimer() {
         if menuView.collectionView.visibleCells.count < menuView.collectionView.numberOfItems(inSection: 0) {
-            setupRightTimer()
+            setupTimer()
         }
     }
     
     private func cancelArrowAnimations() {
-        rightArrowTimer.invalidate()
+        arrowTimer.invalidate()
         menuView.rightContainerView.isHidden = true
-        leftArrowTimer.invalidate()
         menuView.leftContainerView.isHidden = true
     }
     
@@ -160,12 +158,8 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
         menuView.leftContainerView.layer.removeAllAnimations()
     }
     
-    private func setupRightTimer() {
-        rightArrowTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(showRightContainerView), userInfo: nil, repeats: false)
-    }
-    
-    private func setupLeftTimer() {
-        leftArrowTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(showLeftContainerView), userInfo: nil, repeats: false)
+    private func setupTimer() {
+        arrowTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(showContainerView), userInfo: nil, repeats: false)
     }
     
     private func changeState(of containerView: UIView) {
@@ -190,14 +184,19 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     @objc func settingsBtnPressed() {
         presenter.goToSettings()
     }
+    
     @objc
-    private func showRightContainerView() {
-        animate(arrowView: menuView.rightContainerView)
-        changeState(of: menuView.rightContainerView)
+    private func showContainerView(_ showRight: Bool, _ showLeft: Bool) {
+        if showRight {
+            showArrow(menuView.rightContainerView)
+        } else {
+            showArrow(menuView.leftContainerView)
+        }
     }
-    @objc func showLeftContainerView() {
-        animate(arrowView: menuView.leftContainerView)
-        changeState(of: menuView.leftContainerView)
+    
+    private func showArrow(_ containerView: UIView) {
+        animate(arrowView: containerView)
+        changeState(of: containerView)
     }
 }
 
@@ -304,17 +303,9 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let indexPath = menuView.collectionView.indexPath(for: cell)
             let indexPathRow = indexPath?.last
             if menuView.collectionView.visibleCells.count < menuView.collectionView.numberOfItems(inSection: 0) {
-                if indexPathRow == menuView.collectionView.numberOfItems(inSection: 0) - 1 {
-                    cancelArrowAnimations()
-                    setupLeftTimer()
-                } else if indexPathRow == 0 {
-                    cancelArrowAnimations()
-                    setupRightTimer()
-                } else {
-                    cancelArrowAnimations()
-                    setupRightTimer()
-                    setupLeftTimer()
-                }
+                let showLeft = indexPathRow == menuView.collectionView.numberOfItems(inSection: 0) - 1
+                let showRight = indexPathRow == 0
+                showContainerView(showRight,showLeft)
             }
         }
     }

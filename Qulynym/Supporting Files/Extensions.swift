@@ -110,7 +110,7 @@ enum ButtonType {
     case tryAgain
 }
 
-struct CustomButton {
+class CustomButton {
     weak var view: UIView!
     var buttonType: ButtonType
     var setButton: UIButton
@@ -174,7 +174,8 @@ enum ArrowDirection {
     case left
 }
 
-struct ContainerView {
+#warning("make SetView instead of this")
+class ContainerView {
     weak var view: UIView!
     var setView: UIView
     lazy var arrowImageView: UIImageView = {
@@ -191,16 +192,16 @@ struct ContainerView {
         setup()
     }
     
-    mutating func setup() {
+    func setup() {
         generalSetup()
         constraintSubviewToFitSuperview(subview: arrowImageView, superview: setView)
     }
     
-    mutating func generalSetup() {
+    func generalSetup() {
         self.setView.isHidden = true
         self.setView.backgroundColor = .skyBlue
         self.setView.translatesAutoresizingMaskIntoConstraints = false
-        self.setView.layer.cornerRadius = view.frame.height * 0.09
+        self.setView.layer.cornerRadius = view.frame.height * 0.06
         self.setView.layer.borderColor = UIColor.white.cgColor
         self.setView.layer.borderWidth = 5
         self.setView.addSubview(arrowImageView)
@@ -241,5 +242,22 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: 4, height: 4)
         self.layer.shadowRadius = 5.0
     }
+}
+
+// MARK: - Torgai
+enum Layer: CGFloat {
+    case background
+    case obstacle
+    case foreground
+    case player
+    case ui
+    case flash
+}
+
+struct PhysicsCategory {
+    static let None: UInt32 = 0
+    static let Player: UInt32 = 0b1
+    static let Obstacle: UInt32 = 0b10
+    static let Ground: UInt32 = 0b100
 }
 
