@@ -33,7 +33,7 @@ class SettingsView: SettingsViewProtocol {
     lazy var checkmarkBtn: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "checkbox"), for: .normal)
-        button.backgroundColor = .lightGray
+        button.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.7)
         return button
     }()
     

@@ -75,7 +75,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var sectionTitleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.backgroundColor = .white
+//        lbl.backgroundColor = .white
         lbl.layer.cornerRadius = 15
         lbl.clipsToBounds = true
         return lbl

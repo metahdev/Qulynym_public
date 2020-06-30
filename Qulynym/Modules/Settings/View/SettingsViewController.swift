@@ -115,6 +115,7 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
 extension SettingsViewController {
     // MARK:- Protocol Methods
     func turnOffMusic() {
+        #warning("она не включается когда выходишь из видео?")
         AudioPlayer.backgroundAudioPlayer.stop()
     }
     

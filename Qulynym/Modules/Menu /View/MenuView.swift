@@ -40,7 +40,6 @@ class MenuView: MenuViewProtocol {
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Qulynym"
-        lbl.backgroundColor = .white
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
         lbl.setupContentLabel(size: view.frame.height * 0.1)

@@ -222,6 +222,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
+        #warning("wtf is this")
         cell.backgroundColor = UIColor(red: 149/255, green: 165/255, blue: 166/255, alpha: 1)
         cell.imageView.isSkeletonable = true
         cell.imageViewCornerRadius = 15

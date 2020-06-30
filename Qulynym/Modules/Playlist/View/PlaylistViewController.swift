@@ -104,6 +104,7 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         cell.text = content[indexPath.row]
         cell.textSize = cell.frame.height * 0.1
         cell.imageViewCornerRadius = 15
+        cell.titleLabelBackgroundColor = .white
 //        cell.titleLabelConstantFromTop = 4
         return cell
     }
@@ -113,12 +114,12 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width * 0.3, height: view.frame.width * 0.3)
+        let constant = collectionView.frame.height - 100
+        return CGSize(width: constant, height: constant)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let distance = (view.frame.width - view.frame.width * 0.6) / 3
-        return UIEdgeInsets(top: 40, left: distance, bottom: distance, right: distance)
+        return UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
     }
     
     func collectionView(_ collectionView: UICollectionView,
