@@ -92,10 +92,10 @@ class MenuView: MenuViewProtocol {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
             titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
             
-            settingsBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant),
             settingsBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: constant),
             settingsBtn.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.06),
             settingsBtn.widthAnchor.constraint(equalTo: settingsBtn.heightAnchor),
+            settingsBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constant),
             
             rightContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             rightContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
