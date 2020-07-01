@@ -152,13 +152,13 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     
     private func cancelArrowAnimations() {
         arrowTimer.invalidate()
-        menuView.rightContainerView.isHidden = true
-        menuView.leftContainerView.isHidden = true
+        menuView.rightArrowView.isHidden = true
+        menuView.leftArrowView.isHidden = true
     }
     
     private func removeAllArrowAnimations() {
-        menuView.rightContainerView.layer.removeAllAnimations()
-        menuView.leftContainerView.layer.removeAllAnimations()
+        menuView.rightArrowView.layer.removeAllAnimations()
+        menuView.leftArrowView.layer.removeAllAnimations()
     }
     
     private func setupTimer() {
@@ -191,10 +191,10 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     @objc
     private func showContainerView() {
         if showRight {
-            showArrow(menuView.rightContainerView)
+            showArrow(menuView.rightArrowView)
         }
         if showLeft {
-            showArrow(menuView.leftContainerView)
+            showArrow(menuView.leftArrowView)
         }
     }
     

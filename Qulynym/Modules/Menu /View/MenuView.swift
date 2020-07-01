@@ -14,8 +14,8 @@ protocol MenuViewProtocol: class {
     var closeBtn: UIButton { get }
     var settingsBtn: UIButton { get }
     var titleLabel: UILabel { get }
-    var rightContainerView: UIView { get }
-    var leftContainerView: UIView { get }
+    var rightArrowView: UIView { get }
+    var leftArrowView: UIView { get }
     
     func setupLayout()
 }
@@ -46,14 +46,17 @@ class MenuView: MenuViewProtocol {
         lbl.numberOfLines = 1
         return lbl
     }()
-    lazy var rightContainerView: UIView = {
-        let v = ContainerView(superview: view)
-        return v.setView
+    
+    lazy var rightArrowView: UIView = {
+        let v = ArrowView()
+        v.layer.cornerRadius = view.frame.height * 0.06
+        return v
     }()
-    lazy var leftContainerView: UIView = {
-        let v = ContainerView(superview: view)
-        v.setView.transform = CGAffineTransform(rotationAngle: .pi)
-        return v.setView
+    lazy var leftArrowView: UIView = {
+        let v = ArrowView()
+        v.transform = CGAffineTransform(rotationAngle: .pi)
+        v.layer.cornerRadius = view.frame.height * 0.06
+        return v
     }()
     private weak var view: UIView!
     
@@ -70,8 +73,8 @@ class MenuView: MenuViewProtocol {
         view.addSubview(closeBtn)
         view.addSubview(settingsBtn)
         view.addSubview(titleLabel)
-        view.addSubview(rightContainerView)
-        view.addSubview(leftContainerView)
+        view.addSubview(rightArrowView)
+        view.addSubview(leftArrowView)
         setAutoresizingFalse()
         activateMainConstraints()
         constraintSubviewToFitSuperview(subview: collectionView, superview: view)
@@ -97,15 +100,15 @@ class MenuView: MenuViewProtocol {
             settingsBtn.widthAnchor.constraint(equalTo: settingsBtn.heightAnchor),
             settingsBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constant),
             
-            rightContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            rightContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
-            rightContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
-            rightContainerView.widthAnchor.constraint(equalTo: rightContainerView.heightAnchor),
+            rightArrowView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            rightArrowView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
+            rightArrowView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
+            rightArrowView.widthAnchor.constraint(equalTo: rightArrowView.heightAnchor),
 
-            leftContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 4),
-            leftContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            leftContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
-            leftContainerView.widthAnchor.constraint(equalTo: leftContainerView.heightAnchor)
+            leftArrowView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 4),
+            leftArrowView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            leftArrowView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
+            leftArrowView.widthAnchor.constraint(equalTo: leftArrowView.heightAnchor)
         ])
     }
 }

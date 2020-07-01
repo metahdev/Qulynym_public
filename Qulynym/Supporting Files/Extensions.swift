@@ -182,37 +182,37 @@ enum ArrowDirection {
     case left
 }
 
-#warning("make SetView instead of this")
-class ContainerView {
-    weak var view: UIView!
-    var setView: UIView
+class ArrowView: UIView {
+    // MARK: - Properties
     lazy var arrowImageView: UIImageView = {
-        let image = UIImage(named: "arrow")
-        let iv = UIImageView(image: image)
+        let iv = UIImageView(image: UIImage(named: "arrow"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
-    init(superview: UIView) {
-        self.view = superview
-        setView = UIView()
-        
-        setup()
+    // MARK: - Inits
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupLayout()
     }
     
-    func setup() {
-        generalSetup()
-        constraintSubviewToFitSuperview(subview: arrowImageView, superview: setView)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    func generalSetup() {
-        self.setView.isHidden = true
-        self.setView.backgroundColor = .skyBlue
-        self.setView.translatesAutoresizingMaskIntoConstraints = false
-        self.setView.layer.cornerRadius = view.frame.height * 0.06
-        self.setView.layer.borderColor = UIColor.white.cgColor
-        self.setView.layer.borderWidth = 5
-        self.setView.addSubview(arrowImageView)
+    // MARK: - Layout
+    func setupLayout() {
+        generalLayoutSetup()
+        constraintSubviewToFitSuperview(subview: arrowImageView, superview: self)
+    }
+    
+    func generalLayoutSetup() {
+        self.isHidden = true
+        self.backgroundColor = .skyBlue
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 5
+        self.addSubview(arrowImageView)
     }
 }
 
