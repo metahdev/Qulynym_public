@@ -66,7 +66,6 @@ class DrawingsCollectionView: UIViewController {
     // MARK:- Methods
     @objc
     private func exitFromMenu() {
-        #warning("still not working")
         drawingView.closeMenu()
     }
 }

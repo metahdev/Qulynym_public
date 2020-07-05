@@ -168,6 +168,8 @@
 		D1D8CF622326A80200531F3F /* Aq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF552326A80100531F3F /* Aq.mp3 */; };
 		D1D8CF632326A80200531F3F /* Sur.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF562326A80100531F3F /* Sur.mp3 */; };
 		D1D8CF642326A80200531F3F /* Tu'sterQ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF572326A80100531F3F /* Tu'sterQ.mp3 */; };
+		D1F54F3624B26D7300F88A78 /* Custom Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F54F3524B26D7300F88A78 /* Custom Classes.swift */; };
+		D1F54F3824B26EFE00F88A78 /* Global Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F54F3724B26EFE00F88A78 /* Global Functions.swift */; };
 		D1F9ABD122A0454600989BD3 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD022A0454600989BD3 /* DrawingViewController.swift */; };
 		D1F9ABD322A0455A00989BD3 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD222A0455A00989BD3 /* DrawingView.swift */; };
 		D1F9ABD522A0456B00989BD3 /* DrawingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD422A0456B00989BD3 /* DrawingConfigurator.swift */; };
@@ -359,6 +361,8 @@
 		D1D8CF552326A80100531F3F /* Aq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Aq.mp3; sourceTree = "<group>"; };
 		D1D8CF562326A80100531F3F /* Sur.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sur.mp3; sourceTree = "<group>"; };
 		D1D8CF572326A80100531F3F /* Tu'sterQ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Tu'sterQ.mp3"; sourceTree = "<group>"; };
+		D1F54F3524B26D7300F88A78 /* Custom Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Classes.swift"; sourceTree = "<group>"; };
+		D1F54F3724B26EFE00F88A78 /* Global Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Global Functions.swift"; sourceTree = "<group>"; };
 		D1F9ABD022A0454600989BD3 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		D1F9ABD222A0455A00989BD3 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		D1F9ABD422A0456B00989BD3 /* DrawingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingConfigurator.swift; sourceTree = "<group>"; };
@@ -728,6 +732,8 @@
 			children = (
 				D13D864C2217FEDF0048A6E4 /* AppDelegate.swift */,
 				D19D36E4222BAEEC005188D0 /* Extensions.swift */,
+				D1F54F3524B26D7300F88A78 /* Custom Classes.swift */,
+				D1F54F3724B26EFE00F88A78 /* Global Functions.swift */,
 				D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */,
 				D19D32E023EF06EC00DC533B /* CustomImageView.swift */,
 				B9E2CE1522FBDF2F006B5697 /* SKUtils.swift */,
@@ -1147,6 +1153,7 @@
 				D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */,
 				8528917622F9A22600A7CEA7 /* TextViewController.swift in Sources */,
 				B916B0A022FBDC5400AF255A /* AnimationComponent.swift in Sources */,
+				D1F54F3824B26EFE00F88A78 /* Global Functions.swift in Sources */,
 				D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */,
 				D1C69D1422F631E9003D0D05 /* PlaylistItemInteractor.swift in Sources */,
 				D10729F722876879003149E8 /* PlaylistView.swift in Sources */,
@@ -1156,6 +1163,7 @@
 				D14D53702221380F007ACD55 /* ItemView.swift in Sources */,
 				D1383F8E22AFCD42007815DF /* ImageCollectionViewCell.swift in Sources */,
 				856F348F22F87F0400E97C0C /* SettingsInteractor.swift in Sources */,
+				D1F54F3624B26D7300F88A78 /* Custom Classes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

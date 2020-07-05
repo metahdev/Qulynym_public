@@ -140,9 +140,9 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
     
     private func activateConstraints() {
         NSLayoutConstraint.activate([
-            videoView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65),
             videoView.topAnchor.constraint(equalTo: view.topAnchor),
             videoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
+            videoView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1.2),
             videoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             nextVideoBtn.leadingAnchor.constraint(equalTo: videoView.trailingAnchor, constant: 16),
@@ -167,6 +167,7 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
     @objc
     private func closeView() {
         self.navigationController!.popViewController(animated: true)
+        videoView.stopVideo()
         if AudioPlayer.backgroundAudioStatePlaying == true {
             AudioPlayer.backgroundAudioPlayer.play()
         }
@@ -274,7 +275,6 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        #warning("compare appearence")
         let height = recommendationsCV.frame.height - 8
         return CGSize(width: height * 2, height: height)
     }

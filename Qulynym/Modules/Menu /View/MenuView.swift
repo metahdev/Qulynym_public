@@ -43,6 +43,7 @@ class MenuView: MenuViewProtocol {
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
         lbl.setupMenuLabel(size: view.frame.height * 0.1)
+        lbl.minimumScaleFactor = 0.5
         lbl.numberOfLines = 1
         return lbl
     }()
@@ -92,13 +93,13 @@ class MenuView: MenuViewProtocol {
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 24),
             titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
             
-            settingsBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: constant),
+            settingsBtn.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             settingsBtn.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.06),
             settingsBtn.widthAnchor.constraint(equalTo: settingsBtn.heightAnchor),
-            settingsBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constant),
+            settingsBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             
             rightArrowView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             rightArrowView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),

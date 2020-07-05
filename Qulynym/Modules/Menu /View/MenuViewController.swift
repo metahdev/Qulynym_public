@@ -61,6 +61,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        cancelArrowAnimations()
         if menuType == .beineler || menuType == .beinelerPlaylists {
             if !ifFetchHasAlreadyDone {
                 ifFetchHasAlreadyDone = true
@@ -222,14 +223,12 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        #warning("wtf is this")
-        cell.backgroundColor = UIColor(red: 149/255, green: 165/255, blue: 166/255, alpha: 1)
         cell.imageView.isSkeletonable = true
-        cell.imageViewCornerRadius = 15
+        cell.imageViewLayerMasksToBounds = true
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
-        cell.imageViewLayerMasksToBounds = true
-        cell.sectionTitleLabel.setupMenuLabel(size: cell.frame.height * 0.17)
+        
+        cell.sectionTitleLabel.setupMenuLabel(size: cell.frame.height * 0.13)
         
         if menuType == .main {
             cell.text = ContentService.sections[menuType]![indexPath.row]
@@ -288,10 +287,11 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let constant = collectionView.frame.height * 0.5
         if menuType == .toddler || menuType == .games  {
-            return CGSize(width: view.frame.height * 0.5, height: view.frame.height * 0.5)
+            return CGSize(width: constant, height: constant)
         } else {
-            return CGSize(width: view.frame.height * 0.5 * 16/9, height: view.frame.height * 0.5)
+            return CGSize(width: constant * 2, height: constant)
         }
     }
     

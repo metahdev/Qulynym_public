@@ -104,7 +104,6 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         cell.text = content[indexPath.row]
         cell.sectionTitleLabel.setupPlaylistLabel(size: cell.frame.height * 0.1)
         cell.imageViewCornerRadius = 15
-        cell.titleLabelBackgroundColor = .white
 //        cell.titleLabelConstantFromTop = 4
         return cell
     }
