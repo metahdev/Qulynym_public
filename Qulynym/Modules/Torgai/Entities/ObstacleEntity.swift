@@ -24,24 +24,30 @@ import SpriteKit
 import GameplayKit
 
 class ObstacleEntity: GKEntity {
+    // MARK: - Proeprties
     var spriteComponent: SpriteComponent!
     
+    // MARK: - Inits
     init(imageName: String) {
         super.init()
-        
         let texture = SKTexture(imageNamed: imageName)
         spriteComponent = SpriteComponent(entity: self, texture: texture, size: texture.size())
-        addComponent(spriteComponent)
         
+        addComponent(spriteComponent)
+        setupSpriteNode()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    func setupSpriteNode() {
         let spriteNode = spriteComponent.node
         spriteNode.size = CGSize(width: 54, height: 316)
         spriteNode.physicsBody = SKPhysicsBody(rectangleOf: spriteNode.size)
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
         spriteNode.physicsBody?.collisionBitMask = 0
         spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.Player
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

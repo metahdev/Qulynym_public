@@ -176,12 +176,7 @@ class CustomButton {
     }
 }
 
-// MARK: - ContainerView
-enum ArrowDirection {
-    case right
-    case left
-}
-
+// MARK: - ArrowView
 class ArrowView: UIView {
     // MARK: - Properties
     lazy var arrowImageView: UIImageView = {
