@@ -24,7 +24,7 @@ import SpriteKit
 import GameplayKit
 
 class PlayerEntity: GKEntity {
-
+    // MARK: - Properties
     var spriteComponent: SpriteComponent!
     var movementComponent: MovementComponent!
     var animationComponent: AnimationComponent!
@@ -32,6 +32,7 @@ class PlayerEntity: GKEntity {
     var movementAllowed = false
     var numberOfFrames = 2
     
+    // MARK: - Inits
     init (imageName: String) {
         super.init()
         let texture = SKTexture(imageNamed: imageName)
@@ -64,8 +65,7 @@ class PlayerEntity: GKEntity {
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.Player
         spriteNode.physicsBody?.collisionBitMask = 0
         spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Ground
-        // ***
-        
+        // ***        
     }
     
     required init?(coder aDecoder: NSCoder) {

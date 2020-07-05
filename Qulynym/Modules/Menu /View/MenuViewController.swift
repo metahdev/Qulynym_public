@@ -138,7 +138,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
         
     }
     
-    
     // MARK:- Actions
     private func assignActions() {
         menuView.closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
