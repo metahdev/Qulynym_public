@@ -25,39 +25,39 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Properties
-    var scoreFontName = "Arial"
+    var scoreFontName = "Arial Rounded MT Bold"
     var scoreNumber = 0
     
-    let numberOfForegrounds = 2
+    private let numberOfForegrounds = 2
     
     var playableStart: CGFloat = 0
     static var playableHeight: CGFloat = 0
     
-    let groundSpeed: CGFloat = 150
+    private let groundSpeed: CGFloat = 150
     
-    let bottomObstacleMinFraction: CGFloat = 0.1
-    let bottomObstacleMaxFraction: CGFloat = 0.6
-    let gapMultiplier: CGFloat = 4.5
+    private let bottomObstacleMinFraction: CGFloat = 0.1
+    private let bottomObstacleMaxFraction: CGFloat = 0.6
+    private let gapMultiplier: CGFloat = 4.5
     
     var margin: CGFloat = 28.0
     
-    let firstSpawnDelay: TimeInterval = 1.75
-    let everySpawnDelay: TimeInterval = 1.5
+    private let firstSpawnDelay: TimeInterval = 1.75
+    private let everySpawnDelay: TimeInterval = 1.5
     
-    var deltaTime: TimeInterval = 0
-    var lastUpdateTimeInterval: TimeInterval = 0
+    private var deltaTime: TimeInterval = 0
+    private var lastUpdateTimeInterval: TimeInterval = 0
     
-    let backgroundNode = SKSpriteNode(imageNamed: "background")
+    private let backgroundNode = SKSpriteNode(imageNamed: "background")
     
     let worldNode = SKNode()
         
     lazy var player = PlayerEntity(imageName: "torgai0")
     
-    lazy var playerNode = player.spriteComponent.node
+    private lazy var playerNode = player.spriteComponent.node
     
-    var initialState: AnyClass
+    private var initialState: AnyClass
     
-    lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
+    private lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
         MainMenuState(scene: self),
         TutorialState(scene: self),
         PlayingState(scene: self),
@@ -65,8 +65,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GameOverState(scene: self)
         ])
     
-    var scoreLabel = SKLabelNode(fontNamed: "Arial")
-    let pointAction = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: false)
+    private lazy var scoreLabel = SKLabelNode(fontNamed: scoreFontName)
+    private let pointAction = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: false)
     
     // MARK: - Inits
     init(size: CGSize, stateClass: AnyClass) {
@@ -122,7 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         worldNode.addChild(backgroundNode)
     }
     
-    func setupBackgroundNodeParameters() {
+    private func setupBackgroundNodeParameters() {
         backgroundNode.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         backgroundNode.position = CGPoint(x: size.width / 2, y: size.height)
         backgroundNode.zPosition = Layer.background.rawValue
@@ -131,7 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GameScene.playableHeight = size.height
     }
     
-    func setupBackgroundPhysicsBody() {
+    private func setupBackgroundPhysicsBody() {
         let lowerLeft = CGPoint(x: 0, y: playableStart)
         let lowerRight = CGPoint(x: size.width, y: playableStart)
         
@@ -162,7 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         worldNode.addChild(playerNode)
     }
     
-    func setupPlayer() {
+    private func setupPlayer() {
         playerNode.position = CGPoint(x: size.width * 0.2, y: GameScene.playableHeight * 0.4 + playableStart)
         playerNode.zPosition = Layer.player.rawValue
         
@@ -175,7 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         worldNode.addChild(scoreLabel)
     }
     
-    func setupScoreLabel() {
+    private func setupScoreLabel() {
         scoreLabel.fontColor = SKColor(red: 101.0/255.0, green: 71.0/255.0, blue: 73.0/255.0, alpha: 1.0)
         scoreLabel.position = CGPoint(x: size.width / 2, y: size.height - margin)
         scoreLabel.verticalAlignmentMode = .top
@@ -183,7 +183,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.text = "\(scoreNumber)"
     }
     
-    func createObstacle() -> SKSpriteNode {
+    private func createObstacle() -> SKSpriteNode {
         let obstacle = ObstacleEntity(imageName: "obstacle")
         let obstacleNode = obstacle.spriteComponent.node
         obstacleNode.zPosition = Layer.obstacle.rawValue
@@ -211,15 +211,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         run(overallSequence, withKey: "spawn")
     }
     
-    func spawnObstacle() {
+    private func spawnObstacle() {
         let bottomObstacle = createObstacle()
         let startX = size.width + bottomObstacle.size.width / 2
         
         let bottomObstacleMin = (playableStart - bottomObstacle.size.height / 2) + backgroundNode.size.height * bottomObstacleMinFraction
         let bottomObstacleMax = (playableStart - bottomObstacle.size.height / 2) + backgroundNode.size.height * bottomObstacleMaxFraction
         
-        let randomSource = GKARC4RandomSource()
-        let randomDistribution = GKRandomDistribution(randomSource: randomSource, lowestValue: Int(round(bottomObstacleMin)), highestValue: Int(round(bottomObstacleMax)))
+        let randomDistribution = GKRandomDistribution(randomSource: GKARC4RandomSource(), lowestValue: Int(round(bottomObstacleMin)), highestValue: Int(round(bottomObstacleMax)))
         let randomValue = randomDistribution.nextInt()
         
         bottomObstacle.position = CGPoint(x: startX, y: CGFloat(randomValue))
@@ -276,7 +275,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
     }
     
-    func restartGame(_ stateClass: AnyClass) {
+    private func restartGame(_ stateClass: AnyClass) {
         let newGameScene = GameScene(size: size, stateClass: stateClass)
         let transition = SKTransition.fade(with: SKColor.black, duration: 0.02)
         view?.presentScene(newGameScene, transition: transition)

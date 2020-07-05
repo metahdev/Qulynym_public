@@ -48,7 +48,7 @@ class TutorialState: GKState {
         return stateClass is PlayingState.Type
     }
     
-    func setupExplanation() {
+    private func setupExplanation() {
         gameScene.setupAndAddBackgroundNode()
         gameScene.setupForegroundNode()
         gameScene.setupAndAddPlayer()

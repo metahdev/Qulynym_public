@@ -42,7 +42,7 @@ class ObstacleEntity: GKEntity {
     }
     
     // MARK: - Actions
-    func setupSpriteNode() {
+    private func setupSpriteNode() {
         let spriteNode = spriteComponent.node
         spriteNode.size = CGSize(width: 54, height: 316)
         spriteNode.physicsBody = SKPhysicsBody(rectangleOf: spriteNode.size)

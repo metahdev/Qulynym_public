@@ -26,7 +26,15 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     // MARK:- Properties
-    lazy var closeBtn: UIButton = {
+    private lazy var aspectRatio = view.bounds.size.height / view.bounds.size.width
+    
+    private lazy var scene: SKScene = {
+        let s = GameScene(size: CGSize(width: 320, height: 320 * aspectRatio), stateClass: MainMenuState.self)
+        s.scaleMode = .aspectFill
+        return s
+    }()
+
+    private lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.layer.zPosition = 1
@@ -35,26 +43,10 @@ class GameViewController: UIViewController {
         return btn
     }()
     
-    
     // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = SKView(frame: view.bounds)
-        
-        if let view = self.view as! SKView? {
-            let aspectRatio = view.bounds.size.height / view.bounds.size.width
-            let scene = GameScene(size: CGSize(width: 320, height: 320 * aspectRatio), stateClass: MainMenuState.self)
-
-            scene.scaleMode = .aspectFill
-            
-            view.presentScene(scene)
-            
-            view.showsPhysics = false
-            view.ignoresSiblingOrder = true
-            view.showsFPS = false
-            view.showsNodeCount = false
-        }
-        
+        setupView()
         view.addSubview(closeBtn)
         NSLayoutConstraint.activate([
             closeBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -72,8 +64,26 @@ class GameViewController: UIViewController {
         return [.portrait, .portraitUpsideDown]
     }
 
+    // MARK: - Actions
+    private func setupView() {
+        view = SKView(frame: view.bounds)
+        
+        if let view = self.view as! SKView? {
+            view.presentScene(scene)
+            
+            view.showsPhysics = false
+            view.ignoresSiblingOrder = true
+            view.showsFPS = false
+            view.showsNodeCount = false
+        }
+    }
     
     @objc func closeGame() {
+        popVC()
+        AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
+    }
+    
+    private func popVC() {
         if let vc = self.navigationController?.viewControllers[1] {
             self.navigationController?.popToViewController(vc, animated: true)
             _ = vc.view.subviews.map{
@@ -82,6 +92,5 @@ class GameViewController: UIViewController {
                 }
             }
         }
-        AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
     }
 }

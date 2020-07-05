@@ -44,7 +44,7 @@ class MainMenuState: GKState {
         return stateClass is TutorialState.Type
     }
     
-    func setupMainMenu() {
+    private func setupMainMenu() {
         let logo = SKSpriteNode(imageNamed: "logotype")
         logo.position = CGPoint(x: gameScene.size.width / 2, y: gameScene.size.height * 0.8)
         logo.zPosition = Layer.ui.rawValue

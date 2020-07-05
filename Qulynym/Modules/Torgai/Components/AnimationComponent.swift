@@ -25,7 +25,7 @@ import GameplayKit
 
 class AnimationComponent: GKComponent {
     let spriteComponent: SpriteComponent
-    var textures: Array<SKTexture> = []
+    private var textures: Array<SKTexture> = []
     
     init(entity: GKEntity, textures: Array<SKTexture>) {
         self.textures = textures
@@ -73,7 +73,7 @@ class AnimationComponent: GKComponent {
         }
     }
     
-    func stopAnimation(_ name: String) {
+    private func stopAnimation(_ name: String) {
         spriteComponent.node.removeAction(forKey: name)
     }
 }

@@ -26,22 +26,22 @@ import GameplayKit
 class MovementComponent: GKComponent {
     let spriteComponent: SpriteComponent
         
-    let flapAction = SKAction.playSoundFileNamed("flapping.wav", waitForCompletion: false)
+    private let flapAction = SKAction.playSoundFileNamed("flapping.wav", waitForCompletion: false)
     
-    let impulse: CGFloat = 400
-    var velocity = CGPoint.zero
-    let gravity: CGFloat = -1500
+    private let impulse: CGFloat = 400
+    private var velocity = CGPoint.zero
+    private let gravity: CGFloat = -1500
     
-    var velocityModifier: CGFloat = 1000.0
-    var angularVelocity: CGFloat = 0.0
-    let minDegrees: CGFloat = -90
-    let maxDegrees: CGFloat = 25
+    private var velocityModifier: CGFloat = 1000.0
+    private var angularVelocity: CGFloat = 0.0
+    private let minDegrees: CGFloat = -90
+    private let maxDegrees: CGFloat = 25
     
-    var lastTouchTime: TimeInterval = 0
-    var lasyTouchY: CGFloat = 0.0
+    private var lastTouchTime: TimeInterval = 0
+    private var lasyTouchY: CGFloat = 0.0
     
     var playableStart: CGFloat = 0
-    var playableHeight = GameScene.playableHeight
+    private var playableHeight = GameScene.playableHeight
     
     init(entity: GKEntity) {
         self.spriteComponent = entity.component(ofType: SpriteComponent.self)!
@@ -66,7 +66,7 @@ class MovementComponent: GKComponent {
         lasyTouchY = spriteComponent.node.position.y
     }
     
-    func applyMovement(_ seconds: TimeInterval) {
+    private func applyMovement(_ seconds: TimeInterval) {
         let spriteNode = spriteComponent.node
         
         let gravityStep = CGPoint(x: 0, y: gravity) * CGFloat(seconds)

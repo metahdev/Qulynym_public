@@ -26,8 +26,8 @@ import GameplayKit
 class GameOverState: GKState {
     unowned let gameScene: GameScene
         
-        let hitGroundAction = SKAction.playSoundFileNamed("hitGround.wav", waitForCompletion: false)
-        let animationDelay = 0.3
+        private let hitGroundAction = SKAction.playSoundFileNamed("hitGround.wav", waitForCompletion: false)
+        private let animationDelay = 0.3
         
         init(scene: SKScene) {
             self.gameScene = scene as! GameScene
@@ -45,16 +45,16 @@ class GameOverState: GKState {
             return stateClass is PlayingState.Type
         }
         
-        func setBestScore(_ bestScore: Int) {
+        private func setBestScore(_ bestScore: Int) {
             UserDefaults.standard.set(bestScore, forKey: "BestScore")
             UserDefaults.standard.synchronize()
         }
         
-        func getBestScore() -> Int {
+        private func getBestScore() -> Int {
             return UserDefaults.standard.integer(forKey: "BestScore")
         }
         
-        func showScorecard() {
+        private func showScorecard() {
             if gameScene.scoreNumber > getBestScore() {
                 setBestScore(gameScene.scoreNumber)
             }
