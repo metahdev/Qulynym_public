@@ -47,19 +47,22 @@ extension UIButton {
 
 // MARK:- UILabel properties
 extension UILabel {
-    #warning("сделай два разных метода для лэйблов в меню и в плейлисте")
-    // пусть они оба вызывают метод, который настраивает общие черты, но и также настраивают цвет текста и фон соответственно
-    func setupContentLabel(size: CGFloat) {
-        self.font = UIFont(name: "Arial Rounded MT Bold", size: size)
-        self.textColor = .white
+    func setupMenuLabel(size: CGFloat) {
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
-//        self.backgroundColor = .white
-        // цвет плейлиста
-//        self.textColor = UIColor(red: 97/255, green: 104/255, blue: 189/255, alpha: 1)
+        setupContentLabel(size: size)
+    }
+    
+    func setupPlaylistLabel(size: CGFloat) {
+        self.shadowColor = .black
+        self.textColor = UIColor(red: 97/255, green: 104/255, blue: 189/255, alpha: 1)
+        setupContentLabel(size: size)
+    }
+    
+    private func setupContentLabel(size: CGFloat) {
+        self.textColor = .white
         self.textAlignment = .center
-        // нахер тень 
-//        self.shadowColor = .black
-        self.numberOfLines = 2 
+        self.font = UIFont(name: "Arial Rounded MT Bold", size: size)
+        self.numberOfLines = 2
     }
 }
 

@@ -228,7 +228,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
         cell.imageViewLayerMasksToBounds = true
-        cell.textSize = cell.frame.height * 0.17
+        cell.sectionTitleLabel.setupMenuLabel(size: cell.frame.height * 0.17)
         
         if menuType == .main {
             cell.text = ContentService.sections[menuType]![indexPath.row]

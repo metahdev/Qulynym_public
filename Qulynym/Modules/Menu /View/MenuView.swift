@@ -42,7 +42,7 @@ class MenuView: MenuViewProtocol {
         lbl.text = "Qulynym"
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
-        lbl.setupContentLabel(size: view.frame.height * 0.1)
+        lbl.setupMenuLabel(size: view.frame.height * 0.1)
         lbl.numberOfLines = 1
         return lbl
     }()

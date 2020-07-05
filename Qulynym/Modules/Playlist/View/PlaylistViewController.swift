@@ -102,7 +102,7 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         cell.imageName = content[indexPath.row]
         cell.text = content[indexPath.row]
-        cell.textSize = cell.frame.height * 0.1
+        cell.sectionTitleLabel.setupPlaylistLabel(size: cell.frame.height * 0.1)
         cell.imageViewCornerRadius = 15
         cell.titleLabelBackgroundColor = .white
         return cell
