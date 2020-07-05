@@ -31,7 +31,7 @@ class ItemView: ItemViewProtocol {
     }()
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setupContentLabel(size: view.frame.height * 0.1)
+        lbl.setupPlaylistLabel(size: view.frame.height * 0.1)
         return lbl
     }()
     lazy var closeBtn: UIButton = {

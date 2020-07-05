@@ -32,11 +32,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
             sectionTitleLabel.text = text
         }
     }
-    var textSize: CGFloat! {
-        didSet {
-            sectionTitleLabel.setupContentLabel(size: textSize)
-        }
-    }
     var imageViewCornerRadius: CGFloat! {
         didSet {
             imageView.layer.cornerRadius = imageViewCornerRadius
@@ -73,9 +68,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
         iv.clipsToBounds = true
         return iv
     }()
-    private lazy var sectionTitleLabel: UILabel = {
+    lazy var sectionTitleLabel: UILabel = {
         let lbl = UILabel()
-//        lbl.backgroundColor = .white
         lbl.layer.cornerRadius = 15
         lbl.clipsToBounds = true
         return lbl
