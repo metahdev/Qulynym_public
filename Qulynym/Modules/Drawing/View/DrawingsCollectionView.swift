@@ -41,7 +41,7 @@ class DrawingsCollectionView: UIViewController {
     
     private func setupAppearence() {
         view.layer.zPosition = 1
-        view.backgroundColor = .white
+        view.backgroundColor = .skyBlue
         
         view.layer.shadowRadius = 5
         view.layer.shadowColor = UIColor.black.cgColor
@@ -78,16 +78,28 @@ extension DrawingsCollectionView: UICollectionViewDelegate, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
+        
         if indexPath.row == 0 {
-            cell.imageName = "noDrawing"
+            cell.image = UIImage(named: "noDrawing")
         } else {
-            cell.imageName = pictures[indexPath.row]
+            cell.image = UIImage(named: pictures[indexPath.row])
+            
+            cell.layer.borderColor = UIColor(red: 0.4, green: 0.2, blue: 0, alpha: 1).cgColor
+            cell.layer.cornerRadius = 5
+            cell.clipsToBounds = true 
+            cell.constant = 5
+            cell.layer.borderWidth = 2
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: self.view.frame.width)
+        let constant = collectionView.frame.width * 0.7
+        return CGSize(width: constant, height: constant)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10.0, left: 0, bottom: 10.0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

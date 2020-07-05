@@ -221,17 +221,20 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        #warning("refactor")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         cell.imageView.isSkeletonable = true
-        cell.imageViewLayerMasksToBounds = true
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 5
+        cell.imageView.layer.cornerRadius = 15
+        cell.layer.cornerRadius = 15
         
         cell.sectionTitleLabel.setupMenuLabel(size: cell.frame.height * 0.13)
         
         if menuType == .main {
             cell.text = ContentService.sections[menuType]![indexPath.row]
             cell.image = UIImage(named: ContentService.sections[menuType]![indexPath.row])
+            return cell
         } else if menuType == .beinelerPlaylists || menuType == .beineler {
             cell.isUserInteractionEnabled = false
             let gradient = SkeletonGradient(baseColor: .concrete)
@@ -241,20 +244,17 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell.isUserInteractionEnabled = true
                 cell.beine = self.dataFetchAPI.beineler[indexPath.row]
             }
+            return cell
         } else if menuType == .toddler {
-            cell.layer.cornerRadius = cell.frame.height * 0.5
             cell.text = ContentService.toddlerSections[indexPath.row].name
             cell.image = UIImage(named: ContentService.toddlerSections[indexPath.row].name)
-            return cell
         } else {
-            cell.layer.cornerRadius = cell.frame.height * 0.5
             cell.text = ContentService.sections[menuType]![indexPath.row]
             cell.image = UIImage(named: ContentService.sections[menuType]![indexPath.row])
-            return cell
         }
         
-        cell.layer.cornerRadius = 15
-        cell.imageViewCornerRadius = 15
+        cell.layer.cornerRadius = cell.frame.height * 0.5
+        cell.imageView.layer.cornerRadius = cell.frame.height * 0.5
         
         return cell
     }
@@ -290,7 +290,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if menuType == .toddler || menuType == .games  {
             return CGSize(width: constant, height: constant)
         } else {
-            return CGSize(width: constant * 2, height: constant)
+            return CGSize(width: constant * 16/9, height: constant)
         }
     }
     

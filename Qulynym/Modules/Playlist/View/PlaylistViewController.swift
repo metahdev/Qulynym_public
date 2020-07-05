@@ -100,10 +100,11 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        cell.imageName = content[indexPath.row]
+        cell.image = UIImage(named: content[indexPath.row])
         cell.text = content[indexPath.row]
         cell.sectionTitleLabel.setupPlaylistLabel(size: cell.frame.height * 0.1)
-        cell.imageViewCornerRadius = 15
+        cell.layer.cornerRadius = 5
+        cell.clipsToBounds = true 
 //        cell.titleLabelConstantFromTop = 4
         return cell
     }

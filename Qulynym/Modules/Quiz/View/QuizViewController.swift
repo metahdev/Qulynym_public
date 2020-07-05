@@ -120,9 +120,9 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        cell.imageName = cards[indexPath.row]
+        cell.image = UIImage(named: cards[indexPath.row])
         if areImagesTransparent {
-            cell.imageViewContentMode = .scaleAspectFit
+            cell.imageView.contentMode = .scaleAspectFit
         } else {
             cell.layer.borderWidth = 5
             cell.layer.borderColor = UIColor.white.cgColor
@@ -192,7 +192,7 @@ extension QuizViewController {
     func changeSelectedCellOpacity(to number: Float) {
         let indexPath = IndexPath(row: selectedIndex!, section: 0)
         let cell = cardsCollectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell
-        cell!.imageViewOpacity = number
+        cell!.imageView.layer.opacity = number
     }
     
     func shuffleCards() {
