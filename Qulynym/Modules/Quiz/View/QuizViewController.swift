@@ -9,7 +9,6 @@
 
 import UIKit
 
-
 protocol QuizViewControllerProtocol: class {
     var categoryName: String { get set }
     var randomCard: String { get set }
@@ -51,7 +50,6 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     private var quizView: QuizViewProtocol!
     private var configurator: QuizConfiguratorProtocol = QuizConfigurator()
     
-
     // MARK:- Status Bar
     override var prefersStatusBarHidden: Bool {
         return true
@@ -120,9 +118,9 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        cell.imageName = cards[indexPath.row]
+        cell.image = UIImage(named: cards[indexPath.row])
         if areImagesTransparent {
-            cell.imageViewContentMode = .scaleAspectFit
+            cell.imageView.contentMode = .scaleAspectFit
         } else {
             cell.layer.borderWidth = 5
             cell.layer.borderColor = UIColor.white.cgColor
@@ -192,19 +190,11 @@ extension QuizViewController {
     func changeSelectedCellOpacity(to number: Float) {
         let indexPath = IndexPath(row: selectedIndex!, section: 0)
         let cell = cardsCollectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell
-        cell!.imageViewOpacity = number
+        cell!.imageView.layer.opacity = number
     }
     
     func shuffleCards() {
-//        for cell in cardsCollectionView.visibleCells {
-//            cardsCollectionView.performBatchUpdates(nil)
-//            UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromRight, animations: {
-//                UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromRight, animations: {
-                        self.cards = self.cards.shuffled()
-                        self.cardsCollectionView.reloadData()
-//                }, completion: nil)
-//            }, completion: nil)
-//        }
+        self.cards = self.cards.shuffled()
+        self.cardsCollectionView.reloadData()
     }
-
 }

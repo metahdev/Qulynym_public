@@ -24,7 +24,7 @@ import SpriteKit
 import GameplayKit
 
 class ObstacleEntity: GKEntity {
-    // MARK: - Proeprties
+    // MARK: - Properties
     var spriteComponent: SpriteComponent!
     
     // MARK: - Inits

@@ -24,6 +24,7 @@ import SpriteKit
 import GameplayKit
 
 class MovementComponent: GKComponent {
+    // MARK: - Properties
     let spriteComponent: SpriteComponent
         
     private let flapAction = SKAction.playSoundFileNamed("flapping.wav", waitForCompletion: false)
@@ -43,6 +44,7 @@ class MovementComponent: GKComponent {
     var playableStart: CGFloat = 0
     private var playableHeight = GameScene.playableHeight
     
+    // MARK: - Inits
     init(entity: GKEntity) {
         self.spriteComponent = entity.component(ofType: SpriteComponent.self)!
         super.init()
@@ -52,6 +54,17 @@ class MovementComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: - Override funcs
+    override func update(deltaTime seconds: TimeInterval) {
+        if let player = entity as? PlayerEntity {
+            if player.movementAllowed {
+                applyMovement(seconds)
+            }
+        }
+    }
+    
+    // MARK: - Actions
     func applyInitialImpulse() {
         velocity = CGPoint(x: 0, y: impulse * 2)
     }
@@ -89,14 +102,6 @@ class MovementComponent: GKComponent {
         
         if spriteNode.position.y - spriteNode.size.height/2 > playableHeight {
             spriteNode.position = CGPoint(x: spriteNode.position.x, y: playableHeight + spriteNode.size.height/2)
-        }
-    }
-    
-    override func update(deltaTime seconds: TimeInterval) {
-        if let player = entity as? PlayerEntity {
-            if player.movementAllowed {
-                applyMovement(seconds)
-            }
         }
     }
 }

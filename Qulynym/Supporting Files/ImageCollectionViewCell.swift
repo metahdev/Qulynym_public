@@ -17,11 +17,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
             setupThumbnailImage()
         }
     }
-    var imageName: String! {
-        didSet {
-            imageView.image = UIImage(named: imageName)
-        }
-    }
     var image: UIImage? {
         didSet {
             imageView.image = image
@@ -32,31 +27,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
             sectionTitleLabel.text = text
         }
     }
-    var imageViewCornerRadius: CGFloat! {
-        didSet {
-            imageView.layer.cornerRadius = imageViewCornerRadius
-        }
-    }
-    var imageViewContentMode: ContentMode! {
-        didSet {
-            imageView.contentMode = imageViewContentMode
-        }
-    }
-    var imageViewOpacity: Float! {
-        didSet {
-            imageView.layer.opacity = imageViewOpacity
-        }
-    }
-    var imageViewLayerMasksToBounds: Bool! {
-        didSet {
-            imageView.layer.masksToBounds = imageViewLayerMasksToBounds
-        }
-    }
-    var titleLabelBackgroundColor: UIColor? {
-        didSet {
-            sectionTitleLabel.backgroundColor = titleLabelBackgroundColor
-        }
-    }
+    
+    var constant: CGFloat = 0
     weak var warningCaller: ConnectionWarningCaller!
     lazy var imageView: CustomImageView = {
         let iv = CustomImageView()
@@ -66,18 +38,17 @@ class ImageCollectionViewCell: UICollectionViewCell {
     lazy var sectionTitleLabel: UILabel = {
         let lbl = UILabel()
         lbl.layer.cornerRadius = 15
-        lbl.clipsToBounds = true
         return lbl
     }()
     
     // MARK:- Initialization
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         self.addSubview(imageView)
         self.addSubview(sectionTitleLabel)
         setAutoresizingMaskToFalse()
@@ -100,10 +71,10 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     private func activateConstraints() {
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: self.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: constant),
+            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -constant),
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: -constant),
+            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: constant),
             
             sectionTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             sectionTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),

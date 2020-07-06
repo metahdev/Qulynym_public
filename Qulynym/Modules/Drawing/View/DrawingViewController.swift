@@ -242,7 +242,7 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         cell.backgroundColor = colors[indexPath.row]
         cell.layer.cornerRadius = cell.frame.width * 0.5
-        
+        cell.clipsToBounds = true 
         return cell
     }
     

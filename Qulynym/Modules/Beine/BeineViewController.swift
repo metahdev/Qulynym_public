@@ -255,10 +255,9 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         cell.backgroundColor = UIColor(red: 149/255, green: 165/255, blue: 166/255, alpha: 1)
         cell.imageView.isSkeletonable = true
-        cell.titleLabelBackgroundColor = .black
+        cell.sectionTitleLabel.backgroundColor = .black
         cell.layer.cornerRadius = 15
-        cell.imageViewCornerRadius = 15
-        cell.imageViewLayerMasksToBounds = true
+        cell.clipsToBounds = true
         cell.isUserInteractionEnabled = false
         
         let gradient = SkeletonGradient(baseColor: .concrete)

@@ -26,6 +26,14 @@ import GameplayKit
 class TutorialState: GKState {
     unowned let gameScene: GameScene
     
+    private lazy var tutorialNode: SKSpriteNode = {
+        let sn = SKSpriteNode(imageNamed: "tutorial")
+        sn.position = CGPoint(x: gameScene.size.width * 0.5, y: GameScene.playableHeight * 0.4 + gameScene.playableStart)
+        sn.name = "Tutorial"
+        sn.zPosition = Layer.ui.rawValue
+        return sn
+    }()
+    
     init(scene: SKScene) {
         self.gameScene = scene as! GameScene
         super.init()
@@ -53,11 +61,7 @@ class TutorialState: GKState {
         gameScene.setupForegroundNode()
         gameScene.setupAndAddPlayer()
         gameScene.setupAndAddScoreLabel()
-        
-        let tutorial = SKSpriteNode(imageNamed: "tutorial")
-        tutorial.position = CGPoint(x: gameScene.size.width * 0.5, y: GameScene.playableHeight * 0.4 + gameScene.playableStart)
-        tutorial.name = "Tutorial"
-        tutorial.zPosition = Layer.ui.rawValue
-        gameScene.worldNode.addChild(tutorial)
+
+        gameScene.worldNode.addChild(tutorialNode)
     }
 }

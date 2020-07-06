@@ -24,8 +24,10 @@ import SpriteKit
 import GameplayKit
 
 class PlayingState: GKState {
+    // MARK: - Properties
     unowned let gameScene: GameScene
     
+    // MARK: - View Lifecycle
     init(scene: SKScene) {
         self.gameScene = scene as! GameScene
         super.init()

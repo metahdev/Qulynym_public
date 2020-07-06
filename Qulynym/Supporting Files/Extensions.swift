@@ -10,7 +10,14 @@
 import UIKit
 import Alamofire
 
-// UIButton Constraints
+extension UIView {
+    func setupShadow() {
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOffset = CGSize(width: 4, height: 4)
+        self.layer.shadowRadius = 5.0
+    }
+}
+
 extension UIButton {
     func configureCloseBtnFrame(_ view: UIView) {
         let topConstraint = self.topAnchor.constraint(equalTo: view.topAnchor)
@@ -77,12 +84,3 @@ extension UIColor {
     static let skyBlue = UIColor(red: 141/255, green: 232/255, blue: 237/255, alpha: 1)
     static let beigePink = UIColor(red: 0.99, green: 0.9, blue: 0.9, alpha: 1)
 }
-
-extension UIView {
-    func setupShadow() {
-        self.layer.shadowOpacity = 0.3
-        self.layer.shadowOffset = CGSize(width: 4, height: 4)
-        self.layer.shadowRadius = 5.0
-    }
-}
-

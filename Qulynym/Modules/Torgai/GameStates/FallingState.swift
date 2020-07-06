@@ -24,23 +24,29 @@ import SpriteKit
 import GameplayKit
 
 class FallingState: GKState {
+    // MARK: - Properties
     unowned let gameScene: GameScene
     
     private let whackAction = SKAction.playSoundFileNamed("whack.wav", waitForCompletion: false)
     private let fallingAction = SKAction.playSoundFileNamed("falling.wav", waitForCompletion: false)
+    private lazy var shakeAction = SKAction.screenShakeWithNode(gameScene.worldNode, amount: CGPoint(x: 0, y: 7.0), oscillations: 10, duration: 1.0)
     
+    private lazy var shokNode: SKSpriteNode = {
+        let sn = SKSpriteNode(color: SKColor.white, size: gameScene.size)
+        sn.position = CGPoint(x: gameScene.size.width / 2, y: gameScene.size.height / 2)
+        sn.zPosition = Layer.flash.rawValue
+        return sn
+    }()
+    
+    // MARK: - View Lifecycle
     init(scene: SKScene) {
         self.gameScene = scene as! GameScene
         super.init()
     }
     
     override func didEnter(from previousState: GKState?) {
-        let shake = SKAction.screenShakeWithNode(gameScene.worldNode, amount: CGPoint(x: 0, y: 7.0), oscillations: 10, duration: 1.0)
-        gameScene.worldNode.run(shake)
+        gameScene.worldNode.run(shakeAction)
         
-        let shokNode = SKSpriteNode(color: SKColor.white, size: gameScene.size)
-        shokNode.position = CGPoint(x: gameScene.size.width / 2, y: gameScene.size.height / 2)
-        shokNode.zPosition = Layer.flash.rawValue
         gameScene.worldNode.addChild(shokNode)
         shokNode.run(SKAction.removeFromParentAfterDelay(0.01))
         
@@ -51,4 +57,6 @@ class FallingState: GKState {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is GameOverState.Type
     }
+    
+    
 }
