@@ -50,6 +50,8 @@ extension UILabel {
     func setupMenuLabel(size: CGFloat) {
         self.textColor = .white
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 15
         setupContentLabel(size: size)
     }
     
