@@ -9,7 +9,6 @@
 
 import UIKit
 
-
 protocol QuizViewControllerProtocol: class {
     var categoryName: String { get set }
     var randomCard: String { get set }
@@ -51,7 +50,6 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
     private var quizView: QuizViewProtocol!
     private var configurator: QuizConfiguratorProtocol = QuizConfigurator()
     
-
     // MARK:- Status Bar
     override var prefersStatusBarHidden: Bool {
         return true
@@ -196,15 +194,7 @@ extension QuizViewController {
     }
     
     func shuffleCards() {
-//        for cell in cardsCollectionView.visibleCells {
-//            cardsCollectionView.performBatchUpdates(nil)
-//            UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromRight, animations: {
-//                UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromRight, animations: {
-                        self.cards = self.cards.shuffled()
-                        self.cardsCollectionView.reloadData()
-//                }, completion: nil)
-//            }, completion: nil)
-//        }
+        self.cards = self.cards.shuffled()
+        self.cardsCollectionView.reloadData()
     }
-
 }

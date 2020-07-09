@@ -27,9 +27,10 @@ class EntityNode: SKSpriteNode {
 }
 
 class SpriteComponent: GKComponent {
-    
+    // MARK: - Properties
     let node: EntityNode
     
+    // MARK: - Inits
     init(entity: GKEntity, texture: SKTexture, size: CGSize) {
         node = EntityNode(texture: texture, color: SKColor.white, size: size)
         node.entity = entity

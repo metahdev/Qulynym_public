@@ -24,8 +24,31 @@ import SpriteKit
 import GameplayKit
 
 class MainMenuState: GKState {
+    // MARK: - Properties
     unowned let gameScene: GameScene
     
+    private lazy var logoNode: SKSpriteNode = {
+        let sn = SKSpriteNode(imageNamed: "logotype")
+        sn.position = CGPoint(x: gameScene.size.width / 2, y: gameScene.size.height * 0.8)
+        sn.zPosition = Layer.ui.rawValue
+        sn.size = CGSize(width: 276, height: 82)
+        return sn
+    }()
+    private lazy var playButtonNode: SKSpriteNode = {
+        let sn = SKSpriteNode(imageNamed: "long button")
+        sn.position = CGPoint(x: gameScene.size.width * 0.5, y: gameScene.size.height * 0.25)
+        sn.zPosition = Layer.ui.rawValue
+        return sn
+    }()
+    private lazy var playTextNode: SKSpriteNode = {
+        let sn = SKSpriteNode(imageNamed: "play")
+        sn.position = CGPoint.zero
+        sn.zPosition = Layer.ui.rawValue
+        sn.size = CGSize(width: 74, height: 20)
+        return sn
+    }()
+    
+    // MARK: - View Lifecycle
     init(scene: SKScene) {
         self.gameScene = scene as! GameScene
         super.init()
@@ -35,7 +58,7 @@ class MainMenuState: GKState {
         gameScene.setupAndAddBackgroundNode()
         gameScene.setupForegroundNode()
         gameScene.setupAndAddPlayer()
-        setupMainMenu()
+        addChilds()
         
         gameScene.player.movementAllowed = false
     }
@@ -44,23 +67,11 @@ class MainMenuState: GKState {
         return stateClass is TutorialState.Type
     }
     
-    func setupMainMenu() {
-        let logo = SKSpriteNode(imageNamed: "logotype")
-        logo.position = CGPoint(x: gameScene.size.width / 2, y: gameScene.size.height * 0.8)
-        logo.zPosition = Layer.ui.rawValue
-        logo.size = CGSize(width: 276, height: 82)
-        gameScene.worldNode.addChild(logo)
-        
-        let playButton = SKSpriteNode(imageNamed: "long button")
-        playButton.position = CGPoint(x: gameScene.size.width * 0.5, y: gameScene.size.height * 0.25)
-        playButton.zPosition = Layer.ui.rawValue
-        gameScene.worldNode.addChild(playButton)
-        
-        let playButtonText = SKSpriteNode(imageNamed: "play")
-        playButtonText.position = CGPoint.zero
-        playButtonText.zPosition = Layer.ui.rawValue
-        playButtonText.size = CGSize(width: 74, height: 20)
-        playButton.addChild(playButtonText)
+    // MARK: - Layout
+    private func addChilds() {
+        gameScene.worldNode.addChild(logoNode)
+        gameScene.worldNode.addChild(playButtonNode)
+        playButtonNode.addChild(playTextNode)
     }
 }
 

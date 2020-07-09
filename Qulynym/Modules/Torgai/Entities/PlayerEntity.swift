@@ -30,8 +30,10 @@ class PlayerEntity: GKEntity {
     var animationComponent: AnimationComponent!
     
     var movementAllowed = false
-    var numberOfFrames = 2
+    private var numberOfFrames = 2
     
+    private var textures: Array<SKTexture> = []
+
     // MARK: - Inits
     init (imageName: String) {
         super.init()
@@ -41,34 +43,39 @@ class PlayerEntity: GKEntity {
         
         movementComponent = MovementComponent(entity: self)
         addComponent(movementComponent)
+        appendTextures()
         
-        var textures: Array<SKTexture> = []
+        animationComponent = AnimationComponent(entity: self, textures: textures)
+        addComponent(animationComponent)
+                
+        movementComponent.applyInitialImpulse()
+        
+        setupSpriteNode()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    private func appendTextures() {
         for i in 0..<numberOfFrames {
             textures.append(SKTexture(imageNamed: "torgai\(i)"))
-            
         }
         
         for i in stride(from: numberOfFrames, through: 0, by: -1) {
             textures.append(SKTexture(imageNamed: "torgai\(i)"))
         }
-        
-        animationComponent = AnimationComponent(entity: self, textures: textures)
-        addComponent(animationComponent)
-        
-        movementComponent.applyInitialImpulse()
-        
+    }
+    
+    private func setupSpriteNode() {
         let spriteNode = spriteComponent.node
         spriteNode.size = CGSize(width: 53.33,
                                  height: 40)
         spriteNode.physicsBody = SKPhysicsBody(texture: spriteNode.texture!, size: spriteNode.frame.size)
-    
+        
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.Player
         spriteNode.physicsBody?.collisionBitMask = 0
         spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Ground
-        // ***        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

@@ -24,25 +24,27 @@ import SpriteKit
 import GameplayKit
 
 class MovementComponent: GKComponent {
+    // MARK: - Properties
     let spriteComponent: SpriteComponent
         
-    let flapAction = SKAction.playSoundFileNamed("flapping.wav", waitForCompletion: false)
+    private let flapAction = SKAction.playSoundFileNamed("flapping.wav", waitForCompletion: false)
     
-    let impulse: CGFloat = 400
-    var velocity = CGPoint.zero
-    let gravity: CGFloat = -1500
+    private let impulse: CGFloat = 400
+    private var velocity = CGPoint.zero
+    private let gravity: CGFloat = -1500
     
-    var velocityModifier: CGFloat = 1000.0
-    var angularVelocity: CGFloat = 0.0
-    let minDegrees: CGFloat = -90
-    let maxDegrees: CGFloat = 25
+    private var velocityModifier: CGFloat = 1000.0
+    private var angularVelocity: CGFloat = 0.0
+    private let minDegrees: CGFloat = -90
+    private let maxDegrees: CGFloat = 25
     
-    var lastTouchTime: TimeInterval = 0
-    var lasyTouchY: CGFloat = 0.0
+    private var lastTouchTime: TimeInterval = 0
+    private var lasyTouchY: CGFloat = 0.0
     
     var playableStart: CGFloat = 0
-    var playableHeight = GameScene.playableHeight
+    private var playableHeight = GameScene.playableHeight
     
+    // MARK: - Inits
     init(entity: GKEntity) {
         self.spriteComponent = entity.component(ofType: SpriteComponent.self)!
         super.init()
@@ -52,6 +54,17 @@ class MovementComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: - Override funcs
+    override func update(deltaTime seconds: TimeInterval) {
+        if let player = entity as? PlayerEntity {
+            if player.movementAllowed {
+                applyMovement(seconds)
+            }
+        }
+    }
+    
+    // MARK: - Actions
     func applyInitialImpulse() {
         velocity = CGPoint(x: 0, y: impulse * 2)
     }
@@ -66,7 +79,7 @@ class MovementComponent: GKComponent {
         lasyTouchY = spriteComponent.node.position.y
     }
     
-    func applyMovement(_ seconds: TimeInterval) {
+    private func applyMovement(_ seconds: TimeInterval) {
         let spriteNode = spriteComponent.node
         
         let gravityStep = CGPoint(x: 0, y: gravity) * CGFloat(seconds)
@@ -89,14 +102,6 @@ class MovementComponent: GKComponent {
         
         if spriteNode.position.y - spriteNode.size.height/2 > playableHeight {
             spriteNode.position = CGPoint(x: spriteNode.position.x, y: playableHeight + spriteNode.size.height/2)
-        }
-    }
-    
-    override func update(deltaTime seconds: TimeInterval) {
-        if let player = entity as? PlayerEntity {
-            if player.movementAllowed {
-                applyMovement(seconds)
-            }
         }
     }
 }

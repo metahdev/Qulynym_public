@@ -24,9 +24,11 @@ import SpriteKit
 import GameplayKit
 
 class AnimationComponent: GKComponent {
+    // MARK: - Properties
     let spriteComponent: SpriteComponent
-    var textures: Array<SKTexture> = []
+    private var textures: Array<SKTexture> = []
     
+    // MARK: - Inits
     init(entity: GKEntity, textures: Array<SKTexture>) {
         self.textures = textures
         self.spriteComponent = entity.component(ofType: SpriteComponent.self)!
@@ -37,6 +39,7 @@ class AnimationComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Override funcs
     override func update(deltaTime seconds: TimeInterval) {
         if let player = entity as? PlayerEntity {
             if player.movementAllowed  {
@@ -47,6 +50,7 @@ class AnimationComponent: GKComponent {
         }
     }
     
+    // MARK: - Actions
     func startWobble() {
         let moveUp = SKAction.moveBy(x: 0, y: 10, duration: 0.4)
         moveUp.timingMode = .easeInEaseOut
@@ -73,7 +77,7 @@ class AnimationComponent: GKComponent {
         }
     }
     
-    func stopAnimation(_ name: String) {
+    private func stopAnimation(_ name: String) {
         spriteComponent.node.removeAction(forKey: name)
     }
 }
