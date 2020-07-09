@@ -14,10 +14,10 @@ import CoreData
 #warning("Improvements & Refactor")
 /*
  Improvements:
-  1) IPad Drawing View brush width & IPad layout overall(Collection View Cells, drawing)
-  2) Some icons are not resizing(icons8.com and etc)
+  1) IPad Drawing View brush width & IPad layout overall(Collection View Cells, drawing) - done
+  2) Some icons are not resizing(icons8.com and etc) - done
   3) Check whether concurrency is performing normally in all modules(especially QuizView)
-  4) UX(closeBtn, drawing)
+  4) UX(closeBtn, drawing) - done
  Refactor:
   1) MenuRouter + MenuViewCotnroller
   2) CustomImageView(maybe delegate something to DataFetchAPI)
