@@ -127,13 +127,13 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
             canvasView.color = previousColor ?? .red
         }
         if tool == brush {
-            canvasView.brushWidth = 20
+            canvasView.brushWidth = view.frame.height * 0.04
             canvasView.color = canvasView.color.withAlphaComponent(1)
         } else if tool == pencil {
-            canvasView.brushWidth = 5
+            canvasView.brushWidth = view.frame.height * 0.01
             canvasView.color = canvasView.color.withAlphaComponent(0.7)
         } else {
-            canvasView.brushWidth = 12
+            canvasView.brushWidth = view.frame.height * 0.02
             canvasView.color = canvasView.color.withAlphaComponent(0.5)
         }
     }
