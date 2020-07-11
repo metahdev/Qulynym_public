@@ -5,8 +5,8 @@
       "scale" : "1x"
     },
     {
+      "filename" : "imageedit_1_6549286664 2.png",
       "idiom" : "universal",
-      "filename" : "icons8-left-100.png",
       "scale" : "2x"
     },
     {
@@ -15,7 +15,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

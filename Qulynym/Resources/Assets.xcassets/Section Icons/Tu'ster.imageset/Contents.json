@@ -5,8 +5,8 @@
       "scale" : "1x"
     },
     {
+      "filename" : "imageedit_1_7263241326.png",
       "idiom" : "universal",
-      "filename" : "18Bi5s4-vm0.png",
       "scale" : "2x"
     },
     {
@@ -15,7 +15,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
