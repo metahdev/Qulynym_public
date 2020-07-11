@@ -17,6 +17,7 @@
 		856F349622F87F8900E97C0C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856F349522F87F8900E97C0C /* SettingsView.swift */; };
 		85CEBBC123EC33DD00B6E2C4 /* Tolag'ai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85CEBBBF23EC33DD00B6E2C4 /* Tolag'ai.mp3 */; };
 		85CEBBC223EC33DD00B6E2C4 /* G'ajap qus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85CEBBC023EC33DD00B6E2C4 /* G'ajap qus.mp3 */; };
+		85EAEED824BA61DB0006DF41 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EAEED724BA61DB0006DF41 /* TitleCollectionViewCell.swift */; };
 		B916B09122FBDC3400AF255A /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08C22FBDC3400AF255A /* GameOverState.swift */; };
 		B916B09222FBDC3400AF255A /* TutorialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08D22FBDC3400AF255A /* TutorialState.swift */; };
 		B916B09322FBDC3400AF255A /* MainMenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916B08E22FBDC3400AF255A /* MainMenuState.swift */; };
@@ -208,6 +209,7 @@
 		856F349522F87F8900E97C0C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		85CEBBBF23EC33DD00B6E2C4 /* Tolag'ai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Tolag'ai.mp3"; sourceTree = "<group>"; };
 		85CEBBC023EC33DD00B6E2C4 /* G'ajap qus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "G'ajap qus.mp3"; sourceTree = "<group>"; };
+		85EAEED724BA61DB0006DF41 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		A60B3FFC7A9900BB4BF332C1 /* Pods-Qulynym.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.release.xcconfig"; path = "Target Support Files/Pods-Qulynym/Pods-Qulynym.release.xcconfig"; sourceTree = "<group>"; };
 		B916B08C22FBDC3400AF255A /* GameOverState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 		B916B08D22FBDC3400AF255A /* TutorialState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialState.swift; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 			children = (
 				D135E2A322A02F7B00DC84DE /* PlaylistItemViewController.swift */,
 				D135E2A622A02F9800DC84DE /* PlaylistItemView.swift */,
+				85EAEED724BA61DB0006DF41 /* TitleCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1110,6 +1113,7 @@
 				B916B09222FBDC3400AF255A /* TutorialState.swift in Sources */,
 				D13D867E22180E430048A6E4 /* PersistentService.swift in Sources */,
 				D10687D122AE68FA00A3E6E0 /* MenuPresenter.swift in Sources */,
+				85EAEED824BA61DB0006DF41 /* TitleCollectionViewCell.swift in Sources */,
 				D14D536A22213775007ACD55 /* ItemConfigurator.swift in Sources */,
 				D10687CF22AE68EE00A3E6E0 /* MenuView.swift in Sources */,
 				856F349422F87F5800E97C0C /* SettingsViewController.swift in Sources */,

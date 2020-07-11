@@ -9,6 +9,15 @@
 
 import UIKit
 
+#warning("TODO")
+/*
+ 1. LyricsCollectionView: TitleCVCell
+ 2. Songs Model change
+ 3. Timer logic
+ 4. Details
+ */
+
+
 protocol PlaylistViewControllerProtocol: class {
     var isKaraoke: Bool! { get set }
     var content: [String] { get set }

@@ -11,7 +11,7 @@ import Foundation
 
 protocol PlaylistItemInteractorProtocol: class {
     func getMaxCount(_ isKaraoke: Bool) -> Int
-    func getLyricsText(_ index: Int) -> String
+    func getLyricsText(_ index: Int) -> [String]
     func getPreviousAudioName(_ index: inout Int, isKaraoke: Bool) -> String
     func getNextAudioName(_ index: inout Int, isKaraoke: Bool) -> String
 }
@@ -33,7 +33,7 @@ extension PlaylistItemInteractor {
         return ContentService.stories.count - 1
     }
     
-    func getLyricsText(_ index: Int) -> String {
+    func getLyricsText(_ index: Int) -> [String] {
         return ContentService.songs[index].lyrics
     }
     

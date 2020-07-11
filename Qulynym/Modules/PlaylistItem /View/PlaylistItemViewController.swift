@@ -13,7 +13,7 @@ import AVKit
 protocol PlaylistItemViewControllerProtocol: class {
     var isKaraoke: Bool { get set }
     var contentName: String { get set }
-    var lyricsText: String { get set }
+    var lyricsText: [String] { get set }
     var index: Int { get set }
     var maxIndex: Int { get set }
     var isPlaying: Bool { get }
@@ -28,7 +28,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     // MARK:- Properties
     var isKaraoke = true
     var contentName = ""
-    var lyricsText = ""
+    var lyricsText: [String] = []
     var index = 0
     var maxIndex = 0
     var isPlaying = false
@@ -198,13 +198,15 @@ extension PlaylistItemViewController {
     func setViewsProperties() {
         playlistItemView.titleLabel.text = contentName
         if isKaraoke {
-            playlistItemView.lyricsTextView.text = lyricsText
+//            playlistItemView.lyricsTextView.text = lyricsText
         } else {
             playlistItemView.storyImageView.image = UIImage(named: contentName)
         }
         playlistItemView.soundSlider.value = 1
         playlistItemView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
         isOpenSlider = true
+        playlistItemView.lyricsCV.delegate = self
+        playlistItemView.lyricsCV.dataSource = self
     }
 
     
@@ -222,3 +224,42 @@ extension PlaylistItemViewController {
         }
     }
 }
+ 
+ extension PlaylistItemViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    // MARK:- UICollectionView Protocols
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return lyricsText.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! TitleCollectionViewCell
+        let lyricsLine = lyricsText[indexPath.row]
+        cell.title = lyricsLine
+        return cell
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let lyricsLine = lyricsText[indexPath.row]
+        return CGSize(width: collectionView.frame.width, height: lyricsLine.size(withAttributes: nil).height)
+//        return lyricsLine.size(withAttributes: nil)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+
+ }

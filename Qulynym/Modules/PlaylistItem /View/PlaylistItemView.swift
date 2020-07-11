@@ -15,7 +15,8 @@ protocol PlaylistItemViewProtocol: class {
     var playBtn: UIButton { get }
     var titleLabel: UILabel { get }
     var storyImageView: UIImageView { get }
-    var lyricsTextView: UITextView { get }
+//    var lyricsTextView: UITextView { get }
+    var lyricsCV: UICollectionView { get }
     var forwardBtn: UIButton { get }
     var backBtn: UIButton { get }
     var timelineSlider: UISlider { get }
@@ -64,19 +65,27 @@ class PlaylistItemView: PlaylistItemViewProtocol {
         imageV.setupShadow()
         return imageV
     }()
-    lazy var lyricsTextView: UITextView = {
-        let textV = UITextView()
-        textV.layer.borderWidth = 5
-        textV.layer.borderColor = UIColor.brown.cgColor
-        textV.textColor = .black
-        textV.isEditable = false
-        textV.isSelectable = false
-        textV.isScrollEnabled = true
-        textV.backgroundColor = .clear
-        textV.font = UIFont(name: "Helvetica", size: view.frame.height * 0.08)
-        textV.textAlignment = .center
-        return textV
+    lazy var lyricsCV: UICollectionView = {
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        cv.backgroundColor = .clear
+        cv.layer.borderColor = UIColor.brown.cgColor
+        cv.layer.borderWidth = 4
+        cv.register(TitleCollectionViewCell.self , forCellWithReuseIdentifier: "reuseID")
+        return cv
     }()
+//    lazy var lyricsTextView: UITextView = {
+//        let textV = UITextView()
+//        textV.layer.borderWidth = 5
+//        textV.layer.borderColor = UIColor.brown.cgColor
+//        textV.textColor = .black
+//        textV.isEditable = false
+//        textV.isSelectable = false
+//        textV.isScrollEnabled = true
+//        textV.backgroundColor = .clear
+//        textV.font = UIFont(name: "Helvetica", size: view.frame.height * 0.08)
+//        textV.textAlignment = .center
+//        return textV
+//    }()
     lazy var timelineSlider: UISlider = {
         return setupPlaylistSlider(value: 0, secondColor: .gray)
     }()
@@ -119,7 +128,8 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     private func addSubviews() {
         view.addSubview(storyBackgroundImage)
         view.addSubview(closeBtn)
-        view.addSubview(lyricsTextView)
+//        view.addSubview(lyricsTextView)
+        view.addSubview(lyricsCV)
         view.addSubview(storyImageView)
         view.addSubview(titleLabel)
         view.addSubview(playBtn)
@@ -141,27 +151,33 @@ class PlaylistItemView: PlaylistItemViewProtocol {
             storyBackgroundImage.image = UIImage(named: "storyBg")
         }
         storyImageView.isHidden = isKaraoke
-        lyricsTextView.isHidden = !isKaraoke
+        lyricsCV.isHidden = !isKaraoke
+//        lyricsTextView.isHidden = !isKaraoke
     }
     
     private func activateMainConstraints() {
         NSLayoutConstraint.activate([
-            lyricsTextView.topAnchor.constraint(equalTo: view.topAnchor),
-            lyricsTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lyricsTextView.widthAnchor.constraint(equalTo: view.heightAnchor),
-            lyricsTextView.heightAnchor.constraint(equalTo: lyricsTextView.widthAnchor, multiplier: 0.5),
+//            lyricsTextView.topAnchor.constraint(equalTo: view.topAnchor),
+//            lyricsTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            lyricsTextView.widthAnchor.constraint(equalTo: view.heightAnchor),
+//            lyricsTextView.heightAnchor.constraint(equalTo: lyricsTextView.widthAnchor, multiplier: 0.5),
+            
+            lyricsCV.topAnchor.constraint(equalTo: view.topAnchor),
+            lyricsCV.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            lyricsCV.widthAnchor.constraint(equalTo: view.heightAnchor),
+            lyricsCV.heightAnchor.constraint(equalTo: lyricsCV.widthAnchor, multiplier: 0.5),
             
             storyImageView.topAnchor.constraint(equalTo: view.topAnchor),
             storyImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             storyImageView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
             storyImageView.heightAnchor.constraint(equalTo: storyImageView.widthAnchor),
             
-            titleLabel.topAnchor.constraint(equalTo: lyricsTextView.bottomAnchor, constant: 12),
+            titleLabel.topAnchor.constraint(equalTo: lyricsCV.bottomAnchor, constant: 12),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             timelineSlider.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             timelineSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            timelineSlider.widthAnchor.constraint(equalTo: lyricsTextView.widthAnchor),
+            timelineSlider.widthAnchor.constraint(equalTo: lyricsCV.widthAnchor),
             
             soundButton.leadingAnchor.constraint(equalTo: timelineSlider.trailingAnchor, constant: 16),
             soundButton.centerYAnchor.constraint(equalTo: timelineSlider.centerYAnchor),
@@ -174,7 +190,7 @@ class PlaylistItemView: PlaylistItemViewProtocol {
             
             playBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             playBtn.topAnchor.constraint(equalTo: timelineSlider.topAnchor, constant: 8),
-            playBtn.widthAnchor.constraint(equalTo: lyricsTextView.widthAnchor, multiplier: 0.3),
+            playBtn.widthAnchor.constraint(equalTo: lyricsCV.widthAnchor, multiplier: 0.3),
             playBtn.heightAnchor.constraint(equalTo: playBtn.widthAnchor),
             
             forwardBtn.leadingAnchor.constraint(equalTo: playBtn.trailingAnchor, constant: 8),
@@ -189,5 +205,4 @@ class PlaylistItemView: PlaylistItemViewProtocol {
         ])
     }
 }
-
 
