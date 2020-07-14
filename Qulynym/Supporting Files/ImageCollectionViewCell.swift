@@ -55,7 +55,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
         activateConstraints()
     }
     
-    
     // MARK:- Methods    
     func setupThumbnailImage() {
         if let thumbnailImageUrl = beine?.thumbnailURL {
@@ -91,5 +90,18 @@ class ImageCollectionViewCell: UICollectionViewCell {
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
         layoutIfNeeded()
+    }
+    
+    // MARK: - Actions
+    func flipCell(completion: @escaping () -> Void) {
+        UIView.transition(with: self, duration: 0.4, options: .transitionFlipFromRight, animations: {
+        }, completion: { _ in
+            self.imageView.image = UIImage(named: "backSide")
+            UIView.transition(with: self, duration: 0.4, options: .transitionFlipFromRight, animations: {
+            }, completion: { _ in
+                self.imageView.image = self.image
+            })
+            completion()
+        })
     }
 }

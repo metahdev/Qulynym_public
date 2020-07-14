@@ -194,7 +194,11 @@ extension QuizViewController {
     }
     
     func shuffleCards() {
-        self.cards = self.cards.shuffled()
-        self.cardsCollectionView.reloadData()
+        for cell in self.cardsCollectionView.visibleCells {
+            (cell as! ImageCollectionViewCell).flipCell(completion: {
+                self.cards = self.cards.shuffled()
+                self.cardsCollectionView.reloadData()
+            })
+        }
     }
 }
