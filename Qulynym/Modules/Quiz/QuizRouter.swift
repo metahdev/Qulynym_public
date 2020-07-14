@@ -11,7 +11,7 @@ import Foundation
 
 protocol QuizRouterProtocol: class {
     func backToItem(didPass: Bool)
-    func close(showCongratulationsScenes: Bool)
+    func close()
 }
 
 class QuizRouter: QuizRouterProtocol {
@@ -32,22 +32,18 @@ extension QuizRouter {
             AudioPlayer.audioQueue.async {
                 while AudioPlayer.sfxAudioPlayer.isPlaying {}
                 DispatchQueue.main.async {
-                    self.close(showCongratulationsScenes: true)
+                    self.close()
                 }
             }
             return
         }
+        controller.itemView.returnedFromQuiz = true 
         controller.navigationController?.popViewController(animated: true)
     }
     
-    func close(showCongratulationsScenes: Bool) {
+    func close() {
         if let firstViewController = controller.navigationController?.viewControllers[1] {
             controller.navigationController?.popToViewController(firstViewController, animated: true)
-            
-//            if showCongratulationsScenes {
-//                let scenes = ScenesManager(calling: firstViewController, showing: self.controller.categoryName + "Passed")
-//                scenes.showAlert()
-//            }
         }
     }
 }

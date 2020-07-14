@@ -13,6 +13,7 @@ protocol ItemViewControllerProtocol: class {
     var section: EduSection! { get set }
     var areImagesTransparent: Bool { get set }
     var slideCount: Int { get set }
+    var returnedFromQuiz: Bool { get set }
     
     func updateContent(contentKey: String)
 }
@@ -29,6 +30,7 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
             presenter.slideCount = newValue
         }
     }
+    var returnedFromQuiz = false 
     var presenter: ItemPresenterProtocol!
     var quizViewController: QuizViewControllerProtocol!
     

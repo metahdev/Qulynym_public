@@ -44,12 +44,13 @@ extension ItemPresenter {
             return
         }
         
-        if slideCount % 4 == 0 && slideCount != 0 {
+        if slideCount % 4 == 0 && slideCount != 0 && !controller.returnedFromQuiz {
             passDataAndOpenQuiz()
             openedQuiz = true
             return
         }
         
+        controller.returnedFromQuiz = false
         updateProperties()
         AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
         AudioPlayer.contentAudioPlayer.play()

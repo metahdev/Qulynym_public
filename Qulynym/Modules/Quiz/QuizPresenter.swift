@@ -83,7 +83,7 @@ extension QuizPresenter {
     
     func closeView() {
         stopAudios()
-        router.close(showCongratulationsScenes: false)
+        router.close()
     }
     
     func backToItemWithRepeat() {
