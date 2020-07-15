@@ -95,13 +95,15 @@ class ImageCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
     func flipCell(completion: @escaping () -> Void) {
         UIView.transition(with: self, duration: 0.4, options: .transitionFlipFromRight, animations: {
-        }, completion: { _ in
             self.imageView.image = UIImage(named: "backSide")
+            
+        }, completion: { _ in
             UIView.transition(with: self, duration: 0.4, options: .transitionFlipFromRight, animations: {
-            }, completion: { _ in
                 self.imageView.image = self.image
+            }, completion: { _ in
+                completion()
             })
-            completion()
         })
+        
     }
 }
