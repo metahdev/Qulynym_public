@@ -235,10 +235,12 @@ extension PlaylistItemViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! TitleCollectionViewCell
         let lyricsLine = lyricsText[indexPath.row]
         cell.title = lyricsLine
+        cell.widthConstant = collectionView.frame.width 
         return cell
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -250,16 +252,10 @@ extension PlaylistItemViewController {
 //        return lyricsLine.size(withAttributes: nil)
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
-    }
-
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
+        return 20.0
     }
 
  }
