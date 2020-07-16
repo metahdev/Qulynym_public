@@ -68,7 +68,9 @@ class PlaylistItemView: PlaylistItemViewProtocol {
         return imageV
     }()
     lazy var lyricsCV: UICollectionView = {
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
         cv.layer.borderColor = UIColor.brown.cgColor
         cv.layer.borderWidth = 4
@@ -164,7 +166,7 @@ class PlaylistItemView: PlaylistItemViewProtocol {
 //            lyricsTextView.widthAnchor.constraint(equalTo: view.heightAnchor),
 //            lyricsTextView.heightAnchor.constraint(equalTo: lyricsTextView.widthAnchor, multiplier: 0.5),
             
-            lyricsCV.topAnchor.constraint(equalTo: view.topAnchor),
+            lyricsCV.topAnchor.constraint(equalTo: view.topAnchor, constant: 12),
             lyricsCV.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             lyricsCV.widthAnchor.constraint(equalTo: view.heightAnchor),
             lyricsCV.heightAnchor.constraint(equalTo: lyricsCV.widthAnchor, multiplier: 0.5),
@@ -177,7 +179,7 @@ class PlaylistItemView: PlaylistItemViewProtocol {
             titleLabel.topAnchor.constraint(equalTo: lyricsCV.bottomAnchor, constant: 12),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            timelineSlider.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            timelineSlider.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             timelineSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             timelineSlider.widthAnchor.constraint(equalTo: lyricsCV.widthAnchor),
             

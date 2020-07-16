@@ -34,6 +34,7 @@ class ItemView: ItemViewProtocol {
         lbl.setupPlaylistLabel(size: view.frame.height * 0.1)
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
+        lbl.backgroundColor = .clear
         return lbl
     }()
     lazy var closeBtn: UIButton = {

@@ -17,7 +17,12 @@ class TitleCollectionViewCell: UICollectionViewCell {
             titleLabel.text = title
         }
     }
-    lazy var titleLabel: UILabel = {
+    var widthConstant: CGFloat! {
+        didSet {
+            titleLabel.widthAnchor.constraint(equalToConstant: widthConstant).isActive = true
+        }
+    }
+    private lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont.boldSystemFont(ofSize: 20)
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -41,14 +46,14 @@ class TitleCollectionViewCell: UICollectionViewCell {
         generalLayoutSetup()
         setupLyricsLabel()
     }
-    func generalLayoutSetup() {
+    
+    private func generalLayoutSetup() {
         self.backgroundColor = .clear
     }
-    func setupLyricsLabel() {
+    
+    private func setupLyricsLabel() {
         self.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])

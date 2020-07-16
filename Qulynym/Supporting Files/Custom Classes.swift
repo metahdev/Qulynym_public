@@ -115,9 +115,9 @@ class ArrowView: UIView {
 
     func generalLayoutSetup() {
         self.isHidden = true
-        self.backgroundColor = .skyBlue
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderColor = UIColor.white.withAlphaComponent(0.1).cgColor
         self.layer.borderWidth = 2
         self.addSubview(arrowImageView)
     }

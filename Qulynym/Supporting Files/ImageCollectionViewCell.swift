@@ -92,13 +92,14 @@ class ImageCollectionViewCell: UICollectionViewCell {
         layoutIfNeeded()
     }
     
-    // MARK: - Actions
-    func flipCell(completion: @escaping () -> Void) {
-        UIView.transition(with: self, duration: 0.4, options: .transitionFlipFromRight, animations: {
+    
+    // MARK: - Animations
+    func flipCell(cardName: String, completion: @escaping () -> Void) {
+        UIView.transition(with: self, duration: 0.5, options: .transitionFlipFromRight, animations: {
             self.imageView.image = UIImage(named: "backSide")
         }, completion: { _ in
-            UIView.transition(with: self, duration: 0.4, options: .transitionFlipFromRight, animations: {
-                self.imageView.image = self.image
+            UIView.transition(with: self, duration: 0.5, options: .transitionFlipFromRight, animations: {
+                self.imageView.image = UIImage(named: cardName)
             }, completion: { _ in
                 completion()
             })

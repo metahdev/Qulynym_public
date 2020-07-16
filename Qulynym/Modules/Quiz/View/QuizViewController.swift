@@ -194,9 +194,10 @@ extension QuizViewController {
     }
     
     func shuffleCards() {
+        self.cards.shuffle()
         for cell in self.cardsCollectionView.visibleCells {
-            (cell as! ImageCollectionViewCell).flipCell(completion: {
-                self.cards.shuffle()
+            let index = self.cardsCollectionView.indexPath(for: cell)!.row
+            (cell as! ImageCollectionViewCell).flipCell(cardName: self.cards[index], completion: {
                 self.cardsCollectionView.reloadData()
             })
         }
