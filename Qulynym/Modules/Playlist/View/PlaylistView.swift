@@ -31,6 +31,8 @@ class PlaylistView: PlaylistViewProtocol {
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.setupPlaylistLabel(size: view.frame.height * 0.1)
+        lbl.clipsToBounds = true
+        lbl.layer.cornerRadius = 15
         return lbl
     }()
     private lazy var backgroundImage: UIImageView = {

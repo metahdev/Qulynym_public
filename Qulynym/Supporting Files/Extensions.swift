@@ -20,7 +20,7 @@ extension UIView {
 
 extension UIButton {
     func configureCloseBtnFrame(_ view: UIView) {
-        let topConstraint = self.topAnchor.constraint(equalTo: view.topAnchor)
+        let topConstraint = self.topAnchor.constraint(equalTo: view.topAnchor, constant: 2)
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             topConstraint.constant = -12
@@ -28,9 +28,9 @@ extension UIButton {
         
         NSLayoutConstraint.activate([
             topConstraint,
-            self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
-            self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
+            self.heightAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
     
@@ -38,8 +38,10 @@ extension UIButton {
         NSLayoutConstraint.activate([
             self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
-            self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
+//            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
+//            self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
+            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
+            self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.66)
         ])
     }
 }

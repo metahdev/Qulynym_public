@@ -92,7 +92,7 @@ enum ArrowDirection {
 class ArrowView: UIView {
     // MARK: - Properties
     lazy var arrowImageView: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "arrow"))
+        let iv = UIImageView(image: UIImage(named: "nextVideo"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()

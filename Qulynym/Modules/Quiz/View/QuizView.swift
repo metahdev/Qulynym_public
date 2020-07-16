@@ -20,7 +20,7 @@ protocol QuizViewProtocol: class {
 class QuizView: QuizViewProtocol {
     // MARK:- Properties
     lazy var cardsCollectionView: UICollectionView = {
-        return configureImagesCollectionView(scroll: .vertical, image: "itemBg", background: nil)
+        return configureImagesCollectionView(scroll: .vertical, image: "quizBg", background: nil)
     }()
     lazy var soundsButton: UIButton = {
         var btn = UIButton()
