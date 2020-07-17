@@ -123,7 +123,8 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.imageView.contentMode = .scaleAspectFit
         } else {
             cell.layer.borderWidth = 5
-            cell.layer.borderColor = UIColor.white.cgColor
+            cell.backgroundColor = .brown
+            cell.layer.borderColor = UIColor.darkGray.cgColor
         }
         return cell
     }
@@ -176,7 +177,7 @@ extension QuizViewController {
     func returnCellState(_ cellIndex: Int) {
         let indexPath = IndexPath(item: cellIndex, section: 0)
         let cell = cardsCollectionView.cellForItem(at: indexPath)
-        cell!.layer.borderColor = UIColor.white.cgColor
+        cell!.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     func changeViewsEnableState(enable: Bool) {

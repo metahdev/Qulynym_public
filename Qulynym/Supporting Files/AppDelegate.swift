@@ -10,21 +10,32 @@
 import UIKit
 import CoreData
 
-
-#warning("Improvements & Refactor")
+#warning("TODO")
 /*
- Improvements:
-  1) IPad Drawing View brush width & IPad layout overall(Collection View Cells, drawing) - done
-  2) Some icons are not resizing(icons8.com and etc) - done
-  3) Check whether concurrency is performing normally in all modules(especially QuizView)
-  4) UX(closeBtn, drawing) - done
+ MINOR TODOS: 
+ Fix Playlist Title & Cell labels, same with other labels(PlaylistItem, etc.) -- Bauka
+ Add closeBtn to drawingsMenu, add touchUpOutside? --  Askar
+ Close btn UX -- Bauka | Askar
+ Change beineler labels' font -- Askar
+ Forward and back btn(ItemVC)  -- Askar
+ Quiz cells borders, backgroundColor -- Askar
+ KaraokeView Appearence to violet(pause icon) -- Bauka
+ Fix Torg'ai transition animation -- Askar
+ settings on left -- Askar
+ Ata-analarg'a, Siltemeler font fix -- Bauka
+ Check Ipad layout -- Askar
+ */
+
+
+#warning("Refactor")
+/*
  Refactor:
   1) MenuRouter + MenuViewCotnroller
   2) CustomImageView(maybe delegate something to DataFetchAPI)
   3) BeineViewController(architecture & nextVideo methods
   4) ImageCollectionViewCell
   5) DrawingViewControllers into one view, overall code logic(touchUpOutside)
-  6) Quiz Module
+  6) Quiz Module(concurrency)
   7) ModuleView protocol properties get acccessor & architecture overall
  */
 

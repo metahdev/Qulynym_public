@@ -19,12 +19,12 @@ class TitleCollectionViewCell: UICollectionViewCell {
     }
     var widthConstant: CGFloat! {
         didSet {
+            titleLabel.font = UIFont.boldSystemFont(ofSize: widthConstant * 0.1)
             titleLabel.widthAnchor.constraint(equalToConstant: widthConstant).isActive = true
         }
     }
     private lazy var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.boldSystemFont(ofSize: 20)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.numberOfLines = 4
