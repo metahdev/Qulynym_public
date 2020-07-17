@@ -114,7 +114,6 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         cell.sectionTitleLabel.setupPlaylistLabel(size: cell.frame.height * 0.1)
         cell.layer.cornerRadius = 5
         cell.clipsToBounds = true 
-//        cell.titleLabelConstantFromTop = 4
         return cell
     }
     

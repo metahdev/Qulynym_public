@@ -29,7 +29,7 @@ extension UIButton {
         NSLayoutConstraint.activate([
             topConstraint,
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
+            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1),
             self.heightAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
@@ -38,8 +38,6 @@ extension UIButton {
         NSLayoutConstraint.activate([
             self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
-//            self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
             self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
             self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.66)
         ])
