@@ -34,7 +34,6 @@ struct Video {
     var image: Data
 }
 
-
 struct Beine {
     var title: String
     var id: String
@@ -92,20 +91,20 @@ struct ContentService {
     private static var plantsSection = EduSection(name: "O'simdikter", contentNames: ["Qaıyn'", "Alma ag'ashy", "Terek", "Qarag'aı", "Almurt aǵashy", "Shyrsha", "Sheten", "Emen", "Ko'kterek", "Órіk ag'ashy", "Tan'qy'raı", "Mu'kjıdek", "Ray'shan", "Kakty's", "Qon'yray'gu'l", "Shegіrgu'l", "Bo'rtegu'l", "Tu'ımedaq", "Qyzg'aldaq", "Baqbaq"])
     
     static var parentsInfoBody = """
-    Qulynym - balalarǵa arnalǵan mobıldі alań. Bul salada án aıtýǵa, oınaýǵa, aqparattyq beınelerdі qaraýǵa, oqýǵa, ertegіlerdі tyńdaýǵa jáne sýret salýǵa bolady.
+    Qulynym - balalarg'a arnalg'an mobıldі alag'. Bul salada a'n aıty'g'a, oınay'g'a, aqparattyq beınelerdі qaray'g'a, oqy'g'a, ertegіlerdі tyn'dan'g'a ja'ne sy'ret saly'g'a bolady.
 
-    Bіzdіń baǵdarlamamyz - balanyń bіlіmі men damýy úshіn qaýіpsіz ortam. Qosymshanyń barlyq mazmuny balanyń ana tіlіn tez árі tıіmdі damytýǵa baǵyt alyp qazaq tіlіnde usynylǵan.
+    Bіzdіn' bag'darlamamyz - balanyn' bіlіmі men damy'y u'shіn qay'іpsіz ortam. Qosymshanyn' barlyq mazmuny balanyn' ana tіlіn tez a'rі tıіmdі damyty'g'a bag'yt alyp qazaq tіlіnde usynylg'an.
 
-    Bala qosymshany paıdalanǵan kezde ata-ananyń qatysýy mіndettі emes, óıtkenі naqty ınteraktıvtі dızaın balaǵa túsіnіktі.
+    Bala qosymshany paıdalang'an kezde ata-ananyn' qatysy'y mіndettі emes, o'ıtkenі naqty ınteraktıvtі dızaın balag'a tu'sіnіktі.
     """
     
     static var creditsBody = """
-    Qatysýshylarǵa úlken rahmet:
+    Qatysy'shylarg'a u'lken rahmet:
 
     Zhumabaev Baubek, Meiramuly Rauan - iOS baǵdarlamashylar
     Amangeldy Aruzhan, Dospolova Dana - dızaınerler
-    Akhmetgali Daulet - uıymdastyrý kómekshіsі
-    Imash Daulet, Yeldossova Aruzhan - daýyspen áreket etý
+    Akhmetgali Daulet - uıymdastyry' ko'mekshіsі
+    Imash Daulet, Yeldossova Aruzhan - day'yspen a'reket ety'
     
     Some icons are taken from the icons8.com and the flaticon.com
 

@@ -138,6 +138,30 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
         
     }
     
+    private func toddlerAndGamesItemSize(horizontalSizeClass: UIUserInterfaceSizeClass) -> CGSize {
+        if horizontalSizeClass == .compact {
+            return CGSize(width: view.frame.height * 0.5, height: view.frame.height * 0.5)
+        } else {
+            return CGSize(width: view.frame.height * 0.3, height: view.frame.height * 0.3)
+        }
+    }
+    
+    private func othersMenuTypesItemSize(horizontalSizeClass: UIUserInterfaceSizeClass) -> CGSize {
+        if horizontalSizeClass == .compact {
+            return CGSize(width: view.frame.height * 0.5 * 16/9, height: view.frame.height * 0.5)
+        } else {
+            return CGSize(width: view.frame.height * 0.34 * 16/9, height: view.frame.height * 0.34)
+        }
+    }
+    
+    private func edgeInsets(horizontalSizeClass: UIUserInterfaceSizeClass) -> UIEdgeInsets {
+        if horizontalSizeClass == .compact {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }  else {
+            return UIEdgeInsets(top: view.frame.height * 0.2, left: 20, bottom: view.frame.height * 0.2, right: 20)
+        }
+    }
+    
     // MARK:- Actions
     private func assignActions() {
         menuView.closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
@@ -286,18 +310,21 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let constant = collectionView.frame.height * 0.5
         if menuType == .toddler || menuType == .games  {
-            return CGSize(width: constant, height: constant)
+            return toddlerAndGamesItemSize(horizontalSizeClass: traitCollection.horizontalSizeClass)
         } else {
-            return CGSize(width: constant * 16/9, height: constant)
+            return othersMenuTypesItemSize(horizontalSizeClass: traitCollection.horizontalSizeClass)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 84
+        return collectionView.frame.width * 0.1
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return edgeInsets(horizontalSizeClass: traitCollection.horizontalSizeClass)
+    }
+        
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         cancelArrowAnimations()
     }

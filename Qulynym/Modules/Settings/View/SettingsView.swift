@@ -15,6 +15,7 @@ protocol SettingsViewProtocol: class {
     var musicBtn: UIButton { get }
     var infoBtn: UIButton { get }
     var creditsBtn: UIButton { get }
+    var buttonHeightMultiplier: CGFloat? { get set }
     
     func setupLayout()
     func setBoxChecked()
@@ -23,6 +24,8 @@ protocol SettingsViewProtocol: class {
 
 class SettingsView: SettingsViewProtocol {
     // MARK:- Properties
+    var buttonHeightMultiplier: CGFloat?
+    
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
@@ -52,14 +55,13 @@ class SettingsView: SettingsViewProtocol {
         return button.setButton
     }()
     
-    private lazy var background: UIImageView = {
+    private lazy var backgroundIV: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "settingsBg"))
         iv.layer.zPosition = -1
         return iv
     }()
 
     private weak var view: UIView!
-
     
     // MARK:- Initialization
     required init(_ view: UIView) {
@@ -72,11 +74,12 @@ class SettingsView: SettingsViewProtocol {
         addSubviews()
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
+        setupButtonHeightMultiplier(horizontalSizeClass: view.traitCollection.horizontalSizeClass)
         activateConstraints()
     }
     
     private func addSubviews() {
-        view.addSubview(background)
+        view.addSubview(backgroundIV)
         view.addSubview(musicBtn)
         view.addSubview(infoBtn)
         view.addSubview(creditsBtn)
@@ -91,17 +94,15 @@ class SettingsView: SettingsViewProtocol {
     }
     
     private func activateConstraints() {
-        let constant = view.frame.height * 0.14
-        
         NSLayoutConstraint.activate([
-            background.topAnchor.constraint(equalTo: view.topAnchor),
-            background.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            background.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            background.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundIV.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundIV.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundIV.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundIV.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             musicBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            musicBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: constant),
-            musicBtn.heightAnchor.constraint(equalToConstant: constant),
+            musicBtn.centerYAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 0.25),
+            musicBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: buttonHeightMultiplier!),
             musicBtn.widthAnchor.constraint(equalToConstant: view.frame.width * 0.8),
             
             checkmarkBtn.trailingAnchor.constraint(equalTo: musicBtn.trailingAnchor, constant: -12),
@@ -110,15 +111,22 @@ class SettingsView: SettingsViewProtocol {
             checkmarkBtn.widthAnchor.constraint(equalTo: checkmarkBtn.heightAnchor),
             
             infoBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            infoBtn.topAnchor.constraint(equalTo: musicBtn.bottomAnchor, constant: constant),
+            infoBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             infoBtn.heightAnchor.constraint(equalTo: musicBtn.heightAnchor),
             infoBtn.widthAnchor.constraint(equalTo: musicBtn.widthAnchor),
             
             creditsBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            creditsBtn.topAnchor.constraint(equalTo: infoBtn.bottomAnchor, constant: constant),
+            creditsBtn.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height * 0.25),
             creditsBtn.heightAnchor.constraint(equalTo: musicBtn.heightAnchor),
-            creditsBtn.widthAnchor.constraint(equalTo: musicBtn.widthAnchor),
+            creditsBtn.widthAnchor.constraint(equalTo: musicBtn.widthAnchor)
         ])
+    }
+    private func setupButtonHeightMultiplier(horizontalSizeClass: UIUserInterfaceSizeClass) {
+        if horizontalSizeClass == .compact {
+            buttonHeightMultiplier = 0.14
+        } else {
+            buttonHeightMultiplier = 0.1
+        }
     }
 }
 

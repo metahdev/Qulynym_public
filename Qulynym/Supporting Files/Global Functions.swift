@@ -34,18 +34,18 @@ func constraintSubviewToFitSuperview(subview: UIView, superview: UIView) {
     ])
 }
 
-func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDirection, image name: String?, background type: UIColor?) -> UICollectionView {
+func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDirection, /*image name: String?,*/ background type: UIColor?) -> UICollectionView {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = direction
     
     let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     
-    if let imageName = name {
-        cv.backgroundView = UIImageView(image: UIImage(named: imageName))
-    }
+//    if let imageName = name {
+//        cv.backgroundView = UIImageView(image: UIImage(named: imageName))
+//    }
     
     cv.backgroundColor = type
-        
+    
     cv.setCollectionViewLayout(layout, animated: false)
     cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "reuseID")
     

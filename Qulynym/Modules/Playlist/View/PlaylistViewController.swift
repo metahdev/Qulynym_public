@@ -21,12 +21,14 @@ import UIKit
 protocol PlaylistViewControllerProtocol: class {
     var isKaraoke: Bool! { get set }
     var content: [String] { get set }
+    var itemConstant: CGFloat? { get set }
 }
 
 class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
     // MARK:- Properties
     var isKaraoke: Bool!
     var content = [String]()
+    var itemConstant: CGFloat?
     var presenter: PlaylistPresenterProtocol!
     weak var karaokeViewDelegate: PlaylistItemViewControllerProtocol!
     
@@ -91,6 +93,14 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
 //        manager = ScenesManager(calling: self, showing: isKaraoke ? "karaoke" : "stories")
     }
     
+    private func setupItemConstant(horizontalSizeClass: UIUserInterfaceSizeClass) {
+        if horizontalSizeClass == .compact {
+            itemConstant = view.frame.width * 0.28
+        } else {
+            itemConstant = view.frame.width * 0.2
+        }
+    }
+    
     
     // MARK:- Actions
     private func assignActions() {
@@ -122,12 +132,12 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let constant = collectionView.frame.height - 100
-        return CGSize(width: constant, height: constant)
+        setupItemConstant(horizontalSizeClass: traitCollection.horizontalSizeClass)
+        return CGSize(width: itemConstant!, height: itemConstant!)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
+        return UIEdgeInsets(top: 40, left: view.frame.width * 0.1, bottom: 40, right: view.frame.width * 0.1)
     }
     
     func collectionView(_ collectionView: UICollectionView,

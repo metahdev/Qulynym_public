@@ -57,8 +57,6 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
         presenter.checkForMusicState()
     }
     
-    
-    
     // MARK:- Layout
     private func initLayout() {
         settingsView = SettingsView(self.view)

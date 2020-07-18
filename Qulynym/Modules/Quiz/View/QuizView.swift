@@ -20,7 +20,7 @@ protocol QuizViewProtocol: class {
 class QuizView: QuizViewProtocol {
     // MARK:- Properties
     lazy var cardsCollectionView: UICollectionView = {
-        return configureImagesCollectionView(scroll: .vertical, image: "quizBg", background: nil)
+        return configureImagesCollectionView(scroll: .vertical,/* image: "quizBg",*/ background: nil)
     }()
     lazy var soundsButton: UIButton = {
         var btn = UIButton()
@@ -34,6 +34,11 @@ class QuizView: QuizViewProtocol {
         btn.setImage(UIImage(named: "close"), for: .normal)
         btn.setupShadow()
         return btn
+    }()
+    lazy var backgroundIV: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "quizBg"))
+        iv.layer.zPosition = -1
+        return iv
     }()
     private weak var view: UIView!
     
@@ -49,6 +54,7 @@ class QuizView: QuizViewProtocol {
         addSubviews()
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
+        backgroundIV.configureBackgroundImagePosition(view)
         activateConstraints()
     }
     
@@ -56,6 +62,7 @@ class QuizView: QuizViewProtocol {
         view.addSubview(cardsCollectionView)
         view.addSubview(closeBtn)
         view.addSubview(soundsButton)
+        view.addSubview(backgroundIV)
     }
     
     private func setSubviewsMask() {

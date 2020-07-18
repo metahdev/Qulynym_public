@@ -14,7 +14,7 @@ class DrawingsCollectionView: UIViewController {
     var pictures = ["whiteCanvas", "flowerDrawing", "penguinDrawing", "catterpilarDrawing", "butterflyDrawing"]
     weak var drawingView: DrawingViewControllerProtocol!
     private lazy var mainCollectionView: UICollectionView = {
-        return configureImagesCollectionView(scroll: .vertical, image: nil, background: .white)
+        return configureImagesCollectionView(scroll: .vertical, /* image: nil,*/ background: .white)
     }()
     private lazy var invisibleButtonToExit: UIButton = {
         let btn = UIButton()

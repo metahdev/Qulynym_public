@@ -23,7 +23,7 @@ protocol MenuViewProtocol: class {
 class MenuView: MenuViewProtocol {
     // MARK:- Properties
     lazy var collectionView: UICollectionView = {
-        return configureImagesCollectionView(scroll: .horizontal, image: "menu", background: nil)
+        return configureImagesCollectionView(scroll: .horizontal,/* image: "menu",*/ background: nil)
     }()
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
@@ -42,12 +42,16 @@ class MenuView: MenuViewProtocol {
         lbl.text = "Qulynym"
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
-        lbl.setupMenuLabel(size: view.frame.height * 0.1)
+        lbl.setupMenuLabel(size: view.frame.height * 0.08)
         lbl.minimumScaleFactor = 0.5
         lbl.numberOfLines = 1
         return lbl
     }()
-    
+    lazy var backgroundIV: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "menu"))
+        iv.layer.zPosition = -1
+        return iv
+    }()
     lazy var rightArrowView: UIView = {
         let v = ArrowView()
         v.layer.cornerRadius = view.frame.height * 0.06
@@ -76,7 +80,9 @@ class MenuView: MenuViewProtocol {
         view.addSubview(titleLabel)
         view.addSubview(rightArrowView)
         view.addSubview(leftArrowView)
+        view.addSubview(backgroundIV)
         setAutoresizingFalse()
+        backgroundIV.configureBackgroundImagePosition(view)
         activateMainConstraints()
         constraintSubviewToFitSuperview(subview: collectionView, superview: view)
         closeBtn.configureCloseBtnFrame(view)
@@ -89,12 +95,10 @@ class MenuView: MenuViewProtocol {
     }
     
     private func activateMainConstraints() {
-        let constant = view.frame.width * 0.01
-        
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 24),
-            titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
+            titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
             
             settingsBtn.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             settingsBtn.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.06),
