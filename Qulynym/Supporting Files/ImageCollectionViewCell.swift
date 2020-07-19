@@ -35,11 +35,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
         iv.clipsToBounds = true
         return iv
     }()
-    lazy var sectionTitleLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.layer.cornerRadius = 15
-        return lbl
-    }()
+    lazy var sectionTitleLabel = UILabel()
     
     // MARK:- Initialization
     required init?(coder aDecoder: NSCoder) {

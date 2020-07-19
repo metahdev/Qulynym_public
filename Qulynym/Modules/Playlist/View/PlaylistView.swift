@@ -70,11 +70,7 @@ class PlaylistView: PlaylistViewProtocol {
     }
     
     private func activateConstraints() {
-//        let constant = view.frame.height * 0.25 + 56
         NSLayoutConstraint.activate([
-//            titleLabel.leadingAnchor.constraint(equalTo: closeBtn.trailingAnchor, constant: 16),
-//            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(constant)),
-//            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 24),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.54),

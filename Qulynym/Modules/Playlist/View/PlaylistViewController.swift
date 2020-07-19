@@ -122,8 +122,7 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         cell.image = UIImage(named: content[indexPath.row])
         cell.text = content[indexPath.row]
         cell.sectionTitleLabel.setupPlaylistLabel(size: cell.frame.height * 0.1)
-        cell.layer.cornerRadius = 5
-        cell.clipsToBounds = true 
+        cell.imageView.layer.cornerRadius = 5
         return cell
     }
     
