@@ -36,15 +36,15 @@ extension UIButton {
     
     func configureForwardBtnFrame(_ view: UIView) {
         NSLayoutConstraint.activate([
-//            self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
-//            self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.66)
+            self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
+            self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.66)
             
-            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -2),
-            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1),
-            self.heightAnchor.constraint(equalTo: self.widthAnchor)
+//            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+//            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -2),
+//            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1),
+//            self.heightAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
 }

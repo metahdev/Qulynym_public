@@ -142,7 +142,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         if horizontalSizeClass == .compact {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         } else {
-            return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
+            return UIEdgeInsets(top: view.frame.height * 0.1, left: 10, bottom: view.frame.height * 0.1, right: 10)
         }
     }
     
@@ -150,7 +150,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         if horizontalSizeClass == .compact {
             return CGSize(width: toolsCV.frame.height - 20, height: toolsCV.frame.height - 20)
         } else {
-            return CGSize(width: toolsCV.frame.height - 55, height: toolsCV.frame.height - 55)
+            return CGSize(width: toolsCV.frame.height * 0.72, height: toolsCV.frame.height * 0.8)
         }
     }
     
