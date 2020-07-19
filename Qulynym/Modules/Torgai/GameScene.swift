@@ -189,7 +189,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         obstacleNode.zPosition = Layer.obstacle.rawValue
         obstacleNode.name = "obstacle"
         obstacleNode.userData = NSMutableDictionary()
-        
         return obstacle.spriteComponent.node
     }
     

@@ -211,8 +211,8 @@ class DrawingView: DrawingViewProtocol {
             
             resetBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -32),
             resetBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            resetBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
-            resetBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
+            resetBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+            resetBtn.heightAnchor.constraint(equalTo: resetBtn.widthAnchor),
             
             marker.heightAnchor.constraint(equalToConstant: marker.intrinsicContentSize.height),
             marker.leadingAnchor.constraint(equalTo: toolsCollectionView.trailingAnchor, constant: 16),

@@ -138,6 +138,23 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         }
     }
     
+    private func toolsCVEdgeInsets(horizontalSizeClass: UIUserInterfaceSizeClass) -> UIEdgeInsets {
+        if horizontalSizeClass == .compact {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        } else {
+            return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
+        }
+    }
+    
+    private func toolsCVItemSize(horizontalSizeClass: UIUserInterfaceSizeClass) -> CGSize {
+        if horizontalSizeClass == .compact {
+            return CGSize(width: toolsCV.frame.height - 20, height: toolsCV.frame.height - 20)
+        } else {
+            return CGSize(width: toolsCV.frame.height - 55, height: toolsCV.frame.height - 55)
+        }
+    }
+    
+    
     
     // MARK:- Actions
     private func assignActions() {
@@ -247,11 +264,15 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: toolsCV.frame.height - 20, height: toolsCV.frame.height - 20)
+        return toolsCVItemSize(horizontalSizeClass: traitCollection.horizontalSizeClass)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 24
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return toolsCVEdgeInsets(horizontalSizeClass: traitCollection.horizontalSizeClass)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

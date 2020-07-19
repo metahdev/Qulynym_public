@@ -28,7 +28,7 @@ class GameViewController: UIViewController {
     // MARK:- Properties
     private lazy var aspectRatio = view.bounds.size.height / view.bounds.size.width
     
-    private lazy var scene: SKScene = {
+    private lazy var scene: GameScene = {
         let s = GameScene(size: CGSize(width: 320, height: 320 * aspectRatio), stateClass: MainMenuState.self)
         s.scaleMode = .aspectFill
         return s
