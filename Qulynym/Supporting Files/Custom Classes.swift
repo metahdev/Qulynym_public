@@ -53,7 +53,7 @@ class CustomButton {
         self.setButton.layer.borderColor = UIColor.white.cgColor
         self.setButton.layer.borderWidth = 5
         self.setButton.layer.cornerRadius = 20
-        self.setButton.titleLabel?.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.08)
+        self.setButton.titleLabel?.font = UIFont(name: "Arial Rounded MT Bold", size: view.frame.height * 0.074)
         self.setButton.titleLabel?.textAlignment = .center
         self.setButton.setTitleColor(UIColor.white, for: .normal)
         self.setupShadow()
@@ -92,7 +92,7 @@ enum ArrowDirection {
 class ArrowView: UIView {
     // MARK: - Properties
     lazy var arrowImageView: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "nextVideo"))
+        let iv = UIImageView(image: UIImage(named: "arrow"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()

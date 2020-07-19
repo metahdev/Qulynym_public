@@ -29,19 +29,22 @@ extension UIButton {
         NSLayoutConstraint.activate([
             topConstraint,
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
+            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1),
             self.heightAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
     
     func configureForwardBtnFrame(_ view: UIView) {
         NSLayoutConstraint.activate([
-            self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
-//            self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
-            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
-            self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.66)
+//            self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
+//            self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.66)
+            
+            self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -2),
+            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1),
+            self.heightAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
 }
@@ -53,7 +56,7 @@ extension UILabel {
         self.textColor = .white
         self.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         self.layer.masksToBounds = true
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = size * 0.5
         setupContentLabel(size: size)
     }
     
@@ -61,6 +64,8 @@ extension UILabel {
         self.shadowColor = .black
         self.textColor = UIColor(red: 97/255, green: 104/255, blue: 189/255, alpha: 1)
         self.backgroundColor = .white
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = size * 0.5
         setupContentLabel(size: size)
     }
     
@@ -87,4 +92,5 @@ extension UIImageView {
 extension UIColor {
     static let skyBlue = UIColor(red: 141/255, green: 232/255, blue: 237/255, alpha: 1)
     static let beigePink = UIColor(red: 0.99, green: 0.9, blue: 0.9, alpha: 1)
+    static let lightYellow = UIColor(red: 254/255, green: 243/255, blue: 156/255, alpha: 0.8)
 }

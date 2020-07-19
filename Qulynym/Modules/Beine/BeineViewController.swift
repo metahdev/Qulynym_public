@@ -47,7 +47,7 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
         return view
     }()
     private lazy var recommendationsCV: UICollectionView = {
-        return configureImagesCollectionView(scroll: .horizontal, image: nil, background: nil)
+        return configureImagesCollectionView(scroll: .horizontal,/* image: nil,*/ background: nil)
     }()
     private lazy var nextVideoBtn: UIButton = {
         let btn = UIButton()

@@ -28,11 +28,11 @@ class PlayerEntity: GKEntity {
     var spriteComponent: SpriteComponent!
     var movementComponent: MovementComponent!
     var animationComponent: AnimationComponent!
+    var spriteNode: EntityNode!
+    private var textures: Array<SKTexture> = []
     
     var movementAllowed = false
     private var numberOfFrames = 2
-    
-    private var textures: Array<SKTexture> = []
 
     // MARK: - Inits
     init (imageName: String) {
@@ -69,11 +69,9 @@ class PlayerEntity: GKEntity {
     }
     
     private func setupSpriteNode() {
-        let spriteNode = spriteComponent.node
-        spriteNode.size = CGSize(width: 53.33,
-                                 height: 40)
+        spriteNode = spriteComponent.node
+        spriteNode.size = CGSize(width: 53.33, height: 40)
         spriteNode.physicsBody = SKPhysicsBody(texture: spriteNode.texture!, size: spriteNode.frame.size)
-        
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.Player
         spriteNode.physicsBody?.collisionBitMask = 0
         spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle | PhysicsCategory.Ground

@@ -20,7 +20,7 @@ protocol PlaylistViewProtocol: class {
 class PlaylistView: PlaylistViewProtocol {
     // MARK:- Properties
     lazy var listCollectionView: UICollectionView = {
-        return configureImagesCollectionView(scroll: .vertical, image: nil, background: nil)
+        return configureImagesCollectionView(scroll: .vertical,/* image: nil,*/ background: nil)
     }()
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
@@ -30,31 +30,29 @@ class PlaylistView: PlaylistViewProtocol {
     }()
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setupPlaylistLabel(size: view.frame.height * 0.1)
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
         return lbl
     }()
-    private lazy var backgroundImage: UIImageView = {
+    private lazy var backgroundIV: UIImageView = {
         let imageV = UIImageView(image: UIImage(named: "playlistBg"))
         imageV.layer.zPosition = -1
         return imageV
     }()
     private weak var view: UIView!
     
-    
     // MARK:- Initialization
     required init(view: UIView) {
         self.view = view
     }
     
-    
     // MARK:- Layout
     func setupLayout() {
+        setupTitleLabel(horizontalSizeClass: view.traitCollection.horizontalSizeClass)
         addSubviews()
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
-        backgroundImage.configureBackgroundImagePosition(view)
+        backgroundIV.configureBackgroundImagePosition(view)
         activateConstraints()
     }
     
@@ -62,7 +60,7 @@ class PlaylistView: PlaylistViewProtocol {
         view.addSubview(listCollectionView)
         view.addSubview(closeBtn)
         view.addSubview(titleLabel)
-        view.addSubview(backgroundImage)
+        view.addSubview(backgroundIV)
     }
     
     private func setSubviewsMask() {
@@ -72,16 +70,27 @@ class PlaylistView: PlaylistViewProtocol {
     }
     
     private func activateConstraints() {
-        let constant = view.frame.height * 0.25 + 56
+//        let constant = view.frame.height * 0.25 + 56
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: closeBtn.trailingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(constant)),
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+//            titleLabel.leadingAnchor.constraint(equalTo: closeBtn.trailingAnchor, constant: 16),
+//            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(constant)),
+//            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 24),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.54),
             
             listCollectionView.topAnchor.constraint(equalTo: closeBtn.bottomAnchor),
             listCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             listCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             listCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+    }
+    
+    private func setupTitleLabel(horizontalSizeClass: UIUserInterfaceSizeClass) {
+        if horizontalSizeClass == .compact {
+            titleLabel.setupPlaylistLabel(size: view.frame.height * 0.1)
+        } else {
+            titleLabel.setupPlaylistLabel(size: view.frame.height * 0.06)
+        }
     }
 }

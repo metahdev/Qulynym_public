@@ -49,7 +49,7 @@ class DrawingView: DrawingViewProtocol {
         return iv
     }()
     lazy var toolsCollectionView: UICollectionView = {
-        return configureImagesCollectionView(scroll: .horizontal, image: nil, background: .clear)
+        return configureImagesCollectionView(scroll: .horizontal,/* image: nil,*/ background: .clear)
     }()
     lazy var resetBtn: UIButton = {
         let btn = UIButton()
@@ -180,7 +180,7 @@ class DrawingView: DrawingViewProtocol {
         drawingCVTrailingConstraint.constant = view.frame.height * 0.4
         closeBtn.isEnabled = false
     }
-    
+    #warning("Unable to simultaneously satisfy constraints.")
     private func activateConstraints() {
         drawingCVTrailingConstraint = drawingsCollectionView.view.trailingAnchor.constraint(equalTo: view.leadingAnchor)
         NSLayoutConstraint.activate([
@@ -211,8 +211,8 @@ class DrawingView: DrawingViewProtocol {
             
             resetBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -32),
             resetBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            resetBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
-            resetBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
+            resetBtn.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+            resetBtn.heightAnchor.constraint(equalTo: resetBtn.widthAnchor),
             
             marker.heightAnchor.constraint(equalToConstant: marker.intrinsicContentSize.height),
             marker.leadingAnchor.constraint(equalTo: toolsCollectionView.trailingAnchor, constant: 16),

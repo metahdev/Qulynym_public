@@ -45,7 +45,9 @@ class ItemView: ItemViewProtocol {
     }()
     lazy var forwardBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "forward"), for: .normal)
+        btn.setImage(UIImage(named: "nextVideo"), for: .normal)
+        btn.layer.cornerRadius = view.frame.width * 0.05
+        btn.backgroundColor = .lightYellow
         btn.setupShadow()
         return btn
     }()
