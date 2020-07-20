@@ -28,6 +28,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.numberOfLines = 4
+        lbl.textColor = .black
         return lbl
     }()
     

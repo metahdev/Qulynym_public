@@ -30,6 +30,7 @@ class PlayerEntity: GKEntity {
     var animationComponent: AnimationComponent!
     var spriteNode: EntityNode!
     private var textures: Array<SKTexture> = []
+    var gameViewController: GameViewController?
     
     var movementAllowed = false
     private var numberOfFrames = 2
@@ -69,8 +70,9 @@ class PlayerEntity: GKEntity {
     }
     
     private func setupSpriteNode() {
+        gameViewController = GameViewController()
         spriteNode = spriteComponent.node
-        spriteNode.size = CGSize(width: 53.33, height: 40)
+        spriteNode.size = gameViewController!.playerSize()
         spriteNode.physicsBody = SKPhysicsBody(texture: spriteNode.texture!, size: spriteNode.frame.size)
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.Player
         spriteNode.physicsBody?.collisionBitMask = 0

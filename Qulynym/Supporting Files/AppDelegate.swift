@@ -13,7 +13,7 @@ import CoreData
 #warning("TODO")
 /*
  MINOR TODOS: 
- Fix Playlist Title & Cell labels, same with other labels(PlaylistItem, etc.) -- Bauka
+ Fix Playlist Title & Cell labels, same with other labels(PlaylistItem, etc.) -- Bauka       Done
  Add closeBtn to drawingsMenu, add touchUpOutside? --  Askar
  Close btn UX -- Bauka | Askar                              Adiya will test
  Change beineler labels' font -- Askar

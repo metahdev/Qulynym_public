@@ -60,7 +60,6 @@ class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFe
         return btn
     }()
     
-    
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

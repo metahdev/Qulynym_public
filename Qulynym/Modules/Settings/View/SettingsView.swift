@@ -74,7 +74,7 @@ class SettingsView: SettingsViewProtocol {
         addSubviews()
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
-        setupButtonHeightMultiplier(horizontalSizeClass: view.traitCollection.horizontalSizeClass)
+        setupButtonHeightMultiplier()
         activateConstraints()
     }
     
@@ -106,8 +106,8 @@ class SettingsView: SettingsViewProtocol {
             musicBtn.widthAnchor.constraint(equalToConstant: view.frame.width * 0.8),
             
             checkmarkBtn.trailingAnchor.constraint(equalTo: musicBtn.trailingAnchor, constant: -12),
-            checkmarkBtn.topAnchor.constraint(equalTo: musicBtn.topAnchor, constant: 12),
-            checkmarkBtn.bottomAnchor.constraint(equalTo: musicBtn.bottomAnchor, constant: -12),
+            checkmarkBtn.centerYAnchor.constraint(equalTo: musicBtn.centerYAnchor),
+            checkmarkBtn.heightAnchor.constraint(equalTo: musicBtn.heightAnchor, multiplier: 0.8),
             checkmarkBtn.widthAnchor.constraint(equalTo: checkmarkBtn.heightAnchor),
             
             infoBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -121,8 +121,8 @@ class SettingsView: SettingsViewProtocol {
             creditsBtn.widthAnchor.constraint(equalTo: musicBtn.widthAnchor)
         ])
     }
-    private func setupButtonHeightMultiplier(horizontalSizeClass: UIUserInterfaceSizeClass) {
-        if horizontalSizeClass == .compact {
+    private func setupButtonHeightMultiplier() {
+        if view.traitCollection.verticalSizeClass == .compact {
             buttonHeightMultiplier = 0.14
         } else {
             buttonHeightMultiplier = 0.1
