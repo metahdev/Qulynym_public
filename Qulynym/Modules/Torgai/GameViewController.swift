@@ -50,7 +50,7 @@ class GameViewController: UIViewController {
         view.addSubview(closeBtn)
         NSLayoutConstraint.activate([
             closeBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            closeBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            closeBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 36),
             closeBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1),
             closeBtn.heightAnchor.constraint(equalTo: closeBtn.widthAnchor)
         ])

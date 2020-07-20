@@ -39,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private let bottomObstacleMaxFraction: CGFloat = 0.6
     private let gapMultiplier: CGFloat = 4.5
     
-    var margin: CGFloat = 28.0
+    var margin: CGFloat = 36
     
     private let firstSpawnDelay: TimeInterval = 1.75
     private let everySpawnDelay: TimeInterval = 1.5
