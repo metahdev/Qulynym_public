@@ -139,29 +139,6 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
         
     }
     
-    private func toddlerAndGamesItemSize() -> CGSize {
-        if traitCollection.verticalSizeClass == .compact {
-            return CGSize(width: view.frame.height * 0.5, height: view.frame.height * 0.5)
-        } else {
-            return CGSize(width: view.frame.height * 0.3, height: view.frame.height * 0.3)
-        }
-    }
-    
-    private func othersMenuTypesItemSize() -> CGSize {
-        if traitCollection.verticalSizeClass == .compact {
-            return CGSize(width: view.frame.height * 0.5 * 16/9, height: view.frame.height * 0.5)
-        } else {
-            return CGSize(width: view.frame.height * 0.3 * 16/9, height: view.frame.height * 0.3)
-        }
-    }
-    
-    private func edgeInsets(horizontalSizeClass: UIUserInterfaceSizeClass) -> UIEdgeInsets {
-        if horizontalSizeClass == .compact {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        }  else {
-            return UIEdgeInsets(top: view.frame.height * 0.2, left: 20, bottom: view.frame.height * 0.2, right: 20)
-        }
-    }
     
     // MARK:- Actions
     private func assignActions() {
@@ -318,12 +295,36 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+    private func toddlerAndGamesItemSize() -> CGSize {
+        if traitCollection.verticalSizeClass == .compact {
+            return CGSize(width: view.frame.height * 0.4, height: view.frame.height * 0.4)
+        } else {
+            return CGSize(width: view.frame.height * 0.3, height: view.frame.height * 0.3)
+        }
+    }
+    
+    private func othersMenuTypesItemSize() -> CGSize {
+        if traitCollection.verticalSizeClass == .compact {
+            return CGSize(width: view.frame.height * 0.4 * 16/9, height: view.frame.height * 0.4)
+        } else {
+            return CGSize(width: view.frame.height * 0.3 * 16/9, height: view.frame.height * 0.3)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return collectionView.frame.width * 0.1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return edgeInsets(horizontalSizeClass: traitCollection.horizontalSizeClass)
+        return edgeInsets()
+    }
+    
+    private func edgeInsets() -> UIEdgeInsets {
+        if traitCollection.horizontalSizeClass == .compact {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }  else {
+            return UIEdgeInsets(top: view.frame.height * 0.2, left: 20, bottom: view.frame.height * 0.2, right: 20)
+        }
     }
         
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

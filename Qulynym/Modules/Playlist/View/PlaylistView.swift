@@ -48,7 +48,7 @@ class PlaylistView: PlaylistViewProtocol {
     
     // MARK:- Layout
     func setupLayout() {
-        setupTitleLabel(horizontalSizeClass: view.traitCollection.horizontalSizeClass)
+        setupTitleLabel()
         addSubviews()
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
@@ -82,11 +82,12 @@ class PlaylistView: PlaylistViewProtocol {
         ])
     }
     
-    private func setupTitleLabel(horizontalSizeClass: UIUserInterfaceSizeClass) {
-        if horizontalSizeClass == .compact {
+    private func setupTitleLabel() {
+        if view.traitCollection.horizontalSizeClass == .compact {
             titleLabel.setupPlaylistLabel(size: view.frame.height * 0.1)
         } else {
             titleLabel.setupPlaylistLabel(size: view.frame.height * 0.06)
         }
+        titleLabel.backgroundColor = .clear
     }
 }
