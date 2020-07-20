@@ -101,9 +101,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     
     override var prefersStatusBarHidden: Bool {
         return true 
-    }
-    
-    
+    }    
     // MARK:- Layout
     private func initLayout() {
         menuView = MenuView(self.view)
@@ -141,19 +139,19 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
         
     }
     
-    private func toddlerAndGamesItemSize(horizontalSizeClass: UIUserInterfaceSizeClass) -> CGSize {
-        if horizontalSizeClass == .compact {
+    private func toddlerAndGamesItemSize() -> CGSize {
+        if traitCollection.verticalSizeClass == .compact {
             return CGSize(width: view.frame.height * 0.5, height: view.frame.height * 0.5)
         } else {
             return CGSize(width: view.frame.height * 0.3, height: view.frame.height * 0.3)
         }
     }
     
-    private func othersMenuTypesItemSize(horizontalSizeClass: UIUserInterfaceSizeClass) -> CGSize {
-        if horizontalSizeClass == .compact {
+    private func othersMenuTypesItemSize() -> CGSize {
+        if traitCollection.verticalSizeClass == .compact {
             return CGSize(width: view.frame.height * 0.5 * 16/9, height: view.frame.height * 0.5)
         } else {
-            return CGSize(width: view.frame.height * 0.38 * 16/9, height: view.frame.height * 0.4)
+            return CGSize(width: view.frame.height * 0.3 * 16/9, height: view.frame.height * 0.3)
         }
     }
     
@@ -314,9 +312,9 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if menuType == .toddler || menuType == .games  {
-            return toddlerAndGamesItemSize(horizontalSizeClass: traitCollection.horizontalSizeClass)
+            return toddlerAndGamesItemSize()
         } else {
-            return othersMenuTypesItemSize(horizontalSizeClass: traitCollection.horizontalSizeClass)
+            return othersMenuTypesItemSize()
         }
     }
     

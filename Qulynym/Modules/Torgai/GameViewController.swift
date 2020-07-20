@@ -56,6 +56,7 @@ class GameViewController: UIViewController {
         ])
     }
 
+    // MARK: - Orientation
     override var shouldAutorotate: Bool {
         return true
     }
@@ -92,6 +93,20 @@ class GameViewController: UIViewController {
             vc.hideTransitionViews(false)
             vc.fromGame = false
         })
+    }
+    func playerSize() -> CGSize {
+        if traitCollection.horizontalSizeClass == .regular {
+            return CGSize(width: 32, height: 24)
+        } else {
+            return CGSize(width: 53.33, height: 40)
+        }
+    }
+    func obstacleSize() -> CGSize {
+        if traitCollection.horizontalSizeClass == .regular {
+            return CGSize(width: 32.4, height: 252.8)
+        } else {
+            return CGSize(width: 54, height: 316)
+        }
     }
 }
 

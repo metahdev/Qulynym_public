@@ -44,8 +44,7 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
-    
+        
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,8 +92,8 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
 //        manager = ScenesManager(calling: self, showing: isKaraoke ? "karaoke" : "stories")
     }
     
-    private func setupItemConstant(horizontalSizeClass: UIUserInterfaceSizeClass) {
-        if horizontalSizeClass == .compact {
+    private func setupItemConstant() {
+        if traitCollection.verticalSizeClass == .compact {
             itemConstant = view.frame.width * 0.28
         } else {
             itemConstant = view.frame.width * 0.2
@@ -131,7 +130,7 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        setupItemConstant(horizontalSizeClass: traitCollection.horizontalSizeClass)
+        setupItemConstant()
         return CGSize(width: itemConstant!, height: itemConstant!)
     }
     

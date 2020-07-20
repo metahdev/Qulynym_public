@@ -59,6 +59,11 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         return true
     }
     
+    // MARK: - Home Indicator
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
+    }
+    
     
     // MARK:- View Lifecycle
     override func viewDidLoad() {
@@ -138,19 +143,11 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         }
     }
     
-    private func toolsCVEdgeInsets(horizontalSizeClass: UIUserInterfaceSizeClass) -> UIEdgeInsets {
-        if horizontalSizeClass == .compact {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        } else {
-            return UIEdgeInsets(top: view.frame.height * 0.1, left: 10, bottom: view.frame.height * 0.1, right: 10)
-        }
-    }
-    
-    private func toolsCVItemSize(horizontalSizeClass: UIUserInterfaceSizeClass) -> CGSize {
-        if horizontalSizeClass == .compact {
+    private func toolsCVItemSize() -> CGSize {
+        if traitCollection.verticalSizeClass == .compact {
             return CGSize(width: toolsCV.frame.height - 20, height: toolsCV.frame.height - 20)
         } else {
-            return CGSize(width: toolsCV.frame.height * 0.72, height: toolsCV.frame.height * 0.8)
+            return CGSize(width: toolsCV.frame.height * 0.6, height: toolsCV.frame.height * 0.6)
         }
     }
     
@@ -233,12 +230,6 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     private func exitDrawingsMenu() {
         drawingView.toggleDrawingsCV()
     }
-    
-    
-    // MARK:- Other
-    override var prefersHomeIndicatorAutoHidden: Bool {
-        return true
-    }
 }
 
 
@@ -264,15 +255,11 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return toolsCVItemSize(horizontalSizeClass: traitCollection.horizontalSizeClass)
+        return toolsCVItemSize()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 24
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return toolsCVEdgeInsets(horizontalSizeClass: traitCollection.horizontalSizeClass)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

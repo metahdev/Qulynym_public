@@ -26,6 +26,7 @@ import GameplayKit
 class ObstacleEntity: GKEntity {
     // MARK: - Properties
     var spriteComponent: SpriteComponent!
+    var gameViewController: GameViewController?
     
     // MARK: - Inits
     init(imageName: String) {
@@ -43,8 +44,9 @@ class ObstacleEntity: GKEntity {
     
     // MARK: - Actions
     private func setupSpriteNode() {
+        gameViewController = GameViewController()
         let spriteNode = spriteComponent.node
-        spriteNode.size = CGSize(width: 54, height: 316)
+        spriteNode.size = gameViewController!.obstacleSize()
         spriteNode.physicsBody = SKPhysicsBody(rectangleOf: spriteNode.size)
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle
         spriteNode.physicsBody?.collisionBitMask = 0
