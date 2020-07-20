@@ -5,17 +5,18 @@
       "scale" : "1x"
     },
     {
+      "filename" : "icons8-back-1.png",
       "idiom" : "universal",
-      "filename" : "backAudio.png",
       "scale" : "2x"
     },
     {
+      "filename" : "icons8-back.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

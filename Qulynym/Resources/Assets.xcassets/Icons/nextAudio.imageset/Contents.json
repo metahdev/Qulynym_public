@@ -5,17 +5,18 @@
       "scale" : "1x"
     },
     {
+      "filename" : "icons8-forward-1.png",
       "idiom" : "universal",
-      "filename" : "nextAudio.png",
       "scale" : "2x"
     },
     {
+      "filename" : "icons8-forward-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
