@@ -12,16 +12,17 @@ import QuartzCore
 
 class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     // MARK:- Properties
+    static let duration = 1.0
+
     weak var containerView: UIView!
     weak var toView: UIView!
     var bubbleClipView: UIView!
     
-    private let duration = 0.7
     
     
     // MARK:- Protocol Methods
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+        return Animator.duration
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -34,7 +35,7 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         initBubbleView()
         setupBeginningValues()
         
-        UIView.animateKeyframes(withDuration: duration, delay: 0.0, animations: {
+        UIView.animateKeyframes(withDuration: Animator.duration, delay: 0.0, animations: {
             self.callKeyframes()
         }, completion: { _ in
             transitionContext.completeTransition(true)

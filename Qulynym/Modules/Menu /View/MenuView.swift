@@ -97,13 +97,13 @@ class MenuView: MenuViewProtocol {
     private func activateMainConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 24),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
             
             settingsBtn.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-            settingsBtn.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.06),
+            settingsBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
             settingsBtn.widthAnchor.constraint(equalTo: settingsBtn.heightAnchor),
-            settingsBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            settingsBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             
             rightArrowView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             rightArrowView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),

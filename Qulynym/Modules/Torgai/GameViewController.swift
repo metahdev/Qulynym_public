@@ -79,18 +79,19 @@ class GameViewController: UIViewController {
     }
     
     @objc func closeGame() {
-        popVC()
-        AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
-    }
-    
-    private func popVC() {
-        if let vc = self.navigationController?.viewControllers[1] {
-            self.navigationController?.popToViewController(vc, animated: true)
-            _ = vc.view.subviews.map{
-                if $0.tag == 10000 {
-                    $0.removeFromSuperview()
-                }
-            }
+        guard let vc = self.navigationController?.viewControllers[1] as? MenuViewController else {
+            return
         }
+        vc.fromGame = true
+        self.navigationController?.popToViewController(vc, animated: true)
+        // idk where did i get this timings, but this is working
+        DispatchQueue.main.asyncAfter(deadline: .now() + Animator.duration - 0.5, execute: {
+            AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + Animator.duration + 0.5, execute: {
+            vc.hideTransitionViews(false)
+            vc.fromGame = false
+        })
     }
 }
+

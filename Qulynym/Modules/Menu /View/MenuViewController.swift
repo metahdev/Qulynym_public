@@ -23,6 +23,7 @@ protocol MenuViewControllerProtocol: class {
     var menuType: Menu { get set }
     var playlistID: String? { get set }
     var dataFetchAPI: DataFetchAPI! { get }
+    func hideTransitionViews(_ hide: Bool)
 }
 
 class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate, ConnectionWarningCaller {
@@ -39,13 +40,15 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     var dataFetchAPI: DataFetchAPI!
     var isConnectionErrorShowing = false
     
+    var fromGame = false 
+    
     private var ifFetchHasAlreadyDone = false
     
     private var showRight = true
     private var showLeft = false
     private var arrowTimer = Timer()
     
-    private var menuView: MenuViewProtocol!
+    var menuView: MenuViewProtocol!
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
         
     
@@ -121,7 +124,7 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
     }
     
     private func configureViewContentDependingOnType() {
-        menuView.closeBtn.isHidden = menuType == .main
+        menuView.closeBtn.isHidden = menuType == .main || fromGame
         menuView.settingsBtn.isHidden = menuType != .main
         
         if menuType == .main {
@@ -380,10 +383,19 @@ extension MenuViewController {
 }
 
 
+extension MenuViewController {
+    // MARK:- MenuVCProtocol methods
+    func hideTransitionViews(_ hide: Bool) {
+        menuView.collectionView.isHidden = hide
+        menuView.titleLabel.isHidden = hide
+        menuView.closeBtn.isHidden = hide
+    }
+}
+
+
 extension MenuViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animator = Animator()
-        return animator
+        return Animator()
     }
 }
 
