@@ -82,10 +82,10 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
     func activateConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: closeBtn.topAnchor),
             
             textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32),
+            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])

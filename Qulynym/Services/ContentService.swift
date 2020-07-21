@@ -27,6 +27,7 @@ struct EduSection {
 struct Song {
     var name: String
     var lyrics: [String]
+    var timestops: [(Int, Int)]
 }
 
 struct Video {
@@ -63,13 +64,16 @@ struct ContentService {
         "Flappy Torg'ai",
     ]
     
+//    Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, forwardTextViewTimepoints: [44: 173, 58: 268, 73: 373, 87: 458, 130: 553, 155: 717], rewindTextViewTimepoints: [43: 0, 55: 173, 76: 268, 86: 337, 129: 432, 154: 526]),
+//           Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, forwardTextViewTimepoints: [26: 0, 34: 0, 42: 0, 51: 0, 59: 0, 67: 0, 75: 0, 84: 0], rewindTextViewTimepoints: [25: 0, 33: 0, 41: 0, 50: 0, 58: 0, 66: 0, 74: 0])
+//
     static var songs: [Song] = [
-        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics),
-        Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics),
-        Song(name: "Sarjaılay'", lyrics: ContentService.sarjailayLyrics),
-        Song(name: "Ertegіler álemі", lyrics: ContentService.ertegilerAlemiLyrics),
-        Song(name: "Asyl áje", lyrics: ContentService.asylAzheLyrics),
-        Song(name: "Bіr bala", lyrics: ContentService.birBalaLyrics)
+        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, timestops: [(30, 32), (33, 35), (37, 39), (40, 43), (44, 46), (48, 50)]),
+        Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, timestops: [(0, 0)]),
+        Song(name: "Sarjaılay'", lyrics: ContentService.sarjailayLyrics, timestops: [(0, 0)]),
+        Song(name: "Ertegіler álemі", lyrics: ContentService.ertegilerAlemiLyrics, timestops: [(0, 0)]),
+        Song(name: "Asyl áje", lyrics: ContentService.asylAzheLyrics, timestops: [(0, 0)]),
+        Song(name: "Bіr bala", lyrics: ContentService.birBalaLyrics, timestops: [(0, 0)])
     ]
     
     /* Mentions:
@@ -113,7 +117,7 @@ struct ContentService {
     Ertegіler:
 
     Bay'yrsak' - Balapan telearnasy
-    Tolag'ai - Sha'ken Aımanov atyndaǵy "Qazaqfılm" AQ
+    Tolag'ai - Sha'ken Aımanov atyndag'y "Qazaqfılm" AQ
     G'ajap qus - Azia Animation
     
     A'nder:

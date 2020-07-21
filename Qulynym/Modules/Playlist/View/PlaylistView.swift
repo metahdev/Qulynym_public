@@ -84,9 +84,9 @@ class PlaylistView: PlaylistViewProtocol {
     
     private func setupTitleLabel() {
         if view.traitCollection.horizontalSizeClass == .compact {
-            titleLabel.setupPlaylistLabel(size: view.frame.height * 0.1)
+            titleLabel.setupPlaylistLabel(size: view.frame.height * 0.13)
         } else {
-            titleLabel.setupPlaylistLabel(size: view.frame.height * 0.06)
+            titleLabel.setupPlaylistLabel(size: view.frame.height * 0.08)
         }
         titleLabel.backgroundColor = .clear
     }

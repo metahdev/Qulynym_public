@@ -13,16 +13,10 @@ import CoreData
 #warning("TODO")
 /*
  MINOR TODOS: 
- Fix Playlist Title & Cell labels, same with other labels(PlaylistItem, etc.) -- Bauka       Done
  Add closeBtn to drawingsMenu, add touchUpOutside? --  Askar
  Close btn UX -- Bauka | Askar                              Adiya will test
- Change beineler labels' font -- Askar
- Forward and back btn(ItemVC)  -- Askar
- Quiz cells borders, backgroundColor -- Askar
+ Forward and back btn(ItemVC)  -- Bauka
  KaraokeView Appearence to violet(pause icon) -- Bauka      waiting icon from Aruzhan
- Fix Torg'ai transition animation -- Askar
- settings on left -- Askar
- Ata-analarg'a, Siltemeler font fix -- Bauka                altered text
  Check Ipad layout -- Askar
  */
 

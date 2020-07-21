@@ -22,6 +22,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     func setTimelineSliderMaxValue()
     func playBtnPressed()
     func setTimelineSliderValue(_ value: Float)
+    func scrollToNextLine()
 }
 
  class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerProtocol {
@@ -197,7 +198,7 @@ extension PlaylistItemViewController {
     func setViewsProperties() {
         playlistItemView.titleLabel.text = contentName
         if isKaraoke {
-//            playlistItemView.lyricsTextView.text = lyricsText
+            playlistItemView.lyricsCV.reloadData()
         } else {
             playlistItemView.storyImageView.image = UIImage(named: contentName)
         }
@@ -208,7 +209,6 @@ extension PlaylistItemViewController {
         playlistItemView.lyricsCV.dataSource = self
     }
 
-    
     func setTimelineSliderMaxValue() {
         playlistItemView.timelineSlider.maximumValue = Float(AudioPlayer.playlistItemAudioPlayer.duration)
     }
@@ -221,6 +221,11 @@ extension PlaylistItemViewController {
             playlistItemView.timelineSlider.setValue(0, animated: true)
             playBtnPressed()
         }
+    }
+    
+    func scrollToNextLine() {
+        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: presenter.line, section: 0), at: .top, animated: true)
+        playlistItemView.lyricsCV.visibleCells
     }
 }
  
@@ -238,17 +243,25 @@ extension PlaylistItemViewController {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if presenter.line == indexPath.row {
+            (cell as! TitleCollectionViewCell).textColor = .green
+        } else {
+            (cell as! TitleCollectionViewCell).textColor = .darkGray
+        }
+    }
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let lyricsLine = lyricsText[indexPath.row]
         return CGSize(width: collectionView.frame.width, height: lyricsLine.size(withAttributes: nil).height)
-//        return lyricsLine.size(withAttributes: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout
@@ -257,4 +270,7 @@ extension PlaylistItemViewController {
         return 20.0
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+    }
  }

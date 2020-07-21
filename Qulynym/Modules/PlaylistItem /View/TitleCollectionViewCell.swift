@@ -23,12 +23,17 @@ class TitleCollectionViewCell: UICollectionViewCell {
             titleLabel.widthAnchor.constraint(equalToConstant: widthConstant).isActive = true
         }
     }
+    var textColor: UIColor! {
+        didSet {
+            titleLabel.textColor = textColor 
+        }
+    }
     private lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.numberOfLines = 4
-        lbl.textColor = .black
+        lbl.textColor = .darkGray
         return lbl
     }()
     

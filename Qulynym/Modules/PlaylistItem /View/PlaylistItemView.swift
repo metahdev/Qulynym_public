@@ -72,7 +72,7 @@ class PlaylistItemView: PlaylistItemViewProtocol {
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .clear
+        cv.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         cv.layer.borderColor = UIColor.brown.cgColor
         cv.layer.borderWidth = 4
         cv.register(TitleCollectionViewCell.self , forCellWithReuseIdentifier: "reuseID")
@@ -189,9 +189,9 @@ class PlaylistItemView: PlaylistItemViewProtocol {
             soundButton.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
             soundButton.heightAnchor.constraint(equalTo: soundButton.widthAnchor),
             
-            soundSlider.bottomAnchor.constraint(equalTo: soundButton.topAnchor, constant: -view.frame.height * 0.05),
+            soundSlider.bottomAnchor.constraint(equalTo: soundButton.topAnchor, constant: -12),
             soundSlider.centerXAnchor.constraint(equalTo: soundButton.centerXAnchor),
-            soundSlider.widthAnchor.constraint(equalTo: timelineSlider.widthAnchor, multiplier: 0.2),
+            soundSlider.widthAnchor.constraint(equalTo: timelineSlider.widthAnchor, multiplier: 0.15),
             
             playBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             playBtn.topAnchor.constraint(equalTo: timelineSlider.topAnchor, constant: 8),

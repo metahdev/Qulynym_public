@@ -32,7 +32,7 @@ class DataFetchAPI {
     
     private var tempData: [Beine]!
     
-    private let apiKey = "AIzaSyC4Fxe10qvR2JolPoRfxJvsIEwpQAL49AA"
+    private let apiKey = "AIzaSyCBSAP8DJDOMUkr9ehAfxPd61EqqRFAP2M"
     private var alamofireManager: Session?
 
     
@@ -100,7 +100,7 @@ class DataFetchAPI {
                    method: .get,
                    parameters: parameters,
                    encoder: URLEncodedFormParameterEncoder(destination: .queryString),
-                   headers: nil)
+                   headers: ["x-ios-identifier-bundle-identifier": "com.devmetah.qulynym"])
             .responseJSON(completionHandler: { response in
 
             switch response.result {
@@ -115,6 +115,7 @@ class DataFetchAPI {
     
     private func parsingJSON(_ value: [String: Any]?) {
         if let JSON = value {
+            print(value)
             guard let videos = JSON["items"] as? NSArray else { return }
             appendBeineEntities(videos)
             self.token = JSON["nextPageToken"] as? String
