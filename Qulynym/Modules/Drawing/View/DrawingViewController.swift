@@ -162,6 +162,10 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         pencil.addTarget(self, action: #selector(pencilBtnPressed), for: .touchUpInside)
         brush.addTarget(self, action: #selector(brushBtnPressed), for: .touchUpInside)
         eraser.addTarget(self, action: #selector(eraserBtnPressed), for: .touchUpInside)
+        
+        let touchGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenu))
+        touchGesture.cancelsTouchesInView = false 
+        view.addGestureRecognizer(touchGesture)
     }
     
     func movePreviousToolDown() {
@@ -210,6 +214,7 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
         presenter.closeView()
     }
     
+    @objc
     func closeMenu() {
         if drawingView.isOpen == true {
             drawingView.toggleDrawingsCV()
@@ -223,12 +228,8 @@ class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
     
     @objc
     private func reset() {
+        closeMenu() 
         canvasView.clear()
-    }
-    
-    @objc
-    private func exitDrawingsMenu() {
-        drawingView.toggleDrawingsCV()
     }
 }
 

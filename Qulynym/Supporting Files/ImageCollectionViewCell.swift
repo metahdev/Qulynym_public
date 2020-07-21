@@ -37,6 +37,28 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }()
     lazy var sectionTitleLabel = UILabel()
     
+    var progress: Float! {
+        didSet {
+            NSLayoutConstraint.deactivate(tempConstraints)
+            if progress != 0 {
+                addProgressView()
+                self.progressView.setProgress(progress, animated: true)
+            } else {
+                initCommonConstraints()
+            }
+            NSLayoutConstraint.activate(tempConstraints)
+        }
+    }
+    
+    private lazy var progressView: UIProgressView = {
+        let pv = UIProgressView()
+        pv.trackTintColor = .lightGray
+        pv.progressTintColor = .green
+        return pv
+    }()
+    private var tempConstraints = [NSLayoutConstraint]()
+    
+    
     // MARK:- Initialization
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -48,8 +70,17 @@ class ImageCollectionViewCell: UICollectionViewCell {
         self.addSubview(imageView)
         self.addSubview(sectionTitleLabel)
         setAutoresizingMaskToFalse()
+        initCommonConstraints()
+        NSLayoutConstraint.activate(tempConstraints)
         activateConstraints()
     }
+    
+    private func addProgressView() {
+        self.addSubview(progressView)
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        initProgressViewConstraints()
+    }
+    
     
     // MARK:- Methods    
     func setupThumbnailImage() {
@@ -64,6 +95,22 @@ class ImageCollectionViewCell: UICollectionViewCell {
         _ = self.subviews.map{ $0.translatesAutoresizingMaskIntoConstraints = false }
     }
     
+    private func initCommonConstraints() {
+        tempConstraints = [
+            sectionTitleLabel.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 16)
+        ]
+    }
+    
+    private func initProgressViewConstraints() {
+        tempConstraints = [
+            progressView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            progressView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            progressView.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 16),
+            
+            sectionTitleLabel.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 8)
+        ]
+    }
+    
     private func activateConstraints() {
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: constant),
@@ -73,7 +120,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
             
             sectionTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             sectionTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            sectionTitleLabel.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 16)
         ])
     }
     
@@ -81,6 +127,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         self.sectionTitleLabel.text = ""
         self.imageView.image = nil
+        self.progressView.removeFromSuperview()
+        NSLayoutConstraint.deactivate(tempConstraints)
     }
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {

@@ -10,6 +10,7 @@
 import Foundation
 
 protocol QuizInteractorProtocol: class {
+    func saveData(slide count: Int, category name: String)
 }
 
 class QuizInteractor: QuizInteractorProtocol {
@@ -21,5 +22,7 @@ class QuizInteractor: QuizInteractorProtocol {
 }
 
 extension QuizInteractor {
-    
+    func saveData(slide count: Int, category name: String) {
+        UserDefaults.standard.set(count, forKey: name)
+    }
 }

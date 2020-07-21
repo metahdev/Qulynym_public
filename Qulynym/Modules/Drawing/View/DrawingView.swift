@@ -49,7 +49,9 @@ class DrawingView: DrawingViewProtocol {
         return iv
     }()
     lazy var toolsCollectionView: UICollectionView = {
-        return configureImagesCollectionView(scroll: .horizontal,/* image: nil,*/ background: .clear)
+        let cv = configureImagesCollectionView(scroll: .horizontal, background: .clear)
+        cv.layer.zPosition = 1 
+        return cv
     }()
     lazy var resetBtn: UIButton = {
         let btn = UIButton()
@@ -168,14 +170,14 @@ class DrawingView: DrawingViewProtocol {
     }
     
     private func initCloseConstraints() {
-        slideOutBtn.setImage(UIImage(named: "slideOutOpen"), for: .normal)
+        slideOutBtn.isHidden = false 
         slideOutBtnConstraint = slideOutBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
         drawingCVTrailingConstraint.constant = 0
         closeBtn.isEnabled = true
     }
     
     private func initOpenConstraints() {
-        slideOutBtn.setImage(UIImage(named: "slideOutClose"), for: .normal)
+        slideOutBtn.isHidden = true
         slideOutBtnConstraint = slideOutBtn.leadingAnchor.constraint(equalTo: drawingsCollectionView.view.trailingAnchor, constant: -4)
         drawingCVTrailingConstraint.constant = view.frame.height * 0.4
         closeBtn.isEnabled = false

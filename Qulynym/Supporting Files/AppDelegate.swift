@@ -15,7 +15,7 @@ import CoreData
  MINOR TODOS: 
  Add closeBtn to drawingsMenu, add touchUpOutside? --  Askar
  Close btn UX -- Bauka | Askar                              Adiya will test
- Forward and back btn(ItemVC)  -- Bauka
+ Forward and back btn(ItemVC)                               Testing
  KaraokeView Appearence to violet(pause icon) -- Bauka      waiting icon from Aruzhan
  Check Ipad layout -- Askar
  */

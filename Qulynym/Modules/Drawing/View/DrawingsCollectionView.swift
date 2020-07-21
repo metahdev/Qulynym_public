@@ -15,10 +15,13 @@ class DrawingsCollectionView: UIViewController {
     weak var drawingView: DrawingViewControllerProtocol!
     private lazy var closeBtn: UIButton = {
         let btn = UIButton()
+        btn.layer.zPosition = 1
+        btn.setImage(UIImage(named: "torg'aiClose"), for: .normal)
+        btn.addTarget(self, action: #selector(exitFromMenu), for: .touchUpInside)
         return btn
     }()
     private lazy var mainCollectionView: UICollectionView = {
-        return configureImagesCollectionView(scroll: .vertical, /* image: nil,*/ background: .white)
+        return configureImagesCollectionView(scroll: .vertical, background: .white)
     }()
     private lazy var invisibleButtonToExit: UIButton = {
         let btn = UIButton()
@@ -30,39 +33,45 @@ class DrawingsCollectionView: UIViewController {
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         view.addSubview(mainCollectionView)
-        view.addSubview(invisibleButtonToExit)
+        view.addSubview(closeBtn)
+//        view.addSubview(invisibleButtonToExit)
         setupCollectionView()
         setupAppearence()
+        setAutoresizingToFalse()
         activateConstraints()
-        invisibleButtonToExit.addTarget(self, action: #selector(exitFromMenu), for: .touchUpOutside)
     }
     
     private func setupCollectionView() {
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
-        mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupAppearence() {
         view.layer.zPosition = 1
-        view.backgroundColor = .skyBlue
+        view.backgroundColor = .white
         
         view.layer.shadowRadius = 5
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 1
     }
     
-    func activateConstraints() {
+    private func setAutoresizingToFalse() {
+        for subview in view.subviews {
+            subview.translatesAutoresizingMaskIntoConstraints = false 
+        }
+    }
+    
+    private func activateConstraints() {
         NSLayoutConstraint.activate([
+            closeBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 4),
+            closeBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 8),
+            closeBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
+            closeBtn.heightAnchor.constraint(equalTo: closeBtn.widthAnchor),
+            
             mainCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mainCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            mainCollectionView.topAnchor.constraint(equalTo: closeBtn.bottomAnchor, constant: 8),
             mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            invisibleButtonToExit.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            invisibleButtonToExit.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            invisibleButtonToExit.topAnchor.constraint(equalTo: view.topAnchor),
-            invisibleButtonToExit.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     

@@ -11,6 +11,7 @@ import UIKit
 
 protocol QuizViewControllerProtocol: class {
     var categoryName: String { get set }
+    var count: Int! { get set }
     var randomCard: String { get set }
     var cards: [String]! { get set }
     var areImagesTransparent: Bool! { get set }
@@ -29,6 +30,7 @@ class QuizViewController: UIViewController, QuizViewControllerProtocol {
             AudioPlayer.setupExtraAudio(with: categoryName + "Q", audioPlayer: .question)
         }
     }
+    var count: Int!
     var randomCard = "" {
         didSet {
             AudioPlayer.setupExtraAudio(with: randomCard, audioPlayer: .content)

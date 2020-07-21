@@ -45,6 +45,7 @@ class CanvasView: UIView, CanvasViewProtocol {
     
     // MARK:- Touches
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("a")
         let touch: AnyObject? = touches.first
         lastPoint = touch!.location(in: self)
         pointCounter = 0

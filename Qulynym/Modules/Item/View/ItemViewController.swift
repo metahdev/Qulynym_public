@@ -64,6 +64,7 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
         super.viewWillAppear(animated)
         presenter.openedQuiz = false 
         presenter.getAreImagesTransparentInfo()
+        presenter.getSlideCount() 
         presenter.updateView(forward: nil)
         setupContentButtonBorder()
     }

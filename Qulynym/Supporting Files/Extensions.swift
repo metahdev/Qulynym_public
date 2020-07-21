@@ -16,6 +16,12 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: 4, height: 4)
         self.layer.shadowRadius = 5.0
     }
+    
+    func makeItRound() {
+        self.layer.masksToBounds = false
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
+    }
 }
 
 extension UIButton {

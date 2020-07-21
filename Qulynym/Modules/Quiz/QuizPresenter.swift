@@ -65,6 +65,7 @@ extension QuizPresenter {
             AudioPlayer.audioQueue.async {
                 while AudioPlayer.sfxAudioPlayer.isPlaying {}
                 DispatchQueue.main.async {
+                    self.interactor.saveData(slide: self.controller.count, category: self.controller.categoryName)
                     self.router.backToItem(didPass: true)
                 }
             }

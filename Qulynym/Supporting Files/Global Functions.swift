@@ -40,10 +40,6 @@ func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDire
     
     let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     
-//    if let imageName = name {
-//        cv.backgroundView = UIImageView(image: UIImage(named: imageName))
-//    }
-    
     cv.backgroundColor = type
     
     cv.setCollectionViewLayout(layout, animated: false)

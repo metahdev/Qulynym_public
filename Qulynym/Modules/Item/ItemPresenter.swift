@@ -14,6 +14,7 @@ protocol ItemPresenterProtocol: class {
     var contentKey: String { get set }
     var openedQuiz: Bool { get set }
     
+    func getSlideCount() 
     func updateView(forward: Bool?)
     func getAreImagesTransparentInfo()
     func contentBtnPressed()
@@ -39,6 +40,10 @@ class ItemPresenter: ItemPresenterProtocol {
 
 extension ItemPresenter {
     // MARK:- Protocol Methods
+    func getSlideCount() {
+        interactor.getSlideCount(section: controller.section.name)
+    }
+    
     func updateView(forward: Bool?) {
         if openedQuiz {
             return
@@ -47,7 +52,8 @@ extension ItemPresenter {
         updateProperties(forward)
         
         guard !openedQuiz else {
-            passDataAndOpenQuiz()
+            let count = slideCount
+            passDataAndOpenQuiz(with: count)
             return
         }
         
@@ -81,9 +87,9 @@ extension ItemPresenter {
         }
     }
     
-    private func passDataAndOpenQuiz() {
+    private func passDataAndOpenQuiz(with count: Int) {
         let shuffledCards = interactor.getShuffledCards(from: controller.section.contentNames)
-        router.openQuiz(shuffledCards, with: controller.section.name)
+        router.openQuiz(shuffledCards, with: controller.section.name, and: count)
     }
     
     func contentBtnPressed() {

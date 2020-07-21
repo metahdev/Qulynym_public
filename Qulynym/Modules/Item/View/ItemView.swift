@@ -48,13 +48,15 @@ class ItemView: ItemViewProtocol {
         let btn = UIButton()
         btn.setImage(UIImage(named: "nextAudio"), for: .normal)
         btn.setupShadow()
+        btn.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         return btn
     }()
     lazy var backBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "backAudio"), for: .normal)
         btn.setupShadow()
-        btn.isEnabled = false 
+        btn.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        btn.isEnabled = false
         return btn
     }()
     private lazy var backgroundImage: UIImageView = {
@@ -79,6 +81,8 @@ class ItemView: ItemViewProtocol {
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
         backgroundImage.configureBackgroundImagePosition(view)
+        forwardBtn.makeItRound()
+        backBtn.makeItRound()
     }
     
     private func addSubviews() {

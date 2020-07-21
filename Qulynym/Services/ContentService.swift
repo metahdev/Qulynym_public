@@ -14,7 +14,7 @@ enum TextType {
     case credits
 }
 
-struct EduSection {
+struct EduSection: Equatable {
     var name: String
     var contentNames: [String]
     

@@ -72,6 +72,9 @@ class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetc
             }
         }
         configureViewContentDependingOnType()
+        if menuType == .toddler {
+            menuView.collectionView.reloadData()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -249,8 +252,13 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             return cell
         } else if menuType == .toddler {
-            cell.text = ContentService.toddlerSections[indexPath.row].name
-            cell.image = UIImage(named: ContentService.toddlerSections[indexPath.row].name)
+            let section = ContentService.toddlerSections[indexPath.row]
+            cell.text = section.name
+            cell.image = UIImage(named: section.name)
+            let completed = UserDefaults.standard.value(forKey: section.name) as? Int
+            let progress = Progress(totalUnitCount: Int64(section.contentNames.count))
+            progress.completedUnitCount = Int64(completed ?? 0)
+            cell.progress = Float(progress.fractionCompleted)
         } else {
             cell.text = ContentService.sections[menuType]![indexPath.row]
             cell.image = UIImage(named: ContentService.sections[menuType]![indexPath.row])
