@@ -13,11 +13,11 @@ import CoreData
 #warning("TODO")
 /*
  MINOR TODOS: 
- Add closeBtn to drawingsMenu, add touchUpOutside? --  Askar
+ Add closeBtn to drawingsMenu, add touchUpOutside?          Done
  Close btn UX -- Bauka | Askar                              Adiya will test
  Forward and back btn(ItemVC)                               Testing
  KaraokeView Appearence to violet(pause icon) -- Bauka      waiting icon from Aruzhan
- Check Ipad layout -- Askar
+ Check Ipad layout -- Askar                                 Testing
  */
 
 
