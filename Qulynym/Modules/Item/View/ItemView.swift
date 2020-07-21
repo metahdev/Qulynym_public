@@ -14,6 +14,7 @@ protocol ItemViewProtocol: class {
     var contentBtn: UIButton { get }
     var closeBtn: UIButton { get }
     var forwardBtn: UIButton { get }
+    var backBtn: UIButton { get }
     
     func setupLayout()
 }
@@ -49,6 +50,12 @@ class ItemView: ItemViewProtocol {
         btn.setupShadow()
         return btn
     }()
+    lazy var backBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "back"), for: .normal)
+        btn.setupShadow()
+        return btn
+    }()
     private lazy var backgroundImage: UIImageView = {
         let image = UIImageView()
         image.layer.zPosition = -1
@@ -80,6 +87,7 @@ class ItemView: ItemViewProtocol {
         view.addSubview(closeBtn)
         view.addSubview(forwardBtn)
         view.addSubview(backgroundImage)
+        view.addSubview(backBtn)
     }
     
     private func setSubviewMask() {
@@ -97,7 +105,12 @@ class ItemView: ItemViewProtocol {
             contentBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             contentBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             contentBtn.widthAnchor.constraint(equalTo: view.heightAnchor),
-            contentBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
+            contentBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+            
+            backBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
+            backBtn.heightAnchor.constraint(equalTo: backBtn.widthAnchor, multiplier: 0.66)
         ])
     }
 }

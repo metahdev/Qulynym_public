@@ -13,8 +13,10 @@ protocol ItemPresenterProtocol: class {
     var slideCount: Int { get set }
     var contentKey: String { get set }
     var openedQuiz: Bool { get set }
+    var isForwardTapped: Bool { get set }
     
     func updateView()
+    func returnBack()
     func getAreImagesTransparentInfo()
     func contentBtnPressed()
     func closeBtnPressed()
@@ -25,6 +27,7 @@ class ItemPresenter: ItemPresenterProtocol {
     var slideCount = 0
     var contentKey = ""
     var openedQuiz = false
+    var isForwardTapped = false
     
     weak var controller: ItemViewControllerProtocol!
     var router: ItemRouterProtocol!
@@ -40,6 +43,8 @@ class ItemPresenter: ItemPresenterProtocol {
 extension ItemPresenter {
     // MARK:- Protocol Methods
     func updateView() {
+        isForwardTapped = true
+        
         if openedQuiz {
             return
         }
@@ -57,6 +62,19 @@ extension ItemPresenter {
         controller.updateContent(contentKey: contentKey)
     }
     
+    func returnBack() {
+        isForwardTapped = false
+        
+        if openedQuiz {
+            return
+        }
+        
+        updateProperties()
+        AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
+        AudioPlayer.contentAudioPlayer.play()
+        controller.updateContent(contentKey: contentKey)
+    }
+    
     func getAreImagesTransparentInfo() {
         if controller.section.name == "Zhanuarlar" || controller.section.name == "O'simdikter" {
             controller.areImagesTransparent = false
@@ -65,7 +83,11 @@ extension ItemPresenter {
     
     func updateProperties() {
         self.contentKey = interactor.fillContent(with: self.slideCount, with: controller.section.contentNames)
-        self.slideCount += 1
+        if isForwardTapped {
+            self.slideCount += 1
+        } else {
+            self.slideCount -= 1
+        }
     }
     
     private func passDataAndOpenQuiz() {

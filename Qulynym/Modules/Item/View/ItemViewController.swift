@@ -38,6 +38,7 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
     private weak var contentBtn: UIButton!
     private weak var closeBtn: UIButton!
     private weak var forwardBtn: UIButton!
+    private weak var backBtn: UIButton!
     
     private var itemView: ItemViewProtocol!
     private let configurator: ItemConfiguratorProtocol = ItemConfigurator()
@@ -78,6 +79,7 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
         self.contentBtn = itemView.contentBtn
         self.closeBtn = itemView.closeBtn
         self.forwardBtn = itemView.forwardBtn
+        self.backBtn = itemView.backBtn
     }
     
     private func setupContentButtonBorder() {
@@ -92,6 +94,7 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
     private func assignActions() {
         contentBtn.addTarget(self, action: #selector(contentBtnPressed), for: .touchUpInside)
         forwardBtn.addTarget(self, action: #selector(forwardBtnPressed), for: .touchUpInside)
+        backBtn.addTarget(self, action: #selector(backBtnPressed), for: .touchUpInside)
         closeBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
     }
     
@@ -103,9 +106,19 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
         presenter.updateView()
     }
     
+    @objc func backBtnPressed() {
+        presenter.returnBack()
+    }
+    
     @objc
     private func closeBtnPressed() {
         presenter.closeBtnPressed()
+    }
+    
+    private func setupBackBtnEnability() {
+        if presenter.slideCount == 0 && presenter.slideCount % 4 == 0 {
+            backBtn.isEnabled = false
+        }
     }
 }
 
