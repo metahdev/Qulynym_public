@@ -50,6 +50,13 @@ class ImageCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    #warning("add it when section is finished")
+    private lazy var checkImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "checkTransparent")
+        iv.backgroundColor = UIColor.green.withAlphaComponent(0.1)
+        return iv
+    }()
     private lazy var progressView: UIProgressView = {
         let pv = UIProgressView()
         pv.trackTintColor = .lightGray
