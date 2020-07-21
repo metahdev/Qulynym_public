@@ -112,10 +112,10 @@ protocol PlaylistItemViewControllerProtocol: class {
     func playBtnPressed() {
         if isPlaying {
             presenter.pauseAudio()
-            playlistItemView.playBtn.setImage(UIImage(named: "playBtn"), for: .normal)
+            playlistItemView.playBtn.setBackgroundImage(UIImage(named: "playBtn"), for: .normal)
         } else {
             presenter.playAudio()
-            playlistItemView.playBtn.setImage(UIImage(named: "pauseBtn"), for: .normal)
+            playlistItemView.playBtn.setBackgroundImage(UIImage(named: "pauseBtn"), for: .normal)
         }
         isPlaying = !isPlaying
     }

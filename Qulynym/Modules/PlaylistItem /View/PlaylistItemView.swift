@@ -38,7 +38,7 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     }()
     lazy var playBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "playBtn"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "playBtn"), for: .normal)
         btn.setupShadow()
         return btn
     }()
@@ -52,12 +52,12 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     }()
     lazy var forwardBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "nextAudio"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "nextAudio"), for: .normal)
         return btn
     }()
     lazy var backBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "backAudio"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "backAudio"), for: .normal)
         return btn
     }()
     lazy var storyImageView: UIImageView = {
@@ -96,7 +96,7 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     }()
     lazy var soundButton: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "soundsIcon"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "soundsIcon"), for: .normal)
         return btn
     }()
     lazy var soundSlider: UISlider = {
@@ -194,8 +194,8 @@ class PlaylistItemView: PlaylistItemViewProtocol {
             soundSlider.widthAnchor.constraint(equalTo: timelineSlider.widthAnchor, multiplier: 0.15),
             
             playBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            playBtn.topAnchor.constraint(equalTo: timelineSlider.topAnchor, constant: 8),
-            playBtn.widthAnchor.constraint(equalTo: lyricsCV.widthAnchor, multiplier: 0.3),
+            playBtn.topAnchor.constraint(equalTo: timelineSlider.topAnchor, constant: 50),
+            playBtn.widthAnchor.constraint(equalTo: lyricsCV.widthAnchor, multiplier: 0.1),
             playBtn.heightAnchor.constraint(equalTo: playBtn.widthAnchor),
             
             forwardBtn.leadingAnchor.constraint(equalTo: playBtn.trailingAnchor, constant: 8),
