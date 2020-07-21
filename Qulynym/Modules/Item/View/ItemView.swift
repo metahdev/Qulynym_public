@@ -46,14 +46,15 @@ class ItemView: ItemViewProtocol {
     }()
     lazy var forwardBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "forward"), for: .normal)
+        btn.setImage(UIImage(named: "nextAudio"), for: .normal)
         btn.setupShadow()
         return btn
     }()
     lazy var backBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "back"), for: .normal)
+        btn.setImage(UIImage(named: "backAudio"), for: .normal)
         btn.setupShadow()
+        btn.isEnabled = false 
         return btn
     }()
     private lazy var backgroundImage: UIImageView = {
@@ -77,7 +78,6 @@ class ItemView: ItemViewProtocol {
         setSubviewMask()
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
-        forwardBtn.configureForwardBtnFrame(view)
         backgroundImage.configureBackgroundImagePosition(view)
     }
     
@@ -107,10 +107,15 @@ class ItemView: ItemViewProtocol {
             contentBtn.widthAnchor.constraint(equalTo: view.heightAnchor),
             contentBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
             
-            backBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
-            backBtn.heightAnchor.constraint(equalTo: backBtn.widthAnchor, multiplier: 0.66)
+            forwardBtn.leadingAnchor.constraint(equalTo: contentBtn.trailingAnchor, constant: 12),
+            forwardBtn.centerYAnchor.constraint(equalTo: contentBtn.centerYAnchor),
+            forwardBtn.heightAnchor.constraint(equalTo: contentBtn.heightAnchor, multiplier: 0.2),
+            forwardBtn.widthAnchor.constraint(equalTo: forwardBtn.heightAnchor),
+            
+            backBtn.centerYAnchor.constraint(equalTo: contentBtn.centerYAnchor),
+            backBtn.trailingAnchor.constraint(equalTo: contentBtn.leadingAnchor, constant: -12),
+            backBtn.widthAnchor.constraint(equalTo: forwardBtn.widthAnchor),
+            backBtn.heightAnchor.constraint(equalTo: backBtn.widthAnchor),
         ])
     }
 }

@@ -180,6 +180,7 @@ class DrawingView: DrawingViewProtocol {
         drawingCVTrailingConstraint.constant = view.frame.height * 0.4
         closeBtn.isEnabled = false
     }
+    
     #warning("Unable to simultaneously satisfy constraints.")
     private func activateConstraints() {
         drawingCVTrailingConstraint = drawingsCollectionView.view.trailingAnchor.constraint(equalTo: view.leadingAnchor)

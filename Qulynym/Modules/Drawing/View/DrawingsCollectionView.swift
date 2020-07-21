@@ -13,6 +13,10 @@ class DrawingsCollectionView: UIViewController {
     // MARK:- Properties
     var pictures = ["whiteCanvas", "flowerDrawing", "penguinDrawing", "catterpilarDrawing", "butterflyDrawing"]
     weak var drawingView: DrawingViewControllerProtocol!
+    private lazy var closeBtn: UIButton = {
+        let btn = UIButton()
+        return btn
+    }()
     private lazy var mainCollectionView: UICollectionView = {
         return configureImagesCollectionView(scroll: .vertical, /* image: nil,*/ background: .white)
     }()
@@ -50,7 +54,7 @@ class DrawingsCollectionView: UIViewController {
     
     func activateConstraints() {
         NSLayoutConstraint.activate([
-            mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
             mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),

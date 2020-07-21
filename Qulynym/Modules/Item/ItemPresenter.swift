@@ -13,10 +13,8 @@ protocol ItemPresenterProtocol: class {
     var slideCount: Int { get set }
     var contentKey: String { get set }
     var openedQuiz: Bool { get set }
-    var isForwardTapped: Bool { get set }
     
-    func updateView()
-    func returnBack()
+    func updateView(forward: Bool?)
     func getAreImagesTransparentInfo()
     func contentBtnPressed()
     func closeBtnPressed()
@@ -27,7 +25,6 @@ class ItemPresenter: ItemPresenterProtocol {
     var slideCount = 0
     var contentKey = ""
     var openedQuiz = false
-    var isForwardTapped = false
     
     weak var controller: ItemViewControllerProtocol!
     var router: ItemRouterProtocol!
@@ -42,34 +39,19 @@ class ItemPresenter: ItemPresenterProtocol {
 
 extension ItemPresenter {
     // MARK:- Protocol Methods
-    func updateView() {
-        isForwardTapped = true
-        
+    func updateView(forward: Bool?) {
         if openedQuiz {
             return
         }
         
-        if slideCount % 4 == 0 && slideCount != 0 && !controller.returnedFromQuiz {
+        updateProperties(forward)
+        
+        guard !openedQuiz else {
             passDataAndOpenQuiz()
-            openedQuiz = true
             return
         }
         
         controller.returnedFromQuiz = false
-        updateProperties()
-        AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
-        AudioPlayer.contentAudioPlayer.play()
-        controller.updateContent(contentKey: contentKey)
-    }
-    
-    func returnBack() {
-        isForwardTapped = false
-        
-        if openedQuiz {
-            return
-        }
-        
-        updateProperties()
         AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
         AudioPlayer.contentAudioPlayer.play()
         controller.updateContent(contentKey: contentKey)
@@ -81,12 +63,21 @@ extension ItemPresenter {
         }
     }
     
-    func updateProperties() {
-        self.contentKey = interactor.fillContent(with: self.slideCount, with: controller.section.contentNames)
-        if isForwardTapped {
+    func updateProperties(_ forward: Bool?) {
+        guard let forward = forward else {
+            self.contentKey = controller.section.contentNames[self.slideCount]
+            return
+        }
+        if forward {
             self.slideCount += 1
         } else {
             self.slideCount -= 1
+        }
+        
+        if slideCount % 4 == 0 && slideCount != 0 && !controller.returnedFromQuiz {
+            openedQuiz = true
+        } else {
+            self.contentKey = controller.section.contentNames[self.slideCount]
         }
     }
     

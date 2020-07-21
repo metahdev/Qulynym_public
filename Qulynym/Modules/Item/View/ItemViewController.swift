@@ -64,7 +64,7 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
         super.viewWillAppear(animated)
         presenter.openedQuiz = false 
         presenter.getAreImagesTransparentInfo()
-        presenter.updateView()
+        presenter.updateView(forward: nil)
         setupContentButtonBorder()
     }
     
@@ -103,11 +103,15 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
     }
     
     @objc func forwardBtnPressed() {
-        presenter.updateView()
+        presenter.updateView(forward: true)
+        backBtn.isEnabled = true
     }
     
     @objc func backBtnPressed() {
-        presenter.returnBack()
+        presenter.updateView(forward: false)
+        if presenter.slideCount == 0 {
+            backBtn.isEnabled = false
+        }
     }
     
     @objc
