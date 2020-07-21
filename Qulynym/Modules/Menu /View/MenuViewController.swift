@@ -331,9 +331,9 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     private func edgeInsets() -> UIEdgeInsets {
         if traitCollection.horizontalSizeClass == .compact {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: view.frame.height * 0.1, left: 10, bottom: view.frame.height * 0.1, right: 10)
         }  else {
-            return UIEdgeInsets(top: view.frame.height * 0.2, left: 20, bottom: view.frame.height * 0.2, right: 20)
+            return UIEdgeInsets(top: view.frame.height * 0.2, left: 20, bottom: view.frame.height * 0.2 , right: 20)
         }
     }
         

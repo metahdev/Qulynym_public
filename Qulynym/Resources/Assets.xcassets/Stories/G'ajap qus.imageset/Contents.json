@@ -5,17 +5,18 @@
       "scale" : "1x"
     },
     {
+      "filename" : "chinese-new-year-2021181_1920-1.jpg",
       "idiom" : "universal",
-      "filename" : "chinese-new-year-2021181_1920.jpg",
       "scale" : "2x"
     },
     {
+      "filename" : "chinese-new-year-2021181_1920.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
