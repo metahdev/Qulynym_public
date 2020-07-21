@@ -45,7 +45,6 @@ class TimerController {
         
         let normalBool = (counter * 10).rounded() / 10
         if normalBool.truncatingRemainder(dividingBy: 1) == 0 {
-            print("second passed")
             delegate.notifyOfSecondPassed()
         }
     }
