@@ -135,7 +135,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
         self.sectionTitleLabel.text = ""
         self.imageView.image = nil
         self.progressView.removeFromSuperview()
-        NSLayoutConstraint.deactivate(tempConstraints)
     }
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {

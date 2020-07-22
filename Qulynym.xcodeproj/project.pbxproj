@@ -84,6 +84,7 @@
 		D1621EC4235E257500FF2537 /* Ertegіler álemі.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EC0235E257500FF2537 /* Ertegіler álemі.mp3 */; };
 		D1621EC5235E257500FF2537 /* Sarjaılay'.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EC1235E257500FF2537 /* Sarjaılay'.mp3 */; };
 		D171887C23E6EF4C006FAB72 /* DataFetchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171887B23E6EF4C006FAB72 /* DataFetchAPI.swift */; };
+		D189CBE624C7BBEE005DFAAE /* Almurt ag'ashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D189CBE524C7BBEE005DFAAE /* Almurt ag'ashy.mp3 */; };
 		D18E30BD2325566500C0E012 /* Aigo'lek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BB2325566400C0E012 /* Aigo'lek.mp3 */; };
 		D18E30BE2325566500C0E012 /* Qoshaqanym.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */; };
 		D18E30C02325566C00C0E012 /* Bauyrsaq Ertegi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */; };
@@ -126,7 +127,6 @@
 		D1D8CEE52326720B00531F3F /* Torg'ai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CED02326720A00531F3F /* Torg'ai.mp3 */; };
 		D1D8CEE92326746200531F3F /* tryAgain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEE82326746200531F3F /* tryAgain.mp3 */; };
 		D1D8CEF0232690AA00531F3F /* wellDone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEEF232690AA00531F3F /* wellDone.mp3 */; };
-		D1D8CF072326A1AA00531F3F /* Almurt aǵashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEF22326A1AA00531F3F /* Almurt aǵashy.mp3 */; };
 		D1D8CF082326A1AA00531F3F /* Qaıyn'.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEF32326A1AA00531F3F /* Qaıyn'.mp3 */; };
 		D1D8CF092326A1AA00531F3F /* Mu'kjıdek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEF42326A1AA00531F3F /* Mu'kjıdek.mp3 */; };
 		D1D8CF0A2326A1AA00531F3F /* Qon'yray'gu'l.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEF52326A1AA00531F3F /* Qon'yray'gu'l.mp3 */; };
@@ -278,6 +278,7 @@
 		D1621EC0235E257500FF2537 /* Ertegіler álemі.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ertegіler álemі.mp3"; sourceTree = "<group>"; };
 		D1621EC1235E257500FF2537 /* Sarjaılay'.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sarjaılay'.mp3"; sourceTree = "<group>"; };
 		D171887B23E6EF4C006FAB72 /* DataFetchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetchAPI.swift; sourceTree = "<group>"; };
+		D189CBE524C7BBEE005DFAAE /* Almurt ag'ashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Almurt ag'ashy.mp3"; sourceTree = "<group>"; };
 		D18E30BB2325566400C0E012 /* Aigo'lek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Aigo'lek.mp3"; sourceTree = "<group>"; };
 		D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Qoshaqanym.mp3; sourceTree = "<group>"; };
 		D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bauyrsaq Ertegi.mp3"; sourceTree = "<group>"; };
@@ -320,7 +321,6 @@
 		D1D8CED02326720A00531F3F /* Torg'ai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Torg'ai.mp3"; sourceTree = "<group>"; };
 		D1D8CEE82326746200531F3F /* tryAgain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tryAgain.mp3; sourceTree = "<group>"; };
 		D1D8CEEF232690AA00531F3F /* wellDone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wellDone.mp3; sourceTree = "<group>"; };
-		D1D8CEF22326A1AA00531F3F /* Almurt aǵashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Almurt aǵashy.mp3"; sourceTree = "<group>"; };
 		D1D8CEF32326A1AA00531F3F /* Qaıyn'.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Qaıyn'.mp3"; sourceTree = "<group>"; };
 		D1D8CEF42326A1AA00531F3F /* Mu'kjıdek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mu'kjıdek.mp3"; sourceTree = "<group>"; };
 		D1D8CEF52326A1AA00531F3F /* Qon'yray'gu'l.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Qon'yray'gu'l.mp3"; sourceTree = "<group>"; };
@@ -814,7 +814,7 @@
 		D1D8CEF12326A1AA00531F3F /* Plants */ = {
 			isa = PBXGroup;
 			children = (
-				D1D8CEF22326A1AA00531F3F /* Almurt aǵashy.mp3 */,
+				D189CBE524C7BBEE005DFAAE /* Almurt ag'ashy.mp3 */,
 				D1D8CEF32326A1AA00531F3F /* Qaıyn'.mp3 */,
 				D1D8CEF42326A1AA00531F3F /* Mu'kjıdek.mp3 */,
 				D1D8CEF52326A1AA00531F3F /* Qon'yray'gu'l.mp3 */,
@@ -970,8 +970,8 @@
 				D1D8CF142326A1AA00531F3F /* Emen.mp3 in Resources */,
 				D1D8CEE32326720B00531F3F /* Barys.mp3 in Resources */,
 				85CEBBC223EC33DD00B6E2C4 /* G'ajap qus.mp3 in Resources */,
-				D1D8CF072326A1AA00531F3F /* Almurt aǵashy.mp3 in Resources */,
 				D1D8CED42326720B00531F3F /* Tıіn.mp3 in Resources */,
+				D189CBE624C7BBEE005DFAAE /* Almurt ag'ashy.mp3 in Resources */,
 				D1D8CEE02326720B00531F3F /* Arystan.mp3 in Resources */,
 				D1D8CF092326A1AA00531F3F /* Mu'kjıdek.mp3 in Resources */,
 				D1D8CF5E2326A80200531F3F /* Qyzg'ylt-sary.mp3 in Resources */,

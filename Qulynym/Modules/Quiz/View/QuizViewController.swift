@@ -125,8 +125,8 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.imageView.contentMode = .scaleAspectFit
         } else {
             cell.layer.borderWidth = 5
-            cell.backgroundColor = .brown
-            cell.layer.borderColor = UIColor.darkGray.cgColor
+            cell.backgroundColor = .skyBlue
+            cell.layer.borderColor = UIColor.brown.cgColor
         }
         return cell
     }
@@ -144,9 +144,8 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 if !self.closeBtnHasBeenPressed {
                     AudioPlayer.setupExtraAudio(with: "wellDone", audioPlayer: .effects)
-                    self.presenter.playAudio()
-                    self.changeSelectedCellOpacity(to: 1.0)
                     self.presenter.deleteItem()
+                    self.changeSelectedCellOpacity(to: 1.0)
                 }
             })
         } else {
@@ -179,7 +178,7 @@ extension QuizViewController {
     func returnCellState(_ cellIndex: Int) {
         let indexPath = IndexPath(item: cellIndex, section: 0)
         let cell = cardsCollectionView.cellForItem(at: indexPath)
-        cell!.layer.borderColor = UIColor.darkGray.cgColor
+        cell!.layer.borderColor = UIColor.brown.cgColor
     }
     
     func changeViewsEnableState(enable: Bool) {
