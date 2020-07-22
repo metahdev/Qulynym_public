@@ -343,13 +343,11 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            print("decelerate")
             checkCellsAndSetTimer()
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("scrollViewDidEndDecelerating")
         checkCellsAndSetTimer()
     }
         
