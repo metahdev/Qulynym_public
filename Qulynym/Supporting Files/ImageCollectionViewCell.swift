@@ -49,12 +49,21 @@ class ImageCollectionViewCell: UICollectionViewCell {
             NSLayoutConstraint.activate(tempConstraints)
         }
     }
+    var completed: Bool = false {
+        didSet {
+            if completed {
+                addFinishedIV()
+            } else {
+                checkImageView.removeFromSuperview()
+            }
+        }
+    }
     
-    #warning("add it when section is finished")
     private lazy var checkImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "checkTransparent")
-        iv.backgroundColor = UIColor.green.withAlphaComponent(0.1)
+        iv.backgroundColor = UIColor.green.withAlphaComponent(0.2)
+        iv.layer.zPosition = 1
         return iv
     }()
     private lazy var progressView: UIProgressView = {
@@ -108,6 +117,12 @@ class ImageCollectionViewCell: UICollectionViewCell {
         ]
     }
     
+    private func addFinishedIV() {
+        self.addSubview(checkImageView)
+        checkImageView.layer.cornerRadius = self.frame.width / 2
+        checkImageView.frame = imageView.frame
+    }
+    
     private func initProgressViewConstraints() {
         tempConstraints = [
             progressView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -134,6 +149,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         self.sectionTitleLabel.text = ""
         self.imageView.image = nil
+        completed = false 
         self.progressView.removeFromSuperview()
     }
     

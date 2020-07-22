@@ -258,6 +258,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let completed = UserDefaults.standard.value(forKey: section.name) as? Int
             let progress = Progress(totalUnitCount: Int64(section.contentNames.count))
             progress.completedUnitCount = Int64(completed ?? 0)
+            if section.contentNames.count == completed {
+                print("A")
+                cell.completed = true
+            }
             cell.progress = Float(progress.fractionCompleted)
         } else {
             cell.text = ContentService.sections[menuType]![indexPath.row]
