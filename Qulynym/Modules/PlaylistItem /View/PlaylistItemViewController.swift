@@ -17,15 +17,16 @@ protocol PlaylistItemViewControllerProtocol: class {
     var index: Int { get set }
     var maxIndex: Int { get set }
     var isPlaying: Bool { get }
-//    var currentLine: Int { get set }
+    var currentLine: Int { get set }
+    var began: Bool { get set }
     
     func setViewsProperties()
     func setTimelineSliderMaxValue()
     func playBtnPressed()
     func setTimelineSliderValue(_ value: Float)
-//    func scrollToNextLine()
-//    func updateCurrentLine()
-//    func clearPrevLine()
+    func scrollToNextLine()
+    func updateCurrentLine()
+    func clearLine()
 }
 
  class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerProtocol {
@@ -36,11 +37,12 @@ protocol PlaylistItemViewControllerProtocol: class {
     var index = 0
     var maxIndex = 0
     var isPlaying = false
-//    var currentLine = 0 {
-//        didSet {
-//            updateCurrentLine()
-//        }
-//    }
+    var currentLine = 0 {
+        didSet {
+            updateCurrentLine()
+        }
+    }
+    var began = false 
     var isOpenSlider = true
     var presenter: PlaylistItemPresenterProtocol!
     
@@ -233,21 +235,22 @@ extension PlaylistItemViewController {
     
     
     // MARK:- Karaoke
-//    func scrollToNextLine() {
-//        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .top, animated: true)
-//    }
-//
-//    func clearPrevLine() {
-//        if currentLine - 1 != -1 {
-//            let cell = playlistItemView.lyricsCV.cellForItem(at: IndexPath(row: currentLine, section: 0)) as! TitleCollectionViewCell
-//            cell.current = false
-//        }
-//    }
-//
-//    func updateCurrentLine() {
-//        let cell = playlistItemView.lyricsCV.cellForItem(at: IndexPath(row: currentLine, section: 0)) as? TitleCollectionViewCell
-//        cell?.current = true
-//    }
+    func scrollToNextLine() {
+        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .top, animated: true)
+    }
+
+    func clearLine() {
+        updateCellState(isCurrent: false)
+    }
+
+    func updateCurrentLine() {
+        updateCellState(isCurrent: true)
+    }
+    
+    private func updateCellState(isCurrent: Bool) {
+        let cell = playlistItemView.lyricsCV.cellForItem(at: IndexPath(row: currentLine, section: 0)) as? TitleCollectionViewCell
+        cell?.current = isCurrent
+    }
 }
  
  extension PlaylistItemViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -264,10 +267,11 @@ extension PlaylistItemViewController {
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        (cell as! TitleCollectionViewCell).current = currentLine == indexPath.row
-//    }
-//
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard began else { return }
+        (cell as! TitleCollectionViewCell).current = currentLine == indexPath.row
+    }
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
     }
@@ -288,6 +292,6 @@ extension PlaylistItemViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        return UIEdgeInsets(top: 20, left: 8, bottom: 20, right: 8)
     }
  }

@@ -31,6 +31,7 @@ class PlaylistItemPresenter: PlaylistItemPresenterProtocol {
     var router: PlaylistItemRouterProtocol!
     
     var timer: TimerController!
+    private var ended = false
     
     required init(_ controller: PlaylistItemViewControllerProtocol) {
         self.controller = controller
@@ -132,15 +133,23 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
     }
     
     func notifyOfSecondPassed() {
-//        let song = ContentService.songs[controller.index]
-//        if Int(timer!.counter) == song.timestops[controller.currentLine].0 {
-//            controller.updateCurrentLine()
-//            controller.currentLine += 1
-//        }
-//        if Int(timer!.counter) == song.timestops[controller.currentLine].1 {
-//            controller.clearPrevLine()
-//            controller.scrollToNextLine()
-//        }
+        let song = ContentService.songs[controller.index]
+        guard !ended else {
+            return
+        }
+        if Int(timer!.counter) == song.timestops[controller.currentLine].0 {
+            controller.began = true 
+            controller.updateCurrentLine()
+        }
+        if Int(timer!.counter) == song.timestops[controller.currentLine].1 {
+            controller.clearLine()
+            controller.currentLine += 1
+            if controller.currentLine == song.timestops.count {
+                self.ended = true
+                return
+            }
+            controller.scrollToNextLine()
+        }
     }
     
     func notifyTimerEnded() {
