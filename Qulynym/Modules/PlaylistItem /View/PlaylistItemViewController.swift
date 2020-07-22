@@ -17,15 +17,15 @@ protocol PlaylistItemViewControllerProtocol: class {
     var index: Int { get set }
     var maxIndex: Int { get set }
     var isPlaying: Bool { get }
-    var currentLine: Int { get set }
+//    var currentLine: Int { get set }
     
     func setViewsProperties()
     func setTimelineSliderMaxValue()
     func playBtnPressed()
     func setTimelineSliderValue(_ value: Float)
-    func scrollToNextLine()
-    func updateCurrentLine()
-    func clearPrevLine()
+//    func scrollToNextLine()
+//    func updateCurrentLine()
+//    func clearPrevLine()
 }
 
  class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerProtocol {
@@ -36,11 +36,11 @@ protocol PlaylistItemViewControllerProtocol: class {
     var index = 0
     var maxIndex = 0
     var isPlaying = false
-    var currentLine = 0 {
-        didSet {
-            updateCurrentLine()
-        }
-    }
+//    var currentLine = 0 {
+//        didSet {
+//            updateCurrentLine()
+//        }
+//    }
     var isOpenSlider = true
     var presenter: PlaylistItemPresenterProtocol!
     
@@ -264,10 +264,10 @@ extension PlaylistItemViewController {
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        (cell as! TitleCollectionViewCell).current = currentLine == indexPath.row
-    }
-    
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        (cell as! TitleCollectionViewCell).current = currentLine == indexPath.row
+//    }
+//
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
     }

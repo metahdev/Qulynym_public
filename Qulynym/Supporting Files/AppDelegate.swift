@@ -13,10 +13,10 @@ import CoreData
 #warning("TODO")
 /*
  MINOR TODOS: 
- Add closeBtn to drawingsMenu, add touchUpOutside?          Done
- Close btn UX -- Bauka | Askar                              Adiya will test
+s Close btn UX -- Bauka | Askar                              Adiya will test
  KaraokeView Appearence to violet(pause icon) -- Bauka      waiting icon from Aruzhan
  Check Ipad layout -- Askar                                 Testing
+ PlaylistItem Controls same color
  */
 
 

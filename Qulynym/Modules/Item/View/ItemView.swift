@@ -48,14 +48,12 @@ class ItemView: ItemViewProtocol {
         let btn = UIButton()
         btn.setImage(UIImage(named: "itemForward"), for: .normal)
         btn.setupShadow()
-        btn.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         return btn
     }()
     lazy var backBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "itemBack"), for: .normal)
         btn.setupShadow()
-        btn.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         btn.isEnabled = false
         return btn
     }()
@@ -81,8 +79,6 @@ class ItemView: ItemViewProtocol {
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
         backgroundImage.configureBackgroundImagePosition(view)
-        forwardBtn.makeItRound()
-        backBtn.makeItRound()
     }
     
     private func addSubviews() {
@@ -113,7 +109,7 @@ class ItemView: ItemViewProtocol {
             
             forwardBtn.leadingAnchor.constraint(equalTo: contentBtn.trailingAnchor, constant: 12),
             forwardBtn.centerYAnchor.constraint(equalTo: contentBtn.centerYAnchor),
-            forwardBtn.heightAnchor.constraint(equalTo: contentBtn.heightAnchor, multiplier: 0.2),
+            forwardBtn.heightAnchor.constraint(equalTo: contentBtn.heightAnchor, multiplier: 0.4),
             forwardBtn.widthAnchor.constraint(equalTo: forwardBtn.heightAnchor),
             
             backBtn.centerYAnchor.constraint(equalTo: contentBtn.centerYAnchor),
