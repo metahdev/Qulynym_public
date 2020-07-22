@@ -109,7 +109,7 @@ class ItemView: ItemViewProtocol {
             
             forwardBtn.leadingAnchor.constraint(equalTo: contentBtn.trailingAnchor, constant: 12),
             forwardBtn.centerYAnchor.constraint(equalTo: contentBtn.centerYAnchor),
-            forwardBtn.heightAnchor.constraint(equalTo: contentBtn.heightAnchor, multiplier: 0.4),
+            forwardBtn.heightAnchor.constraint(equalTo: contentBtn.heightAnchor, multiplier: 0.3),
             forwardBtn.widthAnchor.constraint(equalTo: forwardBtn.heightAnchor),
             
             backBtn.centerYAnchor.constraint(equalTo: contentBtn.centerYAnchor),
