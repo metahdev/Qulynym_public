@@ -68,7 +68,7 @@ struct ContentService {
 //           Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, forwardTextViewTimepoints: [26: 0, 34: 0, 42: 0, 51: 0, 59: 0, 67: 0, 75: 0, 84: 0], rewindTextViewTimepoints: [25: 0, 33: 0, 41: 0, 50: 0, 58: 0, 66: 0, 74: 0])
 //
     static var songs: [Song] = [
-        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, timestops: [(30, 32), (33, 35), (37, 39), (40, 43), (44, 46), (48, 50)]),
+        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, timestops: [(30, 32), (33, 35), (37, 39), (40, 43), (44, 46), (48, 50), (52, 54), (55, 57), (59, 61), (63, 65), (66, 69), (70, 72), (74, 76), (77, 80), (81, 83), (84, 87), (88, 90), (92, 94), (95, 98), (99, 101), (102, 105), (107, 108), (110, 113), (114, 116), (129, 132), (132, 134), (136, 138), (139, 142), (143, 145), (146, 149), (150, 152), (153, 156), (157, 159)]),
         Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, timestops: [(0, 0)]),
         Song(name: "Sarjaılay'", lyrics: ContentService.sarjailayLyrics, timestops: [(0, 0)]),
         Song(name: "Ertegіler álemі", lyrics: ContentService.ertegilerAlemiLyrics, timestops: [(0, 0)]),
