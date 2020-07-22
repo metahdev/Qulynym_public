@@ -233,21 +233,21 @@ extension PlaylistItemViewController {
     
     
     // MARK:- Karaoke
-    func scrollToNextLine() {
-        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .top, animated: true)
-    }
-    
-    func clearPrevLine() {
-        if currentLine - 1 != -1 {
-            let cell = playlistItemView.lyricsCV.cellForItem(at: IndexPath(row: currentLine, section: 0)) as! TitleCollectionViewCell
-            cell.current = false
-        }
-    }
-    
-    func updateCurrentLine() {
-        let cell = playlistItemView.lyricsCV.cellForItem(at: IndexPath(row: currentLine, section: 0)) as? TitleCollectionViewCell
-        cell?.current = true
-    }
+//    func scrollToNextLine() {
+//        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .top, animated: true)
+//    }
+//
+//    func clearPrevLine() {
+//        if currentLine - 1 != -1 {
+//            let cell = playlistItemView.lyricsCV.cellForItem(at: IndexPath(row: currentLine, section: 0)) as! TitleCollectionViewCell
+//            cell.current = false
+//        }
+//    }
+//
+//    func updateCurrentLine() {
+//        let cell = playlistItemView.lyricsCV.cellForItem(at: IndexPath(row: currentLine, section: 0)) as? TitleCollectionViewCell
+//        cell?.current = true
+//    }
 }
  
  extension PlaylistItemViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
