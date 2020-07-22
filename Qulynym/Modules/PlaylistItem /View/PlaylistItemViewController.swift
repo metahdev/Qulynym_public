@@ -271,18 +271,10 @@ extension PlaylistItemViewController {
         guard began else { return }
         (cell as! TitleCollectionViewCell).current = currentLine == indexPath.row
     }
-
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let lyricsLine = lyricsText[indexPath.row]
-        return CGSize(width: collectionView.frame.width, height: lyricsLine.size(withAttributes: nil).height)
+        return CGSize(width: collectionView.frame.width - 16, height: lyricsLine.size(withAttributes: nil).height)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout

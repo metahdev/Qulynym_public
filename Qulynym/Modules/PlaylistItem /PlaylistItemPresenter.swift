@@ -98,12 +98,29 @@ extension PlaylistItemPresenter {
     }
     
     func scrollAudio(to value: Float) {
+        controller.clearLine()
+        findCurrentLine(value)
         AudioPlayer.playlistItemAudioPlayer.pause()
         controller.setTimelineSliderValue(value)
         timer.counter = Double(value)
         AudioPlayer.playlistItemAudioPlayer.currentTime = TimeInterval(exactly: value)!
         AudioPlayer.playlistItemAudioPlayer.prepareToPlay()
         AudioPlayer.playlistItemAudioPlayer.play()
+    }
+    
+    private func findCurrentLine(_ value: Float) {
+        let song = ContentService.songs[controller.index]
+        var index = 0
+        var line = 0
+        for timestop in song.timestops {
+            if Float(timestop.0) < value {
+                line = index
+                print("assigned")
+                print(index)
+            }
+            index += 1
+        }
+        controller.currentLine = line
     }
     
     func changeAudioVolume(to value: Float) {
@@ -143,11 +160,11 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
         }
         if Int(timer!.counter) == song.timestops[controller.currentLine].1 {
             controller.clearLine()
-            controller.currentLine += 1
-            if controller.currentLine == song.timestops.count {
+            if controller.currentLine == song.timestops.count - 1 {
                 self.ended = true
                 return
             }
+            controller.currentLine += 1
             controller.scrollToNextLine()
         }
     }
