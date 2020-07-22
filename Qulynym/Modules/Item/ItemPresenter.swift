@@ -15,7 +15,7 @@ protocol ItemPresenterProtocol: class {
     var openedQuiz: Bool { get set }
     
     func getSlideCount() 
-    func updateView(forward: Bool?)
+    func updateView()
     func getAreImagesTransparentInfo()
     func contentBtnPressed()
     func closeBtnPressed()
@@ -44,19 +44,17 @@ extension ItemPresenter {
         interactor.getSlideCount(section: controller.section.name)
     }
     
-    func updateView(forward: Bool?) {
+    func updateView() {
         if openedQuiz {
             return
         }
-        
-        updateProperties(forward)
-        
-        guard !openedQuiz else {
-            let count = slideCount
-            passDataAndOpenQuiz(with: count)
+                
+        guard !(slideCount % 4 == 0 && !controller.returnedFromQuiz && controller.checkForQuiz) else {
+            passDataAndOpenQuiz(with: slideCount)
             return
         }
         
+        updateProperties()
         controller.returnedFromQuiz = false
         AudioPlayer.setupExtraAudio(with: contentKey, audioPlayer: .content)
         AudioPlayer.contentAudioPlayer.play()
@@ -69,22 +67,8 @@ extension ItemPresenter {
         }
     }
     
-    func updateProperties(_ forward: Bool?) {
-        guard let forward = forward else {
-            self.contentKey = controller.section.contentNames[self.slideCount]
-            return
-        }
-        if forward {
-            self.slideCount += 1
-        } else {
-            self.slideCount -= 1
-        }
-        
-        if slideCount % 4 == 0 && slideCount != 0 && !controller.returnedFromQuiz {
-            openedQuiz = true
-        } else {
-            self.contentKey = controller.section.contentNames[self.slideCount]
-        }
+    func updateProperties() {
+        self.contentKey = controller.section.contentNames[self.slideCount]
     }
     
     private func passDataAndOpenQuiz(with count: Int) {

@@ -14,6 +14,7 @@ protocol ItemViewControllerProtocol: class {
     var areImagesTransparent: Bool { get set }
     var slideCount: Int { get set }
     var returnedFromQuiz: Bool { get set }
+    var checkForQuiz: Bool { get }
     
     func updateContent(contentKey: String)
 }
@@ -30,7 +31,8 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
             presenter.slideCount = newValue
         }
     }
-    var returnedFromQuiz = false 
+    var returnedFromQuiz = true
+    var checkForQuiz = true
     var presenter: ItemPresenterProtocol!
     var quizViewController: QuizViewControllerProtocol!
     
@@ -65,8 +67,9 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
         presenter.openedQuiz = false 
         presenter.getAreImagesTransparentInfo()
         presenter.getSlideCount() 
-        presenter.updateView(forward: nil)
+        presenter.updateView()
         setupContentButtonBorder()
+        enableBackBtn(false)
     }
     
     
@@ -104,15 +107,30 @@ class ItemViewController: UIViewController, ItemViewControllerProtocol {
     }
     
     @objc func forwardBtnPressed() {
-        presenter.updateView(forward: true)
+        setProperties(forward: true)
+        presenter.updateView()
         backBtn.isEnabled = true
     }
     
     @objc func backBtnPressed() {
-        presenter.updateView(forward: false)
-        if presenter.slideCount == 0 {
-            backBtn.isEnabled = false
+        setProperties(forward: false)
+        if presenter.slideCount % 4 == 0 {
+           enableBackBtn(false)
         }
+        presenter.updateView()
+    }
+    
+    private func setProperties(forward: Bool) {
+        checkForQuiz = forward
+        if forward {
+            slideCount += 1
+        } else {
+            slideCount -= 1
+        }
+    }
+    
+    func enableBackBtn(_ enable: Bool) {
+        backBtn.isEnabled = enable
     }
     
     @objc

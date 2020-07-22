@@ -44,10 +44,6 @@ extension QuizPresenter {
     }
     
     func playAudio() {
-        if modifiedCards.count == 1 {
-            return
-        }
-        
         controller.changeViewsEnableState(enable: false)
         AudioPlayer.audioQueue.async {
             while AudioPlayer.sfxAudioPlayer.isPlaying {}
@@ -72,6 +68,7 @@ extension QuizPresenter {
             return
         }
         
+        playAudio() 
         removePreviousCard()
         getRandom()
         controller.shuffleCards()
