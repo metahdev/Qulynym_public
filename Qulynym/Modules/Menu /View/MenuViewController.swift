@@ -341,22 +341,33 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cancelArrowAnimations()
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        for cell in menuView.collectionView.visibleCells {
-            let indexPath = menuView.collectionView.indexPath(for: cell)
-            let indexPathRow = indexPath?.last
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            print("decelerate")
+            checkCellsAndSetTimer()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("scrollViewDidEndDecelerating")
+        checkCellsAndSetTimer()
+    }
+        
+    private func checkCellsAndSetTimer() {
+        for indexPath in menuView.collectionView.indexPathsForVisibleItems {
+            let indexPathRow = indexPath.item
             if menuView.collectionView.visibleCells.count < menuView.collectionView.numberOfItems(inSection: 0) {
                 let atEnd = indexPathRow == menuView.collectionView.numberOfItems(inSection: 0) - 1
-                let atBeginning = indexPathRow == 0
-                
+                let atBeginning = menuView.collectionView.indexPathsForVisibleItems.contains(IndexPath(item: 0, section: 0))
+
                 showLeft = atEnd && !atBeginning
                 showRight = atBeginning && !atEnd
-                
+
                 if !showRight && !showLeft {
                     showRight = true
                     showLeft = true
                 }
-                
+
                 cancelArrowAnimations()
                 showRight = indexPathRow != menuView.collectionView.numberOfItems(inSection: 0) - 1
                 setupTimer()
