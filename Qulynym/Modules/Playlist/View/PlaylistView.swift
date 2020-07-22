@@ -75,7 +75,7 @@ class PlaylistView: PlaylistViewProtocol {
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.54),
             
-            listCollectionView.topAnchor.constraint(equalTo: closeBtn.bottomAnchor),
+            listCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             listCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             listCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             listCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),

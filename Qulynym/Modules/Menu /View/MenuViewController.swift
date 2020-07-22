@@ -227,7 +227,6 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         #warning("refactor")
-        #warning("reused cells are messing up the layout(because of the changes in ImageCVCell with progressView)")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         cell.imageView.isSkeletonable = true
         cell.layer.borderColor = UIColor.white.cgColor
@@ -343,13 +342,11 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            print("decelerate")
             checkCellsAndSetTimer()
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("scrollViewDidEndDecelerating")
         checkCellsAndSetTimer()
     }
         

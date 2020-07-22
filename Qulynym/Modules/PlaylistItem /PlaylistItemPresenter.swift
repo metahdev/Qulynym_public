@@ -12,7 +12,6 @@ import Foundation
 protocol PlaylistItemPresenterProtocol: class {
     var duration: TimeInterval { get }
     var timer: TimerController! { get }
-    var line: Int { get }
     
     func getMaxCount()
     func getLyricsText()
@@ -32,7 +31,6 @@ class PlaylistItemPresenter: PlaylistItemPresenterProtocol {
     var router: PlaylistItemRouterProtocol!
     
     var timer: TimerController!
-    var line = 0
     
     required init(_ controller: PlaylistItemViewControllerProtocol) {
         self.controller = controller
@@ -135,13 +133,13 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
     
     func notifyOfSecondPassed() {
         let song = ContentService.songs[controller.index]
-        if Int(timer!.counter) == song.timestops[line].0 {
-            print("got here")
-            controller.scrollToNextLine()
-            line += 1
+        if Int(timer!.counter) == song.timestops[controller.currentLine].0 {
+            controller.updateCurrentLine()
+            controller.currentLine += 1
         }
-        if Int(timer!.counter) == song.timestops[line].1 {
-            line += 1
+        if Int(timer!.counter) == song.timestops[controller.currentLine].1 {
+            controller.clearPrevLine()
+            controller.scrollToNextLine()
         }
     }
     

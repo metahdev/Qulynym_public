@@ -17,12 +17,15 @@ protocol PlaylistItemViewControllerProtocol: class {
     var index: Int { get set }
     var maxIndex: Int { get set }
     var isPlaying: Bool { get }
+    var currentLine: Int { get set }
     
     func setViewsProperties()
     func setTimelineSliderMaxValue()
     func playBtnPressed()
     func setTimelineSliderValue(_ value: Float)
     func scrollToNextLine()
+    func updateCurrentLine()
+    func clearPrevLine()
 }
 
  class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerProtocol {
@@ -33,6 +36,11 @@ protocol PlaylistItemViewControllerProtocol: class {
     var index = 0
     var maxIndex = 0
     var isPlaying = false
+    var currentLine = 0 {
+        didSet {
+            updateCurrentLine()
+        }
+    }
     var isOpenSlider = true
     var presenter: PlaylistItemPresenterProtocol!
     
@@ -223,9 +231,22 @@ extension PlaylistItemViewController {
         }
     }
     
+    
+    // MARK:- Karaoke
     func scrollToNextLine() {
-        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: presenter.line, section: 0), at: .top, animated: true)
-        playlistItemView.lyricsCV.visibleCells
+        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .top, animated: true)
+    }
+    
+    func clearPrevLine() {
+        if currentLine - 1 != -1 {
+            let cell = playlistItemView.lyricsCV.cellForItem(at: IndexPath(row: currentLine, section: 0)) as! TitleCollectionViewCell
+            cell.current = false
+        }
+    }
+    
+    func updateCurrentLine() {
+        let cell = playlistItemView.lyricsCV.cellForItem(at: IndexPath(row: currentLine, section: 0)) as? TitleCollectionViewCell
+        cell?.current = true
     }
 }
  
@@ -244,11 +265,7 @@ extension PlaylistItemViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if presenter.line == indexPath.row {
-            (cell as! TitleCollectionViewCell).textColor = .green
-        } else {
-            (cell as! TitleCollectionViewCell).textColor = .darkGray
-        }
+        (cell as! TitleCollectionViewCell).current = currentLine == indexPath.row
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

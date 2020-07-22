@@ -23,9 +23,9 @@ class TitleCollectionViewCell: UICollectionViewCell {
             titleLabel.widthAnchor.constraint(equalToConstant: widthConstant).isActive = true
         }
     }
-    var textColor: UIColor! {
+    var current: Bool = false {
         didSet {
-            titleLabel.textColor = textColor 
+            titleLabel.textColor = current ? .green : .darkGray
         }
     }
     private lazy var titleLabel: UILabel = {

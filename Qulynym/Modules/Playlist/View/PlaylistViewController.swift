@@ -135,7 +135,7 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 40, left: view.frame.width * 0.1, bottom: 40, right: view.frame.width * 0.1)
+        return UIEdgeInsets(top: 20, left: view.frame.width * 0.1, bottom: 40, right: view.frame.width * 0.1)
     }
     
     func collectionView(_ collectionView: UICollectionView,
