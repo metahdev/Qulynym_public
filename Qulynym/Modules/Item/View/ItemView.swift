@@ -46,14 +46,14 @@ class ItemView: ItemViewProtocol {
     }()
     lazy var forwardBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "nextAudio"), for: .normal)
+        btn.setImage(UIImage(named: "itemForward"), for: .normal)
         btn.setupShadow()
         btn.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         return btn
     }()
     lazy var backBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "backAudio"), for: .normal)
+        btn.setImage(UIImage(named: "itemBack"), for: .normal)
         btn.setupShadow()
         btn.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         btn.isEnabled = false
