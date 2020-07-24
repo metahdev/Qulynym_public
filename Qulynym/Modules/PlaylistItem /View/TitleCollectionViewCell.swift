@@ -25,7 +25,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
     }
     var current: Bool = false {
         didSet {
-            titleLabel.textColor = current ? .green : .darkGray
+            titleLabel.textColor = current ? UIColor(red: 0.153, green: 0.682, blue: 0.376, alpha: 1) : .darkGray
         }
     }
     private lazy var titleLabel: UILabel = {
@@ -64,4 +64,21 @@ class TitleCollectionViewCell: UICollectionViewCell {
             titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
+    
+    
+    // MARK:- Flow Layout
+//    var isHeightCalculated: Bool = false
+//
+//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+//        if !isHeightCalculated {
+//            setNeedsLayout()
+//            layoutIfNeeded()
+//            let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
+//            var newFrame = layoutAttributes.frame
+//            newFrame.size.width = CGFloat(ceilf(Float(size.width)))
+//            layoutAttributes.frame = newFrame
+//            isHeightCalculated = true
+//        }
+//        return layoutAttributes
+//    }
 }

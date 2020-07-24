@@ -115,7 +115,7 @@ class DataFetchAPI {
     
     private func parsingJSON(_ value: [String: Any]?) {
         if let JSON = value {
-            print(value)
+            print(value as Any)
             guard let videos = JSON["items"] as? NSArray else { return }
             appendBeineEntities(videos)
             self.token = JSON["nextPageToken"] as? String

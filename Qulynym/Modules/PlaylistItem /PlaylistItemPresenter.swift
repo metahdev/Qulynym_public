@@ -81,6 +81,7 @@ extension PlaylistItemPresenter {
     }
     
     func nextAudio() {
+        controller.currentLine = 0
         controller.contentName = interactor.getNextAudioName(&controller.index, isKaraoke: controller.isKaraoke)
         updateForUser()
         if controller.isPlaying {
@@ -115,11 +116,11 @@ extension PlaylistItemPresenter {
         for timestop in song.timestops {
             if Float(timestop.0) < value {
                 line = index
-                print("assigned")
-                print(index)
             }
             index += 1
         }
+        print(value)
+        print(line)
         controller.currentLine = line
     }
     

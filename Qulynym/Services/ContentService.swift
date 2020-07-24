@@ -64,9 +64,6 @@ struct ContentService {
         "Flappy Torg'ai",
     ]
     
-//    Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, forwardTextViewTimepoints: [44: 173, 58: 268, 73: 373, 87: 458, 130: 553, 155: 717], rewindTextViewTimepoints: [43: 0, 55: 173, 76: 268, 86: 337, 129: 432, 154: 526]),
-//           Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, forwardTextViewTimepoints: [26: 0, 34: 0, 42: 0, 51: 0, 59: 0, 67: 0, 75: 0, 84: 0], rewindTextViewTimepoints: [25: 0, 33: 0, 41: 0, 50: 0, 58: 0, 66: 0, 74: 0])
-//
     static var songs: [Song] = [
         Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, timestops: [(30, 32), (33, 35), (37, 39), (40, 43), (44, 46), (48, 50), (52, 54), (55, 57), (59, 61), (63, 65), (66, 69), (70, 72), (74, 76), (77, 80), (81, 83), (84, 87), (88, 90), (92, 94), (95, 98), (99, 101), (102, 105), (107, 108), (110, 113), (114, 116), (132, 134), (136, 138), (139, 142), (143, 145), (146, 149), (150, 152), (153, 156), (157, 159)]),
         Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, timestops: [(18 , 19),(20, 21), (22, 24), (25, 26), (27, 28), (29, 30), (31, 32), (33, 34), (35, 36), (37, 38), (39, 40), (41, 42), (43, 44), (45, 46), (47, 48), (49, 50), (51, 52), (53, 54), (55, 56), (57, 58), (59, 60), (61, 62), (63, 65), (66, 67), (68, 69), (70, 71), (72, 73), (74, 75), (76, 77), (78, 79), (80, 81), (82, 83)]),

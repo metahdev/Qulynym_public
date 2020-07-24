@@ -78,19 +78,6 @@ class PlaylistItemView: PlaylistItemViewProtocol {
         cv.register(TitleCollectionViewCell.self , forCellWithReuseIdentifier: "reuseID")
         return cv
     }()
-//    lazy var lyricsTextView: UITextView = {
-//        let textV = UITextView()
-//        textV.layer.borderWidth = 5
-//        textV.layer.borderColor = UIColor.brown.cgColor
-//        textV.textColor = .black
-//        textV.isEditable = false
-//        textV.isSelectable = false
-//        textV.isScrollEnabled = true
-//        textV.backgroundColor = .clear
-//        textV.font = UIFont(name: "Helvetica", size: view.frame.height * 0.08)
-//        textV.textAlignment = .center
-//        return textV
-//    }()
     lazy var timelineSlider: UISlider = {
         return setupPlaylistSlider(value: 0, secondColor: .gray)
     }()
@@ -133,7 +120,6 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     private func addSubviews() {
         view.addSubview(storyBackgroundImage)
         view.addSubview(closeBtn)
-//        view.addSubview(lyricsTextView)
         view.addSubview(lyricsCV)
         view.addSubview(storyImageView)
         view.addSubview(titleLabel)
@@ -162,11 +148,6 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     
     private func activateMainConstraints() {
         NSLayoutConstraint.activate([
-//            lyricsTextView.topAnchor.constraint(equalTo: view.topAnchor),
-//            lyricsTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            lyricsTextView.widthAnchor.constraint(equalTo: view.heightAnchor),
-//            lyricsTextView.heightAnchor.constraint(equalTo: lyricsTextView.widthAnchor, multiplier: 0.5),
-            
             lyricsCV.topAnchor.constraint(equalTo: view.topAnchor, constant: 12),
             lyricsCV.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             lyricsCV.widthAnchor.constraint(equalTo: view.heightAnchor),

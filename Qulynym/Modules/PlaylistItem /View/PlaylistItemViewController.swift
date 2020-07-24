@@ -263,7 +263,7 @@ extension PlaylistItemViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! TitleCollectionViewCell
         let lyricsLine = lyricsText[indexPath.row]
         cell.title = lyricsLine
-        cell.widthConstant = collectionView.frame.width 
+        cell.widthConstant = collectionView.frame.width - 40
         return cell
     }
     
@@ -274,7 +274,7 @@ extension PlaylistItemViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let lyricsLine = lyricsText[indexPath.row]
-        return CGSize(width: collectionView.frame.width - 16, height: lyricsLine.size(withAttributes: nil).height)
+        return CGSize(width: collectionView.frame.width - 40, height: lyricsLine.size(withAttributes: nil).height)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout
