@@ -284,6 +284,6 @@ extension PlaylistItemViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 8, bottom: 20, right: 8)
+        return UIEdgeInsets(top: 20, left: 12, bottom: 20, right: 12)
     }
  }
