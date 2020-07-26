@@ -66,19 +66,8 @@ class TitleCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // MARK:- Flow Layout
-//    var isHeightCalculated: Bool = false
-//
-//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-//        if !isHeightCalculated {
-//            setNeedsLayout()
-//            layoutIfNeeded()
-//            let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
-//            var newFrame = layoutAttributes.frame
-//            newFrame.size.width = CGFloat(ceilf(Float(size.width)))
-//            layoutAttributes.frame = newFrame
-//            isHeightCalculated = true
-//        }
-//        return layoutAttributes
-//    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        current = false
+    }
 }

@@ -13,7 +13,6 @@ protocol TimerControllerDelegate: class {
     var duration: TimeInterval { get }
     
     func notifyOfMillisecondPassed()
-    func notifyOfSecondPassed()
     func notifyTimerEnded()
 }
 
@@ -22,7 +21,7 @@ class TimerController {
     var timer: Timer?
     var delegate: TimerControllerDelegate!
     
-    var counter = 0.0
+    var counter: Float = 0.0
     var scrollTimepoint: Int?
     
     // MARK:- Timer
@@ -41,12 +40,8 @@ class TimerController {
     
     @objc private func checkState() {
         counter += 0.1
+        counter.roundToDecimals()
         delegate.notifyOfMillisecondPassed()
-        
-        let normalBool = (counter * 10).rounded() / 10
-        if normalBool.truncatingRemainder(dividingBy: 1) == 0 {
-            delegate.notifyOfSecondPassed()
-        }
     }
     
     func timerEnded() {

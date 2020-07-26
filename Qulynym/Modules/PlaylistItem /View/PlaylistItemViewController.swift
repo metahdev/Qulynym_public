@@ -9,6 +9,13 @@
 
 import UIKit
 import AVKit
+ 
+ #warning("TODO")
+ /*
+  1. Fix audio scrolling functionality
+  2. Check all functionality: changing audios and etc. 
+  3. Correct song timings
+  */
 
 protocol PlaylistItemViewControllerProtocol: class {
     var isKaraoke: Bool { get set }
@@ -24,7 +31,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     func setTimelineSliderMaxValue()
     func playBtnPressed()
     func setTimelineSliderValue(_ value: Float)
-    func scrollToNextLine()
+    func scrollToCurrentLine()
     func updateCurrentLine()
     func clearLine()
 }
@@ -37,11 +44,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     var index = 0
     var maxIndex = 0
     var isPlaying = false
-    var currentLine = 0 {
-        didSet {
-            updateCurrentLine()
-        }
-    }
+    var currentLine = 0 
     var began = false 
     var isOpenSlider = true
     var presenter: PlaylistItemPresenterProtocol!
@@ -166,7 +169,9 @@ protocol PlaylistItemViewControllerProtocol: class {
         if !isPlaying {
             playBtnPressed()
         }
-        presenter.scrollAudio(to: playlistItemView.timelineSlider.value)
+        var value = playlistItemView.timelineSlider.value
+        value.roundToDecimals()
+        presenter.scrollAudio(to: value)
     }
     
     @objc
@@ -177,6 +182,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     }
     
     private func changeSoundBtnImage(_ value: Float) {
+        playlistItemView.soundButton.setImage(nil, for: .normal)
         if value == 0.0 {
             playlistItemView.soundButton.setImage(UIImage(named: "soundsIconOff"), for: .normal)
             isOpenSlider = false
@@ -213,6 +219,7 @@ extension PlaylistItemViewController {
             playlistItemView.storyImageView.image = UIImage(named: contentName)
         }
         playlistItemView.soundSlider.value = 1
+        currentLine = 0 
         playlistItemView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
         isOpenSlider = true
         playlistItemView.lyricsCV.delegate = self
@@ -235,7 +242,7 @@ extension PlaylistItemViewController {
     
     
     // MARK:- Karaoke
-    func scrollToNextLine() {
+    func scrollToCurrentLine() {            
         playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .top, animated: true)
     }
 

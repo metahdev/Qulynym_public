@@ -28,7 +28,7 @@ extension ItemInteractor {
     func getSlideCount(section name: String)  {
         presenter.slideCount = (UserDefaults.standard.value(forKey: name) as? Int ?? 0)
         var eduSection: EduSection!
-        _ = ContentService.toddlerSections.map({
+        _ = Content.toddlerSections.map({
             if $0.name == name {
                 eduSection = $0
             }

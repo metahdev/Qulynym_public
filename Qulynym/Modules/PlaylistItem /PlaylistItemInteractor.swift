@@ -28,28 +28,28 @@ extension PlaylistItemInteractor {
     // MARK:- Protocol Methods
     func getMaxCount(_ isKaraoke: Bool) -> Int {
         if isKaraoke {
-            return ContentService.songs.count - 1
+            return Content.songs.count - 1
         }
-        return ContentService.stories.count - 1
+        return Content.stories.count - 1
     }
     
     func getLyricsText(_ index: Int) -> [String] {
-        return ContentService.songs[index].lyrics
+        return Content.songs[index].lyrics
     }
     
     func getPreviousAudioName(_ index: inout Int, isKaraoke: Bool) -> String {
         index -= 1
         if isKaraoke {
-            return ContentService.songs[index].name
+            return Content.songs[index].name
         }
-        return ContentService.stories[index]
+        return Content.stories[index]
     }
     
     func getNextAudioName(_ index: inout Int, isKaraoke: Bool) -> String {
         index += 1
         if isKaraoke {
-            return ContentService.songs[index].name
+            return Content.songs[index].name
         }
-        return ContentService.stories[index]
+        return Content.stories[index]
     }
 }

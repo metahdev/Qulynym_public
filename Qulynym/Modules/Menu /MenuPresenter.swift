@@ -50,7 +50,7 @@ extension MenuPresenter {
     }
     
     func didSelectToddlerCell(at index: Int) {
-        router.showItemView(content: ContentService.toddlerSections[index])
+        router.showItemView(content: Content.toddlerSections[index])
     }
     
     func didSelectGamesCell(at index: Int) {

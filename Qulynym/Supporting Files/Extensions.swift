@@ -10,6 +10,12 @@
 import UIKit
 import Alamofire
 
+extension Float {
+    mutating func roundToDecimals() {
+        self = (self * 10).rounded() / 10
+    }
+}
+
 extension UIView {
     func setupShadow() {
         self.layer.shadowOpacity = 0.3
@@ -80,3 +86,6 @@ extension UIColor {
     static let beigePink = UIColor(red: 0.99, green: 0.9, blue: 0.9, alpha: 1)
     static let lightYellow = UIColor(red: 254/255, green: 243/255, blue: 156/255, alpha: 0.8)
 }
+
+
+

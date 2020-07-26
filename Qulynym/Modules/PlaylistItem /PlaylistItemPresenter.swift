@@ -81,7 +81,6 @@ extension PlaylistItemPresenter {
     }
     
     func nextAudio() {
-        controller.currentLine = 0
         controller.contentName = interactor.getNextAudioName(&controller.index, isKaraoke: controller.isKaraoke)
         updateForUser()
         if controller.isPlaying {
@@ -93,6 +92,7 @@ extension PlaylistItemPresenter {
     private func updateForUser() {
         timer.nullifyData()
         controller.setTimelineSliderValue(0)
+        updateStates()
         AudioPlayer.playlistPlayerInitiated = false
         getLyricsText()
         controller.setViewsProperties()
@@ -101,27 +101,50 @@ extension PlaylistItemPresenter {
     func scrollAudio(to value: Float) {
         controller.clearLine()
         findCurrentLine(value)
+        controller.began = true
         AudioPlayer.playlistItemAudioPlayer.pause()
         controller.setTimelineSliderValue(value)
-        timer.counter = Double(value)
+        timer.counter = value
         AudioPlayer.playlistItemAudioPlayer.currentTime = TimeInterval(exactly: value)!
         AudioPlayer.playlistItemAudioPlayer.prepareToPlay()
         AudioPlayer.playlistItemAudioPlayer.play()
     }
     
     private func findCurrentLine(_ value: Float) {
-        let song = ContentService.songs[controller.index]
+        let song = Content.songs[controller.index]
         var index = 0
         var line = 0
+        #warning("idk what's happening here")
         for timestop in song.timestops {
-            if Float(timestop.0) < value {
+            if timestop.0 < value {
                 line = index
+                print(line)
+            } else {
+                guard index != 0 else {
+                    print("scrolling to 0")
+                    controller.currentLine = 0
+                    controller.began = false
+                    controller.scrollToCurrentLine()
+                    if song.timestops[0].1 > value && song.timestops[0].0 < value {
+                        controller.updateCurrentLine()
+                    }
+                    return
+                }
+                print("got here")
+                print(song.timestops[line].1)
+                controller.currentLine = line
+                if song.timestops[line].1 > value {
+                    print("highlighting needed one")
+                    print(line)
+                    controller.updateCurrentLine()
+                    return
+                } else {
+                    controller.scrollToCurrentLine()
+                }
+                break
             }
             index += 1
         }
-        print(value)
-        print(line)
-        controller.currentLine = line
     }
     
     func changeAudioVolume(to value: Float) {
@@ -148,29 +171,35 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
     
     func notifyOfMillisecondPassed() {
         controller.setTimelineSliderValue(Float(timer!.counter))
-    }
-    
-    func notifyOfSecondPassed() {
-        let song = ContentService.songs[controller.index]
+        
+        let song = Content.songs[controller.index]
         guard !ended else {
             return
         }
-        if Int(timer!.counter) == song.timestops[controller.currentLine].0 {
-            controller.began = true 
+        if timer!.counter == song.timestops[controller.currentLine].0 {
             controller.updateCurrentLine()
         }
-        if Int(timer!.counter) == song.timestops[controller.currentLine].1 {
+        if timer!.counter == song.timestops[controller.currentLine].1 {
+            print("clearing this line: \(controller.currentLine)")
             controller.clearLine()
             if controller.currentLine == song.timestops.count - 1 {
                 self.ended = true
                 return
             }
             controller.currentLine += 1
-            controller.scrollToNextLine()
+            controller.scrollToCurrentLine()
         }
     }
     
     func notifyTimerEnded() {
+        controller.currentLine = 0
+        controller.scrollToCurrentLine()
+        updateStates()
         AudioPlayer.playlistItemAudioPlayer.currentTime = TimeInterval(exactly: 0.0)!
+    }
+    
+    private func updateStates() {
+        self.ended = false
+        controller.began = false
     }
 }

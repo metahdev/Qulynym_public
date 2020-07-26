@@ -27,7 +27,7 @@ struct EduSection: Equatable {
 struct Song {
     var name: String
     var lyrics: [String]
-    var timestops: [(Int, Int)]
+    var timestops: [(Float, Float)]
 }
 
 struct Video {
@@ -41,7 +41,7 @@ struct Beine {
     var thumbnailURL: String
 }
 
-struct ContentService {
+struct Content {
     static let sections: [Menu: [String]] = [.main: menuSections, .games: gamesSection]
     
     static let menuSections = [
@@ -65,12 +65,12 @@ struct ContentService {
     ]
     
     static var songs: [Song] = [
-        Song(name: "Qoshaqanym", lyrics: ContentService.qoshakanymLyrics, timestops: [(30, 32), (33, 35), (37, 39), (40, 43), (44, 46), (48, 50), (52, 54), (55, 57), (59, 61), (63, 65), (66, 69), (70, 72), (74, 76), (77, 80), (81, 83), (84, 87), (88, 90), (92, 94), (95, 98), (99, 101), (102, 105), (107, 108), (110, 113), (114, 116), (132, 134), (136, 138), (139, 142), (143, 145), (146, 149), (150, 152), (153, 156), (157, 159)]),
-        Song(name: "Aigo'lek", lyrics: ContentService.aigolekLyrics, timestops: [(18 , 19),(20, 21), (22, 24), (25, 26), (27, 28), (29, 30), (31, 32), (33, 34), (35, 36), (37, 38), (39, 40), (41, 42), (43, 44), (45, 46), (47, 48), (49, 50), (51, 52), (53, 54), (55, 56), (57, 58), (59, 60), (61, 62), (63, 65), (66, 67), (68, 69), (70, 71), (72, 73), (74, 75), (76, 77), (78, 79), (80, 81), (82, 83)]),
-        Song(name: "Sarjaılay'", lyrics: ContentService.sarjailayLyrics, timestops: [(18, 23), (24, 31), (32, 38), (39, 45), (46, 47), (48, 49), (50, 52), (53, 55), (56, 57), (58, 59), (60, 63), (64, 65), (66, 72), (73, 79), (80, 86), (87, 93), (94, 95), (96, 97), (98,  100), (101, 103), (104, 105), (106, 107), (108, 111), (112, 114), (146, 152), (153, 158), (160, 166), (167, 173), (174, 175), (176, 177), (178, 180), (181, 183), (184, 185), (186, 187), (188, 191), (192, 194), (195, 196), (197, 198), (199, 201), (202, 205), (206, 207), (208, 209), (210, 211), (212, 216)]),
-        Song(name: "Ertegіler álemі", lyrics: ContentService.ertegilerAlemiLyrics, timestops: [(0, 0)]),
-        Song(name: "Asyl áje", lyrics: ContentService.asylAzheLyrics, timestops: [(0, 0)]),
-        Song(name: "Bіr bala", lyrics: ContentService.birBalaLyrics, timestops: [(0, 0)])
+        Song(name: "Qoshaqanym", lyrics: Content.qoshakanymLyrics, timestops: [(30, 32), (33, 35), (37, 39), (40, 43), (44, 46), (48, 50), (52, 54), (55, 57), (59, 61), (63, 65), (66, 69), (70, 72), (74, 76), (77, 80), (81, 83), (84, 87), (88, 90), (92, 94), (95, 98), (99, 101), (102, 105), (107, 108), (110, 113), (114, 116), (132, 134), (136, 138), (139, 142), (143, 145), (146, 149), (150, 152), (153, 156), (157, 159)]),
+        Song(name: "Aigo'lek", lyrics: Content.aigolekLyrics, timestops: [(18 , 19),(20, 21), (22, 24), (25, 26), (27, 28), (29, 30), (31, 32), (33, 34), (35, 36), (37, 38), (39, 40), (41, 42), (43, 44), (45, 46), (47, 48), (49, 50), (51, 52), (53, 54), (55, 56), (57, 58), (59, 60), (61, 62), (63, 65), (66, 67), (68, 69), (70, 71), (72, 73), (74, 75), (76, 77), (78, 79), (80, 81), (82, 83)]),
+        Song(name: "Sarjaılay'", lyrics: Content.sarjailayLyrics, timestops: [(18, 23), (24, 31), (32, 38), (39, 45), (46, 47), (48, 49), (50, 52), (53, 55), (56, 57), (58, 59), (60, 63), (64, 65), (66, 72), (73, 79), (80, 86), (87, 93), (94, 95), (96, 97), (98,  100), (101, 103), (104, 105), (106, 107), (108, 111), (112, 114), (146, 152), (153, 158), (160, 166), (167, 173), (174, 175), (176, 177), (178, 180), (181, 183), (184, 185), (186, 187), (188, 191), (192, 194), (195, 196), (197, 198), (199, 201), (202, 205), (206, 207), (208, 209), (210, 211), (212, 216)]),
+        Song(name: "Ertegіler álemі", lyrics: Content.ertegilerAlemiLyrics, timestops: [(0, 0)]),
+        Song(name: "Asyl áje", lyrics: Content.asylAzheLyrics, timestops: [(0, 0)]),
+        Song(name: "Bіr bala", lyrics: Content.birBalaLyrics, timestops: [(0, 0)])
     ]
     
     /* Mentions:
@@ -153,7 +153,7 @@ struct ContentService {
 }
 
 func setAttributedText(type: TextType) -> NSAttributedString {
-    let attributedText = (NSAttributedString(string: type == .credits ? ContentService.creditsBody : ContentService.parentsInfoBody, attributes: [NSAttributedString.Key.font: UIFont(name: "Gill Sans", size: 32)!, NSAttributedString.Key.foregroundColor: UIColor.gray]))
+    let attributedText = (NSAttributedString(string: type == .credits ? Content.creditsBody : Content.parentsInfoBody, attributes: [NSAttributedString.Key.font: UIFont(name: "Gill Sans", size: 32)!, NSAttributedString.Key.foregroundColor: UIColor.gray]))
     
     return attributedText
 }

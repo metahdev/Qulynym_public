@@ -27,7 +27,7 @@ class SettingsInteractor: SettingsInteractorProtocol {
 extension SettingsInteractor {
     // MARK:- Protocol Methods
     func getContent(_ isInfoForParents: Bool) -> NSAttributedString {
-        return isInfoForParents ? ContentService.infoForParents : ContentService.credits
+        return isInfoForParents ? Content.infoForParents : Content.credits
     }
     
     func getTitle(_ isInfoForParents: Bool) -> String {

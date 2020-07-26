@@ -213,7 +213,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     // MARK:- UICollectionView Protocols
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if menuType == .toddler {
-            return ContentService.toddlerSections.count
+            return Content.toddlerSections.count
         }
         if menuType == .beinelerPlaylists || menuType == .beineler {
             if dataFetchAPI.beineler.count == 0 {
@@ -222,7 +222,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return dataFetchAPI.beineler.count
             }
         }
-        return ContentService.sections[menuType]!.count        
+        return Content.sections[menuType]!.count        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -237,8 +237,8 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.sectionTitleLabel.setupMenuLabel(size: cell.frame.height * 0.13)
         
         if menuType == .main {
-            cell.text = ContentService.sections[menuType]![indexPath.row]
-            cell.image = UIImage(named: ContentService.sections[menuType]![indexPath.row])
+            cell.text = Content.sections[menuType]![indexPath.row]
+            cell.image = UIImage(named: Content.sections[menuType]![indexPath.row])
             return cell
         } else if menuType == .beinelerPlaylists || menuType == .beineler {
             cell.sectionTitleLabel.font = UIFont(name: "Helvetica-Bold", size: cell.frame.height * 0.13)
@@ -252,7 +252,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             return cell
         } else if menuType == .toddler {
-            let section = ContentService.toddlerSections[indexPath.row]
+            let section = Content.toddlerSections[indexPath.row]
             cell.text = section.name
             cell.image = UIImage(named: section.name)
             let completed = UserDefaults.standard.value(forKey: section.name) as? Int
@@ -264,8 +264,8 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             cell.progress = Float(progress.fractionCompleted)
         } else {
-            cell.text = ContentService.sections[menuType]![indexPath.row]
-            cell.image = UIImage(named: ContentService.sections[menuType]![indexPath.row])
+            cell.text = Content.sections[menuType]![indexPath.row]
+            cell.image = UIImage(named: Content.sections[menuType]![indexPath.row])
         }
         
         cell.layer.cornerRadius = cell.frame.height * 0.5
