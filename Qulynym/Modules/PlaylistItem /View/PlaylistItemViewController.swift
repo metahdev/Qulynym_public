@@ -131,6 +131,7 @@ protocol PlaylistItemViewControllerProtocol: class {
             playlistItemView.playBtn.setBackgroundImage(UIImage(named: "pauseBtn"), for: .normal)
         }
         isPlaying = !isPlaying
+        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: 23, section: 0), at: .top, animated: true)
     }
     
     @objc
@@ -269,6 +270,8 @@ extension PlaylistItemViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! TitleCollectionViewCell
         let lyricsLine = lyricsText[indexPath.row]
+        #warning("something is wrong with cell indexes and lines compatability")
+        print("\(lyricsLine), index: \(indexPath.row)")
         cell.title = lyricsLine
         cell.widthConstant = collectionView.frame.width - 40
         return cell

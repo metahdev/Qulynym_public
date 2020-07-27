@@ -101,7 +101,6 @@ extension PlaylistItemPresenter {
     func scrollAudio(to value: Float) {
         controller.clearLine()
         findCurrentLine(value)
-        controller.began = true
         AudioPlayer.playlistItemAudioPlayer.pause()
         controller.setTimelineSliderValue(value)
         timer.counter = value
@@ -116,15 +115,16 @@ extension PlaylistItemPresenter {
         var line = 0
         #warning("idk what's happening here")
         for timestop in song.timestops {
+            print(timestop.0)
+            print(value)
             if timestop.0 < value {
                 line = index
-                print(line)
+                print("assigned")
             } else {
                 guard index != 0 else {
-                    print("scrolling to 0")
                     controller.currentLine = 0
-                    controller.began = false
                     controller.scrollToCurrentLine()
+                    controller.clearLine()
                     if song.timestops[0].1 > value && song.timestops[0].0 < value {
                         controller.updateCurrentLine()
                     }
@@ -133,9 +133,9 @@ extension PlaylistItemPresenter {
                 print("got here")
                 print(song.timestops[line].1)
                 controller.currentLine = line
+                print(line)
                 if song.timestops[line].1 > value {
                     print("highlighting needed one")
-                    print(line)
                     controller.updateCurrentLine()
                     return
                 } else {
