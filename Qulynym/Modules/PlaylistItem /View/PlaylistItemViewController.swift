@@ -26,6 +26,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     var isPlaying: Bool { get }
     var currentLine: Int { get set }
     var began: Bool { get set }
+    var scrolling: Bool { get }
     
     func setViewsProperties()
     func setTimelineSliderMaxValue()
@@ -45,7 +46,10 @@ protocol PlaylistItemViewControllerProtocol: class {
     var maxIndex = 0
     var isPlaying = false
     var currentLine = 0 
-    var began = false 
+    var began = false
+    var scrolling: Bool {
+        return playlistItemView.lyricsCV.isDecelerating || playlistItemView.lyricsCV.isDragging
+    }
     var isOpenSlider = true
     var presenter: PlaylistItemPresenterProtocol!
     
@@ -77,6 +81,10 @@ protocol PlaylistItemViewControllerProtocol: class {
         setViewsProperties()
         configureBtnsEnability()
         AudioPlayer.backgroundAudioPlayer.stop()
+        #warning("need to prefetch cells so scrolling works smoothly")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
     }
     
     
@@ -243,11 +251,8 @@ extension PlaylistItemViewController {
     
     // MARK:- Karaoke
     func scrollToCurrentLine() {
+        #warning("need to fix this animation")
         playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .top, animated: true)
-//        if playlistItemView.lyricsCV.dataSource?.collectionView(playlistItemView.lyricsCV, cellForItemAt: IndexPath(row: 0, section: currentLine)) != nil {
-//            let rect = playlistItemView.lyricsCV.layoutAttributesForItem(at: IndexPath(item: currentLine, section: 0))?.frame
-//            playlistItemView.lyricsCV.scrollRectToVisible(rect!, animated: true)
-//        }
     }
 
     func clearLine() {
@@ -273,7 +278,6 @@ extension PlaylistItemViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! TitleCollectionViewCell
         let lyricsLine = lyricsText[indexPath.row]
-        #warning("something is wrong with cell indexes and lines compatability")
         cell.title = lyricsLine
         cell.widthConstant = collectionView.frame.width - 40
         return cell
@@ -281,6 +285,7 @@ extension PlaylistItemViewController {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard began else { return }
+        #warning("need to check whether line really began")
         (cell as! TitleCollectionViewCell).current = currentLine == indexPath.row
     }
     

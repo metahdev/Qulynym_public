@@ -113,7 +113,8 @@ extension PlaylistItemPresenter {
         let song = Content.songs[controller.index]
         var index = 0
         var line = 0
-        #warning("idk what's happening here")
+        ended = false
+        #warning("refactor")
         for timestop in song.timestops {
             if timestop.0 < value {
                 line = index
@@ -127,6 +128,7 @@ extension PlaylistItemPresenter {
                     }
                     return
                 }
+                controller.began = true
                 if song.timestops[line].1 > value {
                     controller.currentLine = line
                     controller.updateCurrentLine()
@@ -174,10 +176,11 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
             controller.updateCurrentLine()
         }
         if timer!.counter == song.timestops[controller.currentLine].1 {
-            print("clearing this line: \(controller.currentLine)")
             controller.clearLine()
+            #warning("for some reason it's not being scrolled to the end")
             if controller.currentLine == song.timestops.count - 1 {
                 self.ended = true
+                controller.scrollToCurrentLine()
                 return
             }
             controller.currentLine += 1
