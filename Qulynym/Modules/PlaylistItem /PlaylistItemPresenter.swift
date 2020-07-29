@@ -115,11 +115,8 @@ extension PlaylistItemPresenter {
         var line = 0
         #warning("idk what's happening here")
         for timestop in song.timestops {
-            print(timestop.0)
-            print(value)
             if timestop.0 < value {
                 line = index
-                print("assigned")
             } else {
                 guard index != 0 else {
                     controller.currentLine = 0
@@ -130,17 +127,14 @@ extension PlaylistItemPresenter {
                     }
                     return
                 }
-                print("got here")
-                print(song.timestops[line].1)
-                controller.currentLine = line
-                print(line)
                 if song.timestops[line].1 > value {
-                    print("highlighting needed one")
+                    controller.currentLine = line
                     controller.updateCurrentLine()
                     return
                 } else {
-                    controller.scrollToCurrentLine()
+                    controller.currentLine = line + 1
                 }
+                controller.scrollToCurrentLine()
                 break
             }
             index += 1

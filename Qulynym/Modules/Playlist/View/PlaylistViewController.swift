@@ -117,6 +117,7 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("a")
         presenter.openItem(at: indexPath.row)
     }
     
