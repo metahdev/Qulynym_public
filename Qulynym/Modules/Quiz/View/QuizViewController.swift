@@ -23,7 +23,7 @@ protocol QuizViewControllerProtocol: class {
     func shuffleCards()
 }
 
-class QuizViewController: UIViewController, QuizViewControllerProtocol {
+class QuizViewController: QulynymVC, QuizViewControllerProtocol {
     // MARK:- Properties
     var categoryName = "" {
         didSet {

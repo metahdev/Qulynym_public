@@ -20,7 +20,7 @@ protocol BeineViewControllerProtocol: class {
     var index: Int! { get set }
 }
 
-class BeineViewController: UIViewController, BeineViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningCaller, ConnectionWarningViewControllerDelegate {
+class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningCaller, ConnectionWarningViewControllerDelegate {
     // MARK:- Properties
     var dataFetchAPI: DataFetchAPI!
     var beineler: [Beine]!

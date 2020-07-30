@@ -19,7 +19,7 @@ protocol ItemViewControllerProtocol: class {
     func updateContent(contentKey: String)
 }
 
-class ItemViewController: UIViewController, ItemViewControllerProtocol {
+class ItemViewController: QulynymVC, ItemViewControllerProtocol {
     // MARK:- Properties
     var section: EduSection!
     var areImagesTransparent = true

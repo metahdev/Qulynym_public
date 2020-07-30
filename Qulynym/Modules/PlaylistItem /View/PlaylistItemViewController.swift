@@ -13,8 +13,7 @@ import AVKit
  #warning("TODO")
  /*
   1. Fix audio scrolling functionality
-  2. Check all functionality: changing audios and etc. 
-  3. Correct song timings
+  2. Correct song timings
   */
 
 protocol PlaylistItemViewControllerProtocol: class {
@@ -26,7 +25,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     var isPlaying: Bool { get }
     var currentLine: Int { get set }
     var began: Bool { get set }
-    var scrolling: Bool { get }
+    var highlighting: Bool { get set }
     
     func setViewsProperties()
     func setTimelineSliderMaxValue()
@@ -37,7 +36,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     func clearLine()
 }
 
- class PlaylistItemViewController: UIViewController, PlaylistItemViewControllerProtocol {
+ class PlaylistItemViewController: QulynymVC, PlaylistItemViewControllerProtocol {
     // MARK:- Properties
     var isKaraoke = true
     var contentName = ""
@@ -47,9 +46,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     var isPlaying = false
     var currentLine = 0 
     var began = false
-    var scrolling: Bool {
-        return playlistItemView.lyricsCV.isDecelerating || playlistItemView.lyricsCV.isDragging
-    }
+    var highlighting = true
     var isOpenSlider = true
     var presenter: PlaylistItemPresenterProtocol!
     
@@ -82,9 +79,6 @@ protocol PlaylistItemViewControllerProtocol: class {
         configureBtnsEnability()
         AudioPlayer.backgroundAudioPlayer.stop()
         #warning("need to prefetch cells so scrolling works smoothly")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
     }
     
     
@@ -252,7 +246,7 @@ extension PlaylistItemViewController {
     // MARK:- Karaoke
     func scrollToCurrentLine() {
         #warning("need to fix this animation")
-        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .top, animated: true)
+        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .centeredVertically, animated: true)
     }
 
     func clearLine() {
@@ -280,13 +274,14 @@ extension PlaylistItemViewController {
         let lyricsLine = lyricsText[indexPath.row]
         cell.title = lyricsLine
         cell.widthConstant = collectionView.frame.width - 40
+        cell.layoutIfNeeded()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard began else { return }
-        #warning("need to check whether line really began")
-        (cell as! TitleCollectionViewCell).current = currentLine == indexPath.row
+        let current = (currentLine == indexPath.row)
+        (cell as! TitleCollectionViewCell).current = current && highlighting
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

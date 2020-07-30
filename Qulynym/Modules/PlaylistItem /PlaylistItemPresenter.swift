@@ -90,12 +90,17 @@ extension PlaylistItemPresenter {
     }
     
     private func updateForUser() {
+        #warning("refactor")
         timer.nullifyData()
         controller.setTimelineSliderValue(0)
         updateStates()
         AudioPlayer.playlistPlayerInitiated = false
         getLyricsText()
-        controller.setViewsProperties()
+        controller.currentLine = 0
+        controller.scrollToCurrentLine()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+            self.controller.setViewsProperties()
+        })
     }
     
     func scrollAudio(to value: Float) {
@@ -135,6 +140,7 @@ extension PlaylistItemPresenter {
                     return
                 } else {
                     controller.currentLine = line + 1
+                    controller.highlighting = false
                 }
                 controller.scrollToCurrentLine()
                 break
@@ -173,17 +179,18 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
             return
         }
         if timer!.counter == song.timestops[controller.currentLine].0 {
+            controller.highlighting = true
             controller.updateCurrentLine()
         }
         if timer!.counter == song.timestops[controller.currentLine].1 {
             controller.clearLine()
-            #warning("for some reason it's not being scrolled to the end")
             if controller.currentLine == song.timestops.count - 1 {
                 self.ended = true
                 controller.scrollToCurrentLine()
                 return
             }
             controller.currentLine += 1
+            controller.highlighting = false 
             controller.scrollToCurrentLine()
         }
     }
@@ -198,5 +205,6 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
     private func updateStates() {
         self.ended = false
         controller.began = false
+        controller.highlighting = false
     }
 }

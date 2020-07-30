@@ -9,7 +9,7 @@
 
 import UIKit
 
-class DrawingsCollectionView: UIViewController {
+class DrawingsCollectionView: QulynymVC {
     // MARK:- Properties
     var pictures = ["whiteCanvas", "flowerDrawing", "penguinDrawing", "catterpilarDrawing", "butterflyDrawing"]
     weak var drawingView: DrawingViewControllerProtocol!

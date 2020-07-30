@@ -16,6 +16,12 @@ extension Float {
     }
 }
 
+extension UIColor {
+    static let skyBlue = UIColor(red: 141/255, green: 232/255, blue: 237/255, alpha: 1)
+    static let beigePink = UIColor(red: 0.99, green: 0.9, blue: 0.9, alpha: 1)
+    static let lightYellow = UIColor(red: 254/255, green: 243/255, blue: 156/255, alpha: 0.8)
+}
+
 extension UIView {
     func setupShadow() {
         self.layer.shadowOpacity = 0.3
@@ -80,12 +86,3 @@ extension UIImageView {
         ])
     }
 }
-
-extension UIColor {
-    static let skyBlue = UIColor(red: 141/255, green: 232/255, blue: 237/255, alpha: 1)
-    static let beigePink = UIColor(red: 0.99, green: 0.9, blue: 0.9, alpha: 1)
-    static let lightYellow = UIColor(red: 254/255, green: 243/255, blue: 156/255, alpha: 0.8)
-}
-
-
-

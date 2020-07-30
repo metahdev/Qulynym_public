@@ -15,7 +15,7 @@ protocol PlaylistViewControllerProtocol: class {
     var itemConstant: CGFloat? { get set }
 }
 
-class PlaylistViewController: UIViewController, PlaylistViewControllerProtocol {
+class PlaylistViewController: QulynymVC, PlaylistViewControllerProtocol {
     // MARK:- Properties
     var isKaraoke: Bool!
     var content = [String]()

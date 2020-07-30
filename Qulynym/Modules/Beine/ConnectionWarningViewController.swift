@@ -57,7 +57,7 @@ class ConnectionWarningViewController: UIViewController {
     
     private lazy var warningDescriptionLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Bіrdene jasamaı qaldy😬. Ata-anadan kómek sura😅"
+        lbl.text = "Bіrdene jasamaı qaldy. Ata-anadan kómek sura."
         lbl.font = UIFont(name: "Arial", size: view.frame.height * 0.038)
         lbl.textAlignment = .center
         lbl.textColor = .black

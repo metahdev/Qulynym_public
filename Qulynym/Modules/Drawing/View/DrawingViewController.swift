@@ -17,7 +17,7 @@ protocol DrawingViewControllerProtocol: class {
     func closeMenu()
 }
 
-class DrawingViewController: UIViewController, DrawingViewControllerProtocol {
+class DrawingViewController: QulynymVC, DrawingViewControllerProtocol {
     // MARK:- Properties
     var presenter: DrawingPresenterProtocol!
     

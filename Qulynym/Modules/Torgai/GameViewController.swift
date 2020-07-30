@@ -24,7 +24,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class GameViewController: QulynymVC {
     // MARK:- Properties
     private lazy var aspectRatio = view.bounds.size.height / view.bounds.size.width
     

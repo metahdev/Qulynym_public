@@ -26,7 +26,7 @@ protocol MenuViewControllerProtocol: class {
     func hideTransitionViews(_ hide: Bool)
 }
 
-class MenuViewController: UIViewController, MenuViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate, ConnectionWarningCaller {
+class MenuViewController: QulynymVC, MenuViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate, ConnectionWarningCaller {
     // MARK:- Properties
     var presenter: MenuPresenterProtocol!
     
