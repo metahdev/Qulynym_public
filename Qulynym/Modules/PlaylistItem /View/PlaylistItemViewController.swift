@@ -52,6 +52,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     var presenter: PlaylistItemPresenterProtocol!
     
     private var scrolledToEnd = false
+    lazy var constant = playlistItemView.lyricsCV.frame.width - 40 
     private let configurator: PLaylistItemConfiguratorProtocol = PlaylistItemConfigurator()
     private var playlistItemView: PlaylistItemViewProtocol!
     
@@ -248,6 +249,7 @@ extension PlaylistItemViewController {
     func scrollToCurrentLine() {
         #warning("need to fix this animation")
         playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .centeredVertically, animated: true)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             print("current line: \(self.currentLine)")
             let visibleCell = self.playlistItemView.lyricsCV.visibleCells[1]
@@ -280,7 +282,7 @@ extension PlaylistItemViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! TitleCollectionViewCell
         let lyricsLine = lyricsText[indexPath.row]
         cell.title = lyricsLine
-        cell.widthConstant = collectionView.frame.width - 40
+        cell.fontSize = constant * 0.1
         cell.layoutIfNeeded()
         return cell
     }
@@ -293,7 +295,8 @@ extension PlaylistItemViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let lyricsLine = lyricsText[indexPath.row]
-        return CGSize(width: collectionView.frame.width - 40, height: lyricsLine.size(withAttributes: nil).height)
+        let height = lyricsLine.size(withAttributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: constant * 0.1)]).height
+        return CGSize(width: constant, height: height)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout

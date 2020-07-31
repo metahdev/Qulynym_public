@@ -17,10 +17,9 @@ class TitleCollectionViewCell: UICollectionViewCell {
             titleLabel.text = title
         }
     }
-    var widthConstant: CGFloat! {
+    var fontSize: CGFloat! {
         didSet {
-            titleLabel.font = UIFont.boldSystemFont(ofSize: widthConstant * 0.1)
-            titleLabel.widthAnchor.constraint(equalToConstant: widthConstant).isActive = true
+            titleLabel.font = UIFont.boldSystemFont(ofSize: fontSize)
         }
     }
     var current: Bool = false {
@@ -61,7 +60,9 @@ class TitleCollectionViewCell: UICollectionViewCell {
         self.addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
     }
     
