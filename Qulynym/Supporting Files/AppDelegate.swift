@@ -14,7 +14,8 @@ import CoreData
 /*
  MINOR TODOS:
  Change Playlist VC background
- UI improvements? 
+ UI improvements?
+ We can add a confetti animation 
  Check Ipad layout -- Askar                                 Testing
  */
 
