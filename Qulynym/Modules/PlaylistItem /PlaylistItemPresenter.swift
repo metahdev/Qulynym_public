@@ -126,8 +126,8 @@ extension PlaylistItemPresenter {
             } else {
                 guard index != 0 else {
                     controller.currentLine = 0
+                    controller.highlighting = false
                     controller.scrollToCurrentLine()
-                    controller.clearLine()
                     if song.timestops[0].1 > value && song.timestops[0].0 < value {
                         controller.updateCurrentLine()
                     }

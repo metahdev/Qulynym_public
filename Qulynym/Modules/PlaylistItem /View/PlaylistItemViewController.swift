@@ -36,6 +36,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     func clearLine()
 }
 
+ 
  class PlaylistItemViewController: QulynymVC, PlaylistItemViewControllerProtocol {
     // MARK:- Properties
     var isKaraoke = true
@@ -247,6 +248,12 @@ extension PlaylistItemViewController {
     func scrollToCurrentLine() {
         #warning("need to fix this animation")
         playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .centeredVertically, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            print("current line: \(self.currentLine)")
+            let visibleCell = self.playlistItemView.lyricsCV.visibleCells[1]
+            let visibleIndex = self.playlistItemView.lyricsCV.indexPath(for: visibleCell)
+            print(visibleIndex?.row)
+        })
     }
 
     func clearLine() {
