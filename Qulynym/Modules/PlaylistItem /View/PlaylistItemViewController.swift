@@ -51,6 +51,9 @@ protocol PlaylistItemViewControllerProtocol: class {
     var presenter: PlaylistItemPresenterProtocol!
     
     private var scrolledToEnd = false
+    private var timer = Timer()
+    private var shouldScroll = true
+    
     lazy var constant = playlistItemView.lyricsCV.frame.width - 40 
     private let configurator: PLaylistItemConfiguratorProtocol = PlaylistItemConfigurator()
     private var playlistItemView: PlaylistItemViewProtocol!
@@ -79,6 +82,7 @@ protocol PlaylistItemViewControllerProtocol: class {
         setViewsProperties()
         configureBtnsEnability()
         AudioPlayer.backgroundAudioPlayer.stop()
+        initTimer() 
     }
     
     
@@ -86,6 +90,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     private func initLayout() {
         playlistItemView = PlaylistItemView(self.view, isKaraoke)
     }
+    
     
     // MARK:- Actions
     private func assignActions() {
@@ -184,7 +189,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     }
     
     private func changeSoundBtnImage(_ value: Float) {
-        playlistItemView.soundButton.setImage(nil, for: .normal)
+        playlistItemView.soundButton.setImage(UIImage(named: ""), for: .normal)
         if value == 0.0 {
             playlistItemView.soundButton.setImage(UIImage(named: "soundsIconOff"), for: .normal)
             isOpenSlider = false
@@ -245,7 +250,10 @@ extension PlaylistItemViewController {
     
     // MARK:- Karaoke
     func scrollToCurrentLine() {
-        playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .centeredVertically, animated: true)
+        if shouldScroll {
+            playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .centeredVertically, animated: true)
+
+        }
     }
 
     func clearLine() {
@@ -297,5 +305,25 @@ extension PlaylistItemViewController {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 12, bottom: 20, right: 12)
+    }
+    
+    // MARK:- Timer
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.shouldScroll = false
+        stopTimer()
+        initTimer()
+    }
+    
+    private func initTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(enableAutoscroll), userInfo: nil, repeats: false)
+    }
+    
+    private func stopTimer() {
+        timer.invalidate()
+    }
+    
+    @objc
+    private func enableAutoscroll() {
+        shouldScroll = true
     }
  }
