@@ -15,7 +15,6 @@ protocol PlaylistItemViewProtocol: class {
     var playBtn: UIButton { get }
     var titleLabel: UILabel { get }
     var storyImageView: UIImageView { get }
-//    var lyricsTextView: UITextView { get }
     var lyricsCV: UICollectionView { get }
     var forwardBtn: UIButton { get }
     var backBtn: UIButton { get }
@@ -45,10 +44,9 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.setupPlaylistLabel(size: view.frame.height * 0.1)
-        lbl.clipsToBounds = true
-        lbl.layer.cornerRadius = 15
+        lbl.shadowColor = .clear
         lbl.backgroundColor = .clear
-        lbl.numberOfLines = 3
+        lbl.textColor = UIColor(red: 0.643, green: 0.627, blue: 0.984, alpha: 1)
         return lbl
     }()
     lazy var forwardBtn: UIButton = {
@@ -83,7 +81,7 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     }()
     lazy var soundButton: UIButton = {
         let btn = UIButton()
-        btn.setBackgroundImage(UIImage(named: "soundsIcon"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "soundOn"), for: .normal)
         return btn
     }()
     lazy var soundSlider: UISlider = {
@@ -143,7 +141,6 @@ class PlaylistItemView: PlaylistItemViewProtocol {
         }
         storyImageView.isHidden = isKaraoke
         lyricsCV.isHidden = !isKaraoke
-//        lyricsTextView.isHidden = !isKaraoke
     }
     
     private func activateMainConstraints() {

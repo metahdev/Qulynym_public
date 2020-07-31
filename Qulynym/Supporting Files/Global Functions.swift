@@ -12,7 +12,7 @@ import UIKit
 func setupPlaylistSlider(value: Int, secondColor: UIColor) -> UISlider {
     let slider = UISlider()
     
-    slider.minimumTrackTintColor = .blue
+    slider.minimumTrackTintColor = UIColor(red: 0.643, green: 0.627, blue: 0.984, alpha: 1)
     slider.maximumTrackTintColor = secondColor
     slider.thumbTintColor = .white
     

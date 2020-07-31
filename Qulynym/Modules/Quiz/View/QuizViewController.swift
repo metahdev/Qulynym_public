@@ -125,7 +125,7 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.imageView.contentMode = .scaleAspectFit
         } else {
             cell.layer.borderWidth = 5
-            cell.backgroundColor = .skyBlue
+            cell.backgroundColor = UIColor(red: 0.192, green: 0.718, blue: 0.82, alpha: 1)
             cell.layer.borderColor = UIColor.brown.cgColor
         }
         return cell

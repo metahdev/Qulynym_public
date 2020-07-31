@@ -73,7 +73,7 @@ extension UILabel {
     func setupPlaylistLabel(size: CGFloat) {
         self.shadowColor = .black
         self.textColor = UIColor(red: 97/255, green: 104/255, blue: 189/255, alpha: 1)
-        self.backgroundColor = .white
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         self.layer.masksToBounds = true
         self.layer.cornerRadius = size * 0.5
         setupContentLabel(size: size)

@@ -189,12 +189,11 @@ protocol PlaylistItemViewControllerProtocol: class {
     }
     
     private func changeSoundBtnImage(_ value: Float) {
-        playlistItemView.soundButton.setImage(UIImage(named: ""), for: .normal)
         if value == 0.0 {
-            playlistItemView.soundButton.setImage(UIImage(named: "soundsIconOff"), for: .normal)
+            playlistItemView.soundButton.setBackgroundImage(UIImage(named: "soundOff"), for: .normal)
             isOpenSlider = false
         } else {
-            playlistItemView.soundButton.setImage(UIImage(named: "soundsIcon"), for: .normal)
+            playlistItemView.soundButton.setBackgroundImage(UIImage(named: "soundOn"), for: .normal)
             isOpenSlider = true
         }
     }
