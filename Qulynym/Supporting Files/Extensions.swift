@@ -10,12 +10,24 @@
 import UIKit
 import Alamofire
 
+// MARK:- Foundation
 extension Float {
     mutating func roundToDecimals() {
         self = (self * 10).rounded() / 10
     }
 }
 
+extension NSAttributedString {
+    func height(containerWidth: CGFloat) -> CGFloat {
+        let rect = self.boundingRect(with: CGSize.init(width: containerWidth, height: CGFloat.greatestFiniteMagnitude),
+                                     options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                     context: nil)
+        return ceil(rect.size.height)
+    }
+}
+
+
+// MARK:- UIKit
 extension UIColor {
     static let skyBlue = UIColor(red: 141/255, green: 232/255, blue: 237/255, alpha: 1)
     static let beigePink = UIColor(red: 0.99, green: 0.9, blue: 0.9, alpha: 1)

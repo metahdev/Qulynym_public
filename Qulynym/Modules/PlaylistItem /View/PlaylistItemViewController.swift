@@ -12,8 +12,7 @@ import AVKit
  
  #warning("TODO")
  /*
-  1. Fix audio scrolling functionality
-  2. Correct song timings
+  1. Correct song timings
   */
 
 protocol PlaylistItemViewControllerProtocol: class {
@@ -80,7 +79,6 @@ protocol PlaylistItemViewControllerProtocol: class {
         setViewsProperties()
         configureBtnsEnability()
         AudioPlayer.backgroundAudioPlayer.stop()
-        #warning("need to prefetch cells so scrolling works smoothly")
     }
     
     
@@ -247,15 +245,7 @@ extension PlaylistItemViewController {
     
     // MARK:- Karaoke
     func scrollToCurrentLine() {
-        #warning("need to fix this animation")
         playlistItemView.lyricsCV.scrollToItem(at: IndexPath(row: currentLine, section: 0), at: .centeredVertically, animated: true)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-            print("current line: \(self.currentLine)")
-            let visibleCell = self.playlistItemView.lyricsCV.visibleCells[1]
-            let visibleIndex = self.playlistItemView.lyricsCV.indexPath(for: visibleCell)
-            print(visibleIndex?.row)
-        })
     }
 
     func clearLine() {
@@ -283,7 +273,7 @@ extension PlaylistItemViewController {
         let lyricsLine = lyricsText[indexPath.row]
         cell.title = lyricsLine
         cell.fontSize = constant * 0.1
-        cell.layoutIfNeeded()
+        cell.setNeedsLayout()
         return cell
     }
     
@@ -294,8 +284,8 @@ extension PlaylistItemViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let lyricsLine = lyricsText[indexPath.row]
-        let height = lyricsLine.size(withAttributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: constant * 0.1)]).height
+        let attributeString = NSAttributedString(string: lyricsText[indexPath.row], attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: constant * 0.1)])
+        let height = attributeString.height(containerWidth: collectionView.frame.width - 40)
         return CGSize(width: constant, height: height)
     }
 

@@ -47,7 +47,8 @@ class PlaylistItemView: PlaylistItemViewProtocol {
         lbl.setupPlaylistLabel(size: view.frame.height * 0.1)
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
-        lbl.backgroundColor = .clear 
+        lbl.backgroundColor = .clear
+        lbl.numberOfLines = 3
         return lbl
     }()
     lazy var forwardBtn: UIButton = {
@@ -70,7 +71,6 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     }()
     lazy var lyricsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         cv.layer.borderColor = UIColor.brown.cgColor
