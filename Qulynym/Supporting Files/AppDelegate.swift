@@ -12,9 +12,9 @@ import CoreData
 
 #warning("TODO")
 /*
- MINOR TODOS: 
- Close btn UX -- Bauka | Askar                              Adiya will test
- KaraokeView Appearence to violet(pause icon) -- Bauka      waiting icon from Aruzhan
+ MINOR TODOS:
+ Change Playlist VC background
+ UI improvements? 
  Check Ipad layout -- Askar                                 Testing
  */
 
