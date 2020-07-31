@@ -5,12 +5,11 @@
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-back-1.png",
+      "filename" : "туда.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-back.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
