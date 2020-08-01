@@ -16,7 +16,7 @@ protocol MenuViewProtocol: class {
     var titleLabel: UILabel { get }
     var rightArrowView: UIView { get }
     var leftArrowView: UIView { get }
-    
+
     func setupLayout()
 }
 
