@@ -52,8 +52,10 @@ class PlaylistViewController: QulynymVC, PlaylistViewControllerProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.getContent()
-        initMessage()
-//        manager.showAlert()
+        playlistView.imageName = isKaraoke ? "karaokeBg" : "storyBg"
+        if !isKaraoke {
+            playlistView.titleLabel.textColor = .white
+        }
     }
     
     
@@ -77,10 +79,6 @@ class PlaylistViewController: QulynymVC, PlaylistViewControllerProtocol {
     
     private func setText() {
         titleLabel.text = isKaraoke ? "O'lender" : "Ertegiler"
-    }
-    
-    func initMessage() {
-//        manager = ScenesManager(calling: self, showing: isKaraoke ? "karaoke" : "stories")
     }
     
     private func setupItemConstant() {
@@ -111,7 +109,12 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         cell.image = UIImage(named: content[indexPath.row])
         cell.text = content[indexPath.row]
+        #warning("refactor")
         cell.sectionTitleLabel.setupPlaylistLabel(size: cell.frame.height * 0.1)
+        if !isKaraoke {
+            cell.sectionTitleLabel.textColor = .white
+            cell.sectionTitleLabel.backgroundColor = .clear
+        }
         cell.imageView.layer.cornerRadius = 5
         return cell
     }

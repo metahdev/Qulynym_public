@@ -160,14 +160,18 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     
     // MARK: - Animations
-    func flipCell(cardName: String, completion: @escaping () -> Void) {
-        self.imageView.contentMode = .scaleAspectFit
+    func flipCell(cardName: String, completion: @escaping () -> Void, shouldChangeContentMode: Bool) {
+        if shouldChangeContentMode {
+            self.imageView.contentMode = .scaleAspectFit
+        }
         UIView.transition(with: self, duration: 0.5, options: .transitionFlipFromRight, animations: {
             self.imageView.image = UIImage(named: "backSide")
         }, completion: { _ in
             UIView.transition(with: self, duration: 0.5, options: .transitionFlipFromRight, animations: {
                 self.imageView.image = UIImage(named: cardName)
-                self.imageView.contentMode = .scaleAspectFill
+                if shouldChangeContentMode {
+                    self.imageView.contentMode = .scaleAspectFill
+                }
             }, completion: { _ in
                 completion()
             })

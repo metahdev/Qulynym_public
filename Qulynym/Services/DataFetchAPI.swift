@@ -7,7 +7,6 @@
 * Copyright © 2019 Automatization X Software. All rights reserved.
 */
 
-import Foundation
 import Alamofire
 
 protocol DataFetchAPIDelegate: class {
@@ -32,7 +31,7 @@ class DataFetchAPI {
     
     private var tempData: [Beine]!
     
-    private let apiKey = "AIzaSyCEoq15YF8KopKxRp_J5Vyh1NV3zT_HTRs"
+    private let apiKey = "AIzaSyCBSAP8DJDOMUkr9ehAfxPd61EqqRFAP2M"
     private var alamofireManager: Session?
 
     

@@ -36,7 +36,7 @@ class QuizView: QuizViewProtocol {
         return btn
     }()
     lazy var backgroundIV: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "quizBg"))
+        let iv = UIImageView(image: UIImage(named: "itemBg"))
         iv.layer.zPosition = -1
         return iv
     }()

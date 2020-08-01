@@ -97,13 +97,6 @@
 		D1D5599222A82FED001674A7 /* Emitters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5599122A82FED001674A7 /* Emitters.swift */; };
 		D1D5BC2323017E0300FB3922 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5BC2223017E0300FB3922 /* PlayerEntity.swift */; };
 		D1D5BC2523017E2800FB3922 /* ObstacleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5BC2423017E2800FB3922 /* ObstacleEntity.swift */; };
-		D1D8CE312326688100531F3F /* helloMessageAruzhan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CE2A2326688100531F3F /* helloMessageAruzhan.mp3 */; };
-		D1D8CE322326688100531F3F /* studyMessageDaulet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CE2B2326688100531F3F /* studyMessageDaulet.mp3 */; };
-		D1D8CE332326688100531F3F /* songsMessage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CE2C2326688100531F3F /* songsMessage.mp3 */; };
-		D1D8CE342326688100531F3F /* helloMessageDaulet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CE2D2326688100531F3F /* helloMessageDaulet.mp3 */; };
-		D1D8CE352326688100531F3F /* gamesMessage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CE2E2326688100531F3F /* gamesMessage.mp3 */; };
-		D1D8CE362326688100531F3F /* StoriesMessage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CE2F2326688100531F3F /* StoriesMessage.mp3 */; };
-		D1D8CE372326688100531F3F /* studyMessageAruzhan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CE302326688100531F3F /* studyMessageAruzhan.mp3 */; };
 		D1D8CED12326720B00531F3F /* Sıyr.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEBC2326720A00531F3F /* Sıyr.mp3 */; };
 		D1D8CED22326720B00531F3F /* Mysyq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEBD2326720A00531F3F /* Mysyq.mp3 */; };
 		D1D8CED32326720B00531F3F /* U'ki.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CEBE2326720A00531F3F /* U'ki.mp3 */; };
@@ -291,13 +284,6 @@
 		D1D5599122A82FED001674A7 /* Emitters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitters.swift; sourceTree = "<group>"; };
 		D1D5BC2223017E0300FB3922 /* PlayerEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
 		D1D5BC2423017E2800FB3922 /* ObstacleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleEntity.swift; sourceTree = "<group>"; };
-		D1D8CE2A2326688100531F3F /* helloMessageAruzhan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = helloMessageAruzhan.mp3; sourceTree = "<group>"; };
-		D1D8CE2B2326688100531F3F /* studyMessageDaulet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = studyMessageDaulet.mp3; sourceTree = "<group>"; };
-		D1D8CE2C2326688100531F3F /* songsMessage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songsMessage.mp3; sourceTree = "<group>"; };
-		D1D8CE2D2326688100531F3F /* helloMessageDaulet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = helloMessageDaulet.mp3; sourceTree = "<group>"; };
-		D1D8CE2E2326688100531F3F /* gamesMessage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gamesMessage.mp3; sourceTree = "<group>"; };
-		D1D8CE2F2326688100531F3F /* StoriesMessage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = StoriesMessage.mp3; sourceTree = "<group>"; };
-		D1D8CE302326688100531F3F /* studyMessageAruzhan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = studyMessageAruzhan.mp3; sourceTree = "<group>"; };
 		D1D8CEBC2326720A00531F3F /* Sıyr.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sıyr.mp3"; sourceTree = "<group>"; };
 		D1D8CEBD2326720A00531F3F /* Mysyq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mysyq.mp3; sourceTree = "<group>"; };
 		D1D8CEBE2326720A00531F3F /* U'ki.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "U'ki.mp3"; sourceTree = "<group>"; };
@@ -663,7 +649,6 @@
 				D1D8CEF12326A1AA00531F3F /* Plants */,
 				85C9331524A25A48000358D5 /* Torgai */,
 				D1D8CEBB2326720A00531F3F /* Animals  */,
-				D1D8CE292326688100531F3F /* Messages */,
 				D15318C72326376D0035EE05 /* Effects */,
 				D146AB2E22E77EB2004520DA /* backgroundAudio.mp3 */,
 				D18E30BA2325563F00C0E012 /* Stories */,
@@ -767,20 +752,6 @@
 				D1D5BC2223017E0300FB3922 /* PlayerEntity.swift */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		D1D8CE292326688100531F3F /* Messages */ = {
-			isa = PBXGroup;
-			children = (
-				D1D8CE2A2326688100531F3F /* helloMessageAruzhan.mp3 */,
-				D1D8CE2B2326688100531F3F /* studyMessageDaulet.mp3 */,
-				D1D8CE2C2326688100531F3F /* songsMessage.mp3 */,
-				D1D8CE2D2326688100531F3F /* helloMessageDaulet.mp3 */,
-				D1D8CE2E2326688100531F3F /* gamesMessage.mp3 */,
-				D1D8CE2F2326688100531F3F /* StoriesMessage.mp3 */,
-				D1D8CE302326688100531F3F /* studyMessageAruzhan.mp3 */,
-			);
-			path = Messages;
 			sourceTree = "<group>";
 		};
 		D1D8CEBB2326720A00531F3F /* Animals  */ = {
@@ -951,8 +922,6 @@
 				D1D8CEDE2326720B00531F3F /* Tu'lki.mp3 in Resources */,
 				D1D8CED82326720B00531F3F /* Shoshqa.mp3 in Resources */,
 				D1D8CF5F2326A80200531F3F /* Qyzg'ylt.mp3 in Resources */,
-				D1D8CE332326688100531F3F /* songsMessage.mp3 in Resources */,
-				D1D8CE322326688100531F3F /* studyMessageDaulet.mp3 in Resources */,
 				D1D8CF2E2326A68F00531F3F /* Shen'ber.mp3 in Resources */,
 				D1D8CF102326A1AA00531F3F /* Sheten.mp3 in Resources */,
 				D11A59BE23043F8C00D68CEF /* whack.wav in Resources */,
@@ -960,7 +929,6 @@
 				D1D8CF642326A80200531F3F /* Tu'sterQ.mp3 in Resources */,
 				D13D865A2217FEDF0048A6E4 /* LaunchScreen.storyboard in Resources */,
 				D1D8CEDA2326720B00531F3F /* It.mp3 in Resources */,
-				D1D8CE362326688100531F3F /* StoriesMessage.mp3 in Resources */,
 				B9E2CE3522FBDF2F006B5697 /* hitGround.wav in Resources */,
 				D15318CD2326376D0035EE05 /* bloop.mp3 in Resources */,
 				D1D8CF1B2326A1AA00531F3F /* Shyrsha.mp3 in Resources */,
@@ -982,15 +950,11 @@
 				D1D8CF2B2326A68F00531F3F /* Zhu'rek.mp3 in Resources */,
 				D1D8CF0E2326A1AA00531F3F /* Tu'ımedaq.mp3 in Resources */,
 				B9E2CE3722FBDF2F006B5697 /* flapping.wav in Resources */,
-				D1D8CE352326688100531F3F /* gamesMessage.mp3 in Resources */,
 				D1D8CF162326A1AA00531F3F /* Shegіrgu'l.mp3 in Resources */,
-				D1D8CE342326688100531F3F /* helloMessageDaulet.mp3 in Resources */,
 				D1D8CED12326720B00531F3F /* Sıyr.mp3 in Resources */,
 				D1621EC4235E257500FF2537 /* Ertegіler álemі.mp3 in Resources */,
-				D1D8CE372326688100531F3F /* studyMessageAruzhan.mp3 in Resources */,
 				D1D8CF272326A68F00531F3F /* Zhuldyz.mp3 in Resources */,
 				D1D8CF5B2326A80200531F3F /* Jasyl.mp3 in Resources */,
-				D1D8CE312326688100531F3F /* helloMessageAruzhan.mp3 in Resources */,
 				85CEBBC123EC33DD00B6E2C4 /* Tolag'ai.mp3 in Resources */,
 				D1D8CF5C2326A80200531F3F /* Sary.mp3 in Resources */,
 				D1D8CF172326A1AA00531F3F /* Terek.mp3 in Resources */,

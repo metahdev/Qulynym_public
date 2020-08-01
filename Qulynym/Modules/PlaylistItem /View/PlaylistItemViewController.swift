@@ -13,6 +13,10 @@ import AVKit
  #warning("TODO")
  /*
   1. Correct song timings
+  2. Fix IPad UI: Beine, Oqu
+  3. Change UI: Oqu(wallpaper + buttons), Playlist(wallpaper + colors), Torg'ai loading
+  4. Refactor PlaylistItem(warning messages in Story because cv does not exist)
+  5. Clean the project & code
   */
 
 protocol PlaylistItemViewControllerProtocol: class {

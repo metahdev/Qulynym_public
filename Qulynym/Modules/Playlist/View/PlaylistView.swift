@@ -14,13 +14,15 @@ protocol PlaylistViewProtocol: class {
     var closeBtn: UIButton { get set }
     var titleLabel: UILabel { get set }
     
+    var imageName: String { get set }
+    
     func setupLayout()
 }
 
 class PlaylistView: PlaylistViewProtocol {
     // MARK:- Properties
     lazy var listCollectionView: UICollectionView = {
-        return configureImagesCollectionView(scroll: .vertical,/* image: nil,*/ background: nil)
+        return configureImagesCollectionView(scroll: .vertical, background: nil)
     }()
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
@@ -34,8 +36,13 @@ class PlaylistView: PlaylistViewProtocol {
         lbl.layer.cornerRadius = 15
         return lbl
     }()
+    var imageName = "" {
+        didSet {
+            backgroundIV.image = UIImage(named: imageName)
+        }
+    }
     private lazy var backgroundIV: UIImageView = {
-        let imageV = UIImageView(image: UIImage(named: "playlistBg"))
+        let imageV = UIImageView()
         imageV.layer.zPosition = -1
         return imageV
     }()

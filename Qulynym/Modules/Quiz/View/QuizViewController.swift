@@ -9,6 +9,8 @@
 
 import UIKit
 
+#warning("confetti animation")
+// https://bryce.co/recreating-imessage-confetti/
 protocol QuizViewControllerProtocol: class {
     var categoryName: String { get set }
     var count: Int! { get set }
@@ -201,7 +203,7 @@ extension QuizViewController {
             let index = self.cardsCollectionView.indexPath(for: cell)!.row
             (cell as! ImageCollectionViewCell).flipCell(cardName: self.cards[index], completion: {
                 self.cardsCollectionView.reloadData()
-            })
+            }, shouldChangeContentMode: !areImagesTransparent)
         }
     }
 }
