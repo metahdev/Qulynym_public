@@ -70,6 +70,7 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         view.addSubview(previousVideoBtn)
         setupCV()
         setAutoresizingFalse()
+        activateDeviceConstraints()
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
         closeBtn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
@@ -137,11 +138,25 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         }
     }
     
+    private func activateDeviceConstraints() {
+        var constraints = [NSLayoutConstraint]()
+        if traitCollection.verticalSizeClass == .compact {
+            constraints = [
+                videoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
+                videoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4),
+            ]
+        } else {
+            constraints = [
+                videoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+                videoView.topAnchor.constraint(equalTo: closeBtn.bottomAnchor, constant: 4),
+            ]
+        }
+        NSLayoutConstraint.activate(constraints)
+    }
+    
     private func activateConstraints() {
         NSLayoutConstraint.activate([
-            videoView.topAnchor.constraint(equalTo: view.topAnchor),
-            videoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
-            videoView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1.2),
+            videoView.widthAnchor.constraint(equalTo: videoView.heightAnchor, multiplier: 2),
             videoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             nextVideoBtn.leadingAnchor.constraint(equalTo: videoView.trailingAnchor, constant: 16),
@@ -274,7 +289,7 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = recommendationsCV.frame.height - 8
-        return CGSize(width: height * 2, height: height)
+        return CGSize(width: height * 1.8, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

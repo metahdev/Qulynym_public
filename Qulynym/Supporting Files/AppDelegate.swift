@@ -10,16 +10,6 @@
 import UIKit
 import CoreData
 
-#warning("TODO")
-/*
- MINOR TODOS:
- Change Playlist VC background
- UI improvements?
- We can add a confetti animation 
- Check Ipad layout -- Askar                                 Testing
- */
-
-
 #warning("Refactor")
 /*
  Refactor:
