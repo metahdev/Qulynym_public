@@ -12,12 +12,12 @@ import AVKit
  
  #warning("TODO")
  /*
-  1. Correct song timings - Bauka
+  1. Correct song timings - Bauka                                                                   V
   2. Add videoTitleLabel to BeineVC at IPads - Bauka
   3. Change UI: Oqu(wallpaper + buttons), Playlist(wallpaper + colors), Torg'ai loading - Askar
   4. Refactor PlaylistItem(warning messages in Story because cv does not exist) - Askar
   5. Clean the project & code - Askar & Bauka
-  6. Change pencil line thickness - Bauka? 
+  6. Change pencil line thickness - Bauka?                                                          V
   */
 
 protocol PlaylistItemViewControllerProtocol: class {
@@ -49,7 +49,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     var index = 0
     var maxIndex = 0
     var isPlaying = false
-    var currentLine = 0 
+    var currentLine = 0
     var began = false
     var highlighting = true
     var isOpenSlider = true
@@ -59,7 +59,7 @@ protocol PlaylistItemViewControllerProtocol: class {
     private var timer = Timer()
     private var shouldScroll = true
     
-    lazy var constant = playlistItemView.lyricsCV.frame.width - 40 
+    lazy var constant = playlistItemView.lyricsCV.frame.width - 40
     private let configurator: PLaylistItemConfiguratorProtocol = PlaylistItemConfigurator()
     private var playlistItemView: PlaylistItemViewProtocol!
     

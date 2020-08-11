@@ -59,6 +59,16 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         btn.setImage(UIImage(named: "previousVideo"), for: .normal)
         return btn
     }()
+    private lazy var titleLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.clipsToBounds = true
+        lbl.layer.cornerRadius = 15
+        lbl.setupMenuLabel(size: view.frame.height * 0.06)
+        lbl.numberOfLines = 2
+        lbl.text = "Hello, world!"
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
     
     // MARK:- View Lifecycle
     override func viewDidLoad() {
@@ -70,9 +80,9 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         view.addSubview(previousVideoBtn)
         setupCV()
         setAutoresizingFalse()
-        activateDeviceConstraints()
         activateConstraints()
         closeBtn.configureCloseBtnFrame(view)
+        setupLayoutByTraitCollection()
         closeBtn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         nextVideoBtn.addTarget(self, action: #selector(nextVideo), for: .touchUpInside)
         previousVideoBtn.addTarget(self, action: #selector(previousVideo), for: .touchUpInside)
@@ -89,7 +99,7 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         if index == 0 {
             previousVideoBtn.isEnabled = false
         }
-        if index == dataFetchAPI.beineler.count - 1{
+        if index == dataFetchAPI.beineler.count - 1 {
             nextVideoBtn.isEnabled = false
         }
     }
@@ -138,7 +148,7 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         }
     }
     
-    private func activateDeviceConstraints() {
+    private func setupLayoutByTraitCollection() {
         var constraints = [NSLayoutConstraint]()
         if traitCollection.verticalSizeClass == .compact {
             constraints = [
@@ -146,9 +156,15 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
                 videoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4),
             ]
         } else {
+            view.addSubview(titleLabel)
             constraints = [
                 videoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
                 videoView.topAnchor.constraint(equalTo: closeBtn.bottomAnchor, constant: 4),
+                
+                titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 4),
+                titleLabel.leadingAnchor.constraint(equalTo: closeBtn.trailingAnchor),
+                titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                titleLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18)
             ]
         }
         NSLayoutConstraint.activate(constraints)

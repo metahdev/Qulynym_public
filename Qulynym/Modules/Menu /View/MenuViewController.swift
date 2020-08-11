@@ -50,7 +50,7 @@ class MenuViewController: QulynymVC, MenuViewControllerProtocol, DataFetchAPIDel
     
     var menuView: MenuViewProtocol!
     private let configurator: MenuConfiguratorProtocol = MenuConfigurator()
-        
+    
     
     // MARK:- View Lifecycle
     override func viewDidLoad() {
