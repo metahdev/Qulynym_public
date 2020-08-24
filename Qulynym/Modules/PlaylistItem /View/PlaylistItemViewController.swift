@@ -12,12 +12,10 @@ import AVKit
  
  #warning("TODO")
  /*
-  1. Correct song timings - Bauka                                                                   V
-  2. Add videoTitleLabel to BeineVC at IPads - Bauka
-  3. Change UI: Oqu(wallpaper + buttons), Playlist(wallpaper + colors), Torg'ai loading - Askar
-  4. Refactor PlaylistItem(warning messages in Story because cv does not exist) - Askar
-  5. Clean the project & code - Askar & Bauka
-  6. Change pencil line thickness - Bauka?                                                          V
+  1. Change UI: Oqu(wallpaper + buttons), Playlist(wallpaper + colors), Torg'ai loading - Askar
+  2. Refactor PlaylistItem(warning messages in Story because cv does not exist) - Askar
+  3. Clean the project & code - Askar & Bauka
+  4. Change pencil line thickness - test
   */
 
 protocol PlaylistItemViewControllerProtocol: class {
