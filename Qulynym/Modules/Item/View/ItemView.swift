@@ -33,9 +33,11 @@ class ItemView: ItemViewProtocol {
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.setupPlaylistLabel(size: view.frame.height * 0.1)
+        lbl.shadowColor = .clear
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
         lbl.backgroundColor = .clear
+        lbl.textColor = UIColor(red: 100/255, green: 181/255, blue: 254/255, alpha: 1)
         return lbl
     }()
     lazy var closeBtn: UIButton = {

@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "itemBg.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "2020-08-02 01.42.09.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
