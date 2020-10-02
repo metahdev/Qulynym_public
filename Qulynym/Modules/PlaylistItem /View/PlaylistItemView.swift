@@ -27,7 +27,7 @@ protocol PlaylistItemViewProtocol: class {
 
 class PlaylistItemView: PlaylistItemViewProtocol {
     // MARK:- Properties
-    // idremember the reason why i rejected this idea? I think the emitterView blocked textView interaction(check it)
+    // i don't remember the reason why i rejected this idea? I think the emitterView blocked textView interaction(check it)
     lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
@@ -37,7 +37,7 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     }()
     lazy var playBtn: UIButton = {
         let btn = UIButton()
-        btn.setBackgroundImage(UIImage(named: "playBtn"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "darkPlay"), for: .normal)
         btn.setupShadow()
         return btn
     }()
@@ -46,17 +46,16 @@ class PlaylistItemView: PlaylistItemViewProtocol {
         lbl.setupPlaylistLabel(size: view.frame.height * 0.1)
         lbl.shadowColor = .clear
         lbl.backgroundColor = .clear
-        lbl.textColor = UIColor(red: 0.643, green: 0.627, blue: 0.984, alpha: 1)
         return lbl
     }()
     lazy var forwardBtn: UIButton = {
         let btn = UIButton()
-        btn.setBackgroundImage(UIImage(named: "nextAudio"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "darkForward"), for: .normal)
         return btn
     }()
     lazy var backBtn: UIButton = {
         let btn = UIButton()
-        btn.setBackgroundImage(UIImage(named: "backAudio"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "darkBack"), for: .normal)
         return btn
     }()
     lazy var storyImageView: UIImageView = {

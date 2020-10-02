@@ -54,7 +54,7 @@ class PlaylistViewController: QulynymVC, PlaylistViewControllerProtocol {
         presenter.getContent()
         playlistView.imageName = isKaraoke ? "karaokeBg" : "storyBg"
         if !isKaraoke {
-            playlistView.titleLabel.textColor = .white
+            playlistView.titleLabel.textColor = .lightViolet
         }
     }
     
@@ -111,9 +111,9 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         cell.text = content[indexPath.row]
         #warning("refactor")
         cell.sectionTitleLabel.setupPlaylistLabel(size: cell.frame.height * 0.1)
+        cell.sectionTitleLabel.backgroundColor = .clear
         if !isKaraoke {
-            cell.sectionTitleLabel.textColor = .white
-            cell.sectionTitleLabel.backgroundColor = .clear
+            cell.sectionTitleLabel.textColor = .lightViolet
         }
         cell.imageView.layer.cornerRadius = 5
         return cell

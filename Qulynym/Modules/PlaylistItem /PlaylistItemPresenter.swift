@@ -95,9 +95,11 @@ extension PlaylistItemPresenter {
         controller.setTimelineSliderValue(0)
         updateStates()
         AudioPlayer.playlistPlayerInitiated = false
-        getLyricsText()
-        controller.currentLine = 0
-        controller.scrollToCurrentLine()
+        if controller.isKaraoke {
+            getLyricsText()
+            controller.currentLine = 0
+            controller.scrollToCurrentLine()
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
             self.controller.setViewsProperties()
         })

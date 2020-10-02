@@ -63,7 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         PlayingState(scene: self),
         FallingState(scene: self),
         GameOverState(scene: self)
-        ])
+    ])
     
     private lazy var scoreLabel = SKLabelNode(fontNamed: scoreFontName)
     private let pointAction = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: false)

@@ -19,7 +19,6 @@ class Connectivity {
 
 
 // MARK:- QulynymVC
-#warning("should we use it everywhere?")
 class QulynymVC: UIViewController {
     override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
         return UIRectEdge.all

@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-sound-1.png",
+      "filename" : "soundOn.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-sound.png",
+      "filename" : "soundOn2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

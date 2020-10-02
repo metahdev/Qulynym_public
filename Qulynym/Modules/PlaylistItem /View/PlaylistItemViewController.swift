@@ -10,7 +10,7 @@
 import UIKit
 import AVKit
  
- #warning("TODO")
+  #warning("TODO")
  /*
   1. Change UI: Oqu(wallpaper + buttons), Playlist(wallpaper + colors), Torg'ai loading - Askar
   2. Refactor PlaylistItem(warning messages in Story because cv does not exist) - Askar
@@ -72,6 +72,7 @@ protocol PlaylistItemViewControllerProtocol: class {
         super.viewDidLoad()
         configurator.configure(with: self)
         initLayout()
+        setupAppearence()
         playlistItemView.setupLayout()
         assignActions()
         presenter.getLyricsText()
@@ -89,9 +90,20 @@ protocol PlaylistItemViewControllerProtocol: class {
     }
     
     
-    // MARK:- Layout
+    // MARK:- Appearence
     private func initLayout() {
         playlistItemView = PlaylistItemView(self.view, isKaraoke)
+    }
+    
+    private func setupAppearence() {
+        if !isKaraoke {
+            playlistItemView.titleLabel.textColor = .lightViolet
+            playlistItemView.soundSlider.tintColor = .lightViolet
+            playlistItemView.timelineSlider.tintColor = .lightViolet
+            playlistItemView.forwardBtn.setBackgroundImage(UIImage(named: "lightForward"), for: .normal)
+            playlistItemView.backBtn.setBackgroundImage(UIImage(named: "lightBack"), for: .normal)
+            playlistItemView.playBtn.setBackgroundImage(UIImage(named: "lightPause"), for: .normal)
+        }
     }
     
     
@@ -135,10 +147,12 @@ protocol PlaylistItemViewControllerProtocol: class {
     func playBtnPressed() {
         if isPlaying {
             presenter.pauseAudio()
-            playlistItemView.playBtn.setBackgroundImage(UIImage(named: "playBtn"), for: .normal)
+            let imageName = isKaraoke ? "darkPlay" : "lightPlay"
+            playlistItemView.playBtn.setBackgroundImage(UIImage(named: imageName), for: .normal)
         } else {
             presenter.playAudio()
-            playlistItemView.playBtn.setBackgroundImage(UIImage(named: "pauseBtn"), for: .normal)
+            let imageName = isKaraoke ? "darkPause" : "lightPause"
+            playlistItemView.playBtn.setBackgroundImage(UIImage(named: imageName), for: .normal)
         }
         isPlaying = !isPlaying
     }
