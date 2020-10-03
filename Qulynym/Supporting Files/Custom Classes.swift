@@ -26,6 +26,34 @@ class QulynymVC: UIViewController {
 }
 
 
+// MARK:- Oqu Label
+class ItemLabel: UILabel {
+    var sideInset: CGFloat = 10.0
+    
+    var insets: UIEdgeInsets {
+        return UIEdgeInsets(top: 0.0, left: sideInset, bottom: 0.0, right: sideInset)
+    }
+    
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: insets))
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        var adjSize = super.sizeThatFits(size)
+        adjSize.width += sideInset * 2
+         
+        return adjSize
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        var contentSize = super.intrinsicContentSize
+        contentSize.width += sideInset * 2
+        
+        return contentSize
+    }
+}
+
+
 // MARK:- Settings View
 enum ButtonType {
     case music

@@ -10,7 +10,7 @@
 import UIKit
 
 protocol ItemViewProtocol: class {
-    var titleLabel: UILabel { get }
+    var titleLabel: ItemLabel { get }
     var contentBtn: UIButton { get }
     var closeBtn: UIButton { get }
     var forwardBtn: UIButton { get }
@@ -30,13 +30,14 @@ class ItemView: ItemViewProtocol {
         btn.setupShadow()
         return btn
     }()
-    lazy var titleLabel: UILabel = {
-        let lbl = UILabel()
+    
+    lazy var titleLabel: ItemLabel = {
+        let lbl = ItemLabel()
         lbl.setupPlaylistLabel(size: view.frame.height * 0.1)
         lbl.shadowColor = .clear
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
-        lbl.backgroundColor = .clear
+//        lbl.backgroundColor = .clear
         lbl.textColor = UIColor(red: 100/255, green: 181/255, blue: 254/255, alpha: 1)
         return lbl
     }()
@@ -102,7 +103,6 @@ class ItemView: ItemViewProtocol {
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: contentBtn.topAnchor, constant: -16),
-            titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             
             contentBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             contentBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
