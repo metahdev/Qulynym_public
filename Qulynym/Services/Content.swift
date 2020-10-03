@@ -102,13 +102,10 @@ struct Content {
     static var creditsBody = """
     Qatysy'shylarg'a u'lken rahmet:
 
-    Zhumabaev Baubek, Meiramuly Rauan - iOS baǵdarlamashylar
-    Amangeldy Aruzhan, Dospolova Dana - dızaınerler
-    Akhmetgali Daulet - uıymdastyry' ko'mekshіsі
+    Askar Almukhamet, Zhumabaev Baubek - iOS baǵdarlamashylar
+    Amangeldy Aruzhan, Dospolova Dana, Akhmetgali Daulet - dızaınerler
     Imash Daulet, Yeldossova Aruzhan - day'yspen a'reket ety'
     
-    Some icons are taken from the icons8.com and the flaticon.com
-
     Flappy Torǵaı is made thanks to the Raywenderlich.com course: "How to make a game like flappy bird".
     
     Ertegіler:

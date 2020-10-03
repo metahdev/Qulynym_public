@@ -19,25 +19,30 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
     var content: NSAttributedString!
     var titleText: String!
     
-    lazy var closeBtn: UIButton = {
+    private lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
         btn.setupShadow()
         return btn
     }()
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont(name: "Gill Sans", size: view.frame.height * 0.17)
         lbl.textAlignment = .center
         return lbl
     }()
-    lazy var textView: UITextView = {
+    private lazy var textView: UITextView = {
         var tv = UITextView()
         tv.backgroundColor = .clear
         tv.textAlignment = .center
         tv.isEditable = false
         tv.isScrollEnabled = true
         return tv
+    }()
+    #warning("implementation")
+    private lazy var linksCV: UICollectionView = {
+        var cv = UICollectionView()
+        return cv
     }()
 
     
@@ -87,7 +92,7 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
             textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
     
