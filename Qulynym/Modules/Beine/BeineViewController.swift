@@ -8,7 +8,7 @@
 */
 
 import UIKit
-import YoutubePlayer_in_WKWebView
+import youtube_ios_player_helper
 import Alamofire
 import SkeletonView
 
@@ -39,8 +39,8 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         btn.setupShadow()
         return btn
     }()
-    private lazy var videoView: WKYTPlayerView = {
-        let view = WKYTPlayerView()
+    private lazy var videoView: YTPlayerView = {
+        let view = YTPlayerView()
         view.delegate = self
         view.clipsToBounds = false
         view.isSkeletonable = true
@@ -338,12 +338,12 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 
-extension BeineViewController: WKYTPlayerViewDelegate {
-    func playerViewPreferredWebViewBackgroundColor(_ playerView: WKYTPlayerView) -> UIColor {
+extension BeineViewController: YTPlayerViewDelegate {
+    func playerViewPreferredWebViewBackgroundColor(_ playerView: YTPlayerView) -> UIColor {
         return .clear
     }
     
-    func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         playerView.hideSkeleton(transition: .crossDissolve(0.5))
     }
 }

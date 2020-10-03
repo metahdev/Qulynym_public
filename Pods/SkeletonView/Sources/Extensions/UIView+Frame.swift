@@ -14,8 +14,6 @@ extension UIView {
         if let parentStackView = (superview as? UIStackView) {
             var origin: CGPoint = .zero
             switch parentStackView.alignment {
-            case .center:
-                origin.x = maxWidthEstimated / 2
             case .trailing:
                 origin.x = maxWidthEstimated
             default:
@@ -51,5 +49,13 @@ extension UIView {
     
     var nonContentSizeLayoutConstraints: [NSLayoutConstraint] {
         return constraints.filter({ "\(type(of: $0))" != "NSContentSizeLayoutConstraint" })
+    }
+    
+    var isRTL: Bool {
+        if #available(iOS 10.0, *), #available(tvOS 10.0, *) {
+            return effectiveUserInterfaceLayoutDirection == .rightToLeft
+        } else {
+            return false
+        }
     }
 }

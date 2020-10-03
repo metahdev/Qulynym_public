@@ -55,8 +55,7 @@
 		D1072A0122877DD2003149E8 /* PlaylistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1072A0022877DD2003149E8 /* PlaylistRouter.swift */; };
 		D107786B22858CEC00D869D3 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D107786A22858CEC00D869D3 /* Animator.swift */; };
 		D11A59BE23043F8C00D68CEF /* whack.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2322FBDF2F006B5697 /* whack.wav */; };
-		D12ACAB323F158360061EF06 /* Pods_Qulynym.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E031261186D933A33C7C5772 /* Pods_Qulynym.framework */; };
-		D12ACAB423F158360061EF06 /* Pods_Qulynym.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E031261186D933A33C7C5772 /* Pods_Qulynym.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D12ACAB423F158360061EF06 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D135E2A422A02F7B00DC84DE /* PlaylistItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A322A02F7B00DC84DE /* PlaylistItemViewController.swift */; };
 		D135E2A722A02F9800DC84DE /* PlaylistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A622A02F9800DC84DE /* PlaylistItemView.swift */; };
 		D135E2AB22A02FBC00DC84DE /* PlaylistItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AA22A02FBC00DC84DE /* PlaylistItemConfigurator.swift */; };
@@ -138,7 +137,7 @@
 		D1D8CF172326A1AA00531F3F /* Terek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF022326A1AA00531F3F /* Terek.mp3 */; };
 		D1D8CF182326A1AA00531F3F /* O'simdikterQ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF032326A1AA00531F3F /* O'simdikterQ.mp3 */; };
 		D1D8CF192326A1AA00531F3F /* Ko'kterek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF042326A1AA00531F3F /* Ko'kterek.mp3 */; };
-		D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */; };
+		D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */; };
 		D1D8CF1B2326A1AA00531F3F /* Shyrsha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF062326A1AA00531F3F /* Shyrsha.mp3 */; };
 		D1D8CF262326A68F00531F3F /* PishinderQ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF1D2326A68F00531F3F /* PishinderQ.mp3 */; };
 		D1D8CF272326A68F00531F3F /* Zhuldyz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF1E2326A68F00531F3F /* Zhuldyz.mp3 */; };
@@ -170,6 +169,7 @@
 		D1F9ABD722A0457900989BD3 /* DrawingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD622A0457900989BD3 /* DrawingPresenter.swift */; };
 		D1F9ABD922A0458400989BD3 /* DrawingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD822A0458400989BD3 /* DrawingInteractor.swift */; };
 		D1F9ABDB22A0458C00989BD3 /* DrawingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABDA22A0458C00989BD3 /* DrawingRouter.swift */; };
+		F85D7D629EC5DE73D24DFD5C /* Pods_Qulynym.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59F7AD137F2986DAAC71C9B /* Pods_Qulynym.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -179,7 +179,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D12ACAB423F158360061EF06 /* Pods_Qulynym.framework in Embed Frameworks */,
+				D12ACAB423F158360061EF06 /* BuildFile in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,11 +187,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0B7969DFE4A77B5E06526433 /* Pods-Qulynym-QulynymUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym-QulynymUITests.release.xcconfig"; path = "Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests.release.xcconfig"; sourceTree = "<group>"; };
-		1D4E9BEED70DC17F8A889EB8 /* Pods-Qulynym.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.debug.xcconfig"; path = "Target Support Files/Pods-Qulynym/Pods-Qulynym.debug.xcconfig"; sourceTree = "<group>"; };
-		2252C2CF606A04AC8867777C /* Pods_Qulynym_QulynymUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qulynym_QulynymUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3967BDCF5F753F01882358FB /* Pods-QulynymTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulynymTests.debug.xcconfig"; path = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3C205908B1F3D009DD896E27 /* Pods_QulynymTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QulynymTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		299E93CA3CFE989E751D054E /* Pods-Qulynym.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.debug.xcconfig"; path = "Target Support Files/Pods-Qulynym/Pods-Qulynym.debug.xcconfig"; sourceTree = "<group>"; };
+		76D2F2C0476B6AE1DE32D9BC /* Pods-Qulynym.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.release.xcconfig"; path = "Target Support Files/Pods-Qulynym/Pods-Qulynym.release.xcconfig"; sourceTree = "<group>"; };
 		8528917522F9A22600A7CEA7 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		856AADA523E6F93300376A4C /* ConnectionWarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionWarningViewController.swift; sourceTree = "<group>"; };
 		856F348A22F87EDD00E97C0C /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
@@ -203,7 +200,7 @@
 		85CEBBBF23EC33DD00B6E2C4 /* Tolag'ai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Tolag'ai.mp3"; sourceTree = "<group>"; };
 		85CEBBC023EC33DD00B6E2C4 /* G'ajap qus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "G'ajap qus.mp3"; sourceTree = "<group>"; };
 		85EAEED724BA61DB0006DF41 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
-		A60B3FFC7A9900BB4BF332C1 /* Pods-Qulynym.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym.release.xcconfig"; path = "Target Support Files/Pods-Qulynym/Pods-Qulynym.release.xcconfig"; sourceTree = "<group>"; };
+		A59F7AD137F2986DAAC71C9B /* Pods_Qulynym.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qulynym.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B916B08C22FBDC3400AF255A /* GameOverState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 		B916B08D22FBDC3400AF255A /* TutorialState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialState.swift; sourceTree = "<group>"; };
 		B916B08E22FBDC3400AF255A /* MainMenuState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuState.swift; sourceTree = "<group>"; };
@@ -325,7 +322,7 @@
 		D1D8CF022326A1AA00531F3F /* Terek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Terek.mp3; sourceTree = "<group>"; };
 		D1D8CF032326A1AA00531F3F /* O'simdikterQ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "O'simdikterQ.mp3"; sourceTree = "<group>"; };
 		D1D8CF042326A1AA00531F3F /* Ko'kterek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ko'kterek.mp3"; sourceTree = "<group>"; };
-		D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Órіk ag'ashy.mp3"; sourceTree = "<group>"; };
+		D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Órіk ag'ashy.mp3"; sourceTree = "<group>"; };
 		D1D8CF062326A1AA00531F3F /* Shyrsha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Shyrsha.mp3; sourceTree = "<group>"; };
 		D1D8CF1D2326A68F00531F3F /* PishinderQ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PishinderQ.mp3; sourceTree = "<group>"; };
 		D1D8CF1E2326A68F00531F3F /* Zhuldyz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Zhuldyz.mp3; sourceTree = "<group>"; };
@@ -357,9 +354,6 @@
 		D1F9ABD622A0457900989BD3 /* DrawingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPresenter.swift; sourceTree = "<group>"; };
 		D1F9ABD822A0458400989BD3 /* DrawingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingInteractor.swift; sourceTree = "<group>"; };
 		D1F9ABDA22A0458C00989BD3 /* DrawingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingRouter.swift; sourceTree = "<group>"; };
-		E031261186D933A33C7C5772 /* Pods_Qulynym.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qulynym.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2CF92BA8D286FA7FE91861B /* Pods-QulynymTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulynymTests.release.xcconfig"; path = "Target Support Files/Pods-QulynymTests/Pods-QulynymTests.release.xcconfig"; sourceTree = "<group>"; };
-		EE06D32ED08FACEC7EE61581 /* Pods-Qulynym-QulynymUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qulynym-QulynymUITests.debug.xcconfig"; path = "Target Support Files/Pods-Qulynym-QulynymUITests/Pods-Qulynym-QulynymUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,13 +361,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D12ACAB323F158360061EF06 /* Pods_Qulynym.framework in Frameworks */,
+				F85D7D629EC5DE73D24DFD5C /* Pods_Qulynym.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D576BDF1834E9E8F3B43E5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A59F7AD137F2986DAAC71C9B /* Pods_Qulynym.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		856F348922F87E7B00E97C0C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,12 +409,8 @@
 		87E877A727894FFFC3518CA5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1D4E9BEED70DC17F8A889EB8 /* Pods-Qulynym.debug.xcconfig */,
-				A60B3FFC7A9900BB4BF332C1 /* Pods-Qulynym.release.xcconfig */,
-				EE06D32ED08FACEC7EE61581 /* Pods-Qulynym-QulynymUITests.debug.xcconfig */,
-				0B7969DFE4A77B5E06526433 /* Pods-Qulynym-QulynymUITests.release.xcconfig */,
-				3967BDCF5F753F01882358FB /* Pods-QulynymTests.debug.xcconfig */,
-				E2CF92BA8D286FA7FE91861B /* Pods-QulynymTests.release.xcconfig */,
+				299E93CA3CFE989E751D054E /* Pods-Qulynym.debug.xcconfig */,
+				76D2F2C0476B6AE1DE32D9BC /* Pods-Qulynym.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -451,16 +449,6 @@
 				B9E2CE2822FBDF2F006B5697 /* ding.wav */,
 			);
 			path = Sounds;
-			sourceTree = "<group>";
-		};
-		D01C313A6B5806898267DC51 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E031261186D933A33C7C5772 /* Pods_Qulynym.framework */,
-				2252C2CF606A04AC8867777C /* Pods_Qulynym_QulynymUITests.framework */,
-				3C205908B1F3D009DD896E27 /* Pods_QulynymTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D102930622F1A10600C7B2F2 /* Quiz */ = {
@@ -574,7 +562,7 @@
 				D13D864B2217FEDF0048A6E4 /* Qulynym */,
 				D13D864A2217FEDF0048A6E4 /* Products */,
 				87E877A727894FFFC3518CA5 /* Pods */,
-				D01C313A6B5806898267DC51 /* Frameworks */,
+				6D576BDF1834E9E8F3B43E5E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -804,7 +792,7 @@
 				D1D8CF022326A1AA00531F3F /* Terek.mp3 */,
 				D1D8CF032326A1AA00531F3F /* O'simdikterQ.mp3 */,
 				D1D8CF042326A1AA00531F3F /* Ko'kterek.mp3 */,
-				D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */,
+				D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */,
 				D1D8CF062326A1AA00531F3F /* Shyrsha.mp3 */,
 			);
 			path = Plants;
@@ -864,12 +852,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D13D86742217FEE00048A6E4 /* Build configuration list for PBXNativeTarget "Qulynym" */;
 			buildPhases = (
-				5280DE2CFC4746D1E66FE067 /* [CP] Check Pods Manifest.lock */,
+				07B3779A3CC45A2145BCCB1E /* [CP] Check Pods Manifest.lock */,
 				D13D86452217FEDF0048A6E4 /* Sources */,
 				D13D86462217FEDF0048A6E4 /* Frameworks */,
 				D13D86472217FEDF0048A6E4 /* Resources */,
-				4B79A3D9B42E5A2AC31D686F /* [CP] Embed Pods Frameworks */,
 				D12ACAB523F158360061EF06 /* Embed Frameworks */,
+				EDF0E4C7F894A2AAF8711C5E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -968,7 +956,7 @@
 				D1D8CEDF2326720B00531F3F /* Qasqyr.mp3 in Resources */,
 				D1D8CEDD2326720B00531F3F /* Ko'belek.mp3 in Resources */,
 				D18E30C02325566C00C0E012 /* Bauyrsaq Ertegi.mp3 in Resources */,
-				D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */,
+				D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */,
 				D1D8CF262326A68F00531F3F /* PishinderQ.mp3 in Resources */,
 				D1D8CF2C2326A68F00531F3F /* Sharshy.mp3 in Resources */,
 				D18E30BD2325566500C0E012 /* Aigo'lek.mp3 in Resources */,
@@ -1012,24 +1000,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4B79A3D9B42E5A2AC31D686F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Qulynym/Pods-Qulynym-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Qulynym/Pods-Qulynym-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Qulynym/Pods-Qulynym-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5280DE2CFC4746D1E66FE067 /* [CP] Check Pods Manifest.lock */ = {
+		07B3779A3CC45A2145BCCB1E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1049,6 +1020,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDF0E4C7F894A2AAF8711C5E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Qulynym/Pods-Qulynym-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Qulynym/Pods-Qulynym-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Qulynym/Pods-Qulynym-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1269,7 +1257,7 @@
 		};
 		D13D86752217FEE00048A6E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D4E9BEED70DC17F8A889EB8 /* Pods-Qulynym.debug.xcconfig */;
+			baseConfigurationReference = 299E93CA3CFE989E751D054E /* Pods-Qulynym.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1288,7 +1276,7 @@
 		};
 		D13D86762217FEE00048A6E4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A60B3FFC7A9900BB4BF332C1 /* Pods-Qulynym.release.xcconfig */;
+			baseConfigurationReference = 76D2F2C0476B6AE1DE32D9BC /* Pods-Qulynym.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

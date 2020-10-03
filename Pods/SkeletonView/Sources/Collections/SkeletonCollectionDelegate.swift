@@ -23,7 +23,6 @@ extension SkeletonCollectionDelegate: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let viewIdentifier = originalTableViewDelegate?.collectionSkeletonView(tableView, identifierForHeaderInSection: section),
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: viewIdentifier) {
-
             skeletonViewIfContainerSkeletonIsActive(container: tableView, view: header)
             return header
         }
@@ -34,12 +33,26 @@ extension SkeletonCollectionDelegate: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if let viewIdentifier = originalTableViewDelegate?.collectionSkeletonView(tableView, identifierForFooterInSection: section),
             let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: viewIdentifier) {
-
             skeletonViewIfContainerSkeletonIsActive(container: tableView, view: footer)
             return footer
         }
 
         return nil
+    }
+
+    func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
+        view.hideSkeleton()
+        originalTableViewDelegate?.tableView?(tableView, didEndDisplayingHeaderView: view, forSection: section)
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
+        view.hideSkeleton()
+        originalTableViewDelegate?.tableView?(tableView, didEndDisplayingFooterView: view, forSection: section)
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.hideSkeleton()
+        originalTableViewDelegate?.tableView?(tableView, didEndDisplaying: cell, forRowAt: indexPath)
     }
 }
 

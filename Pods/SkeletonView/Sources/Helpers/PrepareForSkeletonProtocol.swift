@@ -12,6 +12,7 @@ extension UIView {
     @objc func prepareViewForSkeleton() {
         startTransition { [weak self] in
             self?.backgroundColor = .clear
+            self?.isUserInteractionEnabled = false
         }
     }
 }
@@ -41,6 +42,15 @@ extension UIImageView {
         backgroundColor = .clear
         startTransition { [weak self] in
             self?.image = nil
+        }
+    }
+}
+
+extension UIButton {
+    override func prepareViewForSkeleton() {
+        backgroundColor = .clear
+        startTransition { [weak self] in
+            self?.setTitle(nil, for: .normal)
         }
     }
 }
