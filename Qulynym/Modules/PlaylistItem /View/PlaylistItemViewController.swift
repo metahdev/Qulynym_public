@@ -12,7 +12,7 @@ import AVKit
  
   #warning("TODO")
  /*
-  1. Change Torg'ai loading - Askar + add instagram and gmail links in the settings
+  1. add instagram and gmail links in the settings
   2. Refactor PlaylistItem(warning messages in Story because cv does not exist) - Askar
   3. Clean the project & code - Askar & Bauka
   4. Change pencil line thickness - test

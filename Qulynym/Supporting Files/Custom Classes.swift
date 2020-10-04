@@ -163,6 +163,9 @@ class ArrowView: UIView {
 
 // MARK:- Orientation
 struct AppUtility {
+    // MARK:- Orientation
+    static var currentOrientation: UIInterfaceOrientation?
+    
     // MARK:- Landscape Lock
     static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation: UIInterfaceOrientation) {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {

@@ -89,11 +89,15 @@ class GameViewController: QulynymVC {
         DispatchQueue.main.asyncAfter(deadline: .now() + Animator.duration - 0.5, execute: {
             AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
         })
-        DispatchQueue.main.asyncAfter(deadline: .now() + Animator.duration + 0.5, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + Animator.duration, execute: {
+            vc.hideBackground(false)
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + Animator.duration + 0.25, execute: {
             vc.hideTransitionViews(false)
             vc.fromGame = false
         })
     }
+    
     func playerSize() -> CGSize {
         if traitCollection.horizontalSizeClass == .regular {
             return CGSize(width: 32, height: 24)
@@ -101,6 +105,7 @@ class GameViewController: QulynymVC {
             return CGSize(width: 53.33, height: 40)
         }
     }
+    
     func obstacleSize() -> CGSize {
         if traitCollection.horizontalSizeClass == .regular {
             return CGSize(width: 32.4, height: 252.8)
@@ -109,4 +114,5 @@ class GameViewController: QulynymVC {
         }
     }
 }
+
 

@@ -80,11 +80,16 @@ extension MenuRouter {
     
     func openFlappyBird() {
         controller.hideTransitionViews(true)
+        AppUtility.currentOrientation = UIApplication.shared.statusBarOrientation
+        
+        UIView.setAnimationsEnabled(false)
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         
-        DispatchQueue.main.async {
-            self.showAnotherView(view: GameViewController())
-        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+            self.controller.hideBackground(true)
+        })
+        
+        self.showAnotherView(view: GameViewController())
     }
     
     func close() {

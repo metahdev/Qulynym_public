@@ -24,6 +24,7 @@ protocol MenuViewControllerProtocol: class {
     var playlistID: String? { get set }
     var dataFetchAPI: DataFetchAPI! { get }
     func hideTransitionViews(_ hide: Bool)
+    func hideBackground(_ hide: Bool)
 }
 
 class MenuViewController: QulynymVC, MenuViewControllerProtocol, DataFetchAPIDelegate, ConnectionWarningViewControllerDelegate, ConnectionWarningCaller {
@@ -409,6 +410,12 @@ extension MenuViewController {
         menuView.collectionView.isHidden = hide
         menuView.titleLabel.isHidden = hide
         menuView.closeBtn.isHidden = hide
+    }
+    
+    func hideBackground(_ hide: Bool) {
+        menuView.backgroundIV.isHidden = hide
+        menuView.torgaiForeground.isHidden = !hide
+        menuView.torgaiBackground.isHidden = !hide
     }
 }
 

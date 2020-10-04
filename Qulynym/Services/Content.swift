@@ -73,12 +73,6 @@ struct Content {
         Song(name: "Bіr bala", lyrics: Content.birBalaLyrics, timestops: [(31.8, 45.5), (45.9, 56.3), (56.6, 59.5), (60, 63.2), (63.5, 66.6), (67, 74), (74.2, 80.8), (81.2, 88), (88.3, 95.4), (107.6, 121.4), (121.9, 132), (132.4, 135.5), (136, 139), (139.5, 142.6), (143, 149.9), (150, 156.8), (157, 164), (164.2, 170.9), (199.5, 206.3), (206.5, 213.2), (213.5, 220.3), (220.6, 227.5), (227.7, 135.3)])
     ]
     
-    /* Mentions:
-      Tolag'ai - Шәкен Айманов атындағы "Қазақфильм" АҚ (Sha'ken Aımanov atyndaǵy "Qazaqfılm" AQ)
-      G'ajap qus - Azia Animation
-     */
-    
-    
     static var stories = [
         "Bauyrsaq Ertegi", "G'ajap qus", "Tolag'ai"
     ]

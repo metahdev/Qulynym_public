@@ -16,6 +16,9 @@ protocol MenuViewProtocol: class {
     var titleLabel: UILabel { get }
     var rightArrowView: UIView { get }
     var leftArrowView: UIView { get }
+    var backgroundIV: UIImageView { get }
+    var torgaiForeground: UIImageView { get }
+    var torgaiBackground: UIImageView { get }
 
     func setupLayout()
 }
@@ -63,6 +66,19 @@ class MenuView: MenuViewProtocol {
         v.layer.cornerRadius = view.frame.height * 0.06
         return v
     }()
+    lazy var torgaiForeground: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "foreground")
+        iv.isHidden = true
+        return iv
+    }()
+    lazy var torgaiBackground: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "background")
+        iv.isHidden = true
+        return iv
+    }()
+
     private weak var view: UIView!
     
     
@@ -81,6 +97,8 @@ class MenuView: MenuViewProtocol {
         view.addSubview(rightArrowView)
         view.addSubview(leftArrowView)
         view.addSubview(backgroundIV)
+        view.addSubview(torgaiBackground)
+        view.addSubview(torgaiForeground)
         setAutoresizingFalse()
         backgroundIV.configureBackgroundImagePosition(view)
         activateMainConstraints()
@@ -113,7 +131,17 @@ class MenuView: MenuViewProtocol {
             leftArrowView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 4),
             leftArrowView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             leftArrowView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12),
-            leftArrowView.widthAnchor.constraint(equalTo: leftArrowView.heightAnchor)
+            leftArrowView.widthAnchor.constraint(equalTo: leftArrowView.heightAnchor),
+            
+            torgaiBackground.topAnchor.constraint(equalTo: view.topAnchor),
+            torgaiBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            torgaiBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            torgaiBackground.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.72),
+            
+            torgaiForeground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            torgaiForeground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            torgaiForeground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            torgaiForeground.topAnchor.constraint(equalTo: torgaiBackground.bottomAnchor)
         ])
     }
 }
