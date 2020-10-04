@@ -41,6 +41,16 @@ struct Beine {
     var thumbnailURL: String
 }
 
+struct Link {
+    var imageName: String
+    var link: String
+    
+    init(_ imageName: String, _ link: String) {
+        self.imageName = imageName
+        self.link = link
+    }
+}
+
 struct Content {
     static let sections: [Menu: [String]] = [.main: menuSections, .games: gamesSection]
     
@@ -60,9 +70,9 @@ struct Content {
         plantsSection,
     ]
     
-    static let gamesSection = [
-        "Flappy Torg'ai",
-    ]
+    static let gamesSection = ["Flappy Torg'ai"]
+    
+    static let links = [Link("gmail", "mailto:qulynym.kz@gmail.com"), Link("insta", "https://www.instagram.com/qulynym.kz/")]
     
     static var songs: [Song] = [
         Song(name: "Qoshaqanym", lyrics: Content.qoshakanymLyrics, timestops: [(29.8, 32), (33, 36), (37, 39.6), (40.8, 43), (44, 47), (48, 50), (51.6, 54.8), (55, 57.6), (59, 61), (62.6, 65), (66, 69.5), (70, 72), (73.6, 76), (77, 80), (80.6, 83.6), (84, 87), (88, 90), (91.5, 94), (95, 98.5), (99, 101.3), (102.6, 105), (106, 108.6), (110, 113), (113.6, 115.8), (131.6, 134.2), (135.3, 138), (139, 142), (142.6, 145), (146.3, 148.8), (150, 152.2), (153.5, 156.7), (157.3, 159.6)]),

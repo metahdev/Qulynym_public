@@ -413,9 +413,11 @@ extension MenuViewController {
     }
     
     func hideBackground(_ hide: Bool) {
-        menuView.backgroundIV.isHidden = hide
-        menuView.torgaiForeground.isHidden = !hide
-        menuView.torgaiBackground.isHidden = !hide
+        UIView.animate(withDuration: 0.25, animations: {
+            self.menuView.backgroundIV.alpha = hide ? 0 : 1
+            self.menuView.torgaiForeground.alpha = hide ? 1 : 0
+            self.menuView.torgaiBackground.alpha = hide ? 1 : 0
+        })
     }
 }
 

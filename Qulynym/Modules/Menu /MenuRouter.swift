@@ -82,7 +82,6 @@ extension MenuRouter {
         controller.hideTransitionViews(true)
         AppUtility.currentOrientation = UIApplication.shared.statusBarOrientation
         
-        UIView.setAnimationsEnabled(false)
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {

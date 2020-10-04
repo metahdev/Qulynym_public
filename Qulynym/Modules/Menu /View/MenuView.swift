@@ -69,13 +69,15 @@ class MenuView: MenuViewProtocol {
     lazy var torgaiForeground: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "foreground")
-        iv.isHidden = true
+        iv.isUserInteractionEnabled = false
+        iv.alpha = 0 
         return iv
     }()
     lazy var torgaiBackground: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "background")
-        iv.isHidden = true
+        iv.isUserInteractionEnabled = false
+        iv.alpha = 0
         return iv
     }()
 

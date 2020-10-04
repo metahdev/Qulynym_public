@@ -34,7 +34,7 @@ func constraintSubviewToFitSuperview(subview: UIView, superview: UIView) {
     ])
 }
 
-func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDirection, /*image name: String?,*/ background type: UIColor?) -> UICollectionView {
+func configureImagesCollectionView(scroll direction: UICollectionView.ScrollDirection, background type: UIColor?) -> UICollectionView {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = direction
     

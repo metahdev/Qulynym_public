@@ -27,7 +27,7 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
     }()
     private lazy var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont(name: "Gill Sans", size: view.frame.height * 0.17)
+        lbl.font = UIFont(name: "Gill Sans", size: view.frame.height * 0.15)
         lbl.textAlignment = .center
         return lbl
     }()
@@ -39,9 +39,10 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
         tv.isScrollEnabled = true
         return tv
     }()
-    #warning("implementation")
     private lazy var linksCV: UICollectionView = {
-        var cv = UICollectionView()
+        let cv = configureImagesCollectionView(scroll: .horizontal, background: .clear)
+        cv.delegate = self
+        cv.dataSource = self
         return cv
     }()
 
@@ -76,6 +77,7 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
         view.addSubview(titleLabel)
         view.addSubview(textView)
         view.addSubview(closeBtn)
+        view.addSubview(linksCV)
     }
     
     func makeMaskFalse() {
@@ -88,11 +90,16 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: closeBtn.topAnchor),
-            
+        
             textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
+            linksCV.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            linksCV.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 0.7),
+            linksCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            linksCV.widthAnchor.constraint(equalTo: linksCV.heightAnchor, multiplier: 2)
         ])
     }
     
@@ -105,5 +112,42 @@ class TextViewController: UIViewController, TextViewControllerProtocol {
     @objc
     private func closeBtnPressed() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+
+// MARK:- UICollectionView Protocols
+extension TextViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Content.links.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
+        cell.image = UIImage(named: Content.links[indexPath.row].imageName)
+        return cell
+    }
+}
+
+extension TextViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let url = URL(string: Content.links[indexPath.row].link) else { return }
+        UIApplication.shared.open(url)
+    }
+}
+
+
+extension TextViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let side = collectionView.frame.width * 0.5 - 8
+        return CGSize(width: side, height: side)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
     }
 }

@@ -12,10 +12,10 @@ import AVKit
  
   #warning("TODO")
  /*
-  1. add instagram and gmail links in the settings
-  2. Refactor PlaylistItem(warning messages in Story because cv does not exist) - Askar
-  3. Clean the project & code - Askar & Bauka
-  4. Change pencil line thickness - test
+  emergency: beine titleLabel!!! 
+  1. Refactor PlaylistItem(warning messages in Story because cv does not exist) - Askar
+  2. Clean the project & code - Askar & Bauka
+  3. Change pencil line thickness - test
   */
 
 protocol PlaylistItemViewControllerProtocol: class {
