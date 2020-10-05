@@ -10,7 +10,15 @@
 import UIKit
 import CoreData
 
-#warning("Refactor")
+#warning("TODO")
+/*
+ emergency: beine titleLabel!!! (refactoring with SwiftyJSON)
+ 1. Refactor PlaylistItem(warning messages in Story because cv does not exist) - Askar
+ 2. Clean the project & code - Askar & Bauka
+ 3. Change pencil line thickness - test
+ extra: screenshots 
+*/
+
 /*
  Refactor:
   1) MenuRouter + MenuViewCotnroller

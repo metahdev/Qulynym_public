@@ -8,6 +8,7 @@
 */
 
 import Alamofire
+import SwiftyJSON
 
 protocol DataFetchAPIDelegate: class {
     var playlistID: String? { get set }
