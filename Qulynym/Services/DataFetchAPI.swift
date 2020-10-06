@@ -38,7 +38,7 @@ class DataFetchAPI {
     
     private var tempData: [Beine]!
     
-    private let apiKey = ""
+    private let apiKey = "AIzaSyB90w7-hfl9YIiYvS5ftlYiM4cV7M0RG4o"
     private var alamofireManager: Session?
 
     
@@ -106,7 +106,7 @@ class DataFetchAPI {
                    method: .get,
                    parameters: parameters,
                    encoder: URLEncodedFormParameterEncoder(destination: .queryString),
-                   headers: ["x-ios-identifier-bundle-identifier": "com.devmetah.qulynym"])
+                   headers: ["x-ios-bundle-identifier": "com.devmetah.qulynym"])
             .responseJSON(completionHandler: { response in
 
             switch response.result {

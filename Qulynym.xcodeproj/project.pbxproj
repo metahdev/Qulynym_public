@@ -55,7 +55,7 @@
 		D1072A0122877DD2003149E8 /* PlaylistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1072A0022877DD2003149E8 /* PlaylistRouter.swift */; };
 		D107786B22858CEC00D869D3 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D107786A22858CEC00D869D3 /* Animator.swift */; };
 		D11A59BE23043F8C00D68CEF /* whack.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2322FBDF2F006B5697 /* whack.wav */; };
-		D12ACAB423F158360061EF06 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D12ACAB423F158360061EF06 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D135E2A422A02F7B00DC84DE /* PlaylistItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A322A02F7B00DC84DE /* PlaylistItemViewController.swift */; };
 		D135E2A722A02F9800DC84DE /* PlaylistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A622A02F9800DC84DE /* PlaylistItemView.swift */; };
 		D135E2AB22A02FBC00DC84DE /* PlaylistItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2AA22A02FBC00DC84DE /* PlaylistItemConfigurator.swift */; };
@@ -137,7 +137,7 @@
 		D1D8CF172326A1AA00531F3F /* Terek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF022326A1AA00531F3F /* Terek.mp3 */; };
 		D1D8CF182326A1AA00531F3F /* O'simdikterQ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF032326A1AA00531F3F /* O'simdikterQ.mp3 */; };
 		D1D8CF192326A1AA00531F3F /* Ko'kterek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF042326A1AA00531F3F /* Ko'kterek.mp3 */; };
-		D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */; };
+		D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */; };
 		D1D8CF1B2326A1AA00531F3F /* Shyrsha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF062326A1AA00531F3F /* Shyrsha.mp3 */; };
 		D1D8CF262326A68F00531F3F /* PishinderQ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF1D2326A68F00531F3F /* PishinderQ.mp3 */; };
 		D1D8CF272326A68F00531F3F /* Zhuldyz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D8CF1E2326A68F00531F3F /* Zhuldyz.mp3 */; };
@@ -179,7 +179,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D12ACAB423F158360061EF06 /* BuildFile in Embed Frameworks */,
+				D12ACAB423F158360061EF06 /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,7 +322,7 @@
 		D1D8CF022326A1AA00531F3F /* Terek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Terek.mp3; sourceTree = "<group>"; };
 		D1D8CF032326A1AA00531F3F /* O'simdikterQ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "O'simdikterQ.mp3"; sourceTree = "<group>"; };
 		D1D8CF042326A1AA00531F3F /* Ko'kterek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ko'kterek.mp3"; sourceTree = "<group>"; };
-		D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Órіk ag'ashy.mp3"; sourceTree = "<group>"; };
+		D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Órіk ag'ashy.mp3"; sourceTree = "<group>"; };
 		D1D8CF062326A1AA00531F3F /* Shyrsha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Shyrsha.mp3; sourceTree = "<group>"; };
 		D1D8CF1D2326A68F00531F3F /* PishinderQ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PishinderQ.mp3; sourceTree = "<group>"; };
 		D1D8CF1E2326A68F00531F3F /* Zhuldyz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Zhuldyz.mp3; sourceTree = "<group>"; };
@@ -792,7 +792,7 @@
 				D1D8CF022326A1AA00531F3F /* Terek.mp3 */,
 				D1D8CF032326A1AA00531F3F /* O'simdikterQ.mp3 */,
 				D1D8CF042326A1AA00531F3F /* Ko'kterek.mp3 */,
-				D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */,
+				D1D8CF052326A1AA00531F3F /* Órіk ag'ashy.mp3 */,
 				D1D8CF062326A1AA00531F3F /* Shyrsha.mp3 */,
 			);
 			path = Plants;
@@ -956,7 +956,7 @@
 				D1D8CEDF2326720B00531F3F /* Qasqyr.mp3 in Resources */,
 				D1D8CEDD2326720B00531F3F /* Ko'belek.mp3 in Resources */,
 				D18E30C02325566C00C0E012 /* Bauyrsaq Ertegi.mp3 in Resources */,
-				D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */,
+				D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */,
 				D1D8CF262326A68F00531F3F /* PishinderQ.mp3 in Resources */,
 				D1D8CF2C2326A68F00531F3F /* Sharshy.mp3 in Resources */,
 				D18E30BD2325566500C0E012 /* Aigo'lek.mp3 in Resources */,
@@ -1286,7 +1286,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fadsfdsaf.qulynym;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devmetah.qulynym;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
