@@ -35,12 +35,6 @@ struct Video {
     var image: Data
 }
 
-struct Beine {
-    var title: String
-    var id: String
-    var thumbnailURL: String
-}
-
 struct Link {
     var imageName: String
     var link: String

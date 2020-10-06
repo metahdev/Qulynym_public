@@ -10,6 +10,12 @@
 import Alamofire
 import SwiftyJSON
 
+struct Beine {
+    var title: String
+    var id: String
+    var thumbnailURL: String
+}
+
 protocol DataFetchAPIDelegate: class {
     var playlistID: String? { get set }
     func dataIsReady()
@@ -105,7 +111,7 @@ class DataFetchAPI {
 
             switch response.result {
             case .success(let value):
-                self.parsingJSON(value as? [String: Any])
+                self.parsing(JSON(value))
             case .failure(_):
                 self.connectionDelegate?.showAnErrorMessage()
             }
@@ -113,27 +119,22 @@ class DataFetchAPI {
         })
     }
     
-    private func parsingJSON(_ value: [String: Any]?) {
-        if let JSON = value {
-            print(value as Any)
-            guard let videos = JSON["items"] as? NSArray else { return }
-            appendBeineEntities(videos)
-            self.token = JSON["nextPageToken"] as? String
-        }
+    private func parsing(_ json: JSON) {
+        let videos = json["items"]
+        appendBeineEntities(videos)
+        self.token = json["nextPageToken"].string
+        
         self.beineler += tempData
         self.fetchAPIDelegate?.dataIsReady()
     }
     
-    private func appendBeineEntities(_ videos: NSArray) {
-        for video in videos {
-            let title = (video as AnyObject).value(forKeyPath: "snippet.title") as! String
-            let id = (video as AnyObject).value(forKeyPath: self.idKey) as! String
+    private func appendBeineEntities(_ videos: JSON) {
+        for (_, subJson): (String, JSON) in videos {
+            let title = subJson["snippet.title"].string ?? ""
+            let id = subJson[self.idKey].string ?? ""
+            let thumbnail = subJson["snippet.thumbnails.maxres.url"].string ?? "" 
             
-            let imageKeyPath = "snippet.thumbnails.maxres.url"
-            let convertedVideo = video as AnyObject
-            if let thumbnail = convertedVideo.value(forKeyPath: imageKeyPath) as? String {
-                tempData.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
-            }
+            tempData.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
         }
     }
 }

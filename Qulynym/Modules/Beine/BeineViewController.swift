@@ -65,7 +65,6 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         lbl.layer.cornerRadius = 15
         lbl.setupMenuLabel(size: view.frame.height * 0.06)
         lbl.numberOfLines = 2
-        lbl.text = "Hello, world!"
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -102,6 +101,7 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         if index == dataFetchAPI.beineler.count - 1 {
             nextVideoBtn.isEnabled = false
         }
+        titleLabel.text = beineler[index].title
     }
     
     override func viewDidAppear(_ animated: Bool) {
