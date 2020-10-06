@@ -111,9 +111,9 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         cell.text = content[indexPath.row]
         #warning("refactor")
         cell.sectionTitleLabel.setupPlaylistLabel(size: cell.frame.height * 0.1)
-        cell.sectionTitleLabel.backgroundColor = .clear
         if !isKaraoke {
             cell.sectionTitleLabel.textColor = .lightViolet
+            cell.sectionTitleLabel.backgroundColor = UIColor(red: 31/255, green: 28/255, blue: 50/255, alpha: 1)
         }
         cell.imageView.layer.cornerRadius = 5
         return cell
