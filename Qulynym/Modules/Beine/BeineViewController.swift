@@ -51,12 +51,12 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
     }()
     private lazy var nextVideoBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "nextVideo"), for: .normal)
+        btn.setImage(UIImage(named: "darkForward"), for: .normal)
         return btn
     }()
     private lazy var previousVideoBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "previousVideo"), for: .normal)
+        btn.setImage(UIImage(named: "darkBack"), for: .normal)
         return btn
     }()
     private lazy var titleLabel: UILabel = {
@@ -64,6 +64,7 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         lbl.clipsToBounds = true
         lbl.layer.cornerRadius = 15
         lbl.setupMenuLabel(size: view.frame.height * 0.06)
+        lbl.font = UIFont(name: "Helvetica-Bold", size: view.frame.height * 0.06)
         lbl.numberOfLines = 2
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
@@ -106,7 +107,7 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
     }
     
     private func updateTitle() {
-        titleLabel.text = beineler[index].title
+        titleLabel.text = dataFetchAPI.beineler[index].title
     }
     
     override func viewDidAppear(_ animated: Bool) {

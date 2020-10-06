@@ -244,6 +244,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else if menuType == .beinelerPlaylists || menuType == .beineler {
             cell.sectionTitleLabel.font = UIFont(name: "Helvetica-Bold", size: cell.frame.height * 0.13)
             cell.isUserInteractionEnabled = false
+            cell.backgroundColor = .concrete
             let gradient = SkeletonGradient(baseColor: .concrete)
             cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
             cell.warningCaller = self

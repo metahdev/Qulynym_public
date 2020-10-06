@@ -38,7 +38,7 @@ class DataFetchAPI {
     
     private var tempData: [Beine]!
     
-    private let apiKey = ""
+    private let apiKey = "AIzaSyCsNKMuOVN7DF6j2U0lmKfNF8Gup9q55ck"
     private var alamofireManager: Session?
 
     
@@ -109,6 +109,7 @@ class DataFetchAPI {
                    headers: ["x-ios-bundle-identifier": "com.devmetah.qulynym"])
             .responseJSON(completionHandler: { response in
 
+                print(response.result)
             switch response.result {
             case .success(let value):
                 self.parsing(JSON(value))
@@ -123,7 +124,6 @@ class DataFetchAPI {
         let videos = json["items"]
         appendBeineEntities(videos)
         self.token = json["nextPageToken"].string
-
         self.beineler += tempData
         self.fetchAPIDelegate?.dataIsReady()
     }
@@ -139,9 +139,9 @@ class DataFetchAPI {
                 id = subJson["id"].string ?? ""
             }
             
-            let thumbnail = subJson["snippet"]["thumbnails"]["maxres"]["url"].string ?? ""
-            
-            tempData.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
+            if let thumbnail = subJson["snippet"]["thumbnails"]["maxres"]["url"].string {
+                tempData.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
+            }
         }
     }
 }
