@@ -51,12 +51,12 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
     }()
     private lazy var nextVideoBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "nextVideo"), for: .normal)
+        btn.setImage(UIImage(named: "darkForward"), for: .normal)
         return btn
     }()
     private lazy var previousVideoBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "previousVideo"), for: .normal)
+        btn.setImage(UIImage(named: "darkBack"), for: .normal)
         return btn
     }()
     private lazy var titleLabel: UILabel = {
@@ -102,6 +102,7 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         if index == dataFetchAPI.beineler.count - 1 {
             nextVideoBtn.isEnabled = false
         }
+        updateTitle()
     }
     
     private func updateTitle() {

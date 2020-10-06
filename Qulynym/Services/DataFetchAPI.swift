@@ -38,7 +38,7 @@ class DataFetchAPI {
     
     private var tempData: [Beine]!
     
-    private let apiKey = "AIzaSyB90w7-hfl9YIiYvS5ftlYiM4cV7M0RG4o"
+    private let apiKey = ""
     private var alamofireManager: Session?
 
     
