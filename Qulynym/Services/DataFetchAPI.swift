@@ -38,7 +38,7 @@ class DataFetchAPI {
     
     private var tempData: [Beine]!
     
-    private let apiKey = "AIzaSyCEoq15YF8KopKxRp_J5Vyh1NV3zT_HTRs"
+    private let apiKey = ""
     private var alamofireManager: Session?
 
     
@@ -123,16 +123,16 @@ class DataFetchAPI {
         let videos = json["items"]
         appendBeineEntities(videos)
         self.token = json["nextPageToken"].string
-        
+
         self.beineler += tempData
         self.fetchAPIDelegate?.dataIsReady()
     }
     
     private func appendBeineEntities(_ videos: JSON) {
         for (_, subJson): (String, JSON) in videos {
-            let title = subJson["snippet.title"].string ?? ""
+            let title = subJson["snippet"]["title"].string ?? ""
             let id = subJson[self.idKey].string ?? ""
-            let thumbnail = subJson["snippet.thumbnails.maxres.url"].string ?? "" 
+            let thumbnail = subJson["snippet"]["thumbnails"]["maxres"]["url"].string ?? ""
             
             tempData.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
         }

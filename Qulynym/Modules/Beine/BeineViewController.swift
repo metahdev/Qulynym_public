@@ -69,6 +69,7 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         return lbl
     }()
     
+    
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +102,9 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         if index == dataFetchAPI.beineler.count - 1 {
             nextVideoBtn.isEnabled = false
         }
+    }
+    
+    private func updateTitle() {
         titleLabel.text = beineler[index].title
     }
     
@@ -318,6 +322,7 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
             collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
             makeCellSelected(collectionView.cellForItem(at: indexPath)!)
             index = indexPath.row
+            updateTitle()
         }
         
         checkForConnection()
