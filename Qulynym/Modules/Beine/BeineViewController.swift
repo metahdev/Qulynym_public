@@ -102,6 +102,7 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
         if index == dataFetchAPI.beineler.count - 1 {
             nextVideoBtn.isEnabled = false
         }
+        updateTitle() 
     }
     
     private func updateTitle() {

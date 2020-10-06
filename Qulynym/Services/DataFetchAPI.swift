@@ -30,15 +30,15 @@ class DataFetchAPI {
     private weak var fetchAPIDelegate: DataFetchAPIDelegate?
     private weak var connectionDelegate: ConnectionWarningCaller?
     
+    private var inPlaylist = false
     private var stringURL: String!
-    private var idKey: String!
     private var fetchIDKey: String!
     private var fetchIDValue: String!
     private var parameters: [String: String]!
     
     private var tempData: [Beine]!
     
-    private let apiKey = "AIzaSyB90w7-hfl9YIiYvS5ftlYiM4cV7M0RG4o"
+    private let apiKey = ""
     private var alamofireManager: Session?
 
     
@@ -76,8 +76,8 @@ class DataFetchAPI {
     }
     
     private func assignVariablesStartingValues() {
+        inPlaylist = false
         stringURL = "https://www.googleapis.com/youtube/v3/playlists"
-        idKey = "id"
         fetchIDKey = "channelId"
         fetchIDValue = "UCSJKvyZVC0FLiyvo3LeEllg"
         parameters = [String: String]()
@@ -87,7 +87,7 @@ class DataFetchAPI {
     private func definingPlaylistRequestParameters() {
         if let id = self.fetchAPIDelegate!.playlistID {
             stringURL = stringURL.replacingOccurrences(of: "playlists", with: "playlistItems")
-            idKey = "snippet.resourceId.videoId"
+            inPlaylist = true
             fetchIDKey = "playlistId"
             fetchIDValue = id
         }
@@ -131,7 +131,14 @@ class DataFetchAPI {
     private func appendBeineEntities(_ videos: JSON) {
         for (_, subJson): (String, JSON) in videos {
             let title = subJson["snippet"]["title"].string ?? ""
-            let id = subJson[self.idKey].string ?? ""
+            
+            var id = ""
+            if inPlaylist {
+                id = subJson["snippet"]["resourceId"]["videoId"].string ?? ""
+            } else {
+                id = subJson["id"].string ?? ""
+            }
+            
             let thumbnail = subJson["snippet"]["thumbnails"]["maxres"]["url"].string ?? ""
             
             tempData.append(Beine(title: title, id: id, thumbnailURL: thumbnail))
