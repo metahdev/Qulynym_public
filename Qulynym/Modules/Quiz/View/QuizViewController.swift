@@ -9,8 +9,6 @@
 
 import UIKit
 
-#warning("confetti animation")
-// https://bryce.co/recreating-imessage-confetti/
 protocol QuizViewControllerProtocol: class {
     var categoryName: String { get set }
     var count: Int! { get set }

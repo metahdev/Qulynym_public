@@ -74,8 +74,13 @@ class DrawingViewController: QulynymVC, DrawingViewControllerProtocol {
         assignViews()
         setupCV()
         assignActions()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         selectedTool = pencil
         moveUp(tool: pencil)
+        setupDrawingLineComponents()
     }
     
     
@@ -122,8 +127,8 @@ class DrawingViewController: QulynymVC, DrawingViewControllerProtocol {
         }
     }
     
-    func setupDrawingLineComponents(of tool: UIButton) {
-        if tool == eraser {
+    func setupDrawingLineComponents() {
+        if selectedTool == eraser {
             canvasView.brushWidth = 25
             canvasView.color = .white
             return
@@ -131,11 +136,11 @@ class DrawingViewController: QulynymVC, DrawingViewControllerProtocol {
         if canvasView.color == .white {
             canvasView.color = previousColor ?? .red
         }
-        if tool == brush {
+        if selectedTool == brush {
             canvasView.brushWidth = view.frame.height * 0.04
             canvasView.color = canvasView.color.withAlphaComponent(1)
-        } else if tool == pencil {
-            canvasView.brushWidth = view.frame.height * 0.01
+        } else if selectedTool == pencil {
+            canvasView.brushWidth = view.frame.height * 0.007
             canvasView.color = canvasView.color.withAlphaComponent(0.7)
         } else {
             canvasView.brushWidth = view.frame.height * 0.02
@@ -178,24 +183,24 @@ class DrawingViewController: QulynymVC, DrawingViewControllerProtocol {
     func brushBtnPressed() {
         closeMenu()
         moveUp(tool: brush)
-        setupDrawingLineComponents(of: brush)
         selectedTool = brush
+        setupDrawingLineComponents()
     }
     
     @objc
     func pencilBtnPressed() {
         closeMenu()
         moveUp(tool: pencil)
-        setupDrawingLineComponents(of: pencil)
         selectedTool = pencil
+        setupDrawingLineComponents()
     }
     
     @objc
     func markerBtnPressed() {
         closeMenu()
         moveUp(tool: marker)
-        setupDrawingLineComponents(of: marker)
         selectedTool = marker
+        setupDrawingLineComponents()
     }
     
     @objc
@@ -205,8 +210,8 @@ class DrawingViewController: QulynymVC, DrawingViewControllerProtocol {
         if canvasView.color != .white {
             previousColor = canvasView.color
         }
-        setupDrawingLineComponents(of: eraser)
         selectedTool = eraser
+        setupDrawingLineComponents()
     }
     
     @objc
@@ -249,12 +254,18 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        cell.backgroundColor = colors[indexPath.row]
+        
+        if indexPath.row < 2 || indexPath.row > 4 {
+            cell.backgroundColor = .white
+        } else {
+            cell.backgroundColor = .black
+        }
+        cell.imageView.backgroundColor = colors[indexPath.row]
         cell.layer.cornerRadius = cell.frame.width * 0.5
         cell.clipsToBounds = true 
         return cell
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return toolsCVItemSize()
     }
@@ -264,9 +275,17 @@ extension DrawingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard selectedTool != eraser else { return }
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCell
+        UIView.animate(withDuration: 0.1, animations: {
+            cell.imageView.backgroundColor = self.colors[indexPath.row].withAlphaComponent(0.5)
+        }, completion: { _ in
+            cell.imageView.backgroundColor = self.colors[indexPath.row]
+        })
         closeMenu()
         canvasView.color = colors[indexPath.row]
-        setupDrawingLineComponents(of: selectedTool)
+        setupDrawingLineComponents()
         AudioPlayer.setupExtraAudio(with: "bloop", audioPlayer: .effects)
     }
 }

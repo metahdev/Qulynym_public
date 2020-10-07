@@ -34,6 +34,7 @@
 		B9E2CE3822FBDF2F006B5697 /* falling.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2522FBDF2F006B5697 /* falling.wav */; };
 		B9E2CE3922FBDF2F006B5697 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2622FBDF2F006B5697 /* coin.wav */; };
 		B9E2CE3B22FBDF2F006B5697 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2822FBDF2F006B5697 /* ding.wav */; };
+		D1007B6F252CA68700672BA3 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1007B6E252CA68700672BA3 /* Confetti.swift */; };
 		D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10221DB22ECD2B40081C95E /* CanvasView.swift */; };
 		D102930822F1A13500C7B2F2 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930722F1A13500C7B2F2 /* QuizViewController.swift */; };
 		D102930A22F1A14000C7B2F2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D102930922F1A14000C7B2F2 /* QuizView.swift */; };
@@ -219,6 +220,7 @@
 		B9E2CE2622FBDF2F006B5697 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
 		B9E2CE2722FBDF2F006B5697 /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
 		B9E2CE2822FBDF2F006B5697 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
+		D1007B6E252CA68700672BA3 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
 		D10221DB22ECD2B40081C95E /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		D102930722F1A13500C7B2F2 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		D102930922F1A14000C7B2F2 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
@@ -713,6 +715,7 @@
 				D1383F8D22AFCD42007815DF /* ImageCollectionViewCell.swift */,
 				D19D32E023EF06EC00DC533B /* CustomImageView.swift */,
 				B9E2CE1522FBDF2F006B5697 /* SKUtils.swift */,
+				D1007B6E252CA68700672BA3 /* Confetti.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1065,6 +1068,7 @@
 				B916B09222FBDC3400AF255A /* TutorialState.swift in Sources */,
 				D13D867E22180E430048A6E4 /* PersistentService.swift in Sources */,
 				D10687D122AE68FA00A3E6E0 /* MenuPresenter.swift in Sources */,
+				D1007B6F252CA68700672BA3 /* Confetti.swift in Sources */,
 				85EAEED824BA61DB0006DF41 /* TitleCollectionViewCell.swift in Sources */,
 				D14D536A22213775007ACD55 /* ItemConfigurator.swift in Sources */,
 				D10687CF22AE68EE00A3E6E0 /* MenuView.swift in Sources */,
