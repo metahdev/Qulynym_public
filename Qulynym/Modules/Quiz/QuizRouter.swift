@@ -11,6 +11,7 @@ import Foundation
 
 protocol QuizRouterProtocol: class {
     func backToItem(didPass: Bool)
+    func returnToMenu()
     func close()
 }
 
@@ -28,17 +29,17 @@ extension QuizRouter {
             AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
             controller.itemView.slideCount -= 4
         }
-        if controller.itemView.slideCount == controller.itemView.section.contentNames.count {
-            AudioPlayer.audioQueue.async {
-                while AudioPlayer.sfxAudioPlayer.isPlaying {}
-                DispatchQueue.main.async {
-                    self.close()
-                }
-            }
-            return
-        }
         controller.itemView.returnedFromQuiz = true 
         controller.navigationController?.popViewController(animated: true)
+    }
+    
+    func returnToMenu() {
+        AudioPlayer.audioQueue.async {
+            while AudioPlayer.sfxAudioPlayer.isPlaying {}
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                self.close()
+            })
+        }
     }
     
     func close() {

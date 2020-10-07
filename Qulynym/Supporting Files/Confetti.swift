@@ -110,14 +110,14 @@ func createBehavior(type: String) -> NSObject {
 
 func horizontalWaveBehavior() -> Any {
     let behavior = createBehavior(type: "wave")
-    behavior.setValue([100, 0, 0], forKeyPath: "force")
+    behavior.setValue([150, 0, 0], forKeyPath: "force")
     behavior.setValue(0.5, forKeyPath: "frequency")
     return behavior
 }
 
 func verticalWaveBehavior() -> Any {
     let behavior = createBehavior(type: "wave")
-    behavior.setValue([0, 500, 0], forKeyPath: "force")
+    behavior.setValue([0, 600, 0], forKeyPath: "force")
     behavior.setValue(3, forKeyPath: "frequency")
     return behavior
 }

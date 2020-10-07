@@ -16,6 +16,7 @@ protocol QuizViewControllerProtocol: class {
     var cards: [String]! { get set }
     var areImagesTransparent: Bool! { get set }
     var closeBtnHasBeenPressed: Bool { get set }
+    var itemView: ItemViewControllerProtocol! { get }
     
     func returnCellState(_ cellIndex: Int)
     func changeViewsEnableState(enable: Bool)
@@ -140,6 +141,7 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
         self.changeSelectedCellOpacity(to: 0.5)
         
         changeViewsEnableState(enable: false)
+        
         if selectedIndex == indexOfRandCard {
             cell.layer.borderColor = UIColor.green.cgColor
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
@@ -152,7 +154,7 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             cell.layer.borderColor = UIColor.red.cgColor
             presenter.stopAudios()
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 if !self.closeBtnHasBeenPressed {
                     AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
@@ -208,6 +210,7 @@ extension QuizViewController {
     }
     
     func animateConfetti() {
+        #warning("zombie object?")
         let foregroundConfettiLayer = createConfettiLayer(view: view)
         let backgroundConfettiLayer: CAEmitterLayer = {
             let emitterLayer = createConfettiLayer(view: view)

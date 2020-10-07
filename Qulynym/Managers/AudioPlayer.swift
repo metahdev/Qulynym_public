@@ -57,10 +57,8 @@ struct AudioPlayer {
             sfxAudioPlayer.play()
         case .content:
             initPlayers(player: &contentAudioPlayer, url: url)
-            contentAudioPlayer.volume = 1.5
         case .question:
             initPlayers(player: &questionAudioPlayer, url: url)
-            questionAudioPlayer.volume = 1.5
         case .story:
             initPlayers(player: &storyAudioPlayer, url: url)
             playlistPlayerInitiated = true

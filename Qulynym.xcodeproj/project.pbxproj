@@ -85,6 +85,7 @@
 		D1621EC5235E257500FF2537 /* Sarjaılay'.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1621EC1235E257500FF2537 /* Sarjaılay'.mp3 */; };
 		D171887C23E6EF4C006FAB72 /* DataFetchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171887B23E6EF4C006FAB72 /* DataFetchAPI.swift */; };
 		D189CBE624C7BBEE005DFAAE /* Almurt ag'ashy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D189CBE524C7BBEE005DFAAE /* Almurt ag'ashy.mp3 */; };
+		D18C737D252E2D3600DF59B8 /* cheers.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18C737C252E2D3600DF59B8 /* cheers.mp3 */; };
 		D18E30BD2325566500C0E012 /* Aigo'lek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BB2325566400C0E012 /* Aigo'lek.mp3 */; };
 		D18E30BE2325566500C0E012 /* Qoshaqanym.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */; };
 		D18E30C02325566C00C0E012 /* Bauyrsaq Ertegi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */; };
@@ -271,6 +272,7 @@
 		D1621EC1235E257500FF2537 /* Sarjaılay'.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sarjaılay'.mp3"; sourceTree = "<group>"; };
 		D171887B23E6EF4C006FAB72 /* DataFetchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetchAPI.swift; sourceTree = "<group>"; };
 		D189CBE524C7BBEE005DFAAE /* Almurt ag'ashy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Almurt ag'ashy.mp3"; sourceTree = "<group>"; };
+		D18C737C252E2D3600DF59B8 /* cheers.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cheers.mp3; sourceTree = "<group>"; };
 		D18E30BB2325566400C0E012 /* Aigo'lek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Aigo'lek.mp3"; sourceTree = "<group>"; };
 		D18E30BC2325566500C0E012 /* Qoshaqanym.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Qoshaqanym.mp3; sourceTree = "<group>"; };
 		D18E30BF2325566C00C0E012 /* Bauyrsaq Ertegi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bauyrsaq Ertegi.mp3"; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 		D15318C72326376D0035EE05 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				D18C737C252E2D3600DF59B8 /* cheers.mp3 */,
 				D1D8CEEF232690AA00531F3F /* wellDone.mp3 */,
 				D1D8CEE82326746200531F3F /* tryAgain.mp3 */,
 				D15318C82326376D0035EE05 /* bubbles.mp3 */,
@@ -960,6 +963,7 @@
 				D1D8CEDD2326720B00531F3F /* Ko'belek.mp3 in Resources */,
 				D18E30C02325566C00C0E012 /* Bauyrsaq Ertegi.mp3 in Resources */,
 				D1D8CF1A2326A1AA00531F3F /* Órіk ag'ashy.mp3 in Resources */,
+				D18C737D252E2D3600DF59B8 /* cheers.mp3 in Resources */,
 				D1D8CF262326A68F00531F3F /* PishinderQ.mp3 in Resources */,
 				D1D8CF2C2326A68F00531F3F /* Sharshy.mp3 in Resources */,
 				D18E30BD2325566500C0E012 /* Aigo'lek.mp3 in Resources */,

@@ -58,13 +58,20 @@ extension QuizPresenter {
     
     func deleteItem() {
         if modifiedCards.count == 1 {
+            if controller.itemView.slideCount == controller.itemView.section.contentNames.count {
+                AudioPlayer.setupExtraAudio(with: "cheers", audioPlayer: .question)
+                AudioPlayer.questionAudioPlayer.play()
+                controller.animateConfetti()
+                self.interactor.saveData(slide: self.controller.count, category: self.controller.categoryName)
+                self.router.returnToMenu()
+                return
+            }
             AudioPlayer.audioQueue.async {
-                self.controller.animateConfetti()
                 while AudioPlayer.sfxAudioPlayer.isPlaying {}
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                DispatchQueue.main.async {
                     self.interactor.saveData(slide: self.controller.count, category: self.controller.categoryName)
                     self.router.backToItem(didPass: true)
-                })
+                }
             }
             return
         }
