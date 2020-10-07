@@ -55,6 +55,8 @@ class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.checkForMusicState()
+        
+        
     }
     
     // MARK:- Layout

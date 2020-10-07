@@ -21,6 +21,7 @@ protocol QuizViewControllerProtocol: class {
     func changeViewsEnableState(enable: Bool)
     func changeSelectedCellOpacity(to number: Float)
     func shuffleCards()
+    func animateConfetti()
 }
 
 class QuizViewController: QulynymVC, QuizViewControllerProtocol {
@@ -151,6 +152,7 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             cell.layer.borderColor = UIColor.red.cgColor
             presenter.stopAudios()
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 if !self.closeBtnHasBeenPressed {
                     AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
@@ -202,6 +204,28 @@ extension QuizViewController {
             (cell as! ImageCollectionViewCell).flipCell(cardName: self.cards[index], completion: {
                 self.cardsCollectionView.reloadData()
             }, shouldChangeContentMode: !areImagesTransparent)
+        }
+    }
+    
+    func animateConfetti() {
+        let foregroundConfettiLayer = createConfettiLayer(view: view)
+        let backgroundConfettiLayer: CAEmitterLayer = {
+            let emitterLayer = createConfettiLayer(view: view)
+            
+            for emitterCell in emitterLayer.emitterCells ?? [] {
+                emitterCell.scale = 0.5
+            }
+
+            emitterLayer.opacity = 0.5
+            emitterLayer.speed = 0.95
+            
+            return emitterLayer
+        }()
+
+        for layer in [foregroundConfettiLayer, backgroundConfettiLayer] {
+            view.layer.addSublayer(layer)
+            addBehaviors(to: layer)
+            addAnimations(to: layer)
         }
     }
 }
