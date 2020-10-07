@@ -59,6 +59,10 @@ class DataFetchAPI {
     
     
     // MARK:- Methods
+    func nullifyData() {
+        beineler.removeAll()
+    }
+    
     func fetchBeine() {
         guard self.fetchAPIDelegate != nil else { return }
         guard let connectionDelegate = self.connectionDelegate else { return }
@@ -109,7 +113,6 @@ class DataFetchAPI {
                    headers: ["x-ios-bundle-identifier": "com.devmetah.qulynym"])
             .responseJSON(completionHandler: { response in
 
-                print(response.result)
             switch response.result {
             case .success(let value):
                 self.parsing(JSON(value))

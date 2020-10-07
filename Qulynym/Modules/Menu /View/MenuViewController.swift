@@ -188,8 +188,12 @@ class MenuViewController: QulynymVC, MenuViewControllerProtocol, DataFetchAPIDel
     
     @objc
     private func closeBtnPressed() {
+        if menuType == .beinelerPlaylists {
+            dataFetchAPI.nullifyData() 
+        }
         presenter.closeView() 
     }
+    
     @objc func settingsBtnPressed() {
         presenter.goToSettings()
     }
@@ -245,12 +249,15 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.sectionTitleLabel.font = UIFont(name: "Helvetica-Bold", size: cell.frame.height * 0.13)
             cell.isUserInteractionEnabled = false
             cell.backgroundColor = .concrete
-            let gradient = SkeletonGradient(baseColor: .concrete)
-            cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
+            
             cell.warningCaller = self
             if self.dataFetchAPI.beineler.count != 0 {
                 cell.isUserInteractionEnabled = true
                 cell.beine = self.dataFetchAPI.beineler[indexPath.row]
+            } else {
+                let gradient = SkeletonGradient(baseColor: .concrete)
+                let animation = GradientDirection.leftRight.slidingAnimation()
+                cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
             }
             return cell
         } else if menuType == .toddler {

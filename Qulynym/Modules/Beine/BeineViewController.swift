@@ -289,21 +289,22 @@ extension BeineViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         
-        cell.backgroundColor = UIColor(red: 149/255, green: 165/255, blue: 166/255, alpha: 1)
+        cell.backgroundColor = .concrete
         cell.imageView.isSkeletonable = true
         cell.sectionTitleLabel.backgroundColor = .black
         cell.layer.cornerRadius = 15
         cell.clipsToBounds = true
         cell.isUserInteractionEnabled = false
         
-        let gradient = SkeletonGradient(baseColor: .concrete)
-        cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient)
-        
         cell.warningCaller = self
 
         if self.dataFetchAPI.beineler.count != 0 {
             cell.isUserInteractionEnabled = true
             cell.beine = self.dataFetchAPI.beineler[indexPath.row]
+        } else {
+            let gradient = SkeletonGradient(baseColor: .concrete)
+            let animation = GradientDirection.leftRight.slidingAnimation()
+            cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
         }
         
         return cell
