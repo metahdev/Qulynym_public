@@ -44,7 +44,9 @@ class PlaylistItemView: PlaylistItemViewProtocol {
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.setupPlaylistLabel(size: view.frame.height * 0.1)
-        lbl.backgroundColor = UIColor(red: 31/255, green: 28/255, blue: 50/255, alpha: 1)
+        if !isKaraoke {
+            lbl.backgroundColor = UIColor(red: 31/255, green: 28/255, blue: 50/255, alpha: 1)
+        }
         lbl.shadowColor = .clear
         return lbl
     }()
