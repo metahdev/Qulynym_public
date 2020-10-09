@@ -231,13 +231,8 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        #warning("refactor")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        cell.imageView.isSkeletonable = true
-        cell.layer.borderColor = UIColor.white.cgColor
-        cell.layer.borderWidth = 5
-        cell.imageView.layer.cornerRadius = 15
-        cell.layer.cornerRadius = 15
+        setupCellAppearence(cell)
         
         cell.sectionTitleLabel.setupMenuLabel(size: cell.frame.height * 0.13)
         
@@ -246,40 +241,59 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.image = UIImage(named: Content.sections[menuType]![indexPath.row])
             return cell
         } else if menuType == .beinelerPlaylists || menuType == .beineler {
-            cell.sectionTitleLabel.font = UIFont(name: "Helvetica-Bold", size: cell.frame.height * 0.13)
-            cell.isUserInteractionEnabled = false
-            cell.backgroundColor = .concrete
-            
-            cell.warningCaller = self
-            if self.dataFetchAPI.beineler.count != 0 {
-                cell.isUserInteractionEnabled = true
-                cell.beine = self.dataFetchAPI.beineler[indexPath.row]
-            } else {
-                let gradient = SkeletonGradient(baseColor: .concrete)
-                let animation = GradientDirection.leftRight.slidingAnimation()
-                cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
-            }
+            setupBeineCell(cell, row: indexPath.row)
             return cell
         } else if menuType == .toddler {
-            let section = Content.toddlerSections[indexPath.row]
-            cell.text = section.name
-            cell.image = UIImage(named: section.name)
-            let completed = UserDefaults.standard.value(forKey: section.name) as? Int
-            let progress = Progress(totalUnitCount: Int64(section.contentNames.count))
-            progress.completedUnitCount = Int64(completed ?? 0)
-            if section.contentNames.count == completed {
-                cell.completed = true
-            }
-            cell.progress = Float(progress.fractionCompleted)
+            setupOquCell(cell, row: indexPath.row)
         } else {
             cell.text = Content.sections[menuType]![indexPath.row]
             cell.image = UIImage(named: Content.sections[menuType]![indexPath.row])
         }
-        
-        cell.layer.cornerRadius = cell.frame.height * 0.5
-        cell.imageView.layer.cornerRadius = cell.frame.height * 0.5
+        setupCellCorners(cell)
         
         return cell
+    }
+    
+    private func setupCellAppearence(_ cell: ImageCollectionViewCell) {
+        cell.imageView.isSkeletonable = true
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 5
+        cell.imageView.layer.cornerRadius = 15
+        cell.layer.cornerRadius = 15
+    }
+    
+    private func setupBeineCell(_ cell: ImageCollectionViewCell, row: Int) {
+        cell.sectionTitleLabel.font = UIFont(name: "Helvetica-Bold", size: cell.frame.height * 0.13)
+        cell.isUserInteractionEnabled = false
+        cell.backgroundColor = .concrete
+        
+        cell.warningCaller = self
+        if self.dataFetchAPI.beineler.count != 0 {
+            cell.isUserInteractionEnabled = true
+            cell.beine = self.dataFetchAPI.beineler[row]
+        } else {
+            let gradient = SkeletonGradient(baseColor: .concrete)
+            let animation = GradientDirection.leftRight.slidingAnimation()
+            cell.imageView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
+        }
+    }
+    
+    private func setupOquCell(_ cell: ImageCollectionViewCell, row: Int) {
+        let section = Content.toddlerSections[row]
+        cell.text = section.name
+        cell.image = UIImage(named: section.name)
+        let completed = UserDefaults.standard.value(forKey: section.name) as? Int
+        let progress = Progress(totalUnitCount: Int64(section.contentNames.count))
+        progress.completedUnitCount = Int64(completed ?? 0)
+        if section.contentNames.count == completed {
+            cell.completed = true
+        }
+        cell.progress = Float(progress.fractionCompleted)
+    }
+    
+    private func setupCellCorners(_ cell: ImageCollectionViewCell) {
+        cell.layer.cornerRadius = cell.frame.height * 0.5
+        cell.imageView.layer.cornerRadius = cell.frame.height * 0.5
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

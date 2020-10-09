@@ -85,9 +85,9 @@ class GameViewController: QulynymVC {
         }
         vc.fromGame = true
         self.navigationController?.popToViewController(vc, animated: true)
-        // idk where did i get this timings, but this is working
+
         DispatchQueue.main.asyncAfter(deadline: .now() + Animator.duration - 0.5, execute: {
-            AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
+            AppUtility.lockOrientation(.landscape, andRotateTo: AppUtility.currentOrientation!)
         })
         DispatchQueue.main.asyncAfter(deadline: .now() + Animator.duration, execute: {
             vc.hideBackground(false)

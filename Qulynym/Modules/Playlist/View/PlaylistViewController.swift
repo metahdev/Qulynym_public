@@ -109,7 +109,6 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
         cell.image = UIImage(named: content[indexPath.row])
         cell.text = content[indexPath.row]
-        #warning("refactor")
         cell.sectionTitleLabel.setupPlaylistLabel(size: cell.frame.height * 0.1)
         if !isKaraoke {
             cell.sectionTitleLabel.textColor = .lightViolet

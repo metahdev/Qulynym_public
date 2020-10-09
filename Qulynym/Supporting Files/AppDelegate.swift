@@ -12,22 +12,22 @@ import CoreData
 
 #warning("TODO")
 /*
- 1. Refactor PlaylistItem(warning messages in Story because cv does not exist) - Askar
- 2. Clean the project & code - Askar & Bauka
- 3. Change pencil line thickness - test
- extra: screenshots 
+ 1. UI & Unit tests
+ 2. Practical instruments
+ 3. Refactoring
+ 4. Firebase
 */
 
 /*
  Refactor:
-  1) MenuRouter + MenuViewCotnroller
+  1) MenuRouter + MenuViewController
   2) CustomImageView(maybe delegate something to DataFetchAPI)
   3) BeineViewController(architecture & nextVideo methods
   4) ImageCollectionViewCell
   5) DrawingViewControllers into one view, overall code logic(touchUpOutside)
   6) Quiz Module(concurrency)
   7) ModuleView protocol properties get acccessor & architecture overall
- */
+*/
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

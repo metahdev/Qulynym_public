@@ -210,7 +210,6 @@ extension QuizViewController {
     }
     
     func animateConfetti() {
-        #warning("zombie object?")
         let foregroundConfettiLayer = createConfettiLayer(view: view)
         let backgroundConfettiLayer: CAEmitterLayer = {
             let emitterLayer = createConfettiLayer(view: view)

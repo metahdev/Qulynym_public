@@ -90,24 +90,27 @@ extension PlaylistItemPresenter {
     }
     
     private func updateForUser() {
-        #warning("refactor")
         timer.nullifyData()
         controller.setTimelineSliderValue(0)
         updateStates()
         AudioPlayer.playlistPlayerInitiated = false
+        
         if controller.isKaraoke {
             getLyricsText()
             controller.currentLine = 0
             controller.scrollToCurrentLine()
         }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
             self.controller.setViewsProperties()
         })
     }
     
     func scrollAudio(to value: Float) {
-        controller.clearLine()
-        findCurrentLine(value)
+        if controller.isKaraoke {
+            controller.clearLine()
+            findCurrentLine(value)
+        }
         AudioPlayer.playlistItemAudioPlayer.pause()
         controller.setTimelineSliderValue(value)
         timer.counter = value
@@ -121,18 +124,13 @@ extension PlaylistItemPresenter {
         var index = 0
         var line = 0
         ended = false
-        #warning("refactor")
+        
         for timestop in song.timestops {
             if timestop.0 < value {
                 line = index
             } else {
                 guard index != 0 else {
-                    controller.currentLine = 0
-                    controller.highlighting = false
-                    controller.scrollToCurrentLine()
-                    if song.timestops[0].1 > value && song.timestops[0].0 < value {
-                        controller.updateCurrentLine()
-                    }
+                    startAgain(value)
                     return
                 }
                 controller.began = true
@@ -148,6 +146,16 @@ extension PlaylistItemPresenter {
                 break
             }
             index += 1
+        }
+    }
+    
+    private func startAgain(_ value: Float) {
+        let song = Content.songs[controller.index]
+        controller.currentLine = 0
+        controller.highlighting = false
+        controller.scrollToCurrentLine()
+        if song.timestops[0].1 > value && song.timestops[0].0 < value {
+            controller.updateCurrentLine()
         }
     }
     
@@ -178,6 +186,9 @@ extension PlaylistItemPresenter: TimerControllerDelegate {
         
         let song = Content.songs[controller.index]
         guard !ended else {
+            return
+        }
+        guard controller.isKaraoke else {
             return
         }
         if timer!.counter == song.timestops[controller.currentLine].0 {

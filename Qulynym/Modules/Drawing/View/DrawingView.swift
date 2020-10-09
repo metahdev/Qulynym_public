@@ -183,7 +183,6 @@ class DrawingView: DrawingViewProtocol {
         closeBtn.isEnabled = false
     }
     
-    #warning("Unable to simultaneously satisfy constraints.")
     private func activateConstraints() {
         drawingCVTrailingConstraint = drawingsCollectionView.view.trailingAnchor.constraint(equalTo: view.leadingAnchor)
         NSLayoutConstraint.activate([
