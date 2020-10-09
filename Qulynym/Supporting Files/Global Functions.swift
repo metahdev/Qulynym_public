@@ -23,8 +23,6 @@ func setupPlaylistSlider(value: Int, secondColor: UIColor) -> UISlider {
     return slider
 }
 
-
-#warning("refactor all code to call this method")
 func constraintSubviewToFitSuperview(subview: UIView, superview: UIView) {
     NSLayoutConstraint.activate([
         subview.leadingAnchor.constraint(equalTo: superview.leadingAnchor),

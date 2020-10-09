@@ -55,7 +55,8 @@ class QuizView: QuizViewProtocol {
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
         backgroundIV.configureBackgroundImagePosition(view)
-        activateConstraints()
+        constraintSubviewToFitSuperview(subview: cardsCollectionView, superview: view)
+        activateSoundsButtonConstraints()
     }
     
     private func addSubviews() {
@@ -73,17 +74,12 @@ class QuizView: QuizViewProtocol {
     
     
     // MARK:- Constraints
-    private func activateConstraints() {
+    private func activateSoundsButtonConstraints() {
         NSLayoutConstraint.activate([
             soundsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             soundsButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             soundsButton.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
             soundsButton.heightAnchor.constraint(equalTo: soundsButton.widthAnchor),
-            
-            cardsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            cardsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            cardsCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            cardsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }

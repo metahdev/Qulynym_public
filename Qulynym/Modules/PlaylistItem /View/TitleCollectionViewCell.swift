@@ -58,12 +58,13 @@ class TitleCollectionViewCell: UICollectionViewCell {
     
     private func setupLyricsLabel() {
         self.addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-        ])
+        constraintSubviewToFitSuperview(subview: titleLabel, superview: self)
+//        NSLayoutConstraint.activate([
+//            titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
+//            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+//            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+//            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+//        ])
     }
     
     

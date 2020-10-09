@@ -75,6 +75,7 @@ class SettingsView: SettingsViewProtocol {
         setSubviewsMask()
         closeBtn.configureCloseBtnFrame(view)
         setupButtonHeightMultiplier()
+        backgroundIV.configureBackgroundImagePosition(view)
         activateConstraints()
     }
     
@@ -95,11 +96,6 @@ class SettingsView: SettingsViewProtocol {
     
     private func activateConstraints() {
         NSLayoutConstraint.activate([
-            backgroundIV.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundIV.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundIV.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundIV.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
             musicBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             musicBtn.centerYAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 0.25),
             musicBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: buttonHeightMultiplier!),
