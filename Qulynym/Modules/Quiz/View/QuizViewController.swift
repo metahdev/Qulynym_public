@@ -144,26 +144,34 @@ extension QuizViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if selectedIndex == indexOfRandCard {
             cell.layer.borderColor = UIColor.green.cgColor
+            guard !self.closeBtnHasBeenPressed else {
+                return
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                if !self.closeBtnHasBeenPressed {
-                    AudioPlayer.setupExtraAudio(with: "wellDone", audioPlayer: .effects)
-                    self.presenter.deleteItem()
-                    self.changeSelectedCellOpacity(to: 1.0)
-                }
+                AudioPlayer.setupExtraAudio(with: "wellDone", audioPlayer: .effects)
+                self.presenter.deleteItem()
+                self.changeSelectedCellOpacity(to: 1.0)
             })
         } else {
             cell.layer.borderColor = UIColor.red.cgColor
             presenter.stopAudios()
+            
+            guard !self.closeBtnHasBeenPressed else {
+                return
+            }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                if !self.closeBtnHasBeenPressed {
-                    AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
-                    while AudioPlayer.sfxAudioPlayer.isPlaying {}
-                    self.changeSelectedCellOpacity(to: 1.0)
-                    self.presenter.backToItemWithRepeat()
-                }
+                AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
+                self.changeSelectedCellOpacity(to: 1.0)
+                self.backToItemWithDelay()
             })
         }
+    }
+    
+    private func backToItemWithDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + AudioPlayer.sfxAudioPlayer.duration, execute: {
+            self.presenter.backToItemWithRepeat()
+        })
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

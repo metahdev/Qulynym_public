@@ -26,6 +26,13 @@ class QuizPresenter: QuizPresenterProtocol {
     var router: QuizRouterProtocol!
     var modifiedCards = [String]()
     
+    private var sfxDuration: TimeInterval {
+        return AudioPlayer.sfxAudioPlayer.duration
+    }
+    private var questionDuration: TimeInterval {
+        return AudioPlayer.questionAudioPlayer.duration
+    }
+    
     
     // MARK:- Initialization
     required init(_ view: QuizViewControllerProtocol) {
@@ -45,15 +52,15 @@ extension QuizPresenter {
     
     func playAudio() {
         controller.changeViewsEnableState(enable: false)
-        AudioPlayer.audioQueue.async {
-            while AudioPlayer.sfxAudioPlayer.isPlaying {}
+        let delay = AudioPlayer.sfxAudioPlayer.isPlaying ? sfxDuration : 0.0
+        AudioPlayer.audioQueue.asyncAfter(deadline: .now() + delay, execute: {
             AudioPlayer.questionAudioPlayer.play()
-            while AudioPlayer.questionAudioPlayer.isPlaying {}
-            AudioPlayer.contentAudioPlayer.play()
-            DispatchQueue.main.async {
+    
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.questionDuration, execute: {
+                AudioPlayer.contentAudioPlayer.play()
                 self.controller.changeViewsEnableState(enable: true)
-            }
-        }
+            })
+        })
     }
     
     func deleteItem() {
@@ -67,11 +74,10 @@ extension QuizPresenter {
                 return
             }
             AudioPlayer.audioQueue.async {
-                while AudioPlayer.sfxAudioPlayer.isPlaying {}
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + self.sfxDuration, execute: {
                     self.interactor.saveData(slide: self.controller.count, category: self.controller.categoryName)
                     self.router.backToItem(didPass: true)
-                }
+                })
             }
             return
         }

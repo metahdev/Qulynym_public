@@ -35,8 +35,7 @@ extension QuizRouter {
     
     func returnToMenu() {
         AudioPlayer.audioQueue.async {
-            while AudioPlayer.sfxAudioPlayer.isPlaying {}
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5 + AudioPlayer.sfxAudioPlayer.duration, execute: {
                 self.close()
             })
         }
