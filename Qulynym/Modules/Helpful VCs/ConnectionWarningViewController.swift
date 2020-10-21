@@ -1,9 +1,8 @@
-//
 /*
 * Qulynym
 * ConnectionWarningViewController.swift
 *
-* Created by: Баубек on 2/2/20
+* Created by: Baubek on 2/2/20
 *
 * Copyright © 2019 Automatization X Software. All rights reserved.
 */

@@ -56,6 +56,11 @@
 		D1072A0122877DD2003149E8 /* PlaylistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1072A0022877DD2003149E8 /* PlaylistRouter.swift */; };
 		D107786B22858CEC00D869D3 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D107786A22858CEC00D869D3 /* Animator.swift */; };
 		D11A59BE23043F8C00D68CEF /* whack.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9E2CE2322FBDF2F006B5697 /* whack.wav */; };
+		D128F5742540CBA200C90964 /* BeineRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D128F5732540CBA200C90964 /* BeineRouter.swift */; };
+		D128F5762540CBB800C90964 /* BeineConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D128F5752540CBB800C90964 /* BeineConfigurator.swift */; };
+		D128F5782540CBC900C90964 /* BeineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D128F5772540CBC900C90964 /* BeineInteractor.swift */; };
+		D128F57A2540CBDA00C90964 /* BeinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D128F5792540CBDA00C90964 /* BeinePresenter.swift */; };
+		D128F57C2540CC0A00C90964 /* BeineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D128F57B2540CC0A00C90964 /* BeineView.swift */; };
 		D12ACAB423F158360061EF06 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D135E2A422A02F7B00DC84DE /* PlaylistItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A322A02F7B00DC84DE /* PlaylistItemViewController.swift */; };
 		D135E2A722A02F9800DC84DE /* PlaylistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135E2A622A02F9800DC84DE /* PlaylistItemView.swift */; };
@@ -242,6 +247,11 @@
 		D10729FE22877D5C003149E8 /* PlaylistInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistInteractor.swift; sourceTree = "<group>"; };
 		D1072A0022877DD2003149E8 /* PlaylistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistRouter.swift; sourceTree = "<group>"; };
 		D107786A22858CEC00D869D3 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		D128F5732540CBA200C90964 /* BeineRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeineRouter.swift; sourceTree = "<group>"; };
+		D128F5752540CBB800C90964 /* BeineConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeineConfigurator.swift; sourceTree = "<group>"; };
+		D128F5772540CBC900C90964 /* BeineInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeineInteractor.swift; sourceTree = "<group>"; };
+		D128F5792540CBDA00C90964 /* BeinePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeinePresenter.swift; sourceTree = "<group>"; };
+		D128F57B2540CC0A00C90964 /* BeineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeineView.swift; sourceTree = "<group>"; };
 		D135E2A322A02F7B00DC84DE /* PlaylistItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemViewController.swift; sourceTree = "<group>"; };
 		D135E2A622A02F9800DC84DE /* PlaylistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemView.swift; sourceTree = "<group>"; };
 		D135E2AA22A02FBC00DC84DE /* PlaylistItemConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemConfigurator.swift; sourceTree = "<group>"; };
@@ -395,7 +405,6 @@
 		856F349222F87F2000E97C0C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8528917522F9A22600A7CEA7 /* TextViewController.swift */,
 				856F349322F87F5800E97C0C /* SettingsViewController.swift */,
 				856F349522F87F8900E97C0C /* SettingsView.swift */,
 			);
@@ -479,8 +488,11 @@
 		D105806D235BE3F100082DA3 /* Beine */ = {
 			isa = PBXGroup;
 			children = (
-				D1058075235C0E7F00082DA3 /* BeineViewController.swift */,
-				856AADA523E6F93300376A4C /* ConnectionWarningViewController.swift */,
+				D128F5752540CBB800C90964 /* BeineConfigurator.swift */,
+				D128F5722540CB9400C90964 /* View */,
+				D128F5792540CBDA00C90964 /* BeinePresenter.swift */,
+				D128F5772540CBC900C90964 /* BeineInteractor.swift */,
+				D128F5732540CBA200C90964 /* BeineRouter.swift */,
 			);
 			path = Beine;
 			sourceTree = "<group>";
@@ -548,6 +560,24 @@
 				D1F9ABDA22A0458C00989BD3 /* DrawingRouter.swift */,
 			);
 			path = Drawing;
+			sourceTree = "<group>";
+		};
+		D128F5722540CB9400C90964 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D128F57B2540CC0A00C90964 /* BeineView.swift */,
+				D1058075235C0E7F00082DA3 /* BeineViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D128F57D2540CC1F00C90964 /* Helpful VCs */ = {
+			isa = PBXGroup;
+			children = (
+				8528917522F9A22600A7CEA7 /* TextViewController.swift */,
+				856AADA523E6F93300376A4C /* ConnectionWarningViewController.swift */,
+			);
+			path = "Helpful VCs";
 			sourceTree = "<group>";
 		};
 		D135E2A522A02F8400DC84DE /* View */ = {
@@ -735,6 +765,7 @@
 				D10729F8228768D0003149E8 /* PlaylistItem  */,
 				D10729F9228768D9003149E8 /* Drawing */,
 				D16CE02F22EF4E260057835D /* Torgai */,
+				D128F57D2540CC1F00C90964 /* Helpful VCs */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1053,6 +1084,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D128F5782540CBC900C90964 /* BeineInteractor.swift in Sources */,
 				D1A7913522F82690005BF325 /* DrawingsCollectionView.swift in Sources */,
 				D19D32E123EF06EC00DC533B /* CustomImageView.swift in Sources */,
 				B916B09322FBDC3400AF255A /* MainMenuState.swift in Sources */,
@@ -1076,12 +1108,14 @@
 				85EAEED824BA61DB0006DF41 /* TitleCollectionViewCell.swift in Sources */,
 				D14D536A22213775007ACD55 /* ItemConfigurator.swift in Sources */,
 				D10687CF22AE68EE00A3E6E0 /* MenuView.swift in Sources */,
+				D128F57C2540CC0A00C90964 /* BeineView.swift in Sources */,
 				856F349422F87F5800E97C0C /* SettingsViewController.swift in Sources */,
 				B916B0A122FBDC5400AF255A /* MovementComponent.swift in Sources */,
 				D102930822F1A13500C7B2F2 /* QuizViewController.swift in Sources */,
 				D13D864F2217FEDF0048A6E4 /* ItemViewController.swift in Sources */,
 				D171887C23E6EF4C006FAB72 /* DataFetchAPI.swift in Sources */,
 				D14D537222214853007ACD55 /* ItemRouter.swift in Sources */,
+				D128F5762540CBB800C90964 /* BeineConfigurator.swift in Sources */,
 				D1F9ABD122A0454600989BD3 /* DrawingViewController.swift in Sources */,
 				D1F9ABD722A0457900989BD3 /* DrawingPresenter.swift in Sources */,
 				D13D864D2217FEDF0048A6E4 /* AppDelegate.swift in Sources */,
@@ -1107,6 +1141,7 @@
 				D102930F22F1AE0200C7B2F2 /* QuizInteractor.swift in Sources */,
 				D1F9ABDB22A0458C00989BD3 /* DrawingRouter.swift in Sources */,
 				D14D536E222137B2007ACD55 /* ItemInteractor.swift in Sources */,
+				D128F57A2540CBDA00C90964 /* BeinePresenter.swift in Sources */,
 				D1D5BC2323017E0300FB3922 /* PlayerEntity.swift in Sources */,
 				B916B0CE22FBDCA000AF255A /* GameViewController.swift in Sources */,
 				D10729FF22877D5C003149E8 /* PlaylistInteractor.swift in Sources */,
@@ -1117,6 +1152,7 @@
 				D10221DC22ECD2B40081C95E /* CanvasView.swift in Sources */,
 				8528917622F9A22600A7CEA7 /* TextViewController.swift in Sources */,
 				B916B0A022FBDC5400AF255A /* AnimationComponent.swift in Sources */,
+				D128F5742540CBA200C90964 /* BeineRouter.swift in Sources */,
 				D1F54F3824B26EFE00F88A78 /* Global Functions.swift in Sources */,
 				D14D53792221B185007ACD55 /* AudioPlayer.swift in Sources */,
 				D1C69D1422F631E9003D0D05 /* PlaylistItemInteractor.swift in Sources */,

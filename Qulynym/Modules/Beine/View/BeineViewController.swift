@@ -32,6 +32,7 @@ class BeineViewController: QulynymVC, BeineViewControllerProtocol, DataFetchAPID
     var isPassingSafe = false
     var isConnectionErrorShowing = false
     
+    var presenter: BeinePresenterProtocol! 
     private let playVarsDic = ["controls": 1, "playsinline": 1, "showinfo": 1, "autoplay": 0, "rel": 0]
     private lazy var closeBtn: UIButton = {
         let btn = UIButton()

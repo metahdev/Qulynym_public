@@ -101,7 +101,7 @@ class ItemView: ItemViewProtocol {
     private func activateConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: contentBtn.topAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             
             contentBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             contentBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
