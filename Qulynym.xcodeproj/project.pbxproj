@@ -171,6 +171,8 @@
 		D1F9ABD722A0457900989BD3 /* DrawingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD622A0457900989BD3 /* DrawingPresenter.swift */; };
 		D1F9ABD922A0458400989BD3 /* DrawingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABD822A0458400989BD3 /* DrawingInteractor.swift */; };
 		D1F9ABDB22A0458C00989BD3 /* DrawingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9ABDA22A0458C00989BD3 /* DrawingRouter.swift */; };
+		E6A3EE492541B0E700FAE120 /* QuizModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A3EE482541B0E700FAE120 /* QuizModuleOutput.swift */; };
+		E6A3EE4B2541B20A00FAE120 /* QuizModuleInputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A3EE4A2541B20A00FAE120 /* QuizModuleInputData.swift */; };
 		F85D7D629EC5DE73D24DFD5C /* Pods_Qulynym.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59F7AD137F2986DAAC71C9B /* Pods_Qulynym.framework */; };
 /* End PBXBuildFile section */
 
@@ -358,6 +360,8 @@
 		D1F9ABD622A0457900989BD3 /* DrawingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPresenter.swift; sourceTree = "<group>"; };
 		D1F9ABD822A0458400989BD3 /* DrawingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingInteractor.swift; sourceTree = "<group>"; };
 		D1F9ABDA22A0458C00989BD3 /* DrawingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingRouter.swift; sourceTree = "<group>"; };
+		E6A3EE482541B0E700FAE120 /* QuizModuleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModuleOutput.swift; sourceTree = "<group>"; };
+		E6A3EE4A2541B20A00FAE120 /* QuizModuleInputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModuleInputData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -458,6 +462,8 @@
 		D102930622F1A10600C7B2F2 /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
+				E6A3EE482541B0E700FAE120 /* QuizModuleOutput.swift */,
+				E6A3EE4A2541B20A00FAE120 /* QuizModuleInputData.swift */,
 				D102931222F1AF1C00C7B2F2 /* QuizConfigurator.swift */,
 				D102930B22F1AD4F00C7B2F2 /* View */,
 				D102930C22F1AD6200C7B2F2 /* QuizPresenter.swift */,
@@ -1082,6 +1088,7 @@
 				D13D864F2217FEDF0048A6E4 /* ItemViewController.swift in Sources */,
 				D171887C23E6EF4C006FAB72 /* DataFetchAPI.swift in Sources */,
 				D14D537222214853007ACD55 /* ItemRouter.swift in Sources */,
+				E6A3EE4B2541B20A00FAE120 /* QuizModuleInputData.swift in Sources */,
 				D1F9ABD122A0454600989BD3 /* DrawingViewController.swift in Sources */,
 				D1F9ABD722A0457900989BD3 /* DrawingPresenter.swift in Sources */,
 				D13D864D2217FEDF0048A6E4 /* AppDelegate.swift in Sources */,
@@ -1126,6 +1133,7 @@
 				D19245172284DC2800ABD1BD /* Timer.swift in Sources */,
 				D14D53702221380F007ACD55 /* ItemView.swift in Sources */,
 				D1383F8E22AFCD42007815DF /* ImageCollectionViewCell.swift in Sources */,
+				E6A3EE492541B0E700FAE120 /* QuizModuleOutput.swift in Sources */,
 				856F348F22F87F0400E97C0C /* SettingsInteractor.swift in Sources */,
 				D1F54F3624B26D7300F88A78 /* Custom Classes.swift in Sources */,
 			);

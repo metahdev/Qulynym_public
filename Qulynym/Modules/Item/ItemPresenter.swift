@@ -21,7 +21,7 @@ protocol ItemPresenterProtocol: class {
     func closeBtnPressed()
 }
 
-class ItemPresenter: ItemPresenterProtocol {
+class ItemPresenter: ItemPresenterProtocol, QuizModuleOutput {
     // MARK:- Properties
     var slideCount = 0
     var contentKey = ""
@@ -33,8 +33,20 @@ class ItemPresenter: ItemPresenterProtocol {
     
     
     // MARK:- Initialization
+    
     required init(_ controller: ItemViewControllerProtocol) {
         self.controller = controller
+    }
+    
+    // MARK: - QuizModuleOutput
+    
+    func quizModuleOutputDidFinishQuiz(isSuccessful: Bool) {
+        guard isSuccessful else {
+            AudioPlayer.setupExtraAudio(with: "tryAgain", audioPlayer: .effects)
+            (controller as! ItemViewController).slideCount -= 4
+            return
+        }
+        (controller as! ItemViewController).returnedFromQuiz = true
     }
 }
 
@@ -73,7 +85,7 @@ extension ItemPresenter {
     
     private func passDataAndOpenQuiz(with count: Int) {
         let shuffledCards = interactor.getShuffledCards(from: controller.section.contentNames)
-        router.openQuiz(shuffledCards, with: controller.section.name, and: count)
+        router.openQuiz(quizModuleOutput: self, shuffledCards, with: controller.section.name, and: count)
     }
     
     func contentBtnPressed() {

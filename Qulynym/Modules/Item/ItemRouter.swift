@@ -12,7 +12,7 @@ import UIKit
 
 protocol ItemRouterProtocol: class {
     func closeView()
-    func openQuiz(_ cards: [String], with categoryName: String, and count: Int)
+    func openQuiz(quizModuleOutput: QuizModuleOutput?, _ cards: [String], with categoryName: String, and count: Int)
 }
 
 class ItemRouter {
@@ -25,6 +25,7 @@ class ItemRouter {
 }
 
 extension ItemRouter: ItemRouterProtocol {
+    
     // MARK:- Protocol Methods
     func closeView() {
         if let firstViewController = controller.navigationController?.viewControllers[1] {
@@ -32,14 +33,17 @@ extension ItemRouter: ItemRouterProtocol {
         }
     }
     
-    func openQuiz(_ cards: [String], with categoryName: String, and count: Int) {
-        let vc = QuizViewController()
-        controller.quizViewController = vc
-        controller.quizViewController.cards = cards
-        controller.quizViewController.categoryName = categoryName
-        controller.quizViewController.count = count
-        controller.quizViewController.areImagesTransparent = controller.areImagesTransparent
-        vc.itemView = controller
-        controller.show(vc, sender: nil)
+    func openQuiz(quizModuleOutput: QuizModuleOutput?, _ cards: [String], with categoryName: String, and count: Int) {
+        let viewController = QuizConfigurator.createModule(
+            inputData: QuizModuleInputData(
+                cards: cards,
+                categoryName: categoryName,
+                count: count,
+                areImagesTransparent: controller.areImagesTransparent
+            ),
+            moduleOuput: quizModuleOutput
+        )
+//        vc.itemView = controller
+        controller.show(viewController, sender: nil)
     }
 }

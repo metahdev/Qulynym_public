@@ -52,7 +52,6 @@ class QuizViewController: QulynymVC, QuizViewControllerProtocol {
     private var soundsBtn: UIButton!
     
     private var quizView: QuizViewProtocol!
-    private var configurator: QuizConfiguratorProtocol = QuizConfigurator()
     
     // MARK:- Status Bar
     override var prefersStatusBarHidden: Bool {
@@ -63,7 +62,6 @@ class QuizViewController: QulynymVC, QuizViewControllerProtocol {
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurator.configure(with: self)
         initView()
         quizView.setupLayout()
         assignViews()

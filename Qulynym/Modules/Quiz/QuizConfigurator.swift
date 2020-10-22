@@ -9,19 +9,21 @@
 
 import Foundation
 
-protocol QuizConfiguratorProtocol: class {
-    func configure(with view: QuizViewController)
-}
-
-class QuizConfigurator: QuizConfiguratorProtocol {
-    func configure(with view: QuizViewController) {
-        let presenter = QuizPresenter(view)
-        let interactor = QuizInteractor(presenter)
-        let router = QuizRouter(view)
+final class QuizConfigurator {
+    
+    static func createModule(inputData: QuizModuleInputData, moduleOuput: QuizModuleOutput?) -> QuizViewController {
+        let viewController = QuizViewController()
+        let presenter = QuizPresenter(viewController)
+        viewController.presenter = presenter
         
-        view.presenter = presenter
+        let interactor = QuizInteractor(presenter)
+        let router = QuizRouter(viewController)
+        
         presenter.interactor = interactor
         presenter.router = router
+        presenter.moduleOuput = moduleOuput
+        
+        return viewController
     }
 }
 

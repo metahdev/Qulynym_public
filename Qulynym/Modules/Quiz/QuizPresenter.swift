@@ -26,6 +26,7 @@ class QuizPresenter: QuizPresenterProtocol {
     var router: QuizRouterProtocol!
     var modifiedCards = [String]()
     
+    weak var moduleOuput: QuizModuleOutput?
     
     // MARK:- Initialization
     required init(_ view: QuizViewControllerProtocol) {
@@ -70,7 +71,8 @@ extension QuizPresenter {
                 while AudioPlayer.sfxAudioPlayer.isPlaying {}
                 DispatchQueue.main.async {
                     self.interactor.saveData(slide: self.controller.count, category: self.controller.categoryName)
-                    self.router.backToItem(didPass: true)
+                    self.moduleOuput?.quizModuleOutputDidFinishQuiz(isSuccessful: true)
+                    self.router.close()
                 }
             }
             return
@@ -93,7 +95,7 @@ extension QuizPresenter {
     }
     
     func backToItemWithRepeat() {
-        self.router.backToItem(didPass: false)
+        self.moduleOuput?.quizModuleOutputDidFinishQuiz(isSuccessful: false)
     }
     
     func stopAudios() {
